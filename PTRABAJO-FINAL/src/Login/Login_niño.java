@@ -139,7 +139,7 @@ public class Login_niño extends javax.swing.JFrame {
         jPanel2.add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 168, 20));
 
         lblMano.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/impresion-de-la-mano.png"))); // NOI18N
-        jPanel2.add(lblMano, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 40, 40));
+        jPanel2.add(lblMano, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 40, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 310, 420));
 
