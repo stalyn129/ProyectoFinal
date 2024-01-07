@@ -643,9 +643,9 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
 
     private void BtnRegistrarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarAdminActionPerformed
                  try{
-        Crear_adm(Base);
-     PagPrincipalAdmin PrinAdmin = new PagPrincipalAdmin();
-        PrinAdmin.setVisible(true);
+        Crear_Admin(Base);
+     IniciaAdmin inAdmin = new IniciaAdmin();
+        inAdmin.setVisible(true);
         this.setVisible(false);
         Contenedor_Base.CerrarBase(Base);
         }catch(Exception e){
@@ -653,7 +653,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BtnRegistrarAdminActionPerformed
 
-    public void Crear_adm(ObjectContainer Base) {
+    public void Crear_Admin(ObjectContainer Base) {
         Clases.Administrador nuevoAdmin = new Administrador();
         boolean ID_Admin = false;
         String Cedula = null;
