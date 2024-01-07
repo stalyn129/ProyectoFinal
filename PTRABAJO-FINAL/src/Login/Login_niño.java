@@ -5,6 +5,7 @@
  */
 package Login;
 
+import Login.Principal_Niño;
 import java.awt.Color;
 
 /**
@@ -43,6 +44,7 @@ public class Login_niño extends javax.swing.JFrame {
         icono_niños = new javax.swing.JLabel();
         txt_usuario = new javax.swing.JTextField();
         lblMano = new javax.swing.JLabel();
+        BtnRegresar = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -117,10 +119,10 @@ public class Login_niño extends javax.swing.JFrame {
 
         txtIniciarSesion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtIniciarSesion.setText("Iniciar Sesión");
-        jPanel2.add(txtIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
+        jPanel2.add(txtIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
 
-        icono_niños.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/chicos.png"))); // NOI18N
-        jPanel2.add(icono_niños, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 140, 120));
+        icono_niños.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/hermana-y-hermano.png"))); // NOI18N
+        jPanel2.add(icono_niños, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 70, 100));
 
         txt_usuario.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
         txt_usuario.setForeground(new java.awt.Color(204, 204, 204));
@@ -139,9 +141,20 @@ public class Login_niño extends javax.swing.JFrame {
         jPanel2.add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 168, 20));
 
         lblMano.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/impresion-de-la-mano.png"))); // NOI18N
-        jPanel2.add(lblMano, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 40, 40));
+        jPanel2.add(lblMano, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 40, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 310, 420));
+
+        BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar.setOpaque(false);
+        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Imagen de WhatsApp 2024-01-03 a las 07.58.17_8bdfab4c.jpg"))); // NOI18N
         jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
@@ -229,42 +242,16 @@ public class Login_niño extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_usuarioActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login_niño.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login_niño.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login_niño.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login_niño.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+        Seleccion selec = new Seleccion();
+        selec.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresarActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login_niño().setVisible(true);
-            }
-        });
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnRegresar;
     private javax.swing.JPanel Pnl_Ingre;
     private javax.swing.JLabel TXT_Ingre;
     private javax.swing.JLabel fondo;

@@ -5,18 +5,19 @@
  */
 package Login;
 
+import Login.nuevo;
 import java.awt.Color;
 
 /**
  *
  * @author alexa
  */
-public class login extends javax.swing.JFrame {
+public class InicioPsicologo extends javax.swing.JFrame {
 
     /**
      * Creates new form login
      */
-    public login() {
+    public InicioPsicologo() {
         initComponents();
     }
 
@@ -45,6 +46,7 @@ public class login extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txt_cod_ad = new javax.swing.JPasswordField();
         txt_usuario = new javax.swing.JTextField();
+        BtnRegresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -122,15 +124,15 @@ public class login extends javax.swing.JFrame {
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 269, 10));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setText("Iniciar Sesión ADMIN");
+        jLabel5.setText("Iniciar Sesión Psicologo");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 11, -1, -1));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/admin-con-ruedas-dentadas.png"))); // NOI18N
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 37, 136, 110));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/terapia.png"))); // NOI18N
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 70, 110));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel7.setText("Codigo Admin: ");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setText("Codigo Psicologo: ");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 150, 20));
 
         txt_cod_ad.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
         txt_cod_ad.setForeground(new java.awt.Color(204, 204, 204));
@@ -141,11 +143,16 @@ public class login extends javax.swing.JFrame {
                 txt_cod_adMousePressed(evt);
             }
         });
+        txt_cod_ad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_cod_adActionPerformed(evt);
+            }
+        });
         jPanel2.add(txt_cod_ad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 148, -1));
 
         txt_usuario.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
         txt_usuario.setForeground(new java.awt.Color(204, 204, 204));
-        txt_usuario.setText("Usuario_Admin");
+        txt_usuario.setText("Usuario_Psicologo");
         txt_usuario.setBorder(null);
         txt_usuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -160,6 +167,17 @@ public class login extends javax.swing.JFrame {
         jPanel2.add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 168, 20));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 310, 410));
+
+        BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar.setOpaque(false);
+        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Imagen de WhatsApp 2024-01-03 a las 07.58.17_8bdfab4c.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
@@ -197,7 +215,7 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_TXT_IngreMouseExited
 
     private void txt_usuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_usuarioMousePressed
-        if (txt_usuario.getText().equals("Usuario_Admin")) {
+        if (txt_usuario.getText().equals("Usuario_Psicologo")) {
             txt_usuario.setText("");
             txt_usuario.setForeground(Color.black);
         }
@@ -220,7 +238,7 @@ public class login extends javax.swing.JFrame {
             txt_contr.setForeground(Color.black);
         }
         if (txt_usuario.getText().isEmpty()) {
-            txt_usuario.setText("Usuario_Admin");
+            txt_usuario.setText("Usuario_Psicologo");
             txt_usuario.setForeground(Color.gray);
         }
         if (String.valueOf(txt_cod_ad.getPassword()).isEmpty()) {
@@ -240,7 +258,7 @@ public class login extends javax.swing.JFrame {
             txt_contr.setForeground(Color.gray);
         }
         if (txt_usuario.getText().isEmpty()) {
-            txt_usuario.setText("Usuario_Admin");
+            txt_usuario.setText("Usuario_Psicologo");
             txt_usuario.setForeground(Color.gray);
         }
 
@@ -248,22 +266,22 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_cod_adMousePressed
 
     private void TXT_IngreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TXT_IngreMouseClicked
-        if (!txt_usuario.getText().equals("Usuario_Admin")) {
+        if (!txt_usuario.getText().equals("Usuario_Psicologo")) {
             if (!String.valueOf(txt_contr.getPassword()).equals("**********")) {
                 if (!String.valueOf(txt_cod_ad.getPassword()).equals("**********")) {
 
-                    if (txt_usuario.getText().equals("0111111111") && String.valueOf(txt_contr.getPassword()).equals("1234") && String.valueOf(txt_cod_ad.getPassword()).equals("4444")) {
+                    if (txt_usuario.getText().equals("111") && String.valueOf(txt_contr.getPassword()).equals("abc1234") && String.valueOf(txt_cod_ad.getPassword()).equals("1010")) {
                         javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
                         nuevo nu=new nuevo();
                         nu.setVisible(true);
                         this.setVisible(false);
                     } else {
-                        javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE\n Usuario: 0111111111\nContraseña: 1234\nContraseña admin: 4444", "ERROR", javax.swing.JOptionPane.ERROR_MESSAGE);
+                        javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE\n Usuario: 111\nContraseña: abc1234\nContraseña admin: 1010", "ERROR", javax.swing.JOptionPane.ERROR_MESSAGE);
                     }
 
                 } else {
 
-                    javax.swing.JOptionPane.showMessageDialog(this, "Ingresa una Contraseña de ADMIN", "ERROR", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    javax.swing.JOptionPane.showMessageDialog(this, "Ingresa una Contraseña de Psicologo", "ERROR", javax.swing.JOptionPane.ERROR_MESSAGE);
 
                 }
 
@@ -278,12 +296,23 @@ public class login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_TXT_IngreMouseClicked
 
+    private void txt_cod_adActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cod_adActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_cod_adActionPerformed
+
+    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+        Seleccion selec = new Seleccion();
+        selec.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresarActionPerformed
+
     /**
      * @param args the command line arguments
      */
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnRegresar;
     private javax.swing.JPanel Pnl_Ingre;
     private javax.swing.JLabel TXT_Ingre;
     private javax.swing.JLabel jLabel1;

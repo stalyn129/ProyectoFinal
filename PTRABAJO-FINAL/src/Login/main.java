@@ -11,8 +11,8 @@ package Login;
  */
 public class main {
     public static void main(String[] args) {
-      login el=new login();
-    el.setVisible(true);
+      Inicio inicio =new Inicio();
+    inicio.setVisible(true);
     }
     
     
