@@ -12,13 +12,16 @@ public abstract class Persona {
     private char Sexo;
     private String Nacionalidad;
     private String Email;
+    private String Discapacidad;
+    private String Usuario;
     private String Contraseña;
     private String Telefono;
+    
 
     public Persona() {
     }
 
-    public Persona(String Cedula, String Nombre, String Apellido, String Direccion, Date Fecha_Nacimiento, char Sexo, String Nacionalidad, String Email, String Contraseña, String Telefono) {
+    public Persona(String Cedula, String Nombre, String Apellido, String Direccion, Date Fecha_Nacimiento, char Sexo, String Nacionalidad, String Email, String Discapacidad, String Usuario, String Contraseña, String Telefono) {
         this.Cedula = Cedula;
         this.Nombre = Nombre;
         this.Apellido = Apellido;
@@ -27,6 +30,8 @@ public abstract class Persona {
         this.Sexo = Sexo;
         this.Nacionalidad = Nacionalidad;
         this.Email = Email;
+        this.Discapacidad = Discapacidad;
+        this.Usuario = Usuario;
         this.Contraseña = Contraseña;
         this.Telefono = Telefono;
     }
@@ -95,6 +100,22 @@ public abstract class Persona {
         this.Email = Email;
     }
 
+    public String getDiscapacidad() {
+        return Discapacidad;
+    }
+
+    public void setDiscapacidad(String Discapacidad) {
+        this.Discapacidad = Discapacidad;
+    }
+
+    public String getUsuario() {
+        return Usuario;
+    }
+
+    public void setUsuario(String Usuario) {
+        this.Usuario = Usuario;
+    }
+
     public String getContraseña() {
         return Contraseña;
     }
@@ -113,8 +134,8 @@ public abstract class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" + "Cedula=" + Cedula + ", Nombre=" + Nombre + ", Apellido=" + Apellido + ", Direccion=" + Direccion + ", Fecha_Nacimiento=" + Fecha_Nacimiento + ", Sexo=" + Sexo + ", Nacionalidad=" + Nacionalidad + ", Email=" + Email + ", Contrase\u00f1a=" + Contraseña + ", Telefono=" + Telefono + '}';
+        return "Persona{" + "Cedula=" + Cedula + ", Nombre=" + Nombre + ", Apellido=" + Apellido + ", Direccion=" + Direccion + ", Fecha_Nacimiento=" + Fecha_Nacimiento + ", Sexo=" + Sexo + ", Nacionalidad=" + Nacionalidad + ", Email=" + Email + ", Discapacidad=" + Discapacidad + ", Usuario=" + Usuario + ", Contrase\u00f1a=" + Contraseña + ", Telefono=" + Telefono + '}';
     }
-    
+
     
 }

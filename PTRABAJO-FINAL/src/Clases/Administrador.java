@@ -27,8 +27,8 @@ public class Administrador extends Persona {
         this.Años_Experiencia = Años_Experiencia;
     }
 
-    public Administrador(String ID_Admin, String Puesto, int Años_Experiencia, String Cedula, String Nombre, String Apellido, String Direccion, Date Fecha_Nacimiento, char Sexo, String Nacionalidad, String Email, String Contraseña, String Telefono) {
-        super(Cedula, Nombre, Apellido, Direccion, Fecha_Nacimiento, Sexo, Nacionalidad, Email, Contraseña, Telefono);
+    public Administrador(String ID_Admin, String Puesto, int Años_Experiencia, String Cedula, String Nombre, String Apellido, String Direccion, Date Fecha_Nacimiento, char Sexo, String Nacionalidad, String Email, String Discapacidad, String Usuario, String Contraseña, String Telefono) {
+        super(Cedula, Nombre, Apellido, Direccion, Fecha_Nacimiento, Sexo, Nacionalidad, Email, Discapacidad, Usuario, Contraseña, Telefono);
         this.ID_Admin = ID_Admin;
         this.Puesto = Puesto;
         this.Años_Experiencia = Años_Experiencia;
@@ -62,5 +62,7 @@ public class Administrador extends Persona {
     public String toString() {
         return "Administrador{" + "ID_Admin=" + ID_Admin + ", Puesto=" + Puesto + ", A\u00f1os_Experiencia=" + Años_Experiencia + ", TokenIngreso=" + TokenIngreso + '}';
     }
+ 
+    
     
 }

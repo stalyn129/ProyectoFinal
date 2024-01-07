@@ -6,7 +6,11 @@
 package Login;
 
 import Login.RegistrarseGeneral;
+import com.db4o.*;
 import java.awt.Color;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import Clases.*;
 
 /**
  *
@@ -14,10 +18,11 @@ import java.awt.Color;
  */
 public class RegistrarseAdmin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegistrarseAdmin
-     */
+    private ObjectContainer Base;
+    
     public RegistrarseAdmin() {
+        
+        Base= Db4o.openFile("C:\\Users\\Joel\\OneDrive\\Escritorio\\BaseDatos.yap");
         initComponents();
     }
 
@@ -255,6 +260,11 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
 
         BtnRegistrarAdmin.setText("Registrarse");
         BtnRegistrarAdmin.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegistrarAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegistrarAdminActionPerformed(evt);
+            }
+        });
         jPanel2.add(BtnRegistrarAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 100, 30));
 
         jLabel13.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -631,6 +641,89 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_CfContraAdminMousePressed
 
+    private void BtnRegistrarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarAdminActionPerformed
+                 try{
+        Crear_adm(Base);
+     PagPrincipalAdmin PrinAdmin = new PagPrincipalAdmin();
+        PrinAdmin.setVisible(true);
+        this.setVisible(false);
+        Contenedor_Base.CerrarBase(Base);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Se gurado exitosamente ");
+        }
+    }//GEN-LAST:event_BtnRegistrarAdminActionPerformed
+
+    public void Crear_adm(ObjectContainer Base) {
+        Clases.Administrador nuevoAdmin = new Administrador();
+        boolean ID_Admin = false;
+        String Cedula = null;
+        do {
+
+            String cedula = TxtCedulaAdmin.getText();
+            while (!cedula.matches("[0-9]{10}")) {
+                cedula = JOptionPane.showInputDialog("Ingrese una nueva cédula válida (10 dígitos numéricos)");
+            }
+            Cedula = cedula;
+            Clases.Administrador P_Buscar = new Administrador(Cedula, null, 0, null, null, null, null, null,'\'' , null ,null, null, null, null, null);
+            ObjectSet Resultado = Base.get(P_Buscar);
+            if (Resultado.isEmpty()) {
+                nuevoAdmin .setID_Admin(cedula);
+                nuevoAdmin .setUsuario(cedula);
+                ID_Admin = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Ya existe una administrador con esa cedula!");
+                TxtCedulaAdmin.setText("");
+
+            }
+        } while (ID_Admin != true);
+
+        String nombre = TxtNombreAdmin.getText();
+        while (!nombre.matches("[a-zA-Z]+")) {
+            nombre = JOptionPane.showInputDialog("Ingrese un nombre válido (solo letras)");
+        }
+       nuevoAdmin.setNombre(nombre);
+        String apellido = TxtApelliAdmin.getText();
+        while (!apellido.matches("[a-zA-Z]+")) {
+            apellido = JOptionPane.showInputDialog("Ingrese un apellido válido (solo letras)");
+        }
+        nuevoAdmin.setApellido(apellido);
+        //String correo = txtc.getText();
+        //while (!correo.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.com")) {
+         //   correo = JOptionPane.showInputDialog("Ingrese un correo electrónico válido");
+       // }
+      //   adm1.setCorreo_ad(correo);
+        String contraseña = NvContraAdmin.getText();
+         nuevoAdmin.setContraseña(contraseña);
+
+
+        String discapacidad = "";
+
+            if (BtnSiDiscaAdmin.isSelected()) {
+                discapacidad = "Si";
+            } else {
+                discapacidad = "No";
+            }
+
+            nuevoAdmin.setDiscapacidad(discapacidad);
+
+        String Sexo="";
+ 
+        if (BtnFemeninoAdmin.isSelected()) {
+            Sexo = "M";
+        } else if (BtnMasculinoAdmin.isSelected()) {
+            Sexo = "H";
+        }
+        nuevoAdmin.setSexo(Sexo.charAt(0));
+
+        Date Fecha_Nacim = DateFechaNaciAdmin.getDate();
+        nuevoAdmin.setFecha_Nacimiento(Fecha_Nacim);
+
+
+        Base.set(nuevoAdmin);
+        Base.commit();
+      
+    }
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

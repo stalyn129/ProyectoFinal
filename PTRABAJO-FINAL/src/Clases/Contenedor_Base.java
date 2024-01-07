@@ -22,7 +22,7 @@ public class Contenedor_Base {
 
      }
      
-     public static void cerrarBase(ObjectContainer Base) {
+     public static void CerrarBase(ObjectContainer Base) {
         Base.close();
     }
 
