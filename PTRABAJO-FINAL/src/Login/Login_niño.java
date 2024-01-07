@@ -5,7 +5,6 @@
  */
 package Login;
 
-import Login.Principal_Niño;
 import java.awt.Color;
 
 /**
