@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Joel/OneDrive/Documentos/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/Admin.java</file>
-            <file>file:/C:/Users/Joel/OneDrive/Documentos/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/IniciaAdmin.java</file>
+            <file>file:/C:/Users/Joel/OneDrive/Documentos/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/RegistrarseNiñ.java</file>
+            <file>file:/C:/Users/Joel/OneDrive/Documentos/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Clases/Niño.java</file>
             <file>file:/C:/Users/Joel/OneDrive/Documentos/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/main.java</file>
-            <file>file:/C:/Users/Joel/OneDrive/Documentos/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Clases/Contenedor_Base.java</file>
-            <file>file:/C:/Users/Joel/OneDrive/Documentos/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/Inicio.java</file>
+            <file>file:/C:/Users/Joel/OneDrive/Documentos/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/RegistrarseAdmin.java</file>
+            <file>file:/C:/Users/Joel/OneDrive/Documentos/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Clases/Administrador.java</file>
         </group>
     </open-files>
 </project-private>

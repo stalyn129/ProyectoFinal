@@ -642,29 +642,79 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_CfContraAdminMousePressed
 
     private void BtnRegistrarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarAdminActionPerformed
-                 try{
-        Crear_Admin(Base);
-     IniciaAdmin inAdmin = new IniciaAdmin();
-        inAdmin.setVisible(true);
-        this.setVisible(false);
-        Contenedor_Base.CerrarBase(Base);
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Se gurado exitosamente ");
+                 try {
+        if (validarCampos()) {
+            Crear_Admin(Base);
+            IniciaAdmin inAdmin = new IniciaAdmin();
+            inAdmin.setVisible(true);
+            this.setVisible(false);
+            Contenedor_Base.CerrarBase(Base);
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos antes de registrar.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al registrar: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_BtnRegistrarAdminActionPerformed
 
     public void Crear_Admin(ObjectContainer Base) {
         Clases.Administrador nuevoAdmin = new Administrador();
         boolean ID_Admin = false;
-        String Cedula = null;
-        do {
+        
+        
+        
+            
+        String nombre = TxtNombreAdmin.getText();
+        while (!nombre.matches("[a-zA-Z]+")) {
+            nombre = JOptionPane.showInputDialog("Ingrese un nombre válido (solo letras)");
+            }
+        nuevoAdmin.setNombre(nombre);
+       
+        String apellido = TxtApelliAdmin.getText();
+        while (!apellido.matches("[a-zA-Z]+")) {
+            apellido = JOptionPane.showInputDialog("Ingrese un apellido válido (solo letras)");
+        }
+        nuevoAdmin.setApellido(apellido);
+        
+        String Sexo="";
+ 
+        if (BtnFemeninoAdmin.isSelected()) {
+            Sexo = "F";
+        } else if (BtnMasculinoAdmin.isSelected()) {
+            Sexo = "M";
+        }
+        nuevoAdmin.setSexo(Sexo.charAt(0));
+        
+        String puesto = TxtTituloAdmin.getText();
+        while (!puesto.matches("[a-zA-Z]+")) {
+            puesto = JOptionPane.showInputDialog("Ingrese un puesto válido (solo letras)");
+        }
+       nuevoAdmin.setPuesto(puesto);
+       
+       Date Fecha_Nacim = DateFechaNaciAdmin.getDate();
+       nuevoAdmin.setFecha_Nacimiento(Fecha_Nacim);
+       
+       String nacionalidad=CmbBxNacionalidad2Admin.getSelectedItem().toString();
+       nuevoAdmin.setNacionalidad(nacionalidad);
+       
+       String discapacidad = "";
 
+        if (BtnSiDiscaAdmin.isSelected()) {
+            discapacidad = "Si";
+        } else {
+            discapacidad = "No";
+        }
+    nuevoAdmin.setDiscapacidad(discapacidad);
+    
+        
+            do {
+            String Cedula = null;
             String cedula = TxtCedulaAdmin.getText();
             while (!cedula.matches("[0-9]{10}")) {
                 cedula = JOptionPane.showInputDialog("Ingrese una nueva cédula válida (10 dígitos numéricos)");
             }
             Cedula = cedula;
-            Clases.Administrador P_Buscar = new Administrador(Cedula, null, 0, null, null, null, null, null,'\'' , null ,null, null, null, null, null);
+            Clases.Administrador P_Buscar = new Administrador(Cedula, null, null, null, null, null, null, null,'\'' , null ,null, null, null, null, null);
             ObjectSet Resultado = Base.get(P_Buscar);
             if (Resultado.isEmpty()) {
                 nuevoAdmin .setID_Admin(cedula);
@@ -677,53 +727,31 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             }
         } while (ID_Admin != true);
 
-        String nombre = TxtNombreAdmin.getText();
-        while (!nombre.matches("[a-zA-Z]+")) {
-            nombre = JOptionPane.showInputDialog("Ingrese un nombre válido (solo letras)");
-        }
-       nuevoAdmin.setNombre(nombre);
-        String apellido = TxtApelliAdmin.getText();
-        while (!apellido.matches("[a-zA-Z]+")) {
-            apellido = JOptionPane.showInputDialog("Ingrese un apellido válido (solo letras)");
-        }
-        nuevoAdmin.setApellido(apellido);
-        //String correo = txtc.getText();
-        //while (!correo.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.com")) {
-         //   correo = JOptionPane.showInputDialog("Ingrese un correo electrónico válido");
-       // }
-      //   adm1.setCorreo_ad(correo);
+        
         String contraseña = NvContraAdmin.getText();
-         nuevoAdmin.setContraseña(contraseña);
+        String confirmarContraseña = CfContraAdmin.getText();
 
+        if (contraseña.equals(confirmarContraseña)) {
 
-        String discapacidad = "";
+            nuevoAdmin.setContraseña(contraseña);
 
-            if (BtnSiDiscaAdmin.isSelected()) {
-                discapacidad = "Si";
-            } else {
-                discapacidad = "No";
-            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden. Por favor, inténtelo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
 
-            nuevoAdmin.setDiscapacidad(discapacidad);
-
-        String Sexo="";
- 
-        if (BtnFemeninoAdmin.isSelected()) {
-            Sexo = "M";
-        } else if (BtnMasculinoAdmin.isSelected()) {
-            Sexo = "H";
         }
-        nuevoAdmin.setSexo(Sexo.charAt(0));
-
-        Date Fecha_Nacim = DateFechaNaciAdmin.getDate();
-        nuevoAdmin.setFecha_Nacimiento(Fecha_Nacim);
-
-
         Base.set(nuevoAdmin);
         Base.commit();
       
     }
     
+    public boolean validarCampos() {
+    // Verifica que todos los campos obligatorios estén llenos
+    if (TxtNombreAdmin.getText().isEmpty() || TxtApelliAdmin.getText().isEmpty() || DateFechaNaciAdmin.getDate() == null ||
+        TxtTituloAdmin.getText().isEmpty() || TxtCedulaAdmin.getText().isEmpty() || NvContraAdmin.getText().isEmpty() || CfContraAdmin.getText().isEmpty()) {
+        return false;
+    }
+    return true;
+}
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,18 +5,24 @@
  */
 package Login;
 
+import Clases.Administrador;
+import Clases.Contenedor_Base;
+import Clases.Niño;
+import com.db4o.*;
 import java.awt.Color;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author mauca
  */
 public class RegistrarseNiñ extends javax.swing.JFrame {
-
-    /**
-     * Creates new form RegistrarseNiñ
-     */
+    
+    private ObjectContainer Base;
+    
     public RegistrarseNiñ() {
+        Base= Db4o.openFile("C:\\Users\\Joel\\OneDrive\\Escritorio\\BaseDatos.yap");
         initComponents();
     }
 
@@ -200,7 +206,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
         jPanel2.add(Separador6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 80, 10));
         jPanel2.add(Separador7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 40, 10));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 610, 380));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 610, 380));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Imagen de WhatsApp 2024-01-03 a las 07.58.17_8bdfab4c.jpg"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
@@ -246,9 +252,72 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnDiscapacidadNiñActionPerformed
 
     private void BtnRegistrarseNiñActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarseNiñActionPerformed
-        // TODO add your handling code here:
+        try {
+        if (validarCamposNiño()) {
+            Crear_Niño(Base);
+            // Resto del código para mostrar la ventana o realizar otras acciones después del registro
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos antes de registrar al niño.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al registrar al niño: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_BtnRegistrarseNiñActionPerformed
 
+    public void Crear_Niño(ObjectContainer Base) {
+        Clases.Niño nuevoNiño = new Niño();
+
+       
+        String nombre = TxtNombreNiño.getText();
+        while (!nombre.matches("[a-zA-Z]+")) {
+            nombre = JOptionPane.showInputDialog("Ingrese un nombre válido (solo letras)");
+            }
+        nuevoNiño.setNombre(nombre);
+       
+        String apellido = TxtApellidoNiño.getText();
+        while (!apellido.matches("[a-zA-Z]+")) {
+            apellido = JOptionPane.showInputDialog("Ingrese un apellido válido (solo letras)");
+        }
+        nuevoNiño.setApellido(apellido);
+        
+        String Sexo="";
+ 
+        if (BtnMasculinoNiñ.isSelected()) {
+            Sexo = "M";
+        } else if (BtnFemeninoNiñ.isSelected()) {
+            Sexo = "F";
+        }
+        nuevoNiño.setSexo_Niño(Sexo.charAt(0));
+        
+        
+       
+       Date Fecha_Nacim = DateEdadNiño.getDate();
+       nuevoNiño.setFecha_Nacimiento(Fecha_Nacim);
+       
+       
+       String discapacidad = "";
+
+        if (BtnDiscapacidadNiñ.isSelected()) {
+            discapacidad = "Si";
+        } else {
+            discapacidad = "No";
+        }
+        nuevoNiño.setDiscapacidad(discapacidad);
+    
+
+        Base.set(nuevoNiño);
+        Base.commit();
+      
+    }
+    
+    public boolean validarCamposNiño() {
+        // Verifica que todos los campos obligatorios estén llenos
+        if (TxtNombreNiño.getText().isEmpty() || TxtApellidoNiño.getText().isEmpty() || DateEdadNiño.getDate() == null) {
+          return false;
+        }
+         return true;
+    }
+    
     private void TxtNombreNiñoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtNombreNiñoMousePressed
         if (TxtNombreNiño.getText().equals("Ingrese sus Nombres")) {
             TxtNombreNiño.setText("");

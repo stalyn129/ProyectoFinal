@@ -14,20 +14,20 @@ import java.util.Date;
 public class Administrador extends Persona {
     private String ID_Admin;
     private String Puesto;
-    private int Años_Experiencia;
+    private String Años_Experiencia;
     private final String TokenIngreso = "A5D2M3I4N";
 
     public Administrador() {
         super();
     }
 
-    public Administrador(String ID_Admin, String Puesto, int Años_Experiencia) {
+    public Administrador(String ID_Admin, String Puesto, String Años_Experiencia) {
         this.ID_Admin = ID_Admin;
         this.Puesto = Puesto;
         this.Años_Experiencia = Años_Experiencia;
     }
 
-    public Administrador(String ID_Admin, String Puesto, int Años_Experiencia, String Cedula, String Nombre, String Apellido, String Direccion, Date Fecha_Nacimiento, char Sexo, String Nacionalidad, String Email, String Discapacidad, String Usuario, String Contraseña, String Telefono) {
+    public Administrador(String ID_Admin, String Puesto, String Años_Experiencia, String Cedula, String Nombre, String Apellido, String Direccion, Date Fecha_Nacimiento, char Sexo, String Nacionalidad, String Email, String Discapacidad, String Usuario, String Contraseña, String Telefono) {
         super(Cedula, Nombre, Apellido, Direccion, Fecha_Nacimiento, Sexo, Nacionalidad, Email, Discapacidad, Usuario, Contraseña, Telefono);
         this.ID_Admin = ID_Admin;
         this.Puesto = Puesto;
@@ -50,11 +50,11 @@ public class Administrador extends Persona {
         this.Puesto = Puesto;
     }
 
-    public int getAños_Experiencia() {
+    public String getAños_Experiencia() {
         return Años_Experiencia;
     }
 
-    public void setAños_Experiencia(int Años_Experiencia) {
+    public void setAños_Experiencia(String Años_Experiencia) {
         this.Años_Experiencia = Años_Experiencia;
     }
 
@@ -63,6 +63,4 @@ public class Administrador extends Persona {
         return "Administrador{" + "ID_Admin=" + ID_Admin + ", Puesto=" + Puesto + ", A\u00f1os_Experiencia=" + Años_Experiencia + ", TokenIngreso=" + TokenIngreso + '}';
     }
  
-    
-    
 }
