@@ -17,7 +17,7 @@ public abstract class Persona {
     private String Contraseña;
     private String Telefono;
     
-
+///////////////////////
     public Persona() {
     }
 
