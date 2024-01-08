@@ -23,7 +23,7 @@ public class Niño {
 
     public Niño() {
     }
-
+////////////////////////////////////////////
     public Niño(String Nombre, String Apellido, char Sexo_Niño, Date Fecha_Nacimiento, String Personalidad, String Discapacidad, String Usuario, String Contraseña) {
         this.Nombre = Nombre;
         this.Apellido = Apellido;
