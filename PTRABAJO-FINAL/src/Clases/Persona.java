@@ -3,7 +3,7 @@ package Clases;
 
 import java.util.Date;
 
-public abstract class Persona {
+public class Persona {
     private String Cedula;
     private String Nombre;
     private String Apellido;
