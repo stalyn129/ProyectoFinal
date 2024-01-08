@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Clases;
+package BBDD;
 
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
@@ -16,7 +16,7 @@ public class Contenedor_Base {
      public static void main(String[] args) {
         // TODO code application logic here
         
-        ObjectContainer Base= Db4o.openFile("C:\\Users\\Joel\\OneDrive\\Escritorio\\BaseDatos.yap");
+        ObjectContainer Base= Db4o.openFile("src/BBDD/BaseDatos.yap");
                 Base.close();
 
 

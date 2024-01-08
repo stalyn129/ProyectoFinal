@@ -5,6 +5,7 @@
  */
 package Login;
 
+import BBDD.Contenedor_Base;
 import Login.RegistrarseGeneral;
 import com.db4o.*;
 import java.awt.Color;
@@ -716,7 +717,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             Cedula = cedula;
             Clases.Administrador P_Buscar = new Administrador(Cedula, null, null, null, null, null, null, null,'\'' , null ,null, null, null, null, null);
             ObjectSet Resultado = Base.get(P_Buscar);
-            if (Resultado.isEmpty()) {
+            if (Resultado.size()==0) {
                 nuevoAdmin .setID_Admin(cedula);
                 nuevoAdmin .setUsuario(cedula);
                 ID_Admin = true;
