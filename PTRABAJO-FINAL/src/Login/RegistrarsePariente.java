@@ -358,10 +358,10 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             }
         });
         jPanel2.add(NvContraParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 170, -1));
-        jPanel2.add(Txt_profecion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 140, -1));
+        jPanel2.add(Txt_profecion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 140, -1));
 
-        jLabel3.setText("jLabel3");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
+        jLabel3.setText("Profesion:");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 700, 390));
 
@@ -784,13 +784,13 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         Base.store(Mipersona);
         
         
-         Representante elpsic = new Representante();
-                elpsic.setCod_repre(Calcular_cod_Psicologo(Base));
-                elpsic.setCod_cedula(TxtCedParien.getText());
-                elpsic.setCod_parentesco(CmbBxParentesco.getSelectedItem().toString());
-                elpsic.setProfesion(Txt_profecion.getText());
-                elpsic.setOcupacion(TxtOcupaParien.getText());
-                Base.store(elpsic);
+         Representante elrepre = new Representante();
+                elrepre.setCod_repre(Calcular_cod_Representante(Base));
+                elrepre.setCod_cedula(TxtCedParien.getText());
+                elrepre.setCod_parentesco(CmbBxParentesco.getSelectedItem().toString());
+                elrepre.setProfesion(Txt_profecion.getText());
+                elrepre.setOcupacion(TxtOcupaParien.getText());
+                Base.store(elrepre);
         javax.swing.JOptionPane.showMessageDialog(this,"Se guardo la base de datos");
            
         } catch (Exception e) {
@@ -806,7 +806,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
 
 
     
-    public static String Calcular_cod_Psicologo(ObjectContainer Base) {
+    public static String Calcular_cod_Representante(ObjectContainer Base) {
 
         boolean rest = true;
         int aumento = 0;
