@@ -7,10 +7,7 @@ package Clases;
 
 import java.util.Date;
 
-/**
- *
- * @author Joel
- */
+//Hola amigos
 public class Administrador extends Persona {
     private String ID_Admin;
     private String Puesto;
