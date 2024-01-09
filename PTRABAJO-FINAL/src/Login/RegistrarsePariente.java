@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Login;
+
 import Clases.*;
 
 import com.db4o.Db4o;
@@ -756,61 +757,57 @@ public class RegistrarsePariente extends javax.swing.JFrame {
     private void BtnRegistrarParienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarParienActionPerformed
 
         try {
-         String sexo;
-         String Discapacidad;
+            String sexo;
+            String Discapacidad;
 
-        Persona Mipersona = new Persona();
+            Persona Mipersona = new Persona();
 
-        Mipersona.setCedula(TxtCedParien.getText());
+            Mipersona.setCedula(TxtCedParien.getText());
 
-        Mipersona.setNombre(TxtNombreParien.getText());
-        Mipersona.setApellido(TxtApellidoParien.getText());
-        Mipersona.setDireccion(TxtDirrecParien.getText());
-        Mipersona.setFecha_Nacimiento(DateFechaNaciParien.getDate());
-        if (BtnFemenParien.isSelected()) {
-            sexo = "F";
-        } else {
-            sexo = "M";
-        }
+            Mipersona.setNombre(TxtNombreParien.getText());
+            Mipersona.setApellido(TxtApellidoParien.getText());
+            Mipersona.setDireccion(TxtDirrecParien.getText());
+            Mipersona.setFecha_Nacimiento(DateFechaNaciParien.getDate());
+            if (BtnFemenParien.isSelected()) {
+                sexo = "F";
+            } else {
+                sexo = "M";
+            }
 
-        Mipersona.setSexo(sexo.charAt(0));
-        Mipersona.setNacionalidad(CmbBxNacionalidad.getSelectedItem().toString());
+            Mipersona.setSexo(sexo.charAt(0));
+            Mipersona.setNacionalidad(CmbBxNacionalidad.getSelectedItem().toString());
 
-        Mipersona.setDiscapacidad(TxtDirrecParien.getText());
+            Mipersona.setDiscapacidad(TxtDirrecParien.getText());
             if (BtnSiDiscaParien.isSelected()) {
                 Discapacidad = "Si";
-            }else {
+            } else {
                 Discapacidad = "No";
             }
 
-        Mipersona.setContraseña(String.valueOf(NvContraParien.getPassword()));
+            Mipersona.setContraseña(String.valueOf(NvContraParien.getPassword()));
+ 
+            Base.store(Mipersona);
 
-        Base.store(Mipersona);
-        
-        
-         Representante elrepre = new Representante();
-                elrepre.setCod_Repre(Calcular_cod_Representante(Base));
-                elrepre.setFKCod_Cedula(TxtCedParien.getText());
-                elrepre.setFKCod_parentesco(CmbBxParentesco.getSelectedItem().toString());
-                elrepre.setFKProfesion(Txt_profecion.getText());
-                elrepre.setOcupacion(TxtOcupaParien.getText());
-                Base.store(elrepre);
-        javax.swing.JOptionPane.showMessageDialog(this,"Se guardo la base de datos");
-           
+            Representante elrepre = new Representante();
+            elrepre.setCod_Repre(Calcular_cod_Representante(Base));
+            elrepre.setFKCod_Cedula(TxtCedParien.getText());
+            elrepre.setFKCod_parentesco(CmbBxParentesco.getSelectedItem().toString());
+            elrepre.setFKProfesion(Txt_profecion.getText());
+            elrepre.setOcupacion(TxtOcupaParien.getText());
+            Base.store(elrepre);
+            javax.swing.JOptionPane.showMessageDialog(this, "Se guardo la base de datos");
+
         } catch (Exception e) {
-        } finally{
-        Base.close();
-        PantallaPrincipalRepresentante Pantapri = new PantallaPrincipalRepresentante();
-        Pantapri.setVisible(true);
-        this.setVisible(false);
+        } finally {
+            Base.close();
+            PantallaPrincipalRepresentante Pantapri = new PantallaPrincipalRepresentante();
+            Pantapri.setVisible(true);
+            this.setVisible(false);
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_BtnRegistrarParienActionPerformed
 
-
-    
     public static String Calcular_cod_Representante(ObjectContainer Base) {
 
         boolean rest = true;
@@ -830,8 +827,8 @@ public class RegistrarsePariente extends javax.swing.JFrame {
 
         return cod;
     }
-    
-     public static int Verificar_codRepre(ObjectContainer Base, String cedula) {
+
+    public static int Verificar_codRepre(ObjectContainer Base, String cedula) {
 
         Representante eladd = new Representante();
         eladd.setCod_Repre(cedula);
@@ -839,9 +836,8 @@ public class RegistrarsePariente extends javax.swing.JFrame {
 
         return result.size();
     }
-     
-     
-     
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton BtnFemenParien;
     private javax.swing.ButtonGroup BtnGpDiscaParien;
