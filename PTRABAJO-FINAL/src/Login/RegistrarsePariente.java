@@ -358,7 +358,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             }
         });
         jPanel2.add(NvContraParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 170, -1));
-        jPanel2.add(Txt_profecion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 140, -1));
+        jPanel2.add(Txt_profecion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 140, -1));
 
         jLabel3.setText("Profesion:");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, -1, -1));
@@ -796,8 +796,9 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         } catch (Exception e) {
         } finally{
         Base.close();
-        
-        
+        PantallaPrincipalRepresentante Pantapri = new PantallaPrincipalRepresentante();
+        Pantapri.setVisible(true);
+        this.setVisible(false);
         }
         
         
