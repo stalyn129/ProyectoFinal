@@ -643,7 +643,8 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_CfContraAdminMousePressed
 
     private void BtnRegistrarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarAdminActionPerformed
-                 try {
+        /*       
+        try {
         if (validarCampos()) {
             Crear_Admin(Base);
             IniciaAdmin inAdmin = new IniciaAdmin();
@@ -656,8 +657,11 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Error al registrar: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
+        */
     }//GEN-LAST:event_BtnRegistrarAdminActionPerformed
 
+    
+    /*
     public void Crear_Admin(ObjectContainer Base) {
         Clases.Administrador nuevoAdmin = new Administrador();
         boolean ID_Admin = false;
@@ -753,7 +757,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
     }
     return true;
 }
-
+*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton BtnFemeninoAdmin;

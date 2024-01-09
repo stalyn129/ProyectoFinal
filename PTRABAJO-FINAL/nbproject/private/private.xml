@@ -3,26 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Ricar/Documents/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Clases/Administrador.java</file>
-            <file>file:/C:/Users/Ricar/Documents/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/login_Repre.java</file>
-            <file>file:/C:/Users/Ricar/Documents/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/RegistrarseNiñ.java</file>
-            <file>file:/C:/Users/Ricar/Documents/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Imagenes/Marco-Imagen.png</file>
-            <file>file:/C:/Users/Ricar/Documents/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/Login_niño.java</file>
-            <file>file:/C:/Users/Ricar/Documents/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/BBDD/Contenedor_Base.java</file>
-            <file>file:/C:/Users/Ricar/Documents/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/Admin.java</file>
-            <file>file:/C:/Users/Ricar/Documents/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/IniciaAdmin.java</file>
-            <file>file:/C:/Users/Ricar/Documents/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/main.java</file>
-            <file>file:/C:/Users/Ricar/Documents/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/nuevo.java</file>
-            <file>file:/C:/Users/Ricar/Documents/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/intef_repre.java</file>
-            <file>file:/C:/Users/Ricar/Documents/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/Seleccion.java</file>
-            <file>file:/C:/Users/Ricar/Documents/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/RegistrarsePsicologo.java</file>
-            <file>file:/C:/Users/Ricar/Documents/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/RegistrarseGeneral.java</file>
-            <file>file:/C:/Users/Ricar/Documents/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/Inicio.java</file>
-            <file>file:/C:/Users/Ricar/Documents/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/InicioPsicologo.java</file>
-            <file>file:/C:/Users/Ricar/Documents/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/RegistrarseAdmin.java</file>
-            <file>file:/C:/Users/Ricar/Documents/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/RegistrarsePariente.java</file>
-            <file>file:/C:/Users/Ricar/Documents/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/PagPrincipalAdmin.java</file>
-            <file>file:/C:/Users/Ricar/Documents/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/Principal_Niño.java</file>
+            <file>file:/C:/Users/Joel/OneDrive/Documentos/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/PagPrincipalAdmin.java</file>
+            <file>file:/C:/Users/Joel/OneDrive/Documentos/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Clases/Persona.java</file>
+            <file>file:/C:/Users/Joel/OneDrive/Documentos/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/RegistrarseNiñ.java</file>
+            <file>file:/C:/Users/Joel/OneDrive/Documentos/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Clases/Niño.java</file>
+            <file>file:/C:/Users/Joel/OneDrive/Documentos/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/main.java</file>
+            <file>file:/C:/Users/Joel/OneDrive/Documentos/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Login/RegistrarseAdmin.java</file>
+            <file>file:/C:/Users/Joel/OneDrive/Documentos/GitHub/ProyectoFinal/PTRABAJO-FINAL/src/Clases/Administrador.java</file>
         </group>
     </open-files>
 </project-private>

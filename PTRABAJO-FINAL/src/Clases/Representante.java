@@ -10,96 +10,67 @@ package Clases;
  * @author alexa
  */
 public class Representante {
-    private String cod_repre;
-    private String cod_cedula;
-    private String cod_parentesco;
-    private String profesion;
+    private String Cod_Repre;
+    private String FKCod_Cedula;
+    private String FKCod_parentesco;
+    private String FKProfesion;
     private String Ocupacion;
 
     public Representante() {
     }
 
-    public Representante(String cod_repre, String cod_cedula, String cod_parentesco, String profesion, String Ocupacion) {
-        this.cod_repre = cod_repre;
-        this.cod_cedula = cod_cedula;
-        this.cod_parentesco = cod_parentesco;
-        this.profesion = profesion;
+    public Representante(String Cod_Repre, String FKCod_Cedula, String FKCod_parentesco, String FKProfesion, String Ocupacion) {
+        this.Cod_Repre = Cod_Repre;
+        this.FKCod_Cedula = FKCod_Cedula;
+        this.FKCod_parentesco = FKCod_parentesco;
+        this.FKProfesion = FKProfesion;
+        this.Ocupacion = Ocupacion;
+    }
+
+    public String getCod_Repre() {
+        return Cod_Repre;
+    }
+
+    public void setCod_Repre(String Cod_Repre) {
+        this.Cod_Repre = Cod_Repre;
+    }
+
+    public String getFKCod_Cedula() {
+        return FKCod_Cedula;
+    }
+
+    public void setFKCod_Cedula(String FKCod_Cedula) {
+        this.FKCod_Cedula = FKCod_Cedula;
+    }
+
+    public String getFKCod_parentesco() {
+        return FKCod_parentesco;
+    }
+
+    public void setFKCod_parentesco(String FKCod_parentesco) {
+        this.FKCod_parentesco = FKCod_parentesco;
+    }
+
+    public String getFKProfesion() {
+        return FKProfesion;
+    }
+
+    public void setFKProfesion(String FKProfesion) {
+        this.FKProfesion = FKProfesion;
+    }
+
+    public String getOcupacion() {
+        return Ocupacion;
+    }
+
+    public void setOcupacion(String Ocupacion) {
         this.Ocupacion = Ocupacion;
     }
 
     @Override
     public String toString() {
-        return "Representante{" + "cod_repre=" + cod_repre + ", cod_cedula=" + cod_cedula + ", cod_parentesco=" + cod_parentesco + ", profesion=" + profesion + ", Ocupacion=" + Ocupacion + '}';
+        return "Representante{" + "Cod_Repre=" + Cod_Repre + ", FKCod_Cedula=" + FKCod_Cedula + ", FKCod_parentesco=" + FKCod_parentesco + ", FKProfesion=" + FKProfesion + ", Ocupacion=" + Ocupacion + '}';
     }
 
     
-    /**
-     * @return the cod_repre
-     */
-    public String getCod_repre() {
-        return cod_repre;
-    }
-
-    /**
-     * @param cod_repre the cod_repre to set
-     */
-    public void setCod_repre(String cod_repre) {
-        this.cod_repre = cod_repre;
-    }
-
-    /**
-     * @return the cod_cedula
-     */
-    public String getCod_cedula() {
-        return cod_cedula;
-    }
-
-    /**
-     * @param cod_cedula the cod_cedula to set
-     */
-    public void setCod_cedula(String cod_cedula) {
-        this.cod_cedula = cod_cedula;
-    }
-
-    /**
-     * @return the cod_parentesco
-     */
-    public String getCod_parentesco() {
-        return cod_parentesco;
-    }
-
-    /**
-     * @param cod_parentesco the cod_parentesco to set
-     */
-    public void setCod_parentesco(String cod_parentesco) {
-        this.cod_parentesco = cod_parentesco;
-    }
-
-    /**
-     * @return the profesion
-     */
-    public String getProfesion() {
-        return profesion;
-    }
-
-    /**
-     * @param profesion the profesion to set
-     */
-    public void setProfesion(String profesion) {
-        this.profesion = profesion;
-    }
-
-    /**
-     * @return the Ocupacion
-     */
-    public String getOcupacion() {
-        return Ocupacion;
-    }
-
-    /**
-     * @param Ocupacion the Ocupacion to set
-     */
-    public void setOcupacion(String Ocupacion) {
-        this.Ocupacion = Ocupacion;
-    }
 }

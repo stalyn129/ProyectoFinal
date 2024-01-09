@@ -785,10 +785,10 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         
         
          Representante elrepre = new Representante();
-                elrepre.setCod_repre(Calcular_cod_Representante(Base));
-                elrepre.setCod_cedula(TxtCedParien.getText());
-                elrepre.setCod_parentesco(CmbBxParentesco.getSelectedItem().toString());
-                elrepre.setProfesion(Txt_profecion.getText());
+                elrepre.setCod_Repre(Calcular_cod_Representante(Base));
+                elrepre.setFKCod_Cedula(TxtCedParien.getText());
+                elrepre.setFKCod_parentesco(CmbBxParentesco.getSelectedItem().toString());
+                elrepre.setFKProfesion(Txt_profecion.getText());
                 elrepre.setOcupacion(TxtOcupaParien.getText());
                 Base.store(elrepre);
         javax.swing.JOptionPane.showMessageDialog(this,"Se guardo la base de datos");
@@ -830,7 +830,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
      public static int Verificar_codRepre(ObjectContainer Base, String cedula) {
 
         Representante eladd = new Representante();
-        eladd.setCod_repre(cedula);
+        eladd.setCod_Repre(cedula);
         ObjectSet result = Base.get(eladd);
 
         return result.size();
