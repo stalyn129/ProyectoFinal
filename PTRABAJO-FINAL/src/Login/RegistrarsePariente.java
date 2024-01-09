@@ -755,10 +755,9 @@ public class RegistrarsePariente extends javax.swing.JFrame {
 
     private void BtnRegistrarParienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarParienActionPerformed
 
-        
-        
         try {
          String sexo;
+         String Discapacidad;
 
         Persona Mipersona = new Persona();
 
@@ -778,6 +777,11 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         Mipersona.setNacionalidad(CmbBxNacionalidad.getSelectedItem().toString());
 
         Mipersona.setDiscapacidad(TxtDirrecParien.getText());
+            if (BtnSiDiscaParien.isSelected()) {
+                Discapacidad = "Si";
+            }else {
+                Discapacidad = "No";
+            }
 
         Mipersona.setContraseña(String.valueOf(NvContraParien.getPassword()));
 
