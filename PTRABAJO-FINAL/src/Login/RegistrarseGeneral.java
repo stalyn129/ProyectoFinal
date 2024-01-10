@@ -8,6 +8,7 @@ package Login;
 import Login.RegistrarseNiñ;
 import Login.RegistrarsePariente;
 import Login.RegistrarsePsicologo;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -141,7 +142,7 @@ public class RegistrarseGeneral extends javax.swing.JFrame {
         });
         jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, 60, 40));
 
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Imagen de WhatsApp 2024-01-03 a las 07.58.17_8bdfab4c.jpg"))); // NOI18N
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -171,9 +172,20 @@ public class RegistrarseGeneral extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnPsicologoRegistActionPerformed
 
     private void BtnAdminRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAdminRegistActionPerformed
+       
+    String tokenIngresado = JOptionPane.showInputDialog("Ingrese el código de ingreso:");
+
+    // Verificar si el token ingresado es correcto (en este caso "A1D4M5IN")
+    if (tokenIngresado != null && tokenIngresado.equals("A1D4M5IN")) {
+        // Si es correcto, mostrar la página de registro de administrador
         RegistrarseAdmin administrador = new RegistrarseAdmin();
         administrador.setVisible(true);
         this.setVisible(false);
+    } else {
+        // Si el token no es correcto o se cancela la entrada, mostrar un mensaje de error
+        JOptionPane.showMessageDialog(this, "Código incorrecto. Inténtelo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+        
     }//GEN-LAST:event_BtnAdminRegistActionPerformed
 
     private void BtnRepresentanteRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRepresentanteRegistActionPerformed
