@@ -268,7 +268,7 @@ public class IniciaAdmin extends javax.swing.JFrame {
 
                     if (txt_usuario.getText().equals("0111111111") && String.valueOf(txt_contr.getPassword()).equals("1234") && String.valueOf(txt_cod_ad.getPassword()).equals("4444")) {
                         javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
-                        Admin nu=new Admin();
+                        PagPrincipalAdmin nu=new PagPrincipalAdmin();
                         nu.setVisible(true);
                         this.setVisible(false);
                     } else {

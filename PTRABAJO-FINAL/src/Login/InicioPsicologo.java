@@ -272,7 +272,7 @@ public class InicioPsicologo extends javax.swing.JFrame {
 
                     if (txt_usuario.getText().equals("111") && String.valueOf(txt_contr.getPassword()).equals("abc1234") && String.valueOf(txt_cod_ad.getPassword()).equals("1010")) {
                         javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
-                        nuevo nu=new nuevo();
+                        PagPrincipalPsicologo nu=new PagPrincipalPsicologo();
                         nu.setVisible(true);
                         this.setVisible(false);
                     } else {

@@ -7,8 +7,8 @@ package Login;
 
 import Login.Inicio;
 import Login.InicioPsicologo;
-import Login.Login_niño;
-import Login.login_Repre;
+import Login.InicioNiño;
+import Login.InicioRepresentante;
 
 /**
  *
@@ -166,7 +166,7 @@ public class Seleccion extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnAdminActionPerformed
 
     private void BtnRepresentanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRepresentanteActionPerformed
-        login_Repre repre = new login_Repre();
+        InicioRepresentante repre = new InicioRepresentante();
             repre.setVisible(true);
                 this.setVisible(false);
     }//GEN-LAST:event_BtnRepresentanteActionPerformed
@@ -178,7 +178,7 @@ public class Seleccion extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnPsicologoActionPerformed
 
     private void BtnInfanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfanteActionPerformed
-        Login_niño infante = new Login_niño();
+        InicioNiño infante = new InicioNiño();
             infante.setVisible(true);
                 this.setVisible(false);
     }//GEN-LAST:event_BtnInfanteActionPerformed
