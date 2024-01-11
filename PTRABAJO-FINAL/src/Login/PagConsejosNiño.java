@@ -121,7 +121,6 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         jScrollPane1.setDoubleBuffered(true);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setMinimumSize(new java.awt.Dimension(10, 10));
         jPanel4.setPreferredSize(new java.awt.Dimension(570, 1889));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -148,6 +147,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 300, 10));
 
         LblTitConseNiño1.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        LblTitConseNiño1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel4.add(LblTitConseNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 300, 20));
         jPanel4.add(LblImaConseNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 190, 170));
 
@@ -176,6 +176,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         jPanel4.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 310, 10));
 
         LblTitConseNiño2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        LblTitConseNiño2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel4.add(LblTitConseNiño2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 300, 20));
         jPanel4.add(LblImaConseNiño3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 630, 190, 170));
 
@@ -194,6 +195,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         jPanel4.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 610, 310, 10));
 
         LblTitConseNiño3.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        LblTitConseNiño3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel4.add(LblTitConseNiño3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 590, 300, 20));
 
         jSeparator9.setForeground(new java.awt.Color(153, 153, 153));
@@ -224,6 +226,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         jPanel4.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 860, 310, 10));
 
         LblTitConseNiño4.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        LblTitConseNiño4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel4.add(LblTitConseNiño4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 840, 300, 20));
 
         jSeparator14.setForeground(new java.awt.Color(153, 153, 153));
@@ -248,6 +251,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         jPanel4.add(jSeparator16, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 1120, 310, 10));
 
         LblTitConseNiño5.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        LblTitConseNiño5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel4.add(LblTitConseNiño5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 1100, 300, 20));
 
         jSeparator17.setForeground(new java.awt.Color(153, 153, 153));
@@ -272,6 +276,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         jPanel4.add(jSeparator19, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 1380, 310, 10));
 
         LblTitConseNiño6.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        LblTitConseNiño6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel4.add(LblTitConseNiño6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 1360, 300, 20));
 
         TxtTextConsNiño7.setColumns(20);
@@ -289,6 +294,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         jPanel4.add(jSeparator20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1840, 300, 10));
 
         LblTitConseNiño7.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        LblTitConseNiño7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel4.add(LblTitConseNiño7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 1620, 300, 20));
         jPanel4.add(LblImaConseNiño7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 1660, 190, 170));
 

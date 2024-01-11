@@ -166,9 +166,18 @@ public class RegistrarseGeneral extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnInfanteRegistActionPerformed
 
     private void BtnPsicologoRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPsicologoRegistActionPerformed
-        RegistrarsePsicologo psicologo = new RegistrarsePsicologo();
-        psicologo.setVisible(true);
-        this.setVisible(false);
+        String tokenIngresado = JOptionPane.showInputDialog("Ingrese el codigo de ingreso:");
+
+    // Verificar si el token ingresado es correcto (en este caso "P5S3I9C3O")
+    if (tokenIngresado != null && tokenIngresado.equals("P5S3I9C3O")) {
+        // Si es correcto, mostrar la página de registro de psicologo
+        RegistrarsePsicologo psico = new RegistrarsePsicologo();
+            psico.setVisible(true);
+                this.setVisible(false);
+    } else {
+        // Si el token no es correcto o se cancela la entrada, mostrar un mensaje de error
+        JOptionPane.showMessageDialog(this, "Código incorrecto. Inténtelo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_BtnPsicologoRegistActionPerformed
 
     private void BtnAdminRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAdminRegistActionPerformed

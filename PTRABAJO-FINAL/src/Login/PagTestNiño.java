@@ -119,6 +119,7 @@ public class PagTestNiño extends javax.swing.JFrame {
         jPanel3.add(LblImagen4InfoNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1050, 250, 200));
 
         LblTest1Niño.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        LblTest1Niño.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblTest1Niño.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel3.add(LblTest1Niño, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 490, 20));
 
@@ -150,6 +151,7 @@ public class PagTestNiño extends javax.swing.JFrame {
         jPanel3.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 490, 10));
 
         LblTest2Niño.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        LblTest2Niño.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblTest2Niño.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel3.add(LblTest2Niño, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 490, 20));
 
@@ -177,6 +179,7 @@ public class PagTestNiño extends javax.swing.JFrame {
         jPanel3.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 490, 10));
 
         LblTest3Niño.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        LblTest3Niño.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblTest3Niño.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel3.add(LblTest3Niño, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 490, 20));
 
@@ -201,6 +204,7 @@ public class PagTestNiño extends javax.swing.JFrame {
         jPanel3.add(jRadioButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, -1, -1));
 
         LblTest4Niño.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        LblTest4Niño.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblTest4Niño.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel3.add(LblTest4Niño, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 500, 20));
 
@@ -228,6 +232,7 @@ public class PagTestNiño extends javax.swing.JFrame {
         jPanel3.add(jRadioButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, -1, -1));
 
         LblTest5Niño.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        LblTest5Niño.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblTest5Niño.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel3.add(LblTest5Niño, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 520, 480, 20));
 

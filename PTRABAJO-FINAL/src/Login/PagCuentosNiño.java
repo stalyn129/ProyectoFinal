@@ -96,6 +96,7 @@ public class PagCuentosNiño extends javax.swing.JFrame {
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 270, 10));
 
         LblTituloNiñoCuen.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        LblTituloNiñoCuen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel3.add(LblTituloNiñoCuen, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 320, 20));
         jPanel3.add(LblImaNiñoCuenIntrodu, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 210, 180));
 

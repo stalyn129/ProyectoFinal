@@ -33,11 +33,11 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        BtnMiniJueNiño1 = new javax.swing.JButton();
-        BtnInfNiño = new javax.swing.JButton();
+        BtnDifeNiñoJuego2 = new javax.swing.JButton();
+        BtnLabeNiñoJuego1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        BtnTestNiño2 = new javax.swing.JButton();
+        BtnRespondeNiñoJuego3 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -81,27 +81,27 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
         jLabel5.setText("Escoje el juego que mas te atraiga");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, -1, -1));
 
-        BtnMiniJueNiño1.setBackground(new java.awt.Color(255, 255, 255));
-        BtnMiniJueNiño1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/DiferenciasNiñoJueg.png"))); // NOI18N
-        BtnMiniJueNiño1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnMiniJueNiño1.setOpaque(false);
-        BtnMiniJueNiño1.addActionListener(new java.awt.event.ActionListener() {
+        BtnDifeNiñoJuego2.setBackground(new java.awt.Color(255, 255, 255));
+        BtnDifeNiñoJuego2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/DiferenciasNiñoJueg.png"))); // NOI18N
+        BtnDifeNiñoJuego2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnDifeNiñoJuego2.setOpaque(false);
+        BtnDifeNiñoJuego2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnMiniJueNiño1ActionPerformed(evt);
+                BtnDifeNiñoJuego2ActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnMiniJueNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 120, 80));
+        jPanel1.add(BtnDifeNiñoJuego2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 120, 80));
 
-        BtnInfNiño.setBackground(new java.awt.Color(255, 255, 255));
-        BtnInfNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LaberintoNiñJueg.png"))); // NOI18N
-        BtnInfNiño.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnInfNiño.setOpaque(false);
-        BtnInfNiño.addActionListener(new java.awt.event.ActionListener() {
+        BtnLabeNiñoJuego1.setBackground(new java.awt.Color(255, 255, 255));
+        BtnLabeNiñoJuego1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LaberintoNiñJueg.png"))); // NOI18N
+        BtnLabeNiñoJuego1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnLabeNiñoJuego1.setOpaque(false);
+        BtnLabeNiñoJuego1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnInfNiñoActionPerformed(evt);
+                BtnLabeNiñoJuego1ActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnInfNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 130, 80));
+        jPanel1.add(BtnLabeNiñoJuego1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 130, 80));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -111,16 +111,16 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 100, -1));
 
-        BtnTestNiño2.setBackground(new java.awt.Color(255, 255, 255));
-        BtnTestNiño2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CorrectoNiñoJuego.png"))); // NOI18N
-        BtnTestNiño2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnTestNiño2.setOpaque(false);
-        BtnTestNiño2.addActionListener(new java.awt.event.ActionListener() {
+        BtnRespondeNiñoJuego3.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRespondeNiñoJuego3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CorrectoNiñoJuego.png"))); // NOI18N
+        BtnRespondeNiñoJuego3.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRespondeNiñoJuego3.setOpaque(false);
+        BtnRespondeNiñoJuego3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnTestNiño2ActionPerformed(evt);
+                BtnRespondeNiñoJuego3ActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnTestNiño2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, 130, 80));
+        jPanel1.add(BtnRespondeNiñoJuego3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, 130, 80));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -172,28 +172,28 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnRegresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar1ActionPerformed
-        PagPrincipalNiño pagpeincipalniño = new PagPrincipalNiño();
-        pagpeincipalniño.setVisible(true);
+        PagPrincipalNiño Diferencias = new PagPrincipalNiño();
+        Diferencias.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegresar1ActionPerformed
 
-    private void BtnMiniJueNiño1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMiniJueNiño1ActionPerformed
-        /*PagMiniJuegoNiño minijuego = new PagMiniJuegoNiño();
-        minijuego.setVisible(true);
-        this.setVisible(false);*/
-    }//GEN-LAST:event_BtnMiniJueNiño1ActionPerformed
+    private void BtnDifeNiñoJuego2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDifeNiñoJuego2ActionPerformed
+        PagJuego2Niño Df = new PagJuego2Niño();
+        Df.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnDifeNiñoJuego2ActionPerformed
 
-    private void BtnInfNiñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfNiñoActionPerformed
-        /*PagInfNiño informacion = new PagInfNiño();
-        informacion.setVisible(true);
-        this.setVisible(false);*/
-    }//GEN-LAST:event_BtnInfNiñoActionPerformed
+    private void BtnLabeNiñoJuego1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLabeNiñoJuego1ActionPerformed
+        PagJuego1Niño laberinto = new PagJuego1Niño();
+        laberinto.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnLabeNiñoJuego1ActionPerformed
 
-    private void BtnTestNiño2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTestNiño2ActionPerformed
-        /*PagTestNiño test = new PagTestNiño();
-        test.setVisible(true);
-        this.setVisible(false);*/
-    }//GEN-LAST:event_BtnTestNiño2ActionPerformed
+    private void BtnRespondeNiñoJuego3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRespondeNiñoJuego3ActionPerformed
+        PagJuego3Niño RespondeCorrecto = new PagJuego3Niño();
+        RespondeCorrecto.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRespondeNiñoJuego3ActionPerformed
 
     private void JMnPgPrinNiñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiñoMouseClicked
         PagPrincipalNiño principalniño = new PagPrincipalNiño();
@@ -204,10 +204,10 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnInfNiño;
-    private javax.swing.JButton BtnMiniJueNiño1;
+    private javax.swing.JButton BtnDifeNiñoJuego2;
+    private javax.swing.JButton BtnLabeNiñoJuego1;
     private javax.swing.JButton BtnRegresar1;
-    private javax.swing.JButton BtnTestNiño2;
+    private javax.swing.JButton BtnRespondeNiñoJuego3;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMnItmCerrarNiño;
