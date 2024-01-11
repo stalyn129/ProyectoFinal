@@ -277,7 +277,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnInfPsicoActionPerformed
 
     private void BtnInfPsico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfPsico1ActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_BtnInfPsico1ActionPerformed
 
     private void BtnInfPsico2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfPsico2ActionPerformed
@@ -289,7 +289,9 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnInfPsico3ActionPerformed
 
     private void BtnInfPsico4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfPsico4ActionPerformed
-        // TODO add your handling code here:
+        Crud_Nacionalidades Nacionalidad = new Crud_Nacionalidades();
+        Nacionalidad.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnInfPsico4ActionPerformed
 
     private void BtnInfPsico5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfPsico5ActionPerformed
@@ -309,7 +311,9 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnInfPsico8ActionPerformed
 
     private void BtnInfPsico9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfPsico9ActionPerformed
-        // TODO add your handling code here:
+        Crud_Discapacidad Disca = new Crud_Discapacidad();
+        Disca.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnInfPsico9ActionPerformed
 
     /**
