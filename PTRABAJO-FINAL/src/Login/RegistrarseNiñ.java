@@ -309,7 +309,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
         } catch (Exception e) {
         } finally{
         Base.close();
-        PagPrincipalNiño PrinNiño = new PagPrincipalNiño();
+        PagPrincipalNiñ PrinNiño = new PagPrincipalNiñ();
         PrinNiño.setVisible(true);
         this.setVisible(false);
         }

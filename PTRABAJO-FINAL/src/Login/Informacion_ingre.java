@@ -50,7 +50,6 @@ public class Informacion_ingre extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla_mostrar = new javax.swing.JTable();
         BtnRegresar = new javax.swing.JButton();
@@ -73,14 +72,6 @@ public class Informacion_ingre extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(800, 500));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton1.setText("Volver");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 80, -1));
 
         tabla_mostrar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -190,7 +181,7 @@ public class Informacion_ingre extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 630, 360));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Imagen de WhatsApp 2024-01-03 a las 07.58.17_8bdfab4c.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -301,12 +292,6 @@ javax.swing.JOptionPane.showMessageDialog(this, "Se guardo la Informacion");
         
         
     }//GEN-LAST:event_btn_ingresarMouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        PagPrincipalPsicologo  prin=new PagPrincipalPsicologo();
-        prin.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
         PagPrincipalAdmin prinAdmn = new PagPrincipalAdmin();
@@ -433,7 +418,6 @@ javax.swing.JOptionPane.showMessageDialog(this, "Se guardo la Informacion");
     private javax.swing.JButton btn_Ingresar_imagen;
     private javax.swing.JButton btn_ingresar;
     private javax.swing.JLabel imagen_;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

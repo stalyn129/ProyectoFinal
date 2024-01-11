@@ -353,13 +353,13 @@ public class PagConsejosNiño extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnRegresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar1ActionPerformed
-        PagPrincipalNiño pagpeincipalniño = new PagPrincipalNiño();
+        PagPrincipalNiñ pagpeincipalniño = new PagPrincipalNiñ();
         pagpeincipalniño.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegresar1ActionPerformed
 
     private void JMnPgPrinNiñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiñoMouseClicked
-        PagPrincipalNiño principalniño = new PagPrincipalNiño();
+        PagPrincipalNiñ principalniño = new PagPrincipalNiñ();
             principalniño.setVisible(true);
                 this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiñoMouseClicked

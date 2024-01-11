@@ -195,7 +195,7 @@ public class InicioNiño extends javax.swing.JFrame {
 
                     if (txt_usuario.getText().equals("0123456789") && String.valueOf(txt_contr.getPassword()).equals("1234")) {
                         javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
-                        PagPrincipalNiño Prin=new PagPrincipalNiño();
+                        PagPrincipalNiñ Prin=new PagPrincipalNiñ();
                         Prin.setVisible(true);
                         this.setVisible(false);
                     } else {

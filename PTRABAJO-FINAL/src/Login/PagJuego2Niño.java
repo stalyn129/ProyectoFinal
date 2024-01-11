@@ -175,7 +175,7 @@ public class PagJuego2Niño extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JMnPgPrinNiñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiñoMouseClicked
-        PagPrincipalNiño principalniño = new PagPrincipalNiño();
+        PagPrincipalNiñ principalniño = new PagPrincipalNiñ();
         principalniño.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiñoMouseClicked
