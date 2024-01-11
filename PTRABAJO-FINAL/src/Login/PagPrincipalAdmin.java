@@ -97,6 +97,11 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         BtnInfPsico1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/InfAdmin.png"))); // NOI18N
         BtnInfPsico1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnInfPsico1.setOpaque(false);
+        BtnInfPsico1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnInfPsico1MouseClicked(evt);
+            }
+        });
         BtnInfPsico1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnInfPsico1ActionPerformed(evt);
@@ -108,6 +113,11 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         BtnInfPsico2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CuentosAdmin.png"))); // NOI18N
         BtnInfPsico2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnInfPsico2.setOpaque(false);
+        BtnInfPsico2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnInfPsico2MouseClicked(evt);
+            }
+        });
         BtnInfPsico2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnInfPsico2ActionPerformed(evt);
@@ -130,6 +140,14 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         BtnInfPsico4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/NacioAdmin.png"))); // NOI18N
         BtnInfPsico4.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnInfPsico4.setOpaque(false);
+        BtnInfPsico4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnInfPsico4MouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnInfPsico4MouseExited(evt);
+            }
+        });
         BtnInfPsico4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnInfPsico4ActionPerformed(evt);
@@ -185,6 +203,11 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         BtnInfPsico9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/DiscaAdmin.png"))); // NOI18N
         BtnInfPsico9.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnInfPsico9.setOpaque(false);
+        BtnInfPsico9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnInfPsico9MouseClicked(evt);
+            }
+        });
         BtnInfPsico9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnInfPsico9ActionPerformed(evt);
@@ -281,7 +304,9 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnInfPsico1ActionPerformed
 
     private void BtnInfPsico2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfPsico2ActionPerformed
-        // TODO add your handling code here:
+        Crud_Cuento Cuento = new Crud_Cuento();
+        Cuento.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnInfPsico2ActionPerformed
 
     private void BtnInfPsico3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfPsico3ActionPerformed
@@ -315,6 +340,34 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         Disca.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnInfPsico9ActionPerformed
+
+    private void BtnInfPsico1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnInfPsico1MouseClicked
+        Informacion_ingre pagInfo = new Informacion_ingre();
+        pagInfo.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnInfPsico1MouseClicked
+
+    private void BtnInfPsico2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnInfPsico2MouseClicked
+        Crud_Cuento cuento = new Crud_Cuento();
+        cuento.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnInfPsico2MouseClicked
+
+    private void BtnInfPsico4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnInfPsico4MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnInfPsico4MouseExited
+
+    private void BtnInfPsico4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnInfPsico4MouseClicked
+        Crud_Nacionalidades CNacio = new Crud_Nacionalidades();
+        CNacio.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnInfPsico4MouseClicked
+
+    private void BtnInfPsico9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnInfPsico9MouseClicked
+        Crud_Discapacidad Cdisca =new Crud_Discapacidad();
+        Cdisca.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnInfPsico9MouseClicked
 
     /**
      * @param args the command line arguments

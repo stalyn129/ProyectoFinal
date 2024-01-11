@@ -69,6 +69,7 @@ public class Crud_Cuento extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableCuentos = new javax.swing.JTable();
+        BtnRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -228,6 +229,17 @@ public class Crud_Cuento extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, -1, 380));
 
+        BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar.setOpaque(false);
+        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
 
         pack();
@@ -303,6 +315,12 @@ public class Crud_Cuento extends javax.swing.JFrame {
         javax.swing.JOptionPane.showMessageDialog(this, "SE GUARDO EN LA BASE");
         MostrarDatos(Base);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+        PagPrincipalAdmin prinAdmn = new PagPrincipalAdmin();
+        prinAdmn.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -384,6 +402,7 @@ public class Crud_Cuento extends javax.swing.JFrame {
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnRegresar;
     private javax.swing.JTextField Txt_Codigo;
     private javax.swing.JTextField Txt_Titulo;
     private javax.swing.JButton jButton1;

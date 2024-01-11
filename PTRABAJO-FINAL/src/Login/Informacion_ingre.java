@@ -53,6 +53,7 @@ public class Informacion_ingre extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla_mostrar = new javax.swing.JTable();
+        BtnRegresar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -103,6 +104,17 @@ public class Informacion_ingre extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tabla_mostrar);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, 630, 90));
+
+        BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar.setOpaque(false);
+        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 50, 40));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -296,6 +308,12 @@ javax.swing.JOptionPane.showMessageDialog(this, "Se guardo la Informacion");
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+        PagPrincipalAdmin prinAdmn = new PagPrincipalAdmin();
+        prinAdmn.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresarActionPerformed
+
     public void Vaciar_datos(){
     txt_Titulo.setText("");
     txA_text_info.setText("");
@@ -411,6 +429,7 @@ javax.swing.JOptionPane.showMessageDialog(this, "Se guardo la Informacion");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnRegresar;
     private javax.swing.JButton btn_Ingresar_imagen;
     private javax.swing.JButton btn_ingresar;
     private javax.swing.JLabel imagen_;

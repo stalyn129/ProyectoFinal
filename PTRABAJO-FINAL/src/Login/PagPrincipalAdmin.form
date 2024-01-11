@@ -170,6 +170,7 @@
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BtnInfPsico1MouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnInfPsico1ActionPerformed"/>
               </Events>
               <Constraints>
@@ -194,6 +195,7 @@
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BtnInfPsico2MouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnInfPsico2ActionPerformed"/>
               </Events>
               <Constraints>
@@ -242,6 +244,8 @@
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BtnInfPsico4MouseClicked"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BtnInfPsico4MouseExited"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnInfPsico4ActionPerformed"/>
               </Events>
               <Constraints>
@@ -362,6 +366,7 @@
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BtnInfPsico9MouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnInfPsico9ActionPerformed"/>
               </Events>
               <Constraints>

@@ -316,8 +316,8 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
     }//GEN-LAST:event_Txt_ObservacionMousePressed
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
-        Seleccion selec = new Seleccion();
-        selec.setVisible(true);
+        PagPrincipalAdmin prinAdmn = new PagPrincipalAdmin();
+        prinAdmn.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
@@ -500,8 +500,8 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
 
     }
 
-    public void ValidaNacionalidad(String Pais) throws Exception {
-        if (!Pais.matches("^[A-Za-z]+$")) {
+    public void ValidaNacionalidad(String Nacionalidad) throws Exception {
+        if (!Nacionalidad.matches("^[A-Za-z]+$")) {
             throw new Exception("Ingrese una nacionalidad valida");
         }
     }
