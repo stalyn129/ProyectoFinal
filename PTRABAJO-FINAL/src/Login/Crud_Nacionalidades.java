@@ -367,18 +367,20 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         int selectedRow = jTableNacionalidades.getSelectedRow();
 
-        if (selectedRow != -1) {
-            String codigoNacionalidad = (String) jTableNacionalidades.getValueAt(selectedRow, 0);
+    if (selectedRow != -1) {
+        String codigoNacionalidad = (String) jTableNacionalidades.getValueAt(selectedRow, 0);
 
-            try {
-                EliminarRegistro(codigoNacionalidad.toUpperCase());
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "Error al eliminar el registro: " + ex.getMessage());
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Seleccione una fila para eliminar");
+        try {
+            EliminarRegistro(codigoNacionalidad.toUpperCase());
+            // Mueve la cerradura de la base de datos aquí
+            Base.close();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error al eliminar el registro: " + ex.getMessage());
         }
-        Base.close();
+    } else {
+        JOptionPane.showMessageDialog(this, "Seleccione una fila para eliminar");
+}
+
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
@@ -474,7 +476,7 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
             // Manejar la excepción de validación
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
-        Base.close();
+        
     }
 
     public int Verificacion(ObjectContainer Base) {

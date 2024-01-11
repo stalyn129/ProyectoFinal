@@ -5,6 +5,11 @@
  */
 package Login;
 
+import Clases.Persona;
+import Clases.Psicologo;
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
 import java.awt.Color;
 
 /**
@@ -12,12 +17,12 @@ import java.awt.Color;
  * @author alexa
  */
 public class InicioPsicologo extends javax.swing.JFrame {
-
-    /**
-     * Creates new form login
-     */
+    ObjectContainer Base;
+    String codigoPsicologo = "12345";
+    
     public InicioPsicologo() {
         initComponents();
+        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
@@ -267,20 +272,29 @@ public class InicioPsicologo extends javax.swing.JFrame {
     private void TXT_IngreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TXT_IngreMouseClicked
         if (!txt_usuario.getText().equals("Usuario_Psicologo")) {
             if (!String.valueOf(txt_contr.getPassword()).equals("**********")) {
-                if (!String.valueOf(txt_cod_ad.getPassword()).equals("**********")) {
 
-                    if (txt_usuario.getText().equals("111") && String.valueOf(txt_contr.getPassword()).equals("abc1234") && String.valueOf(txt_cod_ad.getPassword()).equals("1010")) {
-                        javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
-                        PagPrincipalPsicologo nu=new PagPrincipalPsicologo();
-                        nu.setVisible(true);
-                        this.setVisible(false);
+                if (Buscar_persona(Base, txt_usuario.getText(), String.valueOf(txt_contr.getPassword())) == 1) {
+
+                    if (Buscar_usua_psicol(Base, txt_usuario.getText()) == 1) {
+
+                        if (String.valueOf(txt_cod_ad.getPassword()).equals(codigoPsicologo)) {
+                            RegistrarsePsicologo.cedula_pasada_interfaz=txt_usuario.getText();
+                            javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
+                            PagPrincipalPsicologo elpagina = new PagPrincipalPsicologo();
+                            elpagina.setVisible(true);
+                            this.setVisible(false);
+                        } else {
+                            javax.swing.JOptionPane.showMessageDialog(this, "La clave para el psicologo es incorrecta");
+                        }
+
                     } else {
-                        javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE\n Usuario: 111\nContraseña: abc1234\nContraseña admin: 1010", "ERROR", javax.swing.JOptionPane.ERROR_MESSAGE);
+                        javax.swing.JOptionPane.showMessageDialog(this, "Al parecer el usuario registrano no es un psicologo");
+
                     }
 
                 } else {
-
-                    javax.swing.JOptionPane.showMessageDialog(this, "Ingresa una Contraseña de Psicologo", "ERROR", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    javax.swing.JOptionPane.showMessageDialog(this, "Los datos no se encuentran registrados"
+                            + " ");
 
                 }
 
@@ -291,7 +305,6 @@ public class InicioPsicologo extends javax.swing.JFrame {
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Ingresa un Usuario", "ERROR", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-
 
     }//GEN-LAST:event_TXT_IngreMouseClicked
 
@@ -305,9 +318,22 @@ public class InicioPsicologo extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    public static int Buscar_persona(ObjectContainer Base, String Cedula, String Contraseña) {
+        Persona elperson = new Persona();
+        elperson.setCedula(Cedula);
+        elperson.setContraseña(Contraseña);
+        ObjectSet result = Base.get(elperson);
+        return result.size();
+
+    }
+
+    public static int Buscar_usua_psicol(ObjectContainer Base, String ususario) {
+        Psicologo elpici = new Psicologo();
+        elpici.setFK_Cedula(ususario);
+        ObjectSet result = Base.get(elpici);
+        return result.size();
+
+    }
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

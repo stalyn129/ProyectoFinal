@@ -20,7 +20,7 @@ import java.util.Date;
  * @author mauca
  */
 public class RegistrarsePsicologo extends javax.swing.JFrame {
-    
+    public static String cedula_pasada_interfaz;
     ObjectContainer Base;
     Date Nacimiento;
 
@@ -800,7 +800,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         
         Base.close();
         
-        PagPrincipalRepresentante edcsc = new PagPrincipalRepresentante();
+        PagPrincipalPsicologo edcsc = new PagPrincipalPsicologo();
         edcsc.setVisible(true);
         this.setVisible(false);
         

@@ -5,6 +5,11 @@
  */
 package Login;
 
+import Clases.Persona;
+import Clases.Representante;
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
 import java.awt.Color;
 
 /**
@@ -13,11 +18,10 @@ import java.awt.Color;
  */
 public class InicioRepresentante extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Ingresar_Pepresent
-     */
+ObjectContainer Base;
     public InicioRepresentante() {
         initComponents();
+                Base= Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
@@ -212,13 +216,22 @@ public class InicioRepresentante extends javax.swing.JFrame {
         if (!txt_usuario.getText().equals("Usuario_Represent")) {
             if (!String.valueOf(txt_contr.getPassword()).equals("**********")) {
 
-                if (txt_usuario.getText().equals("0123456789") && String.valueOf(txt_contr.getPassword()).equals("1234")) {
-                    javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
-                    PagPrincipalRepresentante non = new PagPrincipalRepresentante();
-                    non.setVisible(true);
-                    this.setVisible(false);
+                if (Buscar_persona(Base, txt_usuario.getText(), String.valueOf(txt_contr.getPassword())) == 1) {
+
+                    if (Buscar_usua_Representante(Base, txt_usuario.getText()) == 1) {
+                        javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
+                        PagPrincipalRepresentante elpagina = new PagPrincipalRepresentante();
+                        elpagina.setVisible(true);
+                        this.setVisible(false);
+                    } else {
+                        javax.swing.JOptionPane.showMessageDialog(this, "Al parecer el usuario registrano no es un representante");
+
+                    }
+
                 } else {
-                    javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE\n Usuario: 0123456789\nContraseña: 1234", "ERROR", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    javax.swing.JOptionPane.showMessageDialog(this, "Los datos no se encuentran registrados"
+                            + " ");
+
                 }
 
             } else {
@@ -247,7 +260,22 @@ public class InicioRepresentante extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
+public static int Buscar_persona(ObjectContainer Base, String Cedula, String Contraseña) {
+        Persona elperson = new Persona();
+        elperson.setCedula(Cedula);
+        elperson.setContraseña(Contraseña);
+        ObjectSet result = Base.get(elperson);
+        return result.size();
 
+    }
+
+    public static int Buscar_usua_Representante(ObjectContainer Base, String ususario) {
+        Representante elpici = new Representante();
+        elpici.setFKCod_Cedula(ususario);
+        ObjectSet result = Base.get(elpici);
+        return result.size();
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnRegresar;

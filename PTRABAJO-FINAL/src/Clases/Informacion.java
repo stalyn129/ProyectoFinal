@@ -11,18 +11,18 @@ package Clases;
  */
 public class Informacion {
     private String Cod_Info;
-    private String FK_IDPsicologo;
     private String Titulo_Info;
     private String Texto_Info;
+    private byte[] imagen;
 
     public Informacion() {
     }
 
-    public Informacion(String Cod_Info, String FK_IDPsicologo, String Titulo_Info, String Texto_Info) {
+    public Informacion(String Cod_Info, String Titulo_Info, String Texto_Info, byte[] imagen) {
         this.Cod_Info = Cod_Info;
-        this.FK_IDPsicologo = FK_IDPsicologo;
         this.Titulo_Info = Titulo_Info;
         this.Texto_Info = Texto_Info;
+        this.imagen = imagen;
     }
 
     public String getCod_Info() {
@@ -31,14 +31,6 @@ public class Informacion {
 
     public void setCod_Info(String Cod_Info) {
         this.Cod_Info = Cod_Info;
-    }
-
-    public String getFK_IDPsicologo() {
-        return FK_IDPsicologo;
-    }
-
-    public void setFK_IDPsicologo(String FK_IDPsicologo) {
-        this.FK_IDPsicologo = FK_IDPsicologo;
     }
 
     public String getTitulo_Info() {
@@ -57,11 +49,11 @@ public class Informacion {
         this.Texto_Info = Texto_Info;
     }
 
-    @Override
-    public String toString() {
-        return "Informacion{" + "Cod_Info=" + Cod_Info + ", FK_IDPsicologo=" + FK_IDPsicologo + ", Titulo_Info=" + Titulo_Info + ", Texto_Info=" + Texto_Info + '}';
+    public byte[] getImagen() {
+        return imagen;
     }
-    
-    
-    
+
+    public void setImagen(byte[] imagen) {
+        this.imagen = imagen;
+    }
 }

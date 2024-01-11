@@ -822,7 +822,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
 
     private void BtnRegistrarParienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarParienActionPerformed
 
-        try {
+       try {
             String sexo;
             String Discapacidad;
 
@@ -870,7 +870,6 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             Pantapri.setVisible(true);
             this.setVisible(false);
         }
-
 
     }//GEN-LAST:event_BtnRegistrarParienActionPerformed
 

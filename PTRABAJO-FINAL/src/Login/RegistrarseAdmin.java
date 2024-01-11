@@ -647,48 +647,50 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             String sexo;
             String Discapacidad;
 
-        Persona Mipersona = new Persona();
+            Persona Mipersona = new Persona();
 
-        Mipersona.setCedula(TxtCedulaAdmin.getText());
+            Mipersona.setCedula(TxtCedulaAdmin.getText());
 
-        Mipersona.setNombre(TxtNombreAdmin.getText());
-        Mipersona.setApellido(TxtApelliAdmin.getText());
-        Mipersona.setDireccion(TxtDirecdmin.getText());
-        Mipersona.setFecha_Nacimiento(DateFechaNaciAdmin.getDate());
-        if (BtnFemeninoAdmin.isSelected()) {
-            sexo = "F";
-        } else {
-            sexo = "M";
-        }
+            Mipersona.setNombre(TxtNombreAdmin.getText());
+            Mipersona.setApellido(TxtApelliAdmin.getText());
+            Mipersona.setDireccion(TxtDirecdmin.getText());
+            Mipersona.setFecha_Nacimiento(DateFechaNaciAdmin.getDate());
+            if (BtnFemeninoAdmin.isSelected()) {
+                sexo = "F";
+            } else {
+                sexo = "M";
+            }
 
-        Mipersona.setSexo(sexo.charAt(0));
-        Mipersona.setNacionalidad(CmbBxNacionalidad2Admin.getSelectedItem().toString());
+            Mipersona.setSexo(sexo.charAt(0));
+            Mipersona.setNacionalidad(CmbBxNacionalidad2Admin.getSelectedItem().toString());
 
             if (BtnSiDiscaAdmin.isSelected()) {
                 Discapacidad = "Si";
-            }else {
+            } else {
                 Discapacidad = "No";
             }
             Mipersona.setDiscapacidad(Discapacidad);
-            
-        Mipersona.setContraseña(String.valueOf(NvContraAdmin.getPassword()));
 
-        Base.store(Mipersona);
-        
-        
-        Administrador miAdmin = new Administrador();
-                miAdmin.setID_Admin(Calcular_IDAdmin(Base));
-               // miAdmin.setAños_Experiencia(CmBxExperienciAdmin.getSelectedItem().toString());
-                miAdmin.setPuesto(TxtTituloAdmin.getText());
-                Base.store(miAdmin);
-        javax.swing.JOptionPane.showMessageDialog(this,"Los datos se han guardado exitosamente");
-           
+            Mipersona.setContraseña(String.valueOf(NvContraAdmin.getPassword()));
+
+            Base.store(Mipersona);
+
+            Administrador miAdmin = new Administrador();
+            miAdmin.setID_Admin(Calcular_IDAdmin(Base));
+            miAdmin.setFK_Cedula(TxtCedulaAdmin.getText());
+            // miAdmin.setAños_Experiencia(CmBxExperienciAdmin.getSelectedItem().toString());
+            miAdmin.setPuesto(TxtTituloAdmin.getText());
+            Base.store(miAdmin);
+            javax.swing.JOptionPane.showMessageDialog(this, "Los datos se han guardado exitosamente");
+
         } catch (Exception e) {
-        } finally{
-        Base.close();
-        PagPrincipalAdmin PrinAdmin = new PagPrincipalAdmin();
-        PrinAdmin.setVisible(true);
-        this.setVisible(false);
+
+            javax.swing.JOptionPane.showMessageDialog(this, "Hay un error");
+        } finally {
+            Base.close();
+            PagPrincipalAdmin PrinAdmin = new PagPrincipalAdmin();
+            PrinAdmin.setVisible(true);
+            this.setVisible(false);
         }
     }//GEN-LAST:event_BtnRegistrarAdminActionPerformed
 
@@ -711,7 +713,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
 
         return Codigo;
     }
-    
+
     public static int Verificar_CodigoAdmin(ObjectContainer Base, String cedula) {
 
         Administrador Adminis = new Administrador();

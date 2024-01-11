@@ -97,6 +97,11 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
         BtnInfPsico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/InformacionNiño.png"))); // NOI18N
         BtnInfPsico.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnInfPsico.setOpaque(false);
+        BtnInfPsico.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnInfPsicoMouseClicked(evt);
+            }
+        });
         BtnInfPsico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnInfPsicoActionPerformed(evt);
@@ -138,9 +143,19 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
         jPanel1.add(BtnConsePsico, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 120, 70));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel5.setText("Información");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel5);
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 100, -1));
@@ -229,6 +244,22 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
     private void BtnConsePsicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConsePsicoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnConsePsicoActionPerformed
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel2MouseClicked
+
+    private void BtnInfPsicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnInfPsicoMouseClicked
+        Informacion_ingre ing=new Informacion_ingre();
+        ing.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnInfPsicoMouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        Informacion_ingre ing=new Informacion_ingre();
+        ing.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel5MouseClicked
 
 
 

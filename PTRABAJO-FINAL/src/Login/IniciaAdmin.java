@@ -6,7 +6,12 @@
 package Login;
 
 
+import Clases.Administrador;
+import Clases.Persona;
 import Login.Seleccion;
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
 import java.awt.Color;
 
 /**
@@ -14,12 +19,14 @@ import java.awt.Color;
  * @author alexa
  */
 public class IniciaAdmin extends javax.swing.JFrame {
-
+String codigoAdmin="Admin2003";
+ObjectContainer Base;
     /**
      * Creates new form login
      */
     public IniciaAdmin() {
         initComponents();
+        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
@@ -264,20 +271,30 @@ public class IniciaAdmin extends javax.swing.JFrame {
     private void TXT_IngreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TXT_IngreMouseClicked
         if (!txt_usuario.getText().equals("Usuario_Admin")) {
             if (!String.valueOf(txt_contr.getPassword()).equals("**********")) {
-                if (!String.valueOf(txt_cod_ad.getPassword()).equals("**********")) {
 
-                    if (txt_usuario.getText().equals("0111111111") && String.valueOf(txt_contr.getPassword()).equals("1234") && String.valueOf(txt_cod_ad.getPassword()).equals("4444")) {
-                        javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
-                        PagPrincipalAdmin nu=new PagPrincipalAdmin();
-                        nu.setVisible(true);
-                        this.setVisible(false);
+                if (Buscar_persona(Base, txt_usuario.getText(), String.valueOf(txt_contr.getPassword())) == 1) {
+
+                    if (Buscar_usua_Administrador(Base, txt_usuario.getText()) == 1) {
+
+                        if (String.valueOf(txt_cod_ad.getPassword()).equals(codigoAdmin)) {
+                            
+                            
+                            javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
+                            PagPrincipalAdmin elpagina = new PagPrincipalAdmin();
+                            elpagina.setVisible(true);
+                            this.setVisible(false);
+                        } else {
+                            javax.swing.JOptionPane.showMessageDialog(this, "La clave de Administrador es incorrecta");
+                        }
+
                     } else {
-                        javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE\n Usuario: 0111111111\nContraseña: 1234\nContraseña admin: 4444", "ERROR", javax.swing.JOptionPane.ERROR_MESSAGE);
+                        javax.swing.JOptionPane.showMessageDialog(this, "Al parecer el usuario registrano no es un Administrador");
+
                     }
 
                 } else {
-
-                    javax.swing.JOptionPane.showMessageDialog(this, "Ingresa una Contraseña de ADMIN", "ERROR", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    javax.swing.JOptionPane.showMessageDialog(this, "Los datos no se encuentran registrados"
+                            + " ");
 
                 }
 
@@ -298,9 +315,22 @@ public class IniciaAdmin extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    public static int Buscar_persona(ObjectContainer Base, String Cedula, String Contraseña) {
+        Persona elperson = new Persona();
+        elperson.setCedula(Cedula);
+        elperson.setContraseña(Contraseña);
+        ObjectSet result = Base.get(elperson);
+        return result.size();
+
+    }
+
+    public static int Buscar_usua_Administrador(ObjectContainer Base, String ususario) {
+        Administrador elpici = new Administrador();
+        elpici.setFK_Cedula(ususario);
+        ObjectSet result = Base.get(elpici);
+        return result.size();
+
+    }
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
