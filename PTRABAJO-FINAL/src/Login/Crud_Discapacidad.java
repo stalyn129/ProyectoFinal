@@ -21,7 +21,7 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
     ObjectContainer Base;
     public Crud_Discapacidad() {
         initComponents();
-        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+          Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     @SuppressWarnings("unchecked")
@@ -326,7 +326,7 @@ public void Ingresar_Datos(ObjectContainer Base) {
     public int Verificacion(ObjectContainer Base) {
         String Cod_Discapacidad = Txt_Codigo.getText();
         Discapacidad Cod = new Discapacidad(Cod_Discapacidad, null, null);
-        ObjectSet<Discapacidad> result = Base.get(Cod);
+        ObjectSet result = Base.get(Cod);
         return result.size();
     }
 

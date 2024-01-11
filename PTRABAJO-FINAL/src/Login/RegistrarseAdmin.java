@@ -23,7 +23,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
     
     public RegistrarseAdmin() {
         
-        Base = Db4o.openFile("src/BBDD/BaseDatos.yap");
+          Base = Db4o.openFile("src/BBDD/BaseDat.yap");
         initComponents();
     }
 

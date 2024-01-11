@@ -23,7 +23,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
     
     public RegistrarseNiñ(){
         
-        Base = Db4o.openFile("src/BBDD/BaseDatos.yap");
+          Base = Db4o.openFile("src/BBDD/BaseDat.yap");
         initComponents();
     }
 

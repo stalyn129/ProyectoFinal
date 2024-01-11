@@ -29,7 +29,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
      */
     public RegistrarsePsicologo() {
         initComponents();
-        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+           Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**

@@ -21,7 +21,7 @@ public class InicioRepresentante extends javax.swing.JFrame {
 ObjectContainer Base;
     public InicioRepresentante() {
         initComponents();
-                Base= Db4o.openFile("src/BBDD/BaseDat.yap");
+                    Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**

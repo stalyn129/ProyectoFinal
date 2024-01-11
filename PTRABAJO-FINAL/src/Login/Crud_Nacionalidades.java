@@ -30,7 +30,7 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
 
     public Crud_Nacionalidades() {
         initComponents();
-        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+          Base = Db4o.openFile("src/BBDD/BaseDat.yap");
         this.setLocationRelativeTo(this);
     }
 
@@ -482,7 +482,7 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
     public int Verificacion(ObjectContainer Base) {
         String Cod_Nacionalidad = Txt_Codigo.getText();
         Nacionalidad Cod = new Nacionalidad(Cod_Nacionalidad, null, null, null);
-        ObjectSet<Nacionalidad> result = Base.get(Cod);
+        ObjectSet result = Base.get(Cod);
         return result.size();
     }
 
@@ -556,7 +556,7 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         // Mensaje de depuración
         System.out.println("Buscando el registro en la base de datos...");
 
-        ObjectSet<Nacionalidad> result = base.queryByExample(nacionalidad);
+        ObjectSet result = base.queryByExample(nacionalidad);
 
         if (result.hasNext()) {
             // Mensaje de depuración

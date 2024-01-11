@@ -22,7 +22,7 @@ public class InicioPsicologo extends javax.swing.JFrame {
     
     public InicioPsicologo() {
         initComponents();
-        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+       Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**

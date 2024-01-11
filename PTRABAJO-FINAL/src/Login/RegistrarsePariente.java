@@ -25,7 +25,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
      */
     public RegistrarsePariente() {
         initComponents();
-        Base = Db4o.openFile("src/BBDD/BaseDatos.yap");
+           Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**

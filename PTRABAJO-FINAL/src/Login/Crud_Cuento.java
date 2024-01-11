@@ -31,7 +31,7 @@ public class Crud_Cuento extends javax.swing.JFrame {
 
     public Crud_Cuento() {
         initComponents();
-        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
 

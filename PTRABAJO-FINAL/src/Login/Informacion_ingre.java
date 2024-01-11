@@ -37,7 +37,7 @@ public class Informacion_ingre extends javax.swing.JFrame {
      */
     public Informacion_ingre() {
         initComponents();
-       Base = Db4o.openFile("src/BBDD/BaseDatosRR.yap");
+         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
