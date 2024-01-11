@@ -538,7 +538,7 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
                 minaci.getObservacion()
             });
         }
-        Base.close();
+        
     }
 
     private void EliminarRegistro(String codigoNacionalidad) {
