@@ -23,7 +23,7 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
         initComponents();
           Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
-
+////////////
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
