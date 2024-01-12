@@ -841,9 +841,9 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             }
 
             Mipersona.setSexo(sexo.charAt(0));
-            Mipersona.setNacionalidad(CmbBxNacionalidad.getSelectedItem().toString());
+            Mipersona.setCod_Nacionalidad(CmbBxNacionalidad.getSelectedItem().toString());
 
-            Mipersona.setDiscapacidad(TxtDirrecParien.getText());
+            Mipersona.setCod_Discapacidad(TxtDirrecParien.getText());
             if (BtnSiDiscaParien.isSelected()) {
                 Discapacidad = "Si";
             } else {

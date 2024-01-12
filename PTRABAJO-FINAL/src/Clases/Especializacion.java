@@ -12,5 +12,30 @@ package Clases;
 public class Especializacion {
     private String Cod_Especializacion;
     private String Especializacion;
+
+    public Especializacion() {
+    }
+
+    public Especializacion(String Cod_Especializacion, String Especializacion) {
+        this.Cod_Especializacion = Cod_Especializacion;
+        this.Especializacion = Especializacion;
+    }
+
+    public String getCod_Especializacion() {
+        return Cod_Especializacion;
+    }
+
+    public void setCod_Especializacion(String Cod_Especializacion) {
+        this.Cod_Especializacion = Cod_Especializacion;
+    }
+
+    public String getEspecializacion() {
+        return Especializacion;
+    }
+
+    public void setEspecializacion(String Especializacion) {
+        this.Especializacion = Especializacion;
+    }
+    
     
 }

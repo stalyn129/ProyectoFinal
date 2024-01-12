@@ -12,6 +12,8 @@ import java.awt.Color;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import Clases.*;
+import com.db4o.query.Query;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -25,6 +27,8 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         
           Base = Db4o.openFile("src/BBDD/BaseDat.yap");
         initComponents();
+        Nacionalidades_ingr(Base);
+        Discapacidad_ingr(Base);
     }
 
     /**
@@ -43,14 +47,11 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         BtnFemeninoAdmin = new javax.swing.JRadioButton();
         BtnMasculinoAdmin = new javax.swing.JRadioButton();
-        BtnSiDiscaAdmin = new javax.swing.JRadioButton();
-        BtnNoDiscaAdmin = new javax.swing.JRadioButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
-        jSeparator5 = new javax.swing.JSeparator();
         jSeparator1 = new javax.swing.JSeparator();
         TxtApelliAdmin = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -65,7 +66,6 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
         Nacionalidad = new javax.swing.JLabel();
-        CmBxExperienciAdmin = new javax.swing.JComboBox<>();
         jSeparator10 = new javax.swing.JSeparator();
         jSeparator9 = new javax.swing.JSeparator();
         jSeparator11 = new javax.swing.JSeparator();
@@ -84,6 +84,15 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         TxtTituloAdmin = new javax.swing.JTextField();
         jSeparator16 = new javax.swing.JSeparator();
         CfContraAdmin = new javax.swing.JPasswordField();
+        sp_años = new javax.swing.JSpinner();
+        cbx_discapasidad = new javax.swing.JComboBox<>();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        TxtTituloAdmin1 = new javax.swing.JTextField();
+        jSeparator17 = new javax.swing.JSeparator();
+        jSeparator18 = new javax.swing.JSeparator();
+        tf_telefono = new javax.swing.JTextField();
+        tf_correo = new javax.swing.JTextField();
         BtnRegresar = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
@@ -96,7 +105,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/admin-con-ruedas-dentadas.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 0, -1, 70));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 0, 60, 50));
 
         BtnGrpSexoAdmin.add(BtnFemeninoAdmin);
         BtnFemeninoAdmin.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
@@ -113,33 +122,17 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         });
         jPanel2.add(BtnMasculinoAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, -1, -1));
 
-        BtnGpDiscaAdmin.add(BtnSiDiscaAdmin);
-        BtnSiDiscaAdmin.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        BtnSiDiscaAdmin.setText("Si");
-        BtnSiDiscaAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSiDiscaAdminActionPerformed(evt);
-            }
-        });
-        jPanel2.add(BtnSiDiscaAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, -1, -1));
-
-        BtnGpDiscaAdmin.add(BtnNoDiscaAdmin);
-        BtnNoDiscaAdmin.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        BtnNoDiscaAdmin.setText("No");
-        jPanel2.add(BtnNoDiscaAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, -1, -1));
-
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel8.setText("Discapacidad:");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, -1, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel6.setText("Sexo:");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
         jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 80, 10));
         jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 80, 10));
-        jPanel2.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 40, 10));
-        jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 40, 10));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 170, 10));
+        jPanel2.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 170, 10));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 170, 10));
 
         TxtApelliAdmin.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtApelliAdmin.setForeground(new java.awt.Color(153, 153, 153));
@@ -155,12 +148,12 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
                 TxtApelliAdminActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtApelliAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 170, -1));
+        jPanel2.add(TxtApelliAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 170, -1));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel5.setText("Confrimar Contraseña:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 267, -1, 20));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 160, 10));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, -1, 20));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 160, 10));
 
         TxtNombreAdmin.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtNombreAdmin.setForeground(new java.awt.Color(153, 153, 153));
@@ -176,21 +169,21 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
                 TxtNombreAdminActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtNombreAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 160, -1));
+        jPanel2.add(TxtNombreAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 160, -1));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel4.setText("Nombres:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel7.setText("Fecha de Nacimiento:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, -1, -1));
-        jPanel2.add(DateFechaNaciAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 160, -1));
-        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 160, 10));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
+        jPanel2.add(DateFechaNaciAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 160, -1));
+        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 160, 10));
 
         jLabel2.setFont(new java.awt.Font("Rockwell Nova", 1, 24)); // NOI18N
         jLabel2.setText("REGISTRARSE");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, -1));
 
         TxtCedulaAdmin.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtCedulaAdmin.setForeground(new java.awt.Color(153, 153, 153));
@@ -206,33 +199,24 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
                 TxtCedulaAdminActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtCedulaAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 160, -1));
-        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, 160, 10));
+        jPanel2.add(TxtCedulaAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 160, -1));
+        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 160, 10));
 
         jLabel9.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel9.setText("Cedula:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, -1, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
 
         Nacionalidad.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Nacionalidad.setText("Nacionalidad:");
-        jPanel2.add(Nacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, -1, -1));
-
-        CmBxExperienciAdmin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0-2 años", "3-5 años", "6-10 años", "más de 10 años" }));
-        CmBxExperienciAdmin.setBorder(null);
-        CmBxExperienciAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CmBxExperienciAdminActionPerformed(evt);
-            }
-        });
-        jPanel2.add(CmBxExperienciAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, 170, -1));
+        jPanel2.add(Nacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, -1, -1));
         jPanel2.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, -1, -1));
-        jPanel2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 170, 10));
-        jPanel2.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 170, 10));
+        jPanel2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 170, 10));
+        jPanel2.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, 170, 10));
 
         jLabel10.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel10.setText("Experiencia:");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, -1, -1));
-        jPanel2.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, 170, 10));
+        jLabel10.setText("Años de Experiencia:");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, -1, -1));
+        jPanel2.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 170, 10));
 
         TxtDirecdmin.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtDirecdmin.setForeground(new java.awt.Color(153, 153, 153));
@@ -248,16 +232,16 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
                 TxtDirecdminActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtDirecdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 170, -1));
+        jPanel2.add(TxtDirecdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, 170, -1));
 
         jLabel11.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel11.setText("Dirección:");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, -1, -1));
+        jLabel11.setText("Correo:");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel12.setText("Nueva Contraseña:");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, -1, -1));
-        jPanel2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 170, 10));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, -1, -1));
+        jPanel2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 170, 10));
 
         BtnRegistrarAdmin.setText("Registrarse");
         BtnRegistrarAdmin.setBorder(javax.swing.BorderFactory.createCompoundBorder());
@@ -266,11 +250,11 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
                 BtnRegistrarAdminActionPerformed(evt);
             }
         });
-        jPanel2.add(BtnRegistrarAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 100, 30));
+        jPanel2.add(BtnRegistrarAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 100, 30));
 
         jLabel13.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel13.setText("Apellidos:");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
 
         NvContraAdmin.setForeground(new java.awt.Color(153, 153, 153));
         NvContraAdmin.setText("**********");
@@ -285,21 +269,20 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
                 NvContraAdminActionPerformed(evt);
             }
         });
-        jPanel2.add(NvContraAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 170, -1));
-        jPanel2.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 170, 10));
+        jPanel2.add(NvContraAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 170, -1));
+        jPanel2.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 170, 10));
 
-        CmbBxNacionalidad2Admin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ecuatoriano", "Colombiano", "Venezolano", "Peruano", "Argentino", "Brazileño" }));
         CmbBxNacionalidad2Admin.setBorder(null);
         CmbBxNacionalidad2Admin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CmbBxNacionalidad2AdminActionPerformed(evt);
             }
         });
-        jPanel2.add(CmbBxNacionalidad2Admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 170, -1));
+        jPanel2.add(CmbBxNacionalidad2Admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 170, -1));
 
         jLabel14.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel14.setText("Título:");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, -1, -1));
 
         TxtTituloAdmin.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtTituloAdmin.setForeground(new java.awt.Color(153, 153, 153));
@@ -315,8 +298,8 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
                 TxtTituloAdminActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtTituloAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 170, -1));
-        jPanel2.add(jSeparator16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 170, 10));
+        jPanel2.add(TxtTituloAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 170, -1));
+        jPanel2.add(jSeparator16, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, 170, 10));
 
         CfContraAdmin.setForeground(new java.awt.Color(153, 153, 153));
         CfContraAdmin.setText("**********");
@@ -331,7 +314,53 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
                 CfContraAdminActionPerformed(evt);
             }
         });
-        jPanel2.add(CfContraAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 170, -1));
+        jPanel2.add(CfContraAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 300, 170, -1));
+        jPanel2.add(sp_años, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, 160, -1));
+
+        jPanel2.add(cbx_discapasidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 170, -1));
+
+        jLabel15.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel15.setText("Dirección:");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel16.setText("Telefono:");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, -1, -1));
+
+        TxtTituloAdmin1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        TxtTituloAdmin1.setForeground(new java.awt.Color(153, 153, 153));
+        TxtTituloAdmin1.setText("Ingrese su Título");
+        TxtTituloAdmin1.setBorder(null);
+        TxtTituloAdmin1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                TxtTituloAdmin1MousePressed(evt);
+            }
+        });
+        TxtTituloAdmin1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtTituloAdmin1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(TxtTituloAdmin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 170, -1));
+        jPanel2.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 170, 10));
+        jPanel2.add(jSeparator18, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 170, 10));
+
+        tf_telefono.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tf_telefono.setForeground(new java.awt.Color(153, 153, 153));
+        tf_telefono.setText("Ingrese su telefono");
+        tf_telefono.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel2.add(tf_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 170, -1));
+
+        tf_correo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tf_correo.setForeground(new java.awt.Color(153, 153, 153));
+        tf_correo.setText("Ingrese su Correo");
+        tf_correo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        tf_correo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_correoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(tf_correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 170, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 700, 390));
 
@@ -367,10 +396,6 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnMasculinoAdminActionPerformed
 
-    private void BtnSiDiscaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSiDiscaAdminActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnSiDiscaAdminActionPerformed
-
     private void TxtApelliAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtApelliAdminActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtApelliAdminActionPerformed
@@ -382,11 +407,6 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
     private void TxtCedulaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCedulaAdminActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtCedulaAdminActionPerformed
-
-    private void CmBxExperienciAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmBxExperienciAdminActionPerformed
-
-        //CmbBxNacionalidad.addItem(nacionalidad);
-    }//GEN-LAST:event_CmBxExperienciAdminActionPerformed
 
     private void TxtDirecdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtDirecdminActionPerformed
         // TODO add your handling code here:
@@ -662,24 +682,24 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             }
 
             Mipersona.setSexo(sexo.charAt(0));
-            Mipersona.setNacionalidad(CmbBxNacionalidad2Admin.getSelectedItem().toString());
+            String codNacion=Asignar_cod_dDiscapacidad(Base, CmbBxNacionalidad2Admin.getSelectedItem().toString());
+            Mipersona.setCod_Nacionalidad(codNacion);
 
-            if (BtnSiDiscaAdmin.isSelected()) {
-                Discapacidad = "Si";
-            } else {
-                Discapacidad = "No";
-            }
-            Mipersona.setDiscapacidad(Discapacidad);
-
+          
+            String disca=Asignar_cod_dDiscapacidad(Base, cbx_discapasidad.getSelectedItem().toString());
+           Mipersona.setCod_Discapacidad(disca);
+            Mipersona.setTelefono(tf_telefono.getText());
+            Mipersona.setEmail(tf_correo.getText());
             Mipersona.setContraseña(String.valueOf(NvContraAdmin.getPassword()));
 
             Base.store(Mipersona);
-
+/////////////////////////////////////////////////////////////////////////////
             Administrador miAdmin = new Administrador();
             miAdmin.setID_Admin(Calcular_IDAdmin(Base));
             miAdmin.setFK_Cedula(TxtCedulaAdmin.getText());
-            // miAdmin.setAños_Experiencia(CmBxExperienciAdmin.getSelectedItem().toString());
+            miAdmin.setAños_Experiencia((int)sp_años.getValue());
             miAdmin.setPuesto(TxtTituloAdmin.getText());
+            
             Base.store(miAdmin);
             javax.swing.JOptionPane.showMessageDialog(this, "Los datos se han guardado exitosamente");
 
@@ -693,6 +713,94 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             this.setVisible(false);
         }
     }//GEN-LAST:event_BtnRegistrarAdminActionPerformed
+
+    private void TxtTituloAdmin1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtTituloAdmin1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtTituloAdmin1MousePressed
+
+    private void TxtTituloAdmin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtTituloAdmin1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtTituloAdmin1ActionPerformed
+
+    public void Nacionalidades_ingr(ObjectContainer Base) {
+        Query query = Base.query();
+        query.constrain(Nacionalidad.class);
+        ObjectSet result = query.execute();
+
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+
+        while (result.hasNext()) {
+            Nacionalidad nacionalidad = (Nacionalidad) result.next();
+            String nombre = nacionalidad.getNacionalidad(); // Asume que tienes un método getNombre() en tu clase Nacionalidad
+            model.addElement(nombre); // Agrega el nombre al modelo
+        }
+
+        CmbBxNacionalidad2Admin.setModel(model);
+
+    }
+    
+    public void Discapacidad_ingr(ObjectContainer Base) {
+        Query query = Base.query();
+        query.constrain(Discapacidad.class);
+        ObjectSet result = query.execute();
+
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+
+        while (result.hasNext()) {
+            Discapacidad  disca= (Discapacidad) result.next();
+            String nombre = disca.getTipo_Discapacidad(); // Asume que tienes un método getNombre() en tu clase Nacionalidad
+            model.addElement(nombre); // Agrega el nombre al modelo
+        }
+
+        cbx_discapasidad.setModel(model);
+
+    }
+    
+     public String Asignar_cod_Nacionalidad(ObjectContainer Base, String Nacional) {
+        Query query = Base.query();
+        query.constrain(Nacionalidad.class);
+
+        ObjectSet result = query.execute();
+
+        while (result.hasNext()) {
+            Nacionalidad nacionalidad = (Nacionalidad) result.next();
+            if (nacionalidad.getNacionalidad().equals(Nacional)) {  // Asume que tienes un método getId() en tu clase Nacionalidad
+                return nacionalidad.getCod_Nacionalidad();  // Asume que tienes un método getNombre() en tu clase Nacionalidad
+            }
+        }
+        return null;
+    }
+    public String Asignar_cod_dDiscapacidad(ObjectContainer Base, String discapac) {
+        Query query = Base.query();
+        query.constrain(Discapacidad.class);
+
+        ObjectSet result = query.execute();
+
+        while (result.hasNext()) {
+            Discapacidad disca= (Discapacidad) result.next();
+            if (disca.getTipo_Discapacidad().equals(discapac)) {  // Asume que tienes un método getId() en tu clase Nacionalidad
+                return disca.getCod_Discapacidad();  // Asume que tienes un método getNombre() en tu clase Nacionalidad
+            }
+        }
+        return null;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    private void tf_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_correoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_correoActionPerformed
 
     public static String Calcular_IDAdmin(ObjectContainer Base) {
 
@@ -729,12 +837,9 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
     private javax.swing.ButtonGroup BtnGpDiscaAdmin;
     private javax.swing.ButtonGroup BtnGrpSexoAdmin;
     private javax.swing.JRadioButton BtnMasculinoAdmin;
-    private javax.swing.JRadioButton BtnNoDiscaAdmin;
     private javax.swing.JButton BtnRegistrarAdmin;
     private javax.swing.JButton BtnRegresar;
-    private javax.swing.JRadioButton BtnSiDiscaAdmin;
     private javax.swing.JPasswordField CfContraAdmin;
-    private javax.swing.JComboBox<String> CmBxExperienciAdmin;
     private javax.swing.JComboBox<String> CmbBxNacionalidad2Admin;
     private com.toedter.calendar.JDateChooser DateFechaNaciAdmin;
     private javax.swing.JLabel Fondo;
@@ -745,12 +850,16 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField TxtDirecdmin;
     private javax.swing.JTextField TxtNombreAdmin;
     private javax.swing.JTextField TxtTituloAdmin;
+    private javax.swing.JTextField TxtTituloAdmin1;
+    private javax.swing.JComboBox<String> cbx_discapasidad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -767,13 +876,17 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator15;
     private javax.swing.JSeparator jSeparator16;
+    private javax.swing.JSeparator jSeparator17;
+    private javax.swing.JSeparator jSeparator18;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JSpinner sp_años;
+    private javax.swing.JTextField tf_correo;
+    private javax.swing.JTextField tf_telefono;
     // End of variables declaration//GEN-END:variables
 }

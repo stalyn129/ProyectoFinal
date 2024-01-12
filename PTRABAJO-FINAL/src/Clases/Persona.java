@@ -11,17 +11,17 @@ public class Persona {
     private Date Fecha_Nacimiento;
     private char Sexo;
     private String Cod_Nacionalidad;
-    private String Nacionalidad;
+    
     private String Email;
     private String Cod_Discapacidad;
-    private String Discapacidad;
+    
     private String Contraseña;
     private String Telefono;
 
     public Persona() {
     }
 
-    public Persona(String Cedula, String Nombre, String Apellido, String Direccion, Date Fecha_Nacimiento, char Sexo, String Cod_Nacionalidad, String Nacionalidad, String Email, String Cod_Discapacidad, String Discapacidad, String Contraseña, String Telefono) {
+    public Persona(String Cedula, String Nombre, String Apellido, String Direccion, Date Fecha_Nacimiento, char Sexo, String Cod_Nacionalidad, String Email, String Cod_Discapacidad, String Contraseña, String Telefono) {
         this.Cedula = Cedula;
         this.Nombre = Nombre;
         this.Apellido = Apellido;
@@ -29,10 +29,8 @@ public class Persona {
         this.Fecha_Nacimiento = Fecha_Nacimiento;
         this.Sexo = Sexo;
         this.Cod_Nacionalidad = Cod_Nacionalidad;
-        this.Nacionalidad = Nacionalidad;
         this.Email = Email;
         this.Cod_Discapacidad = Cod_Discapacidad;
-        this.Discapacidad = Discapacidad;
         this.Contraseña = Contraseña;
         this.Telefono = Telefono;
     }
@@ -93,14 +91,6 @@ public class Persona {
         this.Cod_Nacionalidad = Cod_Nacionalidad;
     }
 
-    public String getNacionalidad() {
-        return Nacionalidad;
-    }
-
-    public void setNacionalidad(String Nacionalidad) {
-        this.Nacionalidad = Nacionalidad;
-    }
-
     public String getEmail() {
         return Email;
     }
@@ -115,14 +105,6 @@ public class Persona {
 
     public void setCod_Discapacidad(String Cod_Discapacidad) {
         this.Cod_Discapacidad = Cod_Discapacidad;
-    }
-
-    public String getDiscapacidad() {
-        return Discapacidad;
-    }
-
-    public void setDiscapacidad(String Discapacidad) {
-        this.Discapacidad = Discapacidad;
     }
 
     public String getContraseña() {
@@ -141,10 +123,7 @@ public class Persona {
         this.Telefono = Telefono;
     }
 
-    @Override
-    public String toString() {
-        return "Persona{" + "Cedula=" + Cedula + ", Nombre=" + Nombre + ", Apellido=" + Apellido + ", Direccion=" + Direccion + ", Fecha_Nacimiento=" + Fecha_Nacimiento + ", Sexo=" + Sexo + ", Cod_Nacionalidad=" + Cod_Nacionalidad + ", Nacionalidad=" + Nacionalidad + ", Email=" + Email + ", Cod_Discapacidad=" + Cod_Discapacidad + ", Discapacidad=" + Discapacidad + ", Contrase\u00f1a=" + Contraseña + ", Telefono=" + Telefono + '}';
-    }
+   
 
     
 

@@ -12,14 +12,17 @@ import Login.RegistrarseGeneral;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
+import com.db4o.query.Query;
 import java.awt.Color;
 import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
  * @author mauca
  */
 public class RegistrarsePsicologo extends javax.swing.JFrame {
+
     public static String cedula_pasada_interfaz;
     ObjectContainer Base;
     Date Nacimiento;
@@ -29,7 +32,10 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
      */
     public RegistrarsePsicologo() {
         initComponents();
-           Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+        Nacionalidades_ingr(Base);
+        Discapacidad_ingr(Base);
+        Especializacion_ingr(Base);
     }
 
     /**
@@ -66,12 +72,9 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         TxtCeduPsicol = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         Cedula = new javax.swing.JLabel();
-        Nacionalidad = new javax.swing.JLabel();
-        CmbBxExperiePsicol = new javax.swing.JComboBox<>();
+        Nacionalidad_lbl = new javax.swing.JLabel();
         jSeparator10 = new javax.swing.JSeparator();
         jSeparator9 = new javax.swing.JSeparator();
-        jSeparator11 = new javax.swing.JSeparator();
-        Experiencia = new javax.swing.JLabel();
         jSeparator12 = new javax.swing.JSeparator();
         TxtDireccPsicol = new javax.swing.JTextField();
         Direccion = new javax.swing.JLabel();
@@ -88,13 +91,13 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         CfContraPsicol = new javax.swing.JPasswordField();
         cbx_discapacidad = new javax.swing.JComboBox<>();
         Especializacion1 = new javax.swing.JLabel();
-        TxtEspecializacionPsicol1 = new javax.swing.JTextField();
         jSeparator17 = new javax.swing.JSeparator();
         Especializacion2 = new javax.swing.JLabel();
         TxtCorreo1 = new javax.swing.JTextField();
         jSeparator18 = new javax.swing.JSeparator();
         Especializacion3 = new javax.swing.JLabel();
         sp_años = new javax.swing.JSpinner();
+        TxtEspecializacionPsicol1 = new javax.swing.JComboBox<>();
         BtnRegresar = new javax.swing.JButton();
         Fondo1 = new javax.swing.JLabel();
 
@@ -107,12 +110,12 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Psicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/terapia.png"))); // NOI18N
-        jPanel2.add(Psicologo, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 0, -1, 70));
+        jPanel2.add(Psicologo, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 0, -1, 60));
 
         BtnGrpSexoPsicol.add(Femenino);
         Femenino.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         Femenino.setText("Femenino");
-        jPanel2.add(Femenino, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
+        jPanel2.add(Femenino, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, -1, -1));
 
         BtnGrpSexoPsicol.add(jRadioButton3);
         jRadioButton3.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
@@ -122,19 +125,19 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
                 jRadioButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
+        jPanel2.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, -1, -1));
 
         Discapacidad.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Discapacidad.setText("Discapacidad:");
-        jPanel2.add(Discapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
+        jPanel2.add(Discapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, -1, -1));
 
         Sexo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Sexo.setText("Sexo:");
-        jPanel2.add(Sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
-        jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 80, 10));
-        jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 80, 10));
-        jPanel2.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 170, 10));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 170, 10));
+        jPanel2.add(Sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 159, -1, 30));
+        jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 80, 10));
+        jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 80, 10));
+        jPanel2.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, 170, 10));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 170, 10));
 
         TxtApelliPsicol.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtApelliPsicol.setForeground(new java.awt.Color(153, 153, 153));
@@ -150,11 +153,11 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
                 TxtApelliPsicolActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtApelliPsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 170, -1));
+        jPanel2.add(TxtApelliPsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 170, -1));
 
         ConfirmarContraseña.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         ConfirmarContraseña.setText("Confrimar Contraseña:");
-        jPanel2.add(ConfirmarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 300, -1, 20));
+        jPanel2.add(ConfirmarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, -1, 20));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 160, 10));
 
         TxtNomPsicol.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
@@ -171,17 +174,17 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
                 TxtNomPsicolActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtNomPsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 160, -1));
+        jPanel2.add(TxtNomPsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 160, -1));
 
         Nombre.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Nombre.setText("Nombres:");
-        jPanel2.add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
+        jPanel2.add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
         FechaNacimiento.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         FechaNacimiento.setText("Fecha de Nacimiento:");
-        jPanel2.add(FechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
-        jPanel2.add(DateFechaNaciPsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 160, -1));
-        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 160, 10));
+        jPanel2.add(FechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, -1, -1));
+        jPanel2.add(DateFechaNaciPsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 160, -1));
+        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 160, 10));
 
         Registrarse.setFont(new java.awt.Font("Rockwell Nova", 1, 24)); // NOI18N
         Registrarse.setText("REGISTRARSE");
@@ -206,33 +209,19 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
                 TxtCeduPsicolActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtCeduPsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 160, -1));
-        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 160, 10));
+        jPanel2.add(TxtCeduPsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 160, -1));
+        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 170, 10));
 
         Cedula.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Cedula.setText("Cedula:");
-        jPanel2.add(Cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, -1, -1));
+        jPanel2.add(Cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
 
-        Nacionalidad.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        Nacionalidad.setText("Nacionalidad:");
-        jPanel2.add(Nacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
-
-        CmbBxExperiePsicol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0-2 años", "3-5 años", "6-10 años", "más de 10 años" }));
-        CmbBxExperiePsicol.setBorder(null);
-        CmbBxExperiePsicol.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CmbBxExperiePsicolActionPerformed(evt);
-            }
-        });
-        jPanel2.add(CmbBxExperiePsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 170, -1));
+        Nacionalidad_lbl.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        Nacionalidad_lbl.setText("Nacionalidad:");
+        jPanel2.add(Nacionalidad_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, -1, -1));
         jPanel2.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, -1, -1));
         jPanel2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 170, 10));
-        jPanel2.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, 170, 10));
-
-        Experiencia.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        Experiencia.setText("Experiencia:");
-        jPanel2.add(Experiencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, -1, -1));
-        jPanel2.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 170, 10));
+        jPanel2.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 170, 10));
 
         TxtDireccPsicol.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtDireccPsicol.setForeground(new java.awt.Color(153, 153, 153));
@@ -248,16 +237,16 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
                 TxtDireccPsicolActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtDireccPsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 170, -1));
+        jPanel2.add(TxtDireccPsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 170, -1));
 
         Direccion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Direccion.setText("Dirección:");
-        jPanel2.add(Direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, -1, -1));
+        jPanel2.add(Direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, -1, -1));
 
         NuevaContraseña.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         NuevaContraseña.setText("Nueva Contraseña:");
-        jPanel2.add(NuevaContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, -1, -1));
-        jPanel2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 170, 10));
+        jPanel2.add(NuevaContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, -1, -1));
+        jPanel2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 170, 10));
 
         BtnRegistrarsePsicol.setText("Registrarse");
         BtnRegistrarsePsicol.setBorder(javax.swing.BorderFactory.createCompoundBorder());
@@ -266,11 +255,11 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
                 BtnRegistrarsePsicolActionPerformed(evt);
             }
         });
-        jPanel2.add(BtnRegistrarsePsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 120, 30));
+        jPanel2.add(BtnRegistrarsePsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 120, 30));
 
         Apellidos.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Apellidos.setText("Apellidos:");
-        jPanel2.add(Apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
+        jPanel2.add(Apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
 
         NvContraPsicol.setForeground(new java.awt.Color(153, 153, 153));
         NvContraPsicol.setText("**********");
@@ -285,21 +274,25 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
                 NvContraPsicolActionPerformed(evt);
             }
         });
-        jPanel2.add(NvContraPsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 170, -1));
-        jPanel2.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 170, 10));
+        jPanel2.add(NvContraPsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 170, -1));
+        jPanel2.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, 170, 10));
 
-        CmbBxNacionalidad3Psicol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ecuatoriano", "Colombiano", "Venezolano", "Peruano", "Argentino", "Brazileño" }));
         CmbBxNacionalidad3Psicol.setBorder(null);
+        CmbBxNacionalidad3Psicol.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                CmbBxNacionalidad3PsicolMousePressed(evt);
+            }
+        });
         CmbBxNacionalidad3Psicol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CmbBxNacionalidad3PsicolActionPerformed(evt);
             }
         });
-        jPanel2.add(CmbBxNacionalidad3Psicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 170, -1));
+        jPanel2.add(CmbBxNacionalidad3Psicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, 170, -1));
 
         Especializacion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Especializacion.setText("Años de Esperiencia:");
-        jPanel2.add(Especializacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 160, -1));
+        jPanel2.add(Especializacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 160, -1));
 
         TxtTelefono.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtTelefono.setForeground(new java.awt.Color(153, 153, 153));
@@ -315,8 +308,8 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
                 TxtTelefonoActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 170, -1));
-        jPanel2.add(jSeparator16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 170, 10));
+        jPanel2.add(TxtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 170, -1));
+        jPanel2.add(jSeparator16, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 160, 10));
 
         CfContraPsicol.setForeground(new java.awt.Color(153, 153, 153));
         CfContraPsicol.setText("**********");
@@ -331,40 +324,23 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
                 CfContraPsicolActionPerformed(evt);
             }
         });
-        jPanel2.add(CfContraPsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 170, -1));
+        jPanel2.add(CfContraPsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 170, -1));
 
-        cbx_discapacidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fisica", "mental" }));
         cbx_discapacidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbx_discapacidadActionPerformed(evt);
             }
         });
-        jPanel2.add(cbx_discapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 170, -1));
+        jPanel2.add(cbx_discapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, 170, -1));
 
         Especializacion1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Especializacion1.setText("Especialización:");
-        jPanel2.add(Especializacion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
-
-        TxtEspecializacionPsicol1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        TxtEspecializacionPsicol1.setForeground(new java.awt.Color(153, 153, 153));
-        TxtEspecializacionPsicol1.setText("Ingrese su Especialización");
-        TxtEspecializacionPsicol1.setBorder(null);
-        TxtEspecializacionPsicol1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                TxtEspecializacionPsicol1MousePressed(evt);
-            }
-        });
-        TxtEspecializacionPsicol1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtEspecializacionPsicol1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(TxtEspecializacionPsicol1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 170, -1));
-        jPanel2.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 170, 10));
+        jPanel2.add(Especializacion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, -1, -1));
+        jPanel2.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 170, 10));
 
         Especializacion2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Especializacion2.setText("Correo:");
-        jPanel2.add(Especializacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
+        jPanel2.add(Especializacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
 
         TxtCorreo1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtCorreo1.setForeground(new java.awt.Color(153, 153, 153));
@@ -380,15 +356,23 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
                 TxtCorreo1ActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtCorreo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 170, -1));
+        jPanel2.add(TxtCorreo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 170, -1));
         jPanel2.add(jSeparator18, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 170, 10));
 
         Especializacion3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Especializacion3.setText("Telefono:");
-        jPanel2.add(Especializacion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, -1, -1));
-        jPanel2.add(sp_años, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, 40, -1));
+        jPanel2.add(Especializacion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, -1, -1));
+        jPanel2.add(sp_años, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 150, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 700, 420));
+        TxtEspecializacionPsicol1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
+        TxtEspecializacionPsicol1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtEspecializacionPsicol1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(TxtEspecializacionPsicol1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 170, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 690, 420));
 
         BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
         BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
@@ -427,7 +411,8 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_TxtTelefonoActionPerformed
 
     private void CmbBxNacionalidad3PsicolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbBxNacionalidad3PsicolActionPerformed
-        // TODO add your handling code here:
+
+
     }//GEN-LAST:event_CmbBxNacionalidad3PsicolActionPerformed
 
     private void NvContraPsicolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NvContraPsicolActionPerformed
@@ -437,11 +422,6 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
     private void TxtDireccPsicolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtDireccPsicolActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtDireccPsicolActionPerformed
-
-    private void CmbBxExperiePsicolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbBxExperiePsicolActionPerformed
-
-        //CmbBxNacionalidad.addItem(nacionalidad);
-    }//GEN-LAST:event_CmbBxExperiePsicolActionPerformed
 
     private void TxtCeduPsicolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCeduPsicolActionPerformed
         // TODO add your handling code here:
@@ -470,12 +450,12 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             TxtNomPsicol.setText("");
             TxtNomPsicol.setForeground(Color.black);
         }
-        
+
         if (TxtApelliPsicol.getText().isEmpty()) {
             TxtApelliPsicol.setText("Ingrese sus Apellidos");
             TxtApelliPsicol.setForeground(Color.gray);
         }
-        
+
         if (TxtTelefono.getText().isEmpty()) {
             TxtTelefono.setText("Ingrese su Especialización");
             TxtTelefono.setForeground(Color.gray);
@@ -491,7 +471,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         if (String.valueOf(NvContraPsicol.getPassword()).isEmpty()) {
             NvContraPsicol.setText("**********");
             NvContraPsicol.setForeground(Color.gray);
-            
+
         }
         if (String.valueOf(CfContraPsicol.getPassword()).isEmpty()) {
             CfContraPsicol.setText("**********");
@@ -508,12 +488,12 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             TxtApelliPsicol.setText("");
             TxtApelliPsicol.setForeground(Color.black);
         }
-        
+
         if (TxtNomPsicol.getText().isEmpty()) {
             TxtNomPsicol.setText("Ingrese sus Nombres");
             TxtNomPsicol.setForeground(Color.gray);
         }
-        
+
         if (TxtTelefono.getText().isEmpty()) {
             TxtTelefono.setText("Ingrese su Especialización");
             TxtTelefono.setForeground(Color.gray);
@@ -529,7 +509,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         if (String.valueOf(NvContraPsicol.getPassword()).isEmpty()) {
             NvContraPsicol.setText("**********");
             NvContraPsicol.setForeground(Color.gray);
-            
+
         }
         if (String.valueOf(CfContraPsicol.getPassword()).isEmpty()) {
             CfContraPsicol.setText("**********");
@@ -542,22 +522,17 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_TxtApelliPsicolMousePressed
 
     private void TxtTelefonoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtTelefonoMousePressed
-        
+
         if (TxtTelefono.getText().equals("Ingrese su Telefono")) {
             TxtTelefono.setText("");
             TxtTelefono.setForeground(Color.black);
         }
-        
-        if (TxtEspecializacionPsicol1.getText().isEmpty()) {
-            TxtEspecializacionPsicol1.setText("Ingrese su Especialización");
-            TxtEspecializacionPsicol1.setForeground(Color.gray);
-        }
-        
+
         if (TxtNomPsicol.getText().isEmpty()) {
             TxtNomPsicol.setText("Ingrese sus Nombres");
             TxtNomPsicol.setForeground(Color.gray);
         }
-        
+
         if (TxtApelliPsicol.getText().isEmpty()) {
             TxtApelliPsicol.setText("Ingrese sus Apellidos");
             TxtApelliPsicol.setForeground(Color.gray);
@@ -573,7 +548,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         if (String.valueOf(NvContraPsicol.getPassword()).isEmpty()) {
             NvContraPsicol.setText("**********");
             NvContraPsicol.setForeground(Color.gray);
-            
+
         }
         if (String.valueOf(CfContraPsicol.getPassword()).isEmpty()) {
             CfContraPsicol.setText("**********");
@@ -586,12 +561,12 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             TxtCeduPsicol.setText("");
             TxtCeduPsicol.setForeground(Color.black);
         }
-        
+
         if (TxtNomPsicol.getText().isEmpty()) {
             TxtNomPsicol.setText("Ingrese sus Nombres");
             TxtNomPsicol.setForeground(Color.gray);
         }
-        
+
         if (TxtApelliPsicol.getText().isEmpty()) {
             TxtApelliPsicol.setText("Ingrese sus Apellidos");
             TxtApelliPsicol.setForeground(Color.gray);
@@ -607,7 +582,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         if (String.valueOf(NvContraPsicol.getPassword()).isEmpty()) {
             NvContraPsicol.setText("**********");
             NvContraPsicol.setForeground(Color.gray);
-            
+
         }
         if (String.valueOf(CfContraPsicol.getPassword()).isEmpty()) {
             CfContraPsicol.setText("**********");
@@ -624,12 +599,12 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             TxtDireccPsicol.setText("");
             TxtDireccPsicol.setForeground(Color.black);
         }
-        
+
         if (TxtNomPsicol.getText().isEmpty()) {
             TxtNomPsicol.setText("Ingrese sus Nombres");
             TxtNomPsicol.setForeground(Color.gray);
         }
-        
+
         if (TxtApelliPsicol.getText().isEmpty()) {
             TxtApelliPsicol.setText("Ingrese sus Apellidos");
             TxtApelliPsicol.setForeground(Color.gray);
@@ -645,7 +620,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         if (String.valueOf(NvContraPsicol.getPassword()).isEmpty()) {
             NvContraPsicol.setText("**********");
             NvContraPsicol.setForeground(Color.gray);
-            
+
         }
         if (String.valueOf(CfContraPsicol.getPassword()).isEmpty()) {
             CfContraPsicol.setText("**********");
@@ -666,7 +641,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             TxtNomPsicol.setText("Ingrese sus Nombres");
             TxtNomPsicol.setForeground(Color.gray);
         }
-        
+
         if (TxtApelliPsicol.getText().isEmpty()) {
             TxtApelliPsicol.setText("Ingrese sus Apellidos");
             TxtApelliPsicol.setForeground(Color.gray);
@@ -687,7 +662,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             TxtDireccPsicol.setText("Ingrese su Dirección");
             TxtDireccPsicol.setForeground(Color.gray);
         }
-        
+
         if (String.valueOf(CfContraPsicol.getPassword()).isEmpty()) {
             CfContraPsicol.setText("**********");
             CfContraPsicol.setForeground(Color.gray);
@@ -707,7 +682,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             TxtNomPsicol.setText("Ingrese sus Nombres");
             TxtNomPsicol.setForeground(Color.gray);
         }
-        
+
         if (TxtApelliPsicol.getText().isEmpty()) {
             TxtApelliPsicol.setText("Ingrese sus Apellidos");
             TxtApelliPsicol.setForeground(Color.gray);
@@ -728,7 +703,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             TxtDireccPsicol.setText("Ingrese su Dirección");
             TxtDireccPsicol.setForeground(Color.gray);
         }
-        
+
         if (String.valueOf(NvContraPsicol.getPassword()).isEmpty()) {
             NvContraPsicol.setText("**********");
             NvContraPsicol.setForeground(Color.gray);
@@ -743,14 +718,6 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbx_discapacidadActionPerformed
 
-    private void TxtEspecializacionPsicol1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtEspecializacionPsicol1MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtEspecializacionPsicol1MousePressed
-
-    private void TxtEspecializacionPsicol1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtEspecializacionPsicol1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtEspecializacionPsicol1ActionPerformed
-
     private void TxtCorreo1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtCorreo1MousePressed
 
     }//GEN-LAST:event_TxtCorreo1MousePressed
@@ -760,11 +727,11 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_TxtCorreo1ActionPerformed
 
     private void BtnRegistrarsePsicolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarsePsicolActionPerformed
-        
+
         Persona Mipersona = new Persona();
-        
+
         Mipersona.setCedula(TxtCeduPsicol.getText());
-        
+
         Mipersona.setNombre(TxtNomPsicol.getText());
         Mipersona.setApellido(TxtApelliPsicol.getText());
         Mipersona.setDireccion(TxtDireccPsicol.getText());
@@ -775,14 +742,18 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         } else {
             sex = "M";
         }
-        
+
         Mipersona.setSexo(sex.charAt(0));
-        Mipersona.setCod_Nacionalidad(CmbBxNacionalidad3Psicol.getSelectedItem().toString());
-        
+        String codNacional = Asignar_cod_Nacionalidad(Base, CmbBxNacionalidad3Psicol.getSelectedItem().toString());
+
+        Mipersona.setCod_Nacionalidad(codNacional);
+
         Mipersona.setTelefono(TxtTelefono.getText());
-        Mipersona.setCod_Discapacidad(cbx_discapacidad.getSelectedItem().toString());
+        String discapa=Asignar_cod_dDiscapacidad(Base,cbx_discapacidad.getSelectedItem().toString() );
+                
+        Mipersona.setCod_Discapacidad(discapa);
         Mipersona.setEmail(TxtCorreo1.getText());
-        
+
         if (String.valueOf(NvContraPsicol.getPassword()).equals(String.valueOf(CfContraPsicol.getPassword()))) {
             Mipersona.setContraseña(String.valueOf(NvContraPsicol.getPassword()));
         } else {
@@ -790,66 +761,170 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             NvContraPsicol.requestFocus();
         }
         Base.store(Mipersona);
-        
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
         Psicologo elpsic = new Psicologo();
         elpsic.setCod_Psicologo(Calcular_cod_Psicologo(Base));
         elpsic.setFK_Cedula(TxtCeduPsicol.getText());
-        elpsic.setFK_Cod_Especialidad(TxtEspecializacionPsicol1.getText());
+        
+        String especialid=Asignar_cod_Especialidad(Base,TxtEspecializacionPsicol1.getSelectedItem().toString() );
+        elpsic.setFK_Cod_Especialidad(especialid);
         elpsic.setAños_Experiencia((int) sp_años.getValue());
         Base.store(elpsic);
-        
+
         Base.close();
-        
+
         PagPrincipalPsicologo edcsc = new PagPrincipalPsicologo();
         edcsc.setVisible(true);
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_BtnRegistrarsePsicolActionPerformed
 
     private void TxtCeduPsicolFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtCeduPsicolFocusLost
 
     }//GEN-LAST:event_TxtCeduPsicolFocusLost
-    
-    public Date calcular_nacimineto() {
-        DateFechaNaciPsicol.setDate(Nacimiento);
-        
-        return Nacimiento;
+
+    public String Asignar_cod_Nacionalidad(ObjectContainer Base, String Nacional) {
+        Query query = Base.query();
+        query.constrain(Nacionalidad.class);
+
+        ObjectSet result = query.execute();
+
+        while (result.hasNext()) {
+            Nacionalidad nacionalidad = (Nacionalidad) result.next();
+            if (nacionalidad.getNacionalidad().equals(Nacional)) {  // Asume que tienes un método getId() en tu clase Nacionalidad
+                return nacionalidad.getCod_Nacionalidad();  // Asume que tienes un método getNombre() en tu clase Nacionalidad
+            }
+        }
+        return null;
+    }
+    public String Asignar_cod_dDiscapacidad(ObjectContainer Base, String discapac) {
+        Query query = Base.query();
+        query.constrain(Discapacidad.class);
+
+        ObjectSet result = query.execute();
+
+        while (result.hasNext()) {
+            Discapacidad disca= (Discapacidad) result.next();
+            if (disca.getTipo_Discapacidad().equals(discapac)) {  // Asume que tienes un método getId() en tu clase Nacionalidad
+                return disca.getCod_Discapacidad();  // Asume que tienes un método getNombre() en tu clase Nacionalidad
+            }
+        }
+        return null;
+    }
+    public String Asignar_cod_Especialidad(ObjectContainer Base, String espe) {
+        Query query = Base.query();
+        query.constrain(Especializacion.class);
+
+        ObjectSet result = query.execute();
+
+        while (result.hasNext()) {
+            Especializacion especial = (Especializacion) result.next();
+            if (especial.getEspecializacion().equals(espe)) {  // Asume que tienes un método getId() en tu clase Nacionalidad
+                return especial.getCod_Especializacion();  // Asume que tienes un método getNombre() en tu clase Nacionalidad
+            }
+        }
+        return null;
+    }
+
+
+    private void TxtEspecializacionPsicol1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtEspecializacionPsicol1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtEspecializacionPsicol1ActionPerformed
+    public void Nacionalidades_ingr(ObjectContainer Base) {
+        Query query = Base.query();
+        query.constrain(Nacionalidad.class);
+        ObjectSet result = query.execute();
+
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+
+        while (result.hasNext()) {
+            Nacionalidad nacionalidad = (Nacionalidad) result.next();
+            String nombre = nacionalidad.getNacionalidad(); // Asume que tienes un método getNombre() en tu clase Nacionalidad
+            model.addElement(nombre); // Agrega el nombre al modelo
+        }
+
+        CmbBxNacionalidad3Psicol.setModel(model);
+
     }
     
+    public void Discapacidad_ingr(ObjectContainer Base) {
+        Query query = Base.query();
+        query.constrain(Discapacidad.class);
+        ObjectSet result = query.execute();
+
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+
+        while (result.hasNext()) {
+            Discapacidad  disca= (Discapacidad) result.next();
+            String nombre = disca.getTipo_Discapacidad(); // Asume que tienes un método getNombre() en tu clase Nacionalidad
+            model.addElement(nombre); // Agrega el nombre al modelo
+        }
+
+        cbx_discapacidad.setModel(model);
+
+    }
+     public void Especializacion_ingr(ObjectContainer Base) {
+        Query query = Base.query();
+        query.constrain(Especializacion.class);
+        ObjectSet result = query.execute();
+
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+
+        while (result.hasNext()) {
+            Especializacion  disca= (Especializacion) result.next();
+            String nombre = disca.getEspecializacion(); // Asume que tienes un método getNombre() en tu clase Nacionalidad
+            model.addElement(nombre); // Agrega el nombre al modelo
+        }
+
+        TxtEspecializacionPsicol1.setModel(model);
+
+    }
+
+    private void CmbBxNacionalidad3PsicolMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CmbBxNacionalidad3PsicolMousePressed
+
+
+    }//GEN-LAST:event_CmbBxNacionalidad3PsicolMousePressed
+
+    public Date calcular_nacimineto() {
+        DateFechaNaciPsicol.setDate(Nacimiento);
+
+        return Nacimiento;
+    }
+
     public static int Verificar_cedula_Persona(ObjectContainer Base, String cedula) {
         Persona elprson = new Persona();
         elprson.setCedula(cedula);
         ObjectSet result = Base.get(elprson);
-        
+
         return result.size();
     }
-    
+
     public static int Verificar_codPsicologo(ObjectContainer Base, String cedula) {
-        
+
         Psicologo elps = new Psicologo();
         elps.setFK_Cedula(cedula);
         ObjectSet result = Base.get(elps);
-        
+
         return result.size();
     }
-    
+
     public static String Calcular_cod_Psicologo(ObjectContainer Base) {
-        
+
         boolean rest = true;
         int aumento = 0;
         String cod;
         do {
-            
+
             aumento++;
-            
+
             cod = String.format("P%04d", aumento);
-            
+
             if (Verificar_codPsicologo(Base, cod) == 0) {
                 rest = false;
             }
-            
+
         } while (rest);
-        
+
         return cod;
     }
 
@@ -862,7 +937,6 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
     private javax.swing.JButton BtnRegresar;
     private javax.swing.JLabel Cedula;
     private javax.swing.JPasswordField CfContraPsicol;
-    private javax.swing.JComboBox<String> CmbBxExperiePsicol;
     private javax.swing.JComboBox<String> CmbBxNacionalidad3Psicol;
     private javax.swing.JLabel ConfirmarContraseña;
     private com.toedter.calendar.JDateChooser DateFechaNaciPsicol;
@@ -872,11 +946,10 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
     private javax.swing.JLabel Especializacion1;
     private javax.swing.JLabel Especializacion2;
     private javax.swing.JLabel Especializacion3;
-    private javax.swing.JLabel Experiencia;
     private javax.swing.JLabel FechaNacimiento;
     private javax.swing.JRadioButton Femenino;
     private javax.swing.JLabel Fondo1;
-    private javax.swing.JLabel Nacionalidad;
+    private javax.swing.JLabel Nacionalidad_lbl;
     private javax.swing.JLabel Nombre;
     private javax.swing.JLabel NuevaContraseña;
     private javax.swing.JPasswordField NvContraPsicol;
@@ -887,7 +960,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
     private javax.swing.JTextField TxtCeduPsicol;
     private javax.swing.JTextField TxtCorreo1;
     private javax.swing.JTextField TxtDireccPsicol;
-    private javax.swing.JTextField TxtEspecializacionPsicol1;
+    private javax.swing.JComboBox<String> TxtEspecializacionPsicol1;
     private javax.swing.JTextField TxtNomPsicol;
     private javax.swing.JTextField TxtTelefono;
     private javax.swing.JComboBox<String> cbx_discapacidad;
@@ -896,7 +969,6 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
-    private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator15;
