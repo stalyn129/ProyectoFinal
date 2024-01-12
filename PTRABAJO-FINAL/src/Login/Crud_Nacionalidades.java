@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Joel
  */
 public class Crud_Nacionalidades extends javax.swing.JFrame {
-
+    
     Object[] columna = new Object[4];
     Nacionalidad miNaci = new Nacionalidad();
     DefaultTableModel Modelo = new DefaultTableModel() {
@@ -27,13 +27,13 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         }
     };
     ObjectContainer Base;
-
+    
     public Crud_Nacionalidades() {
         initComponents();
-          Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
         this.setLocationRelativeTo(this);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -42,7 +42,7 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableNacionalidades = new javax.swing.JTable();
         btnEliminar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Btn_Modificar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -100,8 +100,13 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         });
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 460, -1, -1));
 
-        jButton2.setText("Modificar");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 460, -1, -1));
+        Btn_Modificar.setText("Modificar");
+        Btn_Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_ModificarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Btn_Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 460, -1, -1));
 
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -260,13 +265,13 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         if (String.valueOf(Txt_Pais.getText()).isEmpty()) {
             Txt_Pais.setText("Ejem: Ecuador");
             Txt_Pais.setForeground(Color.gray);
-
+            
         }
         if (String.valueOf(Txt_Observacion.getText()).isEmpty()) {
             Txt_Observacion.setText("Ejem: Este país...");
             Txt_Observacion.setForeground(Color.gray);
         }
-
+        
         if (String.valueOf(Txt_Codigo.getText()).isEmpty()) {
             Txt_Codigo.setText("Ejem: NAC-001");
             Txt_Codigo.setForeground(Color.gray);
@@ -281,13 +286,13 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         if (String.valueOf(Txt_Nacionalidad.getText()).isEmpty()) {
             Txt_Nacionalidad.setText("Ejem: Ecuatoriano");
             Txt_Nacionalidad.setForeground(Color.gray);
-
+            
         }
         if (String.valueOf(Txt_Observacion.getText()).isEmpty()) {
             Txt_Observacion.setText("Ejem: Este país...");
             Txt_Observacion.setForeground(Color.gray);
         }
-
+        
         if (String.valueOf(Txt_Codigo.getText()).isEmpty()) {
             Txt_Codigo.setText("Ejem: NAC-001");
             Txt_Codigo.setForeground(Color.gray);
@@ -302,13 +307,13 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         if (String.valueOf(Txt_Pais.getText()).isEmpty()) {
             Txt_Pais.setText("Ejem: Ecuador");
             Txt_Pais.setForeground(Color.gray);
-
+            
         }
         if (String.valueOf(Txt_Nacionalidad.getText()).isEmpty()) {
             Txt_Nacionalidad.setText("Ejem: Ecuatoriano");
             Txt_Nacionalidad.setForeground(Color.gray);
         }
-
+        
         if (String.valueOf(Txt_Codigo.getText()).isEmpty()) {
             Txt_Codigo.setText("Ejem: NAC-001");
             Txt_Codigo.setForeground(Color.gray);
@@ -326,13 +331,13 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Llene los campos por favor");
         } else {
             Ingresar_Datos(Base);
-
+            
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void jTableNacionalidadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableNacionalidadesMouseClicked
         int Seleccion = jTableNacionalidades.getSelectedRow();
-
+        
         Txt_Codigo.setText(String.valueOf(jTableNacionalidades.getValueAt(Seleccion, 0)));
         Txt_Pais.setText(String.valueOf(jTableNacionalidades.getValueAt(Seleccion, 1)));
         Txt_Nacionalidad.setText(String.valueOf(jTableNacionalidades.getValueAt(Seleccion, 2)));
@@ -347,13 +352,13 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         if (String.valueOf(Txt_Pais.getText()).isEmpty()) {
             Txt_Pais.setText("Ejem: Ecuador");
             Txt_Pais.setForeground(Color.gray);
-
+            
         }
         if (String.valueOf(Txt_Nacionalidad.getText()).isEmpty()) {
             Txt_Nacionalidad.setText("Ejem: Ecuatoriano");
             Txt_Nacionalidad.setForeground(Color.gray);
         }
-
+        
         if (String.valueOf(Txt_Observacion.getText()).isEmpty()) {
             Txt_Observacion.setText("Ejem: Este país...");
             Txt_Observacion.setForeground(Color.gray);
@@ -365,7 +370,16 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
     }//GEN-LAST:event_Txt_CodigoActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        int selectedRow = jTableNacionalidades.getSelectedRow();
+        
+        String codigoAEliminar = JOptionPane.showInputDialog(this, "Ingrese el código a eliminar:");
+        
+        if (codigoAEliminar != null && !codigoAEliminar.isEmpty()) {
+            EliminarRegistro(Base, codigoAEliminar);
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un código válido para eliminar.");
+        }
+
+        /* int selectedRow = jTableNacionalidades.getSelectedRow();
 
     if (selectedRow != -1) {
         String codigoNacionalidad = (String) jTableNacionalidades.getValueAt(selectedRow, 0);
@@ -380,14 +394,70 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
     } else {
         JOptionPane.showMessageDialog(this, "Seleccione una fila para eliminar");
 }
-
+         */
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         jTableNacionalidades.setVisible(true);
-        MostrarDatos();
+        MostrarDatos(Base);
     }//GEN-LAST:event_btnActualizarActionPerformed
 
+    private void Btn_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ModificarActionPerformed
+        Modificar_Nacionalidad(Base, Txt_Codigo.getText(), Txt_Nacionalidad.getText(), Txt_Pais.getText(), Txt_Observacion.getText());
+       
+
+    }//GEN-LAST:event_Btn_ModificarActionPerformed
+    
+    public void Modificar_Nacionalidad(ObjectContainer Base, String codigo, String nuevaNcionalidad, String nuevoPais, String nuevaObservacion) {
+    // Crear un objeto Nacionalidad con el código proporcionado
+    Nacionalidad elnacion = new Nacionalidad();
+    elnacion.setCod_Nacionalidad(codigo);
+    
+    // Buscar el objeto correspondiente en la base de datos
+    ObjectSet result = Base.get(elnacion);
+    
+    // Verificar si se encontró un objeto para modificar
+    if (result.hasNext()) {
+        Nacionalidad nueNacion = (Nacionalidad)result.next();
+        
+        // Actualizar los campos del objeto con los nuevos valores
+        nueNacion.setNacionalidad(nuevaNcionalidad);
+        nueNacion.setObservacion(nuevaObservacion);
+        nueNacion.setPais_Origen(nuevoPais);
+        
+        // Almacenar los cambios en la base de datos
+        Base.store(nueNacion); 
+        
+        // Mostrar un mensaje de confirmación al usuario
+        javax.swing.JOptionPane.showMessageDialog(this, "Se modificó la nacionalidad correctamente.");
+    } else {
+        // Mostrar un mensaje de error si no se encontró el objeto
+        javax.swing.JOptionPane.showMessageDialog(this, "Error: No se encontró la nacionalidad para modificar.");
+    }
+}
+    
+    /*
+    public void Modificar_Nacionalidad(ObjectContainer Base, String codigo, String Ncionalidad, String Pais, String Observacion) {
+        Nacionalidad elnacion = new Nacionalidad();
+        elnacion.setCod_Nacionalidad(Ncionalidad);
+        ObjectSet result = Base.get(elnacion);
+        if (result.hasNext()) {
+           Nacionalidad nueNacion = (Nacionalidad) result.next();
+        nueNacion.setNacionalidad(Ncionalidad);
+        nueNacion.setObservacion(Observacion);
+        nueNacion.setPais_Origen(Pais);
+        
+        Base.store(nueNacion); 
+                javax.swing.JOptionPane.showMessageDialog(this, "SE MODIFICO");
+
+        }else{
+        javax.swing.JOptionPane.showMessageDialog(this, "HAY UN ERROR EN EL METODO MODIFICAR");
+        
+        }
+        
+        
+    }*/
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -423,6 +493,7 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnRegresar;
+    private javax.swing.JButton Btn_Modificar;
     private javax.swing.JTextField Txt_Codigo;
     private javax.swing.JTextField Txt_Nacionalidad;
     private javax.swing.JTextField Txt_Observacion;
@@ -430,7 +501,6 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -459,7 +529,7 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
             ValidaPais(paisOrigen);
             ValidaNacionalidad(nacionalidad);
             ValidaObservacion(observacion);
-
+            
             Nacionalidad miNaci = new Nacionalidad(codNacionalidad, paisOrigen, nacionalidad, observacion);
 
             // Verificar si la Nacionalidad ya existe en la base de datos
@@ -467,70 +537,70 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
                 Base.set(miNaci);
                 JOptionPane.showMessageDialog(this, "Los datos se han guardado exitosamente");
                 Limpiar();
-                MostrarDatos(); // Mostrar los datos actualizados
+                MostrarDatos(Base); // Mostrar los datos actualizados
             } else {
                 JOptionPane.showMessageDialog(this, "Los datos no se han guardado. La Nacionalidad ya existe en la base de datos.");
             }
-
+            
         } catch (Exception ex) {
             // Manejar la excepción de validación
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
         
     }
-
+    
     public int Verificacion(ObjectContainer Base) {
         String Cod_Nacionalidad = Txt_Codigo.getText();
         Nacionalidad Cod = new Nacionalidad(Cod_Nacionalidad, null, null, null);
         ObjectSet result = Base.get(Cod);
         return result.size();
     }
-
+    
     public void ValidaCodigo(String Codigo) throws Exception {
         if (!Codigo.matches("^[A-Za-z0-9]+$")) {
             throw new Exception("Ingrese un codigo valido");
         }
-
+        
     }
-
+    
     public void ValidaPais(String Pais) throws Exception {
         if (!Pais.matches("^[A-Za-z]+$")) {
             throw new Exception("Ingrese un país valido");
         }
-
+        
     }
-
+    
     public void ValidaNacionalidad(String Nacionalidad) throws Exception {
         if (!Nacionalidad.matches("^[A-Za-z]+$")) {
             throw new Exception("Ingrese una nacionalidad valida");
         }
     }
-
+    
     public void ValidaObservacion(String Observacion) throws Exception {
         if (!Observacion.matches("^[A-Za-z0-9]+$")) {
             throw new Exception("Ingrese una observacion valida");
         }
-
+        
     }
-
+    
     public void Limpiar() {
         Txt_Codigo.setText("");
         Txt_Nacionalidad.setText("");
         Txt_Pais.setText("");
         Txt_Observacion.setText("");
-
+        
     }
-
-    public void MostrarDatos() {
-
+    
+    public void MostrarDatos(ObjectContainer Base) {
+        
         Nacionalidad nacio = new Nacionalidad();
         ObjectSet result = Base.get(nacio);
-
+        
         DefaultTableModel modelo = (DefaultTableModel) jTableNacionalidades.getModel();
 
         // Limpiar el modelo antes de agregar nuevas filas
         modelo.setRowCount(0);
-
+        
         while (result.hasNext()) {
             Nacionalidad minaci = (Nacionalidad) result.next();
             modelo.addRow(new Object[]{
@@ -542,46 +612,44 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         }
         
     }
-
-    private void EliminarRegistro(String codigoNacionalidad) {
-        ObjectContainer base = null;
-
-    try {
-        // Mensaje de depuración
-        System.out.println("Conectando a la base de datos...");
-
-        base = Contenedor_Base.ConectarBase();
-        Nacionalidad nacionalidad = new Nacionalidad(codigoNacionalidad, null, null, null);
-
-        // Mensaje de depuración
-        System.out.println("Buscando el registro en la base de datos...");
-
-        ObjectSet result = base.queryByExample(nacionalidad);
-
-        if (result.hasNext()) {
+    
+    private void EliminarRegistro(ObjectContainer base, String codigoNacionalidad) {
+        
+        try {
             // Mensaje de depuración
-            System.out.println("Eliminando el registro de la base de datos...");
+            System.out.println("Conectando a la base de datos...");
+            
+            Nacionalidad nacionalidad = new Nacionalidad(codigoNacionalidad, null, null, null);
 
-            base.delete(result.next());
-            JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
-            Limpiar();
-            MostrarDatos(); // Actualizar la tabla después de la eliminación
-        } else {
-            JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+            // Mensaje de depuración
+            System.out.println("Buscando el registro en la base de datos...");
+            
+            ObjectSet result = base.queryByExample(nacionalidad);
+            
+            if (result.hasNext()) {
+                // Mensaje de depuración
+                System.out.println("Eliminando el registro de la base de datos...");
+                
+                base.delete(result.next());
+                JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+                Limpiar();
+                MostrarDatos(base); // Actualizar la tabla después de la eliminación
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+            }
+        } catch (Exception ex) {
+            // Mensaje de depuración
+            System.err.println("Error al eliminar el registro: " + ex.getMessage());
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al eliminar el registro: " + ex.getMessage());
+        } finally {
+            if (base != null) {
+                // Mensaje de depuración
+                // System.out.println("Cerrando la conexión a la base de datos...");
+
+                // base.close();
+            }
         }
-    } catch (Exception ex) {
-        // Mensaje de depuración
-        System.err.println("Error al eliminar el registro: " + ex.getMessage());
-        ex.printStackTrace();
-        JOptionPane.showMessageDialog(this, "Error al eliminar el registro: " + ex.getMessage());
-    } finally {
-        if (base != null) {
-            // Mensaje de depuración
-            System.out.println("Cerrando la conexión a la base de datos...");
-
-            base.close();
-     }
     }
-    }
-
+    
 }
