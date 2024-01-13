@@ -407,35 +407,7 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
        
 
     }//GEN-LAST:event_Btn_ModificarActionPerformed
-    
-    public void Modificar_Nacionalidad(ObjectContainer Base, String codigo, String nuevaNcionalidad, String nuevoPais, String nuevaObservacion) {
-    // Crear un objeto Nacionalidad con el código proporcionado
-    Nacionalidad elnacion = new Nacionalidad();
-    elnacion.setCod_Nacionalidad(codigo);
-    
-    // Buscar el objeto correspondiente en la base de datos
-    ObjectSet result = Base.get(elnacion);
-    
-    // Verificar si se encontró un objeto para modificar
-    if (result.hasNext()) {
-        Nacionalidad nueNacion = (Nacionalidad)result.next();
-        
-        // Actualizar los campos del objeto con los nuevos valores
-        nueNacion.setNacionalidad(nuevaNcionalidad);
-        nueNacion.setObservacion(nuevaObservacion);
-        nueNacion.setPais_Origen(nuevoPais);
-        
-        // Almacenar los cambios en la base de datos
-        Base.store(nueNacion); 
-        
-        // Mostrar un mensaje de confirmación al usuario
-        javax.swing.JOptionPane.showMessageDialog(this, "Se modificó la nacionalidad correctamente.");
-    } else {
-        // Mostrar un mensaje de error si no se encontró el objeto
-        javax.swing.JOptionPane.showMessageDialog(this, "Error: No se encontró la nacionalidad para modificar.");
-    }
-}
-    
+     
     /*
     public void Modificar_Nacionalidad(ObjectContainer Base, String codigo, String Ncionalidad, String Pais, String Observacion) {
         Nacionalidad elnacion = new Nacionalidad();
@@ -548,7 +520,97 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         }
         
     }
+        
+    public void MostrarDatos(ObjectContainer Base) {
+        
+        Nacionalidad nacio = new Nacionalidad();
+        ObjectSet result = Base.get(nacio);
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTableNacionalidades.getModel();
+
+        // Limpiar el modelo antes de agregar nuevas filas
+        modelo.setRowCount(0);
+        
+        while (result.hasNext()) {
+            Nacionalidad minaci = (Nacionalidad) result.next();
+            modelo.addRow(new Object[]{
+                minaci.getCod_Nacionalidad(),
+                minaci.getPais_Origen(),
+                minaci.getNacionalidad(),
+                minaci.getObservacion()
+            });
+        }
+        
+    }
+       public void Modificar_Nacionalidad(ObjectContainer Base, String codigo, String nuevaNcionalidad, String nuevoPais, String nuevaObservacion) {
+    // Crear un objeto Nacionalidad con el código proporcionado
+    Nacionalidad elnacion = new Nacionalidad();
+    elnacion.setCod_Nacionalidad(codigo);
     
+    // Buscar el objeto correspondiente en la base de datos
+    ObjectSet result = Base.get(elnacion);
+    
+    // Verificar si se encontró un objeto para modificar
+    if (result.hasNext()) {
+        Nacionalidad nueNacion = (Nacionalidad)result.next();
+        
+        // Actualizar los campos del objeto con los nuevos valores
+        nueNacion.setNacionalidad(nuevaNcionalidad);
+        nueNacion.setObservacion(nuevaObservacion);
+        nueNacion.setPais_Origen(nuevoPais);
+        
+        // Almacenar los cambios en la base de datos
+        Base.store(nueNacion); 
+        
+        // Mostrar un mensaje de confirmación al usuario
+        javax.swing.JOptionPane.showMessageDialog(this, "Se modificó la nacionalidad correctamente.");
+    } else {
+        // Mostrar un mensaje de error si no se encontró el objeto
+        javax.swing.JOptionPane.showMessageDialog(this, "Error: No se encontró la nacionalidad para modificar.");
+    }
+}
+   
+    
+    private void EliminarRegistro(ObjectContainer base, String codigoNacionalidad) {
+        
+        try {
+            // Mensaje de depuración
+            System.out.println("Conectando a la base de datos...");
+            
+            Nacionalidad nacionalidad = new Nacionalidad(codigoNacionalidad, null, null, null);
+
+            // Mensaje de depuración
+            System.out.println("Buscando el registro en la base de datos...");
+            
+            ObjectSet result = base.queryByExample(nacionalidad);
+            
+            if (result.hasNext()) {
+                // Mensaje de depuración
+                System.out.println("Eliminando el registro de la base de datos...");
+                
+                base.delete(result.next());
+                JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+                Limpiar();
+                MostrarDatos(base); // Actualizar la tabla después de la eliminación
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+            }
+        } catch (Exception ex) {
+            // Mensaje de depuración
+            System.err.println("Error al eliminar el registro: " + ex.getMessage());
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al eliminar el registro: " + ex.getMessage());
+        } finally {
+            if (base != null) {
+                // Mensaje de depuración
+                // System.out.println("Cerrando la conexión a la base de datos...");
+
+                // base.close();
+            }
+        }
+    }
+    
+    //Verificacion
     public int Verificacion(ObjectContainer Base) {
         String Cod_Nacionalidad = Txt_Codigo.getText();
         Nacionalidad Cod = new Nacionalidad(Cod_Nacionalidad, null, null, null);
@@ -590,66 +652,6 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         Txt_Observacion.setText("");
         
     }
-    
-    public void MostrarDatos(ObjectContainer Base) {
-        
-        Nacionalidad nacio = new Nacionalidad();
-        ObjectSet result = Base.get(nacio);
-        
-        DefaultTableModel modelo = (DefaultTableModel) jTableNacionalidades.getModel();
 
-        // Limpiar el modelo antes de agregar nuevas filas
-        modelo.setRowCount(0);
-        
-        while (result.hasNext()) {
-            Nacionalidad minaci = (Nacionalidad) result.next();
-            modelo.addRow(new Object[]{
-                minaci.getCod_Nacionalidad(),
-                minaci.getPais_Origen(),
-                minaci.getNacionalidad(),
-                minaci.getObservacion()
-            });
-        }
-        
-    }
-    
-    private void EliminarRegistro(ObjectContainer base, String codigoNacionalidad) {
-        
-        try {
-            // Mensaje de depuración
-            System.out.println("Conectando a la base de datos...");
-            
-            Nacionalidad nacionalidad = new Nacionalidad(codigoNacionalidad, null, null, null);
-
-            // Mensaje de depuración
-            System.out.println("Buscando el registro en la base de datos...");
-            
-            ObjectSet result = base.queryByExample(nacionalidad);
-            
-            if (result.hasNext()) {
-                // Mensaje de depuración
-                System.out.println("Eliminando el registro de la base de datos...");
-                
-                base.delete(result.next());
-                JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
-                Limpiar();
-                MostrarDatos(base); // Actualizar la tabla después de la eliminación
-            } else {
-                JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
-            }
-        } catch (Exception ex) {
-            // Mensaje de depuración
-            System.err.println("Error al eliminar el registro: " + ex.getMessage());
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error al eliminar el registro: " + ex.getMessage());
-        } finally {
-            if (base != null) {
-                // Mensaje de depuración
-                // System.out.println("Cerrando la conexión a la base de datos...");
-
-                // base.close();
-            }
-        }
-    }
     
 }

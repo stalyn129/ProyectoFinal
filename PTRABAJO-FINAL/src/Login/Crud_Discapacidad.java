@@ -5,6 +5,7 @@
  */
 package Login;
 
+import BBDD.Contenedor_Base;
 import java.awt.Color;
 import Clases.*;
 import Login.Seleccion;
@@ -12,6 +13,7 @@ import com.db4o.*;
 import com.db4o.ObjectContainer;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Joel
@@ -19,11 +21,13 @@ import javax.swing.table.DefaultTableModel;
 public class Crud_Discapacidad extends javax.swing.JFrame {
 
     ObjectContainer Base;
+
     public Crud_Discapacidad() {
         initComponents();
-          Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 ////////////
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -43,6 +47,9 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTblDiscapacidad = new javax.swing.JTable();
+        btnActualizar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -141,18 +148,52 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
 
         jTblDiscapacidad.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Codigo", "Discapacidad", "Observación"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTblDiscapacidad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTblDiscapacidadMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTblDiscapacidad);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, -1, 400));
+
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 460, -1, -1));
+
+        jButton2.setText("Modificar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 460, -1, -1));
+
+        jButton3.setText("Eliminar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 460, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 510, 500));
@@ -171,7 +212,7 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
 
         }
         if (String.valueOf(Txt_Observacion.getText()).isEmpty()) {
-            Txt_Observacion.setText("Ejem: Este país...");
+            Txt_Observacion.setText("Ejem: Esta discapacidad...");
             Txt_Observacion.setForeground(Color.gray);
         }
     }//GEN-LAST:event_Txt_DiscapacidadMousePressed
@@ -190,7 +231,7 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
             Txt_Discapacidad.setForeground(Color.gray);
 
         }
-        
+
         if (String.valueOf(Txt_Codigo.getText()).isEmpty()) {
             Txt_Codigo.setText("Ejem: DIS-001");
             Txt_Codigo.setForeground(Color.gray);
@@ -219,7 +260,7 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void Txt_CodigoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_CodigoMousePressed
-    if (Txt_Codigo.getText().equals("Ejem: DIS-001")) {
+        if (Txt_Codigo.getText().equals("Ejem: DIS-001")) {
             Txt_Codigo.setText("");
             Txt_Codigo.setForeground(Color.black);
         }
@@ -228,7 +269,7 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
             Txt_Discapacidad.setForeground(Color.gray);
 
         }
-        
+
         if (String.valueOf(Txt_Observacion.getText()).isEmpty()) {
             Txt_Observacion.setText("Ejem: Esta discapacidad esta asoc...");
             Txt_Observacion.setForeground(Color.gray);
@@ -240,34 +281,36 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Txt_CodigoActionPerformed
 
+    private void jTblDiscapacidadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblDiscapacidadMouseClicked
+        int Seleccion = jTblDiscapacidad.getSelectedRow();
+
+        Txt_Codigo.setText(String.valueOf(jTblDiscapacidad.getValueAt(Seleccion, 0)));
+        Txt_Discapacidad.setText(String.valueOf(jTblDiscapacidad.getValueAt(Seleccion, 1)));
+        Txt_Observacion.setText(String.valueOf(jTblDiscapacidad.getValueAt(Seleccion, 2)));
+    }//GEN-LAST:event_jTblDiscapacidadMouseClicked
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        jTblDiscapacidad.setVisible(true);
+        MostrarDatos(Base);
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+  String codigoAEliminar = JOptionPane.showInputDialog(this, "Ingrese el código a eliminar:");
+
+        if (codigoAEliminar != null && !codigoAEliminar.isEmpty()) {
+            EliminarRegistro(Base, codigoAEliminar);
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un código válido para eliminar.");
+        }    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      Modificar_Nacionalidad(Base, Txt_Codigo.getText(),Txt_Discapacidad.getText(), Txt_Observacion.getText());
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Crud_Discapacidad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Crud_Discapacidad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Crud_Discapacidad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Crud_Discapacidad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Crud_Discapacidad().setVisible(true);
@@ -280,7 +323,10 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
     private javax.swing.JTextField Txt_Codigo;
     private javax.swing.JTextField Txt_Discapacidad;
     private javax.swing.JTextField Txt_Observacion;
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -311,7 +357,7 @@ public void Ingresar_Datos(ObjectContainer Base) {
                 Base.set(miNaci);
                 JOptionPane.showMessageDialog(this, "Los datos se han guardado exitosamente");
                 Limpiar();
-                MostrarDatos(); // Mostrar los datos actualizados
+                MostrarDatos(Base);
             } else {
                 JOptionPane.showMessageDialog(this, "Los datos no se han guardado. La Nacionalidad ya existe en la base de datos.");
             }
@@ -320,8 +366,96 @@ public void Ingresar_Datos(ObjectContainer Base) {
             // Manejar la excepción de validación
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
-        
+
     }
+
+    public void MostrarDatos(ObjectContainer Base) {
+
+        Discapacidad dis = new Discapacidad();
+        ObjectSet result = Base.get(dis);
+
+        DefaultTableModel modelo = (DefaultTableModel) jTblDiscapacidad.getModel();
+
+        // Limpiar el modelo antes de agregar nuevas filas
+        modelo.setRowCount(0);
+
+        while (result.hasNext()) {
+            Discapacidad minaci = (Discapacidad) result.next();
+            modelo.addRow(new Object[]{
+                minaci.getCod_Discapacidad(),
+                minaci.getTipo_Discapacidad(),
+                minaci.getObservacion()
+            });
+        }
+
+    }
+
+    public void Modificar_Nacionalidad(ObjectContainer Base, String Codigo, String Nueva_Tipo_Discapacidad, String Nueva_Observacion) {
+        // Crear un objeto Nacionalidad con el código proporcionado
+        Discapacidad disca = new Discapacidad();
+        disca.setCod_Discapacidad(Codigo);
+
+        // Buscar el objeto correspondiente en la base de datos
+        ObjectSet result = Base.get(disca);
+
+        // Verificar si se encontró un objeto para modificar
+        if (result.hasNext()) {
+            Discapacidad nuedisca = (Discapacidad) result.next();
+
+            // Actualizar los campos del objeto con los nuevos valores
+            nuedisca.setTipo_Discapacidad(Nueva_Tipo_Discapacidad);
+            nuedisca.setObservacion(Nueva_Observacion);
+
+            // Almacenar los cambios en la base de datos
+            Base.store(nuedisca);
+
+            // Mostrar un mensaje de confirmación al usuario
+            javax.swing.JOptionPane.showMessageDialog(this, "Se modificó la discapacidad correctamente.");
+        } else {
+            // Mostrar un mensaje de error si no se encontró el objeto
+            javax.swing.JOptionPane.showMessageDialog(this, "Error: No se encontró la discapacidad para modificar.");
+        }
+    }
+
+    private void EliminarRegistro(ObjectContainer base, String codigoDiscapacidad) {
+
+        try {
+            // Mensaje de depuración
+            System.out.println("Conectando a la base de datos...");
+
+            Discapacidad midisca = new Discapacidad(codigoDiscapacidad, null, null);
+
+            // Mensaje de depuración
+            System.out.println("Buscando el registro en la base de datos...");
+
+            ObjectSet result = base.queryByExample(midisca);
+
+            if (result.hasNext()) {
+                // Mensaje de depuración
+                System.out.println("Eliminando el registro de la base de datos...");
+
+                base.delete(result.next());
+                JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+                Limpiar();
+                MostrarDatos(base);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+            }
+        } catch (Exception ex) {
+            // Mensaje de depuración
+            System.err.println("Error al eliminar el registro: " + ex.getMessage());
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al eliminar el registro: " + ex.getMessage());
+        } finally {
+            if (base != null) {
+                // Mensaje de depuración
+                // System.out.println("Cerrando la conexión a la base de datos...");
+
+                // base.close();
+            }
+        }
+    }
+    //Verificacion
 
     public int Verificacion(ObjectContainer Base) {
         String Cod_Discapacidad = Txt_Codigo.getText();
@@ -349,32 +483,10 @@ public void Ingresar_Datos(ObjectContainer Base) {
         }
     }
 
-    
     public void Limpiar() {
         Txt_Codigo.setText("");
         Txt_Discapacidad.setText("");
         Txt_Observacion.setText("");
 
-    }
-    
-    public void MostrarDatos() {
-
-        Discapacidad dis = new Discapacidad();
-        ObjectSet result = Base.get(dis);
-
-        DefaultTableModel modelo = (DefaultTableModel) jTblDiscapacidad.getModel();
-
-        // Limpiar el modelo antes de agregar nuevas filas
-        modelo.setRowCount(0);
-
-        while (result.hasNext()) {
-            Discapacidad minaci = (Discapacidad) result.next();
-            modelo.addRow(new Object[]{
-                minaci.getCod_Discapacidad(),
-                minaci.getTipo_Discapacidad(),
-                minaci.getObservacion()
-            });
-        }
-        
     }
 }
