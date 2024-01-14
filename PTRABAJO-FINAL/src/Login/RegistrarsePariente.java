@@ -10,7 +10,10 @@ import Clases.*;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
+import com.db4o.ext.DatabaseClosedException;
+import com.db4o.ext.DatabaseReadOnlyException;
 import java.awt.Color;
+import java.awt.HeadlessException;
 
 /**
  *
@@ -863,7 +866,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             Base.store(elrepre);
             javax.swing.JOptionPane.showMessageDialog(this, "Se guardo la base de datos");
 
-        } catch (Exception e) {
+        } catch (DatabaseClosedException | DatabaseReadOnlyException | HeadlessException e) {
         } finally {
             Base.close();
             PagPrincipalRepresentante Pantapri = new PagPrincipalRepresentante();

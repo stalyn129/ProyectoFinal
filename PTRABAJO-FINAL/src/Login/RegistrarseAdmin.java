@@ -12,7 +12,10 @@ import java.awt.Color;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import Clases.*;
+import com.db4o.ext.DatabaseClosedException;
+import com.db4o.ext.DatabaseReadOnlyException;
 import com.db4o.query.Query;
+import java.awt.HeadlessException;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -766,7 +769,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             Base.store(miAdmin);
             javax.swing.JOptionPane.showMessageDialog(this, "Los datos se han guardado exitosamente");
 
-        } catch (Exception e) {
+        } catch (DatabaseClosedException | DatabaseReadOnlyException | HeadlessException e) {
 
             javax.swing.JOptionPane.showMessageDialog(this, "Hay un error");
         } finally {
@@ -944,7 +947,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
 
             Incremental++;
 
-            Codigo = String.format("AD-", Incremental);
+            Codigo = String.format("AD%04d", Incremental);
 
             if (Verificar_CodigoAdmin(Base, Codigo) == 0) {
                 rest = false;
