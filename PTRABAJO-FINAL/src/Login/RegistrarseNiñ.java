@@ -67,8 +67,14 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
         Separador6 = new javax.swing.JSeparator();
         Separador7 = new javax.swing.JSeparator();
         Separador9 = new javax.swing.JSeparator();
-        TxtNombreNiño1 = new javax.swing.JTextField();
+        TxtApodoNiño = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        NvContraNiño = new javax.swing.JPasswordField();
+        NuevaContraseña = new javax.swing.JLabel();
+        jSeparator14 = new javax.swing.JSeparator();
+        jSeparator15 = new javax.swing.JSeparator();
+        CfContraNiño = new javax.swing.JPasswordField();
+        ConfirmarContraseña = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -99,7 +105,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel3.setText("Personalidad:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel4.setText("Nombres:");
@@ -107,19 +113,19 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel5.setText("Apellidos:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel6.setText("Sexo:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, -1, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel7.setText("Edad:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel8.setText("Discapacidad:");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, -1, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, -1, -1));
 
         TxtApellidoNiño.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtApellidoNiño.setForeground(new java.awt.Color(153, 153, 153));
@@ -135,7 +141,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
                 TxtApellidoNiñoActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtApellidoNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 170, -1));
+        jPanel2.add(TxtApellidoNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 170, -1));
 
         TxtNombreNiño.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtNombreNiño.setForeground(new java.awt.Color(153, 153, 153));
@@ -156,7 +162,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
         BtnSexo.add(BtnFemeninoNiñ);
         BtnFemeninoNiñ.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         BtnFemeninoNiñ.setText("Femenino");
-        jPanel2.add(BtnFemeninoNiñ, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, -1, -1));
+        jPanel2.add(BtnFemeninoNiñ, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, -1, -1));
 
         BtnSexo.add(BtnMasculinoNiñ);
         BtnMasculinoNiñ.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
@@ -166,7 +172,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
                 BtnMasculinoNiñActionPerformed(evt);
             }
         });
-        jPanel2.add(BtnMasculinoNiñ, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, -1, -1));
+        jPanel2.add(BtnMasculinoNiñ, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 170, -1, -1));
 
         BtnDiscapacidad.add(BtnDiscapacidadNiñ);
         BtnDiscapacidadNiñ.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
@@ -176,12 +182,12 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
                 BtnDiscapacidadNiñActionPerformed(evt);
             }
         });
-        jPanel2.add(BtnDiscapacidadNiñ, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, -1, -1));
+        jPanel2.add(BtnDiscapacidadNiñ, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, -1, -1));
 
         BtnDiscapacidad.add(BtnDiscaNiñ);
         BtnDiscaNiñ.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         BtnDiscaNiñ.setText("No");
-        jPanel2.add(BtnDiscaNiñ, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, -1, -1));
+        jPanel2.add(BtnDiscaNiñ, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, -1, -1));
 
         CmBxPersonalidad.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         CmBxPersonalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alegre", "Amigable", "Extrovertido", "Inteligente", "Creativo", "Tímido", "Introvertido" }));
@@ -190,12 +196,12 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
                 CmBxPersonalidadActionPerformed(evt);
             }
         });
-        jPanel2.add(CmBxPersonalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 160, -1));
-        jPanel2.add(DateEdadNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 150, -1));
-        jPanel2.add(Separador3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 170, 10));
+        jPanel2.add(CmBxPersonalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 160, -1));
+        jPanel2.add(DateEdadNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 150, -1));
+        jPanel2.add(Separador3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 170, 10));
         jPanel2.add(Separador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 160, 10));
-        jPanel2.add(Separador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 150, 10));
-        jPanel2.add(Separador4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 160, 10));
+        jPanel2.add(Separador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 150, 10));
+        jPanel2.add(Separador4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 160, 10));
 
         BtnRegistrarseNiñ.setText("Registrarse");
         BtnRegistrarseNiñ.setBorder(javax.swing.BorderFactory.createCompoundBorder());
@@ -205,35 +211,75 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
             }
         });
         jPanel2.add(BtnRegistrarseNiñ, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 100, 30));
-        jPanel2.add(Separador8, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, 40, 10));
-        jPanel2.add(Separador5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 80, 20));
-        jPanel2.add(Separador6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 80, 20));
-        jPanel2.add(Separador7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 40, 10));
-        jPanel2.add(Separador9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 160, 10));
+        jPanel2.add(Separador8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 40, 10));
+        jPanel2.add(Separador5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 80, 10));
+        jPanel2.add(Separador6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 200, 80, 10));
+        jPanel2.add(Separador7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 40, 10));
+        jPanel2.add(Separador9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 160, 10));
 
-        TxtNombreNiño1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        TxtNombreNiño1.setForeground(new java.awt.Color(153, 153, 153));
-        TxtNombreNiño1.setText("Ingrese su Apodo");
-        TxtNombreNiño1.setBorder(null);
-        TxtNombreNiño1.addMouseListener(new java.awt.event.MouseAdapter() {
+        TxtApodoNiño.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        TxtApodoNiño.setForeground(new java.awt.Color(153, 153, 153));
+        TxtApodoNiño.setText("Ingrese su Apodo");
+        TxtApodoNiño.setBorder(null);
+        TxtApodoNiño.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                TxtNombreNiño1MousePressed(evt);
+                TxtApodoNiñoMousePressed(evt);
             }
         });
-        TxtNombreNiño1.addActionListener(new java.awt.event.ActionListener() {
+        TxtApodoNiño.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtNombreNiño1ActionPerformed(evt);
+                TxtApodoNiñoActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtNombreNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 160, -1));
+        jPanel2.add(TxtApodoNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 160, -1));
 
         jLabel9.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel9.setText("Apodo:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, -1, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, -1, -1));
+
+        NvContraNiño.setForeground(new java.awt.Color(153, 153, 153));
+        NvContraNiño.setText("**********");
+        NvContraNiño.setBorder(null);
+        NvContraNiño.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                NvContraNiñoMousePressed(evt);
+            }
+        });
+        NvContraNiño.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NvContraNiñoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(NvContraNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 170, 20));
+
+        NuevaContraseña.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        NuevaContraseña.setText("Nueva Contraseña:");
+        jPanel2.add(NuevaContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, -1, -1));
+        jPanel2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 170, 10));
+        jPanel2.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, 170, 10));
+
+        CfContraNiño.setForeground(new java.awt.Color(153, 153, 153));
+        CfContraNiño.setText("**********");
+        CfContraNiño.setBorder(null);
+        CfContraNiño.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                CfContraNiñoMousePressed(evt);
+            }
+        });
+        CfContraNiño.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CfContraNiñoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(CfContraNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, 170, 20));
+
+        ConfirmarContraseña.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        ConfirmarContraseña.setText("Confrimar Contraseña:");
+        jPanel2.add(ConfirmarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, -1, 20));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 650, 380));
 
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Imagen de WhatsApp 2024-01-03 a las 07.58.17_8bdfab4c.jpg"))); // NOI18N
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -354,7 +400,19 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
             TxtApellidoNiño.setText("Ingrese sus Apellidos");
             TxtApellidoNiño.setForeground(Color.gray);
         }
-        
+         if (TxtApodoNiño.getText().isEmpty()) {
+            TxtApodoNiño.setText("Ingrese su Apodo");
+            TxtApodoNiño.setForeground(Color.gray);
+        }
+        if (String.valueOf(NvContraNiño.getPassword()).isEmpty()) {
+            NvContraNiño.setText("**********");
+            NvContraNiño.setForeground(Color.gray);
+
+        }
+        if (String.valueOf(CfContraNiño.getPassword()).isEmpty()) {
+            CfContraNiño.setText("**********");
+            CfContraNiño.setForeground(Color.gray);
+        }
     }//GEN-LAST:event_TxtNombreNiñoMousePressed
 
     private void TxtApellidoNiñoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtApellidoNiñoMousePressed
@@ -367,15 +425,104 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
             TxtNombreNiño.setText("Ingrese sus Nombres");
             TxtNombreNiño.setForeground(Color.gray);
         }
+        if (TxtApodoNiño.getText().isEmpty()) {
+            TxtApodoNiño.setText("Ingrese su Apodo");
+            TxtApodoNiño.setForeground(Color.gray);
+        }
+        if (String.valueOf(NvContraNiño.getPassword()).isEmpty()) {
+            NvContraNiño.setText("**********");
+            NvContraNiño.setForeground(Color.gray);
+
+        }
+        if (String.valueOf(CfContraNiño.getPassword()).isEmpty()) {
+            CfContraNiño.setText("**********");
+            CfContraNiño.setForeground(Color.gray);
+        }
     }//GEN-LAST:event_TxtApellidoNiñoMousePressed
 
-    private void TxtNombreNiño1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtNombreNiño1MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtNombreNiño1MousePressed
+    private void TxtApodoNiñoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtApodoNiñoMousePressed
+        if (TxtApodoNiño.getText().equals("Ingrese su Apodo")) {
+            TxtApodoNiño.setText("");
+            TxtApodoNiño.setForeground(Color.black);
+        }
+        
+        if (TxtNombreNiño.getText().isEmpty()) {
+            TxtNombreNiño.setText("Ingrese sus Nombres");
+            TxtNombreNiño.setForeground(Color.gray);
+        }
+        if (TxtApellidoNiño.getText().isEmpty()) {
+            TxtApellidoNiño.setText("Ingrese sus Apellidos");
+            TxtApellidoNiño.setForeground(Color.gray);
+        }
+        if (String.valueOf(NvContraNiño.getPassword()).isEmpty()) {
+            NvContraNiño.setText("**********");
+            NvContraNiño.setForeground(Color.gray);
 
-    private void TxtNombreNiño1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNombreNiño1ActionPerformed
+        }
+        if (String.valueOf(CfContraNiño.getPassword()).isEmpty()) {
+            CfContraNiño.setText("**********");
+            CfContraNiño.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_TxtApodoNiñoMousePressed
+
+    private void TxtApodoNiñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtApodoNiñoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxtNombreNiño1ActionPerformed
+    }//GEN-LAST:event_TxtApodoNiñoActionPerformed
+
+    private void NvContraNiñoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NvContraNiñoMousePressed
+        if (String.valueOf(NvContraNiño.getPassword()).equals("**********")) {
+            NvContraNiño.setText("");
+            NvContraNiño.setForeground(Color.black);
+        }
+        if (TxtNombreNiño.getText().isEmpty()) {
+            TxtNombreNiño.setText("Ingrese sus Nombres");
+            TxtNombreNiño.setForeground(Color.gray);
+        }
+        if (TxtApellidoNiño.getText().isEmpty()) {
+            TxtApellidoNiño.setText("Ingrese sus Apellidos");
+            TxtApellidoNiño.setForeground(Color.gray);
+        }
+         if (TxtApodoNiño.getText().isEmpty()) {
+            TxtApodoNiño.setText("Ingrese su Apodo");
+            TxtApodoNiño.setForeground(Color.gray);
+        }
+        if (String.valueOf(CfContraNiño.getPassword()).isEmpty()) {
+            CfContraNiño.setText("**********");
+            CfContraNiño.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_NvContraNiñoMousePressed
+
+    private void NvContraNiñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NvContraNiñoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NvContraNiñoActionPerformed
+
+    private void CfContraNiñoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CfContraNiñoMousePressed
+        if (String.valueOf(CfContraNiño.getPassword()).equals("**********")) {
+            CfContraNiño.setText("");
+            CfContraNiño.setForeground(Color.black);
+        }
+        if (TxtNombreNiño.getText().isEmpty()) {
+            TxtNombreNiño.setText("Ingrese sus Nombres");
+            TxtNombreNiño.setForeground(Color.gray);
+        }
+        if (TxtApellidoNiño.getText().isEmpty()) {
+            TxtApellidoNiño.setText("Ingrese sus Apellidos");
+            TxtApellidoNiño.setForeground(Color.gray);
+        }
+         if (TxtApodoNiño.getText().isEmpty()) {
+            TxtApodoNiño.setText("Ingrese su Apodo");
+            TxtApodoNiño.setForeground(Color.gray);
+        }
+        if (String.valueOf(NvContraNiño.getPassword()).isEmpty()) {
+            NvContraNiño.setText("**********");
+            NvContraNiño.setForeground(Color.gray);
+        }
+        
+    }//GEN-LAST:event_CfContraNiñoMousePressed
+
+    private void CfContraNiñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CfContraNiñoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CfContraNiñoActionPerformed
 
 
 
@@ -388,9 +535,13 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
     private javax.swing.JButton BtnRegistrarseNiñ;
     private javax.swing.JButton BtnRegresar;
     private javax.swing.ButtonGroup BtnSexo;
+    private javax.swing.JPasswordField CfContraNiño;
     private javax.swing.JComboBox<String> CmBxPersonalidad;
+    private javax.swing.JLabel ConfirmarContraseña;
     private com.toedter.calendar.JDateChooser DateEdadNiño;
     private javax.swing.JLabel Fondo;
+    private javax.swing.JLabel NuevaContraseña;
+    private javax.swing.JPasswordField NvContraNiño;
     private javax.swing.JSeparator Separador1;
     private javax.swing.JSeparator Separador2;
     private javax.swing.JSeparator Separador3;
@@ -401,8 +552,8 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
     private javax.swing.JSeparator Separador8;
     private javax.swing.JSeparator Separador9;
     private javax.swing.JTextField TxtApellidoNiño;
+    private javax.swing.JTextField TxtApodoNiño;
     private javax.swing.JTextField TxtNombreNiño;
-    private javax.swing.JTextField TxtNombreNiño1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -414,5 +565,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator14;
+    private javax.swing.JSeparator jSeparator15;
     // End of variables declaration//GEN-END:variables
 }

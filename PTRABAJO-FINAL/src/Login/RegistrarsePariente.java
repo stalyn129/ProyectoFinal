@@ -162,12 +162,12 @@ public class RegistrarsePariente extends javax.swing.JFrame {
                 TxtApellidoParienActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtApellidoParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 170, -1));
+        jPanel2.add(TxtApellidoParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 170, -1));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel5.setText("Confirmar Contraseña:");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 267, -1, 20));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 160, 10));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 160, 10));
 
         TxtNombreParien.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtNombreParien.setForeground(new java.awt.Color(153, 153, 153));
@@ -183,11 +183,11 @@ public class RegistrarsePariente extends javax.swing.JFrame {
                 TxtNombreParienActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtNombreParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 160, -1));
+        jPanel2.add(TxtNombreParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 160, -1));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel4.setText("Nombres:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel7.setText("Fecha de Nacimiento:");
@@ -197,7 +197,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Rockwell Nova", 1, 24)); // NOI18N
         jLabel2.setText("REGISTRARSE");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, -1));
 
         TxtCedParien.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtCedParien.setForeground(new java.awt.Color(153, 153, 153));
@@ -213,12 +213,12 @@ public class RegistrarsePariente extends javax.swing.JFrame {
                 TxtCedParienActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtCedParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 160, -1));
-        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, 160, 10));
+        jPanel2.add(TxtCedParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 160, -1));
+        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 160, 10));
 
         jLabel9.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel9.setText("Cedula:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, -1, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
 
         Nacionalidad.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Nacionalidad.setText("Nacionalidad:");
@@ -233,7 +233,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         });
         jPanel2.add(CmbBxNacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 170, -1));
         jPanel2.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, -1, -1));
-        jPanel2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 170, 10));
+        jPanel2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 170, 10));
         jPanel2.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 170, 10));
 
         TxtTituloParien.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
@@ -276,7 +276,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel11.setText("Dirección:");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, -1, -1));
-        jPanel2.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 170, 10));
+        jPanel2.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 170, 10));
 
         CmbBxParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mamá", "Papá", "Hermano", "Hermana", "Abuelo", "Abuela", "Tío", "Tía", "Cuñado", "Cuñada" }));
         CmbBxParentesco.setBorder(null);
@@ -285,11 +285,11 @@ public class RegistrarsePariente extends javax.swing.JFrame {
                 CmbBxParentescoActionPerformed(evt);
             }
         });
-        jPanel2.add(CmbBxParentesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 170, -1));
+        jPanel2.add(CmbBxParentesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 170, -1));
 
         Nacionalidad1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Nacionalidad1.setText("Parentesco:");
-        jPanel2.add(Nacionalidad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+        jPanel2.add(Nacionalidad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel12.setText("Ocupación:");
@@ -323,7 +323,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel13.setText("Apellidos:");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
         jPanel2.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 170, 10));
 
         CfContraParien.setForeground(new java.awt.Color(153, 153, 153));
@@ -340,7 +340,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             }
         });
         jPanel2.add(CfContraParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 170, -1));
-        jPanel2.add(jSeparator16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 170, 10));
+        jPanel2.add(jSeparator16, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 170, 10));
 
         jLabel14.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel14.setText("Nueva Contraseña:");
@@ -375,11 +375,11 @@ public class RegistrarsePariente extends javax.swing.JFrame {
                 Txt_profecionActionPerformed(evt);
             }
         });
-        jPanel2.add(Txt_profecion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 170, 20));
+        jPanel2.add(Txt_profecion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 170, 20));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel3.setText("Profesion:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, -1, -1));
         jPanel2.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 170, 10));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 700, 390));
@@ -395,7 +395,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         });
         jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
 
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Imagen de WhatsApp 2024-01-03 a las 07.58.17_8bdfab4c.jpg"))); // NOI18N
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

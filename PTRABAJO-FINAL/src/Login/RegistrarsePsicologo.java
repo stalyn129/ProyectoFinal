@@ -157,7 +157,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
 
         ConfirmarContraseña.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         ConfirmarContraseña.setText("Confrimar Contraseña:");
-        jPanel2.add(ConfirmarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, -1, 20));
+        jPanel2.add(ConfirmarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, -1, 20));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 160, 10));
 
         TxtNomPsicol.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
@@ -245,8 +245,8 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
 
         NuevaContraseña.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         NuevaContraseña.setText("Nueva Contraseña:");
-        jPanel2.add(NuevaContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, -1, -1));
-        jPanel2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 170, 10));
+        jPanel2.add(NuevaContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, -1, -1));
+        jPanel2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 170, 10));
 
         BtnRegistrarsePsicol.setText("Registrarse");
         BtnRegistrarsePsicol.setBorder(javax.swing.BorderFactory.createCompoundBorder());
@@ -274,8 +274,8 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
                 NvContraPsicolActionPerformed(evt);
             }
         });
-        jPanel2.add(NvContraPsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 170, -1));
-        jPanel2.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, 170, 10));
+        jPanel2.add(NvContraPsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 170, -1));
+        jPanel2.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, 170, 10));
 
         CmbBxNacionalidad3Psicol.setBorder(null);
         CmbBxNacionalidad3Psicol.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -324,7 +324,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
                 CfContraPsicolActionPerformed(evt);
             }
         });
-        jPanel2.add(CfContraPsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 170, -1));
+        jPanel2.add(CfContraPsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, 170, -1));
 
         cbx_discapacidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -385,7 +385,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         });
         jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
 
-        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Imagen de WhatsApp 2024-01-03 a las 07.58.17_8bdfab4c.jpg"))); // NOI18N
+        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
