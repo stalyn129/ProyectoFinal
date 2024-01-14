@@ -52,7 +52,6 @@ public class Informacion_ingre extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla_mostrar = new javax.swing.JTable();
-        BtnRegresar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -66,6 +65,7 @@ public class Informacion_ingre extends javax.swing.JFrame {
         btn_Ingresar_imagen = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
+        BtnRegresar1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -95,17 +95,6 @@ public class Informacion_ingre extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tabla_mostrar);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, 630, 90));
-
-        BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
-        BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
-        BtnRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnRegresar.setOpaque(false);
-        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRegresarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 50, 40));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -181,6 +170,17 @@ public class Informacion_ingre extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 630, 360));
 
+        BtnRegresar1.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar1.setOpaque(false);
+        BtnRegresar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 40, 30));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
 
@@ -188,7 +188,7 @@ public class Informacion_ingre extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,11 +293,11 @@ javax.swing.JOptionPane.showMessageDialog(this, "Se guardo la Informacion");
         
     }//GEN-LAST:event_btn_ingresarMouseClicked
 
-    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+    private void BtnRegresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar1ActionPerformed
         PagPrincipalAdmin prinAdmn = new PagPrincipalAdmin();
         prinAdmn.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_BtnRegresarActionPerformed
+    }//GEN-LAST:event_BtnRegresar1ActionPerformed
 
     public void Vaciar_datos(){
     txt_Titulo.setText("");
@@ -414,7 +414,7 @@ javax.swing.JOptionPane.showMessageDialog(this, "Se guardo la Informacion");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnRegresar;
+    private javax.swing.JButton BtnRegresar1;
     private javax.swing.JButton btn_Ingresar_imagen;
     private javax.swing.JButton btn_ingresar;
     private javax.swing.JLabel imagen_;

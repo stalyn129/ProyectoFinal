@@ -55,11 +55,11 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         Txt_Observacion = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
-        BtnRegresar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         Txt_Codigo = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
+        BtnRegresar1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -186,17 +186,6 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         jLabel5.setText("Observación:");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
 
-        BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
-        BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
-        BtnRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnRegresar.setOpaque(false);
-        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRegresarActionPerformed(evt);
-            }
-        });
-        jPanel2.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 50, 40));
-
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,6 +214,17 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         });
         jPanel2.add(Txt_Codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 240, 20));
         jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 240, 10));
+
+        BtnRegresar1.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar1.setOpaque(false);
+        BtnRegresar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresar1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(BtnRegresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 40, 30));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 500));
 
@@ -320,12 +320,6 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_Txt_ObservacionMousePressed
 
-    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
-        PagPrincipalAdmin prinAdmn = new PagPrincipalAdmin();
-        prinAdmn.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_BtnRegresarActionPerformed
-
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         if (Txt_Codigo.getText().equals("Ejem: NAC-001") || Txt_Nacionalidad.getText().equals("Ejem: Ecuatoriano") || Txt_Pais.getText().equals("Ejem: Ecuador") || Txt_Observacion.getText().equals("Ejem: Este país...")) {
             JOptionPane.showMessageDialog(this, "Llene los campos por favor");
@@ -407,6 +401,12 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
        
 
     }//GEN-LAST:event_Btn_ModificarActionPerformed
+
+    private void BtnRegresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar1ActionPerformed
+        PagPrincipalAdmin prinAdmn = new PagPrincipalAdmin();
+        prinAdmn.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresar1ActionPerformed
      
     /*
     public void Modificar_Nacionalidad(ObjectContainer Base, String codigo, String Ncionalidad, String Pais, String Observacion) {
@@ -464,7 +464,7 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnRegresar;
+    private javax.swing.JButton BtnRegresar1;
     private javax.swing.JButton Btn_Modificar;
     private javax.swing.JTextField Txt_Codigo;
     private javax.swing.JTextField Txt_Nacionalidad;
