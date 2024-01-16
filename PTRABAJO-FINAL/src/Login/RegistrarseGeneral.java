@@ -8,7 +8,9 @@ package Login;
 import Login.RegistrarseNiñ;
 import Login.RegistrarsePariente;
 import Login.RegistrarsePsicologo;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 /**
  *
@@ -166,35 +168,45 @@ public class RegistrarseGeneral extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnInfanteRegistActionPerformed
 
     private void BtnPsicologoRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPsicologoRegistActionPerformed
-        String tokenIngresado = JOptionPane.showInputDialog("Ingrese el codigo de ingreso:");
+JPasswordField passwordField = new JPasswordField();
+    int option = JOptionPane.showConfirmDialog(null, passwordField, "Ingrese el código de ingreso:", JOptionPane.OK_CANCEL_OPTION);
 
-    // Verificar si el token ingresado es correcto (en este caso "P5S3I9C3O")
-    if (tokenIngresado != null && tokenIngresado.equals("P5S3I9C3O")) {
-        // Si es correcto, mostrar la página de registro de psicologo
-        RegistrarsePsicologo psico = new RegistrarsePsicologo();
-            psico.setVisible(true);
-                this.setVisible(false);
-    } else {
-        // Si el token no es correcto o se cancela la entrada, mostrar un mensaje de error
-        JOptionPane.showMessageDialog(this, "Código incorrecto. Inténtelo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
+    if (option == JOptionPane.OK_OPTION) {
+        char[] contra = passwordField.getPassword();
+        String tokenIngresado = new String(contra);
+
+        if (tokenIngresado.equals("PSICO123")) {
+            RegistrarsePsicologo psicologo = new RegistrarsePsicologo();
+            psicologo.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Código incorrecto. Inténtelo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        // Es importante borrar el contenido del array de caracteres que contiene la contraseña
+        Arrays.fill(contra, ' ');
     }
     }//GEN-LAST:event_BtnPsicologoRegistActionPerformed
 
     private void BtnAdminRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAdminRegistActionPerformed
-       
-    String tokenIngresado = JOptionPane.showInputDialog("Ingrese el código de ingreso:");
+JPasswordField passwordField = new JPasswordField();
+    int option = JOptionPane.showConfirmDialog(null, passwordField, "Ingrese el código de ingreso:", JOptionPane.OK_CANCEL_OPTION);
 
-    // Verificar si el token ingresado es correcto (en este caso "A1D4M5IN")
-    if (tokenIngresado != null && tokenIngresado.equals("A1D4M5IN")) {
-        // Si es correcto, mostrar la página de registro de administrador
-        RegistrarseAdmin administrador = new RegistrarseAdmin();
-        administrador.setVisible(true);
-        this.setVisible(false);
-    } else {
-        // Si el token no es correcto o se cancela la entrada, mostrar un mensaje de error
-        JOptionPane.showMessageDialog(this, "Código incorrecto. Inténtelo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
+    if (option == JOptionPane.OK_OPTION) {
+        char[] contra = passwordField.getPassword();
+        String tokenIngresado = new String(contra);
+
+        if (tokenIngresado.equals("ADMIN123")) {
+            RegistrarseAdmin administrador = new RegistrarseAdmin();
+            administrador.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Código incorrecto. Inténtelo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        // Es importante borrar el contenido del array de caracteres que contiene la contraseña
+        Arrays.fill(contra, ' ');
     }
-        
     }//GEN-LAST:event_BtnAdminRegistActionPerformed
 
     private void BtnRepresentanteRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRepresentanteRegistActionPerformed

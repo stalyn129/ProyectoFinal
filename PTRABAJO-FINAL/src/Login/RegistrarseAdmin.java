@@ -98,9 +98,12 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         TxtTelfAdmin = new javax.swing.JTextField();
         TxtCorreoAdmin = new javax.swing.JTextField();
         BtnRegresar = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -373,6 +376,15 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
 
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel17.setText("X");
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel17MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
@@ -418,6 +430,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         RegistrarseGeneral general = new RegistrarseGeneral();
         general.setVisible(true);
         this.setVisible(false);
+        Base.close();
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
     private void CmbBxNacionalidad2AdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbBxNacionalidad2AdminActionPerformed
@@ -725,6 +738,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             NvContraAdmin.setText("**********");
             NvContraAdmin.setForeground(Color.gray);
         }
+        
     }//GEN-LAST:event_CfContraAdminMousePressed
 
     private void BtnRegistrarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarAdminActionPerformed
@@ -780,11 +794,14 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Por favor, llene todos los campos antes de guardar.");
             }
+            
     }
+    
 
     private void irAPaginaPrincipalAdmin() {
-        PagPrincipalAdmin PrinAdmin = new PagPrincipalAdmin();
-        PrinAdmin.setVisible(true);
+        Base.close();
+        IniciaAdmin IniAdmin = new IniciaAdmin();
+        IniAdmin.setVisible(true);
         this.setVisible(false);
     }
 
@@ -819,7 +836,6 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             campoVacio = null;
             return true;
         }
-
     }//GEN-LAST:event_BtnRegistrarAdminActionPerformed
 
     public void Nacionalidades_ingr(ObjectContainer Base) {
@@ -889,7 +905,6 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         }
         return null;
     }
-
 
     private void TxtCorreoAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCorreoAdminActionPerformed
         // TODO add your handling code here:
@@ -982,6 +997,12 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             CfContraAdmin.setForeground(Color.gray);
         }
     }//GEN-LAST:event_TxtTelfAdminMousePressed
+
+    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
+
+Base.close();
+System.exit(0);
+    }//GEN-LAST:event_jLabel17MouseClicked
 
     public static String Calcular_IDAdmin(ObjectContainer Base) {
 
@@ -1129,6 +1150,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

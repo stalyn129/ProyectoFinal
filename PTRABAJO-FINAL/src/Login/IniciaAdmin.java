@@ -310,6 +310,7 @@ ObjectContainer Base;
     }//GEN-LAST:event_TXT_IngreMouseClicked
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+        Base.close();
         Seleccion selec = new Seleccion();
         selec.setVisible(true);
         this.setVisible(false);

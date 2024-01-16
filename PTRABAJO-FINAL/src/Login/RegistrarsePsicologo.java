@@ -921,6 +921,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         TxtEspecializacionPsicol1.setModel(model);
 
     }
+     
 
     private void CmbBxNacionalidad3PsicolMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CmbBxNacionalidad3PsicolMousePressed
 
