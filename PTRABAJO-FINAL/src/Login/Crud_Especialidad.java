@@ -8,10 +8,14 @@ package Login;
 import BBDD.Contenedor_Base;
 import java.awt.Color;
 import Clases.Especializacion;
+import Login.PagPrincipalAdmin;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Login.Seleccion;
 import com.db4o.*;
+import com.db4o.ext.DatabaseClosedException;
+import com.db4o.ext.Db4oIOException;
+import java.awt.HeadlessException;
 
 public class Crud_Especialidad extends javax.swing.JFrame {
 
@@ -49,6 +53,7 @@ public class Crud_Especialidad extends javax.swing.JFrame {
         btnActualizar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        Btn_Consultar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -161,7 +166,7 @@ public class Crud_Especialidad extends javax.swing.JFrame {
                 btnActualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 455, -1, -1));
+        getContentPane().add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, -1, -1));
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -169,7 +174,7 @@ public class Crud_Especialidad extends javax.swing.JFrame {
                 btnModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 455, -1, -1));
+        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 460, -1, -1));
 
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -177,7 +182,15 @@ public class Crud_Especialidad extends javax.swing.JFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(666, 455, -1, -1));
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 460, -1, -1));
+
+        Btn_Consultar.setText("Consultar");
+        Btn_Consultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_ConsultarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Btn_Consultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 460, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
@@ -201,9 +214,7 @@ public class Crud_Especialidad extends javax.swing.JFrame {
         if (String.valueOf(Txt_Especializacion.getText()).isEmpty()) {
             Txt_Especializacion.setText("Ejem: Escolar");
             Txt_Especializacion.setForeground(Color.gray);
-
         }
-
     }//GEN-LAST:event_Txt_CodigoMousePressed
 
     private void Txt_CodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_CodigoActionPerformed
@@ -227,7 +238,7 @@ public class Crud_Especialidad extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-       if (Txt_Codigo.getText().equals("Ejem: ESP-001") || Txt_Especializacion.getText().equals("Ejem: Escolar")) {
+        if (Txt_Codigo.getText().equals("Ejem: ESP-001") || Txt_Especializacion.getText().equals("Ejem: Escolar")) {
             JOptionPane.showMessageDialog(this, "Llene los campos por favor");
         } else {
             Ingresar_Datos(Base);
@@ -261,6 +272,16 @@ public class Crud_Especialidad extends javax.swing.JFrame {
         prinAdmn.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegresar1ActionPerformed
+
+    private void Btn_ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ConsultarActionPerformed
+        String codigoAConsultar = JOptionPane.showInputDialog(this, "Ingrese el código a consultar");
+
+        if (codigoAConsultar != null && !codigoAConsultar.isEmpty()) {
+            ConsultarRegistro(Base, codigoAConsultar);
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un código válido para consultar.");
+        }
+    }//GEN-LAST:event_Btn_ConsultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,6 +320,7 @@ public class Crud_Especialidad extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnRegresar1;
+    private javax.swing.JButton Btn_Consultar;
     private javax.swing.JTextField Txt_Codigo;
     private javax.swing.JTextField Txt_Especializacion;
     private javax.swing.JButton btnActualizar;
@@ -343,10 +365,9 @@ public void Ingresar_Datos(ObjectContainer Base) {
 
     }
 
-    public void MostrarDatos(ObjectContainer Base) {
-
+    public void MostrarDatos(ObjectContainer base) {
         Especializacion Especi = new Especializacion();
-        ObjectSet result = Base.get(Especi);
+        ObjectSet result = base.get(Especi);
 
         DefaultTableModel modelo = (DefaultTableModel) jTableEspecialidad.getModel();
 
@@ -376,7 +397,7 @@ public void Ingresar_Datos(ObjectContainer Base) {
 
             // Actualizar los campos del objeto con los nuevos valores
             nueEspe.setEspecializacion(Especializacion);
-            
+
             // Almacenar los cambios en la base de datos
             Base.store(nueEspe);
 
@@ -388,13 +409,24 @@ public void Ingresar_Datos(ObjectContainer Base) {
         }
     }
 
-    private void EliminarRegistro(ObjectContainer base, String codigoNacionalidad) {
+    public void ConsultarDatos(ObjectContainer base, Especializacion consulta) {
+        DefaultTableModel modelo = (DefaultTableModel) jTableEspecialidad.getModel();
 
-        try {
-            // Mensaje de depuración
-            System.out.println("Conectando a la base de datos...");
+        // Limpiar el modelo antes de agregar nuevas filas
+        modelo.setRowCount(0);
 
-           Especializacion especializacion = new Especializacion(codigoNacionalidad, null);
+        if (consulta != null) {
+            // Agregar el registro consultado a la tabla
+            modelo.addRow(new Object[]{
+                consulta.getCod_Especializacion(),
+                consulta.getEspecializacion()
+            });
+        }
+    }
+
+    private void EliminarRegistro(ObjectContainer base, String Cod_Especializacion) {
+
+            Especializacion especializacion = new Especializacion(Cod_Especializacion, null);
 
             // Mensaje de depuración
             System.out.println("Buscando el registro en la base de datos...");
@@ -412,20 +444,28 @@ public void Ingresar_Datos(ObjectContainer Base) {
             } else {
                 JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
             }
-        } catch (Exception ex) {
-            // Mensaje de depuración
-            System.err.println("Error al eliminar el registro: " + ex.getMessage());
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error al eliminar el registro: " + ex.getMessage());
-        } finally {
-            if (base != null) {
-                // Mensaje de depuración
-                // System.out.println("Cerrando la conexión a la base de datos...");
+        } 
 
-                // base.close();
+    private void ConsultarRegistro(ObjectContainer base, String Cod_Especializacion) {
+
+            // Creando un objeto de ejemplo para la consulta
+            Especializacion especializacion = new Especializacion(Cod_Especializacion, null);
+
+            // Consultando la base de datos
+            ObjectSet result = base.queryByExample(especializacion);
+
+            if (result.hasNext()) {
+                // Manejando el resultado (puedes querer mostrarlo o procesarlo)
+                Especializacion registroConsultado = (Especializacion) result.next();
+                System.out.println("Registro consultado: " + registroConsultado);
+                JOptionPane.showMessageDialog(this, "El registro se ha consultado con éxito");
+
+                // Llamar al método ConsultarDatos para mostrar el registro en la tabla
+                ConsultarDatos(Base, registroConsultado);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
             }
-        }
-    }
+        } 
 
     //Verificacion
     public int Verificacion(ObjectContainer Base) {

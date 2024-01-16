@@ -12,6 +12,8 @@ import java.awt.Color;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import Clases.*;
+import Login.PagPrincipalAdmin;
+import Login.RegistrarseGeneral;
 import com.db4o.ext.DatabaseClosedException;
 import com.db4o.ext.DatabaseReadOnlyException;
 import com.db4o.query.Query;
@@ -24,11 +26,11 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class RegistrarseAdmin extends javax.swing.JFrame {
 
-     ObjectContainer Base;
-    
+    ObjectContainer Base;
+
     public RegistrarseAdmin() {
-        
-          Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+
+        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
         initComponents();
         Nacionalidades_ingr(Base);
         Discapacidad_ingr(Base);
@@ -283,7 +285,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         jPanel2.add(CmbBxNacionalidad2Admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 170, -1));
 
         jLabel14.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel14.setText("Título:");
+        jLabel14.setText("Puesto:");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, -1, -1));
 
         TxtTituloAdmin.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
@@ -435,12 +437,12 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             TxtNombreAdmin.setText("");
             TxtNombreAdmin.setForeground(Color.black);
         }
-        
+
         if (TxtApelliAdmin.getText().isEmpty()) {
             TxtApelliAdmin.setText("Ingrese sus Apellidos");
             TxtApelliAdmin.setForeground(Color.gray);
         }
-        
+
         if (TxtTituloAdmin.getText().isEmpty()) {
             TxtTituloAdmin.setText("Ingrese su Título");
             TxtTituloAdmin.setForeground(Color.gray);
@@ -453,7 +455,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             TxtDirecdmin.setText("Ingrese su Dirección");
             TxtDirecdmin.setForeground(Color.gray);
         }
-        
+
         if (TxtCorreoAdmin.getText().isEmpty()) {
             TxtCorreoAdmin.setText("Ingrese su Correo");
             TxtCorreoAdmin.setForeground(Color.gray);
@@ -463,7 +465,6 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             TxtTelfAdmin.setForeground(Color.gray);
         }
 
-        
         if (String.valueOf(NvContraAdmin.getPassword()).isEmpty()) {
             NvContraAdmin.setText("**********");
             NvContraAdmin.setForeground(Color.gray);
@@ -480,12 +481,12 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             TxtApelliAdmin.setText("");
             TxtApelliAdmin.setForeground(Color.black);
         }
-        
+
         if (TxtNombreAdmin.getText().isEmpty()) {
             TxtNombreAdmin.setText("Ingrese sus Nombres");
             TxtNombreAdmin.setForeground(Color.gray);
         }
-        
+
         if (TxtTituloAdmin.getText().isEmpty()) {
             TxtTituloAdmin.setText("Ingrese su Título");
             TxtTituloAdmin.setForeground(Color.gray);
@@ -497,15 +498,15 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         if (TxtDirecdmin.getText().isEmpty()) {
             TxtDirecdmin.setText("Ingrese su Dirección");
             TxtDirecdmin.setForeground(Color.gray);
-            
-        if (TxtCorreoAdmin.getText().isEmpty()) {
-            TxtCorreoAdmin.setText("Ingrese su Correo");
-            TxtCorreoAdmin.setForeground(Color.gray);
-        }
-        if (TxtTelfAdmin.getText().isEmpty()) {
-            TxtTelfAdmin.setText("Ingrese su telefono");
-            TxtTelfAdmin.setForeground(Color.gray);
-        }
+
+            if (TxtCorreoAdmin.getText().isEmpty()) {
+                TxtCorreoAdmin.setText("Ingrese su Correo");
+                TxtCorreoAdmin.setForeground(Color.gray);
+            }
+            if (TxtTelfAdmin.getText().isEmpty()) {
+                TxtTelfAdmin.setText("Ingrese su telefono");
+                TxtTelfAdmin.setForeground(Color.gray);
+            }
         }
         if (String.valueOf(NvContraAdmin.getPassword()).isEmpty()) {
             NvContraAdmin.setText("**********");
@@ -523,12 +524,12 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             TxtTituloAdmin.setText("");
             TxtTituloAdmin.setForeground(Color.black);
         }
-        
+
         if (TxtNombreAdmin.getText().isEmpty()) {
             TxtNombreAdmin.setText("Ingrese sus Nombres");
             TxtNombreAdmin.setForeground(Color.gray);
         }
-        
+
         if (TxtApelliAdmin.getText().isEmpty()) {
             TxtApelliAdmin.setText("Ingrese sus Apellidos");
             TxtApelliAdmin.setForeground(Color.gray);
@@ -540,16 +541,16 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         if (TxtDirecdmin.getText().isEmpty()) {
             TxtDirecdmin.setText("Ingrese su Dirección");
             TxtDirecdmin.setForeground(Color.gray);
-            
-        if (TxtCorreoAdmin.getText().isEmpty()) {
-            TxtCorreoAdmin.setText("Ingrese su Correo");
-            TxtCorreoAdmin.setForeground(Color.gray);
-        }
-        if (TxtTelfAdmin.getText().isEmpty()) {
-            TxtTelfAdmin.setText("Ingrese su telefono");
-            TxtTelfAdmin.setForeground(Color.gray);
-        }    
-            
+
+            if (TxtCorreoAdmin.getText().isEmpty()) {
+                TxtCorreoAdmin.setText("Ingrese su Correo");
+                TxtCorreoAdmin.setForeground(Color.gray);
+            }
+            if (TxtTelfAdmin.getText().isEmpty()) {
+                TxtTelfAdmin.setText("Ingrese su telefono");
+                TxtTelfAdmin.setForeground(Color.gray);
+            }
+
         }
         if (String.valueOf(NvContraAdmin.getPassword()).isEmpty()) {
             NvContraAdmin.setText("**********");
@@ -567,12 +568,12 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             TxtCedulaAdmin.setText("");
             TxtCedulaAdmin.setForeground(Color.black);
         }
-        
+
         if (TxtNombreAdmin.getText().isEmpty()) {
             TxtNombreAdmin.setText("Ingrese sus Nombres");
             TxtNombreAdmin.setForeground(Color.gray);
         }
-        
+
         if (TxtApelliAdmin.getText().isEmpty()) {
             TxtApelliAdmin.setText("Ingrese sus Apellidos");
             TxtApelliAdmin.setForeground(Color.gray);
@@ -584,17 +585,16 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         if (TxtDirecdmin.getText().isEmpty()) {
             TxtDirecdmin.setText("Ingrese su Dirección");
             TxtDirecdmin.setForeground(Color.gray);
-            
-         if (TxtCorreoAdmin.getText().isEmpty()) {
-            TxtCorreoAdmin.setText("Ingrese su Correo");
-            TxtCorreoAdmin.setForeground(Color.gray);
-        }
-        if (TxtTelfAdmin.getText().isEmpty()) {
-            TxtTelfAdmin.setText("Ingrese su telefono");
-            TxtTelfAdmin.setForeground(Color.gray);
-        }   
-            
-            
+
+            if (TxtCorreoAdmin.getText().isEmpty()) {
+                TxtCorreoAdmin.setText("Ingrese su Correo");
+                TxtCorreoAdmin.setForeground(Color.gray);
+            }
+            if (TxtTelfAdmin.getText().isEmpty()) {
+                TxtTelfAdmin.setText("Ingrese su telefono");
+                TxtTelfAdmin.setForeground(Color.gray);
+            }
+
         }
         if (String.valueOf(NvContraAdmin.getPassword()).isEmpty()) {
             NvContraAdmin.setText("**********");
@@ -612,12 +612,12 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             TxtDirecdmin.setText("");
             TxtDirecdmin.setForeground(Color.black);
         }
-        
+
         if (TxtNombreAdmin.getText().isEmpty()) {
             TxtNombreAdmin.setText("Ingrese sus Nombres");
             TxtNombreAdmin.setForeground(Color.gray);
         }
-        
+
         if (TxtApelliAdmin.getText().isEmpty()) {
             TxtApelliAdmin.setText("Ingrese sus Apellidos");
             TxtApelliAdmin.setForeground(Color.gray);
@@ -629,16 +629,16 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         if (TxtCedulaAdmin.getText().isEmpty()) {
             TxtCedulaAdmin.setText("Ingrese su cedula");
             TxtCedulaAdmin.setForeground(Color.gray);
-            
-        if (TxtCorreoAdmin.getText().isEmpty()) {
-            TxtCorreoAdmin.setText("Ingrese su Correo");
-            TxtCorreoAdmin.setForeground(Color.gray);
-        }
-        if (TxtTelfAdmin.getText().isEmpty()) {
-            TxtTelfAdmin.setText("Ingrese su telefono");
-            TxtTelfAdmin.setForeground(Color.gray);
-        }
-        
+
+            if (TxtCorreoAdmin.getText().isEmpty()) {
+                TxtCorreoAdmin.setText("Ingrese su Correo");
+                TxtCorreoAdmin.setForeground(Color.gray);
+            }
+            if (TxtTelfAdmin.getText().isEmpty()) {
+                TxtTelfAdmin.setText("Ingrese su telefono");
+                TxtTelfAdmin.setForeground(Color.gray);
+            }
+
         }
         if (String.valueOf(NvContraAdmin.getPassword()).isEmpty()) {
             NvContraAdmin.setText("**********");
@@ -652,15 +652,15 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_TxtDirecdminMousePressed
 
     private void NvContraAdminMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NvContraAdminMousePressed
-         if (String.valueOf(NvContraAdmin.getPassword()).equals("**********")) {
+        if (String.valueOf(NvContraAdmin.getPassword()).equals("**********")) {
             NvContraAdmin.setText("");
             NvContraAdmin.setForeground(Color.black);
         }
-         if (TxtNombreAdmin.getText().isEmpty()) {
+        if (TxtNombreAdmin.getText().isEmpty()) {
             TxtNombreAdmin.setText("Ingrese sus Nombres");
             TxtNombreAdmin.setForeground(Color.gray);
         }
-        
+
         if (TxtApelliAdmin.getText().isEmpty()) {
             TxtApelliAdmin.setText("Ingrese sus Apellidos");
             TxtApelliAdmin.setForeground(Color.gray);
@@ -673,7 +673,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             TxtCedulaAdmin.setText("Ingrese su cedula");
             TxtCedulaAdmin.setForeground(Color.gray);
         }
-        
+
         if (TxtCorreoAdmin.getText().isEmpty()) {
             TxtCorreoAdmin.setText("Ingrese su Correo");
             TxtCorreoAdmin.setForeground(Color.gray);
@@ -682,7 +682,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             TxtTelfAdmin.setText("Ingrese su telefono");
             TxtTelfAdmin.setForeground(Color.gray);
         }
-        
+
         if (String.valueOf(CfContraAdmin.getPassword()).isEmpty()) {
             CfContraAdmin.setText("**********");
             CfContraAdmin.setForeground(Color.gray);
@@ -694,11 +694,11 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             CfContraAdmin.setText("");
             CfContraAdmin.setForeground(Color.black);
         }
-         if (TxtNombreAdmin.getText().isEmpty()) {
+        if (TxtNombreAdmin.getText().isEmpty()) {
             TxtNombreAdmin.setText("Ingrese sus Nombres");
             TxtNombreAdmin.setForeground(Color.gray);
         }
-        
+
         if (TxtApelliAdmin.getText().isEmpty()) {
             TxtApelliAdmin.setText("Ingrese sus Apellidos");
             TxtApelliAdmin.setForeground(Color.gray);
@@ -711,7 +711,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             TxtCedulaAdmin.setText("Ingrese su cedula");
             TxtCedulaAdmin.setForeground(Color.gray);
         }
-        
+
         if (TxtCorreoAdmin.getText().isEmpty()) {
             TxtCorreoAdmin.setText("Ingrese su Correo");
             TxtCorreoAdmin.setForeground(Color.gray);
@@ -720,8 +720,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             TxtTelfAdmin.setText("Ingrese su telefono");
             TxtTelfAdmin.setForeground(Color.gray);
         }
-        
-        
+
         if (String.valueOf(NvContraAdmin.getPassword()).isEmpty()) {
             NvContraAdmin.setText("**********");
             NvContraAdmin.setForeground(Color.gray);
@@ -729,60 +728,104 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_CfContraAdminMousePressed
 
     private void BtnRegistrarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarAdminActionPerformed
-       try {
-            String sexo;
-            String Discapacidad;
+// Verificar que no hay campos en blanco
+        
+            if (camposLlenos()) {
+                String sexo;
+                Persona miPersona = new Persona();
 
-            Persona Mipersona = new Persona();
+                miPersona.setCedula(TxtCedulaAdmin.getText());
+                miPersona.setNombre(TxtNombreAdmin.getText());
+                miPersona.setApellido(TxtApelliAdmin.getText());
+                miPersona.setDireccion(TxtDirecdmin.getText());
+                miPersona.setFecha_Nacimiento(DateFechaNaciAdmin.getDate());
 
-            Mipersona.setCedula(TxtCedulaAdmin.getText());
+                if (BtnFemeninoAdmin.isSelected()) {
+                    sexo = "F";
+                } else {
+                    sexo = "M";
+                }
 
-            Mipersona.setNombre(TxtNombreAdmin.getText());
-            Mipersona.setApellido(TxtApelliAdmin.getText());
-            Mipersona.setDireccion(TxtDirecdmin.getText());
-            Mipersona.setFecha_Nacimiento(DateFechaNaciAdmin.getDate());
-            if (BtnFemeninoAdmin.isSelected()) {
-                sexo = "F";
+                miPersona.setSexo(sexo.charAt(0));
+                miPersona.setCod_Nacionalidad(Asignar_cod_dDiscapacidad(Base, CmbBxNacionalidad2Admin.getSelectedItem().toString()));
+                miPersona.setCod_Discapacidad(Asignar_cod_dDiscapacidad(Base, cbx_discapasidad.getSelectedItem().toString()));
+                miPersona.setTelefono(TxtTelfAdmin.getText());
+                miPersona.setEmail(TxtCorreoAdmin.getText());
+                miPersona.setContraseña(String.valueOf(NvContraAdmin.getPassword()));
+
+                // Validaciones
+                if (validarCedula(miPersona.getCedula().trim())
+                        && validarNombre(miPersona.getNombre().trim())
+                        && validarApellido(miPersona.getApellido().trim())
+                        && validarSexo(sexo)
+                        && validarCorreo(miPersona.getEmail().trim())
+                        && validarTelefono(miPersona.getTelefono().trim())
+                        && validarDireccion(miPersona.getDireccion().trim())
+                        && validarContraseña(miPersona.getContraseña(), String.valueOf(CfContraAdmin.getPassword()))){
+
+                    Base.store(miPersona);
+
+                    Administrador miAdmin = new Administrador();
+                    miAdmin.setID_Admin(Calcular_IDAdmin(Base));
+                    miAdmin.setFK_Cedula(TxtCedulaAdmin.getText());
+                    miAdmin.setAños_Experiencia((int) sp_años.getValue());
+                    miAdmin.setPuesto(TxtTituloAdmin.getText());
+
+                    Base.store(miAdmin);
+                    JOptionPane.showMessageDialog(this, "Los datos se han guardado exitosamente");
+
+                    // Ir a la página principal solo si no hay errores
+                    irAPaginaPrincipalAdmin();
+                }
             } else {
-                sexo = "M";
+                JOptionPane.showMessageDialog(this, "Por favor, llene todos los campos antes de guardar.");
             }
+    }
 
-            Mipersona.setSexo(sexo.charAt(0));
-            String codNacion=Asignar_cod_dDiscapacidad(Base, CmbBxNacionalidad2Admin.getSelectedItem().toString());
-            Mipersona.setCod_Nacionalidad(codNacion);
+    private void irAPaginaPrincipalAdmin() {
+        PagPrincipalAdmin PrinAdmin = new PagPrincipalAdmin();
+        PrinAdmin.setVisible(true);
+        this.setVisible(false);
+    }
 
-          
-            String disca=Asignar_cod_dDiscapacidad(Base, cbx_discapasidad.getSelectedItem().toString());
-           Mipersona.setCod_Discapacidad(disca);
-            Mipersona.setTelefono(TxtTelfAdmin.getText());
-            Mipersona.setEmail(TxtCorreoAdmin.getText());
-            Mipersona.setContraseña(String.valueOf(NvContraAdmin.getPassword()));
+    private String campoVacio;
 
-            Base.store(Mipersona);
-/////////////////////////////////////////////////////////////////////////////
-            Administrador miAdmin = new Administrador();
-            miAdmin.setID_Admin(Calcular_IDAdmin(Base));
-            miAdmin.setFK_Cedula(TxtCedulaAdmin.getText());
-            miAdmin.setAños_Experiencia((int)sp_años.getValue());
-            miAdmin.setPuesto(TxtTituloAdmin.getText());
-            
-            Base.store(miAdmin);
-            javax.swing.JOptionPane.showMessageDialog(this, "Los datos se han guardado exitosamente");
-
-        } catch (DatabaseClosedException | DatabaseReadOnlyException | HeadlessException e) {
-
-            javax.swing.JOptionPane.showMessageDialog(this, "Hay un error");
-        } finally {
-            Base.close();
-            IniciaAdmin loginAdmin = new IniciaAdmin();
-            loginAdmin.setVisible(true);
-            this.setVisible(false);
+    private boolean camposLlenos() {
+        if (TxtCedulaAdmin.getText().trim().isEmpty()) {
+            campoVacio = "Cédula";
+            return false;
+        } else if (TxtNombreAdmin.getText().trim().isEmpty()) {
+            campoVacio = "Nombre";
+            return false;
+        } else if (TxtApelliAdmin.getText().trim().isEmpty()) {
+            campoVacio = "Apellido";
+            return false;
+        } else if (TxtCorreoAdmin.getText().trim().isEmpty()) {
+            campoVacio = "Correo";
+            return false;
+        } else if (TxtTituloAdmin.getText().trim().isEmpty()) {
+            campoVacio = "Título";
+            return false;
+        } else if (TxtTelfAdmin.getText().trim().isEmpty()) {
+            campoVacio = "Teléfono";
+            return false;
+        } else if (DateFechaNaciAdmin.getDate() == null) {
+            campoVacio = "Fecha de Nacimiento";
+            return false;
+        } else if (TxtDirecdmin.getText().trim().isEmpty()) {
+            campoVacio = "Dirección";
+            return false;
+        } else {
+            campoVacio = null;
+            return true;
         }
+
     }//GEN-LAST:event_BtnRegistrarAdminActionPerformed
 
     public void Nacionalidades_ingr(ObjectContainer Base) {
         Query query = Base.query();
-        query.constrain(Nacionalidad.class);
+        query.constrain(Nacionalidad.class
+        );
         ObjectSet result = query.execute();
 
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
@@ -796,16 +839,17 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         CmbBxNacionalidad2Admin.setModel(model);
 
     }
-    
+
     public void Discapacidad_ingr(ObjectContainer Base) {
         Query query = Base.query();
-        query.constrain(Discapacidad.class);
+        query.constrain(Discapacidad.class
+        );
         ObjectSet result = query.execute();
 
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
 
         while (result.hasNext()) {
-            Discapacidad  disca= (Discapacidad) result.next();
+            Discapacidad disca = (Discapacidad) result.next();
             String nombre = disca.getTipo_Discapacidad(); // Asume que tienes un método getNombre() en tu clase Nacionalidad
             model.addElement(nombre); // Agrega el nombre al modelo
         }
@@ -813,10 +857,11 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         cbx_discapasidad.setModel(model);
 
     }
-    
-     public String Asignar_cod_Nacionalidad(ObjectContainer Base, String Nacional) {
+
+    public String Asignar_cod_Nacionalidad(ObjectContainer Base, String Nacional) {
         Query query = Base.query();
-        query.constrain(Nacionalidad.class);
+        query.constrain(Nacionalidad.class
+        );
 
         ObjectSet result = query.execute();
 
@@ -828,24 +873,24 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         }
         return null;
     }
+
     public String Asignar_cod_dDiscapacidad(ObjectContainer Base, String discapac) {
         Query query = Base.query();
-        query.constrain(Discapacidad.class);
+        query.constrain(Discapacidad.class
+        );
 
         ObjectSet result = query.execute();
 
         while (result.hasNext()) {
-            Discapacidad disca= (Discapacidad) result.next();
+            Discapacidad disca = (Discapacidad) result.next();
             if (disca.getTipo_Discapacidad().equals(discapac)) {  // Asume que tienes un método getId() en tu clase Nacionalidad
                 return disca.getCod_Discapacidad();  // Asume que tienes un método getNombre() en tu clase Nacionalidad
             }
         }
         return null;
     }
-    
-    
-    
-    
+
+
     private void TxtCorreoAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCorreoAdminActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtCorreoAdminActionPerformed
@@ -855,12 +900,12 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             TxtCorreoAdmin.setText("");
             TxtCorreoAdmin.setForeground(Color.black);
         }
-        
+
         if (TxtNombreAdmin.getText().isEmpty()) {
             TxtNombreAdmin.setText("Ingrese sus Nombres");
             TxtNombreAdmin.setForeground(Color.gray);
         }
-        
+
         if (TxtApelliAdmin.getText().isEmpty()) {
             TxtApelliAdmin.setText("Ingrese sus Apellidos");
             TxtApelliAdmin.setForeground(Color.gray);
@@ -872,16 +917,16 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         if (TxtCedulaAdmin.getText().isEmpty()) {
             TxtCedulaAdmin.setText("Ingrese su cedula");
             TxtCedulaAdmin.setForeground(Color.gray);
-            
-        if (TxtDirecdmin.getText().isEmpty()) {
-            TxtDirecdmin.setText("Ingrese su Dirección");
-            TxtDirecdmin.setForeground(Color.gray);
-        }
-        if (TxtTelfAdmin.getText().isEmpty()) {
-            TxtTelfAdmin.setText("Ingrese su telefono");
-            TxtTelfAdmin.setForeground(Color.gray);
-        }
-        
+
+            if (TxtDirecdmin.getText().isEmpty()) {
+                TxtDirecdmin.setText("Ingrese su Dirección");
+                TxtDirecdmin.setForeground(Color.gray);
+            }
+            if (TxtTelfAdmin.getText().isEmpty()) {
+                TxtTelfAdmin.setText("Ingrese su telefono");
+                TxtTelfAdmin.setForeground(Color.gray);
+            }
+
         }
         if (String.valueOf(NvContraAdmin.getPassword()).isEmpty()) {
             NvContraAdmin.setText("**********");
@@ -899,12 +944,12 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             TxtTelfAdmin.setText("");
             TxtTelfAdmin.setForeground(Color.black);
         }
-        
+
         if (TxtNombreAdmin.getText().isEmpty()) {
             TxtNombreAdmin.setText("Ingrese sus Nombres");
             TxtNombreAdmin.setForeground(Color.gray);
         }
-        
+
         if (TxtApelliAdmin.getText().isEmpty()) {
             TxtApelliAdmin.setText("Ingrese sus Apellidos");
             TxtApelliAdmin.setForeground(Color.gray);
@@ -916,16 +961,16 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         if (TxtCedulaAdmin.getText().isEmpty()) {
             TxtCedulaAdmin.setText("Ingrese su cedula");
             TxtCedulaAdmin.setForeground(Color.gray);
-            
-        if (TxtDirecdmin.getText().isEmpty()) {
-            TxtDirecdmin.setText("Ingrese su Dirección");
-            TxtDirecdmin.setForeground(Color.gray);
-        }
-        if (TxtCorreoAdmin.getText().isEmpty()) {
-            TxtCorreoAdmin.setText("Ingrese su Correo");
-            TxtCorreoAdmin.setForeground(Color.gray);
-        }
-        
+
+            if (TxtDirecdmin.getText().isEmpty()) {
+                TxtDirecdmin.setText("Ingrese su Dirección");
+                TxtDirecdmin.setForeground(Color.gray);
+            }
+            if (TxtCorreoAdmin.getText().isEmpty()) {
+                TxtCorreoAdmin.setText("Ingrese su Correo");
+                TxtCorreoAdmin.setForeground(Color.gray);
+            }
+
         }
         if (String.valueOf(NvContraAdmin.getPassword()).isEmpty()) {
             NvContraAdmin.setText("**********");
@@ -947,7 +992,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
 
             Incremental++;
 
-            Codigo = String.format("AD%04d", Incremental);
+            Codigo = String.format("AD%03d", Incremental);
 
             if (Verificar_CodigoAdmin(Base, Codigo) == 0) {
                 rest = false;
@@ -966,7 +1011,94 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
 
         return result.size();
     }
+
+    //Validaciones
+    public boolean validarCedula(String cedula) {
+        System.out.println("Cédula recibida para validar: " + cedula);
+        if (cedula == null || !cedula.matches("\\d{10}") || cedula.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "La cédula ingresada no es válida", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarNombre(String nombre) {
+        System.out.println("Nombre recibido para validar: " + nombre);
+        if (nombre == null || !nombre.matches("^[A-Za-z]+$") || nombre.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "Ingrese un nombre válido", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarApellido(String apellido) {
+        System.out.println("Apellido recibido para validar: " + apellido);
+        if (apellido == null || !apellido.matches("^[A-Za-z]+$") || apellido.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "Ingrese un apellido válido", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarSexo(String sexo) {
+        System.out.println("Sexo recibido para validar: " + sexo);
+        if (sexo == null || !sexo.matches("[FM]")) {
+            JOptionPane.showMessageDialog(this, "Seleccione un sexo válido", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarCorreo(String correo) {
+        System.out.println("Correo recibido para validar: " + correo);
+        if (correo == null || !correo.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}") || correo.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "El correo electrónico ingresado no es válido", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarpuesto(String titulo) {
+        System.out.println("Puesto recibido para validar: " + titulo);
+        if (titulo == null || !titulo.matches("^[A-Za-z0-9]+$") || titulo.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "El título es obligatorio", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarTelefono(String telefono) {
+        System.out.println("Teléfono recibido para validar: " + telefono);
+        if (telefono == null || !telefono.matches("\\d{10}") || telefono.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "El teléfono ingresado no es válido", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarDireccion(String direccion) {
+        System.out.println("Dirección recibida para validar: " + direccion);
+        if (direccion == null || direccion.trim().isEmpty() || direccion.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "La dirección es obligatoria", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
     
+     public boolean validarContraseña(String contraseña,  String confirmacionContraseña) {
+        System.out.println("Contraseña recibida para validar: " + contraseña);
+         if (contraseña == null || !contraseña.matches("^[\\w.]{2,9}$") || contraseña.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "La contraseña es obligatoria", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+         // Validar que la contraseña y la confirmación sean iguales
+    if (!contraseña.equals(confirmacionContraseña)) {
+        JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+        return true;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton BtnFemeninoAdmin;

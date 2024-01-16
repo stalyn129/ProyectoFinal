@@ -8,6 +8,7 @@ package Login;
 import BBDD.Contenedor_Base;
 import java.awt.Color;
 import Clases.*;
+import Login.PagPrincipalAdmin;
 import Login.Seleccion;
 import com.db4o.*;
 import com.db4o.ObjectContainer;
@@ -50,6 +51,7 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
         btnActualizar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        Btn_Consultar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -185,7 +187,7 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 460, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 460, -1, -1));
 
         jButton3.setText("Eliminar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -194,6 +196,14 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 460, -1, -1));
+
+        Btn_Consultar.setText("Consultar");
+        Btn_Consultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_ConsultarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Btn_Consultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 510, 500));
@@ -307,6 +317,16 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
       Modificar_Nacionalidad(Base, Txt_Codigo.getText(),Txt_Discapacidad.getText(), Txt_Observacion.getText());
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void Btn_ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ConsultarActionPerformed
+        String codigoAConsultar = JOptionPane.showInputDialog(this, "Ingrese el código a consultar");
+
+        if (codigoAConsultar != null && !codigoAConsultar.isEmpty()) {
+            ConsultarRegistro(Base, codigoAConsultar);
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un código válido para consultar.");
+        }
+    }//GEN-LAST:event_Btn_ConsultarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -320,6 +340,7 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnRegresar;
+    private javax.swing.JButton Btn_Consultar;
     private javax.swing.JTextField Txt_Codigo;
     private javax.swing.JTextField Txt_Discapacidad;
     private javax.swing.JTextField Txt_Observacion;
@@ -389,6 +410,20 @@ public void Ingresar_Datos(ObjectContainer Base) {
         }
 
     }
+    public void ConsultarDatos(ObjectContainer base, Discapacidad consulta) {
+        DefaultTableModel modelo = (DefaultTableModel) jTblDiscapacidad.getModel();
+
+        // Limpiar el modelo antes de agregar nuevas filas
+        modelo.setRowCount(0);
+
+        if (consulta != null) {
+            // Agregar el registro consultado a la tabla
+            modelo.addRow(new Object[]{
+                consulta.getCod_Discapacidad(),
+                consulta.getObservacion(),
+                consulta.getTipo_Discapacidad(),});
+        }
+    }
 
     public void Modificar_Nacionalidad(ObjectContainer Base, String Codigo, String Nueva_Tipo_Discapacidad, String Nueva_Observacion) {
         // Crear un objeto Nacionalidad con el código proporcionado
@@ -416,12 +451,27 @@ public void Ingresar_Datos(ObjectContainer Base) {
             javax.swing.JOptionPane.showMessageDialog(this, "Error: No se encontró la discapacidad para modificar.");
         }
     }
+     private void ConsultarRegistro(ObjectContainer base, String Cod_Discapacidad) {
+    
+            Discapacidad nacio = new Discapacidad(Cod_Discapacidad, null, null);
+
+            // Consultando la base de datos
+            ObjectSet result = base.queryByExample(nacio);
+
+            if (result.hasNext()) {
+                // Manejando el resultado (puedes querer mostrarlo o procesarlo)
+                Discapacidad registroConsultado = (Discapacidad) result.next();
+                System.out.println("Registro consultado: " + registroConsultado);
+                JOptionPane.showMessageDialog(this, "El registro se ha consultado con éxito");
+
+                // Llamar al método ConsultarDatos para mostrar el registro en la tabla
+                ConsultarDatos(base, registroConsultado);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+            }
+        } 
 
     private void EliminarRegistro(ObjectContainer base, String codigoDiscapacidad) {
-
-        try {
-            // Mensaje de depuración
-            System.out.println("Conectando a la base de datos...");
 
             Discapacidad midisca = new Discapacidad(codigoDiscapacidad, null, null);
 
@@ -441,20 +491,8 @@ public void Ingresar_Datos(ObjectContainer Base) {
             } else {
                 JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
             }
-        } catch (Exception ex) {
-            // Mensaje de depuración
-            System.err.println("Error al eliminar el registro: " + ex.getMessage());
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error al eliminar el registro: " + ex.getMessage());
-        } finally {
-            if (base != null) {
-                // Mensaje de depuración
-                // System.out.println("Cerrando la conexión a la base de datos...");
-
-                // base.close();
-            }
         }
-    }
+    
     //Verificacion
 
     public int Verificacion(ObjectContainer Base) {
