@@ -9,7 +9,10 @@ import Clases.Administrador;
 import BBDD.Contenedor_Base;
 import Clases.Niño;
 import com.db4o.*;
+import com.db4o.ext.DatabaseClosedException;
+import com.db4o.ext.DatabaseReadOnlyException;
 import java.awt.Color;
+import java.awt.HeadlessException;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -352,7 +355,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
         Base.store(MiNiño); 
         javax.swing.JOptionPane.showMessageDialog(this,"Los datos se han guardado exitosamente");
            
-        } catch (Exception e) {
+        } catch (DatabaseClosedException | DatabaseReadOnlyException | HeadlessException e) {
         } finally{
         Base.close();
         PagPrincipalNiñ PrinNiño = new PagPrincipalNiñ();
@@ -370,7 +373,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
 
             Incremental++;
 
-            Codigo = String.format("AD-", Incremental);
+            Codigo = String.format("N%03d", Incremental);
 
             if (Verificar_CodigoNiño(Base, Codigo) == 0) {
                 rest = false;
