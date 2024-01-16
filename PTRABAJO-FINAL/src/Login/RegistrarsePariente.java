@@ -866,8 +866,8 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         } catch (Exception e) {
         } finally {
             Base.close();
-            PagPrincipalRepresentante Pantapri = new PagPrincipalRepresentante();
-            Pantapri.setVisible(true);
+            InicioRepresentante loginrepresentante = new InicioRepresentante();
+            loginrepresentante.setVisible(true);
             this.setVisible(false);
         }
 

@@ -45,7 +45,7 @@ public class PagJuego3Niño extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         TxtSegunPrtJuego3Morale = new javax.swing.JTextArea();
         jScrollPane6 = new javax.swing.JScrollPane();
-        TxtPrimeraPrtJuego4 = new javax.swing.JTextArea();
+        TxtPrimeraPrtJuego3 = new javax.swing.JTextArea();
         jSeparator6 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
         LblMoraNiñoJuego3 = new javax.swing.JLabel();
@@ -140,14 +140,14 @@ public class PagJuego3Niño extends javax.swing.JFrame {
 
         jPanel3.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 650, 490, 140));
 
-        TxtPrimeraPrtJuego4.setColumns(20);
-        TxtPrimeraPrtJuego4.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        TxtPrimeraPrtJuego4.setLineWrap(true);
-        TxtPrimeraPrtJuego4.setRows(5);
-        TxtPrimeraPrtJuego4.setWrapStyleWord(true);
-        TxtPrimeraPrtJuego4.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        TxtPrimeraPrtJuego4.setEnabled(false);
-        jScrollPane6.setViewportView(TxtPrimeraPrtJuego4);
+        TxtPrimeraPrtJuego3.setColumns(20);
+        TxtPrimeraPrtJuego3.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        TxtPrimeraPrtJuego3.setLineWrap(true);
+        TxtPrimeraPrtJuego3.setRows(5);
+        TxtPrimeraPrtJuego3.setWrapStyleWord(true);
+        TxtPrimeraPrtJuego3.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        TxtPrimeraPrtJuego3.setEnabled(false);
+        jScrollPane6.setViewportView(TxtPrimeraPrtJuego3);
 
         jPanel3.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 490, 300));
 
@@ -246,7 +246,7 @@ public class PagJuego3Niño extends javax.swing.JFrame {
     private javax.swing.JLabel LblTituloDifeNiño1;
     private javax.swing.JLabel LblTituloDifeNiño2;
     private javax.swing.JMenuBar MenuJuego3Niño;
-    private javax.swing.JTextArea TxtPrimeraPrtJuego4;
+    private javax.swing.JTextArea TxtPrimeraPrtJuego3;
     private javax.swing.JTextArea TxtSegunPrtJuego3Morale;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

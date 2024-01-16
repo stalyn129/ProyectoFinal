@@ -48,6 +48,7 @@ public class PagCuentosNiño extends javax.swing.JFrame {
         TxtIntroNiñoCuen = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         TxtDesarroNiñoCuen = new javax.swing.JTextArea();
+        CmBxCuentosNiños = new javax.swing.JComboBox<>();
         LblInformacionNiño = new javax.swing.JLabel();
         LblInformacionNiño1 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
@@ -149,6 +150,14 @@ public class PagCuentosNiño extends javax.swing.JFrame {
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 500, 260));
 
+        CmBxCuentosNiños.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CmBxCuentosNiños.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CmBxCuentosNiñosActionPerformed(evt);
+            }
+        });
+        jPanel3.add(CmBxCuentosNiños, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 20));
+
         jScrollPane1.setViewportView(jPanel3);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 280));
@@ -208,9 +217,14 @@ public class PagCuentosNiño extends javax.swing.JFrame {
                 this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiñoMouseClicked
 
+    private void CmBxCuentosNiñosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmBxCuentosNiñosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmBxCuentosNiñosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnRegresar1;
+    private javax.swing.JComboBox<String> CmBxCuentosNiños;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMenu3puntitosNiño;

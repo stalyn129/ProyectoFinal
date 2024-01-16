@@ -771,8 +771,8 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Hay un error");
         } finally {
             Base.close();
-            PagPrincipalAdmin PrinAdmin = new PagPrincipalAdmin();
-            PrinAdmin.setVisible(true);
+            IniciaAdmin loginAdmin = new IniciaAdmin();
+            loginAdmin.setVisible(true);
             this.setVisible(false);
         }
     }//GEN-LAST:event_BtnRegistrarAdminActionPerformed

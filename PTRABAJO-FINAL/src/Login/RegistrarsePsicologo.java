@@ -93,7 +93,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         Especializacion1 = new javax.swing.JLabel();
         jSeparator17 = new javax.swing.JSeparator();
         Especializacion2 = new javax.swing.JLabel();
-        TxtCorreo1 = new javax.swing.JTextField();
+        TxtCorreoPsicologo = new javax.swing.JTextField();
         jSeparator18 = new javax.swing.JSeparator();
         Especializacion3 = new javax.swing.JLabel();
         sp_años = new javax.swing.JSpinner();
@@ -342,21 +342,21 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         Especializacion2.setText("Correo:");
         jPanel2.add(Especializacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
 
-        TxtCorreo1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        TxtCorreo1.setForeground(new java.awt.Color(153, 153, 153));
-        TxtCorreo1.setText("Ingrese su Correo");
-        TxtCorreo1.setBorder(null);
-        TxtCorreo1.addMouseListener(new java.awt.event.MouseAdapter() {
+        TxtCorreoPsicologo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        TxtCorreoPsicologo.setForeground(new java.awt.Color(153, 153, 153));
+        TxtCorreoPsicologo.setText("Ingrese su Correo");
+        TxtCorreoPsicologo.setBorder(null);
+        TxtCorreoPsicologo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                TxtCorreo1MousePressed(evt);
+                TxtCorreoPsicologoMousePressed(evt);
             }
         });
-        TxtCorreo1.addActionListener(new java.awt.event.ActionListener() {
+        TxtCorreoPsicologo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtCorreo1ActionPerformed(evt);
+                TxtCorreoPsicologoActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtCorreo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 170, -1));
+        jPanel2.add(TxtCorreoPsicologo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 170, -1));
         jPanel2.add(jSeparator18, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 170, 10));
 
         Especializacion3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -457,7 +457,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         }
 
         if (TxtTelefono.getText().isEmpty()) {
-            TxtTelefono.setText("Ingrese su Especialización");
+            TxtTelefono.setText("Ingrese su Telefono");
             TxtTelefono.setForeground(Color.gray);
         }
         if (TxtCeduPsicol.getText().isEmpty()) {
@@ -468,6 +468,11 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             TxtDireccPsicol.setText("Ingrese su Dirección");
             TxtDireccPsicol.setForeground(Color.gray);
         }
+        
+        if (TxtCorreoPsicologo.getText().isEmpty()) {
+            TxtCorreoPsicologo.setText("Ingrese su Correo");
+            TxtCorreoPsicologo.setForeground(Color.gray);
+        }
         if (String.valueOf(NvContraPsicol.getPassword()).isEmpty()) {
             NvContraPsicol.setText("**********");
             NvContraPsicol.setForeground(Color.gray);
@@ -477,10 +482,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             CfContraPsicol.setText("**********");
             CfContraPsicol.setForeground(Color.gray);
         }
-        if (TxtTelefono.getText().isEmpty()) {
-            TxtTelefono.setText("Ingrese su Telefono");
-            TxtTelefono.setForeground(Color.gray);
-        }
+        
     }//GEN-LAST:event_TxtNomPsicolMousePressed
 
     private void TxtApelliPsicolMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtApelliPsicolMousePressed
@@ -495,7 +497,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         }
 
         if (TxtTelefono.getText().isEmpty()) {
-            TxtTelefono.setText("Ingrese su Especialización");
+            TxtTelefono.setText("Ingrese su Telefono");
             TxtTelefono.setForeground(Color.gray);
         }
         if (TxtCeduPsicol.getText().isEmpty()) {
@@ -506,6 +508,11 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             TxtDireccPsicol.setText("Ingrese su Dirección");
             TxtDireccPsicol.setForeground(Color.gray);
         }
+        
+        if (TxtCorreoPsicologo.getText().isEmpty()) {
+            TxtCorreoPsicologo.setText("Ingrese su Correo");
+            TxtCorreoPsicologo.setForeground(Color.gray);
+        }
         if (String.valueOf(NvContraPsicol.getPassword()).isEmpty()) {
             NvContraPsicol.setText("**********");
             NvContraPsicol.setForeground(Color.gray);
@@ -515,10 +522,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             CfContraPsicol.setText("**********");
             CfContraPsicol.setForeground(Color.gray);
         }
-        if (TxtTelefono.getText().isEmpty()) {
-            TxtTelefono.setText("Ingrese su Telefono");
-            TxtTelefono.setForeground(Color.gray);
-        }
+        
     }//GEN-LAST:event_TxtApelliPsicolMousePressed
 
     private void TxtTelefonoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtTelefonoMousePressed
@@ -544,6 +548,11 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         if (TxtDireccPsicol.getText().isEmpty()) {
             TxtDireccPsicol.setText("Ingrese su Dirección");
             TxtDireccPsicol.setForeground(Color.gray);
+        
+        if (TxtCorreoPsicologo.getText().isEmpty()) {
+            TxtCorreoPsicologo.setText("Ingrese su Correo");
+            TxtCorreoPsicologo.setForeground(Color.gray);
+        }    
         }
         if (String.valueOf(NvContraPsicol.getPassword()).isEmpty()) {
             NvContraPsicol.setText("**********");
@@ -572,13 +581,17 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             TxtApelliPsicol.setForeground(Color.gray);
         }
         if (TxtTelefono.getText().isEmpty()) {
-            TxtTelefono.setText("Ingrese su Especialización");
+            TxtTelefono.setText("Ingrese su Telefono");
             TxtTelefono.setForeground(Color.gray);
         }
         if (TxtDireccPsicol.getText().isEmpty()) {
             TxtDireccPsicol.setText("Ingrese su Dirección");
             TxtDireccPsicol.setForeground(Color.gray);
         }
+        if (TxtCorreoPsicologo.getText().isEmpty()) {
+            TxtCorreoPsicologo.setText("Ingrese su Correo");
+            TxtCorreoPsicologo.setForeground(Color.gray);
+        } 
         if (String.valueOf(NvContraPsicol.getPassword()).isEmpty()) {
             NvContraPsicol.setText("**********");
             NvContraPsicol.setForeground(Color.gray);
@@ -588,10 +601,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             CfContraPsicol.setText("**********");
             CfContraPsicol.setForeground(Color.gray);
         }
-        if (TxtTelefono.getText().isEmpty()) {
-            TxtTelefono.setText("Ingrese su Telefono");
-            TxtTelefono.setForeground(Color.gray);
-        }
+        
     }//GEN-LAST:event_TxtCeduPsicolMousePressed
 
     private void TxtDireccPsicolMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtDireccPsicolMousePressed
@@ -610,13 +620,18 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             TxtApelliPsicol.setForeground(Color.gray);
         }
         if (TxtTelefono.getText().isEmpty()) {
-            TxtTelefono.setText("Ingrese su Especialización");
+            TxtTelefono.setText("Ingrese su Telefono");
             TxtTelefono.setForeground(Color.gray);
         }
         if (TxtCeduPsicol.getText().isEmpty()) {
-            TxtCeduPsicol.setText("Ingrese su cedul");
+            TxtCeduPsicol.setText("Ingrese su cedula");
             TxtCeduPsicol.setForeground(Color.gray);
+            
         }
+        if (TxtCorreoPsicologo.getText().isEmpty()) {
+            TxtCorreoPsicologo.setText("Ingrese su Correo");
+            TxtCorreoPsicologo.setForeground(Color.gray);
+        } 
         if (String.valueOf(NvContraPsicol.getPassword()).isEmpty()) {
             NvContraPsicol.setText("**********");
             NvContraPsicol.setForeground(Color.gray);
@@ -626,10 +641,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             CfContraPsicol.setText("**********");
             CfContraPsicol.setForeground(Color.gray);
         }
-        if (TxtTelefono.getText().isEmpty()) {
-            TxtTelefono.setText("Ingrese su Telefono");
-            TxtTelefono.setForeground(Color.gray);
-        }
+        
     }//GEN-LAST:event_TxtDireccPsicolMousePressed
 
     private void NvContraPsicolMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NvContraPsicolMousePressed
@@ -637,7 +649,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             NvContraPsicol.setText("");
             NvContraPsicol.setForeground(Color.black);
         }
-        if (TxtNomPsicol.getText().isEmpty()) {
+       if (TxtNomPsicol.getText().isEmpty()) {
             TxtNomPsicol.setText("Ingrese sus Nombres");
             TxtNomPsicol.setForeground(Color.gray);
         }
@@ -647,38 +659,37 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             TxtApelliPsicol.setForeground(Color.gray);
         }
         if (TxtTelefono.getText().isEmpty()) {
-            TxtTelefono.setText("Ingrese su Especialización");
+            TxtTelefono.setText("Ingrese su Telefono");
             TxtTelefono.setForeground(Color.gray);
         }
         if (TxtCeduPsicol.getText().isEmpty()) {
             TxtCeduPsicol.setText("Ingrese su cedula");
             TxtCeduPsicol.setForeground(Color.gray);
         }
-        if (TxtTelefono.getText().isEmpty()) {
-            TxtTelefono.setText("Ingrese su Especialización");
-            TxtTelefono.setForeground(Color.gray);
-        }
         if (TxtDireccPsicol.getText().isEmpty()) {
             TxtDireccPsicol.setText("Ingrese su Dirección");
             TxtDireccPsicol.setForeground(Color.gray);
         }
-
+        
+        
+        if (TxtCorreoPsicologo.getText().isEmpty()) {
+            TxtCorreoPsicologo.setText("Ingrese su Correo");
+            TxtCorreoPsicologo.setForeground(Color.gray);
+        }  
+        
         if (String.valueOf(CfContraPsicol.getPassword()).isEmpty()) {
             CfContraPsicol.setText("**********");
             CfContraPsicol.setForeground(Color.gray);
         }
-        if (TxtTelefono.getText().isEmpty()) {
-            TxtTelefono.setText("Ingrese su Telefono");
-            TxtTelefono.setForeground(Color.gray);
-        }
+        
     }//GEN-LAST:event_NvContraPsicolMousePressed
 
     private void CfContraPsicolMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CfContraPsicolMousePressed
-        if (String.valueOf(CfContraPsicol.getPassword()).equals("**********")) {
+       if (String.valueOf(CfContraPsicol.getPassword()).equals("**********")) {
             CfContraPsicol.setText("");
             CfContraPsicol.setForeground(Color.black);
         }
-        if (TxtNomPsicol.getText().isEmpty()) {
+       if (TxtNomPsicol.getText().isEmpty()) {
             TxtNomPsicol.setText("Ingrese sus Nombres");
             TxtNomPsicol.setForeground(Color.gray);
         }
@@ -688,29 +699,27 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             TxtApelliPsicol.setForeground(Color.gray);
         }
         if (TxtTelefono.getText().isEmpty()) {
-            TxtTelefono.setText("Ingrese su Especialización");
+            TxtTelefono.setText("Ingrese su Telefono");
             TxtTelefono.setForeground(Color.gray);
         }
         if (TxtCeduPsicol.getText().isEmpty()) {
             TxtCeduPsicol.setText("Ingrese su cedula");
             TxtCeduPsicol.setForeground(Color.gray);
         }
-        if (TxtTelefono.getText().isEmpty()) {
-            TxtTelefono.setText("Ingrese su Especialización");
-            TxtTelefono.setForeground(Color.gray);
-        }
         if (TxtDireccPsicol.getText().isEmpty()) {
             TxtDireccPsicol.setText("Ingrese su Dirección");
             TxtDireccPsicol.setForeground(Color.gray);
         }
-
+        
+        
+        if (TxtCorreoPsicologo.getText().isEmpty()) {
+            TxtCorreoPsicologo.setText("Ingrese su Correo");
+            TxtCorreoPsicologo.setForeground(Color.gray);
+        }  
+        
         if (String.valueOf(NvContraPsicol.getPassword()).isEmpty()) {
             NvContraPsicol.setText("**********");
             NvContraPsicol.setForeground(Color.gray);
-        }
-        if (TxtTelefono.getText().isEmpty()) {
-            TxtTelefono.setText("Ingrese su Telefono");
-            TxtTelefono.setForeground(Color.gray);
         }
     }//GEN-LAST:event_CfContraPsicolMousePressed
 
@@ -718,13 +727,46 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbx_discapacidadActionPerformed
 
-    private void TxtCorreo1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtCorreo1MousePressed
+    private void TxtCorreoPsicologoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtCorreoPsicologoMousePressed
+        if (TxtCorreoPsicologo.getText().equals("Ingrese su Correo")) {
+            TxtCorreoPsicologo.setText("");
+            TxtCorreoPsicologo.setForeground(Color.black);
+        }
+        if (TxtNomPsicol.getText().isEmpty()) {
+            TxtNomPsicol.setText("Ingrese sus Nombres");
+            TxtNomPsicol.setForeground(Color.gray);
+        }
+        if (TxtApelliPsicol.getText().isEmpty()) {
+            TxtApelliPsicol.setText("Ingrese sus Apellidos");
+            TxtApelliPsicol.setForeground(Color.gray);
+        }
+        if (TxtTelefono.getText().isEmpty()) {
+            TxtTelefono.setText("Ingrese su Telefono");
+            TxtTelefono.setForeground(Color.gray);
+        }
+        if (TxtCeduPsicol.getText().isEmpty()) {
+            TxtCeduPsicol.setText("Ingrese su cedula");
+            TxtCeduPsicol.setForeground(Color.gray);
+        }
+        if (TxtDireccPsicol.getText().isEmpty()) {
+            TxtDireccPsicol.setText("Ingrese su Dirección");
+            TxtDireccPsicol.setForeground(Color.gray);
+        }
+        
+        if (String.valueOf(NvContraPsicol.getPassword()).isEmpty()) {
+            NvContraPsicol.setText("**********");
+            NvContraPsicol.setForeground(Color.gray);
 
-    }//GEN-LAST:event_TxtCorreo1MousePressed
+        }
+        if (String.valueOf(CfContraPsicol.getPassword()).isEmpty()) {
+            CfContraPsicol.setText("**********");
+            CfContraPsicol.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_TxtCorreoPsicologoMousePressed
 
-    private void TxtCorreo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCorreo1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtCorreo1ActionPerformed
+    private void TxtCorreoPsicologoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCorreoPsicologoActionPerformed
+        
+    }//GEN-LAST:event_TxtCorreoPsicologoActionPerformed
 
     private void BtnRegistrarsePsicolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarsePsicolActionPerformed
 
@@ -752,7 +794,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         String discapa=Asignar_cod_dDiscapacidad(Base,cbx_discapacidad.getSelectedItem().toString() );
                 
         Mipersona.setCod_Discapacidad(discapa);
-        Mipersona.setEmail(TxtCorreo1.getText());
+        Mipersona.setEmail(TxtCorreoPsicologo.getText());
 
         if (String.valueOf(NvContraPsicol.getPassword()).equals(String.valueOf(CfContraPsicol.getPassword()))) {
             Mipersona.setContraseña(String.valueOf(NvContraPsicol.getPassword()));
@@ -773,8 +815,8 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
 
         Base.close();
 
-        PagPrincipalPsicologo edcsc = new PagPrincipalPsicologo();
-        edcsc.setVisible(true);
+        InicioPsicologo login = new InicioPsicologo();
+        login.setVisible(true);
         this.setVisible(false);
 
     }//GEN-LAST:event_BtnRegistrarsePsicolActionPerformed
@@ -958,7 +1000,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
     private javax.swing.JLabel Sexo;
     private javax.swing.JTextField TxtApelliPsicol;
     private javax.swing.JTextField TxtCeduPsicol;
-    private javax.swing.JTextField TxtCorreo1;
+    private javax.swing.JTextField TxtCorreoPsicologo;
     private javax.swing.JTextField TxtDireccPsicol;
     private javax.swing.JComboBox<String> TxtEspecializacionPsicol1;
     private javax.swing.JTextField TxtNomPsicol;

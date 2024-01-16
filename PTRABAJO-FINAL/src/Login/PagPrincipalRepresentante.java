@@ -28,7 +28,6 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        BtnRegresar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -47,26 +46,15 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
         Fondo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        JMenu3puntitosPariete = new javax.swing.JMenu();
+        JMnItmCerrarPariente = new javax.swing.JMenuItem();
+        JMnPgPrinPariente = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
-        BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
-        BtnRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnRegresar.setOpaque(false);
-        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRegresarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 40, 30));
 
         jLabel2.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         jLabel2.setText("BIENVENIDO A: \" NI UNO MAS\"");
@@ -166,33 +154,39 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 480));
 
-        jMenu1.setBackground(new java.awt.Color(255, 255, 255));
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        JMenu3puntitosPariete.setBackground(new java.awt.Color(255, 255, 255));
+        JMenu3puntitosPariete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setBackground(new java.awt.Color(255, 255, 255));
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
-        jMenuItem1.setText("Cerrar Sesión");
-        jMenu1.add(jMenuItem1);
+        JMnItmCerrarPariente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        JMnItmCerrarPariente.setBackground(new java.awt.Color(255, 255, 255));
+        JMnItmCerrarPariente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
+        JMnItmCerrarPariente.setText("Cerrar Sesión");
+        JMnItmCerrarPariente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                JMnItmCerrarParienteMousePressed(evt);
+            }
+        });
+        JMenu3puntitosPariete.add(JMnItmCerrarPariente);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(JMenu3puntitosPariete);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
-        jMenuBar1.add(jMenu2);
+        JMnPgPrinPariente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
+        JMnPgPrinPariente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JMnPgPrinParienteMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(JMnPgPrinPariente);
 
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
-        Inicio ini = new Inicio();
-        ini.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_BtnRegresarActionPerformed
-
     private void BtnInfRepreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfRepreActionPerformed
-        // TODO add your handling code here:
+        PagInfPariente inf = new PagInfPariente();
+            inf.setVisible(true);
+                this.setVisible(false);
     }//GEN-LAST:event_BtnInfRepreActionPerformed
 
     private void BtnForoRepreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnForoRepreActionPerformed
@@ -200,12 +194,24 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnForoRepreActionPerformed
 
     private void BtnTestRepreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTestRepreActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_BtnTestRepreActionPerformed
 
     private void BtnCuenRepreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCuenRepreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnCuenRepreActionPerformed
+
+    private void JMnPgPrinParienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinParienteMouseClicked
+        PagPrincipalRepresentante principalrepre = new PagPrincipalRepresentante();
+            principalrepre.setVisible(true);
+                this.setVisible(false);
+    }//GEN-LAST:event_JMnPgPrinParienteMouseClicked
+
+    private void JMnItmCerrarParienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarParienteMousePressed
+        InicioRepresentante loginrepre = new InicioRepresentante();
+            loginrepre.setVisible(true);
+                this.setVisible(false);
+    }//GEN-LAST:event_JMnItmCerrarParienteMousePressed
 
 
 
@@ -213,10 +219,12 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
     private javax.swing.JButton BtnCuenRepre;
     private javax.swing.JButton BtnForoRepre;
     private javax.swing.JButton BtnInfRepre;
-    private javax.swing.JButton BtnRegresar;
     private javax.swing.JButton BtnTestRepre;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
+    private javax.swing.JMenu JMenu3puntitosPariete;
+    private javax.swing.JMenuItem JMnItmCerrarPariente;
+    private javax.swing.JMenu JMnPgPrinPariente;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -224,10 +232,7 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

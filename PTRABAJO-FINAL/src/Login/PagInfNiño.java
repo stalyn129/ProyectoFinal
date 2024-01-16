@@ -49,10 +49,6 @@ public class PagInfNiño extends javax.swing.JFrame {
         LblTitulo3InfNiño = new javax.swing.JLabel();
         LblImagen3InfoNiño = new javax.swing.JLabel();
         jSeparator11 = new javax.swing.JSeparator();
-        LblImagen4InfoNiño = new javax.swing.JLabel();
-        jSeparator12 = new javax.swing.JSeparator();
-        LblImagen5InfoNiño = new javax.swing.JLabel();
-        jSeparator13 = new javax.swing.JSeparator();
         jScrollPane5 = new javax.swing.JScrollPane();
         Txt1InfNiño = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -80,21 +76,24 @@ public class PagInfNiño extends javax.swing.JFrame {
         jScrollPane1.setDoubleBuffered(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMinimumSize(new java.awt.Dimension(593, 1034));
+        jPanel1.setPreferredSize(new java.awt.Dimension(593, 1034));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LblInfor2Niño.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         LblInfor2Niño.setText("INFORMACIÓN DEL BULLYING");
-        jPanel1.add(LblInfor2Niño, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 310, -1));
+        jPanel1.add(LblInfor2Niño, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 310, -1));
 
         jSeparator2.setForeground(new java.awt.Color(153, 153, 153));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 260, 10));
 
-        LblTitulo1InfNiño.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jPanel1.add(LblTitulo1InfNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 130, 20));
+        LblTitulo1InfNiño.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        LblTitulo1InfNiño.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(LblTitulo1InfNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 260, 20));
         jPanel1.add(LblImagen1InfoNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 250, 180));
 
         jSeparator4.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 130, 10));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 260, 10));
 
         jSeparator5.setForeground(new java.awt.Color(153, 153, 153));
         jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 250, 10));
@@ -102,11 +101,12 @@ public class PagInfNiño extends javax.swing.JFrame {
         jSeparator6.setForeground(new java.awt.Color(153, 153, 153));
         jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 530, 10));
 
-        LblTitulo2InfNiño.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jPanel1.add(LblTitulo2InfNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 130, 20));
+        LblTitulo2InfNiño.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        LblTitulo2InfNiño.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(LblTitulo2InfNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 260, 20));
 
         jSeparator7.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 130, 10));
+        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 260, 10));
 
         jSeparator8.setForeground(new java.awt.Color(153, 153, 153));
         jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 750, 530, 10));
@@ -128,22 +128,15 @@ public class PagInfNiño extends javax.swing.JFrame {
         jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 810, 260, 200));
 
         jSeparator10.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 800, 240, 10));
+        jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 800, 260, 10));
 
-        LblTitulo3InfNiño.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jPanel1.add(LblTitulo3InfNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 780, 240, 20));
+        LblTitulo3InfNiño.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        LblTitulo3InfNiño.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(LblTitulo3InfNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 780, 260, 20));
         jPanel1.add(LblImagen3InfoNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 810, 250, 200));
 
         jSeparator11.setForeground(new java.awt.Color(153, 153, 153));
         jPanel1.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1020, 250, 10));
-        jPanel1.add(LblImagen4InfoNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1050, 250, 200));
-
-        jSeparator12.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel1.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1260, 250, 10));
-        jPanel1.add(LblImagen5InfoNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 1050, 250, 200));
-
-        jSeparator13.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel1.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 1260, 250, 10));
 
         Txt1InfNiño.setColumns(20);
         Txt1InfNiño.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
@@ -252,8 +245,6 @@ public class PagInfNiño extends javax.swing.JFrame {
     private javax.swing.JLabel LblImagen1InfoNiño;
     private javax.swing.JLabel LblImagen2InfoNiño;
     private javax.swing.JLabel LblImagen3InfoNiño;
-    private javax.swing.JLabel LblImagen4InfoNiño;
-    private javax.swing.JLabel LblImagen5InfoNiño;
     private javax.swing.JLabel LblInfor2Niño;
     private javax.swing.JLabel LblInformacionNiño;
     private javax.swing.JLabel LblTitulo1InfNiño;
@@ -272,8 +263,6 @@ public class PagInfNiño extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
-    private javax.swing.JSeparator jSeparator12;
-    private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
