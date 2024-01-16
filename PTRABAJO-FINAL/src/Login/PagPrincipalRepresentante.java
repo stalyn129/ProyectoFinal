@@ -194,6 +194,11 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnForoRepreActionPerformed
 
     private void BtnTestRepreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTestRepreActionPerformed
+        Test_represent tes=new Test_represent();
+        tes.setVisible(true);
+        this.setVisible(false);
+
+
         
     }//GEN-LAST:event_BtnTestRepreActionPerformed
 

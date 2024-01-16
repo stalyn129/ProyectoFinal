@@ -14,15 +14,17 @@ public class Test {
     private String FKCod_Psicologo;
     private String Titulo_Test;
     private String Descripcion_Test;
+    private String Cod_destinatario;
 
     public Test() {
     }
 
-    public Test(String ID_Test, String FKCod_Psicologo, String Titulo_Test, String Descripcion_Test) {
+    public Test(String ID_Test, String FKCod_Psicologo, String Titulo_Test, String Descripcion_Test, String Cod_destinatario) {
         this.ID_Test = ID_Test;
         this.FKCod_Psicologo = FKCod_Psicologo;
         this.Titulo_Test = Titulo_Test;
         this.Descripcion_Test = Descripcion_Test;
+        this.Cod_destinatario = Cod_destinatario;
     }
 
     public String getID_Test() {
@@ -57,10 +59,19 @@ public class Test {
         this.Descripcion_Test = Descripcion_Test;
     }
 
+    public String getCod_destinatario() {
+        return Cod_destinatario;
+    }
+
+    public void setCod_destinatario(String Cod_destinatario) {
+        this.Cod_destinatario = Cod_destinatario;
+    }
+
     @Override
     public String toString() {
-        return "Test{" + "ID_Test=" + ID_Test + ", FKCod_Psicologo=" + FKCod_Psicologo + ", Titulo_Test=" + Titulo_Test + ", Descripcion_Test=" + Descripcion_Test + '}';
+        return "Test{" + "ID_Test=" + ID_Test + ", FKCod_Psicologo=" + FKCod_Psicologo + ", Titulo_Test=" + Titulo_Test + ", Descripcion_Test=" + Descripcion_Test + ", Cod_destinatario=" + Cod_destinatario + '}';
     }
+
     
     
 }
