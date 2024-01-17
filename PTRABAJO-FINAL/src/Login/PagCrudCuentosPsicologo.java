@@ -165,19 +165,28 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 30));
 
         txtDesarrollo.setColumns(20);
+        txtDesarrollo.setLineWrap(true);
         txtDesarrollo.setRows(5);
+        txtDesarrollo.setToolTipText("");
+        txtDesarrollo.setWrapStyleWord(true);
         jScrollPane5.setViewportView(txtDesarrollo);
 
         jPanel4.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 240, 70));
 
         txtAreaIntroduccion.setColumns(20);
+        txtAreaIntroduccion.setLineWrap(true);
         txtAreaIntroduccion.setRows(5);
+        txtAreaIntroduccion.setToolTipText("");
+        txtAreaIntroduccion.setWrapStyleWord(true);
         jScrollPane6.setViewportView(txtAreaIntroduccion);
 
         jPanel4.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 240, 70));
 
         txtConclusion.setColumns(20);
+        txtConclusion.setLineWrap(true);
         txtConclusion.setRows(5);
+        txtConclusion.setToolTipText("");
+        txtConclusion.setWrapStyleWord(true);
         jScrollPane7.setViewportView(txtConclusion);
 
         jPanel4.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 630, 240, 70));
@@ -227,7 +236,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
 
         jPanel3.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 290, 480));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 290, 520));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 290, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -257,7 +266,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
                 btnActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 460, -1, -1));
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 460, -1, -1));
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -265,7 +274,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
                 btnModificarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, -1, -1));
+        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 460, -1, -1));
 
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -273,7 +282,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 460, -1, -1));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 460, -1, -1));
 
         btnConsultar.setText("Consultar");
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -281,12 +290,12 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
                 btnConsultarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 460, -1, -1));
+        jPanel1.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 460, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 800, 520));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 800, -1));
 
         JMenu3puntitosPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
 

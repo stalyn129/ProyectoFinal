@@ -36,8 +36,6 @@ public class InicioNiño extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         txtUsuario = new javax.swing.JLabel();
         txtContra = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
         txt_contr = new javax.swing.JPasswordField();
         Pnl_Ingre = new javax.swing.JPanel();
         TXT_Ingre = new javax.swing.JLabel();
@@ -46,6 +44,8 @@ public class InicioNiño extends javax.swing.JFrame {
         icono_niños = new javax.swing.JLabel();
         txt_usuario = new javax.swing.JTextField();
         lblMano = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
         BtnRegresar = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
@@ -57,21 +57,15 @@ public class InicioNiño extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtUsuario.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         txtUsuario.setText("Usuario:");
-        jPanel2.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
+        jPanel2.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
 
-        txtContra.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtContra.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         txtContra.setText("Contraseña:");
-        jPanel2.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, -1, -1));
+        jPanel2.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
 
-        jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 160, -1));
-
-        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 160, -1));
-
-        txt_contr.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        txt_contr.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_contr.setForeground(new java.awt.Color(204, 204, 204));
         txt_contr.setText("**********");
         txt_contr.setBorder(null);
@@ -85,7 +79,7 @@ public class InicioNiño extends javax.swing.JFrame {
                 txt_contrActionPerformed(evt);
             }
         });
-        jPanel2.add(txt_contr, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, 169, -1));
+        jPanel2.add(txt_contr, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 200, 20));
 
         Pnl_Ingre.setBackground(new java.awt.Color(102, 204, 255));
 
@@ -109,24 +103,29 @@ public class InicioNiño extends javax.swing.JFrame {
         Pnl_Ingre.setLayout(Pnl_IngreLayout);
         Pnl_IngreLayout.setHorizontalGroup(
             Pnl_IngreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TXT_Ingre, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Pnl_IngreLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(TXT_Ingre, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         Pnl_IngreLayout.setVerticalGroup(
             Pnl_IngreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TXT_Ingre, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Pnl_IngreLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(TXT_Ingre, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel2.add(Pnl_Ingre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, -1, -1));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 269, 10));
+        jPanel2.add(Pnl_Ingre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, -1, -1));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 160, 10));
 
-        txtIniciarSesion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtIniciarSesion.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        txtIniciarSesion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtIniciarSesion.setText("Iniciar Sesión");
-        jPanel2.add(txtIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
+        jPanel2.add(txtIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 130, -1));
 
         icono_niños.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/hermana-y-hermano.png"))); // NOI18N
-        jPanel2.add(icono_niños, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 70, 100));
+        jPanel2.add(icono_niños, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 70, 60));
 
-        txt_usuario.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        txt_usuario.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         txt_usuario.setForeground(new java.awt.Color(204, 204, 204));
         txt_usuario.setText("Usuario");
         txt_usuario.setBorder(null);
@@ -140,12 +139,14 @@ public class InicioNiño extends javax.swing.JFrame {
                 txt_usuarioActionPerformed(evt);
             }
         });
-        jPanel2.add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 168, 20));
+        jPanel2.add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 210, 20));
 
         lblMano.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/impresion-de-la-mano.png"))); // NOI18N
         jPanel2.add(lblMano, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 40, 40));
+        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 210, 10));
+        jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 200, 10));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 310, 420));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 310, 390));
 
         BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
         BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
@@ -262,8 +263,8 @@ public class InicioNiño extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JLabel lblMano;
     private javax.swing.JLabel txtContra;
     private javax.swing.JLabel txtIniciarSesion;

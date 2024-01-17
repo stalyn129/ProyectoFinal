@@ -38,9 +38,6 @@ public class InicioPsicologo extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
-        jSeparator6 = new javax.swing.JSeparator();
         txt_contr = new javax.swing.JPasswordField();
         Pnl_Ingre = new javax.swing.JPanel();
         TXT_Ingre = new javax.swing.JLabel();
@@ -50,6 +47,9 @@ public class InicioPsicologo extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txt_cod_ad = new javax.swing.JPasswordField();
         txt_usuario = new javax.swing.JTextField();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
         BtnRegresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -62,24 +62,15 @@ public class InicioPsicologo extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel2.setText("Usuario:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 125, -1, 20));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel3.setText("Contraseña:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
 
-        jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 160, -1));
-
-        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 150, -1));
-
-        jSeparator6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 150, -1));
-
-        txt_contr.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        txt_contr.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_contr.setForeground(new java.awt.Color(204, 204, 204));
         txt_contr.setText("**********");
         txt_contr.setBorder(null);
@@ -93,7 +84,7 @@ public class InicioPsicologo extends javax.swing.JFrame {
                 txt_contrActionPerformed(evt);
             }
         });
-        jPanel2.add(txt_contr, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 169, -1));
+        jPanel2.add(txt_contr, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 250, 20));
 
         Pnl_Ingre.setBackground(new java.awt.Color(102, 204, 255));
 
@@ -117,28 +108,32 @@ public class InicioPsicologo extends javax.swing.JFrame {
         Pnl_Ingre.setLayout(Pnl_IngreLayout);
         Pnl_IngreLayout.setHorizontalGroup(
             Pnl_IngreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TXT_Ingre, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Pnl_IngreLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(TXT_Ingre, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         Pnl_IngreLayout.setVerticalGroup(
             Pnl_IngreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TXT_Ingre, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Pnl_IngreLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(TXT_Ingre, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel2.add(Pnl_Ingre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, -1, -1));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 269, 10));
+        jPanel2.add(Pnl_Ingre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, -1, -1));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 160, 20));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel5.setText("Iniciar Sesión Psicologo");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 11, -1, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/terapia.png"))); // NOI18N
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 70, 110));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 70, 60));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel7.setText("Codigo Psicologo: ");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 150, 20));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 130, 20));
 
-        txt_cod_ad.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        txt_cod_ad.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_cod_ad.setForeground(new java.awt.Color(204, 204, 204));
         txt_cod_ad.setText("**********");
         txt_cod_ad.setBorder(null);
@@ -152,9 +147,9 @@ public class InicioPsicologo extends javax.swing.JFrame {
                 txt_cod_adActionPerformed(evt);
             }
         });
-        jPanel2.add(txt_cod_ad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 148, -1));
+        jPanel2.add(txt_cod_ad, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 250, 20));
 
-        txt_usuario.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        txt_usuario.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         txt_usuario.setForeground(new java.awt.Color(204, 204, 204));
         txt_usuario.setText("Usuario_Psicologo");
         txt_usuario.setBorder(null);
@@ -168,9 +163,12 @@ public class InicioPsicologo extends javax.swing.JFrame {
                 txt_usuarioActionPerformed(evt);
             }
         });
-        jPanel2.add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 168, 20));
+        jPanel2.add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 250, 20));
+        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 250, 10));
+        jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 250, 10));
+        jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 250, 10));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 310, 410));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 350, 410));
 
         BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
         BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
@@ -270,42 +268,44 @@ public class InicioPsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_cod_adMousePressed
 
     private void TXT_IngreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TXT_IngreMouseClicked
-        if (!txt_usuario.getText().equals("Usuario_Psicologo")) {
-            if (!String.valueOf(txt_contr.getPassword()).equals("**********")) {
+        boolean personaEncontrada = false;
 
-                if (Buscar_persona(Base, txt_usuario.getText(), String.valueOf(txt_contr.getPassword())) == 1) {
+        do {
+            if (!txt_usuario.getText().equals("Usuario_Psicologo")) {
+                if (!String.valueOf(txt_contr.getPassword()).equals("**********")) {
+                    int resultadoBusqueda = Buscar_persona(Base, txt_usuario.getText(), String.valueOf(txt_contr.getPassword()));
 
-                    if (Buscar_usua_psicol(Base, txt_usuario.getText()) == 1) {
+                    if (resultadoBusqueda == 1) {
+                        int resultadoBusquedaPsicologo = Buscar_usua_psicol(Base, txt_usuario.getText());
 
-                        if (String.valueOf(txt_cod_ad.getPassword()).equals(codigoPsicologo)) {
-                            RegistrarsePsicologo.cedula_pasada_interfaz=txt_usuario.getText();
-                            javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
-                            PagPrincipalPsicologo elpagina = new PagPrincipalPsicologo();
-                            elpagina.setVisible(true);
-                            this.setVisible(false);
+                        if (resultadoBusquedaPsicologo == 1) {
+                            if (String.valueOf(txt_cod_ad.getPassword()).equals(codigoPsicologo)) {
+                                RegistrarsePsicologo.cedula_pasada_interfaz = txt_usuario.getText();
+                                javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
+                                Base.close();
+                                PagPrincipalPsicologo elpagina = new PagPrincipalPsicologo();
+                                elpagina.setVisible(true);
+                                this.setVisible(false);
+                                personaEncontrada = true;
+                                
+                            } else {
+                                javax.swing.JOptionPane.showMessageDialog(this, "La clave para el psicologo es incorrecta");
+                            }
                         } else {
-                            javax.swing.JOptionPane.showMessageDialog(this, "La clave para el psicologo es incorrecta");
+                            javax.swing.JOptionPane.showMessageDialog(this, "Al parecer el usuario registrado no es un psicologo");
                         }
-
                     } else {
-                        javax.swing.JOptionPane.showMessageDialog(this, "Al parecer el usuario registrano no es un psicologo");
-
+                        javax.swing.JOptionPane.showMessageDialog(this, "Los datos no se encuentran registrados");
                     }
-
                 } else {
-                    javax.swing.JOptionPane.showMessageDialog(this, "Los datos no se encuentran registrados"
-                            + " ");
-
+                    javax.swing.JOptionPane.showMessageDialog(this, "Ingresa una Contraseña", "ERROR", javax.swing.JOptionPane.ERROR_MESSAGE);
                 }
-
             } else {
-                javax.swing.JOptionPane.showMessageDialog(this, "Ingresa una Contraseña", "ERROR", javax.swing.JOptionPane.ERROR_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this, "Ingresa un Usuario", "ERROR", javax.swing.JOptionPane.ERROR_MESSAGE);
             }
+        } while (!personaEncontrada);
 
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Ingresa un Usuario", "ERROR", javax.swing.JOptionPane.ERROR_MESSAGE);
-        }
-
+        
     }//GEN-LAST:event_TXT_IngreMouseClicked
 
     private void txt_cod_adActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cod_adActionPerformed
@@ -313,12 +313,22 @@ public class InicioPsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_cod_adActionPerformed
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+          
         Base.close();
             Seleccion selec = new Seleccion();
                 selec.setVisible(true);
                     this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
+    
+    public void dispose() {
+        // Cerrar la base de datos cuando se destruye la instancia de InicioPsicologo.
+        if (Base != null) {
+            Base.close();
+        }
 
+        super.dispose();
+    }
+    
     public static int Buscar_persona(ObjectContainer Base, String Cedula, String Contraseña) {
         Persona elperson = new Persona();
         elperson.setCedula(Cedula);
@@ -350,8 +360,8 @@ public class InicioPsicologo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JPasswordField txt_cod_ad;
     private javax.swing.JPasswordField txt_contr;

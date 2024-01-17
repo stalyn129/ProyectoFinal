@@ -5,9 +5,22 @@
  */
 package Login;
 
+import Clases.Consejos;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
 import java.awt.Color;
+import java.awt.Image;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,6 +29,11 @@ import java.awt.Color;
 public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
 
     ObjectContainer Base;
+    JFileChooser seleccionar = new JFileChooser();
+    byte[] imagenconsejo1;
+    byte[] imagenconsejo2;
+    String rutaImagenConsejo1;
+    String rutaImagenConsejo2;
     
     public PagCrudConsejosPsicologo() {
         initComponents();
@@ -39,17 +57,17 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         Txt_TituloConsejPsicologo2 = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        imagen_ = new javax.swing.JLabel();
+        imagen_2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        txA_text_info = new javax.swing.JTextArea();
+        txtAConsejoPsico2 = new javax.swing.JTextArea();
         btn_Ingresar_imagen = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jScrollPane3 = new javax.swing.JScrollPane();
-        txA_text_info1 = new javax.swing.JTextArea();
+        txtAConsejoPsico1 = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         Txt_TituloConsejPsicologo1 = new javax.swing.JTextField();
@@ -62,7 +80,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         jSeparator8 = new javax.swing.JSeparator();
         jSeparator12 = new javax.swing.JSeparator();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        JTConsejos = new javax.swing.JTable();
         btn_ingresar = new javax.swing.JButton();
         btn_ingresar1 = new javax.swing.JButton();
         btn_ingresar2 = new javax.swing.JButton();
@@ -113,20 +131,22 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         jPanel4.add(Txt_TituloConsejPsicologo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 310, 20));
         jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 310, 10));
 
-        imagen_.setForeground(new java.awt.Color(204, 204, 204));
-        imagen_.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imagen_.setText(" Ingresar Imagen");
-        imagen_.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel4.add(imagen_, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 260, 190));
+        imagen_2.setForeground(new java.awt.Color(204, 204, 204));
+        imagen_2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imagen_2.setText(" Ingresar Imagen");
+        imagen_2.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel4.add(imagen_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 260, 190));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel3.setText("Titulo del Consejo Número 2:");
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, -1, -1));
 
-        txA_text_info.setColumns(20);
-        txA_text_info.setRows(5);
-        txA_text_info.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jScrollPane2.setViewportView(txA_text_info);
+        txtAConsejoPsico2.setColumns(20);
+        txtAConsejoPsico2.setLineWrap(true);
+        txtAConsejoPsico2.setRows(5);
+        txtAConsejoPsico2.setWrapStyleWord(true);
+        txtAConsejoPsico2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jScrollPane2.setViewportView(txtAConsejoPsico2);
 
         jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 480, 310, 170));
 
@@ -145,10 +165,12 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 620, 260, 10));
         jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 700, 20));
 
-        txA_text_info1.setColumns(20);
-        txA_text_info1.setRows(5);
-        txA_text_info1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jScrollPane3.setViewportView(txA_text_info1);
+        txtAConsejoPsico1.setColumns(20);
+        txtAConsejoPsico1.setLineWrap(true);
+        txtAConsejoPsico1.setRows(5);
+        txtAConsejoPsico1.setWrapStyleWord(true);
+        txtAConsejoPsico1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jScrollPane3.setViewportView(txtAConsejoPsico1);
 
         jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 310, 170));
 
@@ -198,7 +220,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         jPanel4.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 730, 700, 20));
         jPanel4.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1050, 700, 20));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        JTConsejos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -226,7 +248,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane5.setViewportView(jTable1);
+        jScrollPane5.setViewportView(JTConsejos);
 
         jPanel4.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 760, 700, 240));
 
@@ -372,7 +394,22 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_ingresar2MouseClicked
 
     private void btn_ingresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresar1ActionPerformed
-        // TODO add your handling code here:
+        Consejos miconsejo = new Consejos();
+           //elcue.setCod_Cuento(Txt_Codigo.getText());
+            miconsejo.setTitulo1Consejo(Txt_TituloConsejPsicologo1.getText());
+            miconsejo.setTexConsejo1(txtAConsejoPsico1.getText());
+            miconsejo.setTexConsejo2(txtAConsejoPsico2.getText());
+            miconsejo.setTitulo2Consejo(Txt_TituloConsejPsicologo2.getText());
+            miconsejo.setImagenConsejo1(imagenconsejo1);
+            miconsejo.setImagenConsejo2(imagenconsejo2);
+
+            // Almacena la ruta de la imagen en la propiedad de la entidad Cuento
+            miconsejo.setRutaImageConsejo1(rutaImagenConsejo1);
+            miconsejo.setRutaImageConsejo2(rutaImagenConsejo2);
+
+            Base.store(miconsejo);
+            javax.swing.JOptionPane.showMessageDialog(this, "SE GUARDÓ EN LA BASE");
+            MostrarDatos(Base);
     }//GEN-LAST:event_btn_ingresar1ActionPerformed
 
     private void btn_ingresar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ingresar1MouseClicked
@@ -384,47 +421,57 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_ingresarActionPerformed
 
     private void btn_ingresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ingresarMouseClicked
-//
-//        try {
-//            Informacion info = new Informacion();
-//            cod = Crear_codigo_info(Base);
-//            info.setCod_Info(cod);
-//
-//            info.setTitulo_Info(txt_Titulo.getText());
-//            info.setTexto_Info(txA_text_info.getText());
-//            info.setImagen(imagen);
-//            Base.store(info);
-//            if (RegistrarsePsicologo.cedula_pasada_interfaz==null) {
-//                javax.swing.JOptionPane.showMessageDialog(this, "La cedula estraida del psicologo esta vacia");
-//            }
-//
-//            Ingresa_Info_Publicacion(Base, Crear_codigo_public(Base), cod, RegistrarsePsicologo.cedula_pasada_interfaz, new Date());
-//            javax.swing.JOptionPane.showMessageDialog(this, "Se guardo la Informacion");
-//
-//            MostrarDatos(Base);
-//            Vaciar_datos();
-//        } catch (Exception e) {
-//
-//        }finally{
-//            Base.close();
-//
-//        }
+
     }//GEN-LAST:event_btn_ingresarMouseClicked
 
     private void btn_Ingresar_imagen1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ingresar_imagen1ActionPerformed
-        // TODO add your handling code here:
+       if (seleccionar.showDialog(null, null) == JFileChooser.APPROVE_OPTION) {
+            File archivo = seleccionar.getSelectedFile();
+            if (archivo.getName().endsWith("jpg") || archivo.getName().endsWith("jpeg") || archivo.getName().endsWith("png") || archivo.getName().endsWith("gif")) {
+                imagenconsejo1 = AbrirArchivo(archivo);
+
+                // Convierte el array de bytes a un objeto Image
+                Image imagenOriginal = convertirBytesAImagen(imagenconsejo1);
+
+                // Redimensiona la imagen a 96x15
+                Image imagenRedimensionada = imagenOriginal.getScaledInstance(240, 110, Image.SCALE_SMOOTH);
+
+                // Crea un ImageIcon a partir de la imagen redimensionada
+                ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+                imagen_1.setIcon(iconoRedimensionado);
+
+                // Almacena la ruta del archivo seleccionado en la variable rutaImagenInicial
+                rutaImagenConsejo1 = archivo.getAbsolutePath();
+            } else {
+                JOptionPane.showMessageDialog(null, "Archivo no compatible");
+            }
+        }
     }//GEN-LAST:event_btn_Ingresar_imagen1ActionPerformed
 
     private void btn_Ingresar_imagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ingresar_imagenActionPerformed
-        //        if (seleccionar.showDialog(null, null) == JFileChooser.APPROVE_OPTION) {
-            //            File archivo = seleccionar.getSelectedFile();
-            //            if (archivo.getName().endsWith("jpg") || archivo.getName().endsWith("jpng") || archivo.getName().endsWith("jpng") || archivo.getName().endsWith("png") || archivo.getName().endsWith("gif")) {
-                //                imagen = AbrirArchivo(archivo); // Store the selected image in the imagen variable
-                //                imagen_.setIcon(new ImageIcon(imagen)); // Update the displayed image on the interface
-                //            } else {
-                //                JOptionPane.showMessageDialog(null, "Archivo no compatible");
-                //            }
-            //        }
+        if (seleccionar.showDialog(null, null) == JFileChooser.APPROVE_OPTION) {
+            File archivo = seleccionar.getSelectedFile();
+            if (archivo.getName().endsWith("jpg") || archivo.getName().endsWith("jpeg") || archivo.getName().endsWith("png") || archivo.getName().endsWith("gif")) {
+                imagenconsejo2 = AbrirArchivo(archivo);
+
+                // Convierte el array de bytes a un objeto Image
+                Image imagenOriginal = convertirBytesAImagen(imagenconsejo2);
+
+                // Redimensiona la imagen a 96x15
+                Image imagenRedimensionada = imagenOriginal.getScaledInstance(240, 110, Image.SCALE_SMOOTH);
+
+                // Crea un ImageIcon a partir de la imagen redimensionada
+                ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+                imagen_2.setIcon(iconoRedimensionado);
+
+                // Almacena la ruta del archivo seleccionado en la variable rutaImagenInicial
+                rutaImagenConsejo2 = archivo.getAbsolutePath();
+            } else {
+                JOptionPane.showMessageDialog(null, "Archivo no compatible");
+            }
+        }
     }//GEN-LAST:event_btn_Ingresar_imagenActionPerformed
 
     private void btn_ingresar4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ingresar4MouseClicked
@@ -468,13 +515,63 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Txt_TituloConsejPsicologo1ActionPerformed
 
+    public byte[] AbrirArchivo(File archivo) {
+        try ( FileInputStream entrada = new FileInputStream(archivo)) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = entrada.read(buffer)) != -1) {
+                baos.write(buffer, 0, bytesRead);
+            }
+            return baos.toByteArray();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;  // Devuelve null si hay algún error al leer la imagen
+        }
+    }
+    
+    private Image convertirBytesAImagen(byte[] bytes) {
+        ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+        try {
+            return ImageIO.read(bis);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    
+    public void MostrarDatos(ObjectContainer Base) {
 
+        Consejos datosconsejos = new Consejos();
+        ObjectSet result = Base.get(datosconsejos);
 
+        DefaultTableModel modelo = (DefaultTableModel) JTConsejos.getModel();
+
+        // Limpiar el modelo antes de agregar nuevas filas
+        modelo.setRowCount(0);
+
+        while (result.hasNext()) {
+            Consejos misConsejos = (Consejos) result.next();
+            modelo.addRow(new Object[]{
+                misConsejos.getCod_consejo(),
+                misConsejos.getTitulo1Consejo(),
+                misConsejos.getTitulo2Consejo(),
+                misConsejos.getTexConsejo1(),
+                misConsejos.getTexConsejo2(),
+                misConsejos.getRutaImageConsejo1(),
+                misConsejos.getRutaImageConsejo2()
+
+            });
+        }
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
     private javax.swing.JMenu JMnPgPrinPsicologo;
+    private javax.swing.JTable JTConsejos;
     private javax.swing.JTextField Txt_TituloConsejPsicologo1;
     private javax.swing.JTextField Txt_TituloConsejPsicologo2;
     private javax.swing.JButton btn_Ingresar_imagen;
@@ -484,8 +581,8 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     private javax.swing.JButton btn_ingresar2;
     private javax.swing.JButton btn_ingresar3;
     private javax.swing.JButton btn_ingresar4;
-    private javax.swing.JLabel imagen_;
     private javax.swing.JLabel imagen_1;
+    private javax.swing.JLabel imagen_2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -510,8 +607,14 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea txA_text_info;
-    private javax.swing.JTextArea txA_text_info1;
+    private javax.swing.JTextArea txtAConsejoPsico1;
+    private javax.swing.JTextArea txtAConsejoPsico2;
     // End of variables declaration//GEN-END:variables
+
+public void ingresar_datos(){
+    
+    
+}
+
+
 }

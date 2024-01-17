@@ -172,7 +172,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
                 btn_ingresarActionPerformed(evt);
             }
         });
-        jPanel4.add(btn_ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 1020, 180, -1));
+        jPanel4.add(btn_ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 1020, 180, -1));
 
         imagen_1.setForeground(new java.awt.Color(204, 204, 204));
         imagen_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -354,7 +354,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, -1, 520));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, -1, 500));
 
         JMenu3puntitosPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
 
