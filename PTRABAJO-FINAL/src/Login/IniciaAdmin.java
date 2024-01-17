@@ -311,9 +311,9 @@ ObjectContainer Base;
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
         Base.close();
-        Seleccion selec = new Seleccion();
-        selec.setVisible(true);
-        this.setVisible(false);
+            Seleccion selec = new Seleccion();
+                selec.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
     public static int Buscar_persona(ObjectContainer Base, String Cedula, String Contraseña) {

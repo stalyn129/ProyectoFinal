@@ -5,6 +5,9 @@
  */
 package Login;
 
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
+
 /**
  *
  * @author mauca
@@ -14,8 +17,10 @@ public class PagJuego3Niño extends javax.swing.JFrame {
     /**
      * Creates new form PagJuego3Niño
      */
+    ObjectContainer Base;
     public PagJuego3Niño() {
         initComponents();
+            Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
@@ -53,7 +58,7 @@ public class PagJuego3Niño extends javax.swing.JFrame {
         LblInformacionNiño1 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
-        MenuJuego3Niño = new javax.swing.JMenuBar();
+        MenuJuego1Niño = new javax.swing.JMenuBar();
         JMenu3puntitosNiño = new javax.swing.JMenu();
         JMnItmCerrarNiño = new javax.swing.JMenuItem();
         JMnPgPrinNiño = new javax.swing.JMenu();
@@ -62,6 +67,8 @@ public class PagJuego3Niño extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMinimumSize(new java.awt.Dimension(800, 500));
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BtnRegresar1.setBackground(new java.awt.Color(255, 255, 255));
@@ -176,15 +183,15 @@ public class PagJuego3Niño extends javax.swing.JFrame {
 
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoJuego3Niño.png"))); // NOI18N
         Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
-        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, 0, 1690, 510));
+        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-860, 20, 1690, 480));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         Fondo.setPreferredSize(new java.awt.Dimension(800, 500));
-        jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
+        jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -60, 800, 620));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 800, 500));
 
-        MenuJuego3Niño.setBackground(new java.awt.Color(255, 255, 255));
+        MenuJuego1Niño.setBackground(new java.awt.Color(255, 255, 255));
 
         JMenu3puntitosNiño.setBackground(new java.awt.Color(255, 255, 255));
         JMenu3puntitosNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
@@ -192,9 +199,14 @@ public class PagJuego3Niño extends javax.swing.JFrame {
         JMnItmCerrarNiño.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         JMnItmCerrarNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
         JMnItmCerrarNiño.setText("Cerrar Sesión");
+        JMnItmCerrarNiño.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                JMnItmCerrarNiñoMousePressed(evt);
+            }
+        });
         JMenu3puntitosNiño.add(JMnItmCerrarNiño);
 
-        MenuJuego3Niño.add(JMenu3puntitosNiño);
+        MenuJuego1Niño.add(JMenu3puntitosNiño);
 
         JMnPgPrinNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
         JMnPgPrinNiño.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -202,20 +214,15 @@ public class PagJuego3Niño extends javax.swing.JFrame {
                 JMnPgPrinNiñoMouseClicked(evt);
             }
         });
-        MenuJuego3Niño.add(JMnPgPrinNiño);
+        MenuJuego1Niño.add(JMnPgPrinNiño);
 
-        setJMenuBar(MenuJuego3Niño);
+        setJMenuBar(MenuJuego1Niño);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void JMnPgPrinNiñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiñoMouseClicked
-        PagPrincipalNiñ principalniño = new PagPrincipalNiñ();
-        principalniño.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_JMnPgPrinNiñoMouseClicked
-
     private void BtnRegresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar1ActionPerformed
+        Base.close();
         PagMiniJuegoNiño Juego3 = new PagMiniJuegoNiño();
         Juego3.setVisible(true);
         this.setVisible(false);
@@ -224,6 +231,20 @@ public class PagJuego3Niño extends javax.swing.JFrame {
     private void BtnRespCorre1NiñoJuego3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRespCorre1NiñoJuego3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnRespCorre1NiñoJuego3ActionPerformed
+
+    private void JMnItmCerrarNiñoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarNiñoMousePressed
+        Base.close();
+        InicioNiño login = new InicioNiño();
+        login.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_JMnItmCerrarNiñoMousePressed
+
+    private void JMnPgPrinNiñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiñoMouseClicked
+        Base.close();
+        PagPrincipalNiñ principalniño = new PagPrincipalNiñ();
+        principalniño.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_JMnPgPrinNiñoMouseClicked
 
 
 
@@ -245,7 +266,7 @@ public class PagJuego3Niño extends javax.swing.JFrame {
     private javax.swing.JLabel LblSubTituCorrectoJuegNiño;
     private javax.swing.JLabel LblTituloDifeNiño1;
     private javax.swing.JLabel LblTituloDifeNiño2;
-    private javax.swing.JMenuBar MenuJuego3Niño;
+    private javax.swing.JMenuBar MenuJuego1Niño;
     private javax.swing.JTextArea TxtPrimeraPrtJuego3;
     private javax.swing.JTextArea TxtSegunPrtJuego3Morale;
     private javax.swing.JPanel jPanel1;

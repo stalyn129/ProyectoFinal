@@ -5,17 +5,25 @@
  */
 package Login;
 
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
+
 /**
  *
  * @author mauca
  */
+
+
 public class PagPrincipalNiñ extends javax.swing.JFrame {
 
     /**
      * Creates new form PagPrincipalNiñ
      */
+    ObjectContainer Base;
+    
     public PagPrincipalNiñ() {
         initComponents();
+         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
@@ -187,6 +195,11 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
         jMenuItem1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
         jMenuItem1.setText("Cerrar Sesión");
+        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem1MousePressed(evt);
+            }
+        });
         JMnItmCerrarNiño2.add(jMenuItem1);
 
         MenuGenerlNiño.add(JMnItmCerrarNiño2);
@@ -205,40 +218,54 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JMnPgPrinNiño2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiño2MouseClicked
-        PagPrincipalNiñ principalniño = new PagPrincipalNiñ();
-        principalniño.setVisible(true);
-        this.setVisible(false);
+        Base.close();
+            PagPrincipalNiñ principalniño = new PagPrincipalNiñ();
+                principalniño.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiño2MouseClicked
 
     private void BtnConseNiñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConseNiñoActionPerformed
-        PagConsejosNiño consejos = new PagConsejosNiño();
-        consejos.setVisible(true);
-        this.setVisible(false);
+        Base.close();    
+            PagConsejosNiño consejos = new PagConsejosNiño();
+                consejos.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnConseNiñoActionPerformed
 
     private void BtnCuentosNiño1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCuentosNiño1ActionPerformed
-        PagCuentosNiño cuentos = new PagCuentosNiño();
-        cuentos.setVisible(true);
-        this.setVisible(false);
+        Base.close();    
+            PagCuentosNiño cuentos = new PagCuentosNiño();
+                cuentos.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnCuentosNiño1ActionPerformed
 
     private void BtnTestNiño2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTestNiño2ActionPerformed
-        PagTestNiño test = new PagTestNiño();
-        test.setVisible(true);
-        this.setVisible(false);
+        Base.close();
+            PagTestNiño test = new PagTestNiño();
+                test.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnTestNiño2ActionPerformed
 
     private void BtnMiniJueNiño1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMiniJueNiño1ActionPerformed
-        PagMiniJuegoNiño minijuego = new PagMiniJuegoNiño();
-        minijuego.setVisible(true);
-        this.setVisible(false);
+        Base.close();    
+            PagMiniJuegoNiño minijuego = new PagMiniJuegoNiño();
+                minijuego.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnMiniJueNiño1ActionPerformed
 
     private void BtnInfNiñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfNiñoActionPerformed
-        PagInfNiño informacion = new PagInfNiño();
-        informacion.setVisible(true);
-        this.setVisible(false);
+        Base.close();
+            PagInfNiño informacion = new PagInfNiño();
+                informacion.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnInfNiñoActionPerformed
+
+    private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
+    
+        Base.close();
+            InicioNiño login = new InicioNiño();
+                login.setVisible(true);
+                    this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem1MousePressed
 
 
 
@@ -253,17 +280,9 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JPanel Inf;
-    private javax.swing.JMenu JMenu3puntitosNiño;
-    private javax.swing.JMenu JMenu3puntitosNiño1;
-    private javax.swing.JMenuItem JMnItmCerrarNiño;
-    private javax.swing.JMenuItem JMnItmCerrarNiño1;
     private javax.swing.JMenu JMnItmCerrarNiño2;
-    private javax.swing.JMenu JMnPgPrinNiño;
-    private javax.swing.JMenu JMnPgPrinNiño1;
     private javax.swing.JMenu JMnPgPrinNiño2;
     private javax.swing.JMenuBar MenuGenerlNiño;
-    private javax.swing.JMenuBar MenuTestNiño;
-    private javax.swing.JMenuBar MenuTestNiño1;
     private javax.swing.JPanel MiniJuegos;
     private javax.swing.JPanel Test;
     private javax.swing.JLabel jLabel1;

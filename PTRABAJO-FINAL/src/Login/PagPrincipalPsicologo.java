@@ -5,6 +5,10 @@
  */
 package Login;
 
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
+import com.db4o.internal.ObjectContainerBase;
+
 /**
  *
  * @author mauca
@@ -14,8 +18,10 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
     /**
      * Creates new form PagPrincipalPsicologo
      */
+    ObjectContainer Base;
     public PagPrincipalPsicologo() {
         initComponents();
+            Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
@@ -243,33 +249,38 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnCuenPsicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCuenPsicoActionPerformed
-        PagCrudConsejosPsicologo consejos = new PagCrudConsejosPsicologo();
-        consejos.setVisible(true);
-        this.setVisible(false);
+        Base.close();
+            PagCrudCuentosPsicologo cuentos = new PagCrudCuentosPsicologo();
+                cuentos.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnCuenPsicoActionPerformed
 
     private void BtnInfPsicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfPsicoActionPerformed
-        PagCrudInformaPsicologo informacion = new PagCrudInformaPsicologo();
-        informacion.setVisible(true);
-        this.setVisible(false);
+        Base.close();  
+            PagCrudInformaPsicologo informacion = new PagCrudInformaPsicologo();
+                informacion.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnInfPsicoActionPerformed
 
     private void BtnForoPsicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnForoPsicoActionPerformed
-        // TODO add your handling code here:
+        Base.close();
+            PagCrudForoPsicologo foro = new PagCrudForoPsicologo();
+                foro.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnForoPsicoActionPerformed
 
     private void BtnTestPsicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTestPsicoActionPerformed
-        Crud_TEST eltes = new Crud_TEST();
-        eltes.setVisible(true);
-        this.setVisible(false);
-        
-
+        Base.close();   
+            PagCrudTestPsicologo eltes = new PagCrudTestPsicologo();
+                eltes.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnTestPsicoActionPerformed
 
     private void BtnConsePsicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConsePsicoActionPerformed
-        PagCrudConsejosPsicologo consejospsicologo = new PagCrudConsejosPsicologo();
-        consejospsicologo.setVisible(true);
-        this.setVisible(false);
+        Base.close();  
+            PagCrudConsejosPsicologo consejospsicologo = new PagCrudConsejosPsicologo();
+                consejospsicologo.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnConsePsicoActionPerformed
 
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
@@ -277,21 +288,24 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void BtnInfPsicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnInfPsicoMouseClicked
-        PagCrudInformaPsicologo ing = new PagCrudInformaPsicologo();
-        ing.setVisible(true);
-        this.setVisible(false);
+        Base.close();  
+            PagCrudInformaPsicologo ing = new PagCrudInformaPsicologo();
+                ing.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnInfPsicoMouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        PagCrudInformaPsicologo ing = new PagCrudInformaPsicologo();
-        ing.setVisible(true);
-        this.setVisible(false);
+        Base.close();      
+            PagCrudInformaPsicologo ing = new PagCrudInformaPsicologo();
+                ing.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void JMnPgPrinPsicoloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinPsicoloMouseClicked
-        PagPrincipalPsicologo principal = new PagPrincipalPsicologo();
-        principal.setVisible(true);
-        this.setVisible(false);
+        Base.close();
+            PagPrincipalPsicologo principal = new PagPrincipalPsicologo();
+                principal.setVisible(true);
+                    this.setVisible(false);
         
     }//GEN-LAST:event_JMnPgPrinPsicoloMouseClicked
 
@@ -300,15 +314,17 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_JMnItmCerrarPsicologoMouseClicked
 
     private void JMnItmCerrarPsicologoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMousePressed
-        InicioPsicologo loginPsicologo = new InicioPsicologo();
-        loginPsicologo.setVisible(true);
-        this.setVisible(false);
+        Base.close();    
+            InicioPsicologo loginPsicologo = new InicioPsicologo();
+                loginPsicologo.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_JMnItmCerrarPsicologoMousePressed
 
     private void BtnCuenPsico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCuenPsico1ActionPerformed
-        PagCrudJuegosPsicologo juegos = new PagCrudJuegosPsicologo();
-        juegos.setVisible(true);
-        this.setVisible(false);
+        Base.close();   
+            PagCrudJuegosPsicologo juegos = new PagCrudJuegosPsicologo();
+                juegos.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnCuenPsico1ActionPerformed
 
 

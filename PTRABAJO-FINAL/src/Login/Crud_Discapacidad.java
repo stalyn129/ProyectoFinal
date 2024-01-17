@@ -41,7 +41,6 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         Txt_Observacion = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        BtnRegresar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         Txt_Codigo = new javax.swing.JTextField();
@@ -53,11 +52,17 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         Btn_Consultar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setMinimumSize(new java.awt.Dimension(290, 500));
+        jPanel2.setPreferredSize(new java.awt.Dimension(290, 500));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
@@ -106,17 +111,6 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
         jPanel2.add(Txt_Observacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 270, 20));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 240, 10));
 
-        BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
-        BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
-        BtnRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnRegresar.setOpaque(false);
-        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRegresarActionPerformed(evt);
-            }
-        });
-        jPanel2.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 50, 40));
-
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,7 +140,7 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
         jPanel2.add(Txt_Codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 120, 20));
         jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 240, 10));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 500));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 290, 500));
 
         jTblDiscapacidad.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -171,7 +165,7 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTblDiscapacidad);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, -1, 400));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, -1, 400));
 
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -179,7 +173,7 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
                 btnActualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 460, -1, -1));
+        getContentPane().add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, -1, -1));
 
         jButton2.setText("Modificar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -187,7 +181,7 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 460, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, -1, -1));
 
         jButton3.setText("Eliminar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -195,7 +189,7 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 460, -1, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 440, -1, -1));
 
         Btn_Consultar.setText("Consultar");
         Btn_Consultar.addActionListener(new java.awt.event.ActionListener() {
@@ -203,10 +197,35 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
                 Btn_ConsultarActionPerformed(evt);
             }
         });
-        getContentPane().add(Btn_Consultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, -1, -1));
+        getContentPane().add(Btn_Consultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 440, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 510, 500));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 510, 480));
+
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setBackground(new java.awt.Color(255, 255, 255));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
+        jMenuItem1.setText("Cerrar Sesión");
+        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem1MousePressed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -253,12 +272,6 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
     private void Txt_ObservacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_ObservacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Txt_ObservacionActionPerformed
-
-    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
-        PagPrincipalAdmin prinAdmn = new PagPrincipalAdmin();
-        prinAdmn.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_BtnRegresarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         if (Txt_Codigo.getText().equals("Ejem: DIS-001") || Txt_Discapacidad.getText().equals("Ejem: Motora") || Txt_Observacion.getText().equals("Ejem: Esta discapacidad esta asoc...")) {
@@ -327,6 +340,20 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_Btn_ConsultarActionPerformed
 
+    private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
+        Base.close();
+        IniciaAdmin loginadmin = new IniciaAdmin ();
+        loginadmin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem1MousePressed
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        Base.close();
+        PagPrincipalAdmin paginaprinciadmi = new PagPrincipalAdmin();
+        paginaprinciadmi.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenu2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -339,7 +366,6 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnRegresar;
     private javax.swing.JButton Btn_Consultar;
     private javax.swing.JTextField Txt_Codigo;
     private javax.swing.JTextField Txt_Discapacidad;
@@ -353,6 +379,10 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;

@@ -5,17 +5,20 @@
  */
 package Login;
 
+import com.db4o.*;
+import com.db4o.ObjectContainer;
+
 /**
  *
  * @author mauca
  */
 public class PagTestNiño extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PagTestNiño
-     */
+    ObjectContainer Base;
+    
     public PagTestNiño() {
         initComponents();
+            Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
@@ -33,7 +36,6 @@ public class PagTestNiño extends javax.swing.JFrame {
         BtnGrupEmocionesNiño4 = new javax.swing.ButtonGroup();
         BtnGrupEmocionesNiño5 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        BtnRegresar1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         LblInfor2Niño = new javax.swing.JLabel();
@@ -89,17 +91,6 @@ public class PagTestNiño extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        BtnRegresar1.setBackground(new java.awt.Color(255, 255, 255));
-        BtnRegresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
-        BtnRegresar1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnRegresar1.setOpaque(false);
-        BtnRegresar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRegresar1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BtnRegresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 40, 30));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(null);
@@ -290,6 +281,11 @@ public class PagTestNiño extends javax.swing.JFrame {
         JMnItmCerrarNiño.setBackground(new java.awt.Color(255, 255, 255));
         JMnItmCerrarNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
         JMnItmCerrarNiño.setText("Cerrar Sesión");
+        JMnItmCerrarNiño.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                JMnItmCerrarNiñoMousePressed(evt);
+            }
+        });
         JMenu3puntitosNiño.add(JMnItmCerrarNiño);
 
         MenuTestNiño.add(JMenu3puntitosNiño);
@@ -307,17 +303,19 @@ public class PagTestNiño extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnRegresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar1ActionPerformed
-        PagPrincipalNiñ pagpeincipalniño = new PagPrincipalNiñ();
-        pagpeincipalniño.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_BtnRegresar1ActionPerformed
-
     private void JMnPgPrinNiñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiñoMouseClicked
-        PagPrincipalNiñ principalniño = new PagPrincipalNiñ();
-            principalniño.setVisible(true);
-                this.setVisible(false);
+        Base.close();
+            PagPrincipalNiñ principalniño = new PagPrincipalNiñ();
+                principalniño.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiñoMouseClicked
+
+    private void JMnItmCerrarNiñoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarNiñoMousePressed
+        Base.close();
+            InicioNiño login = new InicioNiño();
+                login.setVisible(true);
+                    this.setVisible(false);
+    }//GEN-LAST:event_JMnItmCerrarNiñoMousePressed
 
 
 
@@ -327,7 +325,6 @@ public class PagTestNiño extends javax.swing.JFrame {
     private javax.swing.ButtonGroup BtnGrupEmocionesNiño3;
     private javax.swing.ButtonGroup BtnGrupEmocionesNiño4;
     private javax.swing.ButtonGroup BtnGrupEmocionesNiño5;
-    private javax.swing.JButton BtnRegresar1;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMenu3puntitosNiño;

@@ -5,6 +5,8 @@
  */
 package Login;
 
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
 import java.awt.Color;
 
 /**
@@ -13,11 +15,12 @@ import java.awt.Color;
  */
 public class InicioNiño extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login_niño
-     */
+    //ObjectContainer Base;
+    
     public InicioNiño() {
         initComponents();
+            //Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+            
     }
 
     /**
@@ -195,9 +198,9 @@ public class InicioNiño extends javax.swing.JFrame {
 
                     if (txt_usuario.getText().equals("0123456789") && String.valueOf(txt_contr.getPassword()).equals("1234")) {
                         javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
-                        PagPrincipalNiñ Prin=new PagPrincipalNiñ();
-                        Prin.setVisible(true);
-                        this.setVisible(false);
+                            PagPrincipalNiñ Prin=new PagPrincipalNiñ();
+                                Prin.setVisible(true);
+                                    this.setVisible(false);
                     } else {
                         javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE\n Usuario: 0123456789\nContraseña:1234", "ERROR", javax.swing.JOptionPane.ERROR_MESSAGE);
                     }
@@ -211,7 +214,7 @@ public class InicioNiño extends javax.swing.JFrame {
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Ingresa un Usuario", "ERROR", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-
+       
     }//GEN-LAST:event_TXT_IngreMouseClicked
 
     private void TXT_IngreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TXT_IngreMouseEntered
@@ -242,9 +245,10 @@ public class InicioNiño extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_usuarioActionPerformed
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
-        Seleccion selec = new Seleccion();
-        selec.setVisible(true);
-        this.setVisible(false);
+        //Base.close();
+            Seleccion selec = new Seleccion();
+                selec.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
 

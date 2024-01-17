@@ -9,6 +9,7 @@ import Login.Inicio;
 import Login.InicioPsicologo;
 import Login.InicioNiño;
 import Login.InicioRepresentante;
+import com.db4o.*;
 
 /**
  *
@@ -16,11 +17,11 @@ import Login.InicioRepresentante;
  */
 public class Seleccion extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Seleccion
-     */
+    ObjectContainer Base;
+    
     public Seleccion() {
         initComponents();
+            Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
@@ -160,33 +161,38 @@ public class Seleccion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAdminActionPerformed
-        IniciaAdmin admin = new IniciaAdmin();
-            admin.setVisible(true);
-                this.setVisible(false);
+        Base.close();    
+            IniciaAdmin admin = new IniciaAdmin();
+                admin.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnAdminActionPerformed
 
     private void BtnRepresentanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRepresentanteActionPerformed
-        InicioRepresentante repre = new InicioRepresentante();
-            repre.setVisible(true);
-                this.setVisible(false);
+        Base.close();
+            InicioRepresentante repre = new InicioRepresentante();
+                repre.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnRepresentanteActionPerformed
 
     private void BtnPsicologoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPsicologoActionPerformed
-        InicioPsicologo psicologo = new InicioPsicologo();
-            psicologo.setVisible(true);
-                this.setVisible(false);
+        Base.close();
+            InicioPsicologo psicologo = new InicioPsicologo();
+                psicologo.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnPsicologoActionPerformed
 
     private void BtnInfanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfanteActionPerformed
-        InicioNiño infante = new InicioNiño();
-            infante.setVisible(true);
-                this.setVisible(false);
+        Base.close();
+            InicioNiño infante = new InicioNiño();
+                infante.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnInfanteActionPerformed
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
-        Inicio ini = new Inicio();
-            ini.setVisible(true);
-                this.setVisible(false);
+        Base.close();
+            Inicio ini = new Inicio();
+                ini.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
 

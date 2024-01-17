@@ -428,9 +428,9 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
         RegistrarseGeneral general = new RegistrarseGeneral();
-        general.setVisible(true);
-        this.setVisible(false);
-        Base.close();
+            general.setVisible(true);
+                this.setVisible(false);
+                    Base.close();
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
     private void CmbBxNacionalidad2AdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbBxNacionalidad2AdminActionPerformed

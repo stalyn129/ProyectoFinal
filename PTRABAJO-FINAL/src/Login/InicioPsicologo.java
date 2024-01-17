@@ -313,9 +313,10 @@ public class InicioPsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_cod_adActionPerformed
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
-        Seleccion selec = new Seleccion();
-        selec.setVisible(true);
-        this.setVisible(false);
+        Base.close();
+            Seleccion selec = new Seleccion();
+                selec.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
     public static int Buscar_persona(ObjectContainer Base, String Cedula, String Contraseña) {

@@ -6,6 +6,8 @@
 package Login;
 
 import Login.PagPrincipalNiñ;
+import com.db4o.*;
+import com.db4o.ObjectContainer;
 
 /**
  *
@@ -13,11 +15,11 @@ import Login.PagPrincipalNiñ;
  */
 public class PagForoPariente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PagForoPariente
-     */
+    ObjectContainer Base;
+    
     public PagForoPariente() {
         initComponents();
+            Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
@@ -109,6 +111,11 @@ public class PagForoPariente extends javax.swing.JFrame {
         JMnItmCerrarNiño.setBackground(new java.awt.Color(255, 255, 255));
         JMnItmCerrarNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
         JMnItmCerrarNiño.setText("Cerrar Sesión");
+        JMnItmCerrarNiño.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                JMnItmCerrarNiñoMousePressed(evt);
+            }
+        });
         JMenu3puntitosNiño.add(JMnItmCerrarNiño);
 
         MenuCuentosNiño.add(JMenu3puntitosNiño);
@@ -127,10 +134,18 @@ public class PagForoPariente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JMnPgPrinNiñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiñoMouseClicked
-        PagPrincipalNiñ principalniño = new PagPrincipalNiñ();
-        principalniño.setVisible(true);
-        this.setVisible(false);
+        Base.close();        
+            PagPrincipalRepresentante principalrepresetante = new PagPrincipalRepresentante();
+                principalrepresetante.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiñoMouseClicked
+
+    private void JMnItmCerrarNiñoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarNiñoMousePressed
+        Base.close();
+            InicioRepresentante loginrepre = new InicioRepresentante();
+                loginrepre.setVisible(true);
+                    this.setVisible(false);
+    }//GEN-LAST:event_JMnItmCerrarNiñoMousePressed
 
     /**
      * @param args the command line arguments

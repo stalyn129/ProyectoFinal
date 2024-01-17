@@ -300,9 +300,10 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
-        RegistrarseGeneral general = new RegistrarseGeneral();
-        general.setVisible(true);
-        this.setVisible(false);
+        Base.close();
+            RegistrarseGeneral general = new RegistrarseGeneral();
+                general.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
     private void TxtApellidoNiñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtApellidoNiñoActionPerformed

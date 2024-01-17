@@ -5,6 +5,9 @@
  */
 package Login;
 
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
+
 /**
  *
  * @author mauca
@@ -14,8 +17,10 @@ public class PagJuego1Niño extends javax.swing.JFrame {
     /**
      * Creates new form PagJuego1Niño
      */
+    ObjectContainer Base;
     public PagJuego1Niño() {
         initComponents();
+            Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
@@ -157,6 +162,11 @@ public class PagJuego1Niño extends javax.swing.JFrame {
         JMnItmCerrarNiño.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         JMnItmCerrarNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
         JMnItmCerrarNiño.setText("Cerrar Sesión");
+        JMnItmCerrarNiño.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                JMnItmCerrarNiñoMousePressed(evt);
+            }
+        });
         JMenu3puntitosNiño.add(JMnItmCerrarNiño);
 
         MenuJuego1Niño.add(JMenu3puntitosNiño);
@@ -175,16 +185,25 @@ public class PagJuego1Niño extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnRegresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar1ActionPerformed
-        PagMiniJuegoNiño Juego1 = new PagMiniJuegoNiño();
-        Juego1.setVisible(true);
-        this.setVisible(false);
+        Base.close();
+            PagMiniJuegoNiño Juego1 = new PagMiniJuegoNiño();
+                Juego1.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnRegresar1ActionPerformed
 
     private void JMnPgPrinNiñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiñoMouseClicked
-        PagPrincipalNiñ principalniño = new PagPrincipalNiñ();
-            principalniño.setVisible(true);
-                this.setVisible(false);
+        Base.close();
+            PagPrincipalNiñ principalniño = new PagPrincipalNiñ();
+                principalniño.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiñoMouseClicked
+
+    private void JMnItmCerrarNiñoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarNiñoMousePressed
+        Base.close();
+            InicioNiño login = new InicioNiño();
+                login.setVisible(true);
+                    this.setVisible(false);
+    }//GEN-LAST:event_JMnItmCerrarNiñoMousePressed
 
 
 

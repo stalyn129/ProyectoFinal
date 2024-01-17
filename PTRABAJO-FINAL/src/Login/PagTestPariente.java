@@ -4,18 +4,43 @@
  * and open the template in the editor.
  */
 package Login;
+import Login.*;
+import BBDD.*;
+import Clases.*;
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
+import com.db4o.ext.DatabaseClosedException;
+import com.db4o.ext.Db4oIOException;
+import java.awt.HeadlessException;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.ListModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author mauca
+ * @author alexa
  */
 public class PagTestPariente extends javax.swing.JFrame {
 
+    ObjectContainer Base;
+UserDataSingleton usarData = UserDataSingleton.getInstance();
+
     /**
-     * Creates new form PagTestPariente
+     * Creates new form Responder_test_Repre
      */
     public PagTestPariente() {
         initComponents();
+        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+        lista_test.addListSelectionListener(e -> {
+        if (!e.getValueIsAdjusting()) {
+            
+            String elementoSeleccionado = lista_test.getSelectedValue();
+            caracteristicas_ponle(Base, elementoSeleccionado);
+            
+        }
+    });
     }
 
     /**
@@ -28,125 +53,148 @@ public class PagTestPariente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jPanel4 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        btn_Cargar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel3 = new javax.swing.JPanel();
-        LblTituloPrincipalPariente = new javax.swing.JLabel();
-        LblTitulo3InfNiño = new javax.swing.JLabel();
-        LblImagen4InfoNiño = new javax.swing.JLabel();
-        LblTest1Pariente = new javax.swing.JLabel();
-        jSeparator4 = new javax.swing.JSeparator();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator5 = new javax.swing.JSeparator();
-        LblTest2Pariente = new javax.swing.JLabel();
-        jSeparator6 = new javax.swing.JSeparator();
-        LblTest3Pariente = new javax.swing.JLabel();
-        LblTest4Pariente = new javax.swing.JLabel();
-        jSeparator7 = new javax.swing.JSeparator();
-        LblTest5Pariente = new javax.swing.JLabel();
-        jSeparator8 = new javax.swing.JSeparator();
-        LblTestPariente2 = new javax.swing.JLabel();
-        LblTestPariente1 = new javax.swing.JLabel();
+        lista_test = new javax.swing.JList<>();
+        jLabel2 = new javax.swing.JLabel();
+        btn_responder = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        txt_num = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txa_descr = new javax.swing.JTextArea();
+        jLabel6 = new javax.swing.JLabel();
+        txt_titulo_test = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         Fondo1 = new javax.swing.JLabel();
+        LblTestPariente1 = new javax.swing.JLabel();
+        LblTestPariente2 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        JMenu3puntitosPariete = new javax.swing.JMenu();
+        MenuCuentosNiño = new javax.swing.JMenuBar();
+        JMenu3puntitosNiño = new javax.swing.JMenu();
         JMnItmCerrarPariente = new javax.swing.JMenuItem();
         JMnPgPrinPariente = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMinimumSize(new java.awt.Dimension(860, 500));
+        jPanel1.setPreferredSize(new java.awt.Dimension(860, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane3.setBorder(null);
+        jScrollPane3.setDoubleBuffered(true);
 
-        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setDoubleBuffered(true);
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setMinimumSize(new java.awt.Dimension(633, 428));
+        jPanel4.setPreferredSize(new java.awt.Dimension(633, 428));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setMinimumSize(new java.awt.Dimension(570, 661));
-        jPanel3.setPreferredSize(new java.awt.Dimension(570, 661));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, -1, -1));
 
-        LblTituloPrincipalPariente.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
-        LblTituloPrincipalPariente.setText("Realiza el Test Correspondiente");
-        jPanel3.add(LblTituloPrincipalPariente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 310, -1));
+        btn_Cargar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_Cargar.setText("CARGAR");
+        btn_Cargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_CargarActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btn_Cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 188, -1));
 
-        LblTitulo3InfNiño.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jPanel3.add(LblTitulo3InfNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 780, 240, 20));
-        jPanel3.add(LblImagen4InfoNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1050, 250, 200));
+        lista_test.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lista_test.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lista_testMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(lista_test);
 
-        LblTest1Pariente.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
-        LblTest1Pariente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LblTest1Pariente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel3.add(LblTest1Pariente, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 490, 20));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 263, 290));
 
-        jSeparator4.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel3.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 490, 10));
-        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 300, 10));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("Test Disponibles");
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
 
-        jSeparator5.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel3.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 490, 10));
+        btn_responder.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_responder.setText("Responder");
+        btn_responder.setActionCommand("");
+        btn_responder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_responderActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btn_responder, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, 160, -1));
 
-        LblTest2Pariente.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
-        LblTest2Pariente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LblTest2Pariente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel3.add(LblTest2Pariente, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 490, 20));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("Numero de preguntas:");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, -1, 20));
 
-        jSeparator6.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel3.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 490, 10));
+        txt_num.setEditable(false);
+        txt_num.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txt_num.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel4.add(txt_num, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, 40, -1));
 
-        LblTest3Pariente.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
-        LblTest3Pariente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LblTest3Pariente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel3.add(LblTest3Pariente, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 490, 20));
+        txa_descr.setEditable(false);
+        txa_descr.setColumns(20);
+        txa_descr.setRows(5);
+        jScrollPane2.setViewportView(txa_descr);
 
-        LblTest4Pariente.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
-        LblTest4Pariente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LblTest4Pariente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel3.add(LblTest4Pariente, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, 500, 20));
+        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 290, 140));
 
-        jSeparator7.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel3.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 580, 510, 10));
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setText("Proposito:");
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, -1, -1));
 
-        LblTest5Pariente.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
-        LblTest5Pariente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LblTest5Pariente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel3.add(LblTest5Pariente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, 510, 20));
+        txt_titulo_test.setEditable(false);
+        jPanel4.add(txt_titulo_test, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 250, -1));
 
-        jSeparator8.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel3.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 500, 10));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setText("Titulo:");
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, -1, -1));
 
-        jScrollPane1.setViewportView(jPanel3);
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText(" Autor:");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, -1, -1));
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 300));
+        jTextField1.setEditable(false);
+        jPanel4.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 250, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 650, 300));
+        jScrollPane3.setViewportView(jPanel4);
 
-        LblTestPariente2.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
-        LblTestPariente2.setText("TEST");
-        jPanel1.add(LblTestPariente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 60, 30));
-
-        LblTestPariente1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
-        LblTestPariente1.setText("BIENVENIDOS AL AREA DE:");
-        jPanel1.add(LblTestPariente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 290, 20));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 650, 300));
 
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoTestRepresentante.png"))); // NOI18N
         Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, -10, 1690, 510));
 
+        LblTestPariente1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
+        LblTestPariente1.setText("BIENVENIDOS AL AREA DE:");
+        jPanel1.add(LblTestPariente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 290, 20));
+
+        LblTestPariente2.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
+        LblTestPariente2.setText("TEST");
+        jPanel1.add(LblTestPariente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 60, 30));
+
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         Fondo.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 800, 500));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 798, 500));
 
-        JMenu3puntitosPariete.setBackground(new java.awt.Color(255, 255, 255));
-        JMenu3puntitosPariete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        JMenu3puntitosNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
 
         JMnItmCerrarPariente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         JMnItmCerrarPariente.setBackground(new java.awt.Color(255, 255, 255));
@@ -157,9 +205,9 @@ public class PagTestPariente extends javax.swing.JFrame {
                 JMnItmCerrarParienteMousePressed(evt);
             }
         });
-        JMenu3puntitosPariete.add(JMnItmCerrarPariente);
+        JMenu3puntitosNiño.add(JMnItmCerrarPariente);
 
-        jMenuBar1.add(JMenu3puntitosPariete);
+        MenuCuentosNiño.add(JMenu3puntitosNiño);
 
         JMnPgPrinPariente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
         JMnPgPrinPariente.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -167,24 +215,117 @@ public class PagTestPariente extends javax.swing.JFrame {
                 JMnPgPrinParienteMouseClicked(evt);
             }
         });
-        jMenuBar1.add(JMnPgPrinPariente);
+        MenuCuentosNiño.add(JMnPgPrinPariente);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(MenuCuentosNiño);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CargarActionPerformed
+        MostrarDatos_test(Base);
+        
+    }//GEN-LAST:event_btn_CargarActionPerformed
+
+    private void lista_testMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lista_testMouseClicked
+       
+    }//GEN-LAST:event_lista_testMouseClicked
+
+    private void btn_responderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_responderActionPerformed
+         
+       javax.swing.JOptionPane.showMessageDialog(this, usarData.getCod_test_repre());
+             
+             
+       
+        
+        
+    }//GEN-LAST:event_btn_responderActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void JMnItmCerrarParienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarParienteMousePressed
-        InicioRepresentante loginrepre = new InicioRepresentante();
-        loginrepre.setVisible(true);
-        this.setVisible(false);
+        Base.close();
+            InicioRepresentante loginrepre = new InicioRepresentante();
+                loginrepre.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_JMnItmCerrarParienteMousePressed
 
     private void JMnPgPrinParienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinParienteMouseClicked
-        PagPrincipalRepresentante principalrepre = new PagPrincipalRepresentante();
-        principalrepre.setVisible(true);
-        this.setVisible(false);
+        Base.close();
+            PagPrincipalRepresentante principalrepresetante = new PagPrincipalRepresentante();
+                principalrepresetante.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinParienteMouseClicked
+
+    public void caracteristicas_ponle(ObjectContainer Base, String titulo) {
+        
+            Test mitest = new Test();
+            mitest.setTitulo_Test(titulo);
+            ObjectSet result = Base.get(mitest);
+
+            while (result.hasNext()) {
+
+                Test elts = (Test) result.next();
+                
+                usarData.setCod_test_repre(elts.getID_Test());
+                
+                txt_titulo_test.setText(elts.getTitulo_Test());
+                txa_descr.setText(elts.getDescripcion_Test());
+
+                Preguntas lapre = new Preguntas();
+                lapre.setFK_Codigo_Test(elts.getID_Test());
+
+                ObjectSet rsr = Base.get(lapre);
+
+                String res = String.valueOf(rsr.size());
+                txt_num.setText(res);
+               
+
+            }
+        
+
+    }
+
+    //////////////////////Mostra test
+    public void MostrarDatos_test(ObjectContainer Base) {
+        try {
+            Test eltest = new Test();
+            ObjectSet result = Base.get(eltest);
+
+            // Asegúrate de que la lista tenga un modelo adecuado (DefaultListModel)
+            if (!(lista_test.getModel() instanceof DefaultListModel)) {
+                // Si el modelo de la lista no es de tipo DefaultListModel, configúralo como tal
+                DefaultListModel<String> modeloDefault = new DefaultListModel<>();
+                lista_test.setModel(modeloDefault);
+            }
+
+            DefaultListModel<String> modeloDefault = (DefaultListModel<String>) lista_test.getModel();
+
+            // Limpiar el modelo antes de agregar nuevas filas
+            modeloDefault.clear();
+
+            javax.swing.JOptionPane.showMessageDialog(this, "Tenemos a disposicion " + result.size()+" Test");
+
+            // Verifica si hay datos en la base de datos antes de iterar sobre ellos
+            if (result.size() > 0) {
+                while (result.hasNext()) {
+                    Test tst = (Test) result.next();
+                    modeloDefault.addElement(tst.getTitulo_Test());
+                }
+
+                // Refresca la interfaz gráfica después de agregar elementos
+                lista_test.repaint(); // o lista_test.revalidate();
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this, "No hay test Dispopnibles");
+            }
+        } catch (DatabaseClosedException | Db4oIOException | HeadlessException e) {
+            // Maneja las excepciones y muestra un mensaje de error
+            javax.swing.JOptionPane.showMessageDialog(this, "Error al mostrar datos: " + e.getMessage());
+        }
+        Base.close();
+    }
 
     /**
      * @param args the command line arguments
@@ -212,6 +353,13 @@ public class PagTestPariente extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(PagTestPariente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -224,29 +372,29 @@ public class PagTestPariente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
-    private javax.swing.JMenu JMenu3puntitosPariete;
+    private javax.swing.JMenu JMenu3puntitosNiño;
     private javax.swing.JMenuItem JMnItmCerrarPariente;
     private javax.swing.JMenu JMnPgPrinPariente;
-    private javax.swing.JLabel LblImagen4InfoNiño;
-    private javax.swing.JLabel LblTest1Pariente;
-    private javax.swing.JLabel LblTest2Pariente;
-    private javax.swing.JLabel LblTest3Pariente;
-    private javax.swing.JLabel LblTest4Pariente;
-    private javax.swing.JLabel LblTest5Pariente;
     private javax.swing.JLabel LblTestPariente1;
     private javax.swing.JLabel LblTestPariente2;
-    private javax.swing.JLabel LblTitulo3InfNiño;
-    private javax.swing.JLabel LblTituloPrincipalPariente;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar MenuCuentosNiño;
+    private javax.swing.JButton btn_Cargar;
+    private javax.swing.JButton btn_responder;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JList<String> lista_test;
+    private javax.swing.JTextArea txa_descr;
+    private javax.swing.JTextField txt_num;
+    private javax.swing.JTextField txt_titulo_test;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,9 @@
  */
 package Login;
 
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
+
 /**
  *
  * @author mauca
@@ -14,8 +17,10 @@ public class PagJuego2Niño extends javax.swing.JFrame {
     /**
      * Creates new form PagJuego2Niño
      */
+    ObjectContainer Base;
     public PagJuego2Niño() {
         initComponents();
+            Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
@@ -47,7 +52,7 @@ public class PagJuego2Niño extends javax.swing.JFrame {
         LblInformacionNiño1 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
-        MenuJuego2Niño = new javax.swing.JMenuBar();
+        MenuJuego1Niño = new javax.swing.JMenuBar();
         JMenu3puntitosNiño = new javax.swing.JMenu();
         JMnItmCerrarNiño = new javax.swing.JMenuItem();
         JMnPgPrinNiño = new javax.swing.JMenu();
@@ -149,7 +154,7 @@ public class PagJuego2Niño extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 800, 500));
 
-        MenuJuego2Niño.setBackground(new java.awt.Color(255, 255, 255));
+        MenuJuego1Niño.setBackground(new java.awt.Color(255, 255, 255));
 
         JMenu3puntitosNiño.setBackground(new java.awt.Color(255, 255, 255));
         JMenu3puntitosNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
@@ -157,9 +162,14 @@ public class PagJuego2Niño extends javax.swing.JFrame {
         JMnItmCerrarNiño.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         JMnItmCerrarNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
         JMnItmCerrarNiño.setText("Cerrar Sesión");
+        JMnItmCerrarNiño.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                JMnItmCerrarNiñoMousePressed(evt);
+            }
+        });
         JMenu3puntitosNiño.add(JMnItmCerrarNiño);
 
-        MenuJuego2Niño.add(JMenu3puntitosNiño);
+        MenuJuego1Niño.add(JMenu3puntitosNiño);
 
         JMnPgPrinNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
         JMnPgPrinNiño.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -167,24 +177,33 @@ public class PagJuego2Niño extends javax.swing.JFrame {
                 JMnPgPrinNiñoMouseClicked(evt);
             }
         });
-        MenuJuego2Niño.add(JMnPgPrinNiño);
+        MenuJuego1Niño.add(JMnPgPrinNiño);
 
-        setJMenuBar(MenuJuego2Niño);
+        setJMenuBar(MenuJuego1Niño);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void JMnPgPrinNiñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiñoMouseClicked
-        PagPrincipalNiñ principalniño = new PagPrincipalNiñ();
-        principalniño.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_JMnPgPrinNiñoMouseClicked
-
     private void BtnRegresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar1ActionPerformed
+        Base.close();
         PagMiniJuegoNiño Juego2 = new PagMiniJuegoNiño();
         Juego2.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegresar1ActionPerformed
+
+    private void JMnItmCerrarNiñoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarNiñoMousePressed
+        Base.close();
+        InicioNiño login = new InicioNiño();
+        login.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_JMnItmCerrarNiñoMousePressed
+
+    private void JMnPgPrinNiñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiñoMouseClicked
+        Base.close();
+        PagPrincipalNiñ principalniño = new PagPrincipalNiñ();
+        principalniño.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_JMnPgPrinNiñoMouseClicked
 
 
 
@@ -206,7 +225,7 @@ public class PagJuego2Niño extends javax.swing.JFrame {
     private javax.swing.JLabel LblSubTituDiferenJuegNiño;
     private javax.swing.JLabel LblTituloDifeNiño1;
     private javax.swing.JLabel LblTituloDifeNiño2;
-    private javax.swing.JMenuBar MenuJuego2Niño;
+    private javax.swing.JMenuBar MenuJuego1Niño;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

@@ -5,6 +5,8 @@
  */
 package Login;
 
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
 import java.awt.Color;
 
 /**
@@ -13,11 +15,11 @@ import java.awt.Color;
  */
 public class PagCrudJuegosPsicologo extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PagCrudJuegosPsicologo
-     */
+    ObjectContainer Base;
+    
     public PagCrudJuegosPsicologo() {
         initComponents();
+            Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
@@ -382,15 +384,17 @@ public class PagCrudJuegosPsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_JMnItmCerrarPsicologoMouseClicked
 
     private void JMnItmCerrarPsicologoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMousePressed
-        InicioPsicologo loginPsicologo = new InicioPsicologo();
-        loginPsicologo.setVisible(true);
-        this.setVisible(false);
+        Base.close();
+            InicioPsicologo loginPsicologo = new InicioPsicologo();
+                loginPsicologo.setVisible(true);
+                     this.setVisible(false);
     }//GEN-LAST:event_JMnItmCerrarPsicologoMousePressed
 
     private void JMnPgPrinPsicoloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinPsicoloMouseClicked
-        PagPrincipalPsicologo principal = new PagPrincipalPsicologo();
-        principal.setVisible(true);
-        this.setVisible(false);
+        Base.close();
+            PagPrincipalPsicologo principal = new PagPrincipalPsicologo();
+                principal.setVisible(true);
+                    this.setVisible(false);
 
     }//GEN-LAST:event_JMnPgPrinPsicoloMouseClicked
 

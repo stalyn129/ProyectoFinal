@@ -9,13 +9,15 @@ package Login;
  *
  * @author mauca
  */
+import com.db4o.*;
+
 public class PagInfPariente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PagInfPariente
-     */
+    ObjectContainer Base;
+    
     public PagInfPariente() {
         initComponents();
+            Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
@@ -58,8 +60,8 @@ public class PagInfPariente extends javax.swing.JFrame {
         LblInformacionPsicologo1 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        JMenu3puntitosPariete = new javax.swing.JMenu();
+        MenuCuentosNiño = new javax.swing.JMenuBar();
+        JMenu3puntitosNiño = new javax.swing.JMenu();
         JMnItmCerrarPariente = new javax.swing.JMenuItem();
         JMnPgPrinPariente = new javax.swing.JMenu();
 
@@ -191,8 +193,7 @@ public class PagInfPariente extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 800, 500));
 
-        JMenu3puntitosPariete.setBackground(new java.awt.Color(255, 255, 255));
-        JMenu3puntitosPariete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        JMenu3puntitosNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
 
         JMnItmCerrarPariente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         JMnItmCerrarPariente.setBackground(new java.awt.Color(255, 255, 255));
@@ -203,9 +204,9 @@ public class PagInfPariente extends javax.swing.JFrame {
                 JMnItmCerrarParienteMousePressed(evt);
             }
         });
-        JMenu3puntitosPariete.add(JMnItmCerrarPariente);
+        JMenu3puntitosNiño.add(JMnItmCerrarPariente);
 
-        jMenuBar1.add(JMenu3puntitosPariete);
+        MenuCuentosNiño.add(JMenu3puntitosNiño);
 
         JMnPgPrinPariente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
         JMnPgPrinPariente.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -213,23 +214,25 @@ public class PagInfPariente extends javax.swing.JFrame {
                 JMnPgPrinParienteMouseClicked(evt);
             }
         });
-        jMenuBar1.add(JMnPgPrinPariente);
+        MenuCuentosNiño.add(JMnPgPrinPariente);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(MenuCuentosNiño);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void JMnItmCerrarParienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarParienteMousePressed
-        InicioRepresentante loginrepre = new InicioRepresentante();
-        loginrepre.setVisible(true);
-        this.setVisible(false);
+        Base.close();
+            InicioRepresentante loginrepre = new InicioRepresentante();
+                loginrepre.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_JMnItmCerrarParienteMousePressed
 
     private void JMnPgPrinParienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinParienteMouseClicked
-        PagPrincipalRepresentante principalrepre = new PagPrincipalRepresentante();
-        principalrepre.setVisible(true);
-        this.setVisible(false);
+        Base.close();
+            PagPrincipalRepresentante principalrepresetante = new PagPrincipalRepresentante();
+                principalrepresetante.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinParienteMouseClicked
 
     /**
@@ -270,7 +273,7 @@ public class PagInfPariente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
-    private javax.swing.JMenu JMenu3puntitosPariete;
+    private javax.swing.JMenu JMenu3puntitosNiño;
     private javax.swing.JMenuItem JMnItmCerrarPariente;
     private javax.swing.JMenu JMnPgPrinPariente;
     private javax.swing.JLabel LblImagen1InfoPariente;
@@ -282,10 +285,10 @@ public class PagInfPariente extends javax.swing.JFrame {
     private javax.swing.JLabel LblTitulo1InfPariente;
     private javax.swing.JLabel LblTitulo2InfPariente;
     private javax.swing.JLabel LblTitulo3InfPariente;
+    private javax.swing.JMenuBar MenuCuentosNiño;
     private javax.swing.JTextArea Txt1InfPariente;
     private javax.swing.JTextArea Txt2InfPariente;
     private javax.swing.JTextArea Txt3InfPariente;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;

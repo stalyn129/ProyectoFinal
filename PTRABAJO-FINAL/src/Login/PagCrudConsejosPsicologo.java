@@ -5,6 +5,8 @@
  */
 package Login;
 
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
 import java.awt.Color;
 
 /**
@@ -13,11 +15,11 @@ import java.awt.Color;
  */
 public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PagCrudConsejosPsicologo
-     */
+    ObjectContainer Base;
+    
     public PagCrudConsejosPsicologo() {
         initComponents();
+            Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
@@ -347,9 +349,10 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_JMnItmCerrarPsicologoMouseClicked
 
     private void JMnPgPrinPsicologoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinPsicologoMouseClicked
-        PagPrincipalPsicologo principalpsicologo = new PagPrincipalPsicologo();
-           principalpsicologo.setVisible(true); 
-              this.setVisible(false);
+        Base.close();
+            PagPrincipalPsicologo principalpsicologo = new PagPrincipalPsicologo();
+               principalpsicologo.setVisible(true); 
+                  this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinPsicologoMouseClicked
 
     private void btn_ingresar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresar3ActionPerformed
@@ -433,9 +436,10 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_ingresar4ActionPerformed
 
     private void JMnItmCerrarPsicologoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMousePressed
-        InicioPsicologo loginPsicologo = new InicioPsicologo();
-            loginPsicologo.setVisible(true);
-                this.setVisible(false);
+        Base.close();
+            InicioPsicologo loginPsicologo = new InicioPsicologo();
+                loginPsicologo.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_JMnItmCerrarPsicologoMousePressed
 
     private void Txt_TituloConsejPsicologo1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_TituloConsejPsicologo1MousePressed

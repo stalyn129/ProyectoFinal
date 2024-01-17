@@ -5,6 +5,9 @@
  */
 package Login;
 
+import com.db4o.Db4o;
+import com.db4o.ObjectContainer;
+
 /**
  *
  * @author mauca
@@ -14,8 +17,10 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
     /**
      * Creates new form PagMiniJuegoNiño
      */
+    ObjectContainer Base;
     public PagMiniJuegoNiño() {
         initComponents();
+            Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
@@ -28,7 +33,6 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        BtnRegresar1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -44,26 +48,15 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
-        MenuJuegoNiño = new javax.swing.JMenuBar();
-        JMnItmCerrarNiño = new javax.swing.JMenu();
+        MenuGenerlNiño = new javax.swing.JMenuBar();
+        JMnItmCerrarNiño2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        JMnPgPrinNiño = new javax.swing.JMenu();
+        JMnPgPrinNiño2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        BtnRegresar1.setBackground(new java.awt.Color(255, 255, 255));
-        BtnRegresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
-        BtnRegresar1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnRegresar1.setOpaque(false);
-        BtnRegresar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRegresar1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BtnRegresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 40, 30));
 
         jLabel1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         jLabel1.setText("LOS MINI JUEGOS ");
@@ -140,79 +133,89 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
 
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoInfoNiñoJuego.png"))); // NOI18N
         Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
-        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, 0, 1690, 510));
+        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, 20, 1690, 480));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         Fondo.setPreferredSize(new java.awt.Dimension(800, 500));
-        jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
+        jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 530));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 800, 500));
 
-        JMnItmCerrarNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        JMnItmCerrarNiño2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
         jMenuItem1.setText("Cerrar Sesión");
-        JMnItmCerrarNiño.add(jMenuItem1);
-
-        MenuJuegoNiño.add(JMnItmCerrarNiño);
-
-        JMnPgPrinNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
-        JMnPgPrinNiño.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JMnPgPrinNiñoMouseClicked(evt);
+        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem1MousePressed(evt);
             }
         });
-        MenuJuegoNiño.add(JMnPgPrinNiño);
+        JMnItmCerrarNiño2.add(jMenuItem1);
 
-        setJMenuBar(MenuJuegoNiño);
+        MenuGenerlNiño.add(JMnItmCerrarNiño2);
+
+        JMnPgPrinNiño2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
+        JMnPgPrinNiño2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JMnPgPrinNiño2MouseClicked(evt);
+            }
+        });
+        MenuGenerlNiño.add(JMnPgPrinNiño2);
+
+        setJMenuBar(MenuGenerlNiño);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnRegresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar1ActionPerformed
-        PagPrincipalNiñ Diferencias = new PagPrincipalNiñ();
-        Diferencias.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_BtnRegresar1ActionPerformed
-
     private void BtnDifeNiñoJuego2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDifeNiñoJuego2ActionPerformed
-        PagJuego2Niño Df = new PagJuego2Niño();
-        Df.setVisible(true);
-        this.setVisible(false);
+        Base.close();
+            PagJuego2Niño Df = new PagJuego2Niño();
+                Df.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnDifeNiñoJuego2ActionPerformed
 
     private void BtnLabeNiñoJuego1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLabeNiñoJuego1ActionPerformed
-        PagJuego1Niño laberinto = new PagJuego1Niño();
-        laberinto.setVisible(true);
-        this.setVisible(false);
+        Base.close();
+            PagJuego1Niño laberinto = new PagJuego1Niño();
+                laberinto.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnLabeNiñoJuego1ActionPerformed
 
     private void BtnRespondeNiñoJuego3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRespondeNiñoJuego3ActionPerformed
-        PagJuego3Niño RespondeCorrecto = new PagJuego3Niño();
-        RespondeCorrecto.setVisible(true);
-        this.setVisible(false);
+        Base.close();
+            PagJuego3Niño RespondeCorrecto = new PagJuego3Niño();
+                RespondeCorrecto.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnRespondeNiñoJuego3ActionPerformed
 
-    private void JMnPgPrinNiñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiñoMouseClicked
+    private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
+
+        Base.close();
+        InicioNiño login = new InicioNiño();
+        login.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem1MousePressed
+
+    private void JMnPgPrinNiño2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiño2MouseClicked
+        Base.close();
         PagPrincipalNiñ principalniño = new PagPrincipalNiñ();
-            principalniño.setVisible(true);
-                this.setVisible(false);
-    }//GEN-LAST:event_JMnPgPrinNiñoMouseClicked
+        principalniño.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_JMnPgPrinNiño2MouseClicked
 
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnDifeNiñoJuego2;
     private javax.swing.JButton BtnLabeNiñoJuego1;
-    private javax.swing.JButton BtnRegresar1;
     private javax.swing.JButton BtnRespondeNiñoJuego3;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
-    private javax.swing.JMenu JMnItmCerrarNiño;
-    private javax.swing.JMenu JMnPgPrinNiño;
-    private javax.swing.JMenuBar MenuJuegoNiño;
+    private javax.swing.JMenu JMnItmCerrarNiño2;
+    private javax.swing.JMenu JMnPgPrinNiño2;
+    private javax.swing.JMenuBar MenuGenerlNiño;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;

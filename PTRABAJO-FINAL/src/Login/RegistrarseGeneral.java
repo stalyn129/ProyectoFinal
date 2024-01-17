@@ -8,6 +8,8 @@ package Login;
 import Login.RegistrarseNiñ;
 import Login.RegistrarsePariente;
 import Login.RegistrarsePsicologo;
+import com.db4o.*;
+import com.db4o.ObjectContainer;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
@@ -18,11 +20,11 @@ import javax.swing.JPasswordField;
  */
 public class RegistrarseGeneral extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegistrarseGeneral
-     */
+    //ObjectContainer Base;
+    
     public RegistrarseGeneral() {
         initComponents();
+            //Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
@@ -162,9 +164,10 @@ public class RegistrarseGeneral extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnInfanteRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfanteRegistActionPerformed
-        RegistrarseNiñ infante = new RegistrarseNiñ();
-        infante.setVisible(true);
-        this.setVisible(false);
+        //Base.close();
+            RegistrarseNiñ infante = new RegistrarseNiñ();
+                infante.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnInfanteRegistActionPerformed
 
     private void BtnPsicologoRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPsicologoRegistActionPerformed
@@ -186,6 +189,7 @@ JPasswordField passwordField = new JPasswordField();
         // Es importante borrar el contenido del array de caracteres que contiene la contraseña
         Arrays.fill(contra, ' ');
     }
+    //Base.close();
     }//GEN-LAST:event_BtnPsicologoRegistActionPerformed
 
     private void BtnAdminRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAdminRegistActionPerformed
@@ -206,19 +210,23 @@ JPasswordField passwordField = new JPasswordField();
 
         // Es importante borrar el contenido del array de caracteres que contiene la contraseña
         Arrays.fill(contra, ' ');
+        
     }
+    //Base.close();
     }//GEN-LAST:event_BtnAdminRegistActionPerformed
 
     private void BtnRepresentanteRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRepresentanteRegistActionPerformed
-        RegistrarsePariente representante = new RegistrarsePariente();
-        representante.setVisible(true);
-        this.setVisible(false);
+        //Base.close();
+            RegistrarsePariente representante = new RegistrarsePariente();
+                representante.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnRepresentanteRegistActionPerformed
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
-        Inicio  inicio = new Inicio();
-        inicio.setVisible(true);
-        this.setVisible(false);
+        //Base.close();
+            Inicio  inicio = new Inicio();
+                inicio.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
 
