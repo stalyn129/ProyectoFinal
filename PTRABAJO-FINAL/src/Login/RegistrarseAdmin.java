@@ -163,7 +163,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         jPanel2.add(TxtApelliAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 170, -1));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel5.setText("Confrimar Contraseña:");
+        jLabel5.setText("Confirmar Contraseña:");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, -1, 20));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 160, 10));
 

@@ -34,6 +34,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     byte[] imagenconsejo2;
     String rutaImagenConsejo1;
     String rutaImagenConsejo2;
+    String CodConsejo;
     
     public PagCrudConsejosPsicologo() {
         initComponents();
@@ -81,11 +82,11 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         jSeparator12 = new javax.swing.JSeparator();
         jScrollPane5 = new javax.swing.JScrollPane();
         JTConsejos = new javax.swing.JTable();
-        btn_ingresar = new javax.swing.JButton();
+        BtnEliminarPsicologo = new javax.swing.JButton();
         btn_ingresar1 = new javax.swing.JButton();
-        btn_ingresar2 = new javax.swing.JButton();
-        btn_ingresar3 = new javax.swing.JButton();
-        btn_ingresar4 = new javax.swing.JButton();
+        BtnActualizarPsicologo = new javax.swing.JButton();
+        BtnConsultarPsicologo = new javax.swing.JButton();
+        BtnModifiPsicologo = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenu3puntitosPsicologo = new javax.swing.JMenu();
@@ -252,19 +253,19 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
 
         jPanel4.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 760, 700, 240));
 
-        btn_ingresar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn_ingresar.setText("Eliminar");
-        btn_ingresar.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnEliminarPsicologo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        BtnEliminarPsicologo.setText("Eliminar");
+        BtnEliminarPsicologo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_ingresarMouseClicked(evt);
+                BtnEliminarPsicologoMouseClicked(evt);
             }
         });
-        btn_ingresar.addActionListener(new java.awt.event.ActionListener() {
+        BtnEliminarPsicologo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ingresarActionPerformed(evt);
+                BtnEliminarPsicologoActionPerformed(evt);
             }
         });
-        jPanel4.add(btn_ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 1010, 100, -1));
+        jPanel4.add(BtnEliminarPsicologo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 1010, 100, -1));
 
         btn_ingresar1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_ingresar1.setText("Ingresar");
@@ -280,47 +281,47 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         });
         jPanel4.add(btn_ingresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 680, 100, -1));
 
-        btn_ingresar2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn_ingresar2.setText("Actualizar");
-        btn_ingresar2.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnActualizarPsicologo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        BtnActualizarPsicologo.setText("Actualizar");
+        BtnActualizarPsicologo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_ingresar2MouseClicked(evt);
+                BtnActualizarPsicologoMouseClicked(evt);
             }
         });
-        btn_ingresar2.addActionListener(new java.awt.event.ActionListener() {
+        BtnActualizarPsicologo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ingresar2ActionPerformed(evt);
+                BtnActualizarPsicologoActionPerformed(evt);
             }
         });
-        jPanel4.add(btn_ingresar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 1010, 100, -1));
+        jPanel4.add(BtnActualizarPsicologo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 1010, 100, -1));
 
-        btn_ingresar3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn_ingresar3.setText("Consultar");
-        btn_ingresar3.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnConsultarPsicologo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        BtnConsultarPsicologo.setText("Consultar");
+        BtnConsultarPsicologo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_ingresar3MouseClicked(evt);
+                BtnConsultarPsicologoMouseClicked(evt);
             }
         });
-        btn_ingresar3.addActionListener(new java.awt.event.ActionListener() {
+        BtnConsultarPsicologo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ingresar3ActionPerformed(evt);
+                BtnConsultarPsicologoActionPerformed(evt);
             }
         });
-        jPanel4.add(btn_ingresar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 1010, 100, -1));
+        jPanel4.add(BtnConsultarPsicologo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 1010, 100, -1));
 
-        btn_ingresar4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn_ingresar4.setText("Modificar");
-        btn_ingresar4.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnModifiPsicologo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        BtnModifiPsicologo.setText("Modificar");
+        BtnModifiPsicologo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_ingresar4MouseClicked(evt);
+                BtnModifiPsicologoMouseClicked(evt);
             }
         });
-        btn_ingresar4.addActionListener(new java.awt.event.ActionListener() {
+        BtnModifiPsicologo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ingresar4ActionPerformed(evt);
+                BtnModifiPsicologoActionPerformed(evt);
             }
         });
-        jPanel4.add(btn_ingresar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 1010, 100, -1));
+        jPanel4.add(BtnModifiPsicologo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 1010, 100, -1));
 
         jScrollPane1.setViewportView(jPanel4);
 
@@ -377,25 +378,34 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
                   this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinPsicologoMouseClicked
 
-    private void btn_ingresar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresar3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_ingresar3ActionPerformed
+    private void BtnConsultarPsicologoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConsultarPsicologoActionPerformed
+        String codigoAConsultar = JOptionPane.showInputDialog(this, "Ingrese el código a consultar");
 
-    private void btn_ingresar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ingresar3MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_ingresar3MouseClicked
+        if (codigoAConsultar != null && !codigoAConsultar.isEmpty()) {
+            ConsultarRegistro(Base, codigoAConsultar);
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un código válido para consultar.");
+        }
+    }//GEN-LAST:event_BtnConsultarPsicologoActionPerformed
 
-    private void btn_ingresar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresar2ActionPerformed
+    private void BtnConsultarPsicologoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnConsultarPsicologoMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_ingresar2ActionPerformed
+    }//GEN-LAST:event_BtnConsultarPsicologoMouseClicked
 
-    private void btn_ingresar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ingresar2MouseClicked
+    private void BtnActualizarPsicologoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnActualizarPsicologoActionPerformed
+        JTConsejos.setVisible(true);
+            MostrarDatos(Base);
+    }//GEN-LAST:event_BtnActualizarPsicologoActionPerformed
+
+    private void BtnActualizarPsicologoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnActualizarPsicologoMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_ingresar2MouseClicked
+    }//GEN-LAST:event_BtnActualizarPsicologoMouseClicked
 
     private void btn_ingresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresar1ActionPerformed
         Consejos miconsejo = new Consejos();
+            CodConsejo = Calcular_CodConsejos(Base);
            //elcue.setCod_Cuento(Txt_Codigo.getText());
+            
             miconsejo.setTitulo1Consejo(Txt_TituloConsejPsicologo1.getText());
             miconsejo.setTexConsejo1(txtAConsejoPsico1.getText());
             miconsejo.setTexConsejo2(txtAConsejoPsico2.getText());
@@ -416,13 +426,19 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_ingresar1MouseClicked
 
-    private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
+    private void BtnEliminarPsicologoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarPsicologoActionPerformed
+        String codigoAEliminar = JOptionPane.showInputDialog(this, "Ingrese el código a eliminar:");
 
-    }//GEN-LAST:event_btn_ingresarActionPerformed
+        if (codigoAEliminar != null && !codigoAEliminar.isEmpty()) {
+            EliminarRegistro(Base, codigoAEliminar);
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un código válido para eliminar.");
+        }
+    }//GEN-LAST:event_BtnEliminarPsicologoActionPerformed
 
-    private void btn_ingresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ingresarMouseClicked
+    private void BtnEliminarPsicologoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnEliminarPsicologoMouseClicked
 
-    }//GEN-LAST:event_btn_ingresarMouseClicked
+    }//GEN-LAST:event_BtnEliminarPsicologoMouseClicked
 
     private void btn_Ingresar_imagen1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ingresar_imagen1ActionPerformed
        if (seleccionar.showDialog(null, null) == JFileChooser.APPROVE_OPTION) {
@@ -474,13 +490,13 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_Ingresar_imagenActionPerformed
 
-    private void btn_ingresar4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ingresar4MouseClicked
+    private void BtnModifiPsicologoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnModifiPsicologoMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_ingresar4MouseClicked
+    }//GEN-LAST:event_BtnModifiPsicologoMouseClicked
 
-    private void btn_ingresar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresar4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_ingresar4ActionPerformed
+    private void BtnModifiPsicologoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModifiPsicologoActionPerformed
+         //Modificar_Consejos(Base,CodigoCuent,Txt_TituloConsejPsicologo1.getText() ,Txt_TituloConsejPsicologo2.getText(),txtAConsejoPsico1.getText(), txtAConsejoPsico2.getText(),rutaImagenConsejo1, rutaImagenConsejo2);
+    }//GEN-LAST:event_BtnModifiPsicologoActionPerformed
 
     private void JMnItmCerrarPsicologoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMousePressed
         Base.close();
@@ -564,9 +580,146 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
 
             });
         }
+    }
+    
+    public static int VerificarConsejo(ObjectContainer Base, String Codigo) {
+        Consejos Conse = new Consejos();
+        Conse.setCod_consejo(Codigo);
+        ObjectSet result = Base.get(Conse);
+        return result.size();
+    }
+    
+    private void ConsultarRegistro(ObjectContainer base, String CodConsejo) {
+
+        // Creando un objeto de ejemplo para la consulta
+        Consejos consejotp = new Consejos(CodConsejo, null, null, null, null, null, null, null, null);
+
+        // Consultando la base de datos
+        ObjectSet result = base.queryByExample(consejotp);
+
+        if (result.hasNext()) {
+            // Manejando el resultado (puedes querer mostrarlo o procesarlo)
+            Consejos registroConsultado = (Consejos) result.next();
+            System.out.println("Registro consultado: " + registroConsultado);
+            JOptionPane.showMessageDialog(this, "El registro se ha consultado con éxito");
+
+            // Llamar al método ConsultarDatos para mostrar el registro en la tabla
+            ConsultarDatos(Base, registroConsultado);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+        }
+    }
+    
+     public void ConsultarDatos(ObjectContainer base, Consejos consulta) {
+        DefaultTableModel modelo = (DefaultTableModel) JTConsejos.getModel();
+
+        // Limpiar el modelo antes de agregar nuevas filas
+        modelo.setRowCount(0);
+
+        if (consulta != null) {
+            // Agregar el registro consultado a la tabla
+            modelo.addRow(new Object[]{
+                consulta.getCod_consejo(),
+                consulta.getTitulo1Consejo(),
+                consulta.getTitulo2Consejo(),
+                consulta.getTexConsejo1(),
+                consulta.getTexConsejo2(),
+                consulta.getRutaImageConsejo1(),
+                consulta.getRutaImageConsejo2()
+                
+            });
+        }
+    }
+    
+    public void Modificar_Consejos(ObjectContainer base, String CodigoCuent, String Titulo1, String Titulo2, String Texto1, String Texto2, String Ruta1, String Ruta2) {
+        try {
+            // Crear un objeto Cuento con el código proporcionado
+            Consejos modiconsejo = new Consejos();
+            modiconsejo.setCod_consejo(CodigoCuent);
+
+            // Buscar el objeto correspondiente en la base de datos
+            ObjectSet result = base.queryByExample(modiconsejo);
+
+            // Verificar si se encontró un objeto para modificar
+            if (result.hasNext()) {
+                Consejos NueConse = (Consejos)result.next();
+
+                // Actualizar los campos del objeto con los nuevos valores
+                NueConse.setTitulo1Consejo(Titulo1);
+                NueConse.setTitulo2Consejo(Titulo2);
+                NueConse.setTexConsejo1(Texto1);
+                NueConse.setTexConsejo2(Texto2);
+                NueConse.setRutaImageConsejo1(Ruta1);
+                NueConse.setRutaImageConsejo2(Ruta2);
+
+                // Almacenar los cambios en la base de datos
+                base.store(NueConse);
+
+                // Mostrar un mensaje de confirmación al usuario
+                javax.swing.JOptionPane.showMessageDialog(null, "Se modificó el consejo correctamente.");
+            } else {
+                // Mostrar un mensaje de error si no se encontró el objeto
+                javax.swing.JOptionPane.showMessageDialog(null, "Error: No se encontró el consejo para modificar.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            javax.swing.JOptionPane.showMessageDialog(null, "Error al modificar el consejo.");
+        }
+    }
+    private void EliminarRegistro(ObjectContainer base, String Cod_Cuento) {
+
+            Consejos conseelimi = new Consejos(Cod_Cuento, null, null, null, null, null, null, null, null);
+
+            // Mensaje de depuración
+            System.out.println("Buscando el registro en la base de datos...");
+
+            ObjectSet result = base.queryByExample(conseelimi);
+
+            if (result.hasNext()) {
+                // Mensaje de depuración
+                System.out.println("Eliminando el registro de la base de datos...");
+
+                base.delete(result.next());
+                JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+                MostrarDatos(base); // Actualizar la tabla después de la eliminación
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+            }
+        }
+    
+    public  String Calcular_CodConsejos(ObjectContainer Base) {
+
+        boolean rest = true;
+        int Incremental = 0;
+        String Codigo;
+        do {
+
+            Incremental++;
+
+            Codigo = String.format("PR%04d", Incremental);
+
+            if (Verificar_CodPregunta(Base, Codigo) == 0) {
+                rest = false;
+            }
+
+        } while (rest);
+
+        return Codigo;
+    }
+    
+    public static int Verificar_CodPregunta(ObjectContainer Base, String CodConsejos) {
+        Consejos consejito = new Consejos();
+        consejito.setCod_consejo(CodConsejos);
+        ObjectSet result = Base.get(consejito);
+
+        return result.size();
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnActualizarPsicologo;
+    private javax.swing.JButton BtnConsultarPsicologo;
+    private javax.swing.JButton BtnEliminarPsicologo;
+    private javax.swing.JButton BtnModifiPsicologo;
     private javax.swing.JLabel Fondo;
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
@@ -576,11 +729,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     private javax.swing.JTextField Txt_TituloConsejPsicologo2;
     private javax.swing.JButton btn_Ingresar_imagen;
     private javax.swing.JButton btn_Ingresar_imagen1;
-    private javax.swing.JButton btn_ingresar;
     private javax.swing.JButton btn_ingresar1;
-    private javax.swing.JButton btn_ingresar2;
-    private javax.swing.JButton btn_ingresar3;
-    private javax.swing.JButton btn_ingresar4;
     private javax.swing.JLabel imagen_1;
     private javax.swing.JLabel imagen_2;
     private javax.swing.JLabel jLabel1;
@@ -610,11 +759,5 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     private javax.swing.JTextArea txtAConsejoPsico1;
     private javax.swing.JTextArea txtAConsejoPsico2;
     // End of variables declaration//GEN-END:variables
-
-public void ingresar_datos(){
-    
-    
-}
-
 
 }
