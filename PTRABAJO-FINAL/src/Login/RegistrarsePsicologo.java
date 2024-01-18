@@ -5,17 +5,24 @@
  */
 package Login;
 
+import BBDD.Contenedor_Base;
 import Clases.*;
+import Login.InicioPsicologo;
 import Login.PagPrincipalRepresentante;
 import Login.RegistrarseGeneral;
-
+import Login.RegistrarseGeneral;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
+import com.db4o.ext.DatabaseClosedException;
+import com.db4o.ext.DatabaseReadOnlyException;
 import com.db4o.ObjectSet;
+import com.db4o.ext.Db4oIOException;
 import com.db4o.query.Query;
 import java.awt.Color;
+import java.awt.HeadlessException;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -97,11 +104,12 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         jSeparator18 = new javax.swing.JSeparator();
         Especializacion3 = new javax.swing.JLabel();
         sp_años = new javax.swing.JSpinner();
-        TxtEspecializacionPsicol1 = new javax.swing.JComboBox<>();
+        cbx_especializacion = new javax.swing.JComboBox<>();
         BtnRegresar = new javax.swing.JButton();
         Fondo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -362,15 +370,17 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         Especializacion3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Especializacion3.setText("Telefono:");
         jPanel2.add(Especializacion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, -1, -1));
+
+        sp_años.setModel(new javax.swing.SpinnerNumberModel());
         jPanel2.add(sp_años, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 150, -1));
 
-        TxtEspecializacionPsicol1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
-        TxtEspecializacionPsicol1.addActionListener(new java.awt.event.ActionListener() {
+        cbx_especializacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
+        cbx_especializacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtEspecializacionPsicol1ActionPerformed(evt);
+                cbx_especializacionActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtEspecializacionPsicol1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 170, -1));
+        jPanel2.add(cbx_especializacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 170, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 690, 420));
 
@@ -441,9 +451,9 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
         Base.close();
-            RegistrarseGeneral general = new RegistrarseGeneral();
-                general.setVisible(true);
-                    this.setVisible(false);
+        RegistrarseGeneral general = new RegistrarseGeneral();
+        general.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
     private void TxtNomPsicolMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtNomPsicolMousePressed
@@ -469,7 +479,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             TxtDireccPsicol.setText("Ingrese su Dirección");
             TxtDireccPsicol.setForeground(Color.gray);
         }
-        
+
         if (TxtCorreoPsicologo.getText().isEmpty()) {
             TxtCorreoPsicologo.setText("Ingrese su Correo");
             TxtCorreoPsicologo.setForeground(Color.gray);
@@ -483,7 +493,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             CfContraPsicol.setText("**********");
             CfContraPsicol.setForeground(Color.gray);
         }
-        
+
     }//GEN-LAST:event_TxtNomPsicolMousePressed
 
     private void TxtApelliPsicolMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtApelliPsicolMousePressed
@@ -509,7 +519,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             TxtDireccPsicol.setText("Ingrese su Dirección");
             TxtDireccPsicol.setForeground(Color.gray);
         }
-        
+
         if (TxtCorreoPsicologo.getText().isEmpty()) {
             TxtCorreoPsicologo.setText("Ingrese su Correo");
             TxtCorreoPsicologo.setForeground(Color.gray);
@@ -523,7 +533,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             CfContraPsicol.setText("**********");
             CfContraPsicol.setForeground(Color.gray);
         }
-        
+
     }//GEN-LAST:event_TxtApelliPsicolMousePressed
 
     private void TxtTelefonoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtTelefonoMousePressed
@@ -549,11 +559,11 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         if (TxtDireccPsicol.getText().isEmpty()) {
             TxtDireccPsicol.setText("Ingrese su Dirección");
             TxtDireccPsicol.setForeground(Color.gray);
-        
-        if (TxtCorreoPsicologo.getText().isEmpty()) {
-            TxtCorreoPsicologo.setText("Ingrese su Correo");
-            TxtCorreoPsicologo.setForeground(Color.gray);
-        }    
+
+            if (TxtCorreoPsicologo.getText().isEmpty()) {
+                TxtCorreoPsicologo.setText("Ingrese su Correo");
+                TxtCorreoPsicologo.setForeground(Color.gray);
+            }
         }
         if (String.valueOf(NvContraPsicol.getPassword()).isEmpty()) {
             NvContraPsicol.setText("**********");
@@ -592,7 +602,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         if (TxtCorreoPsicologo.getText().isEmpty()) {
             TxtCorreoPsicologo.setText("Ingrese su Correo");
             TxtCorreoPsicologo.setForeground(Color.gray);
-        } 
+        }
         if (String.valueOf(NvContraPsicol.getPassword()).isEmpty()) {
             NvContraPsicol.setText("**********");
             NvContraPsicol.setForeground(Color.gray);
@@ -602,7 +612,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             CfContraPsicol.setText("**********");
             CfContraPsicol.setForeground(Color.gray);
         }
-        
+
     }//GEN-LAST:event_TxtCeduPsicolMousePressed
 
     private void TxtDireccPsicolMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtDireccPsicolMousePressed
@@ -627,12 +637,12 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         if (TxtCeduPsicol.getText().isEmpty()) {
             TxtCeduPsicol.setText("Ingrese su cedula");
             TxtCeduPsicol.setForeground(Color.gray);
-            
+
         }
         if (TxtCorreoPsicologo.getText().isEmpty()) {
             TxtCorreoPsicologo.setText("Ingrese su Correo");
             TxtCorreoPsicologo.setForeground(Color.gray);
-        } 
+        }
         if (String.valueOf(NvContraPsicol.getPassword()).isEmpty()) {
             NvContraPsicol.setText("**********");
             NvContraPsicol.setForeground(Color.gray);
@@ -642,7 +652,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             CfContraPsicol.setText("**********");
             CfContraPsicol.setForeground(Color.gray);
         }
-        
+
     }//GEN-LAST:event_TxtDireccPsicolMousePressed
 
     private void NvContraPsicolMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NvContraPsicolMousePressed
@@ -650,7 +660,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             NvContraPsicol.setText("");
             NvContraPsicol.setForeground(Color.black);
         }
-       if (TxtNomPsicol.getText().isEmpty()) {
+        if (TxtNomPsicol.getText().isEmpty()) {
             TxtNomPsicol.setText("Ingrese sus Nombres");
             TxtNomPsicol.setForeground(Color.gray);
         }
@@ -671,26 +681,25 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             TxtDireccPsicol.setText("Ingrese su Dirección");
             TxtDireccPsicol.setForeground(Color.gray);
         }
-        
-        
+
         if (TxtCorreoPsicologo.getText().isEmpty()) {
             TxtCorreoPsicologo.setText("Ingrese su Correo");
             TxtCorreoPsicologo.setForeground(Color.gray);
-        }  
-        
+        }
+
         if (String.valueOf(CfContraPsicol.getPassword()).isEmpty()) {
             CfContraPsicol.setText("**********");
             CfContraPsicol.setForeground(Color.gray);
         }
-        
+
     }//GEN-LAST:event_NvContraPsicolMousePressed
 
     private void CfContraPsicolMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CfContraPsicolMousePressed
-       if (String.valueOf(CfContraPsicol.getPassword()).equals("**********")) {
+        if (String.valueOf(CfContraPsicol.getPassword()).equals("**********")) {
             CfContraPsicol.setText("");
             CfContraPsicol.setForeground(Color.black);
         }
-       if (TxtNomPsicol.getText().isEmpty()) {
+        if (TxtNomPsicol.getText().isEmpty()) {
             TxtNomPsicol.setText("Ingrese sus Nombres");
             TxtNomPsicol.setForeground(Color.gray);
         }
@@ -711,13 +720,12 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             TxtDireccPsicol.setText("Ingrese su Dirección");
             TxtDireccPsicol.setForeground(Color.gray);
         }
-        
-        
+
         if (TxtCorreoPsicologo.getText().isEmpty()) {
             TxtCorreoPsicologo.setText("Ingrese su Correo");
             TxtCorreoPsicologo.setForeground(Color.gray);
-        }  
-        
+        }
+
         if (String.valueOf(NvContraPsicol.getPassword()).isEmpty()) {
             NvContraPsicol.setText("**********");
             NvContraPsicol.setForeground(Color.gray);
@@ -753,7 +761,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             TxtDireccPsicol.setText("Ingrese su Dirección");
             TxtDireccPsicol.setForeground(Color.gray);
         }
-        
+
         if (String.valueOf(NvContraPsicol.getPassword()).isEmpty()) {
             NvContraPsicol.setText("**********");
             NvContraPsicol.setForeground(Color.gray);
@@ -766,59 +774,128 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_TxtCorreoPsicologoMousePressed
 
     private void TxtCorreoPsicologoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCorreoPsicologoActionPerformed
-        
+
     }//GEN-LAST:event_TxtCorreoPsicologoActionPerformed
 
     private void BtnRegistrarsePsicolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarsePsicolActionPerformed
+// Verificar que no hay campos en blanco
+            if (camposLlenos()) {
+                Persona Mipersona = new Persona();
 
-        Persona Mipersona = new Persona();
+                Mipersona.setCedula(TxtCeduPsicol.getText());
+                Mipersona.setNombre(TxtNomPsicol.getText());
+                Mipersona.setApellido(TxtApelliPsicol.getText());
+                Mipersona.setDireccion(TxtDireccPsicol.getText());
+                Mipersona.setFecha_Nacimiento(DateFechaNaciPsicol.getDate());
+                String sex;
+                if (Femenino.isSelected()) {
+                    sex = "F";
+                } else {
+                    sex = "M";
+                }
 
-        Mipersona.setCedula(TxtCeduPsicol.getText());
+                Mipersona.setSexo(sex.charAt(0));
+                Mipersona.setCod_Nacionalidad(Asignar_cod_Nacionalidad(Base, CmbBxNacionalidad3Psicol.getSelectedItem().toString()));
+                Mipersona.setCod_Discapacidad(Asignar_cod_dDiscapacidad(Base, cbx_discapacidad.getSelectedItem().toString()));
+                Mipersona.setCod_Especialidad(Asignar_cod_Especialidad(Base, cbx_especializacion.getSelectedItem().toString()));
+                Mipersona.setTelefono(TxtTelefono.getText());
+                Mipersona.setEmail(TxtCorreoPsicologo.getText());
+                Mipersona.setContraseña(String.valueOf(NvContraPsicol.getPassword()));
 
-        Mipersona.setNombre(TxtNomPsicol.getText());
-        Mipersona.setApellido(TxtApelliPsicol.getText());
-        Mipersona.setDireccion(TxtDireccPsicol.getText());
-        Mipersona.setFecha_Nacimiento(calcular_nacimineto());
-        String sex;
-        if (Femenino.isSelected()) {
-            sex = "F";
-        } else {
-            sex = "M";
-        }
+                // VALIDACION
+                if (validarCedula(Mipersona.getCedula().trim())
+                        && validarNombre(Mipersona.getNombre().trim())
+                        && validarApellido(Mipersona.getApellido().trim())
+                        && validarSexo(sex)
+                        && validarCorreo(Mipersona.getEmail().trim())
+                        && validarTelefono(Mipersona.getTelefono().trim())
+                        && validarDireccion(Mipersona.getDireccion())
+                        && validarContraseña(Mipersona.getContraseña(), String.valueOf(CfContraPsicol.getPassword()))) {
 
-        Mipersona.setSexo(sex.charAt(0));
-        String codNacional = Asignar_cod_Nacionalidad(Base, CmbBxNacionalidad3Psicol.getSelectedItem().toString());
+                    Base.store(Mipersona);
 
-        Mipersona.setCod_Nacionalidad(codNacional);
+                    Psicologo elpsic = new Psicologo();
+                    elpsic.setCod_Psicologo(Calcular_cod_Psicologo(Base));
+                    elpsic.setFK_Cedula(TxtCeduPsicol.getText());
+                    String especialid = Asignar_cod_Especialidad(Base, cbx_especializacion.getSelectedItem().toString());
+                    elpsic.setFK_Cod_Especialidad(especialid);
+                    elpsic.setAños_Experiencia((int) sp_años.getValue());
 
-        Mipersona.setTelefono(TxtTelefono.getText());
-        String discapa=Asignar_cod_dDiscapacidad(Base,cbx_discapacidad.getSelectedItem().toString() );
-                
-        Mipersona.setCod_Discapacidad(discapa);
-        Mipersona.setEmail(TxtCorreoPsicologo.getText());
+                    Base.store(elpsic);
+                    JOptionPane.showMessageDialog(this, "Los datos se han guardado exitosamente");
+                    Base.close();
+                    InicioPsicologo();
 
-        if (String.valueOf(NvContraPsicol.getPassword()).equals(String.valueOf(CfContraPsicol.getPassword()))) {
-            Mipersona.setContraseña(String.valueOf(NvContraPsicol.getPassword()));
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden");
-            NvContraPsicol.requestFocus();
-        }
-        Base.store(Mipersona);
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
-        Psicologo elpsic = new Psicologo();
-        elpsic.setCod_Psicologo(Calcular_cod_Psicologo(Base));
-        elpsic.setFK_Cedula(TxtCeduPsicol.getText());
-        
-        String especialid=Asignar_cod_Especialidad(Base,TxtEspecializacionPsicol1.getSelectedItem().toString() );
-        elpsic.setFK_Cod_Especialidad(especialid);
-        elpsic.setAños_Experiencia((int) sp_años.getValue());
-        Base.store(elpsic);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Por favor, llene todos los campos antes de guardar.");
+            }
 
-        Base.close();
+    }
 
-        InicioPsicologo login = new InicioPsicologo();
-        login.setVisible(true);
+    private void InicioPsicologo() {
+
+        InicioPsicologo IniPsico = new InicioPsicologo();
+        IniPsico.setVisible(true);
         this.setVisible(false);
+    }
+
+    public int Buscar_Persona(ObjectContainer Base, String cedula) {
+        // Verifica si la Cédula ya existe en la base de datos db4o
+        Persona examplePersona = new Persona();
+        examplePersona.setCedula(cedula);
+
+        ObjectSet result = Base.get(examplePersona);
+
+        return result.size();
+    }
+
+    public int Buscar_Correo(ObjectContainer Base, String correo) {
+        // Verifica si la Cédula ya existe en la base de datos db4o
+        Persona CorreoPersona = new Persona();
+        CorreoPersona.setEmail(correo);
+
+        ObjectSet result = Base.get(CorreoPersona);
+
+        return result.size();
+    }
+
+    private String campoVacio;
+
+    private boolean camposLlenos() {
+        String cedula = TxtCeduPsicol.getText().trim();
+        String correo = TxtCorreoPsicologo.getText().trim();
+
+        if (Buscar_Persona(Base, cedula) > 0) {
+            JOptionPane.showMessageDialog(this, "La cédula ya está registrada");
+            campoVacio = "Cédula ya registrada";
+            return false;
+        }
+
+        if (TxtNomPsicol.getText().isEmpty()) {
+            campoVacio = "Nombre";
+            return false;
+        } else if (TxtApelliPsicol.getText().isEmpty()) {
+            campoVacio = "Apellido";
+            return false;
+        }
+        if (Buscar_Correo(Base, correo) > 0) {
+            JOptionPane.showMessageDialog(this, "El correo ya está registrado");
+            campoVacio = "Correo ya registrado";
+            return false;
+        } else if (TxtTelefono.getText().isEmpty()) {
+            campoVacio = "Teléfono";
+            return false;
+        } else if (DateFechaNaciPsicol.getDate() == null) {
+            campoVacio = "Fecha de Nacimiento";
+            return false;
+        } else if (TxtDireccPsicol.getText().isEmpty()) {
+            campoVacio = "Dirección";
+            return false;
+        } else {
+            campoVacio = null;
+            return true;
+        }
 
     }//GEN-LAST:event_BtnRegistrarsePsicolActionPerformed
 
@@ -840,6 +917,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         }
         return null;
     }
+
     public String Asignar_cod_dDiscapacidad(ObjectContainer Base, String discapac) {
         Query query = Base.query();
         query.constrain(Discapacidad.class);
@@ -847,13 +925,14 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         ObjectSet result = query.execute();
 
         while (result.hasNext()) {
-            Discapacidad disca= (Discapacidad) result.next();
+            Discapacidad disca = (Discapacidad) result.next();
             if (disca.getTipo_Discapacidad().equals(discapac)) {  // Asume que tienes un método getId() en tu clase Nacionalidad
                 return disca.getCod_Discapacidad();  // Asume que tienes un método getNombre() en tu clase Nacionalidad
             }
         }
         return null;
     }
+
     public String Asignar_cod_Especialidad(ObjectContainer Base, String espe) {
         Query query = Base.query();
         query.constrain(Especializacion.class);
@@ -870,9 +949,9 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
     }
 
 
-    private void TxtEspecializacionPsicol1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtEspecializacionPsicol1ActionPerformed
+    private void cbx_especializacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_especializacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxtEspecializacionPsicol1ActionPerformed
+    }//GEN-LAST:event_cbx_especializacionActionPerformed
     public void Nacionalidades_ingr(ObjectContainer Base) {
         Query query = Base.query();
         query.constrain(Nacionalidad.class);
@@ -889,7 +968,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         CmbBxNacionalidad3Psicol.setModel(model);
 
     }
-    
+
     public void Discapacidad_ingr(ObjectContainer Base) {
         Query query = Base.query();
         query.constrain(Discapacidad.class);
@@ -898,7 +977,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
 
         while (result.hasNext()) {
-            Discapacidad  disca= (Discapacidad) result.next();
+            Discapacidad disca = (Discapacidad) result.next();
             String nombre = disca.getTipo_Discapacidad(); // Asume que tienes un método getNombre() en tu clase Nacionalidad
             model.addElement(nombre); // Agrega el nombre al modelo
         }
@@ -906,7 +985,8 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         cbx_discapacidad.setModel(model);
 
     }
-     public void Especializacion_ingr(ObjectContainer Base) {
+
+    public void Especializacion_ingr(ObjectContainer Base) {
         Query query = Base.query();
         query.constrain(Especializacion.class);
         ObjectSet result = query.execute();
@@ -914,26 +994,20 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
 
         while (result.hasNext()) {
-            Especializacion  disca= (Especializacion) result.next();
+            Especializacion disca = (Especializacion) result.next();
             String nombre = disca.getEspecializacion(); // Asume que tienes un método getNombre() en tu clase Nacionalidad
             model.addElement(nombre); // Agrega el nombre al modelo
         }
 
-        TxtEspecializacionPsicol1.setModel(model);
+        cbx_especializacion.setModel(model);
 
     }
-     
+
 
     private void CmbBxNacionalidad3PsicolMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CmbBxNacionalidad3PsicolMousePressed
 
 
     }//GEN-LAST:event_CmbBxNacionalidad3PsicolMousePressed
-
-    public Date calcular_nacimineto() {
-        DateFechaNaciPsicol.setDate(Nacimiento);
-
-        return Nacimiento;
-    }
 
     public static int Verificar_cedula_Persona(ObjectContainer Base, String cedula) {
         Persona elprson = new Persona();
@@ -972,6 +1046,106 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         return cod;
     }
 
+    public static int Verificar_CodigoAdmin(ObjectContainer Base, String cedula) {
+
+        Administrador Adminis = new Administrador();
+        Adminis.setID_Admin(cedula);
+        ObjectSet result = Base.get(Adminis);
+
+        return result.size();
+    }
+
+    //Validaciones
+    public boolean validarCedula(String cedula) {
+        System.out.println("Cédula recibida para validar: " + cedula);
+        if (cedula == null || !cedula.matches("\\d{10}") || cedula.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "La cédula ingresada no es válida", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarNombre(String nombre) {
+        System.out.println("Nombre recibido para validar: " + nombre);
+        if (nombre == null || !nombre.matches("^[A-Za-z]+$") || nombre.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "Ingrese un nombre válido", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarApellido(String apellido) {
+        System.out.println("Apellido recibido para validar: " + apellido);
+        if (apellido == null || !apellido.matches("^[A-Za-z]+$") || apellido.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "Ingrese un apellido válido", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarSexo(String sexo) {
+        System.out.println("Sexo recibido para validar: " + sexo);
+        if (sexo == null || !sexo.matches("[FM]")) {
+            JOptionPane.showMessageDialog(this, "Seleccione un sexo válido", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarCorreo(String correo) {
+        System.out.println("Correo recibido para validar: " + correo);
+        if (correo == null || !correo.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}") || correo.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "El correo electrónico ingresado no es válido", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarTelefono(String telefono) {
+        System.out.println("Teléfono recibido para validar: " + telefono);
+        if (telefono == null || !telefono.matches("\\d{10}") || telefono.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "El teléfono ingresado no es válido", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarFechaNacimiento(Date fechaNacimiento) {
+        System.out.println("Fecha de Nacimiento recibida para validar: " + fechaNacimiento);
+        if (fechaNacimiento == null || fechaNacimiento.after(new Date())) {
+            JOptionPane.showMessageDialog(this, "La fecha de nacimiento no es válida. Debe ser anterior a la fecha actual.", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarDireccion(String direccion) {
+        System.out.println("Dirección recibida para validar: " + direccion);
+        if (direccion == null || direccion.isEmpty() || direccion.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "La dirección es obligatoria", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public void Validarespacio(String espacio) {
+        JOptionPane.showMessageDialog(this, "debe llenar los campos");
+    }
+
+    public boolean validarContraseña(String contraseña, String confirmacionContraseña) {
+        System.out.println("Contraseña recibida para validar: " + contraseña);
+        if (contraseña == null || !contraseña.matches("^[\\w.]{3,9}$") || contraseña.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "Solo puede ingresar una contraseña de 2 a 9 digitos ", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        // Validar que la contraseña y la confirmación sean iguales
+        if (!contraseña.equals(confirmacionContraseña)) {
+            JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Apellidos;
@@ -1004,10 +1178,10 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
     private javax.swing.JTextField TxtCeduPsicol;
     private javax.swing.JTextField TxtCorreoPsicologo;
     private javax.swing.JTextField TxtDireccPsicol;
-    private javax.swing.JComboBox<String> TxtEspecializacionPsicol1;
     private javax.swing.JTextField TxtNomPsicol;
     private javax.swing.JTextField TxtTelefono;
     private javax.swing.JComboBox<String> cbx_discapacidad;
+    private javax.swing.JComboBox<String> cbx_especializacion;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButton3;

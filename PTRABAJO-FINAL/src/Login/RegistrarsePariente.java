@@ -6,14 +6,19 @@
 package Login;
 
 import Clases.*;
+import Login.InicioRepresentante;
+import Login.RegistrarseGeneral;
 
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.ext.DatabaseClosedException;
 import com.db4o.ext.DatabaseReadOnlyException;
+import com.db4o.query.Query;
 import java.awt.Color;
 import java.awt.HeadlessException;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,7 +33,9 @@ public class RegistrarsePariente extends javax.swing.JFrame {
      */
     public RegistrarsePariente() {
         initComponents();
-           Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+        Discapacidad_ingr(Base);
+        Nacionalidades_ingr(Base);
     }
 
     /**
@@ -47,15 +54,12 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         BtnFemenParien = new javax.swing.JRadioButton();
         BtnMasculiParien = new javax.swing.JRadioButton();
-        BtnSiDiscaParien = new javax.swing.JRadioButton();
-        BtnNoDiscaParien = new javax.swing.JRadioButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
-        jSeparator8 = new javax.swing.JSeparator();
-        jSeparator5 = new javax.swing.JSeparator();
         jSeparator1 = new javax.swing.JSeparator();
+        Especializacion3 = new javax.swing.JLabel();
         TxtApellidoParien = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
@@ -94,6 +98,12 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         Txt_profecion = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jSeparator17 = new javax.swing.JSeparator();
+        cbx_discapacidad_pariente = new javax.swing.JComboBox<>();
+        Especializacion2 = new javax.swing.JLabel();
+        TxtCorreoPa = new javax.swing.JTextField();
+        jSeparator18 = new javax.swing.JSeparator();
+        TxtTelfPari = new javax.swing.JTextField();
+        jSeparator19 = new javax.swing.JSeparator();
         BtnRegresar = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
@@ -123,21 +133,6 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         });
         jPanel2.add(BtnMasculiParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
 
-        BtnGpDiscaParien.add(BtnSiDiscaParien);
-        BtnSiDiscaParien.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        BtnSiDiscaParien.setText("Si");
-        BtnSiDiscaParien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSiDiscaParienActionPerformed(evt);
-            }
-        });
-        jPanel2.add(BtnSiDiscaParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, -1, -1));
-
-        BtnGpDiscaParien.add(BtnNoDiscaParien);
-        BtnNoDiscaParien.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        BtnNoDiscaParien.setText("No");
-        jPanel2.add(BtnNoDiscaParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, -1, -1));
-
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel8.setText("Discapacidad:");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, 100, -1));
@@ -147,9 +142,11 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
         jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 80, 10));
         jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 80, 10));
-        jPanel2.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 60, 40, 10));
-        jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 40, 10));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 170, 10));
+
+        Especializacion3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        Especializacion3.setText("Telefono:");
+        jPanel2.add(Especializacion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, -1, -1));
 
         TxtApellidoParien.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtApellidoParien.setForeground(new java.awt.Color(153, 153, 153));
@@ -200,7 +197,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Rockwell Nova", 1, 24)); // NOI18N
         jLabel2.setText("REGISTRARSE");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, -1, -1));
 
         TxtCedParien.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtCedParien.setForeground(new java.awt.Color(153, 153, 153));
@@ -227,7 +224,6 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         Nacionalidad.setText("Nacionalidad:");
         jPanel2.add(Nacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, -1, -1));
 
-        CmbBxNacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ecuatoriano", "Colombiano", "Venezolano", "Peruano", "Argentino", "Brazileño" }));
         CmbBxNacionalidad.setBorder(null);
         CmbBxNacionalidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,7 +232,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         });
         jPanel2.add(CmbBxNacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 170, -1));
         jPanel2.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, -1, -1));
-        jPanel2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 170, 10));
+        jPanel2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, 170, 10));
         jPanel2.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 170, 10));
 
         TxtTituloParien.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
@@ -322,7 +318,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
                 BtnRegistrarParienActionPerformed(evt);
             }
         });
-        jPanel2.add(BtnRegistrarParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 100, 30));
+        jPanel2.add(BtnRegistrarParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, 100, 30));
 
         jLabel13.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel13.setText("Apellidos:");
@@ -383,7 +379,52 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel3.setText("Profesion:");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, -1, -1));
-        jPanel2.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 170, 10));
+        jPanel2.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, 170, 10));
+
+        cbx_discapacidad_pariente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbx_discapacidad_parienteActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cbx_discapacidad_pariente, new org.netbeans.lib.awtextra.AbsoluteConstraints(565, 40, 120, -1));
+
+        Especializacion2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        Especializacion2.setText("Correo:");
+        jPanel2.add(Especializacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, -1, -1));
+
+        TxtCorreoPa.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        TxtCorreoPa.setForeground(new java.awt.Color(153, 153, 153));
+        TxtCorreoPa.setText("Ingrese su Correo");
+        TxtCorreoPa.setBorder(null);
+        TxtCorreoPa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                TxtCorreoPaMousePressed(evt);
+            }
+        });
+        TxtCorreoPa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtCorreoPaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(TxtCorreoPa, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, 170, -1));
+        jPanel2.add(jSeparator18, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 170, 10));
+
+        TxtTelfPari.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        TxtTelfPari.setForeground(new java.awt.Color(153, 153, 153));
+        TxtTelfPari.setText("Ingrese su Telefono");
+        TxtTelfPari.setBorder(null);
+        TxtTelfPari.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                TxtTelfPariMousePressed(evt);
+            }
+        });
+        TxtTelfPari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtTelfPariActionPerformed(evt);
+            }
+        });
+        jPanel2.add(TxtTelfPari, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 170, -1));
+        jPanel2.add(jSeparator19, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 170, 10));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 700, 390));
 
@@ -417,18 +458,14 @@ public class RegistrarsePariente extends javax.swing.JFrame {
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
         Base.close();
-            RegistrarseGeneral general = new RegistrarseGeneral();
-                general.setVisible(true);
-                    this.setVisible(false);
+        RegistrarseGeneral general = new RegistrarseGeneral();
+        general.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
     private void BtnMasculiParienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMasculiParienActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnMasculiParienActionPerformed
-
-    private void BtnSiDiscaParienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSiDiscaParienActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnSiDiscaParienActionPerformed
 
     private void TxtApellidoParienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtApellidoParienActionPerformed
         // TODO add your handling code here:
@@ -495,16 +532,23 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtTituloParien.setText("Ingrese su Título");
             TxtTituloParien.setForeground(Color.gray);
         }
+        if (TxtTelfPari.getText().isEmpty()) {
+            TxtTelfPari.setText("Ingrese su Telefono");
+            TxtTelfPari.setForeground(Color.gray);
+        }
         if (TxtDirrecParien.getText().isEmpty()) {
             TxtDirrecParien.setText("Ingrese su Dirección");
             TxtDirrecParien.setForeground(Color.gray);
-        
+        }
         if (Txt_profecion.getText().isEmpty()) {
             Txt_profecion.setText("Ingrese su profesion");
             Txt_profecion.setForeground(Color.gray);
         }
-            
+        if (TxtCorreoPa.getText().isEmpty()) {
+            TxtCorreoPa.setText("Ingrese su Correo");
+            TxtCorreoPa.setForeground(Color.gray);
         }
+
         if (String.valueOf(NvContraParien.getPassword()).isEmpty()) {
             NvContraParien.setText("**********");
             NvContraParien.setForeground(Color.gray);
@@ -522,11 +566,6 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtApellidoParien.setForeground(Color.black);
         }
 
-        if (TxtNombreParien.getText().isEmpty()) {
-            TxtNombreParien.setText("Ingrese sus Nombres");
-            TxtNombreParien.setForeground(Color.gray);
-        }
-
         if (TxtOcupaParien.getText().isEmpty()) {
             TxtOcupaParien.setText("Ingrese su Ocupación");
             TxtOcupaParien.setForeground(Color.gray);
@@ -539,24 +578,35 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtTituloParien.setText("Ingrese su Título");
             TxtTituloParien.setForeground(Color.gray);
         }
+        if (TxtTelfPari.getText().isEmpty()) {
+            TxtTelfPari.setText("Ingrese su Telefono");
+            TxtTelfPari.setForeground(Color.gray);
+        }
         if (TxtDirrecParien.getText().isEmpty()) {
             TxtDirrecParien.setText("Ingrese su Dirección");
             TxtDirrecParien.setForeground(Color.gray);
         }
-        
         if (Txt_profecion.getText().isEmpty()) {
             Txt_profecion.setText("Ingrese su profesion");
             Txt_profecion.setForeground(Color.gray);
         }
-        
+        if (TxtCorreoPa.getText().isEmpty()) {
+            TxtCorreoPa.setText("Ingrese su Correo");
+            TxtCorreoPa.setForeground(Color.gray);
+        }
+
         if (String.valueOf(NvContraParien.getPassword()).isEmpty()) {
-            NvContraParien.setText("**********");
+            NvContraParien.setText("");
             NvContraParien.setForeground(Color.gray);
 
         }
         if (String.valueOf(CfContraParien.getPassword()).isEmpty()) {
-            CfContraParien.setText("**********");
+            CfContraParien.setText("");
             CfContraParien.setForeground(Color.gray);
+        }
+        if (TxtNombreParien.getText().isEmpty()) {
+            TxtNombreParien.setText("Ingrese sus Nombres");
+            TxtNombreParien.setForeground(Color.gray);
         }
     }//GEN-LAST:event_TxtApellidoParienMousePressed
 
@@ -566,15 +616,11 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtOcupaParien.setForeground(Color.black);
         }
 
-        if (TxtNombreParien.getText().isEmpty()) {
-            TxtNombreParien.setText("Ingrese sus Nombres");
-            TxtNombreParien.setForeground(Color.gray);
-        }
-
         if (TxtApellidoParien.getText().isEmpty()) {
             TxtApellidoParien.setText("Ingrese sus Apellidos");
             TxtApellidoParien.setForeground(Color.gray);
         }
+
         if (TxtCedParien.getText().isEmpty()) {
             TxtCedParien.setText("Ingrese su cedula");
             TxtCedParien.setForeground(Color.gray);
@@ -583,24 +629,35 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtTituloParien.setText("Ingrese su Título");
             TxtTituloParien.setForeground(Color.gray);
         }
+        if (TxtTelfPari.getText().isEmpty()) {
+            TxtTelfPari.setText("Ingrese su Telefono");
+            TxtTelfPari.setForeground(Color.gray);
+        }
         if (TxtDirrecParien.getText().isEmpty()) {
             TxtDirrecParien.setText("Ingrese su Dirección");
             TxtDirrecParien.setForeground(Color.gray);
-            
+        }
         if (Txt_profecion.getText().isEmpty()) {
             Txt_profecion.setText("Ingrese su profesion");
             Txt_profecion.setForeground(Color.gray);
         }
-            
+        if (TxtCorreoPa.getText().isEmpty()) {
+            TxtCorreoPa.setText("Ingrese su Correo");
+            TxtCorreoPa.setForeground(Color.gray);
         }
+
         if (String.valueOf(NvContraParien.getPassword()).isEmpty()) {
-            NvContraParien.setText("**********");
+            NvContraParien.setText("");
             NvContraParien.setForeground(Color.gray);
 
         }
         if (String.valueOf(CfContraParien.getPassword()).isEmpty()) {
-            CfContraParien.setText("**********");
+            CfContraParien.setText("");
             CfContraParien.setForeground(Color.gray);
+        }
+        if (TxtNombreParien.getText().isEmpty()) {
+            TxtNombreParien.setText("Ingrese sus Nombres");
+            TxtNombreParien.setForeground(Color.gray);
         }
     }//GEN-LAST:event_TxtOcupaParienMousePressed
 
@@ -610,41 +667,49 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtCedParien.setForeground(Color.black);
         }
 
-        if (TxtNombreParien.getText().isEmpty()) {
-            TxtNombreParien.setText("Ingrese sus Nombres");
-            TxtNombreParien.setForeground(Color.gray);
-        }
-
         if (TxtApellidoParien.getText().isEmpty()) {
             TxtApellidoParien.setText("Ingrese sus Apellidos");
             TxtApellidoParien.setForeground(Color.gray);
         }
+
         if (TxtOcupaParien.getText().isEmpty()) {
             TxtOcupaParien.setText("Ingrese su Ocupación");
             TxtOcupaParien.setForeground(Color.gray);
         }
+
         if (TxtTituloParien.getText().isEmpty()) {
             TxtTituloParien.setText("Ingrese su Título");
             TxtTituloParien.setForeground(Color.gray);
         }
+        if (TxtTelfPari.getText().isEmpty()) {
+            TxtTelfPari.setText("Ingrese su Telefono");
+            TxtTelfPari.setForeground(Color.gray);
+        }
         if (TxtDirrecParien.getText().isEmpty()) {
             TxtDirrecParien.setText("Ingrese su Dirección");
             TxtDirrecParien.setForeground(Color.gray);
-         
+        }
         if (Txt_profecion.getText().isEmpty()) {
             Txt_profecion.setText("Ingrese su profesion");
             Txt_profecion.setForeground(Color.gray);
-        } 
-            
         }
+        if (TxtCorreoPa.getText().isEmpty()) {
+            TxtCorreoPa.setText("Ingrese su Correo");
+            TxtCorreoPa.setForeground(Color.gray);
+        }
+
         if (String.valueOf(NvContraParien.getPassword()).isEmpty()) {
-            NvContraParien.setText("**********");
+            NvContraParien.setText("");
             NvContraParien.setForeground(Color.gray);
 
         }
         if (String.valueOf(CfContraParien.getPassword()).isEmpty()) {
-            CfContraParien.setText("**********");
+            CfContraParien.setText("");
             CfContraParien.setForeground(Color.gray);
+        }
+        if (TxtNombreParien.getText().isEmpty()) {
+            TxtNombreParien.setText("Ingrese sus Nombres");
+            TxtNombreParien.setForeground(Color.gray);
         }
     }//GEN-LAST:event_TxtCedParienMousePressed
 
@@ -654,15 +719,11 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtTituloParien.setForeground(Color.black);
         }
 
-        if (TxtNombreParien.getText().isEmpty()) {
-            TxtNombreParien.setText("Ingrese sus Nombres");
-            TxtNombreParien.setForeground(Color.gray);
-        }
-
         if (TxtApellidoParien.getText().isEmpty()) {
             TxtApellidoParien.setText("Ingrese sus Apellidos");
             TxtApellidoParien.setForeground(Color.gray);
         }
+
         if (TxtOcupaParien.getText().isEmpty()) {
             TxtOcupaParien.setText("Ingrese su Ocupación");
             TxtOcupaParien.setForeground(Color.gray);
@@ -671,24 +732,35 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtCedParien.setText("Ingrese su cedula");
             TxtCedParien.setForeground(Color.gray);
         }
+        if (TxtTelfPari.getText().isEmpty()) {
+            TxtTelfPari.setText("Ingrese su Telefono");
+            TxtTelfPari.setForeground(Color.gray);
+        }
         if (TxtDirrecParien.getText().isEmpty()) {
             TxtDirrecParien.setText("Ingrese su Dirección");
             TxtDirrecParien.setForeground(Color.gray);
-        
+        }
         if (Txt_profecion.getText().isEmpty()) {
             Txt_profecion.setText("Ingrese su profesion");
             Txt_profecion.setForeground(Color.gray);
         }
-        
+        if (TxtCorreoPa.getText().isEmpty()) {
+            TxtCorreoPa.setText("Ingrese su Correo");
+            TxtCorreoPa.setForeground(Color.gray);
         }
+
         if (String.valueOf(NvContraParien.getPassword()).isEmpty()) {
-            NvContraParien.setText("**********");
+            NvContraParien.setText("");
             NvContraParien.setForeground(Color.gray);
 
         }
         if (String.valueOf(CfContraParien.getPassword()).isEmpty()) {
-            CfContraParien.setText("**********");
+            CfContraParien.setText("");
             CfContraParien.setForeground(Color.gray);
+        }
+        if (TxtNombreParien.getText().isEmpty()) {
+            TxtNombreParien.setText("Ingrese sus Nombres");
+            TxtNombreParien.setForeground(Color.gray);
         }
     }//GEN-LAST:event_TxtTituloParienMousePressed
 
@@ -698,15 +770,11 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtDirrecParien.setForeground(Color.black);
         }
 
-        if (TxtNombreParien.getText().isEmpty()) {
-            TxtNombreParien.setText("Ingrese sus Nombres");
-            TxtNombreParien.setForeground(Color.gray);
-        }
-
         if (TxtApellidoParien.getText().isEmpty()) {
             TxtApellidoParien.setText("Ingrese sus Apellidos");
             TxtApellidoParien.setForeground(Color.gray);
         }
+
         if (TxtOcupaParien.getText().isEmpty()) {
             TxtOcupaParien.setText("Ingrese su Ocupación");
             TxtOcupaParien.setForeground(Color.gray);
@@ -718,21 +786,33 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         if (TxtTituloParien.getText().isEmpty()) {
             TxtTituloParien.setText("Ingrese su Título");
             TxtTituloParien.setForeground(Color.gray);
-           
+        }
+        if (TxtTelfPari.getText().isEmpty()) {
+            TxtTelfPari.setText("Ingrese su Telefono");
+            TxtTelfPari.setForeground(Color.gray);
+        }
+
         if (Txt_profecion.getText().isEmpty()) {
             Txt_profecion.setText("Ingrese su profesion");
             Txt_profecion.setForeground(Color.gray);
-        }    
-            
         }
+        if (TxtCorreoPa.getText().isEmpty()) {
+            TxtCorreoPa.setText("Ingrese su Correo");
+            TxtCorreoPa.setForeground(Color.gray);
+        }
+
         if (String.valueOf(NvContraParien.getPassword()).isEmpty()) {
-            NvContraParien.setText("**********");
+            NvContraParien.setText("");
             NvContraParien.setForeground(Color.gray);
 
         }
         if (String.valueOf(CfContraParien.getPassword()).isEmpty()) {
-            CfContraParien.setText("**********");
+            CfContraParien.setText("");
             CfContraParien.setForeground(Color.gray);
+        }
+        if (TxtNombreParien.getText().isEmpty()) {
+            TxtNombreParien.setText("Ingrese sus Nombres");
+            TxtNombreParien.setForeground(Color.gray);
         }
     }//GEN-LAST:event_TxtDirrecParienMousePressed
 
@@ -742,15 +822,11 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             NvContraParien.setText("");
             NvContraParien.setForeground(Color.black);
         }
-        if (TxtNombreParien.getText().isEmpty()) {
-            TxtNombreParien.setText("Ingrese sus Nombres");
-            TxtNombreParien.setForeground(Color.gray);
-        }
-
         if (TxtApellidoParien.getText().isEmpty()) {
             TxtApellidoParien.setText("Ingrese sus Apellidos");
             TxtApellidoParien.setForeground(Color.gray);
         }
+
         if (TxtOcupaParien.getText().isEmpty()) {
             TxtOcupaParien.setText("Ingrese su Ocupación");
             TxtOcupaParien.setForeground(Color.gray);
@@ -763,20 +839,30 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtTituloParien.setText("Ingrese su Título");
             TxtTituloParien.setForeground(Color.gray);
         }
+        if (TxtTelfPari.getText().isEmpty()) {
+            TxtTelfPari.setText("Ingrese su Telefono");
+            TxtTelfPari.setForeground(Color.gray);
+        }
         if (TxtDirrecParien.getText().isEmpty()) {
             TxtDirrecParien.setText("Ingrese su Dirección");
             TxtDirrecParien.setForeground(Color.gray);
         }
-        
         if (Txt_profecion.getText().isEmpty()) {
             Txt_profecion.setText("Ingrese su profesion");
             Txt_profecion.setForeground(Color.gray);
         }
-        
+        if (TxtCorreoPa.getText().isEmpty()) {
+            TxtCorreoPa.setText("Ingrese su Correo");
+            TxtCorreoPa.setForeground(Color.gray);
+        }
 
         if (String.valueOf(CfContraParien.getPassword()).isEmpty()) {
-            CfContraParien.setText("**********");
+            CfContraParien.setText("");
             CfContraParien.setForeground(Color.gray);
+        }
+        if (TxtNombreParien.getText().isEmpty()) {
+            TxtNombreParien.setText("Ingrese sus Nombres");
+            TxtNombreParien.setForeground(Color.gray);
         }
     }//GEN-LAST:event_NvContraParienMousePressed
 
@@ -786,15 +872,11 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             CfContraParien.setText("");
             CfContraParien.setForeground(Color.black);
         }
-        if (TxtNombreParien.getText().isEmpty()) {
-            TxtNombreParien.setText("Ingrese sus Nombres");
-            TxtNombreParien.setForeground(Color.gray);
-        }
-
         if (TxtApellidoParien.getText().isEmpty()) {
             TxtApellidoParien.setText("Ingrese sus Apellidos");
             TxtApellidoParien.setForeground(Color.gray);
         }
+
         if (TxtOcupaParien.getText().isEmpty()) {
             TxtOcupaParien.setText("Ingrese su Ocupación");
             TxtOcupaParien.setForeground(Color.gray);
@@ -807,73 +889,158 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtTituloParien.setText("Ingrese su Título");
             TxtTituloParien.setForeground(Color.gray);
         }
+        if (TxtTelfPari.getText().isEmpty()) {
+            TxtTelfPari.setText("Ingrese su Telefono");
+            TxtTelfPari.setForeground(Color.gray);
+        }
         if (TxtDirrecParien.getText().isEmpty()) {
             TxtDirrecParien.setText("Ingrese su Dirección");
             TxtDirrecParien.setForeground(Color.gray);
         }
-        
         if (Txt_profecion.getText().isEmpty()) {
             Txt_profecion.setText("Ingrese su profesion");
             Txt_profecion.setForeground(Color.gray);
         }
-        
-        
+        if (TxtCorreoPa.getText().isEmpty()) {
+            TxtCorreoPa.setText("Ingrese su Correo");
+            TxtCorreoPa.setForeground(Color.gray);
+        }
+
         if (String.valueOf(NvContraParien.getPassword()).isEmpty()) {
-            NvContraParien.setText("**********");
+            NvContraParien.setText("");
             NvContraParien.setForeground(Color.gray);
+
+        }
+        if (TxtNombreParien.getText().isEmpty()) {
+            TxtNombreParien.setText("Ingrese sus Nombres");
+            TxtNombreParien.setForeground(Color.gray);
         }
     }//GEN-LAST:event_CfContraParienMousePressed
 
     private void BtnRegistrarParienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarParienActionPerformed
 
-       try {
+        if (camposLlenos()) {
+
             String sexo;
-            String Discapacidad;
+            Persona miPersona = new Persona();
 
-            Persona Mipersona = new Persona();
+            miPersona.setCedula(TxtCedParien.getText());
+            miPersona.setNombre(TxtNombreParien.getText());
+            miPersona.setApellido(TxtApellidoParien.getText());
+            miPersona.setDireccion(TxtDirrecParien.getText());
+            miPersona.setFecha_Nacimiento(DateFechaNaciParien.getDate());
+            miPersona.setEmail(TxtCorreoPa.getText());
+            miPersona.setTelefono(TxtTelfPari.getText());
 
-            Mipersona.setCedula(TxtCedParien.getText());
-
-            Mipersona.setNombre(TxtNombreParien.getText());
-            Mipersona.setApellido(TxtApellidoParien.getText());
-            Mipersona.setDireccion(TxtDirrecParien.getText());
-            Mipersona.setFecha_Nacimiento(DateFechaNaciParien.getDate());
             if (BtnFemenParien.isSelected()) {
                 sexo = "F";
             } else {
                 sexo = "M";
             }
 
-            Mipersona.setSexo(sexo.charAt(0));
-            Mipersona.setCod_Nacionalidad(CmbBxNacionalidad.getSelectedItem().toString());
+            miPersona.setSexo(sexo.charAt(0));
+            miPersona.setCod_Nacionalidad(Asignar_cod_dDiscapacidad(Base, cbx_discapacidad_pariente.getSelectedItem().toString()));
+            miPersona.setContraseña(String.valueOf(NvContraParien.getPassword()));
 
-            Mipersona.setCod_Discapacidad(TxtDirrecParien.getText());
-            if (BtnSiDiscaParien.isSelected()) {
-                Discapacidad = "Si";
-            } else {
-                Discapacidad = "No";
+            if (validarCedula(miPersona.getCedula().trim())
+                    && validarNombre(miPersona.getNombre().trim())
+                    && validarApellido(miPersona.getApellido().trim())
+                    && validarSexo(sexo)
+                    && validarCorreo(miPersona.getEmail().trim())
+                    && validarTelefono(miPersona.getTelefono().trim())
+                    && validarDireccion(miPersona.getDireccion())
+                    && validarContraseña(miPersona.getContraseña(), String.valueOf(CfContraParien.getPassword()))) {
+
+                Base.store(miPersona);
+
+                Representante elrepre = new Representante();
+                elrepre.setCod_Repre(Calcular_cod_Representante(Base));
+                elrepre.setFKCod_Cedula(TxtCedParien.getText());
+                elrepre.setFKCod_parentesco(CmbBxParentesco.getSelectedItem().toString());
+                elrepre.setFKProfesion(Txt_profecion.getText());
+                elrepre.setOcupacion(TxtOcupaParien.getText());
+
+                Base.store(elrepre);
+
+                JOptionPane.showMessageDialog(this, "Los datos se han guardado exitosamente");
+                Base.close();
+                iniciopsico();
             }
-
-            Mipersona.setContraseña(String.valueOf(NvContraParien.getPassword()));
- 
-            Base.store(Mipersona);
-
-            Representante elrepre = new Representante();
-            elrepre.setCod_Repre(Calcular_cod_Representante(Base));
-            elrepre.setFKCod_Cedula(TxtCedParien.getText());
-            elrepre.setFKCod_parentesco(CmbBxParentesco.getSelectedItem().toString());
-            elrepre.setFKProfesion(Txt_profecion.getText());
-            elrepre.setOcupacion(TxtOcupaParien.getText());
-            Base.store(elrepre);
-            javax.swing.JOptionPane.showMessageDialog(this, "Se guardo la base de datos");
-
-        } catch (DatabaseClosedException | DatabaseReadOnlyException | HeadlessException e) {
-        } finally {
-            Base.close();
-            InicioRepresentante loginrepresentante = new InicioRepresentante();
-            loginrepresentante.setVisible(true);
-            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor, llene todos los campos antes de guardar.");
         }
+    }
+
+    private void iniciopsico() {
+
+        InicioRepresentante Inirepre = new InicioRepresentante();
+        Inirepre.setVisible(true);
+        this.setVisible(false);
+    }
+
+    public int Buscar_Persona(ObjectContainer Base, String cedula) {
+        // Verifica si la Cédula ya existe en la base de datos db4o
+        Persona examplePersona = new Persona();
+        examplePersona.setCedula(cedula);
+
+        ObjectSet result = Base.get(examplePersona);
+
+        return result.size();
+    }
+
+    public int Buscar_Correo(ObjectContainer Base, String correo) {
+        // Verifica si la Cédula ya existe en la base de datos db4o
+        Persona CorreoPersona = new Persona();
+        CorreoPersona.setEmail(correo);
+
+        ObjectSet result = Base.get(CorreoPersona);
+
+        return result.size();
+    }
+
+    private String campoVacio;
+
+    private boolean camposLlenos() {
+        String cedula = TxtCedParien.getText().trim();
+        String correo = TxtCorreoPa.getText().trim();  // Declara la variable correo
+
+        if (Buscar_Persona(Base, cedula) > 0) {
+            JOptionPane.showMessageDialog(this, "La cédula ya está registrada");
+            campoVacio = "Cédula ya registrada";
+            return false;
+        }
+
+        if (TxtNombreParien.getText().isEmpty()) {
+            campoVacio = "Nombre";
+            return false;
+        } else if (TxtApellidoParien.getText().isEmpty()) {
+            campoVacio = "Apellido";
+            return false;
+        }
+
+        if (Buscar_Correo(Base, correo) > 0) {
+            JOptionPane.showMessageDialog(this, "El correo ya está registrado");
+            campoVacio = "Correo ya registrado";
+            return false;
+        }
+
+        if (!validarpuesto(TxtTituloParien.getText())) {
+            campoVacio = "Titulo";
+            return false;
+        } else if (TxtTelfPari.getText().isEmpty()) {
+            campoVacio = "Teléfono";
+            return false;
+        } else if (DateFechaNaciParien.getDate() == null) {
+            campoVacio = "Fecha de Nacimiento";
+            return false;
+        } else if (TxtDirrecParien.getText().isEmpty()) {
+            campoVacio = "Dirección";
+            return false;
+        } else {
+            campoVacio = null;
+            return true;
+        }
+
 
     }//GEN-LAST:event_BtnRegistrarParienActionPerformed
 
@@ -887,15 +1054,11 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             Txt_profecion.setForeground(Color.black);
         }
 
-        if (TxtNombreParien.getText().isEmpty()) {
-            TxtNombreParien.setText("Ingrese sus Nombres");
-            TxtNombreParien.setForeground(Color.gray);
-        }
-
         if (TxtApellidoParien.getText().isEmpty()) {
             TxtApellidoParien.setText("Ingrese sus Apellidos");
             TxtApellidoParien.setForeground(Color.gray);
         }
+
         if (TxtOcupaParien.getText().isEmpty()) {
             TxtOcupaParien.setText("Ingrese su Ocupación");
             TxtOcupaParien.setForeground(Color.gray);
@@ -907,23 +1070,214 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         if (TxtTituloParien.getText().isEmpty()) {
             TxtTituloParien.setText("Ingrese su Título");
             TxtTituloParien.setForeground(Color.gray);
-           
+        }
+        if (TxtTelfPari.getText().isEmpty()) {
+            TxtTelfPari.setText("Ingrese su Telefono");
+            TxtTelfPari.setForeground(Color.gray);
+        }
         if (TxtDirrecParien.getText().isEmpty()) {
             TxtDirrecParien.setText("Ingrese su Dirección");
             TxtDirrecParien.setForeground(Color.gray);
-        }    
-            
         }
+        if (TxtCorreoPa.getText().isEmpty()) {
+            TxtCorreoPa.setText("Ingrese su Correo");
+            TxtCorreoPa.setForeground(Color.gray);
+        }
+
         if (String.valueOf(NvContraParien.getPassword()).isEmpty()) {
-            NvContraParien.setText("**********");
+            NvContraParien.setText("");
             NvContraParien.setForeground(Color.gray);
 
         }
         if (String.valueOf(CfContraParien.getPassword()).isEmpty()) {
-            CfContraParien.setText("**********");
+            CfContraParien.setText("");
             CfContraParien.setForeground(Color.gray);
         }
+        if (TxtNombreParien.getText().isEmpty()) {
+            TxtNombreParien.setText("Ingrese sus Nombres");
+            TxtNombreParien.setForeground(Color.gray);
+        }
     }//GEN-LAST:event_Txt_profecionMousePressed
+
+    private void cbx_discapacidad_parienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_discapacidad_parienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbx_discapacidad_parienteActionPerformed
+
+    private void TxtCorreoPaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtCorreoPaMousePressed
+        if (TxtCorreoPa.getText().equals("Ingrese su Correo")) {
+            TxtCorreoPa.setText("");
+            TxtCorreoPa.setForeground(Color.black);
+        }
+        if (TxtApellidoParien.getText().isEmpty()) {
+            TxtApellidoParien.setText("Ingrese sus Apellidos");
+            TxtApellidoParien.setForeground(Color.gray);
+        }
+
+        if (TxtOcupaParien.getText().isEmpty()) {
+            TxtOcupaParien.setText("Ingrese su Ocupación");
+            TxtOcupaParien.setForeground(Color.gray);
+        }
+        if (TxtCedParien.getText().isEmpty()) {
+            TxtCedParien.setText("Ingrese su cedula");
+            TxtCedParien.setForeground(Color.gray);
+        }
+        if (TxtTituloParien.getText().isEmpty()) {
+            TxtTituloParien.setText("Ingrese su Título");
+            TxtTituloParien.setForeground(Color.gray);
+        }
+        if (TxtTelfPari.getText().isEmpty()) {
+            TxtTelfPari.setText("Ingrese su Telefono");
+            TxtTelfPari.setForeground(Color.gray);
+        }
+        if (TxtDirrecParien.getText().isEmpty()) {
+            TxtDirrecParien.setText("Ingrese su Dirección");
+            TxtDirrecParien.setForeground(Color.gray);
+        }
+        if (Txt_profecion.getText().isEmpty()) {
+            Txt_profecion.setText("Ingrese su profesion");
+            Txt_profecion.setForeground(Color.gray);
+        }
+
+        if (String.valueOf(NvContraParien.getPassword()).isEmpty()) {
+            NvContraParien.setText("");
+            NvContraParien.setForeground(Color.gray);
+
+        }
+        if (String.valueOf(CfContraParien.getPassword()).isEmpty()) {
+            CfContraParien.setText("");
+            CfContraParien.setForeground(Color.gray);
+        }
+        if (TxtNombreParien.getText().isEmpty()) {
+            TxtNombreParien.setText("Ingrese sus Nombres");
+            TxtNombreParien.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_TxtCorreoPaMousePressed
+
+    private void TxtCorreoPaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCorreoPaActionPerformed
+
+    }//GEN-LAST:event_TxtCorreoPaActionPerformed
+
+    private void TxtTelfPariMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtTelfPariMousePressed
+
+        if (TxtTelfPari.getText().equals("Ingrese su Telefono")) {
+            TxtTelfPari.setText("");
+            TxtTelfPari.setForeground(Color.black);
+        }
+        if (TxtApellidoParien.getText().isEmpty()) {
+            TxtApellidoParien.setText("Ingrese sus Apellidos");
+            TxtApellidoParien.setForeground(Color.gray);
+        }
+
+        if (TxtOcupaParien.getText().isEmpty()) {
+            TxtOcupaParien.setText("Ingrese su Ocupación");
+            TxtOcupaParien.setForeground(Color.gray);
+        }
+        if (TxtCedParien.getText().isEmpty()) {
+            TxtCedParien.setText("Ingrese su cedula");
+            TxtCedParien.setForeground(Color.gray);
+        }
+        if (TxtTituloParien.getText().isEmpty()) {
+            TxtTituloParien.setText("Ingrese su Título");
+            TxtTituloParien.setForeground(Color.gray);
+        }
+        if (TxtDirrecParien.getText().isEmpty()) {
+            TxtDirrecParien.setText("Ingrese su Dirección");
+            TxtDirrecParien.setForeground(Color.gray);
+        }
+        if (Txt_profecion.getText().isEmpty()) {
+            Txt_profecion.setText("Ingrese su profesion");
+            Txt_profecion.setForeground(Color.gray);
+        }
+        if (TxtCorreoPa.getText().isEmpty()) {
+            TxtCorreoPa.setText("Ingrese su Correo");
+            TxtCorreoPa.setForeground(Color.gray);
+        }
+
+        if (String.valueOf(NvContraParien.getPassword()).isEmpty()) {
+            NvContraParien.setText("");
+            NvContraParien.setForeground(Color.gray);
+
+        }
+        if (String.valueOf(CfContraParien.getPassword()).isEmpty()) {
+            CfContraParien.setText("");
+            CfContraParien.setForeground(Color.gray);
+        }
+        if (TxtNombreParien.getText().isEmpty()) {
+            TxtNombreParien.setText("Ingrese sus Nombres");
+            TxtNombreParien.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_TxtTelfPariMousePressed
+
+    private void TxtTelfPariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtTelfPariActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtTelfPariActionPerformed
+    public void Discapacidad_ingr(ObjectContainer Base) {
+        Query query = Base.query();
+        query.constrain(Discapacidad.class
+        );
+        ObjectSet result = query.execute();
+
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+
+        while (result.hasNext()) {
+            Discapacidad disca = (Discapacidad) result.next();
+            String nombre = disca.getTipo_Discapacidad(); // Asume que tienes un método getNombre() en tu clase Nacionalidad
+            model.addElement(nombre); // Agrega el nombre al modelo
+        }
+
+        cbx_discapacidad_pariente.setModel(model);
+
+    }
+
+    public void Nacionalidades_ingr(ObjectContainer Base) {
+        Query query = Base.query();
+        query.constrain(Nacionalidad.class
+        );
+        ObjectSet result = query.execute();
+
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+
+        while (result.hasNext()) {
+            Nacionalidad nacionalidad = (Nacionalidad) result.next();
+            String nombre = nacionalidad.getNacionalidad(); // Asume que tienes un método getNombre() en tu clase Nacionalidad
+            model.addElement(nombre); // Agrega el nombre al modelo
+        }
+
+        CmbBxNacionalidad.setModel(model);
+
+    }
+
+    public String Asignar_cod_Nacionalidad(ObjectContainer Base, String Nacional) {
+        Query query = Base.query();
+        query.constrain(Nacionalidad.class
+        );
+
+        ObjectSet result = query.execute();
+
+        while (result.hasNext()) {
+            Nacionalidad nacionalidad = (Nacionalidad) result.next();
+            if (nacionalidad.getNacionalidad().equals(Nacional)) {  // Asume que tienes un método getId() en tu clase Nacionalidad
+                return nacionalidad.getCod_Nacionalidad();  // Asume que tienes un método getNombre() en tu clase Nacionalidad
+            }
+        }
+        return null;
+    }
+
+    public String Asignar_cod_dDiscapacidad(ObjectContainer Base, String discapac) {
+        Query query = Base.query();
+        query.constrain(Discapacidad.class
+        );
+
+        ObjectSet result = query.execute();
+
+        while (result.hasNext()) {
+            Discapacidad disca = (Discapacidad) result.next();
+            if (disca.getTipo_Discapacidad().equals(discapac)) {  // Asume que tienes un método getId() en tu clase Nacionalidad
+                return disca.getCod_Discapacidad();  // Asume que tienes un método getNombre() en tu clase Nacionalidad
+            }
+        }
+        return null;
+    }
 
     public static String Calcular_cod_Representante(ObjectContainer Base) {
 
@@ -954,31 +1308,121 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         return result.size();
     }
 
+    //Validaciones
+    public boolean validarCedula(String cedula) {
+        System.out.println("Cédula recibida para validar: " + cedula);
+        if (cedula == null || !cedula.matches("\\d{10}") || cedula.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "La cédula ingresada no es válida", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarNombre(String nombre) {
+        System.out.println("Nombre recibido para validar: " + nombre);
+        if (nombre == null || !nombre.matches("^[A-Za-z]+$") || nombre.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "Ingrese un nombre válido", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarApellido(String apellido) {
+        System.out.println("Apellido recibido para validar: " + apellido);
+        if (apellido == null || !apellido.matches("^[A-Za-z]+$") || apellido.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "Ingrese un apellido válido", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarSexo(String sexo) {
+        System.out.println("Sexo recibido para validar: " + sexo);
+        if (sexo == null || !sexo.matches("[FM]")) {
+            JOptionPane.showMessageDialog(this, "Seleccione un sexo válido", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarCorreo(String correo) {
+        System.out.println("Correo recibido para validar: " + correo);
+        if (correo == null || !correo.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}") || correo.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "El correo electrónico ingresado no es válido", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarpuesto(String puesto) {
+        System.out.println("Puesto recibido para validar: " + puesto);
+        if (puesto == null || !puesto.matches("^[A-Za-z0-9]+$") || puesto.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "El Puesto es obligatorio", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarTelefono(String telefono) {
+        System.out.println("Teléfono recibido para validar: " + telefono);
+        if (telefono == null || !telefono.matches("\\d{10}") || telefono.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "El teléfono ingresado no es válido", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarDireccion(String direccion) {
+        System.out.println("Dirección recibida para validar: " + direccion);
+        if (direccion == null || direccion.isEmpty() || direccion.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "La dirección es obligatoria", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarContraseña(String contraseña, String confirmacionContraseña) {
+        System.out.println("Contraseña recibida para validar: " + contraseña);
+        if (contraseña == null || !contraseña.matches("^[\\w.]{3,9}$") || contraseña.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "Solo puede ingresar una contraseña de 2 a 9 digitos ", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        // Validar que la contraseña y la confirmación sean iguales
+        if (!contraseña.equals(confirmacionContraseña)) {
+            JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton BtnFemenParien;
     private javax.swing.ButtonGroup BtnGpDiscaParien;
     private javax.swing.ButtonGroup BtnGrpSexoParein;
     private javax.swing.JRadioButton BtnMasculiParien;
-    private javax.swing.JRadioButton BtnNoDiscaParien;
     private javax.swing.JButton BtnRegistrarParien;
     private javax.swing.JButton BtnRegresar;
-    private javax.swing.JRadioButton BtnSiDiscaParien;
     private javax.swing.JPasswordField CfContraParien;
     private javax.swing.JComboBox<String> CmbBxNacionalidad;
     private javax.swing.JComboBox<String> CmbBxParentesco;
     private com.toedter.calendar.JDateChooser DateFechaNaciParien;
+    private javax.swing.JLabel Especializacion2;
+    private javax.swing.JLabel Especializacion3;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Nacionalidad;
     private javax.swing.JLabel Nacionalidad1;
     private javax.swing.JPasswordField NvContraParien;
     private javax.swing.JTextField TxtApellidoParien;
     private javax.swing.JTextField TxtCedParien;
+    private javax.swing.JTextField TxtCorreoPa;
     private javax.swing.JTextField TxtDirrecParien;
     private javax.swing.JTextField TxtNombreParien;
     private javax.swing.JTextField TxtOcupaParien;
+    private javax.swing.JTextField TxtTelfPari;
     private javax.swing.JTextField TxtTituloParien;
     private javax.swing.JTextField Txt_profecion;
+    private javax.swing.JComboBox<String> cbx_discapacidad_pariente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1004,13 +1448,14 @@ public class RegistrarsePariente extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator15;
     private javax.swing.JSeparator jSeparator16;
     private javax.swing.JSeparator jSeparator17;
+    private javax.swing.JSeparator jSeparator18;
+    private javax.swing.JSeparator jSeparator19;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     // End of variables declaration//GEN-END:variables
+
 }
