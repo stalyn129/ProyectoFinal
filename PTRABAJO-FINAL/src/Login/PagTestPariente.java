@@ -233,7 +233,12 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
 
     private void btn_responderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_responderActionPerformed
          
-       javax.swing.JOptionPane.showMessageDialog(this, usarData.getCod_test_repre());
+       Base.close();
+       
+             
+             Responder_Test_represent respo=new Responder_Test_represent();
+             respo.setVisible(true);
+             this.setVisible(false);
              
              
        
@@ -324,7 +329,7 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
             // Maneja las excepciones y muestra un mensaje de error
             javax.swing.JOptionPane.showMessageDialog(this, "Error al mostrar datos: " + e.getMessage());
         }
-        Base.close();
+        
     }
 
     /**

@@ -116,14 +116,14 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel5.setText("Apellidos:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, -1, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel6.setText("Sexo:");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel7.setText("Edad:");
+        jLabel7.setText("Fecha Nacimiento:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -144,7 +144,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
                 TxtApellidoNiñoActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtApellidoNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 170, -1));
+        jPanel2.add(TxtApellidoNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 170, -1));
 
         TxtNombreNiño.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtNombreNiño.setForeground(new java.awt.Color(153, 153, 153));
@@ -234,11 +234,11 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
                 TxtApodoNiñoActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtApodoNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 160, -1));
+        jPanel2.add(TxtApodoNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 160, -1));
 
         jLabel9.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel9.setText("Apodo:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, -1, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, -1, -1));
 
         NvContraNiño.setForeground(new java.awt.Color(153, 153, 153));
         NvContraNiño.setText("**********");
@@ -351,14 +351,22 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
                 Discapacidad = "No";
             }
             MiNiño.setDiscapacidad(Discapacidad);
+            MiNiño.setApodo(TxtApodoNiño.getText());
+            if (String.valueOf(NvContraNiño.getPassword()).equals(String.valueOf(CfContraNiño.getPassword()))) {
+              MiNiño.setContraseña(String.valueOf(NvContraNiño.getPassword()));  
+            }else{
+            JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden");
+            NvContraNiño.requestFocus();
+            }
+            
             
 
         Base.store(MiNiño); 
         javax.swing.JOptionPane.showMessageDialog(this,"Los datos se han guardado exitosamente");
-           
+        Base.close();   
         } catch (DatabaseClosedException | DatabaseReadOnlyException | HeadlessException e) {
         } finally{
-        Base.close();
+        
         PagPrincipalNiñ PrinNiño = new PagPrincipalNiñ();
         PrinNiño.setVisible(true);
         this.setVisible(false);
@@ -388,7 +396,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
     public static int Verificar_CodigoNiño(ObjectContainer Base, String usuario) {
 
         Niño miNiño = new Niño();
-        miNiño.setUsuario(usuario);
+        miNiño.setApodo(usuario);
         ObjectSet result = Base.get(miNiño);
 
         return result.size();

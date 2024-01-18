@@ -630,11 +630,11 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
             cuento.setCod_Cuento(Codigo);
 
             // Buscar el objeto correspondiente en la base de datos
-            ObjectSet<Cuento> result = base.queryByExample(cuento);
+            ObjectSet result = base.queryByExample(cuento);
 
             // Verificar si se encontró un objeto para modificar
             if (result.hasNext()) {
-                Cuento nueCuen = result.next();
+                Cuento nueCuen = (Cuento)result.next();
 
                 // Actualizar los campos del objeto con los nuevos valores
                 nueCuen.setTitulo_Cuento(Titulo);

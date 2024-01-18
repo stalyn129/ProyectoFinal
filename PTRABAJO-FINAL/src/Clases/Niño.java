@@ -18,20 +18,21 @@ public class Niño {
     private Date Fecha_Nacimiento;
     private String Personalidad;
     private String Discapacidad;
-    private String Usuario;
+    private String Apodo;
     private String Contraseña;
 
     public Niño() {
     }
 ////////////////////////////////////////////
-    public Niño(String Nombre, String Apellido, char Sexo_Niño, Date Fecha_Nacimiento, String Personalidad, String Discapacidad, String Usuario, String Contraseña) {
+
+    public Niño(String Nombre, String Apellido, char Sexo_Niño, Date Fecha_Nacimiento, String Personalidad, String Discapacidad, String Apodo, String Contraseña) {
         this.Nombre = Nombre;
         this.Apellido = Apellido;
         this.Sexo_Niño = Sexo_Niño;
         this.Fecha_Nacimiento = Fecha_Nacimiento;
         this.Personalidad = Personalidad;
         this.Discapacidad = Discapacidad;
-        this.Usuario = Usuario;
+        this.Apodo = Apodo;
         this.Contraseña = Contraseña;
     }
 
@@ -83,12 +84,12 @@ public class Niño {
         this.Discapacidad = Discapacidad;
     }
 
-    public String getUsuario() {
-        return Usuario;
+    public String getApodo() {
+        return Apodo;
     }
 
-    public void setUsuario(String Usuario) {
-        this.Usuario = Usuario;
+    public void setApodo(String Apodo) {
+        this.Apodo = Apodo;
     }
 
     public String getContraseña() {
@@ -99,11 +100,7 @@ public class Niño {
         this.Contraseña = Contraseña;
     }
 
-    @Override
-    public String toString() {
-        return "Ni\u00f1o{" + "Nombre=" + Nombre + ", Apellido=" + Apellido + ", Sexo_Ni\u00f1o=" + Sexo_Niño + ", Fecha_Nacimiento=" + Fecha_Nacimiento + ", Personalidad=" + Personalidad + ", Discapacidad=" + Discapacidad + ", Usuario=" + Usuario + ", Contrase\u00f1a=" + Contraseña + '}';
-    }
-    
+
     
     
 }

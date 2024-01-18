@@ -14,12 +14,12 @@ import java.awt.Color;
  * @author Joel
  */
 public class InicioNiño extends javax.swing.JFrame {
-
+// ObjectContainer Base;
     //ObjectContainer Base;
     
     public InicioNiño() {
         initComponents();
-            //Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+           // Base = Db4o.openFile("src/BBDD/BaseDat.yap");
             
     }
 
@@ -218,6 +218,18 @@ public class InicioNiño extends javax.swing.JFrame {
        
     }//GEN-LAST:event_TXT_IngreMouseClicked
 
+   public void buscar_studiante(){
+   
+   
+   }
+
+
+
+
+    
+    
+    
+    
     private void TXT_IngreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TXT_IngreMouseEntered
         Pnl_Ingre.setBackground(Color.white);
         TXT_Ingre.setForeground(new Color(102, 204, 255));
