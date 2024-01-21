@@ -10,16 +10,16 @@ package Clases;
  * @author Joel
  */
 public class Consejos {
-    
+
     private String cod_consejo;
-        private String Titulo1Consejo;
-            private String Titulo2Consejo;
-                private String TexConsejo1;
-                    private String TexConsejo2;
-                        private byte[] ImagenConsejo1;
-                            private byte[] ImagenConsejo2;
-                                private String RutaImageConsejo1;
-                                    private String RutaImageConsejo2;
+    private String Titulo1Consejo;
+    private String Titulo2Consejo;
+    private String TexConsejo1;
+    private String TexConsejo2;
+    private byte[] ImagenConsejo1;
+    private byte[] ImagenConsejo2;
+    private String RutaImageConsejo1;
+    private String RutaImageConsejo2;
 
     public Consejos() {
     }
@@ -112,5 +112,5 @@ public class Consejos {
     public String toString() {
         return "Consejos{" + "cod_consejo=" + cod_consejo + ", Titulo1Consejo=" + Titulo1Consejo + ", Titulo2Consejo=" + Titulo2Consejo + ", TexConsejo1=" + TexConsejo1 + ", TexConsejo2=" + TexConsejo2 + ", ImagenConsejo1=" + ImagenConsejo1 + ", ImagenConsejo2=" + ImagenConsejo2 + ", RutaImageConsejo1=" + RutaImageConsejo1 + ", RutaImageConsejo2=" + RutaImageConsejo2 + '}';
     }
-          
+
 }

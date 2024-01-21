@@ -20,12 +20,13 @@ public class Niño {
     private String Discapacidad;
     private String Apodo;
     private String Contraseña;
+    private boolean Estado;
 
     public Niño() {
     }
 ////////////////////////////////////////////
 
-    public Niño(String Nombre, String Apellido, char Sexo_Niño, Date Fecha_Nacimiento, String Personalidad, String Discapacidad, String Apodo, String Contraseña) {
+    public Niño(String Nombre, String Apellido, char Sexo_Niño, Date Fecha_Nacimiento, String Personalidad, String Discapacidad, String Apodo, String Contraseña, boolean Estado) {
         this.Nombre = Nombre;
         this.Apellido = Apellido;
         this.Sexo_Niño = Sexo_Niño;
@@ -34,8 +35,15 @@ public class Niño {
         this.Discapacidad = Discapacidad;
         this.Apodo = Apodo;
         this.Contraseña = Contraseña;
+        this.Estado = Estado;
     }
 
+    @Override
+    public String toString() {
+        return "Ni\u00f1o{" + "Nombre=" + Nombre + ", Apellido=" + Apellido + ", Sexo_Ni\u00f1o=" + Sexo_Niño + ", Fecha_Nacimiento=" + Fecha_Nacimiento + ", Personalidad=" + Personalidad + ", Discapacidad=" + Discapacidad + ", Apodo=" + Apodo + ", Contrase\u00f1a=" + Contraseña + ", Estado=" + Estado + '}';
+    }
+
+    
     public String getNombre() {
         return Nombre;
     }
@@ -100,7 +108,13 @@ public class Niño {
         this.Contraseña = Contraseña;
     }
 
+    public boolean isEstado() {
+        return Estado;
+    }
 
-    
-    
+    public void setEstado(boolean Estado) {
+        this.Estado = Estado;
+    }
+
+   
 }

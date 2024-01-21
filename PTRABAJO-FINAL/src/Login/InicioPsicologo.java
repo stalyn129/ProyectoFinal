@@ -5,8 +5,10 @@
  */
 package Login;
 
+import Clases.Administrador;
 import Clases.Persona;
 import Clases.Psicologo;
+import Clases.UserDataSingleton;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
@@ -19,9 +21,11 @@ import java.awt.Color;
 public class InicioPsicologo extends javax.swing.JFrame {
     ObjectContainer Base;
     String codigoPsicologo = "12345";
+    UserDataSingleton usarData;
     
     public InicioPsicologo() {
         initComponents();
+        usarData = UserDataSingleton.getInstance();
        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
@@ -280,7 +284,8 @@ public class InicioPsicologo extends javax.swing.JFrame {
 
                         if (resultadoBusquedaPsicologo == 1) {
                             if (String.valueOf(txt_cod_ad.getPassword()).equals(codigoPsicologo)) {
-                                RegistrarsePsicologo.cedula_pasada_interfaz = txt_usuario.getText();
+                                
+                                usarData.setCod_Psicologo(extraer_Psicologo(Base, txt_usuario.getText()));
                                 javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
                                 Base.close();
                                 PagPrincipalPsicologo elpagina = new PagPrincipalPsicologo();
@@ -319,6 +324,20 @@ public class InicioPsicologo extends javax.swing.JFrame {
                 selec.setVisible(true);
                     this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
+    
+    public static String extraer_Psicologo(ObjectContainer Base,String usuario){
+       Psicologo  extraer= new Psicologo();
+        extraer.setFK_Cedula(usuario);
+        ObjectSet result = Base.get(extraer);
+        
+        Psicologo ps=(Psicologo)result.next();
+        String cod_psic=ps.getCod_Psicologo();
+        
+    return cod_psic; 
+   
+    }
+    
+    
     
     public void dispose() {
         // Cerrar la base de datos cuando se destruye la instancia de InicioPsicologo.

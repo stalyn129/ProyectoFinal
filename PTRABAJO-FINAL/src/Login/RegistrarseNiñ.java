@@ -360,7 +360,8 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
             }
             
             
-
+            
+            MiNiño.setEstado(true);
         Base.store(MiNiño); 
         javax.swing.JOptionPane.showMessageDialog(this,"Los datos se han guardado exitosamente");
         Base.close();   

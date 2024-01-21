@@ -5,7 +5,18 @@
  */
 package Login;
 
+import Clases.Administrador;
+import Clases.Niño;
+import Clases.Psicologo;
+import Clases.Representante;
 import com.db4o.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.util.Locale;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -14,10 +25,11 @@ import com.db4o.*;
 public class PagPrincipalAdmin extends javax.swing.JFrame {
 
     ObjectContainer Base;
-    
+
     public PagPrincipalAdmin() {
         initComponents();
-            Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+        mostrar_diagrama();
     }
 
     /**
@@ -31,18 +43,23 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        BtnParentescoAdmin = new javax.swing.JButton();
-        BtnReporteJuegosAdmin = new javax.swing.JButton();
-        BtnNacionalidadAdmin = new javax.swing.JButton();
-        BtnEspecialiAdmin = new javax.swing.JButton();
-        BtnUsuariosAdmin = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel4 = new javax.swing.JPanel();
         BtnDiscapacidadAdmin = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        BtnParentescoAdmin = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        BtnEspecialiAdmin = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        BtnNacionalidadAdmin = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        BtnReporteJuegosAdmin = new javax.swing.JButton();
+        BtnInfPsico8 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        panel_grafic = new javax.swing.JPanel();
+        cerrar_ = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
@@ -62,32 +79,68 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, 370));
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        BtnDiscapacidadAdmin.setBackground(new java.awt.Color(255, 255, 255));
+        BtnDiscapacidadAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/DiscaAdmin.png"))); // NOI18N
+        BtnDiscapacidadAdmin.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnDiscapacidadAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnDiscapacidadAdmin.setOpaque(false);
+        BtnDiscapacidadAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnDiscapacidadAdminMouseClicked(evt);
+            }
+        });
+        BtnDiscapacidadAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDiscapacidadAdminActionPerformed(evt);
+            }
+        });
+        jPanel4.add(BtnDiscapacidadAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 70, 50));
+
+        jLabel11.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
+        jLabel11.setText("DISCAPACIDAD");
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, 30));
 
         BtnParentescoAdmin.setBackground(new java.awt.Color(255, 255, 255));
         BtnParentescoAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ParentezcoAdmin.png"))); // NOI18N
         BtnParentescoAdmin.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnParentescoAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BtnParentescoAdmin.setOpaque(false);
         BtnParentescoAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnParentescoAdminActionPerformed(evt);
             }
         });
-        jPanel2.add(BtnParentescoAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 70, 50));
+        jPanel4.add(BtnParentescoAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 70, 50));
 
-        BtnReporteJuegosAdmin.setBackground(new java.awt.Color(255, 255, 255));
-        BtnReporteJuegosAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JuegosAdmin.png"))); // NOI18N
-        BtnReporteJuegosAdmin.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnReporteJuegosAdmin.setOpaque(false);
-        BtnReporteJuegosAdmin.addActionListener(new java.awt.event.ActionListener() {
+        jLabel3.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
+        jLabel3.setText("PARENTESCO");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, 30));
+
+        BtnEspecialiAdmin.setBackground(new java.awt.Color(255, 255, 255));
+        BtnEspecialiAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EspeciAdmin.png"))); // NOI18N
+        BtnEspecialiAdmin.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnEspecialiAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnEspecialiAdmin.setOpaque(false);
+        BtnEspecialiAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnReporteJuegosAdminActionPerformed(evt);
+                BtnEspecialiAdminActionPerformed(evt);
             }
         });
-        jPanel2.add(BtnReporteJuegosAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 70, 50));
+        jPanel4.add(BtnEspecialiAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 70, 50));
+
+        jLabel1.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
+        jLabel1.setText("ESPECIALIZACIÓN");
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, 30));
 
         BtnNacionalidadAdmin.setBackground(new java.awt.Color(255, 255, 255));
         BtnNacionalidadAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/NacioAdmin.png"))); // NOI18N
         BtnNacionalidadAdmin.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnNacionalidadAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BtnNacionalidadAdmin.setOpaque(false);
         BtnNacionalidadAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -102,75 +155,70 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
                 BtnNacionalidadAdminActionPerformed(evt);
             }
         });
-        jPanel2.add(BtnNacionalidadAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 70, 50));
-
-        BtnEspecialiAdmin.setBackground(new java.awt.Color(255, 255, 255));
-        BtnEspecialiAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EspeciAdmin.png"))); // NOI18N
-        BtnEspecialiAdmin.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnEspecialiAdmin.setOpaque(false);
-        BtnEspecialiAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnEspecialiAdminActionPerformed(evt);
-            }
-        });
-        jPanel2.add(BtnEspecialiAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 70, 50));
-
-        BtnUsuariosAdmin.setBackground(new java.awt.Color(255, 255, 255));
-        BtnUsuariosAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuariosAdmin.png"))); // NOI18N
-        BtnUsuariosAdmin.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnUsuariosAdmin.setOpaque(false);
-        BtnUsuariosAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnUsuariosAdminActionPerformed(evt);
-            }
-        });
-        jPanel2.add(BtnUsuariosAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 70, 50));
-
-        BtnDiscapacidadAdmin.setBackground(new java.awt.Color(255, 255, 255));
-        BtnDiscapacidadAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/DiscaAdmin.png"))); // NOI18N
-        BtnDiscapacidadAdmin.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnDiscapacidadAdmin.setOpaque(false);
-        BtnDiscapacidadAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtnDiscapacidadAdminMouseClicked(evt);
-            }
-        });
-        BtnDiscapacidadAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnDiscapacidadAdminActionPerformed(evt);
-            }
-        });
-        jPanel2.add(BtnDiscapacidadAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 70, 50));
-
-        jLabel1.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
-        jLabel1.setText("ESPECIALIZACIÓN");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, 30));
-
-        jLabel3.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
-        jLabel3.setText("PARENTESCO");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, -1, 30));
-
-        jLabel5.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
-        jLabel5.setText("MINI JUEGOS");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, 30));
+        jPanel4.add(BtnNacionalidadAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 70, 50));
 
         jLabel6.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         jLabel6.setText("NACIONALIDADES");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, -1, 30));
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, 30));
+
+        jLabel5.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
+        jLabel5.setText("MINI JUEGOS");
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, 30));
+
+        BtnReporteJuegosAdmin.setBackground(new java.awt.Color(255, 255, 255));
+        BtnReporteJuegosAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JuegosAdmin.png"))); // NOI18N
+        BtnReporteJuegosAdmin.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnReporteJuegosAdmin.setOpaque(false);
+        BtnReporteJuegosAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnReporteJuegosAdminActionPerformed(evt);
+            }
+        });
+        jPanel4.add(BtnReporteJuegosAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 70, 50));
+
+        BtnInfPsico8.setBackground(new java.awt.Color(255, 255, 255));
+        BtnInfPsico8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuariosAdmin.png"))); // NOI18N
+        BtnInfPsico8.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnInfPsico8.setOpaque(false);
+        BtnInfPsico8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnInfPsico8ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(BtnInfPsico8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 70, 50));
 
         jLabel10.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         jLabel10.setText("USUARIOS");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, -1, 30));
+        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, -1, 30));
 
-        jLabel11.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
-        jLabel11.setText("DISCAPACIDAD");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, -1, 30));
+        jScrollPane1.setViewportView(jPanel4);
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 640, 330));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, 250, 360));
+
+        panel_grafic.setBackground(new java.awt.Color(255, 255, 255));
+        panel_grafic.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel_grafic.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panel_grafic.setMinimumSize(new java.awt.Dimension(200, 100));
+        panel_grafic.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panel_graficMouseClicked(evt);
+            }
+        });
+        jPanel2.add(panel_grafic, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 170));
+
+        cerrar_.setText("X");
+        cerrar_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrar_ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cerrar_, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, -1, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 750, 390));
 
         jLabel2.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         jLabel2.setText("BIENVENIDO A: \" NI UNO MAS\"");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, -1, -1));
 
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoAdmin.png"))); // NOI18N
         Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -232,10 +280,6 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_BtnEspecialiAdminActionPerformed
 
-    private void BtnUsuariosAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUsuariosAdminActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnUsuariosAdminActionPerformed
-
     private void BtnDiscapacidadAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDiscapacidadAdminActionPerformed
         Base.close();
         Crud_Discapacidad Disca = new Crud_Discapacidad();
@@ -256,39 +300,99 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
 
     private void BtnDiscapacidadAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnDiscapacidadAdminMouseClicked
         Base.close();
-        Crud_Discapacidad Cdisca =new Crud_Discapacidad();
+        Crud_Discapacidad Cdisca = new Crud_Discapacidad();
         Cdisca.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnDiscapacidadAdminMouseClicked
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         Base.close();
-            PagPrincipalAdmin paginaprinciadmi = new PagPrincipalAdmin();
-                paginaprinciadmi.setVisible(true);
-                    this.setVisible(false);
+        PagPrincipalAdmin paginaprinciadmi = new PagPrincipalAdmin();
+        paginaprinciadmi.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
         Base.close();
-            IniciaAdmin loginadmin = new IniciaAdmin ();
-                loginadmin.setVisible(true);
-                    this.setVisible(false);
+        IniciaAdmin loginadmin = new IniciaAdmin();
+        loginadmin.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jMenuItem1MousePressed
+
+    private void cerrar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrar_ActionPerformed
+        Base.close();
+        System.exit(0);
+    }//GEN-LAST:event_cerrar_ActionPerformed
+
+    private void panel_graficMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_graficMouseClicked
+        
+    }//GEN-LAST:event_panel_graficMouseClicked
+
+    private void BtnInfPsico8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfPsico8ActionPerformed
+         Base.close();
+        Reporte_Usuarios usa=new Reporte_Usuarios();
+        usa.setVisible(true);
+        this.setVisible(false);
+        
+        
+    }//GEN-LAST:event_BtnInfPsico8ActionPerformed
+    public void mostrar_diagrama() {
+        DefaultPieDataset datos = new DefaultPieDataset();
+        datos.setValue("Administradores", Num_Administradores(Base));
+        datos.setValue("Psicologos", Num_Psicologos(Base));
+        datos.setValue("Representantes", Num_Representantes(Base));
+        datos.setValue("Niños", Num_Niños(Base));
+
+        JFreeChart grafico_circular = ChartFactory.createPieChart("Numero de tipos de Usuarios", datos, true, true, false);
+        ChartPanel panel = new ChartPanel(grafico_circular);
+        panel.setMouseWheelEnabled(true);
+        panel.setPreferredSize(new Dimension(250, 160));
+
+        panel_grafic.setLayout(new BorderLayout());
+        panel_grafic.add(panel, BorderLayout.NORTH);
+
+        pack();
+        repaint();
+    }
+
+    public static int Num_Administradores(ObjectContainer Base) {
+        Administrador admin = new Administrador();
+        ObjectSet result = Base.get(admin);
+        return result.size();
+    }
+
+    public static int Num_Psicologos(ObjectContainer Base) {
+        Psicologo psic = new Psicologo();
+        ObjectSet result = Base.get(psic);
+        return result.size();
+    }
+
+    public static int Num_Representantes(ObjectContainer Base) {
+        Representante repre = new Representante();
+        ObjectSet result = Base.get(repre);
+        return result.size();
+    }
+
+    public static int Num_Niños(ObjectContainer Base) {
+        Niño nin = new Niño();
+        ObjectSet result = Base.get(nin);
+        return result.size();
+    }
 
     /**
      * @param args the command line arguments
      */
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnDiscapacidadAdmin;
     private javax.swing.JButton BtnEspecialiAdmin;
+    private javax.swing.JButton BtnInfPsico8;
     private javax.swing.JButton BtnNacionalidadAdmin;
     private javax.swing.JButton BtnParentescoAdmin;
     private javax.swing.JButton BtnReporteJuegosAdmin;
-    private javax.swing.JButton BtnUsuariosAdmin;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
+    private javax.swing.JButton cerrar_;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -302,5 +406,9 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel panel_grafic;
     // End of variables declaration//GEN-END:variables
 }

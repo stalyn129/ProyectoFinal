@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Login;
+
 import BBDD.*;
 import Clases.*;
 import Login.PagPrincipalPsicologo;
@@ -27,18 +28,21 @@ import javax.swing.table.DefaultTableModel;
  * @author alexa
  */
 public class PagCrudInformaPsicologo extends javax.swing.JFrame {
+
     public static String cedula_pasada_interfaz;
     JFileChooser seleccionar = new JFileChooser();
     byte[] imagen;
     ObjectContainer Base;
     String cod;
+    UserDataSingleton usarData;
 
     /**
      * Creates new form Informacion
      */
     public PagCrudInformaPsicologo() {
         initComponents();
-         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+        usarData = UserDataSingleton.getInstance();
+        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
@@ -347,7 +351,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
 
         jScrollPane3.setViewportView(jPanel4);
 
-        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 420));
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 730, 420));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 730, 420));
 
@@ -388,31 +392,24 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
 
     private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
 
-       
-
 
     }//GEN-LAST:event_btn_ingresarActionPerformed
 
-  
-
-    public void Ingresa_Info_Publicacion(ObjectContainer Base,String codigoPublic,String codd,String codPsico,Date fecha){
+    public void Ingresa_Info_Publicacion(ObjectContainer Base, String codigoPublic, String codd, String codPsico, Date fecha) {
         try {
-           Publicacion_Info publi = new Publicacion_Info();
+            Publicacion_Info publi = new Publicacion_Info();
             publi.setCod_Publicacion(codigoPublic);
             publi.setFK_Cod_Informacion(codd);
             publi.setFK_Cod_Psicologo(codPsico);
             publi.setFecha_Publicacion(fecha);
-            
-            Base.store(publi); 
+
+            Base.store(publi);
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Error en la publicacion");
         }
-         
-            
-    
+
     }
-    
-    
+
     public void MostrarDatos(ObjectContainer Base) {
 
         Informacion nacio = new Informacion();
@@ -428,13 +425,11 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
             modelo.addRow(new Object[]{
                 minaci.getCod_Info(),
                 minaci.getTitulo_Info(),
-                minaci.getTexto_Info(),
-                
-            });
+                minaci.getTexto_Info(),});
         }
 
     }
-    
+
     private void btn_Ingresar_imagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ingresar_imagenActionPerformed
         if (seleccionar.showDialog(null, null) == JFileChooser.APPROVE_OPTION) {
             File archivo = seleccionar.getSelectedFile();
@@ -448,37 +443,33 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_Ingresar_imagenActionPerformed
 
     private void btn_ingresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ingresarMouseClicked
-       
-        
-        
-         try {
+
+        try {
             Informacion info = new Informacion();
             cod = Crear_codigo_info(Base);
             info.setCod_Info(cod);
-            
+
             info.setTitulo_Info(txt_Titulo1.getText());
             info.setTexto_Info(txA_text_info1.getText());
             info.setImagen(imagen);
             Base.store(info);
-            if (RegistrarsePsicologo.cedula_pasada_interfaz==null) {
+            if (usarData.getCod_Psicologo() == null) {
                 javax.swing.JOptionPane.showMessageDialog(this, "La cedula estraida del psicologo esta vacia");
             }
-            
-            Ingresa_Info_Publicacion(Base, Crear_codigo_public(Base), cod, RegistrarsePsicologo.cedula_pasada_interfaz, new Date());
-javax.swing.JOptionPane.showMessageDialog(this, "Se guardo la Informacion");
-            
-             MostrarDatos(Base);
-             Vaciar_datos();
+
+            Ingresa_Info_Publicacion(Base, Crear_codigo_public(Base), cod, usarData.getCod_Psicologo(), new Date());
+            javax.swing.JOptionPane.showMessageDialog(this, "Se guardo la Informacion");
+
+            MostrarDatos(Base);
+            Vaciar_datos();
         } catch (Exception e) {
-            
-        }finally{
-        Base.close();
-        
+
+        } finally {
+            Base.close();
+
         }
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_btn_ingresarMouseClicked
 
     private void JMnItmCerrarPsicologoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMouseClicked
@@ -553,15 +544,13 @@ javax.swing.JOptionPane.showMessageDialog(this, "Se guardo la Informacion");
         }
     }//GEN-LAST:event_txt_Titulo1MousePressed
 
-    public void Vaciar_datos(){
-    txt_Titulo1.setText("");
-    txA_text_info1.setText("");
-    imagen_1.setText("");
-    
+    public void Vaciar_datos() {
+        txt_Titulo1.setText("");
+        txA_text_info1.setText("");
+        imagen_1.setText("");
+
     }
-    
-    
-    
+
     public byte[] AbrirArchivo(File archivo) {
 
         byte[] imagen = new byte[1024 * 683];

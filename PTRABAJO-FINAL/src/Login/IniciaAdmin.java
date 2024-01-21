@@ -8,6 +8,7 @@ package Login;
 
 import Clases.Administrador;
 import Clases.Persona;
+import Clases.UserDataSingleton;
 import Login.Seleccion;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
@@ -21,11 +22,13 @@ import java.awt.Color;
 public class IniciaAdmin extends javax.swing.JFrame {
 String codigoAdmin="Admin2003";
 ObjectContainer Base;
+ UserDataSingleton usarData;
     /**
      * Creates new form login
      */
     public IniciaAdmin() {
         initComponents();
+        usarData= UserDataSingleton.getInstance();
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
@@ -280,7 +283,7 @@ ObjectContainer Base;
                     if (Buscar_usua_Administrador(Base, txt_usuario.getText()) == 1) {
 
                         if (String.valueOf(txt_cod_ad.getPassword()).equals(codigoAdmin)) {
-                            
+                            usarData.setCod_Admin(extraer_admin(Base, txt_usuario.getText()));
                             
                             javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
                             Base.close();
@@ -337,8 +340,19 @@ ObjectContainer Base;
         Administrador elpici = new Administrador();
         elpici.setFK_Cedula(ususario);
         ObjectSet result = Base.get(elpici);
+        
         return result.size();
-
+    }
+    public static String extraer_admin(ObjectContainer Base,String usuario){
+       Administrador elAdmi = new Administrador();
+        elAdmi.setFK_Cedula(usuario);
+        ObjectSet result = Base.get(elAdmi);
+        
+        Administrador admin=(Administrador)result.next();
+        String cod_admin=admin.getID_Admin();
+        
+    return cod_admin; 
+   
     }
    
 

@@ -14,6 +14,17 @@ public class UserDataSingleton {
     private String cod_Psicologo;
     private String cod_Representante;
     private String cod_niño;
+    private String cod_Admin;
+
+    public String getCod_Admin() {
+        return cod_Admin;
+    }
+
+    public void setCod_Admin(String cod_Admin) {
+        this.cod_Admin = cod_Admin;
+    }
+
+   
     private String cod_test_repre;
 
     // Constructor privado para evitar instanciación directa

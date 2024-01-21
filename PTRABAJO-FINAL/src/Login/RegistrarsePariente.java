@@ -956,6 +956,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             miPersona.setSexo(sexo.charAt(0));
             miPersona.setCod_Nacionalidad(Asignar_cod_dDiscapacidad(Base, cbx_discapacidad_pariente.getSelectedItem().toString()));
             miPersona.setContraseña(String.valueOf(NvContraParien.getPassword()));
+            miPersona.setEstado(true);
 
             if (validarCedula(miPersona.getCedula().trim())
                     && validarNombre(miPersona.getNombre().trim())
