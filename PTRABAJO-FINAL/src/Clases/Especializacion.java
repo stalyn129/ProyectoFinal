@@ -12,13 +12,15 @@ package Clases;
 public class Especializacion {
     private String Cod_Especializacion;
     private String Especializacion;
+    private String Descripcion_Esp;
 
     public Especializacion() {
     }
 
-    public Especializacion(String Cod_Especializacion, String Especializacion) {
+    public Especializacion(String Cod_Especializacion, String Especializacion, String Descripcion_Esp) {
         this.Cod_Especializacion = Cod_Especializacion;
         this.Especializacion = Especializacion;
+        this.Descripcion_Esp = Descripcion_Esp;
     }
 
     public String getCod_Especializacion() {
@@ -36,6 +38,14 @@ public class Especializacion {
     public void setEspecializacion(String Especializacion) {
         this.Especializacion = Especializacion;
     }
-    
-    
+
+    public String getDescripcion_Esp() {
+        return Descripcion_Esp;
+    }
+
+    public void setDescripcion_Esp(String Descripcion_Esp) {
+        this.Descripcion_Esp = Descripcion_Esp;
+    }
+
+        
 }

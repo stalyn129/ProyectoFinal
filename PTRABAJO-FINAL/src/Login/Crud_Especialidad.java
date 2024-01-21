@@ -5,22 +5,21 @@
  */
 package Login;
 
-import BBDD.Contenedor_Base;
 import java.awt.Color;
 import Clases.Especializacion;
+import Login.IniciaAdmin;
 import Login.PagPrincipalAdmin;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import Login.Seleccion;
 import com.db4o.*;
 import com.db4o.ext.DatabaseClosedException;
-import com.db4o.ext.Db4oIOException;
-import java.awt.HeadlessException;
+import com.db4o.ext.DatabaseReadOnlyException;
 
 public class Crud_Especialidad extends javax.swing.JFrame {
 
     Object[] columna = new Object[4];
     Especializacion miNaci = new Especializacion();
+    String Cod_Especializacion = "";
     DefaultTableModel Modelo = new DefaultTableModel() {
         public boolean isCellEditable(int Fila, int Columna) {
             return false;
@@ -43,7 +42,7 @@ public class Crud_Especialidad extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        Txt_Codigo = new javax.swing.JTextField();
+        Txt_Descripcion = new javax.swing.JTextField();
         Txt_Especializacion = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         btnGuardar = new javax.swing.JButton();
@@ -60,18 +59,17 @@ public class Crud_Especialidad extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setMinimumSize(new java.awt.Dimension(245, 500));
         jPanel2.setPreferredSize(new java.awt.Dimension(245, 500));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 148, 215, 10));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 230, 10));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel6.setText("Codigo:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 85, -1, -1));
+        jLabel6.setText("Descripción");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, 20));
 
         jTextField1.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jTextField1.setText("CRUD ESPECIALIDAD");
@@ -85,23 +83,23 @@ public class Crud_Especialidad extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel7.setText("Especialización:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 169, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
-        Txt_Codigo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Txt_Codigo.setForeground(new java.awt.Color(153, 153, 153));
-        Txt_Codigo.setText("Ejem: ESP-001");
-        Txt_Codigo.setBorder(null);
-        Txt_Codigo.addMouseListener(new java.awt.event.MouseAdapter() {
+        Txt_Descripcion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Txt_Descripcion.setForeground(new java.awt.Color(153, 153, 153));
+        Txt_Descripcion.setText("Ejem: Esta esp...");
+        Txt_Descripcion.setBorder(null);
+        Txt_Descripcion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                Txt_CodigoMousePressed(evt);
+                Txt_DescripcionMousePressed(evt);
             }
         });
-        Txt_Codigo.addActionListener(new java.awt.event.ActionListener() {
+        Txt_Descripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Txt_CodigoActionPerformed(evt);
+                Txt_DescripcionActionPerformed(evt);
             }
         });
-        jPanel2.add(Txt_Codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 108, 215, 34));
+        jPanel2.add(Txt_Descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 215, 20));
 
         Txt_Especializacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Txt_Especializacion.setForeground(new java.awt.Color(153, 153, 153));
@@ -117,8 +115,8 @@ public class Crud_Especialidad extends javax.swing.JFrame {
                 Txt_EspecializacionActionPerformed(evt);
             }
         });
-        jPanel2.add(Txt_Especializacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 197, 215, 32));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 215, 10));
+        jPanel2.add(Txt_Especializacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 215, 20));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 230, 10));
 
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -128,18 +126,18 @@ public class Crud_Especialidad extends javax.swing.JFrame {
         });
         jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 268, -1, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -27, 284, 500));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 284, 500));
 
         jTableEspecialidad.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Codigo", "Especializacion "
+                "Codigo", "Especializacion ", "Descripcion"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -201,6 +199,11 @@ public class Crud_Especialidad extends javax.swing.JFrame {
                 jMenuItem1MousePressed(evt);
             }
         });
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -226,29 +229,29 @@ public class Crud_Especialidad extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Txt_EspecializacionActionPerformed
 
-    private void Txt_CodigoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_CodigoMousePressed
-        if (Txt_Codigo.getText().equals("Ejem: ESP-001")) {
-            Txt_Codigo.setText("");
-            Txt_Codigo.setForeground(Color.black);
+    private void Txt_DescripcionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_DescripcionMousePressed
+        if (Txt_Descripcion.getText().equals("Ejem: Esta esp...")) {
+            Txt_Descripcion.setText("");
+            Txt_Descripcion.setForeground(Color.black);
         }
         if (String.valueOf(Txt_Especializacion.getText()).isEmpty()) {
             Txt_Especializacion.setText("Ejem: Escolar");
             Txt_Especializacion.setForeground(Color.gray);
         }
-    }//GEN-LAST:event_Txt_CodigoMousePressed
+    }//GEN-LAST:event_Txt_DescripcionMousePressed
 
-    private void Txt_CodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_CodigoActionPerformed
+    private void Txt_DescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_DescripcionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Txt_CodigoActionPerformed
+    }//GEN-LAST:event_Txt_DescripcionActionPerformed
 
     private void Txt_EspecializacionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_EspecializacionMousePressed
         if (Txt_Especializacion.getText().equals("Ejem: Escolar")) {
             Txt_Especializacion.setText("");
             Txt_Especializacion.setForeground(Color.black);
         }
-        if (String.valueOf(Txt_Codigo.getText()).isEmpty()) {
-            Txt_Codigo.setText("Ejem: ESP-001");
-            Txt_Codigo.setForeground(Color.gray);
+        if (String.valueOf(Txt_Descripcion.getText()).isEmpty()) {
+            Txt_Descripcion.setText("Ejem: Esta esp...");
+            Txt_Descripcion.setForeground(Color.gray);
         }
     }//GEN-LAST:event_Txt_EspecializacionMousePressed
 
@@ -258,7 +261,7 @@ public class Crud_Especialidad extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if (Txt_Codigo.getText().equals("Ejem: ESP-001") || Txt_Especializacion.getText().equals("Ejem: Escolar")) {
+        if (Txt_Descripcion.getText().equals("Ejem: Esta esp...") || Txt_Descripcion.getText().isEmpty() || Txt_Especializacion.getText().equals("Ejem: Escolar") || Txt_Especializacion.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Llene los campos por favor");
         } else {
             Ingresar_Datos(Base);
@@ -267,10 +270,14 @@ public class Crud_Especialidad extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void jTableEspecialidadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableEspecialidadMouseClicked
-        int Seleccion = jTableEspecialidad.getSelectedRow();
+        int seleccion = jTableEspecialidad.getSelectedRow();
 
-        Txt_Codigo.setText(String.valueOf(jTableEspecialidad.getValueAt(Seleccion, 0)));
-        Txt_Especializacion.setText(String.valueOf(jTableEspecialidad.getValueAt(Seleccion, 1)));
+        if (seleccion >= 0) { // Verificar que haya una fila seleccionada
+            // Obtén los valores de las celdas seleccionadas y establece en los campos de texto
+            Txt_Especializacion.setText(String.valueOf(jTableEspecialidad.getValueAt(seleccion, 1)));
+            Txt_Descripcion.setText(String.valueOf(jTableEspecialidad.getValueAt(seleccion, 2)));
+        }
+
     }//GEN-LAST:event_jTableEspecialidadMouseClicked
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -284,7 +291,25 @@ public class Crud_Especialidad extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        Modificar_Especializacion(Base, Txt_Codigo.getText(), Txt_Especializacion.getText());
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) jTableEspecialidad.getModel();
+            int filaSeleccionada = jTableEspecialidad.getSelectedRow();
+
+            if (filaSeleccionada == -1) {
+                JOptionPane.showMessageDialog(this, "Seleccione una fila para modificar.");
+                return;
+            }
+
+            String codigoEspecializacion = (String) modelo.getValueAt(filaSeleccionada, 0);
+            String nuevaEspecializacion = JOptionPane.showInputDialog(this, "Ingrese la nueva especialización:", modelo.getValueAt(filaSeleccionada, 1));
+            String nuevaDescripcion = JOptionPane.showInputDialog(this, "Ingrese la nueva descripción:", modelo.getValueAt(filaSeleccionada, 2));
+
+            if (nuevaEspecializacion != null && nuevaDescripcion != null) {
+                Modificar_Especializacion(Base, codigoEspecializacion, nuevaEspecializacion, nuevaDescripcion);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al modificar: " + e.getMessage());
+        }
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void Btn_ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ConsultarActionPerformed
@@ -299,7 +324,7 @@ public class Crud_Especialidad extends javax.swing.JFrame {
 
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
         Base.close();
-        IniciaAdmin loginadmin = new IniciaAdmin ();
+        IniciaAdmin loginadmin = new IniciaAdmin();
         loginadmin.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem1MousePressed
@@ -308,8 +333,11 @@ public class Crud_Especialidad extends javax.swing.JFrame {
         Base.close();
         PagPrincipalAdmin paginaprinciadmi = new PagPrincipalAdmin();
         paginaprinciadmi.setVisible(true);
-        this.setVisible(false);
     }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -348,7 +376,7 @@ public class Crud_Especialidad extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Consultar;
-    private javax.swing.JTextField Txt_Codigo;
+    private javax.swing.JTextField Txt_Descripcion;
     private javax.swing.JTextField Txt_Especializacion;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnEliminar;
@@ -370,30 +398,33 @@ public class Crud_Especialidad extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 public void Ingresar_Datos(ObjectContainer Base) {
         try {
-            String codEspecializacion = Txt_Codigo.getText();
+            // Calcular el ID de la discapacidad
+            Cod_Especializacion = CalcularIDEspe(Base);
+
+            // Obtener los datos de los campos de texto
             String Especializacion = Txt_Especializacion.getText();
+            String Descricpion = Txt_Descripcion.getText();
 
-            // Validar los datos antes de ingresarlos
-            ValidaCodigo(Especializacion);
-            ValidaEspecializacion(Especializacion);
-
-            Especializacion miEspe = new Especializacion(codEspecializacion, Especializacion);
-
-            // Verificar si la Nacionalidad ya existe en la base de datos
-            if (Verificacion(Base) == 0) {
+            // Verificar si la discapacidad ya existe en la base de datos
+            if (Verificacion_Esp(Base, Cod_Especializacion) == 0) {
+                // Guardar el objeto en la base de datos
+                // Crear un objeto Discapacidad
+                Especializacion miEspe = new Especializacion();
+                miEspe.setCod_Especializacion(Cod_Especializacion);
+                miEspe.setEspecializacion(Especializacion);
+                miEspe.setDescripcion_Esp(Descricpion);
                 Base.set(miEspe);
+                Base.commit(); // Commit para confirmar la transacción
                 JOptionPane.showMessageDialog(this, "Los datos se han guardado exitosamente");
                 Limpiar();
-                MostrarDatos(Base); // Mostrar los datos actualizados
+                MostrarDatos(Base);
             } else {
-                JOptionPane.showMessageDialog(this, "Los datos no se han guardado. La Especializacion ya existe en la base de datos.");
+                JOptionPane.showMessageDialog(this, "Los datos no se han guardado. La discapacidad ya existe en la base de datos.");
             }
 
-        } catch (Exception ex) {
-            // Manejar la excepción de validación
-            JOptionPane.showMessageDialog(this, ex.getMessage());
+        } catch (DatabaseClosedException | DatabaseReadOnlyException e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un error al crear la discapacidad");
         }
-
     }
 
     public void MostrarDatos(ObjectContainer base) {
@@ -409,45 +440,51 @@ public void Ingresar_Datos(ObjectContainer Base) {
             Especializacion miespe = (Especializacion) result.next();
             modelo.addRow(new Object[]{
                 miespe.getCod_Especializacion(),
-                miespe.getEspecializacion()
+                miespe.getEspecializacion(),
+                miespe.getDescripcion_Esp()
             });
         }
     }
 
-    public void Modificar_Especializacion(ObjectContainer base, String Codigo, String Especializacion) {
-        // Crear un objeto Nacionalidad con el código proporcionado
-        Especializacion laespe = new Especializacion();
-        laespe.setCod_Especializacion(Codigo);
+    public void Modificar_Especializacion(ObjectContainer base, String codigoEspecializacion, String Nv_Especializacion, String Nv_Descripcion) {
+        try {
+            ValidaEspecializacion(Nv_Especializacion);
+            ValidaDescripcion(Nv_Descripcion);
 
-        // Buscar el objeto correspondiente en la base de datos
-        ObjectSet result = Base.get(laespe);
+            Especializacion esp = new Especializacion();
+            esp.setCod_Especializacion(codigoEspecializacion);
 
-        // Verificar si se encontró un objeto para modificar
-        if (result.hasNext()) {
-            Especializacion nueEspe = (Especializacion) result.next();
+            ObjectSet result = base.get(esp);
 
-            // Actualizar los campos del objeto con los nuevos valores
-            nueEspe.setEspecializacion(Especializacion);
+            if (result.hasNext()) {
+                Especializacion nueEsp = (Especializacion) result.next();
 
-            // Almacenar los cambios en la base de datos
-            Base.store(nueEspe);
+  
+                nueEsp.setEspecializacion(Nv_Especializacion);
+                nueEsp.setDescripcion_Esp(Nv_Descripcion);
 
-            // Mostrar un mensaje de confirmación al usuario
-            javax.swing.JOptionPane.showMessageDialog(this, "Se modificó la especialidad correctamente.");
-        } else {
-            // Mostrar un mensaje de error si no se encontró el objeto
-            javax.swing.JOptionPane.showMessageDialog(this, "Error: No se encontró la especialidad para modificar.");
+
+                base.store(nueEsp);
+
+                JOptionPane.showMessageDialog(this, "Se modificaron los datos correctamente.");
+
+                MostrarDatos(base);
+
+                Limpiar();
+            } else {
+                JOptionPane.showMessageDialog(this, "Error: No se encontró la especialización para modificar.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
         }
     }
 
     public void ConsultarDatos(ObjectContainer base, Especializacion consulta) {
         DefaultTableModel modelo = (DefaultTableModel) jTableEspecialidad.getModel();
 
-        // Limpiar el modelo antes de agregar nuevas filas
         modelo.setRowCount(0);
 
         if (consulta != null) {
-            // Agregar el registro consultado a la tabla
             modelo.addRow(new Object[]{
                 consulta.getCod_Especializacion(),
                 consulta.getEspecializacion()
@@ -457,60 +494,54 @@ public void Ingresar_Datos(ObjectContainer Base) {
 
     private void EliminarRegistro(ObjectContainer base, String Cod_Especializacion) {
 
-            Especializacion especializacion = new Especializacion(Cod_Especializacion, null);
+        Especializacion especializacion = new Especializacion(Cod_Especializacion, null, null);
 
+        // Mensaje de depuración
+        System.out.println("Buscando el registro en la base de datos...");
+
+        ObjectSet result = base.queryByExample(especializacion);
+
+        if (result.hasNext()) {
             // Mensaje de depuración
-            System.out.println("Buscando el registro en la base de datos...");
+            System.out.println("Eliminando el registro de la base de datos...");
 
-            ObjectSet result = base.queryByExample(especializacion);
-
-            if (result.hasNext()) {
-                // Mensaje de depuración
-                System.out.println("Eliminando el registro de la base de datos...");
-
-                base.delete(result.next());
-                JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
-                Limpiar();
-                MostrarDatos(base); // Actualizar la tabla después de la eliminación
-            } else {
-                JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
-            }
-        } 
+            base.delete(result.next());
+            JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+            Limpiar();
+            MostrarDatos(base); 
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+        }
+    }
 
     private void ConsultarRegistro(ObjectContainer base, String Cod_Especializacion) {
 
-            // Creando un objeto de ejemplo para la consulta
-            Especializacion especializacion = new Especializacion(Cod_Especializacion, null);
+        // Creando un objeto de ejemplo para la consulta
+        Especializacion especializacion = new Especializacion(Cod_Especializacion, null, null);
 
-            // Consultando la base de datos
-            ObjectSet result = base.queryByExample(especializacion);
+        // Consultando la base de datos
+        ObjectSet result = base.queryByExample(especializacion);
 
-            if (result.hasNext()) {
-                // Manejando el resultado (puedes querer mostrarlo o procesarlo)
-                Especializacion registroConsultado = (Especializacion) result.next();
-                System.out.println("Registro consultado: " + registroConsultado);
-                JOptionPane.showMessageDialog(this, "El registro se ha consultado con éxito");
+        if (result.hasNext()) {
+            // Manejando el resultado (puedes querer mostrarlo o procesarlo)
+            Especializacion registroConsultado = (Especializacion) result.next();
+            System.out.println("Registro consultado: " + registroConsultado);
+            JOptionPane.showMessageDialog(this, "El registro se ha consultado con éxito");
 
-                // Llamar al método ConsultarDatos para mostrar el registro en la tabla
-                ConsultarDatos(Base, registroConsultado);
-            } else {
-                JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
-            }
-        } 
-
-    //Verificacion
-    public int Verificacion(ObjectContainer Base) {
-        String codEspecializacion = Txt_Codigo.getText();
-        Especializacion Cod = new Especializacion(codEspecializacion, null);
-        ObjectSet result = Base.get(Cod);
-        return result.size();
+            // Llamar al método ConsultarDatos para mostrar el registro en la tabla
+            ConsultarDatos(Base, registroConsultado);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+        }
     }
 
-    public void ValidaCodigo(String Codigo) throws Exception {
-        if (!Codigo.matches("^[A-Za-z0-9]+$")) {
-            throw new Exception("Ingrese un codigo valido");
-        }
+    //Verificacion
+    public static int Verificacion_Esp(ObjectContainer Base, String Codigo) {
+        Especializacion miDis = new Especializacion();
+        miDis.setCod_Especializacion(Codigo);
+        ObjectSet result = Base.get(miDis);
 
+        return result.size();
     }
 
     public void ValidaEspecializacion(String Espe) throws Exception {
@@ -520,9 +551,36 @@ public void Ingresar_Datos(ObjectContainer Base) {
 
     }
 
+    public void ValidaDescripcion(String Observacion) throws Exception {
+        // La expresión regular permite letras mayúsculas, minúsculas, números y espacios.
+        if (!Observacion.matches("^[A-Za-z0-9 ]+$")) {
+            throw new Exception("Ingrese una observación válida. Solo letras, números y espacios son permitidos.");
+        }
+    }
+
     public void Limpiar() {
-        Txt_Codigo.setText("");
+        Txt_Descripcion.setText("");
         Txt_Especializacion.setText("");
 
+    }
+
+    public static String CalcularIDEspe(ObjectContainer Base) {
+
+        boolean rest = true;
+        int Incremental = 0;
+        String Codigo;
+        do {
+
+            Incremental++;
+
+            Codigo = String.format("ESP-%04d", Incremental);
+
+            if (Verificacion_Esp(Base, Codigo) == 0) {
+                rest = false;
+            }
+
+        } while (rest);
+
+        return Codigo;
     }
 }

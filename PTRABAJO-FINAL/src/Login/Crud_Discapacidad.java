@@ -5,13 +5,14 @@
  */
 package Login;
 
-import BBDD.Contenedor_Base;
 import java.awt.Color;
 import Clases.*;
+import Login.IniciaAdmin;
 import Login.PagPrincipalAdmin;
-import Login.Seleccion;
 import com.db4o.*;
-import com.db4o.ObjectContainer;
+import com.db4o.ext.DatabaseClosedException;
+import com.db4o.ext.DatabaseReadOnlyException;
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,12 +23,12 @@ import javax.swing.table.DefaultTableModel;
 public class Crud_Discapacidad extends javax.swing.JFrame {
 
     ObjectContainer Base;
+    String Cod_Discapacidad = "";
 
     public Crud_Discapacidad() {
         initComponents();
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
-////////////
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -42,14 +43,11 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
         Txt_Observacion = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         btnGuardar = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        Txt_Codigo = new javax.swing.JTextField();
-        jSeparator3 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTblDiscapacidad = new javax.swing.JTable();
         btnActualizar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         Btn_Consultar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -71,7 +69,7 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel3.setText("Discapacidad:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         Txt_Discapacidad.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Txt_Discapacidad.setForeground(new java.awt.Color(153, 153, 153));
@@ -87,12 +85,12 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
                 Txt_DiscapacidadActionPerformed(evt);
             }
         });
-        jPanel2.add(Txt_Discapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 120, 20));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 240, 10));
+        jPanel2.add(Txt_Discapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 240, 20));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 240, 10));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel4.setText("Observación:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
         Txt_Observacion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Txt_Observacion.setForeground(new java.awt.Color(153, 153, 153));
@@ -108,8 +106,8 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
                 Txt_ObservacionActionPerformed(evt);
             }
         });
-        jPanel2.add(Txt_Observacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 270, 20));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 240, 10));
+        jPanel2.add(Txt_Observacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 240, 20));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 240, 10));
 
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -117,28 +115,7 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel5.setText("Código:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
-
-        Txt_Codigo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        Txt_Codigo.setForeground(new java.awt.Color(153, 153, 153));
-        Txt_Codigo.setText("Ejem: DIS-001");
-        Txt_Codigo.setBorder(null);
-        Txt_Codigo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                Txt_CodigoMousePressed(evt);
-            }
-        });
-        Txt_Codigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Txt_CodigoActionPerformed(evt);
-            }
-        });
-        jPanel2.add(Txt_Codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 120, 20));
-        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 240, 10));
+        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 290, 500));
 
@@ -175,21 +152,21 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
         });
         getContentPane().add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, -1, -1));
 
-        jButton2.setText("Modificar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, -1, -1));
+        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, -1, -1));
 
-        jButton3.setText("Eliminar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 440, -1, -1));
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 440, -1, -1));
 
         Btn_Consultar.setText("Consultar");
         Btn_Consultar.addActionListener(new java.awt.event.ActionListener() {
@@ -235,13 +212,9 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
             Txt_Discapacidad.setText("");
             Txt_Discapacidad.setForeground(Color.black);
         }
-        if (String.valueOf(Txt_Codigo.getText()).isEmpty()) {
-            Txt_Codigo.setText("Ejem: DIS-001");
-            Txt_Codigo.setForeground(Color.gray);
 
-        }
         if (String.valueOf(Txt_Observacion.getText()).isEmpty()) {
-            Txt_Observacion.setText("Ejem: Esta discapacidad...");
+            Txt_Observacion.setText("Ejem: Esta discapacidad esta asoc...");
             Txt_Observacion.setForeground(Color.gray);
         }
     }//GEN-LAST:event_Txt_DiscapacidadMousePressed
@@ -260,13 +233,6 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
             Txt_Discapacidad.setForeground(Color.gray);
 
         }
-
-        if (String.valueOf(Txt_Codigo.getText()).isEmpty()) {
-            Txt_Codigo.setText("Ejem: DIS-001");
-            Txt_Codigo.setForeground(Color.gray);
-
-        }
-
     }//GEN-LAST:event_Txt_ObservacionMousePressed
 
     private void Txt_ObservacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_ObservacionActionPerformed
@@ -274,42 +240,24 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
     }//GEN-LAST:event_Txt_ObservacionActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if (Txt_Codigo.getText().equals("Ejem: DIS-001") || Txt_Discapacidad.getText().equals("Ejem: Motora") || Txt_Observacion.getText().equals("Ejem: Esta discapacidad esta asoc...")) {
-            JOptionPane.showMessageDialog(this, "Llene los campos por favor");
-        } else {
-            Ingresar_Datos(Base);
-
+        try {
+            if (Txt_Discapacidad.getText().isEmpty() || Txt_Discapacidad.getText().equals("Ejem:Motora") || Txt_Observacion.getText().equals("Ejem: Esta discapacidad esta asoc...") || Txt_Observacion.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Algunos campos estan vacios o o no son validos");
+            } else {
+                IngresarDatos(Base);
+            }
+        } catch (HeadlessException e) {
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void Txt_CodigoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_CodigoMousePressed
-        if (Txt_Codigo.getText().equals("Ejem: DIS-001")) {
-            Txt_Codigo.setText("");
-            Txt_Codigo.setForeground(Color.black);
-        }
-        if (String.valueOf(Txt_Discapacidad.getText()).isEmpty()) {
-            Txt_Discapacidad.setText("Ejem: Motora");
-            Txt_Discapacidad.setForeground(Color.gray);
-
-        }
-
-        if (String.valueOf(Txt_Observacion.getText()).isEmpty()) {
-            Txt_Observacion.setText("Ejem: Esta discapacidad esta asoc...");
-            Txt_Observacion.setForeground(Color.gray);
-
-        }
-    }//GEN-LAST:event_Txt_CodigoMousePressed
-
-    private void Txt_CodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_CodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Txt_CodigoActionPerformed
-
     private void jTblDiscapacidadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblDiscapacidadMouseClicked
-        int Seleccion = jTblDiscapacidad.getSelectedRow();
+        int seleccion = jTblDiscapacidad.getSelectedRow();
 
-        Txt_Codigo.setText(String.valueOf(jTblDiscapacidad.getValueAt(Seleccion, 0)));
-        Txt_Discapacidad.setText(String.valueOf(jTblDiscapacidad.getValueAt(Seleccion, 1)));
-        Txt_Observacion.setText(String.valueOf(jTblDiscapacidad.getValueAt(Seleccion, 2)));
+        if (seleccion >= 0) { // Verificar que haya una fila seleccionada
+            // Obtén los valores de las celdas seleccionadas y establece en los campos de texto
+            Txt_Discapacidad.setText(String.valueOf(jTblDiscapacidad.getValueAt(seleccion, 1)));
+            Txt_Observacion.setText(String.valueOf(jTblDiscapacidad.getValueAt(seleccion, 2)));
+        }
     }//GEN-LAST:event_jTblDiscapacidadMouseClicked
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
@@ -317,18 +265,36 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
         MostrarDatos(Base);
     }//GEN-LAST:event_btnActualizarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-  String codigoAEliminar = JOptionPane.showInputDialog(this, "Ingrese el código a eliminar:");
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        String codigoAEliminar = JOptionPane.showInputDialog(this, "Ingrese el código a eliminar:");
 
         if (codigoAEliminar != null && !codigoAEliminar.isEmpty()) {
             EliminarRegistro(Base, codigoAEliminar);
         } else {
             JOptionPane.showMessageDialog(this, "Debe ingresar un código válido para eliminar.");
-        }    }//GEN-LAST:event_jButton3ActionPerformed
+        }    }//GEN-LAST:event_btnEliminarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      Modificar_Nacionalidad(Base, Txt_Codigo.getText(),Txt_Discapacidad.getText(), Txt_Observacion.getText());
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) jTblDiscapacidad.getModel();
+            int filaSeleccionada = jTblDiscapacidad.getSelectedRow();
+
+            if (filaSeleccionada == -1) {
+                JOptionPane.showMessageDialog(this, "Seleccione una fila para modificar.");
+                return;
+            }
+
+            String codigoDiscapacidad = (String) modelo.getValueAt(filaSeleccionada, 0);
+            String tipoDiscapacidad = JOptionPane.showInputDialog(this, "Ingrese el nuevo tipo de discapacidad:", modelo.getValueAt(filaSeleccionada, 1));
+            String observacion = JOptionPane.showInputDialog(this, "Ingrese la nueva observación:", modelo.getValueAt(filaSeleccionada, 2));
+
+            if (tipoDiscapacidad != null && observacion != null) {
+                Modificar_Discapacidad(Base, codigoDiscapacidad, tipoDiscapacidad, observacion);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al modificar: " + e.getMessage());
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     private void Btn_ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ConsultarActionPerformed
         String codigoAConsultar = JOptionPane.showInputDialog(this, "Ingrese el código a consultar");
@@ -342,7 +308,7 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
 
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
         Base.close();
-        IniciaAdmin loginadmin = new IniciaAdmin ();
+        IniciaAdmin loginadmin = new IniciaAdmin();
         loginadmin.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem1MousePressed
@@ -367,18 +333,16 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Consultar;
-    private javax.swing.JTextField Txt_Codigo;
     private javax.swing.JTextField Txt_Discapacidad;
     private javax.swing.JTextField Txt_Observacion;
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -387,37 +351,27 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTblDiscapacidad;
     // End of variables declaration//GEN-END:variables
-public void Ingresar_Datos(ObjectContainer Base) {
+public void IngresarDatos(ObjectContainer base) {
         try {
-            String codDiscapacidad = Txt_Codigo.getText();
-            String discapacidad = Txt_Discapacidad.getText();;
+            String codDiscapacidad = calcularIDDisc(base);
+            String tipoDiscapacidad = Txt_Discapacidad.getText();
             String observacion = Txt_Observacion.getText();
 
-            // Validar los datos antes de ingresarlos
-            ValidaCodigo(codDiscapacidad);
-            ValidaDiscapacidad(discapacidad);
-            ValidaObservacion(observacion);
-
-            Discapacidad miNaci = new Discapacidad(codDiscapacidad, discapacidad, observacion);
-
-            // Verificar si la Nacionalidad ya existe en la base de datos
-            if (Verificacion(Base) == 0) {
-                Base.set(miNaci);
+            if (Verificacion_disca(base, codDiscapacidad) == 0) {
+                Discapacidad nuevaDiscapacidad = new Discapacidad(codDiscapacidad, tipoDiscapacidad, observacion);
+                base.set(nuevaDiscapacidad);
+                base.commit();
                 JOptionPane.showMessageDialog(this, "Los datos se han guardado exitosamente");
                 Limpiar();
-                MostrarDatos(Base);
+                MostrarDatos(base);
             } else {
-                JOptionPane.showMessageDialog(this, "Los datos no se han guardado. La Nacionalidad ya existe en la base de datos.");
+                JOptionPane.showMessageDialog(this, "Los datos no se han guardado. La discapacidad ya existe en la base de datos.");
             }
-
-        } catch (Exception ex) {
-            // Manejar la excepción de validación
-            JOptionPane.showMessageDialog(this, ex.getMessage());
+        } catch (DatabaseClosedException | DatabaseReadOnlyException e) {
+            JOptionPane.showMessageDialog(this, "Ocurrió un error al crear la discapacidad");
         }
-
     }
 
     public void MostrarDatos(ObjectContainer Base) {
@@ -440,6 +394,7 @@ public void Ingresar_Datos(ObjectContainer Base) {
         }
 
     }
+
     public void ConsultarDatos(ObjectContainer base, Discapacidad consulta) {
         DefaultTableModel modelo = (DefaultTableModel) jTblDiscapacidad.getModel();
 
@@ -455,106 +410,132 @@ public void Ingresar_Datos(ObjectContainer Base) {
         }
     }
 
-    public void Modificar_Nacionalidad(ObjectContainer Base, String Codigo, String Nueva_Tipo_Discapacidad, String Nueva_Observacion) {
-        // Crear un objeto Nacionalidad con el código proporcionado
-        Discapacidad disca = new Discapacidad();
-        disca.setCod_Discapacidad(Codigo);
+    public void Modificar_Discapacidad(ObjectContainer Base, String CodigoDiscapacidad, String Nueva_Tipo_Discapacidad, String Nueva_Observacion) {
+        try {
+            ValidaDiscapacidad(Nueva_Tipo_Discapacidad);
+            ValidaObservacion(Nueva_Observacion);
 
-        // Buscar el objeto correspondiente en la base de datos
-        ObjectSet result = Base.get(disca);
+            // Crear un objeto Discapacidad con el código proporcionado
+            Discapacidad disca = new Discapacidad();
+            disca.setCod_Discapacidad(CodigoDiscapacidad);
 
-        // Verificar si se encontró un objeto para modificar
-        if (result.hasNext()) {
-            Discapacidad nuedisca = (Discapacidad) result.next();
+            // Buscar el objeto correspondiente en la base de datos
+            ObjectSet result = Base.get(disca);
 
-            // Actualizar los campos del objeto con los nuevos valores
-            nuedisca.setTipo_Discapacidad(Nueva_Tipo_Discapacidad);
-            nuedisca.setObservacion(Nueva_Observacion);
+            // Verificar si se encontró un objeto para modificar
+            if (result.hasNext()) {
+                Discapacidad nuedisca = (Discapacidad) result.next();
 
-            // Almacenar los cambios en la base de datos
-            Base.store(nuedisca);
+                // Actualizar los campos del objeto con los nuevos valores
+                nuedisca.setTipo_Discapacidad(Nueva_Tipo_Discapacidad);
+                nuedisca.setObservacion(Nueva_Observacion);
 
-            // Mostrar un mensaje de confirmación al usuario
-            javax.swing.JOptionPane.showMessageDialog(this, "Se modificó la discapacidad correctamente.");
-        } else {
-            // Mostrar un mensaje de error si no se encontró el objeto
-            javax.swing.JOptionPane.showMessageDialog(this, "Error: No se encontró la discapacidad para modificar.");
+                // Almacenar los cambios en la base de datos
+                Base.store(nuedisca);
+
+                // Mostrar un mensaje de confirmación al usuario
+                JOptionPane.showMessageDialog(this, "Se modificó la discapacidad correctamente.");
+
+                // Actualizar la tabla después de la modificación
+                MostrarDatos(Base);
+
+                // Limpiar los campos
+                Limpiar();
+            } else {
+                JOptionPane.showMessageDialog(this, "Error: No se encontró la discapacidad para modificar.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
         }
     }
-     private void ConsultarRegistro(ObjectContainer base, String Cod_Discapacidad) {
-    
-            Discapacidad nacio = new Discapacidad(Cod_Discapacidad, null, null);
 
-            // Consultando la base de datos
-            ObjectSet result = base.queryByExample(nacio);
+    private void ConsultarRegistro(ObjectContainer base, String Cod_Discapacidad) {
 
-            if (result.hasNext()) {
-                // Manejando el resultado (puedes querer mostrarlo o procesarlo)
-                Discapacidad registroConsultado = (Discapacidad) result.next();
-                System.out.println("Registro consultado: " + registroConsultado);
-                JOptionPane.showMessageDialog(this, "El registro se ha consultado con éxito");
+        Discapacidad nacio = new Discapacidad(Cod_Discapacidad, null, null);
 
-                // Llamar al método ConsultarDatos para mostrar el registro en la tabla
-                ConsultarDatos(base, registroConsultado);
-            } else {
-                JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
-            }
-        } 
+        // Consultando la base de datos
+        ObjectSet result = base.queryByExample(nacio);
+
+        if (result.hasNext()) {
+            // Manejando el resultado (puedes querer mostrarlo o procesarlo)
+            Discapacidad registroConsultado = (Discapacidad) result.next();
+            System.out.println("Registro consultado: " + registroConsultado);
+            JOptionPane.showMessageDialog(this, "El registro se ha consultado con éxito");
+
+            // Llamar al método ConsultarDatos para mostrar el registro en la tabla
+            ConsultarDatos(base, registroConsultado);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+        }
+    }
 
     private void EliminarRegistro(ObjectContainer base, String codigoDiscapacidad) {
 
-            Discapacidad midisca = new Discapacidad(codigoDiscapacidad, null, null);
+        Discapacidad midisca = new Discapacidad(codigoDiscapacidad, null, null);
 
+        // Mensaje de depuración
+        System.out.println("Buscando el registro en la base de datos...");
+
+        ObjectSet result = base.queryByExample(midisca);
+
+        if (result.hasNext()) {
             // Mensaje de depuración
-            System.out.println("Buscando el registro en la base de datos...");
+            System.out.println("Eliminando el registro de la base de datos...");
 
-            ObjectSet result = base.queryByExample(midisca);
-
-            if (result.hasNext()) {
-                // Mensaje de depuración
-                System.out.println("Eliminando el registro de la base de datos...");
-
-                base.delete(result.next());
-                JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
-                Limpiar();
-                MostrarDatos(base);
-            } else {
-                JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
-            }
+            base.delete(result.next());
+            JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+            Limpiar();
+            MostrarDatos(base);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
         }
-    
-    //Verificacion
+    }
 
-    public int Verificacion(ObjectContainer Base) {
-        String Cod_Discapacidad = Txt_Codigo.getText();
-        Discapacidad Cod = new Discapacidad(Cod_Discapacidad, null, null);
-        ObjectSet result = Base.get(Cod);
+    //Verificacion
+    public static int Verificacion_disca(ObjectContainer Base, String Codigo) {
+        Discapacidad miDis = new Discapacidad();
+        miDis.setCod_Discapacidad(Codigo);
+        ObjectSet result = Base.get(miDis);
+
         return result.size();
     }
 
-    public void ValidaCodigo(String Codigo) throws Exception {
-        if (!Codigo.matches("^[A-Za-z0-9]+$")) {
-            throw new Exception("Ingrese un codigo valido");
-        }
-
-    }
-
     public void ValidaDiscapacidad(String Discapacidad) throws Exception {
-        if (!Discapacidad.matches("^[A-Za-z]+$")) {
-            throw new Exception("Ingrese una discapacidad valida");
+        // La expresión regular permite letras mayúsculas y minúsculas.
+        if (!Discapacidad.matches("^[A-Za-z ]+$")) {
+            throw new Exception("Ingrese una discapacidad válida. Solo letras y espacios son permitidos.");
         }
     }
 
     public void ValidaObservacion(String Observacion) throws Exception {
-        if (!Observacion.matches("^[A-Za-z0-9]+$")) {
-            throw new Exception("Ingrese una observacion valida");
+        // La expresión regular permite letras mayúsculas, minúsculas, números y espacios.
+        if (!Observacion.matches("^[A-Za-z0-9 ]+$")) {
+            throw new Exception("Ingrese una observación válida. Solo letras, números y espacios son permitidos.");
         }
     }
 
     public void Limpiar() {
-        Txt_Codigo.setText("");
+
         Txt_Discapacidad.setText("");
         Txt_Observacion.setText("");
 
+    }
+
+    public static String calcularIDDisc(ObjectContainer base) {
+        boolean rest = true;
+        int incremental = 0;
+        String codigo;
+
+        do {
+            incremental++;
+            codigo = String.format("DISC-%04d", incremental);
+
+            if (Verificacion_disca(base, codigo) == 0) {
+                rest = false;
+            }
+
+        } while (rest);
+
+        return codigo;
     }
 }

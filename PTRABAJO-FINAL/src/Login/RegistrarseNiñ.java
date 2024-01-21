@@ -8,12 +8,16 @@ package Login;
 import Clases.Administrador;
 import BBDD.Contenedor_Base;
 import Clases.Niño;
+import Clases.Personalidad;
+import Login.RegistrarseGeneral;
 import com.db4o.*;
 import com.db4o.ext.DatabaseClosedException;
 import com.db4o.ext.DatabaseReadOnlyException;
+import com.db4o.query.Query;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,13 +25,14 @@ import javax.swing.JOptionPane;
  * @author mauca
  */
 public class RegistrarseNiñ extends javax.swing.JFrame {
-    
+
     private ObjectContainer Base;
-    
-    public RegistrarseNiñ(){
-        
-          Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+
+    public RegistrarseNiñ() {
+
+        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
         initComponents();
+        Personalidad_ingr(Base);
     }
 
     /**
@@ -116,14 +121,14 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel5.setText("Apellidos:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, -1, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel6.setText("Sexo:");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel7.setText("Fecha Nacimiento:");
+        jLabel7.setText("Edad:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -144,7 +149,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
                 TxtApellidoNiñoActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtApellidoNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 170, -1));
+        jPanel2.add(TxtApellidoNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 170, -1));
 
         TxtNombreNiño.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtNombreNiño.setForeground(new java.awt.Color(153, 153, 153));
@@ -193,13 +198,15 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
         jPanel2.add(BtnDiscaNiñ, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, -1, -1));
 
         CmBxPersonalidad.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        CmBxPersonalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alegre", "Amigable", "Extrovertido", "Inteligente", "Creativo", "Tímido", "Introvertido" }));
         CmBxPersonalidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CmBxPersonalidadActionPerformed(evt);
             }
         });
         jPanel2.add(CmBxPersonalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 160, -1));
+
+        DateEdadNiño.setMaxSelectableDate(new java.util.Date(1451628070000L));
+        DateEdadNiño.setMinSelectableDate(new java.util.Date(-631130330000L));
         jPanel2.add(DateEdadNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 150, -1));
         jPanel2.add(Separador3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 170, 10));
         jPanel2.add(Separador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 160, 10));
@@ -234,11 +241,11 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
                 TxtApodoNiñoActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtApodoNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 160, -1));
+        jPanel2.add(TxtApodoNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 160, -1));
 
         jLabel9.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel9.setText("Apodo:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, -1, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, -1, -1));
 
         NvContraNiño.setForeground(new java.awt.Color(153, 153, 153));
         NvContraNiño.setText("**********");
@@ -301,9 +308,9 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
         Base.close();
-            RegistrarseGeneral general = new RegistrarseGeneral();
-                general.setVisible(true);
-                    this.setVisible(false);
+        RegistrarseGeneral general = new RegistrarseGeneral();
+        general.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
     private void TxtApellidoNiñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtApellidoNiñoActionPerformed
@@ -327,50 +334,99 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnDiscapacidadNiñActionPerformed
 
     private void BtnRegistrarseNiñActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarseNiñActionPerformed
-        try {
+        if (camposLlenos()) {
             String sexo;
             String Discapacidad;
 
-        Niño MiNiño = new Niño();
+            Niño MiNiño = new Niño();
 
-        MiNiño.setNombre(TxtNombreNiño.getText());
-        MiNiño.setApellido(TxtApellidoNiño.getText());
-        MiNiño.setFecha_Nacimiento(DateEdadNiño.getDate());
-        if (BtnFemeninoNiñ.isSelected()) {
-            sexo = "F";
-        } else {
-            sexo = "M";
-        }
+            MiNiño.setNombre(TxtNombreNiño.getText());
+            MiNiño.setApellido(TxtApellidoNiño.getText());
+            MiNiño.setApodo(TxtApodoNiño.getText());
+            MiNiño.setFecha_Nacimiento(DateEdadNiño.getDate());
+            if (BtnFemeninoNiñ.isSelected()) {
+                sexo = "F";
+            } else {
+                sexo = "M";
+            }
 
-        MiNiño.setSexo_Niño(sexo.charAt(0));
-        MiNiño.setPersonalidad(CmBxPersonalidad.getSelectedItem().toString());
+            MiNiño.setSexo_Niño(sexo.charAt(0));
+            MiNiño.setPersonalidad(CmBxPersonalidad.getSelectedItem().toString());
 
             if (BtnDiscapacidadNiñ.isSelected()) {
                 Discapacidad = "Si";
-            }else {
+            } else {
                 Discapacidad = "No";
             }
             MiNiño.setDiscapacidad(Discapacidad);
-            MiNiño.setApodo(TxtApodoNiño.getText());
-            if (String.valueOf(NvContraNiño.getPassword()).equals(String.valueOf(CfContraNiño.getPassword()))) {
-              MiNiño.setContraseña(String.valueOf(NvContraNiño.getPassword()));  
-            }else{
-            JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden");
-            NvContraNiño.requestFocus();
-            }
-            
-            
+            MiNiño.setContraseña(String.valueOf(NvContraNiño.getPassword()));
 
-        Base.store(MiNiño); 
-        javax.swing.JOptionPane.showMessageDialog(this,"Los datos se han guardado exitosamente");
-        Base.close();   
-        } catch (DatabaseClosedException | DatabaseReadOnlyException | HeadlessException e) {
-        } finally{
-        
-        PagPrincipalNiñ PrinNiño = new PagPrincipalNiñ();
-        PrinNiño.setVisible(true);
-        this.setVisible(false);
+            // Validaciones
+            if (validarNombre(MiNiño.getNombre().trim())
+                    && validarApellido(MiNiño.getApellido().trim())
+                    && validarApodo(MiNiño.getApodo().trim())
+                    && validarContraseña(MiNiño.getContraseña(), String.valueOf(CfContraNiño.getPassword()))) {
+
+                Base.store(MiNiño);
+                JOptionPane.showMessageDialog(this, "Los datos se han guardado exitosamente");
+
+                irAPaginaPrincipalniño();
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor, llene todos los campos antes de guardar.");
         }
+    }
+
+    public static int Verificar_ApodoNiño(ObjectContainer Base, String apodo) {
+        Niño miNiño = new Niño();
+        miNiño.setApodo(apodo);
+        ObjectSet result = Base.get(miNiño);
+
+        return result.size();
+    }
+
+    private void irAPaginaPrincipalniño() {
+        Base.close();
+        InicioNiño Inini = new InicioNiño();
+        Inini.setVisible(true);
+        this.setVisible(false);
+    }
+
+    private String campoVacio;
+
+    private boolean camposLlenos() {
+        if (TxtNombreNiño.getText().trim().isEmpty()) {
+            campoVacio = "Nombre";
+            return false;
+        } else if (TxtApellidoNiño.getText().trim().isEmpty()) {
+            campoVacio = "Apellido";
+            return false;
+        } else if (TxtApodoNiño.getText().trim().isEmpty()) {
+            campoVacio = "Apodo";
+            return false;
+        } else if (DateEdadNiño.getDate() == null) {
+            campoVacio = "Fecha de Nacimiento";
+            return false;
+        } else if (!BtnFemeninoNiñ.isSelected() && !BtnMasculinoNiñ.isSelected()) {
+            campoVacio = "Género";
+            return false;
+        } else if (CmBxPersonalidad.getSelectedIndex() == -1) {
+            campoVacio = "Personalidad";
+            return false;
+        } else if (!BtnMasculinoNiñ.isSelected() && !BtnFemeninoNiñ.isSelected()) {
+            campoVacio = "Discapacidad";
+            return false;
+        } else {
+            if (Verificar_ApodoNiño(Base, TxtApodoNiño.getText().trim()) > 0) {
+                JOptionPane.showMessageDialog(this, "El apodo ya está registrado. Por favor, elige otro.", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+            campoVacio = null;
+            return true;
+        }
+
     }//GEN-LAST:event_BtnRegistrarseNiñActionPerformed
 
     public static String Calcular_ID_Niño(ObjectContainer Base) {
@@ -392,27 +448,27 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
 
         return Codigo;
     }
-    
+
     public static int Verificar_CodigoNiño(ObjectContainer Base, String usuario) {
 
         Niño miNiño = new Niño();
-        miNiño.setApodo(usuario);
+        miNiño.setUsuario(usuario);
         ObjectSet result = Base.get(miNiño);
 
         return result.size();
     }
-    
+
     private void TxtNombreNiñoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtNombreNiñoMousePressed
         if (TxtNombreNiño.getText().equals("Ingrese sus Nombres")) {
             TxtNombreNiño.setText("");
             TxtNombreNiño.setForeground(Color.black);
         }
-        
+
         if (TxtApellidoNiño.getText().isEmpty()) {
             TxtApellidoNiño.setText("Ingrese sus Apellidos");
             TxtApellidoNiño.setForeground(Color.gray);
         }
-         if (TxtApodoNiño.getText().isEmpty()) {
+        if (TxtApodoNiño.getText().isEmpty()) {
             TxtApodoNiño.setText("Ingrese su Apodo");
             TxtApodoNiño.setForeground(Color.gray);
         }
@@ -432,7 +488,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
             TxtApellidoNiño.setText("");
             TxtApellidoNiño.setForeground(Color.black);
         }
-        
+
         if (TxtNombreNiño.getText().isEmpty()) {
             TxtNombreNiño.setText("Ingrese sus Nombres");
             TxtNombreNiño.setForeground(Color.gray);
@@ -457,7 +513,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
             TxtApodoNiño.setText("");
             TxtApodoNiño.setForeground(Color.black);
         }
-        
+
         if (TxtNombreNiño.getText().isEmpty()) {
             TxtNombreNiño.setText("Ingrese sus Nombres");
             TxtNombreNiño.setForeground(Color.gray);
@@ -494,7 +550,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
             TxtApellidoNiño.setText("Ingrese sus Apellidos");
             TxtApellidoNiño.setForeground(Color.gray);
         }
-         if (TxtApodoNiño.getText().isEmpty()) {
+        if (TxtApodoNiño.getText().isEmpty()) {
             TxtApodoNiño.setText("Ingrese su Apodo");
             TxtApodoNiño.setForeground(Color.gray);
         }
@@ -521,7 +577,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
             TxtApellidoNiño.setText("Ingrese sus Apellidos");
             TxtApellidoNiño.setForeground(Color.gray);
         }
-         if (TxtApodoNiño.getText().isEmpty()) {
+        if (TxtApodoNiño.getText().isEmpty()) {
             TxtApodoNiño.setText("Ingrese su Apodo");
             TxtApodoNiño.setForeground(Color.gray);
         }
@@ -529,13 +585,12 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
             NvContraNiño.setText("**********");
             NvContraNiño.setForeground(Color.gray);
         }
-        
+
     }//GEN-LAST:event_CfContraNiñoMousePressed
 
     private void CfContraNiñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CfContraNiñoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CfContraNiñoActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -580,4 +635,79 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator15;
     // End of variables declaration//GEN-END:variables
+public String Asignar_cod_Personalidad(ObjectContainer Base, String Personalidad) {
+        Query query = Base.query();
+        query.constrain(Personalidad.class
+        );
+
+        ObjectSet result = query.execute();
+
+        while (result.hasNext()) {
+            Personalidad miperso = (Personalidad) result.next();
+            if (miperso.getPersonalidad().equals(Personalidad)) {  // Asume que tienes un método getId() en tu clase Nacionalidad
+                return miperso.getCod_Personalidad();  // Asume que tienes un método getNombre() en tu clase Nacionalidad
+            }
+        }
+        return null;
+    }
+
+    public void Personalidad_ingr(ObjectContainer Base) {
+        Query query = Base.query();
+        query.constrain(Personalidad.class
+        );
+        ObjectSet result = query.execute();
+
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+
+        while (result.hasNext()) {
+            Personalidad nacionalidad = (Personalidad) result.next();
+            String nombre = nacionalidad.getPersonalidad(); // Asume que tienes un método getNombre() en tu clase Nacionalidad
+            model.addElement(nombre); // Agrega el nombre al modelo
+        }
+
+        CmBxPersonalidad.setModel(model);
+
+    }
+
+    //VALIDACIONES
+    public boolean validarNombre(String nombre) {
+        System.out.println("Nombre recibido para validar: " + nombre);
+        if (nombre == null || !nombre.matches("^[A-Za-z]+$") || nombre.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "Ingrese un nombre válido", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarApodo(String apodo) {
+        System.out.println("Apodo recibido para validar: " + apodo);
+        if (apodo == null || !apodo.matches("^[A-Za-z0-9]+$") || apodo.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "Ingrese un apodo válido (solo letras y números son permitidos)", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarApellido(String apellido) {
+        System.out.println("Apellido recibido para validar: " + apellido);
+        if (apellido == null || !apellido.matches("^[A-Za-z]+$") || apellido.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "Ingrese un apellido válido", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarContraseña(String contraseña, String confirmacionContraseña) {
+        System.out.println("Contraseña recibida para validar: " + contraseña);
+        if (contraseña == null || !contraseña.matches("^[\\w.]{2,9}$") || contraseña.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "La contraseña es obligatoria", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        // Validar que la contraseña y la confirmación sean iguales
+        if (!contraseña.equals(confirmacionContraseña)) {
+            JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
 }
