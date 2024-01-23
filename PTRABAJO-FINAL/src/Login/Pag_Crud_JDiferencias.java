@@ -8,7 +8,10 @@ package Login;
 import Clases.Juego_Diferencias;
 import Clases.Juego_Laberinto;
 import Login.InicioPsicologo;
+import Login.InicioPsicologo;
 import Login.PagPrincipalPsicologo;
+import Login.PagPrincipalPsicologo;
+import Login.RegistrarsePariente;
 import Login.RegistrarsePariente;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
@@ -19,15 +22,20 @@ import com.db4o.ext.Db4oIOException;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
@@ -241,6 +249,11 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableJDif.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableJDifMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTableJDif);
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 680, 590, 280));
@@ -343,13 +356,10 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
             int respuestaCorrecta = Integer.parseInt(txtNumDiferencias.getText());
             Juego_Dif.setRespuesta_Correcta(respuestaCorrecta);
         } catch (NumberFormatException e) {
-            // Manejar la excepción si el texto no es un número válido
-            // Por ejemplo, mostrar un mensaje de error o realizar otra acción adecuada.
-            System.err.println("Error al convertir el texto a entero: " + e.getMessage());
-        }       
-        Juego_Dif.setImagen_Dif(imagen);
 
-   // Almacena la ruta de la imagen en la propiedad de la entidad Cuento
+            System.err.println("Error al convertir el texto a entero: " + e.getMessage());
+        }
+        Juego_Dif.setImagen_Dif(imagen);
         Juego_Dif.setRutaImagen(rutaImagen);
 
         Base.store(Juego_Dif);
@@ -377,29 +387,41 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
 
     private void btn_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarActionPerformed
         try {
-            DefaultTableModel modelo = (DefaultTableModel) jTableJDif.getModel();
-            int filaSeleccionada = jTableJDif.getSelectedRow();
+        DefaultTableModel modelo = (DefaultTableModel) jTableJDif.getModel();
+        int filaSeleccionada = jTableJDif.getSelectedRow();
 
         if (filaSeleccionada == -1) {
-        JOptionPane.showMessageDialog(this, "Seleccione una fila para modificar.");
-        return;
+            JOptionPane.showMessageDialog(this, "Seleccione una fila para modificar.");
+            return;
         }
 
-        String CodigoJuego = (String) modelo.getValueAt(filaSeleccionada, 0);
-            String Nueva_Descripcion = JOptionPane.showInputDialog(this, "Ingrese la nueva descripción:", modelo.getValueAt(filaSeleccionada, 1));
+        String codigoJuego = (String) modelo.getValueAt(filaSeleccionada, 0);
+        String nuevaDescripcion = JOptionPane.showInputDialog(this, "Ingrese la nueva descripción:", modelo.getValueAt(filaSeleccionada, 1));
 
-            // Utiliza Integer.parseInt() para convertir la entrada a un entero
-            String input = JOptionPane.showInputDialog(this, "Ingrese la nueva opción correcta:", modelo.getValueAt(filaSeleccionada, 6));
-            int NuevaOpCorrecta = Integer.parseInt(input);
+        String input = JOptionPane.showInputDialog(this, "Ingrese la nueva opción correcta:", modelo.getValueAt(filaSeleccionada, 2));
+        int nuevaOpCorrecta = Integer.parseInt(input);
 
-            if (Nueva_Descripcion != null) {
-                ModificarJuego(Base, CodigoJuego, Nueva_Descripcion, NuevaOpCorrecta);
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Imágenes", "jpg", "jpeg", "png", "gif");
+        fileChooser.setFileFilter(filter);
+
+        int result = fileChooser.showOpenDialog(this);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            String nuevaRutaImagen = selectedFile.getAbsolutePath();
+            byte[] nuevaImagen = AbrirArchivo(selectedFile); // Utiliza el método AbrirArchivo para obtener el arreglo de bytes
+
+            if (nuevaImagen != null) {
+                ModificarJuego(Base, codigoJuego, nuevaDescripcion, nuevaOpCorrecta, nuevaImagen, nuevaRutaImagen);
+                MostrarDatos(Base);
             }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Error al ingresar la opción correcta. Asegúrese de ingresar un número entero.");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error al modificar: " + e.getMessage());
-}
+        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Error al ingresar la opción correcta. Asegúrese de ingresar un número entero.");
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error al modificar: " + e.getMessage());
+    }
     }//GEN-LAST:event_btn_ModificarActionPerformed
 
     private void bnt_ActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bnt_ActualizarMouseClicked
@@ -435,6 +457,24 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
     private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDescripcionActionPerformed
+
+    private void jTableJDifMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableJDifMouseClicked
+        int filaSeleccionada = jTableJDif.getSelectedRow();
+
+        if (filaSeleccionada != -1) {
+            // Obtener el valor de la columna que contiene la descripción de la imagen
+            String descripcionImagen = (String) jTableJDif.getValueAt(filaSeleccionada, 1);
+
+            // Extraer la ruta de la imagen de la descripción
+            String rutaImagen = extraerRutaDesdeDescripcion(descripcionImagen);
+
+            if (rutaImagen != null) {
+                // Actualizar el JLabel con la imagen correspondiente
+                actualizarImagenEnJLabel(rutaImagen);
+            }
+        }
+
+    }//GEN-LAST:event_jTableJDifMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -529,9 +569,9 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
         return result.size();
 
     }
-    
-     public byte[] AbrirArchivo(File archivo) {
-        try ( FileInputStream entrada = new FileInputStream(archivo)) {
+
+    public byte[] AbrirArchivo(File archivo) {
+        try (FileInputStream entrada = new FileInputStream(archivo)) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             byte[] buffer = new byte[1024];
             int bytesRead;
@@ -544,7 +584,7 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
             return null;  // Devuelve null si hay algún error al leer la imagen
         }
     }
-     
+
     private Image convertirBytesAImagen(byte[] bytes) {
         ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
         try {
@@ -554,7 +594,7 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
             return null;
         }
     }
-    
+
     public void MostrarDatos(ObjectContainer Base) {
 
         Juego_Diferencias mostrarJuegoLab = new Juego_Diferencias();
@@ -598,31 +638,26 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
         }
     }
-    
-    public void ModificarJuego(ObjectContainer Base, String CodigoJuego, String Nueva_Descripcion, int NuevaOpCorrecta) {
+
+    public void ModificarJuego(ObjectContainer Base, String CodigoJuego, String Nueva_Descripcion, int NuevaOpCorrecta, byte[] NuevaImagen, String NuevaRuta) {
         try {
 
-            // Crear un objeto Parentesco con el código proporcionado
             Juego_Diferencias JDif = new Juego_Diferencias();
             JDif.setCod_Juego(CodigoJuego);
 
-            // Buscar el objeto correspondiente en la base de datos
             ObjectSet result = Base.get(JDif);
 
-            // Verificar si se encontró un objeto para modificar
             if (result.hasNext()) {
                 Juego_Diferencias nuevoJuego = (Juego_Diferencias) result.next();
 
-                // Actualizar los campos del objeto con los nuevos valores
                 nuevoJuego.setDescripcion_Juego(Nueva_Descripcion);
                 nuevoJuego.setRespuesta_Correcta(NuevaOpCorrecta);
-                // Almacenar los cambios en la base de datos
+                nuevoJuego.setImagen_Dif(NuevaImagen);
+                nuevoJuego.setRutaImagen(NuevaRuta);
                 Base.store(nuevoJuego);
 
-                // Mostrar un mensaje de confirmación al usuario
                 JOptionPane.showMessageDialog(this, "Se modificó los datos del juego correctamente.");
 
-                // Actualizar la tabla después de la modificación
                 MostrarDatos(Base);
 
             } else {
@@ -632,18 +667,17 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
         }
     }
-    
-        public void ValidaDescripcion(String Descripcion) throws Exception {
+
+    public void ValidaDescripcion(String Descripcion) throws Exception {
         // La expresión regular permite letras mayúsculas y minúsculas.
         if (!Descripcion.matches("^[A-Za-z]+\\s[0-9\\s]+$")) {
             throw new Exception("Ingrese una descripcion válida.");
         }
     }
-        
-        private void EliminarRegistro(ObjectContainer base, String Cod_Dif) {
+
+    private void EliminarRegistro(ObjectContainer base, String Cod_Dif) {
 
         Juego_Diferencias elimJue = new Juego_Diferencias(Cod_Dif, null, null, 0, null, null);
-
 
         ObjectSet result = base.queryByExample(elimJue);
 
@@ -657,5 +691,100 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
         }
+    }
+
+    private void actualizarImagenEnJLabel(String rutaImagen) {
+        try {
+            // Obtener la imagen desde la base de datos como un conjunto de bytes
+            byte[] imagenBytes = obtenerBytesDesdeRuta(rutaImagen);
+
+            // Convierte el array de bytes a un objeto Image
+            Image imagenOriginal = convertirBytesAImagen(imagenBytes);
+
+            if (imagenOriginal != null) {
+                // Redimensiona la imagen según sea necesario
+                Image imagenRedimensionada = imagenOriginal.getScaledInstance(550, 330, Image.SCALE_SMOOTH);
+
+                // Crea un ImageIcon a partir de la imagen redimensionada
+                ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+
+                lblImagenDiferencias.setIcon(iconoRedimensionado);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error: No se pudo convertir la imagen a formato válido.");
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error al cargar la imagen: " + e.getMessage());
+        }
+    }
+
+    private byte[] obtenerBytesDesdeRuta(String rutaImagen) throws IOException {
+        // Obtener los bytes desde la ruta de la imagen
+        Path path = Paths.get(rutaImagen);
+        return Files.readAllBytes(path);
+    }
+
+    
+
+    private String extraerRutaDesdeDescripcion(String descripcionImagen) {
+        // Separar la descripción usando el carácter '|'
+        String[] partes = descripcionImagen.split("\\|");
+
+        // Verificar si hay al menos dos partes (Descripción y Ruta de la imagen)
+        if (partes.length > 1) {
+            // La ruta de la imagen está en la segunda parte
+            return partes[1];
+        } else {
+            // Devuelve null si no se pudo extraer la ruta de la imagen
+            return null;
+        }
+    }
+
+    private String modificarImagen(String rutaImagen) {
+        try {
+            // Cargar la imagen desde la ruta
+            BufferedImage originalImage = ImageIO.read(new File(rutaImagen));
+
+            // Modificar la imagen según sea necesario (en este caso, invertir los colores)
+            BufferedImage modifiedImage = modificarColores(originalImage);
+
+            // Generar un nombre único para la imagen modificada
+            String nombreModificado = "modified_" + System.currentTimeMillis() + ".jpg";
+
+            // Obtener la ruta del directorio donde se guarda la imagen modificada
+            String directorioImagenesModificadas = "ruta/del/directorio/de/imagenes/modificadas/";
+
+            // Guardar la imagen modificada en un nuevo archivo en el directorio especificado
+            File outputFile = new File(directorioImagenesModificadas + nombreModificado);
+            ImageIO.write(modifiedImage, "jpg", outputFile);
+
+            // Devolver la ruta completa de la imagen modificada
+            return outputFile.getAbsolutePath();
+        } catch (IOException e) {
+            // Manejar cualquier excepción relacionada con la carga o modificación de la imagen
+            JOptionPane.showMessageDialog(this, "Error al cargar o modificar la imagen: " + e.getMessage());
+            return null;
+        }
+    }
+
+    private BufferedImage modificarColores(BufferedImage originalImage) {
+        // Implementa aquí la lógica para modificar los colores de la imagen según tus necesidades
+        // En este ejemplo, se invierten los colores
+
+        int width = originalImage.getWidth();
+        int height = originalImage.getHeight();
+
+        BufferedImage modifiedImage = new BufferedImage(width, height, originalImage.getType());
+
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                Color originalColor = new Color(originalImage.getRGB(x, y));
+                Color modifiedColor = new Color(255 - originalColor.getRed(),
+                        255 - originalColor.getGreen(),
+                        255 - originalColor.getBlue());
+                modifiedImage.setRGB(x, y, modifiedColor.getRGB());
+            }
+        }
+
+        return modifiedImage;
     }
 }
