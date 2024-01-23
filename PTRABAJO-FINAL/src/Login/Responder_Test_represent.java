@@ -5,7 +5,6 @@
  */
 package Login;
 
-
 import Clases.*;
 import Clases.UserDataSingleton;
 import com.db4o.Db4o;
@@ -23,13 +22,11 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
-
 /**
  *
  * @author alexa
  */
 public class Responder_Test_represent extends javax.swing.JFrame {
-
 
     //  boolean Bucle = true;
     UserDataSingleton usarData;
@@ -380,7 +377,7 @@ public class Responder_Test_represent extends javax.swing.JFrame {
         if (list_preguntas.getModel().getSize() == 0) {
             JOptionPane.showMessageDialog(this, "No hay preguntas a responder");
         } else {
-            
+
             cargar_preg.setEnabled(false);
             txt_pregunta.setEnabled(true);
             txt_resp1.setEnabled(true);
@@ -399,8 +396,9 @@ public class Responder_Test_represent extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void Ingresar_respuestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ingresar_respuestaActionPerformed
-        respuesta_ususario(Base);
-
+        SwingUtilities.invokeLater(() -> {
+            respuesta_ususario(Base);
+        });
         eliminarElementoSeleccionado();
         txt_pregunta.setText("");
         txt_resp1.setText("");
@@ -410,9 +408,14 @@ public class Responder_Test_represent extends javax.swing.JFrame {
         txt_resp1.setBackground(new Color(204, 255, 204));
         txt_resp3.setBackground(new Color(204, 255, 204));
         if (list_preguntas.getModel().getSize() == 0) {
-        JOptionPane.showMessageDialog(this, "Las preguntas finalizaron");
+            JOptionPane.showMessageDialog(this, "Las preguntas finalizaron");
+            Base.close();
+            PagTestPariente pag=new PagTestPariente();
+            pag.setVisible(true);
+            this.setVisible(false);
+            
         }
-        
+
     }//GEN-LAST:event_Ingresar_respuestaActionPerformed
 
     private void txt_resp1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_resp1MouseEntered
@@ -490,6 +493,7 @@ public class Responder_Test_represent extends javax.swing.JFrame {
 
             Respuesta_Usuario respuesta = new Respuesta_Usuario();
             cod = Calcular_IDRespuesra_Usua(Base);
+            System.out.println("EFEW" + cod);
             respuesta.setCod_Respuesta_usuario(cod);
             respuesta.setFK_Cod_text(usarData.getCod_test_repre());
 
@@ -498,7 +502,7 @@ public class Responder_Test_represent extends javax.swing.JFrame {
             respuesta.setFK_cod_tipo_usua("");
             respuesta.setFecha_respuesta(new Date());
 
-            Base.store(respuesta);
+            Base.set(respuesta);
             System.out.println("Se guardo " + cod);
 
         }
@@ -549,7 +553,7 @@ public class Responder_Test_represent extends javax.swing.JFrame {
             respuesta.setFK_CodPregunta(codp);
 
             ObjectSet rest = base.get(respuesta);
-           // System.out.println("opcion " + rest.size());
+            // System.out.println("opcion " + rest.size());
 
             while (rest.hasNext()) {
                 Opcion_Respuesta op = (Opcion_Respuesta) rest.next();
@@ -557,17 +561,17 @@ public class Responder_Test_represent extends javax.swing.JFrame {
 
                 if (respue1.equals("")) {
                     respue1 = codOpcion;
-                   // System.out.println("Respuesta 1: " + respue1);
+                    // System.out.println("Respuesta 1: " + respue1);
                     codResp__1 = respue1;
 
                 } else if (respue2.equals("")) {
                     respue2 = codOpcion;
-                   // System.out.println("Respuesta 2: " + respue2);
+                    // System.out.println("Respuesta 2: " + respue2);
                     codResp__2 = respue2;
 
                 } else if (respue3.equals("")) {
                     respue3 = codOpcion;
-                   // System.out.println("Respuesta 3: " + respue3);
+                    // System.out.println("Respuesta 3: " + respue3);
                     codResp__3 = respue3;
 
                 }
@@ -755,9 +759,10 @@ public class Responder_Test_represent extends javax.swing.JFrame {
 
     public int Verificar_respuesta_usua(ObjectContainer Base, String codifo) {
         Respuesta_Usuario usua = new Respuesta_Usuario();
-        usua.setCod_Respuesta_usuario(codPregunta);
+        usua.setCod_Respuesta_usuario(codifo);
 
         ObjectSet result = Base.get(usua);
+        System.out.println("result" + result.size());
 
         return result.size();
     }

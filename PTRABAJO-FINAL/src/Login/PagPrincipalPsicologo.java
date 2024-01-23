@@ -271,7 +271,7 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
 
     private void BtnTestPsicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTestPsicoActionPerformed
         Base.close();   
-            PagCrudTestPsicologo eltes = new PagCrudTestPsicologo();
+            PagTest_Psicologo eltes = new PagTest_Psicologo();
                 eltes.setVisible(true);
                     this.setVisible(false);
     }//GEN-LAST:event_BtnTestPsicoActionPerformed

@@ -13,20 +13,22 @@ import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author alexa
  */
 public class InicioPsicologo extends javax.swing.JFrame {
+
     ObjectContainer Base;
     String codigoPsicologo = "12345";
     UserDataSingleton usarData;
-    
+
     public InicioPsicologo() {
         initComponents();
         usarData = UserDataSingleton.getInstance();
-       Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
@@ -270,47 +272,62 @@ public class InicioPsicologo extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_txt_cod_adMousePressed
+    public boolean Estado_Activo(ObjectContainer Base, String cedula) {
+        Persona persn = new Persona();
+        persn.setCedula(cedula);
+
+        ObjectSet result = Base.get(persn);
+
+        Persona prs = (Persona) result.next();
+
+        System.out.println("Estado " + prs.isEstado());
+        return prs.isEstado();
+    }
+
 
     private void TXT_IngreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TXT_IngreMouseClicked
-        boolean personaEncontrada = false;
 
-        do {
-            if (!txt_usuario.getText().equals("Usuario_Psicologo")) {
-                if (!String.valueOf(txt_contr.getPassword()).equals("**********")) {
-                    int resultadoBusqueda = Buscar_persona(Base, txt_usuario.getText(), String.valueOf(txt_contr.getPassword()));
+        if (!txt_usuario.getText().equals("Usuario_Psicologo")) {
+            if (!String.valueOf(txt_contr.getPassword()).equals("**********")) {
+                int resultadoBusqueda = Buscar_persona(Base, txt_usuario.getText(), String.valueOf(txt_contr.getPassword()));
 
-                    if (resultadoBusqueda == 1) {
-                        int resultadoBusquedaPsicologo = Buscar_usua_psicol(Base, txt_usuario.getText());
+                if (resultadoBusqueda == 1) {
+                    int resultadoBusquedaPsicologo = Buscar_usua_psicol(Base, txt_usuario.getText());
 
-                        if (resultadoBusquedaPsicologo == 1) {
-                            if (String.valueOf(txt_cod_ad.getPassword()).equals(codigoPsicologo)) {
-                                
+                    if (resultadoBusquedaPsicologo == 1) {
+                        if (String.valueOf(txt_cod_ad.getPassword()).equals(codigoPsicologo)) {
+
+                            if (Estado_Activo(Base, txt_usuario.getText())) {
+
                                 usarData.setCod_Psicologo(extraer_Psicologo(Base, txt_usuario.getText()));
+                                System.out.println("codigos_Pasoa::::" + usarData.getCod_Psicologo());
                                 javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
                                 Base.close();
                                 PagPrincipalPsicologo elpagina = new PagPrincipalPsicologo();
                                 elpagina.setVisible(true);
                                 this.setVisible(false);
-                                personaEncontrada = true;
-                                
+
                             } else {
-                                javax.swing.JOptionPane.showMessageDialog(this, "La clave para el psicologo es incorrecta");
+                                JOptionPane.showMessageDialog(this, "El PSICOLOGO FUE ELIMINADO");
                             }
+
                         } else {
-                            javax.swing.JOptionPane.showMessageDialog(this, "Al parecer el usuario registrado no es un psicologo");
+                            javax.swing.JOptionPane.showMessageDialog(this, "La clave para el psicologo es incorrecta");
                         }
                     } else {
-                        javax.swing.JOptionPane.showMessageDialog(this, "Los datos no se encuentran registrados");
+                        javax.swing.JOptionPane.showMessageDialog(this, "Al parecer el usuario registrado no es un psicologo");
                     }
                 } else {
-                    javax.swing.JOptionPane.showMessageDialog(this, "Ingresa una Contraseña", "ERROR", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    javax.swing.JOptionPane.showMessageDialog(this, "Los datos no se encuentran registrados");
                 }
             } else {
-                javax.swing.JOptionPane.showMessageDialog(this, "Ingresa un Usuario", "ERROR", javax.swing.JOptionPane.ERROR_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this, "Ingresa una Contraseña", "ERROR", javax.swing.JOptionPane.ERROR_MESSAGE);
             }
-        } while (!personaEncontrada);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Ingresa un Usuario", "ERROR", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
 
-        
+
     }//GEN-LAST:event_TXT_IngreMouseClicked
 
     private void txt_cod_adActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cod_adActionPerformed
@@ -318,27 +335,25 @@ public class InicioPsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_cod_adActionPerformed
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
-          
+
         Base.close();
-            Seleccion selec = new Seleccion();
-                selec.setVisible(true);
-                    this.setVisible(false);
+        Seleccion selec = new Seleccion();
+        selec.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
-    
-    public static String extraer_Psicologo(ObjectContainer Base,String usuario){
-       Psicologo  extraer= new Psicologo();
+
+    public static String extraer_Psicologo(ObjectContainer Base, String usuario) {
+        Psicologo extraer = new Psicologo();
         extraer.setFK_Cedula(usuario);
         ObjectSet result = Base.get(extraer);
-        
-        Psicologo ps=(Psicologo)result.next();
-        String cod_psic=ps.getCod_Psicologo();
-        
-    return cod_psic; 
-   
+
+        Psicologo ps = (Psicologo) result.next();
+        String cod_psic = ps.getCod_Psicologo();
+
+        return cod_psic;
+
     }
-    
-    
-    
+
     public void dispose() {
         // Cerrar la base de datos cuando se destruye la instancia de InicioPsicologo.
         if (Base != null) {
@@ -347,7 +362,7 @@ public class InicioPsicologo extends javax.swing.JFrame {
 
         super.dispose();
     }
-    
+
     public static int Buscar_persona(ObjectContainer Base, String Cedula, String Contraseña) {
         Persona elperson = new Persona();
         elperson.setCedula(Cedula);
@@ -364,7 +379,7 @@ public class InicioPsicologo extends javax.swing.JFrame {
         return result.size();
 
     }
-   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnRegresar;

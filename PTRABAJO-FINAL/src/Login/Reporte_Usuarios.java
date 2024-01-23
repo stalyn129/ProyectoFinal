@@ -271,6 +271,8 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         btn_buscar = new javax.swing.JButton();
         txtP_contraseña = new javax.swing.JPasswordField();
         jButton8 = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        txt_cod_rol = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla_niños = new javax.swing.JTable();
@@ -380,15 +382,15 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 40, 110, -1));
 
         txt_codigo.setEditable(false);
-        jPanel3.add(txt_codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 80, -1));
+        jPanel3.add(txt_codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 90, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Nombre:");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, -1, 20));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel5.setText("Rol:");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, 20));
+        jLabel5.setText("Codigo Rol:");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 20));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Direccion:");
@@ -396,11 +398,11 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Email:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, -1, 20));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, -1, 20));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setText("Contraseña:");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 20));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, -1, 20));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel10.setText("Telefono:");
@@ -411,7 +413,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, 20));
         jPanel3.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 100, -1));
         jPanel3.add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 100, -1));
-        jPanel3.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 160, -1));
+        jPanel3.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 160, -1));
         jPanel3.add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 200, -1));
         jPanel3.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 130, -1));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 680, -1));
@@ -442,7 +444,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
             }
         });
         jPanel3.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 210, -1));
-        jPanel3.add(txtP_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 130, -1));
+        jPanel3.add(txtP_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, 130, -1));
 
         jButton8.setText("Actualizar");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -451,6 +453,18 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 110, -1));
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel20.setText("Rol:");
+        jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, 20));
+
+        txt_cod_rol.setEditable(false);
+        txt_cod_rol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_cod_rolActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txt_cod_rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 70, -1));
 
         Recuperar.addTab("Usuario", jPanel3);
 
@@ -814,6 +828,10 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         Modificar_Niño(Base);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void txt_cod_rolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cod_rolActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_cod_rolActionPerformed
     public void eliminar_persona() {
 
         Persona person = new Persona();
@@ -901,6 +919,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         txt_email.setText(prs.getEmail());
         txtP_contraseña.setText(prs.getContraseña());
         txt_roll.setText(tipo_persona(Base, prs.getCedula()));
+        txt_cod_rol.setText(Cod_Roll_tip);
 
     }
 
@@ -915,9 +934,11 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         ntx_apodo.setText(prs.getApodo());
         ntx_sexo.setText(String.valueOf(prs.getSexo_Niño()));
         ntx_contra.setText(prs.getContraseña());
+        
 
     }
 
+    String Cod_Roll_tip="";
     public String tipo_persona(ObjectContainer Base, String cedula) {
         String tipo = "";
 
@@ -925,6 +946,9 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         admin.setFK_Cedula(cedula);
         ObjectSet resultAdmin = Base.get(admin);
         if (resultAdmin.size() != 0) {
+            Administrador ad=(Administrador)resultAdmin.next();
+            Cod_Roll_tip=ad.getID_Admin();
+            
             tipo = "Administrador";
             return tipo;
         }
@@ -933,6 +957,8 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         repre.setFKCod_Cedula(cedula);
         ObjectSet resultrepe = Base.get(repre);
         if (resultrepe.size() != 0) {
+            Representante ad=(Representante)resultrepe.next();
+            Cod_Roll_tip=ad.getCod_Repre();
             tipo = "Representante";
             return tipo;
         }
@@ -941,6 +967,8 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         psic.setFK_Cedula(cedula);
         ObjectSet resulPsic = Base.get(psic);
         if (resulPsic.size() != 0) {
+            Psicologo ad=(Psicologo)resulPsic.next();
+            Cod_Roll_tip=ad.getCod_Psicologo();
             tipo = "Psicologo";
             return tipo;
         }
@@ -1009,6 +1037,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -1050,6 +1079,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtP_contraseña;
     private javax.swing.JTextField txt_apellido;
     private javax.swing.JTextField txt_apodo_consu;
+    private javax.swing.JTextField txt_cod_rol;
     private javax.swing.JTextField txt_codigo;
     private javax.swing.JTextField txt_consultar;
     private javax.swing.JTextField txt_direccion;

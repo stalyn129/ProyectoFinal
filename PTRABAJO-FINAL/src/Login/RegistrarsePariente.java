@@ -1306,7 +1306,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
 
             aumento++;
 
-            cod = String.format("P%04d", aumento);
+            cod = String.format("R%04d", aumento);
 
             if (Verificar_codRepre(Base, cod) == 0) {
                 rest = false;

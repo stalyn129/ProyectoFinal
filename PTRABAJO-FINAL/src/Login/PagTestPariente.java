@@ -55,7 +55,6 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         btn_Cargar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         lista_test = new javax.swing.JList<>();
@@ -96,14 +95,6 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
         jPanel4.setMinimumSize(new java.awt.Dimension(633, 428));
         jPanel4.setPreferredSize(new java.awt.Dimension(633, 428));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, -1, -1));
 
         btn_Cargar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_Cargar.setText("CARGAR");
@@ -174,7 +165,7 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
 
         jScrollPane3.setViewportView(jPanel4);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 650, 300));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 650, 350));
 
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoTestRepresentante.png"))); // NOI18N
         Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -233,9 +224,7 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
 
     private void btn_responderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_responderActionPerformed
          
-       Base.close();
-       
-             
+                Base.close();
              Responder_Test_represent respo=new Responder_Test_represent();
              respo.setVisible(true);
              this.setVisible(false);
@@ -245,10 +234,6 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
         
         
     }//GEN-LAST:event_btn_responderActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void JMnItmCerrarParienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarParienteMousePressed
         Base.close();
@@ -385,7 +370,6 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
     private javax.swing.JMenuBar MenuCuentosNiño;
     private javax.swing.JButton btn_Cargar;
     private javax.swing.JButton btn_responder;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

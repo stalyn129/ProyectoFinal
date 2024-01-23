@@ -5,7 +5,6 @@
  */
 package Login;
 
-
 import Clases.Administrador;
 import Clases.Persona;
 import Clases.UserDataSingleton;
@@ -14,21 +13,24 @@ import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author alexa
  */
 public class IniciaAdmin extends javax.swing.JFrame {
-String codigoAdmin="Admin2003";
-ObjectContainer Base;
- UserDataSingleton usarData;
+
+    String codigoAdmin = "Admin2003";
+    ObjectContainer Base;
+    UserDataSingleton usarData;
+
     /**
      * Creates new form login
      */
     public IniciaAdmin() {
         initComponents();
-        usarData= UserDataSingleton.getInstance();
+        usarData = UserDataSingleton.getInstance();
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
@@ -274,6 +276,19 @@ ObjectContainer Base;
 
     }//GEN-LAST:event_txt_cod_adMousePressed
 
+    public boolean Estado_Activo(ObjectContainer Base, String cedula) {
+        Persona persn = new Persona();
+        persn.setCedula(cedula);
+
+        ObjectSet result = Base.get(persn);
+
+        Persona prs = (Persona) result.next();
+
+        System.out.println("Estado " + prs.isEstado());
+        return prs.isEstado();
+    }
+
+
     private void TXT_IngreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TXT_IngreMouseClicked
         if (!txt_usuario.getText().equals("Usuario_Admin")) {
             if (!String.valueOf(txt_contr.getPassword()).equals("**********")) {
@@ -283,13 +298,21 @@ ObjectContainer Base;
                     if (Buscar_usua_Administrador(Base, txt_usuario.getText()) == 1) {
 
                         if (String.valueOf(txt_cod_ad.getPassword()).equals(codigoAdmin)) {
-                            usarData.setCod_Admin(extraer_admin(Base, txt_usuario.getText()));
-                            
-                            javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
-                            Base.close();
-                            PagPrincipalAdmin elpagina = new PagPrincipalAdmin();
-                            elpagina.setVisible(true);
-                            this.setVisible(false);
+
+                            if (Estado_Activo(Base, txt_usuario.getText())) {
+
+                                usarData.setCod_Admin(extraer_admin(Base, txt_usuario.getText()));
+
+                                javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
+                                Base.close();
+                                PagPrincipalAdmin elpagina = new PagPrincipalAdmin();
+                                elpagina.setVisible(true);
+                                this.setVisible(false);
+
+                            } else {
+                                JOptionPane.showMessageDialog(this, "El ADMINISTRADOR FUE ELIMINADO");
+                            }
+
                         } else {
                             javax.swing.JOptionPane.showMessageDialog(this, "La clave de Administrador es incorrecta");
                         }
@@ -313,14 +336,14 @@ ObjectContainer Base;
             javax.swing.JOptionPane.showMessageDialog(this, "Ingresa un Usuario", "ERROR", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
 
-        
+
     }//GEN-LAST:event_TXT_IngreMouseClicked
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
         Base.close();
-            Seleccion selec = new Seleccion();
-                selec.setVisible(true);
-                    this.setVisible(false);
+        Seleccion selec = new Seleccion();
+        selec.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
     private void txt_cod_adActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cod_adActionPerformed
@@ -340,21 +363,22 @@ ObjectContainer Base;
         Administrador elpici = new Administrador();
         elpici.setFK_Cedula(ususario);
         ObjectSet result = Base.get(elpici);
-        
+
         return result.size();
     }
-    public static String extraer_admin(ObjectContainer Base,String usuario){
-       Administrador elAdmi = new Administrador();
+
+    public static String extraer_admin(ObjectContainer Base, String usuario) {
+        Administrador elAdmi = new Administrador();
         elAdmi.setFK_Cedula(usuario);
         ObjectSet result = Base.get(elAdmi);
-        
-        Administrador admin=(Administrador)result.next();
-        String cod_admin=admin.getID_Admin();
-        
-    return cod_admin; 
-   
+
+        Administrador admin = (Administrador) result.next();
+        String cod_admin = admin.getID_Admin();
+
+        return cod_admin;
+
     }
-   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnRegresar;

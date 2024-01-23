@@ -25,13 +25,14 @@ String cod;
     String cod_Tipo_test = "TTR01";
     String codigotest;
     ObjectContainer Base;
-
+UserDataSingleton usarData ;
     /**
      * Creates new form Crud_TEST
      */
     public PagCrudTestPsicologo() {
         initComponents();
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+        usarData = UserDataSingleton.getInstance();
         Bloquear_edicion_antes_test();
     }
 
@@ -50,7 +51,6 @@ String cod;
         jPanel4 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         cbx_destino = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -62,9 +62,7 @@ String cod;
         txt_respuesta_2 = new javax.swing.JTextField();
         txt_respuesta_1 = new javax.swing.JTextField();
         txt_respuesta_3 = new javax.swing.JTextField();
-        btn_modificar = new javax.swing.JButton();
         btn_guardar1 = new javax.swing.JButton();
-        btn_elimina = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtA_descrip = new javax.swing.JTextArea();
         lbl_enunciado_guardar = new javax.swing.JLabel();
@@ -77,6 +75,7 @@ String cod;
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla_preguntas = new javax.swing.JTable();
         btn_guardar_test = new javax.swing.JToggleButton();
+        BtnRegresar1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenu3puntitosPsicologo = new javax.swing.JMenu();
         JMnItmCerrarPsicologo = new javax.swing.JMenuItem();
@@ -118,10 +117,6 @@ String cod;
         jPanel4.add(cbx_destino, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 80, -1));
 
         jPanel5.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, 100, 50));
-
-        jButton2.setFont(new java.awt.Font("Century Schoolbook", 0, 11)); // NOI18N
-        jButton2.setText("Test Realizados");
-        jPanel5.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -180,15 +175,6 @@ String cod;
 
         jPanel5.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 470, 150));
 
-        btn_modificar.setText("Modificar");
-        btn_modificar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_modificarActionPerformed(evt);
-            }
-        });
-        jPanel5.add(btn_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, 190, 30));
-
         btn_guardar1.setText("Guardar");
         btn_guardar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_guardar1.addActionListener(new java.awt.event.ActionListener() {
@@ -196,16 +182,7 @@ String cod;
                 btn_guardar1ActionPerformed(evt);
             }
         });
-        jPanel5.add(btn_guardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, 190, 30));
-
-        btn_elimina.setText("Eliminar");
-        btn_elimina.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_elimina.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_eliminaActionPerformed(evt);
-            }
-        });
-        jPanel5.add(btn_elimina, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 460, 190, 30));
+        jPanel5.add(btn_guardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, 400, 30));
 
         txtA_descrip.setColumns(20);
         txtA_descrip.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
@@ -255,7 +232,7 @@ String cod;
         ));
         jScrollPane2.setViewportView(tabla_preguntas);
 
-        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 510, 550, 90));
+        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, 550, 90));
 
         btn_guardar_test.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_guardar_test.setText("Guardar el test");
@@ -268,7 +245,18 @@ String cod;
 
         jScrollPane3.setViewportView(jPanel5);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 710, 390));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 710, 400));
+
+        BtnRegresar1.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar1.setOpaque(false);
+        BtnRegresar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 810, 520));
 
@@ -309,18 +297,6 @@ String cod;
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_tituloActionPerformed
 
-    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-
-        try {
-            Crear_Test(Base);
-
-            Base.close();
-        } catch (Db4oIOException e) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Hay un error en aplastar boton");
-        }
-
-    }//GEN-LAST:event_btn_modificarActionPerformed
-
     private void txt_respuesta_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_respuesta_2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_respuesta_2ActionPerformed
@@ -344,10 +320,6 @@ String cod;
 
 
     }//GEN-LAST:event_btn_guardar1ActionPerformed
-
-    private void btn_eliminaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_eliminaActionPerformed
 
     private void btn_guardar_testActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar_testActionPerformed
         try {
@@ -387,13 +359,22 @@ String cod;
         // No tomar encuenta
     }//GEN-LAST:event_JMnItmCerrarPsicologoMouseExited
 
+    private void BtnRegresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar1ActionPerformed
+        Base.close();
+        PagTest_Psicologo general = new PagTest_Psicologo();
+        general.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresar1ActionPerformed
+
     //////////////////////////////////   TEST
     public void Crear_Test(ObjectContainer Base) {
         try {
             Test eltest = new Test();
             codigotest = Calcular_IDtest(Base);
             eltest.setID_Test(codigotest);
-            eltest.setFKCod_Psicologo("");
+            
+                System.out.println("codigo_de Psic_"+usarData.getCod_Psicologo());
+            eltest.setFKCod_Psicologo(usarData.getCod_Psicologo());
             eltest.setTitulo_Test(txt_titulo.getText());
             eltest.setDescripcion_Test(txtA_descrip.getText());
             eltest.setCod_destinatario(cbx_destino.getSelectedItem().toString());
@@ -588,15 +569,13 @@ String cod;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnRegresar1;
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
     private javax.swing.JMenu JMnPgPrinPsicolo;
-    private javax.swing.JButton btn_elimina;
     private javax.swing.JButton btn_guardar1;
     private javax.swing.JToggleButton btn_guardar_test;
-    private javax.swing.JButton btn_modificar;
     private javax.swing.JComboBox<String> cbx_destino;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -636,7 +615,7 @@ String cod;
     }
 
     public void Bloquear_edicion_test() {
-
+        btn_guardar_test.setEnabled(false);
         txt_titulo.setEnabled(false);
         txtA_descrip.setEnabled(false);
         cbx_destino.setEnabled(false);
