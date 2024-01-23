@@ -5,8 +5,16 @@
  */
 package Login;
 
+import Clases.Consejos;
+import Login.InicioNiño;
+import Login.PagCrudForoPsicologo;
+import Login.PagPrincipalNiñ;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -14,14 +22,12 @@ import com.db4o.ObjectContainer;
  */
 public class PagConsejosNiño extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PagConsejosNiño
-     */
-    
+   
     ObjectContainer Base;
     public PagConsejosNiño() {
         initComponents();
             Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+            cargar_combo1(CmBoxConsejosNiño);
     }
 
     /**
@@ -86,12 +92,13 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LblInfor2Niño.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
+        LblInfor2Niño.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblInfor2Niño.setText("Consejos Sobre El Bullying");
-        jPanel4.add(LblInfor2Niño, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 260, -1));
-        jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 260, 10));
+        jPanel4.add(LblInfor2Niño, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 610, -1));
+        jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 280, 10));
 
         jSeparator2.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel4.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 300, 10));
+        jPanel4.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 300, 10));
 
         TxtTextConsNiño1.setColumns(20);
         TxtTextConsNiño1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
@@ -102,24 +109,24 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         TxtTextConsNiño1.setEnabled(false);
         jScrollPane5.setViewportView(TxtTextConsNiño1);
 
-        jPanel4.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 300, 170));
+        jPanel4.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 300, 170));
 
         jSeparator4.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 300, 10));
+        jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 550, 10));
 
         LblTitConseNiño1.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         LblTitConseNiño1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel4.add(LblTitConseNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 300, 20));
-        jPanel4.add(LblImaConseNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 190, 170));
+        jPanel4.add(LblTitConseNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 610, 20));
+        jPanel4.add(LblImaConseNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 240, 170));
 
         jSeparator5.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel4.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 190, 10));
+        jPanel4.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 240, 10));
 
         jSeparator6.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel4.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 550, 190, 10));
+        jPanel4.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 550, 250, 10));
 
         jSeparator3.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, 300, 10));
+        jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 300, 10));
 
         TxtTextConsNiño2.setColumns(20);
         TxtTextConsNiño2.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
@@ -130,24 +137,28 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         TxtTextConsNiño2.setEnabled(false);
         jScrollPane6.setViewportView(TxtTextConsNiño2);
 
-        jPanel4.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 300, 170));
-        jPanel4.add(LblImaConseNiño2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 190, 170));
+        jPanel4.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 300, 170));
+        jPanel4.add(LblImaConseNiño2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 240, 170));
 
         jSeparator7.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel4.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 310, 10));
+        jPanel4.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 560, 10));
 
         LblTitConseNiño2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         LblTitConseNiño2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel4.add(LblTitConseNiño2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 300, 20));
+        jPanel4.add(LblTitConseNiño2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 610, 20));
 
-        CmBoxConsejosNiño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel4.add(CmBoxConsejosNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, -1));
+        CmBoxConsejosNiño.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CmBoxConsejosNiñoActionPerformed(evt);
+            }
+        });
+        jPanel4.add(CmBoxConsejosNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, -1));
 
         jScrollPane1.setViewportView(jPanel4);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 290));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 310));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 570, 290));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 630, 310));
 
         LblInformacionNiño.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         LblInformacionNiño.setText("CONSEJOS");
@@ -211,7 +222,100 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiño2MouseClicked
 
+    private void CmBoxConsejosNiñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmBoxConsejosNiñoActionPerformed
+        if (CmBoxConsejosNiño.getSelectedItem() != null) {
+            cargar_datos1();
+        }
+    }//GEN-LAST:event_CmBoxConsejosNiñoActionPerformed
 
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(PagCrudForoPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(PagCrudForoPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(PagCrudForoPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(PagCrudForoPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PagConsejosNiño().setVisible(true);
+            }
+        });
+    }
+    
+    public void cargar_combo1(JComboBox jComboJuego) {
+
+         Consejos ConBuscar = new Consejos(null, null, null, null, null, null, null, null, null);
+        ObjectSet resul = Base.get(ConBuscar);
+        while (resul.hasNext()) {
+            Consejos JConCombo = (Consejos) resul.next();
+            jComboJuego.addItem(JConCombo.getTitulo1Consejo());
+        }
+        //System.out.println(resul);
+    }
+    
+    public void cargar_datos1() {
+
+        String titulo = String.valueOf(CmBoxConsejosNiño.getSelectedItem());
+        Consejos ConBuscar = new Consejos(null, titulo, null, null, null, null, null, null, null);
+        ObjectSet resul = Base.get(ConBuscar);
+
+        // Verificar si hay al menos un resultado
+        if (!resul.isEmpty()) {
+            // Iterar sobre los resultados
+            while (resul.hasNext()) {
+                Consejos Conmostrar = (Consejos) resul.next();
+                LblTitConseNiño1.setText(Conmostrar.getTitulo1Consejo());
+                LblTitConseNiño2.setText(Conmostrar.getTitulo2Consejo());
+
+                // Rellena las imágenes en los JLabel correspondientes
+                Image imagenConsejo1 = Conmostrar.obtenerImagenConsejo1();
+                LblImaConseNiño1.setIcon(getScaledImageIcon(imagenConsejo1));
+                
+                Image imagenConsejo2 = Conmostrar.obtenerImagenConsejo2();
+                LblImaConseNiño2.setIcon(getScaledImageIcon(imagenConsejo2));
+
+                // Obtener los textos
+                
+                TxtTextConsNiño1.setText(Conmostrar.getTexConsejo1());
+                TxtTextConsNiño2.setText(Conmostrar.getTexConsejo2());
+                
+            }
+        } else {
+
+            System.out.println("No se encontraron datos para el juego seleccionado.");
+        }
+
+        Base.commit();
+    }
+    
+    private ImageIcon getScaledImageIcon(Image image) {
+        if (image != null) {
+            return new ImageIcon(image.getScaledInstance(350, 110, Image.SCALE_SMOOTH));
+        } else {
+            return null;
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CmBoxConsejosNiño;

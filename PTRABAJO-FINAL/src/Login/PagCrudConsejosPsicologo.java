@@ -6,10 +6,17 @@
 package Login;
 
 import Clases.Consejos;
+import Login.InicioPsicologo;
+import Login.PagCrudForoPsicologo;
+import Login.PagPrincipalPsicologo;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
+import com.db4o.ext.DatabaseClosedException;
+import com.db4o.ext.DatabaseReadOnlyException;
+import com.db4o.ext.Db4oIOException;
 import java.awt.Color;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -34,7 +41,6 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     byte[] imagenconsejo2;
     String rutaImagenConsejo1;
     String rutaImagenConsejo2;
-    String CodConsejo;
     
     public PagCrudConsejosPsicologo() {
         initComponents();
@@ -403,9 +409,9 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
 
     private void btn_ingresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresar1ActionPerformed
         Consejos miconsejo = new Consejos();
-            CodConsejo = Calcular_CodConsejos(Base);
            //elcue.setCod_Cuento(Txt_Codigo.getText());
-            
+            String CodConsejo = Calcular_CodConsejos(Base);
+            miconsejo.setCod_consejo(CodConsejo);
             miconsejo.setTitulo1Consejo(Txt_TituloConsejPsicologo1.getText());
             miconsejo.setTexConsejo1(txtAConsejoPsico1.getText());
             miconsejo.setTexConsejo2(txtAConsejoPsico2.getText());
@@ -495,7 +501,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnModifiPsicologoMouseClicked
 
     private void BtnModifiPsicologoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModifiPsicologoActionPerformed
-         //Modificar_Consejos(Base,CodigoCuent,Txt_TituloConsejPsicologo1.getText() ,Txt_TituloConsejPsicologo2.getText(),txtAConsejoPsico1.getText(), txtAConsejoPsico2.getText(),rutaImagenConsejo1, rutaImagenConsejo2);
+         Modificar_Consejos(Base, Calcular_CodConsejos(Base),Txt_TituloConsejPsicologo1.getText() ,Txt_TituloConsejPsicologo2.getText(),txtAConsejoPsico1.getText(), txtAConsejoPsico2.getText(),rutaImagenConsejo1, rutaImagenConsejo2);
     }//GEN-LAST:event_BtnModifiPsicologoActionPerformed
 
     private void JMnItmCerrarPsicologoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMousePressed
@@ -542,7 +548,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
             return baos.toByteArray();
         } catch (IOException e) {
             e.printStackTrace();
-            return null;  // Devuelve null si hay algún error al leer la imagen
+            return null; 
         }
     }
     
@@ -661,27 +667,25 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
                 // Mostrar un mensaje de error si no se encontró el objeto
                 javax.swing.JOptionPane.showMessageDialog(null, "Error: No se encontró el consejo para modificar.");
             }
-        } catch (Exception e) {
+        } catch (DatabaseClosedException | DatabaseReadOnlyException | Db4oIOException | HeadlessException e) {
             e.printStackTrace();
             javax.swing.JOptionPane.showMessageDialog(null, "Error al modificar el consejo.");
         }
     }
-    private void EliminarRegistro(ObjectContainer base, String Cod_Cuento) {
+    private void EliminarRegistro(ObjectContainer base, String Cod_Consejo) {
 
-            Consejos conseelimi = new Consejos(Cod_Cuento, null, null, null, null, null, null, null, null);
+            Consejos conseElimi = new Consejos(Cod_Consejo, null, null, null, null, null, null, null, null);
 
             // Mensaje de depuración
             System.out.println("Buscando el registro en la base de datos...");
 
-            ObjectSet result = base.queryByExample(conseelimi);
+            ObjectSet result = base.queryByExample(conseElimi);
 
             if (result.hasNext()) {
-                // Mensaje de depuración
-                System.out.println("Eliminando el registro de la base de datos...");
 
                 base.delete(result.next());
                 JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
-                MostrarDatos(base); // Actualizar la tabla después de la eliminación
+                MostrarDatos(base); 
             } else {
                 JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
             }
@@ -696,7 +700,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
 
             Incremental++;
 
-            Codigo = String.format("PR%04d", Incremental);
+            Codigo = String.format("CON-%04d", Incremental);
 
             if (Verificar_CodPregunta(Base, Codigo) == 0) {
                 rest = false;
@@ -714,6 +718,41 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
 
         return result.size();
 
+    }
+    
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(PagCrudForoPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(PagCrudForoPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(PagCrudForoPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(PagCrudForoPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PagCrudConsejosPsicologo().setVisible(true);
+            }
+        });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnActualizarPsicologo;

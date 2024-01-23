@@ -5,6 +5,11 @@
  */
 package Clases;
 
+import java.awt.Image;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 /**
  *
  * @author Joel
@@ -112,5 +117,26 @@ public class Consejos {
     public String toString() {
         return "Consejos{" + "cod_consejo=" + cod_consejo + ", Titulo1Consejo=" + Titulo1Consejo + ", Titulo2Consejo=" + Titulo2Consejo + ", TexConsejo1=" + TexConsejo1 + ", TexConsejo2=" + TexConsejo2 + ", ImagenConsejo1=" + ImagenConsejo1 + ", ImagenConsejo2=" + ImagenConsejo2 + ", RutaImageConsejo1=" + RutaImageConsejo1 + ", RutaImageConsejo2=" + RutaImageConsejo2 + '}';
     }
+    
+    public Image obtenerImagenConsejo1() {
+        if (ImagenConsejo1 != null) {
+            try ( ByteArrayInputStream bais = new ByteArrayInputStream(ImagenConsejo1)) {
+                return ImageIO.read(bais);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
 
+        public Image obtenerImagenConsejo2() {
+        if (ImagenConsejo2 != null) {
+            try ( ByteArrayInputStream bais = new ByteArrayInputStream(ImagenConsejo2)) {
+                return ImageIO.read(bais);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
 }
