@@ -322,9 +322,9 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
 
     private void BtnCuenPsico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCuenPsico1ActionPerformed
         Base.close();   
-            PagCrudJuegosPsicologo juegos = new PagCrudJuegosPsicologo();
-                juegos.setVisible(true);
-                    this.setVisible(false);
+//            PagCrudJuegosPsicologo juegos = new PagCrudJuegosPsicologo();
+//                juegos.setVisible(true);
+//                    this.setVisible(false);
     }//GEN-LAST:event_BtnCuenPsico1ActionPerformed
 
 
