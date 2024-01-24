@@ -19,10 +19,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -57,9 +59,6 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JSeparator();
         Txt_Titulo = new javax.swing.JTextField();
         lblTitulo = new javax.swing.JLabel();
-        Txt_Codigo = new javax.swing.JTextField();
-        jSeparator8 = new javax.swing.JSeparator();
-        lblCodigo = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         txtDesarrollo = new javax.swing.JTextArea();
@@ -105,17 +104,17 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         jPanel4.setMinimumSize(new java.awt.Dimension(330, 1000));
         jPanel4.setPreferredSize(new java.awt.Dimension(330, 1000));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel4.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, 240, 10));
+        jPanel4.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 240, 10));
 
         lblDesarrollo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lblDesarrollo.setText("Desarrollo:");
-        jPanel4.add(lblDesarrollo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, -1, -1));
+        jPanel4.add(lblDesarrollo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, -1, -1));
 
         lblIntroduccion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lblIntroduccion.setText("Introducción");
-        jPanel4.add(lblIntroduccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
-        jPanel4.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 240, 10));
-        jPanel4.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 240, 10));
+        jPanel4.add(lblIntroduccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
+        jPanel4.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 240, 10));
+        jPanel4.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 240, 10));
 
         Txt_Titulo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Txt_Titulo.setForeground(new java.awt.Color(153, 153, 153));
@@ -131,35 +130,11 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
                 Txt_TituloActionPerformed(evt);
             }
         });
-        jPanel4.add(Txt_Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 240, 20));
+        jPanel4.add(Txt_Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 240, 20));
 
         lblTitulo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lblTitulo.setText("Titulo:");
-        jPanel4.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
-
-        Txt_Codigo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        Txt_Codigo.setForeground(new java.awt.Color(153, 153, 153));
-        Txt_Codigo.setText("Ejem: CNT-001");
-        Txt_Codigo.setBorder(null);
-        Txt_Codigo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Txt_CodigoMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                Txt_CodigoMousePressed(evt);
-            }
-        });
-        Txt_Codigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Txt_CodigoActionPerformed(evt);
-            }
-        });
-        jPanel4.add(Txt_Codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 240, 20));
-        jPanel4.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 240, 10));
-
-        lblCodigo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        lblCodigo.setText("Código:");
-        jPanel4.add(lblCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        jPanel4.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel11.setText("CRUD CUENTOS");
@@ -172,7 +147,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         txtDesarrollo.setWrapStyleWord(true);
         jScrollPane5.setViewportView(txtDesarrollo);
 
-        jPanel4.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 240, 70));
+        jPanel4.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 240, 70));
 
         txtAreaIntroduccion.setColumns(20);
         txtAreaIntroduccion.setLineWrap(true);
@@ -181,7 +156,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         txtAreaIntroduccion.setWrapStyleWord(true);
         jScrollPane6.setViewportView(txtAreaIntroduccion);
 
-        jPanel4.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 240, 70));
+        jPanel4.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 240, 70));
 
         txtConclusion.setColumns(20);
         txtConclusion.setLineWrap(true);
@@ -190,8 +165,8 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         txtConclusion.setWrapStyleWord(true);
         jScrollPane7.setViewportView(txtConclusion);
 
-        jPanel4.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 630, 240, 70));
-        jPanel4.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 870, 240, 10));
+        jPanel4.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 240, 70));
+        jPanel4.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 810, 240, 10));
 
         lblConclusion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lblConclusion.setText("Conclusion:");
@@ -200,8 +175,8 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         lblImagenFinal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblImagenFinal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblImagenFinal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel4.add(lblImagenFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 730, 240, 130));
-        jPanel4.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 710, 240, 10));
+        jPanel4.add(lblImagenFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 670, 240, 130));
+        jPanel4.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 650, 240, 10));
 
         btnImagenFinal.setText("Agregar Imagen Final");
         btnImagenFinal.addActionListener(new java.awt.event.ActionListener() {
@@ -209,7 +184,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
                 btnImagenFinalActionPerformed(evt);
             }
         });
-        jPanel4.add(btnImagenFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 880, 240, -1));
+        jPanel4.add(btnImagenFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 820, 240, -1));
 
         btnInsertar.setText("Agregar Cuento");
         btnInsertar.addActionListener(new java.awt.event.ActionListener() {
@@ -217,7 +192,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
                 btnInsertarActionPerformed(evt);
             }
         });
-        jPanel4.add(btnInsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 930, -1, -1));
+        jPanel4.add(btnInsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 870, -1, -1));
 
         btnImagenInicial.setText("Agregar Imagen Comienzo");
         btnImagenInicial.addActionListener(new java.awt.event.ActionListener() {
@@ -225,13 +200,13 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
                 btnImagenInicialActionPerformed(evt);
             }
         });
-        jPanel4.add(btnImagenInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 240, -1));
+        jPanel4.add(btnImagenInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 240, -1));
         jPanel4.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 240, 10));
 
         lblImagenInicial.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblImagenInicial.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblImagenInicial.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel4.add(lblImagenInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 240, 130));
+        jPanel4.add(lblImagenInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 240, 130));
 
         jScrollPane4.setViewportView(jPanel4);
 
@@ -334,30 +309,11 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
             Txt_Titulo.setText("");
             Txt_Titulo.setForeground(Color.black);
         }
-        if (String.valueOf(Txt_Codigo.getText()).isEmpty()) {
-            Txt_Codigo.setText("Ejem: CNT-001");
-            Txt_Codigo.setForeground(Color.gray);
-        }
     }//GEN-LAST:event_Txt_TituloMousePressed
 
     private void Txt_TituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_TituloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Txt_TituloActionPerformed
-
-    private void Txt_CodigoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_CodigoMousePressed
-        if (Txt_Codigo.getText().equals("Ejem: CNT-001")) {
-            Txt_Codigo.setText("");
-            Txt_Codigo.setForeground(Color.black);
-        }
-        if (String.valueOf(Txt_Titulo.getText()).isEmpty()) {
-            Txt_Titulo.setText("Ejem: Las aventuras de...");
-            Txt_Titulo.setForeground(Color.gray);
-        }
-    }//GEN-LAST:event_Txt_CodigoMousePressed
-
-    private void Txt_CodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_CodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Txt_CodigoActionPerformed
 
     private void btnImagenFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImagenFinalActionPerformed
         if (seleccionar.showDialog(null, null) == JFileChooser.APPROVE_OPTION) {
@@ -394,14 +350,13 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         }
     }
 
-    private void Txt_CodigoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_CodigoMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Txt_CodigoMouseExited
-
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
         Cuento elcue = new Cuento();
-        elcue.setCod_Cuento(Txt_Codigo.getText());
         elcue.setFK_CodPsicologo(RegistrarsePariente.Calcular_cod_Representante(Base));
+
+        String codigoIncremental = calcularIDCuen(Base);
+
+        elcue.setCod_Cuento(codigoIncremental);
         elcue.setTitulo_Cuento(Txt_Titulo.getText());
         elcue.setIntroduccion_Cuento(txtAreaIntroduccion.getText());
         elcue.setNudo_Cuento(txtDesarrollo.getText());
@@ -409,13 +364,14 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         elcue.setImagen_Inicial(imagenInicial);
         elcue.setImagen_Final(imagenFinal);
 
-        // Almacena la ruta de la imagen en la propiedad de la entidad Cuento
+        // Almacena la ruta del archivo seleccionado en la variable rutaImagenFinal
         elcue.setRutaImagen(rutaImagenInicial);
         elcue.setRutaImagen2(rutaImagenFinal);
 
         Base.store(elcue);
         javax.swing.JOptionPane.showMessageDialog(this, "SE GUARDÓ EN LA BASE");
         MostrarDatos(Base);
+
     }//GEN-LAST:event_btnInsertarActionPerformed
 
     private void btnImagenInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImagenInicialActionPerformed
@@ -461,7 +417,58 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        Modificar_Cuento(Base, rutaImagenFinal, rutaImagenFinal, rutaImagenFinal, rutaImagenFinal, rutaImagenFinal, rutaImagenFinal, rutaImagenFinal);
+        try {
+        // Obtener el código del cuento que se desea modificar
+        String codigoCuento = JOptionPane.showInputDialog(this, "Ingrese el código del cuento a modificar:");
+
+        if (codigoCuento != null && !codigoCuento.isEmpty()) {
+            // Buscar el cuento con el código proporcionado
+            int indiceCuento = buscarCuentoPorCodigo(codigoCuento);
+
+            if (indiceCuento != -1) {
+                // Se encontró el cuento, obtener datos actuales
+                DefaultTableModel modelo = (DefaultTableModel) jTableCuentos.getModel();
+                String nuevoTitulo = validarCampo("Ingrese el nuevo título:", (String) modelo.getValueAt(indiceCuento, 1));
+                String nuevaIntroduccion = validarCampo("Ingrese la nueva introducción:", (String) modelo.getValueAt(indiceCuento, 2));
+                String nuevoDesarrollo = validarCampo("Ingrese el nuevo desarrollo:", (String) modelo.getValueAt(indiceCuento, 3));
+                String nuevaConclusion = validarCampo("Ingrese la nueva conclusión:", (String) modelo.getValueAt(indiceCuento, 4));
+
+                if (nuevoTitulo != null && nuevaIntroduccion != null && nuevoDesarrollo != null && nuevaConclusion != null) {
+                    byte[] nuevaImagen1 = obtenerNuevaImagen();
+                    byte[] nuevaImagen2 = obtenerNuevaImagen();
+
+                    // Modificar el cuento con los nuevos valores
+                    Modificar_Cuento(Base, codigoCuento, nuevoTitulo, nuevaIntroduccion, nuevoDesarrollo, nuevaConclusion, nuevaImagen1, nuevaImagen2);
+                    MostrarDatos(Base);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error: Todos los campos deben ser ingresados.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Error: No se encontró el cuento con el código proporcionado.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un código válido para modificar.");
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error al modificar: " + e.getMessage());
+    }
+} 
+
+private int buscarCuentoPorCodigo(String codigoCuento) {
+    DefaultTableModel modelo = (DefaultTableModel) jTableCuentos.getModel();
+    for (int i = 0; i < modelo.getRowCount(); i++) {
+        String codigoActual = (String) modelo.getValueAt(i, 0);
+        if (codigoActual.equals(codigoCuento)) {
+            return i; // Se encontró el cuento, devolver el índice de la fila
+        }
+    }
+    return -1;
+}
+
+    private String validarCampo(String mensaje, String valorActual) {
+        String nuevoValor = JOptionPane.showInputDialog(this, mensaje, valorActual);
+        return (nuevoValor != null && !nuevoValor.isEmpty()) ? nuevoValor : null;
+
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
@@ -507,13 +514,17 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PagCrudCuentosPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PagCrudCuentosPsicologo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PagCrudCuentosPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PagCrudCuentosPsicologo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PagCrudCuentosPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PagCrudCuentosPsicologo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PagCrudCuentosPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PagCrudCuentosPsicologo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -529,7 +540,6 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
     }
 
     public void MostrarDatos(ObjectContainer Base) {
-
         Cuento nacio = new Cuento();
         ObjectSet result = Base.get(nacio);
 
@@ -541,21 +551,20 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         while (result.hasNext()) {
             Cuento miCuento = (Cuento) result.next();
             modelo.addRow(new Object[]{
-                miCuento.getCod_Cuento(),
+                miCuento.getCod_Cuento(), // Agrega el código incremental a la tabla
                 miCuento.getTitulo_Cuento(),
                 miCuento.getIntroduccion_Cuento(),
                 miCuento.getNudo_Cuento(),
                 miCuento.getDesenlace_Cuento(),
                 miCuento.getRutaImagen(),
                 miCuento.getRutaImagen2()
-
             });
         }
 
     }
 
     public byte[] AbrirArchivo(File archivo) {
-        try ( FileInputStream entrada = new FileInputStream(archivo)) {
+        try (FileInputStream entrada = new FileInputStream(archivo)) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             byte[] buffer = new byte[1024];
             int bytesRead;
@@ -575,16 +584,12 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         ObjectSet result = Base.get(elInfo);
         return result.size();
     }
-    
-    
-    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
     private javax.swing.JMenu JMnPgPrinPsicolo;
-    private javax.swing.JTextField Txt_Codigo;
     private javax.swing.JTextField Txt_Titulo;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnConsultar;
@@ -609,10 +614,8 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTable jTableCuentos;
-    private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblConclusion;
     private javax.swing.JLabel lblDesarrollo;
     private javax.swing.JLabel lblImagenFinal;
@@ -624,39 +627,36 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
     private javax.swing.JTextArea txtDesarrollo;
     // End of variables declaration//GEN-END:variables
 
-    public void Modificar_Cuento(ObjectContainer base, String Codigo, String Titulo, String Ruta1, String Introduccion, String Desarrollo, String Conclusion, String Ruta2) {
+    public void Modificar_Cuento(ObjectContainer base, String Codigo, String Titulo, String Introduccion, String Desarrollo, String Conclusion, byte[] NuevaImagen1, byte[] NuevaImagen2) {
         try {
-            // Crear un objeto Cuento con el código proporcionado
             Cuento cuento = new Cuento();
             cuento.setCod_Cuento(Codigo);
 
-            // Buscar el objeto correspondiente en la base de datos
             ObjectSet result = base.queryByExample(cuento);
 
-            // Verificar si se encontró un objeto para modificar
             if (result.hasNext()) {
-                Cuento nueCuen = (Cuento)result.next();
+                Cuento nuevoCuento = (Cuento) result.next();
 
-                // Actualizar los campos del objeto con los nuevos valores
-                nueCuen.setTitulo_Cuento(Titulo);
-                nueCuen.setRutaImagen(Ruta1);
-                nueCuen.setIntroduccion_Cuento(Introduccion);
-                nueCuen.setNudo_Cuento(Desarrollo);
-                nueCuen.setDesenlace_Cuento(Conclusion);
-                nueCuen.setRutaImagen2(Ruta2);
+                nuevoCuento.setTitulo_Cuento(Titulo);
+                nuevoCuento.setIntroduccion_Cuento(Introduccion);
+                nuevoCuento.setNudo_Cuento(Desarrollo);
+                nuevoCuento.setDesenlace_Cuento(Conclusion);
 
-                // Almacenar los cambios en la base de datos
-                base.store(nueCuen);
+                if (NuevaImagen1 != null) {
+                    nuevoCuento.setImagen_Inicial(NuevaImagen1);
+                }
 
-                // Mostrar un mensaje de confirmación al usuario
-                javax.swing.JOptionPane.showMessageDialog(null, "Se modificó el cuento correctamente.");
+                if (NuevaImagen2 != null) {
+                    nuevoCuento.setImagen_Final(NuevaImagen2);
+                }
+
+                base.store(nuevoCuento);
+                JOptionPane.showMessageDialog(this, "Se modificó el cuento correctamente.");
             } else {
-                // Mostrar un mensaje de error si no se encontró el objeto
-                javax.swing.JOptionPane.showMessageDialog(null, "Error: No se encontró el cuento para modificar.");
+                JOptionPane.showMessageDialog(this, "Error: No se encontró el cuento para modificar.");
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            javax.swing.JOptionPane.showMessageDialog(null, "Error al modificar el cuento.");
+            JOptionPane.showMessageDialog(this, "Error al modificar el cuento: " + e.getMessage());
         }
     }
 
@@ -681,7 +681,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         }
     }
 
-        public void ConsultarDatos(ObjectContainer base, Cuento consulta) {
+    public void ConsultarDatos(ObjectContainer base, Cuento consulta) {
         DefaultTableModel modelo = (DefaultTableModel) jTableCuentos.getModel();
 
         // Limpiar el modelo antes de agregar nuevas filas
@@ -697,32 +697,81 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
                 consulta.getNudo_Cuento(),
                 consulta.getDesenlace_Cuento(),
                 consulta.getRutaImagen2()
-                
+
             });
         }
     }
-        
-        private void EliminarRegistro(ObjectContainer base, String Cod_Cuento) {
 
-            Cuento cuen = new Cuento(Cod_Cuento, null, null, null, null, null, null, null, null, null);
+    private void EliminarRegistro(ObjectContainer base, String Cod_Cuento) {
 
+        Cuento cuen = new Cuento(Cod_Cuento, null, null, null, null, null, null, null, null, null);
+
+        // Mensaje de depuración
+        System.out.println("Buscando el registro en la base de datos...");
+
+        ObjectSet result = base.queryByExample(cuen);
+
+        if (result.hasNext()) {
             // Mensaje de depuración
-            System.out.println("Buscando el registro en la base de datos...");
+            System.out.println("Eliminando el registro de la base de datos...");
 
-            ObjectSet result = base.queryByExample(cuen);
+            base.delete(result.next());
+            JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+            MostrarDatos(base); // Actualizar la tabla después de la eliminación
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+        }
+    }
 
-            if (result.hasNext()) {
-                // Mensaje de depuración
-                System.out.println("Eliminando el registro de la base de datos...");
+    private byte[] obtenerNuevaImagen() {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Seleccione la nueva imagen");
 
-                base.delete(result.next());
-                JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
-                MostrarDatos(base); // Actualizar la tabla después de la eliminación
-            } else {
-                JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+        int result = fileChooser.showOpenDialog(this);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            try {
+                File selectedFile = fileChooser.getSelectedFile();
+                return Files.readAllBytes(selectedFile.toPath());
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error al leer la nueva imagen.");
             }
-        } 
+        }
 
+        return null;
+    }
 
+    private String obtenerNuevaRuta() {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Seleccione la nueva ruta de la imagen");
+        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
+        int result = fileChooser.showOpenDialog(this);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            return selectedFile.getAbsolutePath();
+        }
+
+        return null; // Retorna null si no se selecciona ninguna ruta o hay un error.
+    }
+
+    public static String calcularIDCuen(ObjectContainer base) {
+        boolean rest = true;
+        int incremental = 0;
+        String codigo;
+
+        do {
+            incremental++;
+            codigo = String.format("CUE-%04d", incremental);
+
+            if (VerificarCuento(base, codigo) == 0) {
+                rest = false;
+            }
+
+        } while (rest);
+
+        return codigo;
+    }
 }

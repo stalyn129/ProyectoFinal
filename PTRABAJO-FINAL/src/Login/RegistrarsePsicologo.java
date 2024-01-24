@@ -32,7 +32,6 @@ import javax.swing.JOptionPane;
  */
 public class RegistrarsePsicologo extends javax.swing.JFrame {
 
-    public static String cedula_pasada_interfaz;
     ObjectContainer Base;
     Date Nacimiento;
 
@@ -62,7 +61,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         Psicologo = new javax.swing.JLabel();
         Femenino = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        Masculino = new javax.swing.JRadioButton();
         Discapacidad = new javax.swing.JLabel();
         Sexo = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
@@ -127,15 +126,15 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         Femenino.setText("Femenino");
         jPanel2.add(Femenino, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, -1, -1));
 
-        BtnGrpSexoPsicol.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jRadioButton3.setText("Masculino");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        BtnGrpSexoPsicol.add(Masculino);
+        Masculino.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        Masculino.setText("Masculino");
+        Masculino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                MasculinoActionPerformed(evt);
             }
         });
-        jPanel2.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, -1, -1));
+        jPanel2.add(Masculino, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, -1, -1));
 
         Discapacidad.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Discapacidad.setText("Discapacidad:");
@@ -193,6 +192,9 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         FechaNacimiento.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         FechaNacimiento.setText("Fecha de Nacimiento:");
         jPanel2.add(FechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, -1, -1));
+
+        DateFechaNaciPsicol.setMaxSelectableDate(new java.util.Date(1451628061000L));
+        DateFechaNaciPsicol.setMinSelectableDate(new java.util.Date(-315597539000L));
         jPanel2.add(DateFechaNaciPsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 160, -1));
         jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 160, 10));
 
@@ -373,7 +375,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         Especializacion3.setText("Telefono:");
         jPanel2.add(Especializacion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, -1, -1));
 
-        sp_años.setModel(new javax.swing.SpinnerNumberModel());
+        sp_años.setModel(new javax.swing.SpinnerNumberModel(0, 0, 60, 1));
         jPanel2.add(sp_años, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 150, -1));
 
         cbx_especializacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
@@ -447,9 +449,9 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtApelliPsicolActionPerformed
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+    private void MasculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MasculinoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
+    }//GEN-LAST:event_MasculinoActionPerformed
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
         Base.close();
@@ -781,57 +783,66 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
 
     private void BtnRegistrarsePsicolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarsePsicolActionPerformed
 // Verificar que no hay campos en blanco
-            if (camposLlenos()) {
-                Persona Mipersona = new Persona();
+        if (camposLlenos()) {
+            Persona Mipersona = new Persona();
 
-                Mipersona.setCedula(TxtCeduPsicol.getText());
-                Mipersona.setNombre(TxtNomPsicol.getText());
-                Mipersona.setApellido(TxtApelliPsicol.getText());
-                Mipersona.setDireccion(TxtDireccPsicol.getText());
-                Mipersona.setFecha_Nacimiento(DateFechaNaciPsicol.getDate());
-                String sex;
-                if (Femenino.isSelected()) {
-                    sex = "F";
-                } else {
-                    sex = "M";
-                }
-
-                Mipersona.setSexo(sex.charAt(0));
-                Mipersona.setCod_Nacionalidad(Asignar_cod_Nacionalidad(Base, CmbBxNacionalidad3Psicol.getSelectedItem().toString()));
-                Mipersona.setCod_Discapacidad(Asignar_cod_dDiscapacidad(Base, cbx_discapacidad.getSelectedItem().toString()));
-                Mipersona.setCod_Especialidad(Asignar_cod_Especialidad(Base, cbx_especializacion.getSelectedItem().toString()));
-                Mipersona.setTelefono(TxtTelefono.getText());
-                Mipersona.setEmail(TxtCorreoPsicologo.getText());
-                Mipersona.setContraseña(String.valueOf(NvContraPsicol.getPassword()));
-
-                // VALIDACION
-                if (validarCedula(Mipersona.getCedula().trim())
-                        && validarNombre(Mipersona.getNombre().trim())
-                        && validarApellido(Mipersona.getApellido().trim())
-                        && validarSexo(sex)
-                        && validarCorreo(Mipersona.getEmail().trim())
-                        && validarTelefono(Mipersona.getTelefono().trim())
-                        && validarDireccion(Mipersona.getDireccion())
-                        && validarContraseña(Mipersona.getContraseña(), String.valueOf(CfContraPsicol.getPassword()))) {
-
-                    Base.store(Mipersona);
-
-                    Psicologo elpsic = new Psicologo();
-                    elpsic.setCod_Psicologo(Calcular_cod_Psicologo(Base));
-                    elpsic.setFK_Cedula(TxtCeduPsicol.getText());
-                    String especialid = Asignar_cod_Especialidad(Base, cbx_especializacion.getSelectedItem().toString());
-                    elpsic.setFK_Cod_Especialidad(especialid);
-                    elpsic.setAños_Experiencia((int) sp_años.getValue());
-
-                    Base.store(elpsic);
-                    JOptionPane.showMessageDialog(this, "Los datos se han guardado exitosamente");
-                    Base.close();
-                    InicioPsicologo();
-
-                }
+            Mipersona.setCedula(TxtCeduPsicol.getText());
+            Mipersona.setNombre(TxtNomPsicol.getText());
+            Mipersona.setApellido(TxtApelliPsicol.getText());
+            Mipersona.setDireccion(TxtDireccPsicol.getText());
+            Mipersona.setFecha_Nacimiento(DateFechaNaciPsicol.getDate());
+            String sex;
+            if (Femenino.isSelected()) {
+                sex = "F";
             } else {
-                JOptionPane.showMessageDialog(this, "Por favor, llene todos los campos antes de guardar.");
+                sex = "M";
             }
+
+            Mipersona.setSexo(sex.charAt(0));
+            Mipersona.setCod_Nacionalidad(Asignar_cod_Nacionalidad(Base, CmbBxNacionalidad3Psicol.getSelectedItem().toString()));
+            Mipersona.setCod_Discapacidad(Asignar_cod_dDiscapacidad(Base, cbx_discapacidad.getSelectedItem().toString()));
+            Mipersona.setCod_Especialidad(Asignar_cod_Especialidad(Base, cbx_especializacion.getSelectedItem().toString()));
+            Mipersona.setTelefono(TxtTelefono.getText());
+            Mipersona.setEmail(TxtCorreoPsicologo.getText());
+            Mipersona.setContraseña(String.valueOf(NvContraPsicol.getPassword()));
+            Mipersona.setEstado(true);
+
+            // VALIDACION
+            if (validarCedula(Mipersona.getCedula().trim())
+                    && validarNombre(Mipersona.getNombre().trim())
+                    && validarApellido(Mipersona.getApellido().trim())
+                    && validarSexo(sex)
+                    && validarCorreo(Mipersona.getEmail().trim())
+                    && validarTelefono(Mipersona.getTelefono().trim())
+                    && validarDireccion(Mipersona.getDireccion())
+                    && validarContraseña(Mipersona.getContraseña(), String.valueOf(CfContraPsicol.getPassword()))) {
+
+                Base.store(Mipersona);
+                Guarda_psicologo();
+                JOptionPane.showMessageDialog(this, "Los datos se han guardado exitosamente");
+                Base.close();
+                InicioPsicologo();
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor, llene todos los campos antes de guardar.");
+        }
+
+    }
+
+    public void Guarda_psicologo() {
+        Psicologo elpsic = new Psicologo();
+
+        String codd = Calcular_cod_Psicologo(Base);
+        System.out.println("Coiuygwasdsqaaaaaaaa" + codd);
+        elpsic.setCod_Psicologo(codd);
+
+        elpsic.setFK_Cedula(TxtCeduPsicol.getText());
+        String especialid = Asignar_cod_Especialidad(Base, cbx_especializacion.getSelectedItem().toString());
+        elpsic.setFK_Cod_Especialidad(especialid);
+        elpsic.setAños_Experiencia((int) sp_años.getValue());
+
+        Base.set(elpsic);
 
     }
 
@@ -893,6 +904,9 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             return false;
         } else if (TxtDireccPsicol.getText().isEmpty()) {
             campoVacio = "Dirección";
+            return false;
+        } else if (!Femenino.isSelected() && !Masculino.isSelected()) {
+            campoVacio = "Discapacidad";
             return false;
         } else {
             campoVacio = null;
@@ -1019,16 +1033,16 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         return result.size();
     }
 
-    public static int Verificar_codPsicologo(ObjectContainer Base, String cedula) {
+    public int Verificar_codPsicologo(ObjectContainer Base, String cedula) {
 
         Psicologo elps = new Psicologo();
-        elps.setFK_Cedula(cedula);
+        elps.setCod_Psicologo(cedula);
         ObjectSet result = Base.get(elps);
 
         return result.size();
     }
 
-    public static String Calcular_cod_Psicologo(ObjectContainer Base) {
+    public String Calcular_cod_Psicologo(ObjectContainer Base) {
 
         boolean rest = true;
         int aumento = 0;
@@ -1169,6 +1183,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
     private javax.swing.JLabel FechaNacimiento;
     private javax.swing.JRadioButton Femenino;
     private javax.swing.JLabel Fondo1;
+    private javax.swing.JRadioButton Masculino;
     private javax.swing.JLabel Nacionalidad_lbl;
     private javax.swing.JLabel Nombre;
     private javax.swing.JLabel NuevaContraseña;
@@ -1186,7 +1201,6 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbx_especializacion;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator12;

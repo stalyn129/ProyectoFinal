@@ -778,7 +778,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             miPersona.setTelefono(TxtTelfAdmin.getText());
             miPersona.setEmail(TxtCorreoAdmin.getText());
             miPersona.setContraseña(String.valueOf(NvContraAdmin.getPassword()));
-
+            miPersona.setEstado(true);
             // Validaciones
             if (validarCedula(miPersona.getCedula().trim())
                     && validarNombre(miPersona.getNombre().trim())
@@ -871,6 +871,9 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         } else if (DateFechaNaciAdmin.getDate() == null) {
             campoVacio = "Fecha de Nacimiento";
             return false;
+        } else if (!BtnFemeninoAdmin.isSelected() && !BtnMasculinoAdmin.isSelected()) {
+            campoVacio = "Discapacidad";
+            return false;
         } else if (TxtDirecdmin.getText().isEmpty()) {
             campoVacio = "Dirección";
             return false;
@@ -879,70 +882,86 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             return true;
         }
     }//GEN-LAST:event_BtnRegistrarAdminActionPerformed
-
     public void Nacionalidades_ingr(ObjectContainer Base) {
         Query query = Base.query();
-        query.constrain(Nacionalidad.class
-        );
+        query.constrain(Nacionalidad.class);
         ObjectSet result = query.execute();
 
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
 
-        while (result.hasNext()) {
-            Nacionalidad nacionalidad = (Nacionalidad) result.next();
-            String nombre = nacionalidad.getNacionalidad(); // Asume que tienes un método getNombre() en tu clase Nacionalidad
-            model.addElement(nombre); // Agrega el nombre al modelo
+        // Verifica si hay resultados antes de intentar recorrer el conjunto
+        if (result.size() == 0) {
+            model.addElement("No hay nacionalidades disponibles");
+        } else {
+            while (result.hasNext()) {
+                Nacionalidad nacionalidad = (Nacionalidad) result.next();
+                String nombre = nacionalidad.getNacionalidad(); // Asume que tienes un método getNombre() en tu clase Nacionalidad
+                model.addElement(nombre); // Agrega el nombre al modelo
+            }
         }
 
         CmbBxNacionalidad2Admin.setModel(model);
-
     }
 
     public void Discapacidad_ingr(ObjectContainer Base) {
         Query query = Base.query();
-        query.constrain(Discapacidad.class
-        );
+        query.constrain(Discapacidad.class);
         ObjectSet result = query.execute();
 
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
 
-        while (result.hasNext()) {
-            Discapacidad disca = (Discapacidad) result.next();
-            String nombre = disca.getTipo_Discapacidad(); // Asume que tienes un método getNombre() en tu clase Nacionalidad
-            model.addElement(nombre); // Agrega el nombre al modelo
+        // Verifica si hay resultados antes de intentar recorrer el conjunto
+        if (result.size() == 0) {
+            model.addElement("No hay discapacidades disponibles");
+        } else {
+            while (result.hasNext()) {
+                Discapacidad disca = (Discapacidad) result.next();
+                String nombre = disca.getTipo_Discapacidad(); // Asume que tienes un método getTipo_Discapacidad() en tu clase Discapacidad
+                model.addElement(nombre); // Agrega el nombre al modelo
+            }
+
         }
 
         cbx_discapasidad.setModel(model);
-
     }
 
     public String Asignar_cod_Nacionalidad(ObjectContainer Base, String Nacional) {
-        Query query = Base.query();
-        query.constrain(Nacionalidad.class
-        );
+        if (Nacional.equalsIgnoreCase("No hay nacionalidades disponibles")) {
+            String nacion = "Sin Asignar";
+            return nacion;
+        } else {
+            Query query = Base.query();
+            query.constrain(Nacionalidad.class);
 
-        ObjectSet result = query.execute();
+            ObjectSet result = query.execute();
 
-        while (result.hasNext()) {
-            Nacionalidad nacionalidad = (Nacionalidad) result.next();
-            if (nacionalidad.getNacionalidad().equals(Nacional)) {  // Asume que tienes un método getId() en tu clase Nacionalidad
-                return nacionalidad.getCod_Nacionalidad();  // Asume que tienes un método getNombre() en tu clase Nacionalidad
+            while (result.hasNext()) {
+                Nacionalidad nacionalidad = (Nacionalidad) result.next();
+                if (nacionalidad.getNacionalidad().equals(Nacional)) {  // Asume que tienes un método getId() en tu clase Nacionalidad
+                    return nacionalidad.getCod_Nacionalidad();  // Asume que tienes un método getNombre() en tu clase Nacionalidad
+                }
             }
         }
+
         return null;
     }
 
     public String Asignar_cod_dDiscapacidad(ObjectContainer Base, String discapac) {
-        Query query = Base.query();
-        query.constrain(Discapacidad.class
-        );
+        if (discapac.equalsIgnoreCase("No hay discapacidades disponibles")) {
+            String nacion = "Sin Asignar";
+            return nacion;
+        } else {
+            Query query = Base.query();
+            query.constrain(Discapacidad.class
+            );
 
-        ObjectSet result = query.execute();
+            ObjectSet result = query.execute();
 
-        while (result.hasNext()) {
-            Discapacidad disca = (Discapacidad) result.next();
-            if (disca.getTipo_Discapacidad().equals(discapac)) {  // Asume que tienes un método getId() en tu clase Nacionalidad
-                return disca.getCod_Discapacidad();  // Asume que tienes un método getNombre() en tu clase Nacionalidad
+            while (result.hasNext()) {
+                Discapacidad disca = (Discapacidad) result.next();
+                if (disca.getTipo_Discapacidad().equals(discapac)) {  // Asume que tienes un método getId() en tu clase Nacionalidad
+                    return disca.getCod_Discapacidad();  // Asume que tienes un método getNombre() en tu clase Nacionalidad
+                }
             }
         }
         return null;

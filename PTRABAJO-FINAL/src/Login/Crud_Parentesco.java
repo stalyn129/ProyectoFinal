@@ -9,6 +9,8 @@ import java.awt.Color;
 import Clases.Parentesco;
 import Login.IniciaAdmin;
 import Login.IniciaAdmin;
+import Login.IniciaAdmin;
+import Login.PagPrincipalAdmin;
 import Login.PagPrincipalAdmin;
 import Login.PagPrincipalAdmin;
 import javax.swing.JOptionPane;
@@ -29,6 +31,7 @@ public class Crud_Parentesco extends javax.swing.JFrame {
     public Crud_Parentesco() {
         initComponents();
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+        this.setLocationRelativeTo(this);
     }
 
     /**
@@ -328,24 +331,24 @@ public class Crud_Parentesco extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void jTableEspecialidadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableEspecialidadMouseClicked
-        int seleccion = jTableEspecialidad.getSelectedRow();
+        int seleccion = jTableParentesco.getSelectedRow();
 
-        if (seleccion >= 0) { // Verificar que haya una fila seleccionada
-            // Obtén los valores de las celdas seleccionadas y establece en los campos de texto
-            Txt_Parentesco.setText(String.valueOf(jTableEspecialidad.getValueAt(seleccion, 1)));
-            Txt_Observacion.setText(String.valueOf(jTableEspecialidad.getValueAt(seleccion, 2)));
+        if (seleccion >= 0) {
+
+            Txt_Parentesco.setText(String.valueOf(jTableParentesco.getValueAt(seleccion, 1)));
+            Txt_Observacion.setText(String.valueOf(jTableParentesco.getValueAt(seleccion, 2)));
         }
     }//GEN-LAST:event_jTableEspecialidadMouseClicked
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        jTableEspecialidad.setVisible(true);
+        jTableParentesco.setVisible(true);
         MostrarDatos(Base);
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         try {
-            DefaultTableModel modelo = (DefaultTableModel) jTableEspecialidad.getModel();
-            int filaSeleccionada = jTableEspecialidad.getSelectedRow();
+            DefaultTableModel modelo = (DefaultTableModel) jTableParentesco.getModel();
+            int filaSeleccionada = jTableParentesco.getSelectedRow();
 
             if (filaSeleccionada == -1) {
                 JOptionPane.showMessageDialog(this, "Seleccione una fila para modificar.");
@@ -385,24 +388,23 @@ public class Crud_Parentesco extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void jTableParentescoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableParentescoMouseClicked
-        int seleccion = jTableEspecialidad.getSelectedRow();
+        int seleccion = jTableParentesco.getSelectedRow();
 
-        if (seleccion >= 0) { // Verificar que haya una fila seleccionada
-            // Obtén los valores de las celdas seleccionadas y establece en los campos de texto
-            Txt_Parentesco.setText(String.valueOf(jTableEspecialidad.getValueAt(seleccion, 1)));
-            Txt_Observacion.setText(String.valueOf(jTableEspecialidad.getValueAt(seleccion, 2)));
+        if (seleccion >= 0) {
+            Txt_Parentesco.setText(String.valueOf(jTableParentesco.getValueAt(seleccion, 1)));
+            Txt_Observacion.setText(String.valueOf(jTableParentesco.getValueAt(seleccion, 2)));
         }
     }//GEN-LAST:event_jTableParentescoMouseClicked
 
     private void btnActualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizar1ActionPerformed
-        jTableEspecialidad.setVisible(true);
+        jTableParentesco.setVisible(true);
         MostrarDatos(Base);
     }//GEN-LAST:event_btnActualizar1ActionPerformed
 
     private void btnModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificar1ActionPerformed
         try {
-            DefaultTableModel modelo = (DefaultTableModel) jTableEspecialidad.getModel();
-            int filaSeleccionada = jTableEspecialidad.getSelectedRow();
+            DefaultTableModel modelo = (DefaultTableModel) jTableParentesco.getModel();
+            int filaSeleccionada = jTableParentesco.getSelectedRow();
 
             if (filaSeleccionada == -1) {
                 JOptionPane.showMessageDialog(this, "Seleccione una fila para modificar.");
@@ -525,19 +527,23 @@ public class Crud_Parentesco extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 public void IngresarDatos(ObjectContainer base) {
         try {
-            String codDiscapacidad = calcularIDPare(base);
-            String tipoDiscapacidad = Txt_Parentesco.getText();
+            String codParentesco = calcularIDPare(base);
+            String tipoParentesco = Txt_Parentesco.getText();
             String observacion = Txt_Observacion.getText();
 
-            if (Verificacion_disca(base, codDiscapacidad) == 0) {
-                Parentesco nuevaDiscapacidad = new Parentesco(Cod_Parentesco, Cod_Parentesco, observacion);
-                base.set(nuevaDiscapacidad);
+            if (Verificacion_Paren(base, codParentesco) == 0) {
+                Parentesco miPare = new Parentesco();
+                miPare.setCod_Parentesco(codParentesco);  // Corregir esta línea
+                miPare.setParentesco(tipoParentesco);
+                miPare.setObservacion(observacion);
+
+                base.set(miPare);
                 base.commit();
                 JOptionPane.showMessageDialog(this, "Los datos se han guardado exitosamente");
                 Limpiar();
                 MostrarDatos(base);
             } else {
-                JOptionPane.showMessageDialog(this, "Los datos no se han guardado. el parentesco ya existe en la base de datos.");
+                JOptionPane.showMessageDialog(this, "Los datos no se han guardado. El parentesco ya existe en la base de datos.");
             }
         } catch (DatabaseClosedException | DatabaseReadOnlyException e) {
             JOptionPane.showMessageDialog(this, "Ocurrió un error al crear el parentesco");
@@ -662,7 +668,7 @@ public void IngresarDatos(ObjectContainer base) {
     }
 
     //Verificacion
-    public static int Verificacion_disca(ObjectContainer Base, String Codigo) {
+    public static int Verificacion_Paren(ObjectContainer Base, String Codigo) {
         Parentesco miDis = new Parentesco();
         miDis.setCod_Parentesco(Codigo);
         ObjectSet result = Base.get(miDis);
@@ -700,7 +706,7 @@ public void IngresarDatos(ObjectContainer base) {
             incremental++;
             codigo = String.format("PARE-%04d", incremental);
 
-            if (Verificacion_disca(base, codigo) == 0) {
+            if (Verificacion_Paren(base, codigo) == 0) {
                 rest = false;
             }
 

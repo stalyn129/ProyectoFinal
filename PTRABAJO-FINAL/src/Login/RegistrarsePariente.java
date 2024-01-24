@@ -38,6 +38,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
         Discapacidad_ingr(Base);
         Nacionalidades_ingr(Base);
+        Parentesco_ingr(Base);
     }
 
     /**
@@ -279,7 +280,6 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, -1, -1));
         jPanel2.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 170, 10));
 
-        CmbBxParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mamá", "Papá", "Hermano", "Hermana", "Abuelo", "Abuela", "Tío", "Tía", "Cuñado", "Cuñada" }));
         CmbBxParentesco.setBorder(null);
         CmbBxParentesco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -546,7 +546,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtCorreoPa.setText("Ingrese su Correo");
             TxtCorreoPa.setForeground(Color.gray);
         }
-        
+
         if (TxtTelfPari.getText().isEmpty()) {
             TxtTelfPari.setText("Ingrese su Telefono");
             TxtTelfPari.setForeground(Color.gray);
@@ -584,7 +584,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtTituloParien.setText("Ingrese su Título");
             TxtTituloParien.setForeground(Color.gray);
         }
-        
+
         if (TxtDirrecParien.getText().isEmpty()) {
             TxtDirrecParien.setText("Ingrese su Dirección");
             TxtDirrecParien.setForeground(Color.gray);
@@ -597,7 +597,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtCorreoPa.setText("Ingrese su Correo");
             TxtCorreoPa.setForeground(Color.gray);
         }
-        
+
         if (TxtTelfPari.getText().isEmpty()) {
             TxtTelfPari.setText("Ingrese su Telefono");
             TxtTelfPari.setForeground(Color.gray);
@@ -612,7 +612,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             CfContraParien.setText("**********");
             CfContraParien.setForeground(Color.gray);
         }
-        
+
     }//GEN-LAST:event_TxtApellidoParienMousePressed
 
     private void TxtOcupaParienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtOcupaParienMousePressed
@@ -637,7 +637,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtTituloParien.setText("Ingrese su Título");
             TxtTituloParien.setForeground(Color.gray);
         }
-        
+
         if (TxtDirrecParien.getText().isEmpty()) {
             TxtDirrecParien.setText("Ingrese su Dirección");
             TxtDirrecParien.setForeground(Color.gray);
@@ -650,7 +650,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtCorreoPa.setText("Ingrese su Correo");
             TxtCorreoPa.setForeground(Color.gray);
         }
-        
+
         if (TxtTelfPari.getText().isEmpty()) {
             TxtTelfPari.setText("Ingrese su Telefono");
             TxtTelfPari.setForeground(Color.gray);
@@ -665,7 +665,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             CfContraParien.setText("**********");
             CfContraParien.setForeground(Color.gray);
         }
-        
+
     }//GEN-LAST:event_TxtOcupaParienMousePressed
 
     private void TxtCedParienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtCedParienMousePressed
@@ -691,7 +691,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtTituloParien.setText("Ingrese su Título");
             TxtTituloParien.setForeground(Color.gray);
         }
-        
+
         if (TxtDirrecParien.getText().isEmpty()) {
             TxtDirrecParien.setText("Ingrese su Dirección");
             TxtDirrecParien.setForeground(Color.gray);
@@ -704,7 +704,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtCorreoPa.setText("Ingrese su Correo");
             TxtCorreoPa.setForeground(Color.gray);
         }
-        
+
         if (TxtTelfPari.getText().isEmpty()) {
             TxtTelfPari.setText("Ingrese su Telefono");
             TxtTelfPari.setForeground(Color.gray);
@@ -719,7 +719,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             CfContraParien.setText("**********");
             CfContraParien.setForeground(Color.gray);
         }
-        
+
     }//GEN-LAST:event_TxtCedParienMousePressed
 
     private void TxtTituloParienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtTituloParienMousePressed
@@ -741,7 +741,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtCedParien.setText("Ingrese su cedula");
             TxtCedParien.setForeground(Color.gray);
         }
-        
+
         if (TxtDirrecParien.getText().isEmpty()) {
             TxtDirrecParien.setText("Ingrese su Dirección");
             TxtDirrecParien.setForeground(Color.gray);
@@ -754,7 +754,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtCorreoPa.setText("Ingrese su Correo");
             TxtCorreoPa.setForeground(Color.gray);
         }
-        
+
         if (TxtTelfPari.getText().isEmpty()) {
             TxtTelfPari.setText("Ingrese su Telefono");
             TxtTelfPari.setForeground(Color.gray);
@@ -798,7 +798,6 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtTituloParien.setText("Ingrese su Título");
             TxtTituloParien.setForeground(Color.gray);
         }
-        
 
         if (Txt_profecion.getText().isEmpty()) {
             Txt_profecion.setText("Ingrese su profesion");
@@ -808,7 +807,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtCorreoPa.setText("Ingrese su Correo");
             TxtCorreoPa.setForeground(Color.gray);
         }
-        
+
         if (TxtTelfPari.getText().isEmpty()) {
             TxtTelfPari.setText("Ingrese su Telefono");
             TxtTelfPari.setForeground(Color.gray);
@@ -852,7 +851,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtTituloParien.setText("Ingrese su Título");
             TxtTituloParien.setForeground(Color.gray);
         }
-        
+
         if (TxtDirrecParien.getText().isEmpty()) {
             TxtDirrecParien.setText("Ingrese su Dirección");
             TxtDirrecParien.setForeground(Color.gray);
@@ -865,7 +864,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtCorreoPa.setText("Ingrese su Correo");
             TxtCorreoPa.setForeground(Color.gray);
         }
-        
+
         if (TxtTelfPari.getText().isEmpty()) {
             TxtTelfPari.setText("Ingrese su Telefono");
             TxtTelfPari.setForeground(Color.gray);
@@ -904,7 +903,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtTituloParien.setText("Ingrese su Título");
             TxtTituloParien.setForeground(Color.gray);
         }
-        
+
         if (TxtDirrecParien.getText().isEmpty()) {
             TxtDirrecParien.setText("Ingrese su Dirección");
             TxtDirrecParien.setForeground(Color.gray);
@@ -917,7 +916,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtCorreoPa.setText("Ingrese su Correo");
             TxtCorreoPa.setForeground(Color.gray);
         }
-        
+
         if (TxtTelfPari.getText().isEmpty()) {
             TxtTelfPari.setText("Ingrese su Telefono");
             TxtTelfPari.setForeground(Color.gray);
@@ -958,6 +957,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             miPersona.setSexo(sexo.charAt(0));
             miPersona.setCod_Nacionalidad(Asignar_cod_dDiscapacidad(Base, cbx_discapacidad_pariente.getSelectedItem().toString()));
             miPersona.setContraseña(String.valueOf(NvContraParien.getPassword()));
+            miPersona.setEstado(true);
 
             if (validarCedula(miPersona.getCedula().trim())
                     && validarNombre(miPersona.getNombre().trim())
@@ -1019,7 +1019,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
 
     private boolean camposLlenos() {
         String cedula = TxtCedParien.getText().trim();
-        String correo = TxtCorreoPa.getText().trim();  // Declara la variable correo
+        String correo = TxtCorreoPa.getText().trim();
 
         if (Buscar_Persona(Base, cedula) > 0) {
             JOptionPane.showMessageDialog(this, "La cédula ya está registrada");
@@ -1041,7 +1041,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             return false;
         }
 
-        if (!validarpuesto(TxtTituloParien.getText())) {
+        if (!validarTitulo(TxtTituloParien.getText())) {
             campoVacio = "Titulo";
             return false;
         } else if (TxtTelfPari.getText().isEmpty()) {
@@ -1050,10 +1050,20 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         } else if (DateFechaNaciParien.getDate() == null) {
             campoVacio = "Fecha de Nacimiento";
             return false;
+        } else if (!BtnFemenParien.isSelected() && !BtnMasculiParien.isSelected()) {
+            campoVacio = "Discapacidad";
+            return false;
         } else if (TxtDirrecParien.getText().isEmpty()) {
             campoVacio = "Dirección";
             return false;
+        } else if (TxtOcupaParien.getText().isEmpty()) {
+            campoVacio = "Ocupación";
+            return false;
         } else {
+            if (!validarOcupacion(TxtOcupaParien.getText())) {
+                return false;
+            }
+
             campoVacio = null;
             return true;
         }
@@ -1088,7 +1098,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtTituloParien.setText("Ingrese su Título");
             TxtTituloParien.setForeground(Color.gray);
         }
-        
+
         if (TxtDirrecParien.getText().isEmpty()) {
             TxtDirrecParien.setText("Ingrese su Dirección");
             TxtDirrecParien.setForeground(Color.gray);
@@ -1097,7 +1107,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             TxtCorreoPa.setText("Ingrese su Correo");
             TxtCorreoPa.setForeground(Color.gray);
         }
-        
+
         if (TxtTelfPari.getText().isEmpty()) {
             TxtTelfPari.setText("Ingrese su Telefono");
             TxtTelfPari.setForeground(Color.gray);
@@ -1291,8 +1301,42 @@ public class RegistrarsePariente extends javax.swing.JFrame {
 
         while (result.hasNext()) {
             Discapacidad disca = (Discapacidad) result.next();
-            if (disca.getTipo_Discapacidad().equals(discapac)) {  // Asume que tienes un método getId() en tu clase Nacionalidad
-                return disca.getCod_Discapacidad();  // Asume que tienes un método getNombre() en tu clase Nacionalidad
+            if (disca.getTipo_Discapacidad().equals(discapac)) {
+                return disca.getCod_Discapacidad();
+            }
+        }
+        return null;
+    }
+
+    public void Parentesco_ingr(ObjectContainer Base) {
+        Query query = Base.query();
+        query.constrain(Parentesco.class
+        );
+        ObjectSet result = query.execute();
+
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+
+        while (result.hasNext()) {
+            Parentesco miparen = (Parentesco) result.next();
+            String nombre = miparen.getParentesco();
+            model.addElement(nombre);
+        }
+
+        CmbBxParentesco.setModel(model);
+
+    }
+
+    public String Asignar_cod_Parentesco(ObjectContainer Base, String Paren) {
+        Query query = Base.query();
+        query.constrain(Parentesco.class
+        );
+
+        ObjectSet result = query.execute();
+
+        while (result.hasNext()) {
+            Parentesco miparen = (Parentesco) result.next();
+            if (miparen.getParentesco().equals(Paren)) {
+                return miparen.getCod_Parentesco();
             }
         }
         return null;
@@ -1307,7 +1351,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
 
             aumento++;
 
-            cod = String.format("P%04d", aumento);
+            cod = String.format("R%04d", aumento);
 
             if (Verificar_codRepre(Base, cod) == 0) {
                 rest = false;
@@ -1332,6 +1376,15 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         System.out.println("Cédula recibida para validar: " + cedula);
         if (cedula == null || !cedula.matches("\\d{10}") || cedula.contains(" ")) {
             JOptionPane.showMessageDialog(this, "La cédula ingresada no es válida", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarOcupacion(String ocupacion) {
+        System.out.println("Nombre recibido para validar: " + ocupacion);
+        if (ocupacion == null || !ocupacion.matches("^[A-Za-z]+$") || ocupacion.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "Ingrese una ocupacion válido", "Error de Validación", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
@@ -1373,10 +1426,10 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         return true;
     }
 
-    public boolean validarpuesto(String puesto) {
-        System.out.println("Puesto recibido para validar: " + puesto);
-        if (puesto == null || !puesto.matches("^[A-Za-z0-9]+$") || puesto.contains(" ")) {
-            JOptionPane.showMessageDialog(this, "El Puesto es obligatorio", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+    public boolean validarTitulo(String titulo) {
+        System.out.println("titulo recibido para validar: " + titulo);
+        if (titulo == null || !titulo.matches("^[A-Za-z0-9]+$") || titulo.contains(" ")) {
+            JOptionPane.showMessageDialog(this, "El titulo es obligatorio", "Error de Validación", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
