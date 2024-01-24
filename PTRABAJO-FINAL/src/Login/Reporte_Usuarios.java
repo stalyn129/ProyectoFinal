@@ -53,6 +53,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         });
 
         mostrar_niños(Base);
+        Datos_Niño_recuper(Base);
 
     }
 
@@ -322,7 +323,6 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 500));
         setMinimumSize(new java.awt.Dimension(800, 500));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -493,7 +493,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tabla_niños);
 
-        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 683, 240));
+        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 683, 210));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("Consultar:");
@@ -513,29 +513,34 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel19.setText("Nombre:");
-        jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, -1, -1));
+        jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel21.setText("Sexo:");
-        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, -1, -1));
+        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, -1, -1));
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel22.setText("Apodo:");
-        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, -1, -1));
+        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel23.setText("Contraseña:");
-        jPanel5.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, -1, -1));
+        jPanel5.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, -1, -1));
 
         ntx_sexo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel5.add(ntx_sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, 110, -1));
+        ntx_sexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ntx_sexoActionPerformed(evt);
+            }
+        });
+        jPanel5.add(ntx_sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 110, -1));
 
         ntx_nombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel5.add(ntx_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 110, -1));
+        jPanel5.add(ntx_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 110, -1));
 
         ntx_apodo.setEditable(false);
         ntx_apodo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel5.add(ntx_apodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 110, -1));
+        jPanel5.add(ntx_apodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 110, -1));
 
         jButton5.setText("Eliminar");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -543,7 +548,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 160, -1));
+        jPanel5.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 180, -1));
 
         jButton6.setText("Actualizar");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -551,7 +556,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, 180, -1));
+        jPanel5.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 180, -1));
 
         jButton7.setText("Modificar");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -559,18 +564,18 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 180, -1));
+        jPanel5.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 180, -1));
 
         txt_apodo_consu.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel5.add(txt_apodo_consu, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 160, 20));
 
         ntx_apellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel5.add(ntx_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 110, -1));
+        jPanel5.add(ntx_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 110, -1));
 
         jLabel24.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel24.setText("Apellido:");
-        jPanel5.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, -1, -1));
-        jPanel5.add(ntx_contra, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, 130, -1));
+        jPanel5.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, -1, -1));
+        jPanel5.add(ntx_contra, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 130, -1));
 
         Recuperar.addTab("Niño", jPanel5);
 
@@ -697,7 +702,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
 
         Recuperar.addTab("Recuperar Eliminados", jPanel4);
 
-        jPanel1.add(Recuperar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 720, 440));
+        jPanel1.add(Recuperar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 720, 440));
         Recuperar.getAccessibleContext().setAccessibleName("");
 
         jButton1.setText("X");
@@ -706,10 +711,10 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 480));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Imagen de WhatsApp 2024-01-03 a las 07.58.17_8bdfab4c.jpg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
 
@@ -757,6 +762,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         eliminar_persona();
+        eleccion_tipo();
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
@@ -777,11 +783,13 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Modificar_person(Base);
+         eleccion_tipo();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void recu_usaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recu_usaActionPerformed
 
         Recuperar_usa(Base, codusa);
+        Datos_Niño_recuper(Base);
     }//GEN-LAST:event_recu_usaActionPerformed
 
     private void tbn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbn_actualizarActionPerformed
@@ -800,6 +808,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
     private void recu_ninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recu_ninActionPerformed
 
         Recuperar_nin(Base, codNiño);
+        Datos_Niño_recuper(Base);
     }//GEN-LAST:event_recu_ninActionPerformed
 
     private void tbla_ninMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbla_ninMouseClicked
@@ -850,17 +859,22 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         eliminar_niño();
-
+  mostrar_niños(Base);
 
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         Modificar_Niño(Base);
+          mostrar_niños(Base);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void txt_cod_rolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cod_rolActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_cod_rolActionPerformed
+
+    private void ntx_sexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ntx_sexoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ntx_sexoActionPerformed
 
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
         Base.close();
@@ -931,7 +945,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
     public void Modificar_Niño(ObjectContainer Base) {
 
         Niño person = new Niño();
-        person.setApodo(codPersonSeccion);
+        person.setApodo(codNiño);
         ObjectSet result = Base.get(person);
 
         Niño pr = (Niño) result.next();
@@ -1044,6 +1058,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Reporte_Usuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -1324,6 +1339,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
     public void mostrar_niños(ObjectContainer Base) {
 
         Niño psic = new Niño();
+        
         ObjectSet person = Base.get(psic);
         DefaultTableModel modelo = (DefaultTableModel) tabla_niños.getModel();
         // Limpiar el modelo antes de agregar nuevas filas
@@ -1331,7 +1347,8 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         if (person.size() != 0) {
             while (person.hasNext()) {
                 Niño pers = (Niño) person.next();
-                modelo.addRow(new Object[]{
+                if (pers.isEstado()) {
+                 modelo.addRow(new Object[]{
                     pers.getNombre(),
                     pers.getApellido(),
                     pers.getApodo(),
@@ -1339,7 +1356,9 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
                     pers.getSexo_Niño(),
                     pers.getDiscapacidad()
 
-                });
+                });   
+                }
+                
 
             }
         }
