@@ -7,7 +7,10 @@ package Login;
 
 import Clases.Juego_Laberinto;
 import Login.InicioPsicologo;
+import Login.InicioPsicologo;
 import Login.PagPrincipalPsicologo;
+import Login.PagPrincipalPsicologo;
+import Login.RegistrarsePariente;
 import Login.RegistrarsePariente;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
@@ -330,22 +333,30 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
     private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
 
         Juego_Laberinto Juego_Lab = new Juego_Laberinto();
-        String codigoJLab = CalcularIDJuego(Base);
-        Juego_Lab.setCod_Juego(codigoJLab);
-        Juego_Lab.setFK_CodPsicologo(RegistrarsePariente.Calcular_cod_Representante(Base));
-        Juego_Lab.setDescripcion_Juego(txtDescripcion.getText());
-        Juego_Lab.setRespuestas_Incorrecta1(txtResInc1.getText().charAt(0));
-        Juego_Lab.setRespuestas_Incorrecta2(txtResInc2.getText().charAt(0));
-        Juego_Lab.setRespuestas_Incorrecta3(txtResInc3.getText().charAt(0));
-        Juego_Lab.setRespuesta_Correcta(txtResCorrecta.getText().charAt(0));
-        Juego_Lab.setImagen_Lab(imagen);
 
-        // Almacena la ruta de la imagen en la propiedad de la entidad Cuento
-        Juego_Lab.setRutaImagen(rutaImagen);
+// Verificar que los campos obligatorios no sean nulos o vacíos
+        if (!txtDescripcion.getText().isEmpty()&& !txtResInc1.getText().isEmpty()&& !txtResInc2.getText().isEmpty()&& !txtResInc3.getText().isEmpty() && !txtResCorrecta.getText().isEmpty()&& imagen != null&& !rutaImagen.isEmpty()) {
 
-        Base.store(Juego_Lab);
-        javax.swing.JOptionPane.showMessageDialog(this, "SE GUARDÓ EN LA BASE");
-        MostrarDatos(Base);
+            // Configurar los campos del juego
+            String codigoJLab = CalcularIDJuego(Base);
+            Juego_Lab.setCod_Juego(codigoJLab);
+            Juego_Lab.setFK_CodPsicologo(RegistrarsePariente.Calcular_cod_Representante(Base));
+            Juego_Lab.setDescripcion_Juego(txtDescripcion.getText());
+            Juego_Lab.setRespuestas_Incorrecta1(txtResInc1.getText().charAt(0));
+            Juego_Lab.setRespuestas_Incorrecta2(txtResInc2.getText().charAt(0));
+            Juego_Lab.setRespuestas_Incorrecta3(txtResInc3.getText().charAt(0));
+            Juego_Lab.setRespuesta_Correcta(txtResCorrecta.getText().charAt(0));
+            Juego_Lab.setImagen_Lab(imagen);
+            Juego_Lab.setRutaImagen(rutaImagen);
+
+            // Almacenar en la base de datos
+            Base.store(Juego_Lab);
+            javax.swing.JOptionPane.showMessageDialog(this, "SE GUARDÓ EN LA BASE");
+            MostrarDatos(Base);
+
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos antes de guardar en la base.");
+        }
 
     }//GEN-LAST:event_btn_ingresarActionPerformed
 
@@ -696,5 +707,5 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
         }
     }
-    
+
 }

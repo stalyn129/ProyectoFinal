@@ -9,7 +9,13 @@ package Login;
  *
  * @author mauca
  */
+import Clases.Cuento;
+import Login.InicioRepresentante;
+import Login.PagPrincipalRepresentante;
 import com.db4o.*;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 
 public class PagCuentosPariente extends javax.swing.JFrame {
 
@@ -18,6 +24,7 @@ public class PagCuentosPariente extends javax.swing.JFrame {
     public PagCuentosPariente() {
         initComponents();
             Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+            cargar_combo1(CmBxCuentosPariente);
     }
 
     /**
@@ -49,8 +56,8 @@ public class PagCuentosPariente extends javax.swing.JFrame {
         TxtIntroParienteCuen = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         TxtDesarroParienteCuen = new javax.swing.JTextArea();
-        CmBxCuentosNiños = new javax.swing.JComboBox<>();
         LblInformacionNiño1 = new javax.swing.JLabel();
+        CmBxCuentosPariente = new javax.swing.JComboBox<>();
         LblInformacionNiño = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
@@ -140,14 +147,6 @@ public class PagCuentosPariente extends javax.swing.JFrame {
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 500, 260));
 
-        CmBxCuentosNiños.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        CmBxCuentosNiños.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CmBxCuentosNiñosActionPerformed(evt);
-            }
-        });
-        jPanel3.add(CmBxCuentosNiños, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 20));
-
         jScrollPane1.setViewportView(jPanel3);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 280));
@@ -157,6 +156,13 @@ public class PagCuentosPariente extends javax.swing.JFrame {
         LblInformacionNiño1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         LblInformacionNiño1.setText("BIENVENIDOS AL AREA DE:");
         jPanel1.add(LblInformacionNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 290, 20));
+
+        CmBxCuentosPariente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CmBxCuentosParienteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(CmBxCuentosPariente, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 190, 20));
 
         LblInformacionNiño.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         LblInformacionNiño.setText("CUENTOS");
@@ -200,9 +206,9 @@ public class PagCuentosPariente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CmBxCuentosNiñosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmBxCuentosNiñosActionPerformed
+    private void CmBxCuentosParienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmBxCuentosParienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CmBxCuentosNiñosActionPerformed
+    }//GEN-LAST:event_CmBxCuentosParienteActionPerformed
 
     private void JMnItmCerrarNiñoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarNiñoMousePressed
         Base.close();
@@ -218,6 +224,13 @@ public class PagCuentosPariente extends javax.swing.JFrame {
                     this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiñoMouseClicked
 
+    private ImageIcon getScaledImageIcon(Image image) {
+        if (image != null) {
+            return new ImageIcon(image.getScaledInstance(210, 180, Image.SCALE_SMOOTH));
+        } else {
+            return null;
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -254,7 +267,7 @@ public class PagCuentosPariente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> CmBxCuentosNiños;
+    private javax.swing.JComboBox<String> CmBxCuentosPariente;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMenu3puntitosNiño;
@@ -284,4 +297,40 @@ public class PagCuentosPariente extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator9;
     // End of variables declaration//GEN-END:variables
+    public void cargar_combo1(JComboBox CmBxCuentosPariente) {
+  
+        Cuento CBuscar = new Cuento(null, null, null, null, null, null, null, null, null, null);
+        ObjectSet resul = Base.get(CBuscar);
+        while (resul.hasNext()) {
+            Cuento Dcombo = (Cuento) resul.next();
+            CmBxCuentosPariente.addItem(Dcombo.getTitulo_Cuento());
+        }
+        Base.commit();
+    }
+
+    public void cargar_datos1() {
+        String tit = String.valueOf(CmBxCuentosPariente.getSelectedItem());
+
+        Cuento CBuscar = new Cuento(null, null, tit , null, null, null, null, null, null, null);
+        ObjectSet resul = Base.get(CBuscar);
+        Cuento CMostrar = (Cuento) resul.next();
+        LblTituloParienteCuen.setText(CMostrar.getTitulo_Cuento());
+        
+        TxtIntroParienteCuen.setText(CMostrar.getIntroduccion_Cuento());
+        TxtDesarroParienteCuen.setText(CMostrar.getNudo_Cuento());
+        TxtConcluParienteCuen.setText(CMostrar.getDesenlace_Cuento());
+        
+        // Rellena las imágenes en los JLabel correspondientes
+                Image introduccionImage = CMostrar.obtenerImagenComoImage();
+                LblImaParienteCuenIntrodu.setIcon(getScaledImageIcon(introduccionImage));
+
+                Image conclusiónImage = CMostrar.obtenerImagenFinalComoImage();
+                LblImaParienteConclu.setIcon(getScaledImageIcon(conclusiónImage));
+        
+        
+
+
+        Base.commit();
+    }
+
 }

@@ -6,17 +6,14 @@
 package Login;
 
 import Clases.Cuento;
+import Login.InicioNiño;
+import Login.PagCrudCuentosPsicologo;
 import Login.PagPrincipalNiñ;
 import com.db4o.*;
 import com.db4o.ObjectContainer;
-import com.db4o.query.Query;
 import java.awt.Image;
-import java.util.HashMap;
-import java.util.Map;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -148,7 +145,6 @@ public class PagCuentosNiño extends javax.swing.JFrame {
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 500, 260));
 
-        jCmbBoxCuentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
         jCmbBoxCuentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCmbBoxCuentosActionPerformed(evt);
@@ -229,40 +225,6 @@ public class PagCuentosNiño extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiño2MouseClicked
 
-//    private void cargarDatos() {
-//        try {
-//            // Obtén el mapa de códigos y títulos del JComboBox
-//            Map<String, String> codigoTituloMap = (Map<String, String>) jCmbBoxCuentos.getClientProperty("codigoTituloMap");
-//
-//            // Obtiene el código seleccionado del combo box
-//            String tituloSeleccionado = jCmbBoxCuentos.getSelectedItem().toString();
-//            String codigoSeleccionado = codigoTituloMap.get(tituloSeleccionado);
-//
-//            // Realiza la consulta en la base de datos utilizando el código
-//            Cuento cuentoEncontrado = obtenerCuentoPorCodigo(codigoSeleccionado);
-//
-//            if (cuentoEncontrado != null) {
-//                // Si se encuentra el cuento, obtiene la información
-//                LblTituloNiñoCuen.setText(cuentoEncontrado.getTitulo_Cuento());
-//                TxtIntroNiñoCuen.setText(cuentoEncontrado.getIntroduccion_Cuento());
-//                TxtDesarroNiñoCuen.setText(cuentoEncontrado.getNudo_Cuento());
-//                TxtConcluNiñoCuen.setText(cuentoEncontrado.getDesenlace_Cuento());
-//
-//                // Rellena las imágenes en los JLabel correspondientes
-//                Image introduccionImage = cuentoEncontrado.obtenerImagenComoImage();
-//                LblImaNiñoCuenIntrodu.setIcon(getScaledImageIcon(introduccionImage));
-//
-//                Image conclusiónImage = cuentoEncontrado.obtenerImagenFinalComoImage();
-//                LblImaNiñoConclu.setIcon(getScaledImageIcon(conclusiónImage));
-//            } else {
-//                // Si no se encuentra, muestra un mensaje de error
-//                JOptionPane.showMessageDialog(null, "El cuento con el código '" + codigoSeleccionado + "' no ha sido encontrado en la base de datos");
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            JOptionPane.showMessageDialog(null, "Error al cargar los datos del cuento");
-//        }
-//    }
 
     private ImageIcon getScaledImageIcon(Image image) {
         if (image != null) {
@@ -272,56 +234,6 @@ public class PagCuentosNiño extends javax.swing.JFrame {
         }
     }
 
-//    public void cargarCuentos() {
-//        try {
-//            Query query = Base.query();
-//            query.constrain(Cuento.class);
-//            ObjectSet<Cuento> result = query.execute();
-//
-//            DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
-//
-//            // Mapeo entre códigos y títulos
-//            Map<String, String> codigoTituloMap = new HashMap<>();
-//
-//            while (result.hasNext()) {
-//                Cuento cuento = result.next();
-//                String codigo = cuento.getCod_Cuento();
-//                String titulo = cuento.getTitulo_Cuento();
-//
-//                // Imprimir información (para depuración)
-//                System.out.println("Código: " + codigo + ", Título: " + titulo);
-//
-//                // Agregar título al modelo y al mapeo
-//                model.addElement(titulo);
-//                codigoTituloMap.put(codigo, titulo);
-//            }
-//
-//            // Agregar el mapeo como un atributo del JComboBox
-//            jCmbBoxCuentos.putClientProperty("codigoTituloMap", codigoTituloMap);
-//
-//            // Configurar el modelo después de haber construido el mapa
-//            jCmbBoxCuentos.setModel(model);
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            JOptionPane.showMessageDialog(null, "Error al cargar los cuentos desde la base de datos");
-//        }
-//    }
-
-//    private Cuento obtenerCuentoPorCodigo(String codigo) {
-//        try {
-//            Cuento example = new Cuento();
-//            example.setCod_Cuento(codigo);
-//
-//            ObjectSet<Cuento> result = Base.queryByExample(example);
-//
-//            return result.hasNext() ? result.next() : null;
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            JOptionPane.showMessageDialog(null, "Error al obtener el cuento desde la base de datos");
-//            return null;
-//        }
-//    }
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -417,9 +329,6 @@ public void cargar_combo1(JComboBox jCmbBoxCuentos) {
 
                 Image conclusiónImage = CMostrar.obtenerImagenFinalComoImage();
                 LblImaNiñoConclu.setIcon(getScaledImageIcon(conclusiónImage));
-        
-        
-
 
         Base.commit();
     }
