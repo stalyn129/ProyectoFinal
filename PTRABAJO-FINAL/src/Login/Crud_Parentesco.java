@@ -8,6 +8,8 @@ package Login;
 import java.awt.Color;
 import Clases.Parentesco;
 import Login.IniciaAdmin;
+import Login.IniciaAdmin;
+import Login.PagPrincipalAdmin;
 import Login.PagPrincipalAdmin;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;

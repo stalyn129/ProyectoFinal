@@ -7,6 +7,8 @@ package Login;
 
 import Clases.*;
 import Login.InicioRepresentante;
+import Login.InicioRepresentante;
+import Login.RegistrarseGeneral;
 import Login.RegistrarseGeneral;
 
 import com.db4o.Db4o;
@@ -956,7 +958,6 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             miPersona.setSexo(sexo.charAt(0));
             miPersona.setCod_Nacionalidad(Asignar_cod_dDiscapacidad(Base, cbx_discapacidad_pariente.getSelectedItem().toString()));
             miPersona.setContraseña(String.valueOf(NvContraParien.getPassword()));
-            miPersona.setEstado(true);
 
             if (validarCedula(miPersona.getCedula().trim())
                     && validarNombre(miPersona.getNombre().trim())
@@ -1306,7 +1307,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
 
             aumento++;
 
-            cod = String.format("R%04d", aumento);
+            cod = String.format("P%04d", aumento);
 
             if (Verificar_codRepre(Base, cod) == 0) {
                 rest = false;

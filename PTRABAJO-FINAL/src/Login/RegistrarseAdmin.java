@@ -13,7 +13,9 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import Clases.*;
 import Login.IniciaAdmin;
+import Login.IniciaAdmin;
 import Login.PagPrincipalAdmin;
+import Login.RegistrarseGeneral;
 import Login.RegistrarseGeneral;
 import Login.RegistrarseGeneral;
 import com.db4o.ext.DatabaseClosedException;
@@ -776,7 +778,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             miPersona.setTelefono(TxtTelfAdmin.getText());
             miPersona.setEmail(TxtCorreoAdmin.getText());
             miPersona.setContraseña(String.valueOf(NvContraAdmin.getPassword()));
-            miPersona.setEstado(true);
+
             // Validaciones
             if (validarCedula(miPersona.getCedula().trim())
                     && validarNombre(miPersona.getNombre().trim())
@@ -877,57 +879,47 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
             return true;
         }
     }//GEN-LAST:event_BtnRegistrarAdminActionPerformed
-public void Nacionalidades_ingr(ObjectContainer Base) {
-    Query query = Base.query();
-    query.constrain(Nacionalidad.class);
-    ObjectSet result = query.execute();
 
-    DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+    public void Nacionalidades_ingr(ObjectContainer Base) {
+        Query query = Base.query();
+        query.constrain(Nacionalidad.class
+        );
+        ObjectSet result = query.execute();
 
-    // Verifica si hay resultados antes de intentar recorrer el conjunto
-    if (result.size()==0) {
-         model.addElement("No hay nacionalidades disponibles");
-    } else {
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+
         while (result.hasNext()) {
             Nacionalidad nacionalidad = (Nacionalidad) result.next();
             String nombre = nacionalidad.getNacionalidad(); // Asume que tienes un método getNombre() en tu clase Nacionalidad
             model.addElement(nombre); // Agrega el nombre al modelo
         }
+
+        CmbBxNacionalidad2Admin.setModel(model);
+
     }
 
-    CmbBxNacionalidad2Admin.setModel(model);
-}
+    public void Discapacidad_ingr(ObjectContainer Base) {
+        Query query = Base.query();
+        query.constrain(Discapacidad.class
+        );
+        ObjectSet result = query.execute();
 
-   public void Discapacidad_ingr(ObjectContainer Base) {
-    Query query = Base.query();
-    query.constrain(Discapacidad.class);
-    ObjectSet result = query.execute();
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
 
-    DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
-
-    // Verifica si hay resultados antes de intentar recorrer el conjunto
-    if (result.size()==0) {
-        model.addElement("No hay discapacidades disponibles");
-    } else {
         while (result.hasNext()) {
             Discapacidad disca = (Discapacidad) result.next();
-            String nombre = disca.getTipo_Discapacidad(); // Asume que tienes un método getTipo_Discapacidad() en tu clase Discapacidad
+            String nombre = disca.getTipo_Discapacidad(); // Asume que tienes un método getNombre() en tu clase Nacionalidad
             model.addElement(nombre); // Agrega el nombre al modelo
         }
-        
-        
+
+        cbx_discapasidad.setModel(model);
+
     }
 
-    cbx_discapasidad.setModel(model);
-}
-
     public String Asignar_cod_Nacionalidad(ObjectContainer Base, String Nacional) {
-        if (Nacional.equalsIgnoreCase("No hay nacionalidades disponibles")) {
-            String nacion="Sin Asignar";
-            return nacion;
-        } else {
-           Query query = Base.query();
-        query.constrain(Nacionalidad.class );
+        Query query = Base.query();
+        query.constrain(Nacionalidad.class
+        );
 
         ObjectSet result = query.execute();
 
@@ -936,17 +928,11 @@ public void Nacionalidades_ingr(ObjectContainer Base) {
             if (nacionalidad.getNacionalidad().equals(Nacional)) {  // Asume que tienes un método getId() en tu clase Nacionalidad
                 return nacionalidad.getCod_Nacionalidad();  // Asume que tienes un método getNombre() en tu clase Nacionalidad
             }
-        } 
         }
-        
         return null;
     }
 
     public String Asignar_cod_dDiscapacidad(ObjectContainer Base, String discapac) {
-         if (discapac.equalsIgnoreCase("No hay discapacidades disponibles")) {
-            String nacion="Sin Asignar";
-            return nacion;
-        } else {
         Query query = Base.query();
         query.constrain(Discapacidad.class
         );
@@ -959,7 +945,6 @@ public void Nacionalidades_ingr(ObjectContainer Base) {
                 return disca.getCod_Discapacidad();  // Asume que tienes un método getNombre() en tu clase Nacionalidad
             }
         }
-         }
         return null;
     }
 

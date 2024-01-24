@@ -8,7 +8,9 @@ package Login;
 import BBDD.Contenedor_Base;
 import Clases.*;
 import Login.InicioPsicologo;
+import Login.InicioPsicologo;
 import Login.PagPrincipalRepresentante;
+import Login.RegistrarseGeneral;
 import Login.RegistrarseGeneral;
 import Login.RegistrarseGeneral;
 import com.db4o.Db4o;
@@ -30,6 +32,7 @@ import javax.swing.JOptionPane;
  */
 public class RegistrarsePsicologo extends javax.swing.JFrame {
 
+    public static String cedula_pasada_interfaz;
     ObjectContainer Base;
     Date Nacimiento;
 
@@ -778,66 +781,57 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
 
     private void BtnRegistrarsePsicolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarsePsicolActionPerformed
 // Verificar que no hay campos en blanco
-        if (camposLlenos()) {
-            Persona Mipersona = new Persona();
+            if (camposLlenos()) {
+                Persona Mipersona = new Persona();
 
-            Mipersona.setCedula(TxtCeduPsicol.getText());
-            Mipersona.setNombre(TxtNomPsicol.getText());
-            Mipersona.setApellido(TxtApelliPsicol.getText());
-            Mipersona.setDireccion(TxtDireccPsicol.getText());
-            Mipersona.setFecha_Nacimiento(DateFechaNaciPsicol.getDate());
-            String sex;
-            if (Femenino.isSelected()) {
-                sex = "F";
+                Mipersona.setCedula(TxtCeduPsicol.getText());
+                Mipersona.setNombre(TxtNomPsicol.getText());
+                Mipersona.setApellido(TxtApelliPsicol.getText());
+                Mipersona.setDireccion(TxtDireccPsicol.getText());
+                Mipersona.setFecha_Nacimiento(DateFechaNaciPsicol.getDate());
+                String sex;
+                if (Femenino.isSelected()) {
+                    sex = "F";
+                } else {
+                    sex = "M";
+                }
+
+                Mipersona.setSexo(sex.charAt(0));
+                Mipersona.setCod_Nacionalidad(Asignar_cod_Nacionalidad(Base, CmbBxNacionalidad3Psicol.getSelectedItem().toString()));
+                Mipersona.setCod_Discapacidad(Asignar_cod_dDiscapacidad(Base, cbx_discapacidad.getSelectedItem().toString()));
+                Mipersona.setCod_Especialidad(Asignar_cod_Especialidad(Base, cbx_especializacion.getSelectedItem().toString()));
+                Mipersona.setTelefono(TxtTelefono.getText());
+                Mipersona.setEmail(TxtCorreoPsicologo.getText());
+                Mipersona.setContraseña(String.valueOf(NvContraPsicol.getPassword()));
+
+                // VALIDACION
+                if (validarCedula(Mipersona.getCedula().trim())
+                        && validarNombre(Mipersona.getNombre().trim())
+                        && validarApellido(Mipersona.getApellido().trim())
+                        && validarSexo(sex)
+                        && validarCorreo(Mipersona.getEmail().trim())
+                        && validarTelefono(Mipersona.getTelefono().trim())
+                        && validarDireccion(Mipersona.getDireccion())
+                        && validarContraseña(Mipersona.getContraseña(), String.valueOf(CfContraPsicol.getPassword()))) {
+
+                    Base.store(Mipersona);
+
+                    Psicologo elpsic = new Psicologo();
+                    elpsic.setCod_Psicologo(Calcular_cod_Psicologo(Base));
+                    elpsic.setFK_Cedula(TxtCeduPsicol.getText());
+                    String especialid = Asignar_cod_Especialidad(Base, cbx_especializacion.getSelectedItem().toString());
+                    elpsic.setFK_Cod_Especialidad(especialid);
+                    elpsic.setAños_Experiencia((int) sp_años.getValue());
+
+                    Base.store(elpsic);
+                    JOptionPane.showMessageDialog(this, "Los datos se han guardado exitosamente");
+                    Base.close();
+                    InicioPsicologo();
+
+                }
             } else {
-                sex = "M";
+                JOptionPane.showMessageDialog(this, "Por favor, llene todos los campos antes de guardar.");
             }
-
-            Mipersona.setSexo(sex.charAt(0));
-            Mipersona.setCod_Nacionalidad(Asignar_cod_Nacionalidad(Base, CmbBxNacionalidad3Psicol.getSelectedItem().toString()));
-            Mipersona.setCod_Discapacidad(Asignar_cod_dDiscapacidad(Base, cbx_discapacidad.getSelectedItem().toString()));
-            Mipersona.setCod_Especialidad(Asignar_cod_Especialidad(Base, cbx_especializacion.getSelectedItem().toString()));
-            Mipersona.setTelefono(TxtTelefono.getText());
-            Mipersona.setEmail(TxtCorreoPsicologo.getText());
-            Mipersona.setContraseña(String.valueOf(NvContraPsicol.getPassword()));
-            Mipersona.setEstado(true);
-
-            // VALIDACION
-            if (validarCedula(Mipersona.getCedula().trim())
-                    && validarNombre(Mipersona.getNombre().trim())
-                    && validarApellido(Mipersona.getApellido().trim())
-                    && validarSexo(sex)
-                    && validarCorreo(Mipersona.getEmail().trim())
-                    && validarTelefono(Mipersona.getTelefono().trim())
-                    && validarDireccion(Mipersona.getDireccion())
-                    && validarContraseña(Mipersona.getContraseña(), String.valueOf(CfContraPsicol.getPassword()))) {
-
-                Base.store(Mipersona);
-                Guarda_psicologo();
-                JOptionPane.showMessageDialog(this, "Los datos se han guardado exitosamente");
-                Base.close();
-                InicioPsicologo();
-
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Por favor, llene todos los campos antes de guardar.");
-        }
-
-    }
-
-    public void Guarda_psicologo() {
-        Psicologo elpsic = new Psicologo();
-
-        String codd = Calcular_cod_Psicologo(Base);
-        System.out.println("Coiuygwasdsqaaaaaaaa" + codd);
-        elpsic.setCod_Psicologo(codd);
-
-        elpsic.setFK_Cedula(TxtCeduPsicol.getText());
-        String especialid = Asignar_cod_Especialidad(Base, cbx_especializacion.getSelectedItem().toString());
-        elpsic.setFK_Cod_Especialidad(especialid);
-        elpsic.setAños_Experiencia((int) sp_años.getValue());
-
-        Base.set(elpsic);
 
     }
 
@@ -1025,16 +1019,16 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         return result.size();
     }
 
-    public int Verificar_codPsicologo(ObjectContainer Base, String cedula) {
+    public static int Verificar_codPsicologo(ObjectContainer Base, String cedula) {
 
         Psicologo elps = new Psicologo();
-        elps.setCod_Psicologo(cedula);
+        elps.setFK_Cedula(cedula);
         ObjectSet result = Base.get(elps);
 
         return result.size();
     }
 
-    public String Calcular_cod_Psicologo(ObjectContainer Base) {
+    public static String Calcular_cod_Psicologo(ObjectContainer Base) {
 
         boolean rest = true;
         int aumento = 0;
