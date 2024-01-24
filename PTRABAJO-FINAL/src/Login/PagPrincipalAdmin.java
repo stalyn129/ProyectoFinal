@@ -216,7 +216,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
                 panel_graficMouseClicked(evt);
             }
         });
-        jPanel5.add(panel_grafic, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 230, 170));
+        jPanel5.add(panel_grafic, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 360, 310));
 
         BtnPersonalidadAdmin.setBackground(new java.awt.Color(255, 255, 255));
         BtnPersonalidadAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/obligations_11323649.png"))); // NOI18N
@@ -309,8 +309,8 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     private void BtnDiscaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDiscaAdminActionPerformed
         Base.close();
         Crud_Discapacidad Disca = new Crud_Discapacidad();
-        Disca.setVisible(true);
-        this.setVisible(false);
+            Disca.setVisible(true);
+                this.setVisible(false);
     }//GEN-LAST:event_BtnDiscaAdminActionPerformed
 
     private void BtnNacionalidadMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnNacionalidadMouseExited
@@ -318,17 +318,17 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnNacionalidadMouseExited
 
     private void BtnNacionalidadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnNacionalidadMouseClicked
-        Base.close();
-        Crud_Nacionalidades CNacio = new Crud_Nacionalidades();
-        CNacio.setVisible(true);
-        this.setVisible(false);
+//        Base.close();
+//        Crud_Nacionalidades CNacio = new Crud_Nacionalidades();
+//        CNacio.setVisible(true);
+//        this.setVisible(false);
     }//GEN-LAST:event_BtnNacionalidadMouseClicked
 
     private void BtnDiscaAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnDiscaAdminMouseClicked
-        Base.close();
-        Crud_Discapacidad Cdisca = new Crud_Discapacidad();
-        Cdisca.setVisible(true);
-        this.setVisible(false);
+//        Base.close();
+//        Crud_Discapacidad Cdisca = new Crud_Discapacidad();
+//        Cdisca.setVisible(true);
+//        this.setVisible(false);
     }//GEN-LAST:event_BtnDiscaAdminMouseClicked
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
