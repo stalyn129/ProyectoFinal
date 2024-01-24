@@ -271,9 +271,9 @@ public class Reporte_test extends javax.swing.JFrame {
     public void Grafica_mostrar() {
         DefaultCategoryDataset datos = new DefaultCategoryDataset();
         
-        datos.setValue(numRes1, respuesta1, respuesta1);
-        datos.setValue(numRes2, respuesta2, respuesta2);
-        datos.setValue(numRes3, respuesta3, respuesta3);
+//        datos.setValue(numRes1, respuesta1, respuesta1);
+//        datos.setValue(numRes2, respuesta2, respuesta2);
+//        datos.setValue(numRes3, respuesta3, respuesta3);
         
         JFreeChart grafico_barras = ChartFactory.createBarChart3D(
                 "Resultado de la pregunta",

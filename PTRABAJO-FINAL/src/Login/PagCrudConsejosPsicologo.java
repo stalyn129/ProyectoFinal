@@ -23,10 +23,14 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -41,6 +45,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     byte[] imagenconsejo2;
     String rutaImagenConsejo1;
     String rutaImagenConsejo2;
+    
     
     public PagCrudConsejosPsicologo() {
         initComponents();
@@ -253,6 +258,11 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        JTConsejos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTConsejosMouseClicked(evt);
             }
         });
         jScrollPane5.setViewportView(JTConsejos);
@@ -501,7 +511,56 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnModifiPsicologoMouseClicked
 
     private void BtnModifiPsicologoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModifiPsicologoActionPerformed
-         Modificar_Consejos(Base, Calcular_CodConsejos(Base),Txt_TituloConsejPsicologo1.getText() ,Txt_TituloConsejPsicologo2.getText(),txtAConsejoPsico1.getText(), txtAConsejoPsico2.getText(),rutaImagenConsejo1, rutaImagenConsejo2);
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) JTConsejos.getModel();
+            int filaSeleccionada = JTConsejos.getSelectedRow();
+
+            if (filaSeleccionada == -1) {
+                JOptionPane.showMessageDialog(this, "Seleccione una fila para modificar.");
+                return;
+            }
+
+            String codigoConsejo = (String) modelo.getValueAt(filaSeleccionada, 0);
+            String nuevoTitulo1 = JOptionPane.showInputDialog(this, "Ingrese el nuevo título 1:", modelo.getValueAt(filaSeleccionada, 1));
+            String nuevoTitulo2 = JOptionPane.showInputDialog(this, "Ingrese el nuevo título 2:", modelo.getValueAt(filaSeleccionada, 2));
+            String nuevoTexto1 = JOptionPane.showInputDialog(this, "Ingrese el nuevo texto 1:", modelo.getValueAt(filaSeleccionada, 3));
+            String nuevoTexto2 = JOptionPane.showInputDialog(this, "Ingrese el nuevo texto 2:", modelo.getValueAt(filaSeleccionada, 4));
+
+            JFileChooser fileChooser1 = new JFileChooser();
+            FileNameExtensionFilter filter1 = new FileNameExtensionFilter("Imágenes", "jpg", "jpeg", "png", "gif");
+            fileChooser1.setFileFilter(filter1);
+
+            int result1 = fileChooser1.showOpenDialog(this);
+
+            byte[] nuevaImagen1 = null;
+            String nuevaRutaImagen1 = "";
+
+            if (result1 == JFileChooser.APPROVE_OPTION) {
+                File selectedFile1 = fileChooser1.getSelectedFile();
+                nuevaRutaImagen1 = selectedFile1.getAbsolutePath();
+                nuevaImagen1 = AbrirArchivo(selectedFile1);
+            }
+
+            JFileChooser fileChooser2 = new JFileChooser();
+            FileNameExtensionFilter filter2 = new FileNameExtensionFilter("Imágenes", "jpg", "jpeg", "png", "gif");
+            fileChooser2.setFileFilter(filter2);
+
+            int result2 = fileChooser2.showOpenDialog(this);
+
+            byte[] nuevaImagen2 = null;
+            String nuevaRutaImagen2 = "";
+
+            if (result2 == JFileChooser.APPROVE_OPTION) {
+                File selectedFile2 = fileChooser2.getSelectedFile();
+                nuevaRutaImagen2 = selectedFile2.getAbsolutePath();
+                nuevaImagen2 = AbrirArchivo(selectedFile2);
+            }
+
+            ModificarConsejo(Base, codigoConsejo, nuevoTitulo1, nuevoTitulo2, nuevoTexto1, nuevoTexto2, nuevaImagen1, nuevaImagen2);
+            MostrarDatos(Base);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al modificar: " + e.getMessage());
+        }
     }//GEN-LAST:event_BtnModifiPsicologoActionPerformed
 
     private void JMnItmCerrarPsicologoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMousePressed
@@ -536,6 +595,43 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     private void Txt_TituloConsejPsicologo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_TituloConsejPsicologo1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Txt_TituloConsejPsicologo1ActionPerformed
+
+    private void JTConsejosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTConsejosMouseClicked
+        int filaSeleccionada = JTConsejos.getSelectedRow();
+
+        if (filaSeleccionada != -1) {
+            String descripcionImagen1 = (String) JTConsejos.getValueAt(filaSeleccionada, 1);
+            String descripcionImagen2 = (String) JTConsejos.getValueAt(filaSeleccionada, 2);
+
+            String rutaImagen1 = extraerRutaDesdeDescripcionConsejo(descripcionImagen1);
+            String rutaImagen2 = extraerRutaDesdeDescripcionConsejo(descripcionImagen2);
+
+            if (rutaImagen1 != null && rutaImagen2 != null) {
+                try {
+                    byte[] imagenBytes1 = obtenerBytesDesdeRutaConsejo(rutaImagen1);
+                    byte[] imagenBytes2 = obtenerBytesDesdeRutaConsejo(rutaImagen2);
+
+                    Image imagenOriginal1 = convertirBytesAImagen(imagenBytes1);
+                    Image imagenOriginal2 = convertirBytesAImagen(imagenBytes2);
+
+                    if (imagenOriginal1 != null && imagenOriginal2 != null) {
+                        Image imagenRedimensionada1 = imagenOriginal1.getScaledInstance(550, 330, Image.SCALE_SMOOTH);
+                        Image imagenRedimensionada2 = imagenOriginal2.getScaledInstance(550, 330, Image.SCALE_SMOOTH);
+
+                        ImageIcon iconoRedimensionado1 = new ImageIcon(imagenRedimensionada1);
+                        ImageIcon iconoRedimensionado2 = new ImageIcon(imagenRedimensionada2);
+
+                        imagen_1.setIcon(iconoRedimensionado1);
+                        imagen_2.setIcon(iconoRedimensionado2);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Error: No se pudo convertir alguna de las imágenes a formato válido.");
+                    }
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(this, "Error al cargar las imágenes: " + e.getMessage());
+                }
+            }
+        }
+    }//GEN-LAST:event_JTConsejosMouseClicked
 
     public byte[] AbrirArchivo(File archivo) {
         try ( FileInputStream entrada = new FileInputStream(archivo)) {
@@ -637,39 +733,34 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         }
     }
     
-    public void Modificar_Consejos(ObjectContainer base, String CodigoCuent, String Titulo1, String Titulo2, String Texto1, String Texto2, String Ruta1, String Ruta2) {
+    public void ModificarConsejo(ObjectContainer Base, String CodigoCons, String NuevoTitulo1, String NuevoTitulo2, String NuevoTexto1, String NuevoTexto2, byte[] NuevaImagen1, byte[] NuevaImagen2) {
         try {
-            // Crear un objeto Cuento con el código proporcionado
             Consejos modiconsejo = new Consejos();
-            modiconsejo.setCod_consejo(CodigoCuent);
+            modiconsejo.setCod_consejo(CodigoCons);
 
-            // Buscar el objeto correspondiente en la base de datos
-            ObjectSet result = base.queryByExample(modiconsejo);
+            ObjectSet result = Base.queryByExample(modiconsejo);
 
-            // Verificar si se encontró un objeto para modificar
             if (result.hasNext()) {
-                Consejos NueConse = (Consejos)result.next();
+                Consejos NueConse = (Consejos) result.next();
 
-                // Actualizar los campos del objeto con los nuevos valores
-                NueConse.setTitulo1Consejo(Titulo1);
-                NueConse.setTitulo2Consejo(Titulo2);
-                NueConse.setTexConsejo1(Texto1);
-                NueConse.setTexConsejo2(Texto2);
-                NueConse.setRutaImageConsejo1(Ruta1);
-                NueConse.setRutaImageConsejo2(Ruta2);
+                // Modificar los campos
+                NueConse.setTitulo1Consejo(NuevoTitulo1);
+                NueConse.setTitulo2Consejo(NuevoTitulo2);
+                NueConse.setTexConsejo1(NuevoTexto1);
+                NueConse.setTexConsejo2(NuevoTexto2);
+                NueConse.setImagenConsejo1(NuevaImagen1);
+                NueConse.setImagenConsejo2(NuevaImagen2);
 
                 // Almacenar los cambios en la base de datos
-                base.store(NueConse);
+                Base.store(NueConse);
 
-                // Mostrar un mensaje de confirmación al usuario
-                javax.swing.JOptionPane.showMessageDialog(null, "Se modificó el consejo correctamente.");
+                JOptionPane.showMessageDialog(this, "Se modificó el consejo correctamente.");
+                MostrarDatos(Base);
             } else {
-                // Mostrar un mensaje de error si no se encontró el objeto
-                javax.swing.JOptionPane.showMessageDialog(null, "Error: No se encontró el consejo para modificar.");
+                JOptionPane.showMessageDialog(this, "Error: No se encontró el consejo para modificar.");
             }
         } catch (DatabaseClosedException | DatabaseReadOnlyException | Db4oIOException | HeadlessException e) {
-            e.printStackTrace();
-            javax.swing.JOptionPane.showMessageDialog(null, "Error al modificar el consejo.");
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
         }
     }
     private void EliminarRegistro(ObjectContainer base, String Cod_Consejo) {
@@ -720,6 +811,64 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
 
     }
     
+    private String extraerRutaDesdeDescripcionConsejo(String descripcionConsejo) {
+        String[] partes = descripcionConsejo.split("\\|");
+
+        if (partes.length > 1) {
+            return partes[1];
+        } else {
+            return null;
+        }
+    }
+
+    private void actualizarImagenesConsejoEnJLabel(String rutaImagen1, String rutaImagen2) {
+        try {
+            byte[] imagenBytes1 = obtenerBytesDesdeRutaConsejo(rutaImagen1);
+            byte[] imagenBytes2 = obtenerBytesDesdeRutaConsejo(rutaImagen2);
+
+            Image imagenOriginal1 = convertirBytesAImagen(imagenBytes1);
+            Image imagenOriginal2 = convertirBytesAImagen(imagenBytes2);
+
+            if (imagenOriginal1 != null && imagenOriginal2 != null) {
+                Image imagenRedimensionada1 = imagenOriginal1.getScaledInstance(550, 330, Image.SCALE_SMOOTH);
+                Image imagenRedimensionada2 = imagenOriginal2.getScaledInstance(550, 330, Image.SCALE_SMOOTH);
+
+                ImageIcon iconoRedimensionado1 = new ImageIcon(imagenRedimensionada1);
+                ImageIcon iconoRedimensionado2 = new ImageIcon(imagenRedimensionada2);
+
+                imagen_1.setIcon(iconoRedimensionado1);
+                imagen_2.setIcon(iconoRedimensionado2);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error: No se pudo convertir alguna de las imágenes a formato válido.");
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error al cargar las imágenes: " + e.getMessage());
+        }
+    }
+    
+    private byte[] obtenerBytesDesdeRutaConsejo(String rutaImagenConsejo) throws IOException {
+        // Obtener los bytes desde la ruta de la imagen del consejo
+        Path path = Paths.get(rutaImagenConsejo);
+        return Files.readAllBytes(path);
+    }
+    
+//    public void setValoresActuales(String titulo1, String titulo2, String texto1, String texto2, byte[] imagen1, byte[] imagen2) {
+//        
+//        
+//        txtNuevoTitulo1.setText(titulo1);
+//        txtNuevoTitulo2.setText(titulo2);
+//        txtNuevoTexto1.setText(texto1);
+//        txtNuevoTexto2.setText(texto2);
+//
+//        // Configura las imágenes actuales si existen
+//        if (imagen1 != null) {
+//            // Configura la imagen en tu componente correspondiente (puede ser un JLabel, por ejemplo)
+//        }
+//
+//        if (imagen2 != null) {
+//            // Configura la imagen en tu componente correspondiente
+//        }
+//    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

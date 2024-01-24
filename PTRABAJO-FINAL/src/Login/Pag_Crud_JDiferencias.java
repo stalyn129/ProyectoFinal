@@ -102,14 +102,14 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
         jScrollPane1.setDoubleBuffered(true);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setMinimumSize(new java.awt.Dimension(623, 1533));
-        jPanel3.setPreferredSize(new java.awt.Dimension(623, 1533));
+        jPanel3.setMinimumSize(new java.awt.Dimension(623, 1043));
+        jPanel3.setPreferredSize(new java.awt.Dimension(623, 1043));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LblInfor2Niño.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         LblInfor2Niño.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblInfor2Niño.setText("Juego de las Diferencias");
-        jPanel3.add(LblInfor2Niño, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 640, -1));
+        jPanel3.add(LblInfor2Niño, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 200, -1));
 
         lblImagenDiferencias.setForeground(new java.awt.Color(204, 204, 204));
         lblImagenDiferencias.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
