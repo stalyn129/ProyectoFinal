@@ -104,8 +104,8 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         jScrollPane3.setDoubleBuffered(true);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setMinimumSize(new java.awt.Dimension(713, 1326));
-        jPanel4.setPreferredSize(new java.awt.Dimension(713, 1326));
+        jPanel4.setMinimumSize(new java.awt.Dimension(711, 598));
+        jPanel4.setPreferredSize(new java.awt.Dimension(711, 598));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LblTitulo3InfNiño.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N

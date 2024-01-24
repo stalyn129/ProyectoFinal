@@ -288,10 +288,7 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void BtnInfPsicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnInfPsicoMouseClicked
-        Base.close();  
-            PagCrudInformaPsicologo ing = new PagCrudInformaPsicologo();
-                ing.setVisible(true);
-                    this.setVisible(false);
+        
     }//GEN-LAST:event_BtnInfPsicoMouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
