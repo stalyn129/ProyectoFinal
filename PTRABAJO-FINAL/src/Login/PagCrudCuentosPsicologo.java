@@ -49,6 +49,13 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableCuentos = new javax.swing.JTable();
+        btnActualizar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnConsultar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
@@ -75,13 +82,8 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         btnImagenInicial = new javax.swing.JButton();
         jSeparator11 = new javax.swing.JSeparator();
         lblImagenInicial = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTableCuentos = new javax.swing.JTable();
-        btnActualizar = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
-        btnConsultar = new javax.swing.JButton();
+        jSeparator8 = new javax.swing.JSeparator();
+        jSeparator12 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenu3puntitosPsicologo = new javax.swing.JMenu();
@@ -90,129 +92,6 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jScrollPane4.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane4.setBorder(null);
-        jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane4.setToolTipText("");
-        jScrollPane4.setDoubleBuffered(true);
-
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setMinimumSize(new java.awt.Dimension(330, 1000));
-        jPanel4.setPreferredSize(new java.awt.Dimension(330, 1000));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel4.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 240, 10));
-
-        lblDesarrollo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        lblDesarrollo.setText("Desarrollo:");
-        jPanel4.add(lblDesarrollo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, -1, -1));
-
-        lblIntroduccion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        lblIntroduccion.setText("Introducción");
-        jPanel4.add(lblIntroduccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
-        jPanel4.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 240, 10));
-        jPanel4.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 240, 10));
-
-        Txt_Titulo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        Txt_Titulo.setForeground(new java.awt.Color(153, 153, 153));
-        Txt_Titulo.setText("Ejem: Las aventuras de...");
-        Txt_Titulo.setBorder(null);
-        Txt_Titulo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                Txt_TituloMousePressed(evt);
-            }
-        });
-        Txt_Titulo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Txt_TituloActionPerformed(evt);
-            }
-        });
-        jPanel4.add(Txt_Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 240, 20));
-
-        lblTitulo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        lblTitulo.setText("Titulo:");
-        jPanel4.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
-
-        jLabel11.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel11.setText("CRUD CUENTOS");
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 30));
-
-        txtDesarrollo.setColumns(20);
-        txtDesarrollo.setLineWrap(true);
-        txtDesarrollo.setRows(5);
-        txtDesarrollo.setToolTipText("");
-        txtDesarrollo.setWrapStyleWord(true);
-        jScrollPane5.setViewportView(txtDesarrollo);
-
-        jPanel4.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 240, 70));
-
-        txtAreaIntroduccion.setColumns(20);
-        txtAreaIntroduccion.setLineWrap(true);
-        txtAreaIntroduccion.setRows(5);
-        txtAreaIntroduccion.setToolTipText("");
-        txtAreaIntroduccion.setWrapStyleWord(true);
-        jScrollPane6.setViewportView(txtAreaIntroduccion);
-
-        jPanel4.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 240, 70));
-
-        txtConclusion.setColumns(20);
-        txtConclusion.setLineWrap(true);
-        txtConclusion.setRows(5);
-        txtConclusion.setToolTipText("");
-        txtConclusion.setWrapStyleWord(true);
-        jScrollPane7.setViewportView(txtConclusion);
-
-        jPanel4.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 240, 70));
-        jPanel4.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 810, 240, 10));
-
-        lblConclusion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        lblConclusion.setText("Conclusion:");
-        jPanel4.add(lblConclusion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 610, -1, -1));
-
-        lblImagenFinal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblImagenFinal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        lblImagenFinal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel4.add(lblImagenFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 670, 240, 130));
-        jPanel4.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 650, 240, 10));
-
-        btnImagenFinal.setText("Agregar Imagen Final");
-        btnImagenFinal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnImagenFinalActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btnImagenFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 820, 240, -1));
-
-        btnInsertar.setText("Agregar Cuento");
-        btnInsertar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInsertarActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btnInsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 870, -1, -1));
-
-        btnImagenInicial.setText("Agregar Imagen Comienzo");
-        btnImagenInicial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnImagenInicialActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btnImagenInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 240, -1));
-        jPanel4.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 240, 10));
-
-        lblImagenInicial.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblImagenInicial.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        lblImagenInicial.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel4.add(lblImagenInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 240, 130));
-
-        jScrollPane4.setViewportView(jPanel4);
-
-        jPanel3.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 290, 480));
-
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 290, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -234,7 +113,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableCuentos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, -1, 380));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 720, 110));
 
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -242,7 +121,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
                 btnActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 460, -1, -1));
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, -1, -1));
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -250,7 +129,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
                 btnModificarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 460, -1, -1));
+        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, -1, -1));
 
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -258,7 +137,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 460, -1, -1));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 460, -1, -1));
 
         btnConsultar.setText("Consultar");
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -266,7 +145,132 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
                 btnConsultarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 460, -1, -1));
+        jPanel1.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 460, -1, -1));
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane4.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane4.setBorder(null);
+        jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane4.setToolTipText("");
+        jScrollPane4.setDoubleBuffered(true);
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setMinimumSize(new java.awt.Dimension(703, 544));
+        jPanel4.setPreferredSize(new java.awt.Dimension(703, 544));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel4.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 290, 10));
+
+        lblDesarrollo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblDesarrollo.setText("Desarrollo:");
+        jPanel4.add(lblDesarrollo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
+
+        lblIntroduccion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblIntroduccion.setText("Introducción:");
+        jPanel4.add(lblIntroduccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        jPanel4.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 290, 10));
+        jPanel4.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 200, 10));
+
+        Txt_Titulo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        Txt_Titulo.setForeground(new java.awt.Color(153, 153, 153));
+        Txt_Titulo.setText("Ejem: Las aventuras de...");
+        Txt_Titulo.setBorder(null);
+        Txt_Titulo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                Txt_TituloMousePressed(evt);
+            }
+        });
+        Txt_Titulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Txt_TituloActionPerformed(evt);
+            }
+        });
+        jPanel4.add(Txt_Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 240, 20));
+
+        lblTitulo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblTitulo.setText("Titulo:");
+        jPanel4.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel11.setText("CRUD CUENTOS");
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, 30));
+
+        txtDesarrollo.setColumns(20);
+        txtDesarrollo.setLineWrap(true);
+        txtDesarrollo.setRows(5);
+        txtDesarrollo.setToolTipText("");
+        txtDesarrollo.setWrapStyleWord(true);
+        jScrollPane5.setViewportView(txtDesarrollo);
+
+        jPanel4.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 290, 70));
+
+        txtAreaIntroduccion.setColumns(20);
+        txtAreaIntroduccion.setLineWrap(true);
+        txtAreaIntroduccion.setRows(5);
+        txtAreaIntroduccion.setToolTipText("");
+        txtAreaIntroduccion.setWrapStyleWord(true);
+        jScrollPane6.setViewportView(txtAreaIntroduccion);
+
+        jPanel4.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 290, 70));
+
+        txtConclusion.setColumns(20);
+        txtConclusion.setLineWrap(true);
+        txtConclusion.setRows(5);
+        txtConclusion.setToolTipText("");
+        txtConclusion.setWrapStyleWord(true);
+        jScrollPane7.setViewportView(txtConclusion);
+
+        jPanel4.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 290, 70));
+        jPanel4.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, 270, 10));
+
+        lblConclusion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblConclusion.setText("Conclusion:");
+        jPanel4.add(lblConclusion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, 20));
+
+        lblImagenFinal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblImagenFinal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblImagenFinal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel4.add(lblImagenFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, 270, 130));
+        jPanel4.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 520, 120, 10));
+
+        btnImagenFinal.setText("Agregar Imagen Final");
+        btnImagenFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImagenFinalActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnImagenFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 440, 270, -1));
+
+        btnInsertar.setText("Agregar Cuento");
+        btnInsertar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertarActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnInsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 480, 120, 40));
+
+        btnImagenInicial.setText("Agregar Imagen Comienzo");
+        btnImagenInicial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImagenInicialActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnImagenInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, 270, -1));
+        jPanel4.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 270, 10));
+
+        lblImagenInicial.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblImagenInicial.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblImagenInicial.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel4.add(lblImagenInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 270, 160));
+        jPanel4.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 240, 10));
+        jPanel4.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 290, 10));
+
+        jScrollPane4.setViewportView(jPanel4);
+
+        jPanel3.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 280));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 720, 280));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
@@ -611,9 +615,11 @@ private int buscarCuentoPorCodigo(String codigoCuento) {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTable jTableCuentos;
     private javax.swing.JLabel lblConclusion;

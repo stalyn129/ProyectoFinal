@@ -91,7 +91,7 @@ public class PagCuentosNiño extends javax.swing.JFrame {
         jSeparator2.setForeground(new java.awt.Color(153, 153, 153));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 270, 10));
 
-        LblTituloNiñoCuen.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
+        LblTituloNiñoCuen.setFont(new java.awt.Font("Rockwell", 3, 14)); // NOI18N
         LblTituloNiñoCuen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel3.add(LblTituloNiñoCuen, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 320, 20));
         jPanel3.add(LblImaNiñoCuenIntrodu, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 210, 180));
@@ -136,6 +136,7 @@ public class PagCuentosNiño extends javax.swing.JFrame {
         jPanel3.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 270, 180));
 
         TxtDesarroNiñoCuen.setColumns(20);
+        TxtDesarroNiñoCuen.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         TxtDesarroNiñoCuen.setLineWrap(true);
         TxtDesarroNiñoCuen.setRows(5);
         TxtDesarroNiñoCuen.setWrapStyleWord(true);

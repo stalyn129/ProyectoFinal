@@ -41,8 +41,6 @@ public class InicioNiño extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         txtUsuario = new javax.swing.JLabel();
         txtContra = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
         txt_contr = new javax.swing.JPasswordField();
         Pnl_Ingre = new javax.swing.JPanel();
         TXT_Ingre = new javax.swing.JLabel();
@@ -51,6 +49,8 @@ public class InicioNiño extends javax.swing.JFrame {
         icono_niños = new javax.swing.JLabel();
         txt_usuario = new javax.swing.JTextField();
         lblMano = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
         BtnRegresar = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
@@ -62,21 +62,15 @@ public class InicioNiño extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtUsuario.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         txtUsuario.setText("Usuario:");
-        jPanel2.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
+        jPanel2.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
 
-        txtContra.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtContra.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         txtContra.setText("Contraseña:");
-        jPanel2.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, -1, -1));
+        jPanel2.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
 
-        jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 160, -1));
-
-        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 160, -1));
-
-        txt_contr.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        txt_contr.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_contr.setForeground(new java.awt.Color(204, 204, 204));
         txt_contr.setText("**********");
         txt_contr.setBorder(null);
@@ -90,7 +84,7 @@ public class InicioNiño extends javax.swing.JFrame {
                 txt_contrActionPerformed(evt);
             }
         });
-        jPanel2.add(txt_contr, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, 169, -1));
+        jPanel2.add(txt_contr, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 210, 30));
 
         Pnl_Ingre.setBackground(new java.awt.Color(102, 204, 255));
 
@@ -114,7 +108,7 @@ public class InicioNiño extends javax.swing.JFrame {
         Pnl_Ingre.setLayout(Pnl_IngreLayout);
         Pnl_IngreLayout.setHorizontalGroup(
             Pnl_IngreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TXT_Ingre, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+            .addComponent(TXT_Ingre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         Pnl_IngreLayout.setVerticalGroup(
             Pnl_IngreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,18 +116,18 @@ public class InicioNiño extends javax.swing.JFrame {
         );
 
         jPanel2.add(Pnl_Ingre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, -1, -1));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 269, 10));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 210, 10));
 
-        txtIniciarSesion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtIniciarSesion.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         txtIniciarSesion.setText("Iniciar Sesión");
-        jPanel2.add(txtIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
+        jPanel2.add(txtIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
 
         icono_niños.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/hermana-y-hermano.png"))); // NOI18N
-        jPanel2.add(icono_niños, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 70, 100));
+        jPanel2.add(icono_niños, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 70, 70));
 
-        txt_usuario.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        txt_usuario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_usuario.setForeground(new java.awt.Color(204, 204, 204));
-        txt_usuario.setText("Usuario");
+        txt_usuario.setText("Ingrese su Apodo");
         txt_usuario.setBorder(null);
         txt_usuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -145,10 +139,12 @@ public class InicioNiño extends javax.swing.JFrame {
                 txt_usuarioActionPerformed(evt);
             }
         });
-        jPanel2.add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 168, 20));
+        jPanel2.add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 210, 30));
 
         lblMano.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/impresion-de-la-mano.png"))); // NOI18N
         jPanel2.add(lblMano, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 40, 40));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 140, 10));
+        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 210, 10));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 310, 420));
 
@@ -186,7 +182,7 @@ public class InicioNiño extends javax.swing.JFrame {
             txt_contr.setForeground(Color.BLACK);
         }
         if (txt_usuario.getText().isEmpty()) {
-            txt_usuario.setText("Usuario");
+            txt_usuario.setText("Ingrese su Apodo");
             txt_usuario.setForeground(Color.gray);
         }
 
@@ -234,7 +230,7 @@ public class InicioNiño extends javax.swing.JFrame {
     }//GEN-LAST:event_TXT_IngreMouseExited
 
     private void txt_usuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_usuarioMousePressed
-        if (txt_usuario.getText().equals("Usuario")) {
+        if (txt_usuario.getText().equals("Ingrese su Apodo")) {
             txt_usuario.setText("");
             txt_usuario.setForeground(Color.black);
         }

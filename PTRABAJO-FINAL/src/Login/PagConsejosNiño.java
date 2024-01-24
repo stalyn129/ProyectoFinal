@@ -112,11 +112,11 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         jPanel4.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 300, 170));
 
         jSeparator4.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 550, 10));
+        jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 430, 10));
 
-        LblTitConseNiño1.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        LblTitConseNiño1.setFont(new java.awt.Font("Rockwell Nova", 3, 14)); // NOI18N
         LblTitConseNiño1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel4.add(LblTitConseNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 610, 20));
+        jPanel4.add(LblTitConseNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 400, 20));
         jPanel4.add(LblImaConseNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 240, 170));
 
         jSeparator5.setForeground(new java.awt.Color(153, 153, 153));
@@ -141,18 +141,18 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         jPanel4.add(LblImaConseNiño2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 240, 170));
 
         jSeparator7.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel4.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 560, 10));
+        jPanel4.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 430, 10));
 
-        LblTitConseNiño2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        LblTitConseNiño2.setFont(new java.awt.Font("Rockwell Nova", 3, 14)); // NOI18N
         LblTitConseNiño2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel4.add(LblTitConseNiño2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 610, 20));
+        jPanel4.add(LblTitConseNiño2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 410, 20));
 
         CmBoxConsejosNiño.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CmBoxConsejosNiñoActionPerformed(evt);
             }
         });
-        jPanel4.add(CmBoxConsejosNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, -1));
+        jPanel4.add(CmBoxConsejosNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 150, 20));
 
         jScrollPane1.setViewportView(jPanel4);
 
