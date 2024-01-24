@@ -258,11 +258,6 @@ public class Crud_Parentesco extends javax.swing.JFrame {
                 jMenuItem1MousePressed(evt);
             }
         });
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -450,14 +445,11 @@ public class Crud_Parentesco extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem1MousePressed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         Base.close();
         PagPrincipalAdmin paginaprinciadmi = new PagPrincipalAdmin();
         paginaprinciadmi.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jMenu2MouseClicked
 
     /**

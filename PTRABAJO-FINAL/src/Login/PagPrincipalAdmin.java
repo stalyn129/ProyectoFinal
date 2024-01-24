@@ -282,7 +282,10 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnParentescoAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnParentescoAdminActionPerformed
-        // TODO add your handling code here:
+        Base.close();
+            Crud_Parentesco parentesco = new Crud_Parentesco();
+                parentesco.setVisible(true);
+                    this.setVisible(false);
     }//GEN-LAST:event_BtnParentescoAdminActionPerformed
 
     private void BtnMiniReporActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMiniReporActionPerformed
@@ -361,7 +364,11 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnUsuarioActionPerformed
 
     private void BtnPersonalidadAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPersonalidadAdminActionPerformed
-        // TODO add your handling code here:
+        Base.close();
+        
+            Crud_Personalidad personalidad = new Crud_Personalidad();
+               personalidad.setVisible(true);
+                    this.setVisible(false); 
     }//GEN-LAST:event_BtnPersonalidadAdminActionPerformed
     public void mostrar_diagrama() {
         DefaultPieDataset datos = new DefaultPieDataset();

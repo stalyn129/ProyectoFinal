@@ -25,6 +25,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -374,33 +375,77 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarMouseClicked
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-        try {
-            DefaultTableModel modelo = (DefaultTableModel) jTableJuegoLab.getModel();
-            int filaSeleccionada = jTableJuegoLab.getSelectedRow();
+          try {
+        // Obtener el código del juego que se desea modificar
+        String codigoJuego = JOptionPane.showInputDialog(this, "Ingrese el código del juego a modificar:");
 
-            if (filaSeleccionada == -1) {
-                JOptionPane.showMessageDialog(this, "Seleccione una fila para modificar.");
-                return;
-            }
+        if (codigoJuego != null && !codigoJuego.isEmpty()) {
+            // Buscar el juego con el código proporcionado
+            int indiceJuego = buscarJuegoPorCodigo(codigoJuego);
 
-            String CodigoJuego = (String) modelo.getValueAt(filaSeleccionada, 0);
-            String Nueva_Descripcion = JOptionPane.showInputDialog(this, "Ingrese la nueva descripción:", modelo.getValueAt(filaSeleccionada, 1));
-            String NuevaOpcion1 = JOptionPane.showInputDialog(this, "Ingrese la nueva opcion incorrecta:", modelo.getValueAt(filaSeleccionada, 3));
-            String NuevaOpcion2 = JOptionPane.showInputDialog(this, "Ingrese la nueva opcion incorrecta:", modelo.getValueAt(filaSeleccionada, 4));
-            String NuevaOpcion3 = JOptionPane.showInputDialog(this, "Ingrese la nueva opcion incorrecta:", modelo.getValueAt(filaSeleccionada, 5));
-            String NuevaOpCorrecta = JOptionPane.showInputDialog(this, "Ingrese la nueva opcion correcta:", modelo.getValueAt(filaSeleccionada, 6));
-            if (Nueva_Descripcion != null && NuevaOpcion1 != null && NuevaOpcion2 != null && NuevaOpcion3 != null && NuevaOpCorrecta != null) {
-                ModificarJuego(Base, CodigoJuego, Nueva_Descripcion, NuevaOpcion1.charAt(0), NuevaOpcion2.charAt(0), NuevaOpcion3.charAt(0), NuevaOpCorrecta.charAt(0));
+            if (indiceJuego != -1) {
+                // Se encontró el juego, obtener datos actuales
+                DefaultTableModel modelo = (DefaultTableModel) jTableJuegoLab.getModel();
+                String nuevaDescripcion = JOptionPane.showInputDialog(this, "Ingrese la nueva descripción:", modelo.getValueAt(indiceJuego, 1));
+                String nuevaOpcion1 = JOptionPane.showInputDialog(this, "Ingrese la nueva opción incorrecta 1:", modelo.getValueAt(indiceJuego, 3));
+                String nuevaOpcion2 = JOptionPane.showInputDialog(this, "Ingrese la nueva opción incorrecta 2:", modelo.getValueAt(indiceJuego, 4));
+                String nuevaOpcion3 = JOptionPane.showInputDialog(this, "Ingrese la nueva opción incorrecta 3:", modelo.getValueAt(indiceJuego, 5));
+                String nuevaOpCorrecta = JOptionPane.showInputDialog(this, "Ingrese la nueva opción correcta:", modelo.getValueAt(indiceJuego, 6));
+
+                if (nuevaDescripcion != null && nuevaOpcion1 != null && nuevaOpcion2 != null && nuevaOpcion3 != null && nuevaOpCorrecta != null) {
+                    byte[] nuevaImagen1 = obtenerNuevaImagen();
+
+                    // Modificar el juego con los nuevos valores
+                    Modificar_Juego(Base, codigoJuego, nuevaDescripcion, nuevaOpcion1.charAt(0), nuevaOpcion2.charAt(0), nuevaOpcion3.charAt(0), nuevaOpCorrecta.charAt(0), nuevaImagen1);
+                    MostrarDatos(Base);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error: Todos los campos deben ser ingresados.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Error: No se encontró el juego con el código proporcionado.");
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error al modificar: " + e.getMessage());
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un código válido para modificar.");
         }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error al modificar: " + e.getMessage());
+    }
+        
     }//GEN-LAST:event_btn_modificarActionPerformed
 
+    private int buscarJuegoPorCodigo(String codigoJuego) {
+    DefaultTableModel modelo = (DefaultTableModel) jTableJuegoLab.getModel();
+    for (int i = 0; i < modelo.getRowCount(); i++) {
+        String codigoActual = (String) modelo.getValueAt(i, 0);
+        if (codigoActual.equals(codigoJuego)) {
+            return i; // Se encontró el cuento, devolver el índice de la fila
+        }
+    }
+    return -1;
+}
     private void btn_modificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_modificarMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_modificarMouseClicked
 
+    private byte[] obtenerNuevaImagen() {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Seleccione la nueva imagen");
+
+        int result = fileChooser.showOpenDialog(this);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            try {
+                File selectedFile = fileChooser.getSelectedFile();
+                return Files.readAllBytes(selectedFile.toPath());
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error al leer la nueva imagen.");
+            }
+        }
+
+        return null;
+    }
+    
     private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultarActionPerformed
         String codigoAConsultar = JOptionPane.showInputDialog(this, "Ingrese el código a consultar");
 
@@ -640,44 +685,34 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
         }
     }
 
-    public void ModificarJuego(ObjectContainer Base, String CodigoJuego, String Nueva_Descripcion, char NuevaOpcion1, char NuevaOpcion2, char NuevaOpcion3, char NuevaOpCorrecta) {
+   public void Modificar_Juego(ObjectContainer base, String Codigo,String Descripcion, char opcionin1, char opcionin2, char opcionin3, char opcioncorr, byte[] NuevaImagen1) {
         try {
-            // ValidaDescripcion(Nueva_Descripcion);
+        Juego_Laberinto juego = new Juego_Laberinto();
+        juego.setCod_Juego(Codigo);
 
-            // Crear un objeto Parentesco con el código proporcionado
-            Juego_Laberinto Jlab = new Juego_Laberinto();
-            Jlab.setCod_Juego(CodigoJuego);
+        ObjectSet result = base.queryByExample(juego);
 
-            // Buscar el objeto correspondiente en la base de datos
-            ObjectSet result = Base.get(Jlab);
+        if (result.hasNext()) {
+            Juego_Laberinto nuevoJuego = (Juego_Laberinto) result.next();
 
-            // Verificar si se encontró un objeto para modificar
-            if (result.hasNext()) {
-                Juego_Laberinto nuevoJuego = (Juego_Laberinto) result.next();
+            nuevoJuego.setDescripcion_Juego(Descripcion);
+            nuevoJuego.setRespuestas_Incorrecta1(opcionin1);
+            nuevoJuego.setRespuestas_Incorrecta2(opcionin2);
+            nuevoJuego.setRespuestas_Incorrecta3(opcionin3);
+            nuevoJuego.setRespuesta_Correcta(opcioncorr);
 
-                // Actualizar los campos del objeto con los nuevos valores
-                nuevoJuego.setDescripcion_Juego(Nueva_Descripcion);
-                nuevoJuego.setRespuestas_Incorrecta1(NuevaOpcion1);
-                nuevoJuego.setRespuestas_Incorrecta2(NuevaOpcion2);
-                nuevoJuego.setRespuestas_Incorrecta3(NuevaOpcion3);
-                nuevoJuego.setRespuesta_Correcta(NuevaOpCorrecta);
-                // Almacenar los cambios en la base de datos
-                Base.store(nuevoJuego);
-
-                // Mostrar un mensaje de confirmación al usuario
-                JOptionPane.showMessageDialog(this, "Se modificó los datos del juego correctamente.");
-
-                // Actualizar la tabla después de la modificación
-                MostrarDatos(Base);
-
-                // Limpiar los campos
-                // Limpiar();
-            } else {
-                JOptionPane.showMessageDialog(this, "Error: No se encontró el juego para modificar.");
+            if (NuevaImagen1 != null) {
+                nuevoJuego.setImagen_Lab(NuevaImagen1);
             }
-        } catch (DatabaseClosedException | DatabaseReadOnlyException | Db4oIOException | HeadlessException e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+
+            base.store(nuevoJuego);
+            JOptionPane.showMessageDialog(this, "Se modificó el juego correctamente.");
+        } else {
+            JOptionPane.showMessageDialog(this, "Error: No se encontró el juego para modificar.");
         }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error al modificar el juego: " + e.getMessage());
+    }
     }
 
     public void ValidaDescripcion(String Descripcion) throws Exception {
