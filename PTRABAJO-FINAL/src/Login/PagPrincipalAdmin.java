@@ -364,22 +364,22 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnPersonalidadAdminActionPerformed
     public void mostrar_diagrama() {
-////        DefaultPieDataset datos = new DefaultPieDataset();
-////        datos.setValue("Administradores", Num_Administradores(Base));
-////        datos.setValue("Psicologos", Num_Psicologos(Base));
-////        datos.setValue("Representantes", Num_Representantes(Base));
-////        datos.setValue("Niños", Num_Niños(Base));
-//
-//        JFreeChart grafico_circular = ChartFactory.createPieChart("Numero de tipos de Usuarios", datos, true, true, false);
-//        ChartPanel panel = new ChartPanel(grafico_circular);
-//        panel.setMouseWheelEnabled(true);
-//        panel.setPreferredSize(new Dimension(250, 160));
-//
-//        panel_grafic.setLayout(new BorderLayout());
-//        panel_grafic.add(panel, BorderLayout.NORTH);
-//
-//        pack();
-//        repaint();
+        DefaultPieDataset datos = new DefaultPieDataset();
+        datos.setValue("Administradores", Num_Administradores(Base));
+        datos.setValue("Psicologos", Num_Psicologos(Base));
+        datos.setValue("Representantes", Num_Representantes(Base));
+        datos.setValue("Niños", Num_Niños(Base));
+
+        JFreeChart grafico_circular = ChartFactory.createPieChart("Numero de tipos de Usuarios", datos, true, true, false);
+        ChartPanel panel = new ChartPanel(grafico_circular);
+        panel.setMouseWheelEnabled(true);
+        panel.setPreferredSize(new Dimension(250, 160));
+
+        panel_grafic.setLayout(new BorderLayout());
+        panel_grafic.add(panel, BorderLayout.NORTH);
+
+        pack();
+        repaint();
     }
 
     public static int Num_Administradores(ObjectContainer Base) {

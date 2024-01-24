@@ -68,7 +68,7 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
         txt_titulo_test = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txt_nom = new javax.swing.JTextField();
         Fondo1 = new javax.swing.JLabel();
         LblTestPariente1 = new javax.swing.JLabel();
         LblTestPariente2 = new javax.swing.JLabel();
@@ -160,8 +160,8 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
         jLabel4.setText(" Autor:");
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, -1, -1));
 
-        jTextField1.setEditable(false);
-        jPanel4.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 250, -1));
+        txt_nom.setEditable(false);
+        jPanel4.add(txt_nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 250, -1));
 
         jScrollPane3.setViewportView(jPanel4);
 
@@ -264,6 +264,12 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
                 txt_titulo_test.setText(elts.getTitulo_Test());
                 txa_descr.setText(elts.getDescripcion_Test());
 
+                String CodPsic=elts.getFKCod_Psicologo();
+                
+                
+                String nom=Autor_del_test(Base, CodPsic);
+                txt_nom.setText(nom);
+                
                 Preguntas lapre = new Preguntas();
                 lapre.setFK_Codigo_Test(elts.getID_Test());
 
@@ -271,12 +277,43 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
 
                 String res = String.valueOf(rsr.size());
                 txt_num.setText(res);
+                
                
 
             }
         
 
     }
+    
+    public String Autor_del_test( ObjectContainer Base,String cod){
+    String codpi="";
+    String nom="",apell="";
+    Psicologo elpisic=new Psicologo();
+    elpisic.setCod_Psicologo(cod);
+    ObjectSet resul=Base.get(elpisic);
+        while (resul.hasNext()) {
+            Psicologo nextElement = (Psicologo)resul.next();
+            codpi=nextElement.getFK_Cedula();
+        }
+        
+        ///////////////////////////////////////////////////////////////////////////////////////
+        Persona person=new Persona();
+        person.setCedula(codpi);
+        ObjectSet resPer=Base.get(person);
+        while (resPer.hasNext()) {
+            Persona next =(Persona) resPer.next();
+            nom=next.getNombre();
+            apell=next.getApellido();
+            
+        }
+        String nombre=nom+" "+apell;
+        
+    
+    return nombre;
+    }
+        
+
+    
 
     //////////////////////Mostra test
     public void MostrarDatos_test(ObjectContainer Base) {
@@ -380,9 +417,9 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JList<String> lista_test;
     private javax.swing.JTextArea txa_descr;
+    private javax.swing.JTextField txt_nom;
     private javax.swing.JTextField txt_num;
     private javax.swing.JTextField txt_titulo_test;
     // End of variables declaration//GEN-END:variables
