@@ -13,7 +13,10 @@ import Login.RegistrarsePsicologo;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
+import com.db4o.ext.DatabaseClosedException;
+import com.db4o.ext.DatabaseReadOnlyException;
 import java.awt.Color;
+import java.awt.HeadlessException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -43,6 +46,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         initComponents();
         usarData = UserDataSingleton.getInstance();
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+        MostrarDatos(Base);
     }
 
     /**
@@ -74,31 +78,11 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        txA_text_info2 = new javax.swing.JTextArea();
-        jPanel5 = new javax.swing.JPanel();
-        imagen_2 = new javax.swing.JLabel();
+        btn_eliminar = new javax.swing.JButton();
+        btn_consultar = new javax.swing.JButton();
+        btn_modifi = new javax.swing.JButton();
+        btn_actualizar = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JSeparator();
-        btn_Ingresar_imagen1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        txt_Titulo2 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        txA_text_info3 = new javax.swing.JTextArea();
-        jLabel7 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
-        txt_Titulo3 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        imagen_3 = new javax.swing.JLabel();
-        btn_Ingresar_imagen2 = new javax.swing.JButton();
-        jSeparator6 = new javax.swing.JSeparator();
-        jSeparator7 = new javax.swing.JSeparator();
-        jSeparator8 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenu3puntitosPsicologo = new javax.swing.JMenu();
@@ -125,7 +109,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LblTitulo3InfNiño.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jPanel4.add(LblTitulo3InfNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 780, 240, 20));
+        jPanel4.add(LblTitulo3InfNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 610, 240, 20));
         jPanel4.add(LblImagen4InfoNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1050, 250, 200));
 
         txA_text_info1.setColumns(20);
@@ -137,32 +121,37 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
 
         tabla_mostrar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "CODIGO", "Titulo 1", "Titulo 2", "Titulo 3", "Imagen 1", "Imagen 2", "Imagen 3"
+                "Codigo", "Titulo", "Text"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, true, true, true, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        tabla_mostrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabla_mostrarMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabla_mostrar);
 
-        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 1090, 620, 130));
+        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 380, 130));
 
         btn_ingresar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_ingresar.setText("Ingresar");
@@ -176,7 +165,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
                 btn_ingresarActionPerformed(evt);
             }
         });
-        jPanel4.add(btn_ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 1020, 180, -1));
+        jPanel4.add(btn_ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 280, 20));
 
         imagen_1.setForeground(new java.awt.Color(204, 204, 204));
         imagen_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -229,129 +218,49 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Rockwell Nova", 0, 24)); // NOI18N
         jLabel2.setText("Información");
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 150, 37));
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, 37));
         jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 340, 240, 10));
 
-        jButton1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jButton1.setText("Eliminar");
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 1270, 100, 30));
-
-        jButton2.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jButton2.setText("Consultar");
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 1270, 100, 30));
-
-        jButton3.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jButton3.setText("Modificar");
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 1270, 100, 30));
-
-        jButton4.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jButton4.setText("Actualizar");
-        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 1270, 100, 30));
-
-        txA_text_info2.setColumns(20);
-        txA_text_info2.setRows(5);
-        txA_text_info2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jScrollPane4.setViewportView(txA_text_info2);
-
-        jPanel4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, 280, 220));
-
-        jPanel5.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 670, Short.MAX_VALUE)
-        );
-
-        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, 30, 670));
-
-        imagen_2.setForeground(new java.awt.Color(204, 204, 204));
-        imagen_2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imagen_2.setText(" Ingresar Imagen");
-        imagen_2.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel4.add(imagen_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, 230, 230));
-        jPanel4.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 680, 230, 10));
-
-        btn_Ingresar_imagen1.setText("Ingresar Imagen");
-        btn_Ingresar_imagen1.addActionListener(new java.awt.event.ActionListener() {
+        btn_eliminar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        btn_eliminar.setText("Eliminar");
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Ingresar_imagen1ActionPerformed(evt);
+                btn_eliminarActionPerformed(evt);
             }
         });
-        jPanel4.add(btn_Ingresar_imagen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 410, 220, -1));
+        jPanel4.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, 220, 30));
 
-        jLabel4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel4.setText("Ingresar su informacion:");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 470, 200, -1));
-        jPanel4.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, 260, 10));
-
-        txt_Titulo2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txt_Titulo2.setForeground(new java.awt.Color(102, 102, 102));
-        txt_Titulo2.setText("Ingrese el titulo de la información");
-        txt_Titulo2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        txt_Titulo2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                txt_Titulo2MousePressed(evt);
-            }
-        });
-        jPanel4.add(txt_Titulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 270, 20));
-
-        jLabel6.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel6.setText("Ingresar el titulo de la información 2:");
-        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 260, -1));
-
-        txA_text_info3.setColumns(20);
-        txA_text_info3.setRows(5);
-        txA_text_info3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jScrollPane5.setViewportView(txA_text_info3);
-
-        jPanel4.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 820, 280, 220));
-
-        jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel7.setText("Ingresar su informacion:");
-        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 800, 200, -1));
-        jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 780, 260, 10));
-
-        txt_Titulo3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txt_Titulo3.setForeground(new java.awt.Color(102, 102, 102));
-        txt_Titulo3.setText("Ingrese el titulo de la información");
-        txt_Titulo3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        txt_Titulo3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                txt_Titulo3MousePressed(evt);
-            }
-        });
-        jPanel4.add(txt_Titulo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 760, 270, 20));
-
-        jLabel8.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel8.setText("Ingresar el titulo de la información 3:");
-        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 740, 260, 20));
-
-        imagen_3.setForeground(new java.awt.Color(204, 204, 204));
-        imagen_3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imagen_3.setText(" Ingresar Imagen");
-        imagen_3.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel4.add(imagen_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 770, 220, 230));
-
-        btn_Ingresar_imagen2.setText("Ingresar Imagen");
-        btn_Ingresar_imagen2.addActionListener(new java.awt.event.ActionListener() {
+        btn_consultar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        btn_consultar.setText("Consultar");
+        btn_consultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Ingresar_imagen2ActionPerformed(evt);
+                btn_consultarActionPerformed(evt);
             }
         });
-        jPanel4.add(btn_Ingresar_imagen2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 740, 220, -1));
-        jPanel4.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 1010, 240, 10));
-        jPanel4.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 1240, 620, 10));
-        jPanel4.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 1070, 620, 10));
+        jPanel4.add(btn_consultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, 220, 30));
+
+        btn_modifi.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        btn_modifi.setText("Modificar");
+        btn_modifi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modifiActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btn_modifi, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 220, 30));
+
+        btn_actualizar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        btn_actualizar.setText("Actualizar");
+        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 510, 220, 30));
+        jPanel4.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 230, 10));
 
         jScrollPane3.setViewportView(jPanel4);
 
-        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 730, 420));
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 730, 400));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 730, 420));
 
@@ -404,7 +313,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
             publi.setFecha_Publicacion(fecha);
 
             Base.store(publi);
-        } catch (Exception e) {
+        } catch (DatabaseClosedException | DatabaseReadOnlyException e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Error en la publicacion");
         }
 
@@ -433,11 +342,16 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
     private void btn_Ingresar_imagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ingresar_imagenActionPerformed
         if (seleccionar.showDialog(null, null) == JFileChooser.APPROVE_OPTION) {
             File archivo = seleccionar.getSelectedFile();
-            if (archivo.getName().endsWith("jpg") || archivo.getName().endsWith("jpng") || archivo.getName().endsWith("jpng") || archivo.getName().endsWith("png") || archivo.getName().endsWith("gif")) {
-                imagen = AbrirArchivo(archivo); // Store the selected image in the imagen variable
-                imagen_1.setIcon(new ImageIcon(imagen)); // Update the displayed image on the interface
-            } else {
-                JOptionPane.showMessageDialog(null, "Archivo no compatible");
+            try {
+                if (archivo.getName().endsWith("jpg") || archivo.getName().endsWith("jpeg") || archivo.getName().endsWith("png") || archivo.getName().endsWith("gif")) {
+                    imagen = AbrirArchivo(archivo); // Almacena la imagen seleccionada en la variable imagen
+                    imagen_1.setIcon(new ImageIcon(imagen)); // Actualiza la imagen mostrada en la interfaz
+                } else {
+                    JOptionPane.showMessageDialog(null, "Archivo no compatible");
+                }
+            } catch (HeadlessException e) {
+                e.printStackTrace(); // Manejo básico de errores, imprime la traza de la excepción
+                JOptionPane.showMessageDialog(null, "Error al abrir el archivo");
             }
         }
     }//GEN-LAST:event_btn_Ingresar_imagenActionPerformed
@@ -462,10 +376,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
 
             MostrarDatos(Base);
             Vaciar_datos();
-        } catch (Exception e) {
-
-        } finally {
-            Base.close();
+        } catch (DatabaseClosedException | DatabaseReadOnlyException | HeadlessException e) {
 
         }
 
@@ -491,69 +402,180 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
 
     }//GEN-LAST:event_JMnPgPrinPsicoloMouseClicked
 
-    private void btn_Ingresar_imagen1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ingresar_imagen1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_Ingresar_imagen1ActionPerformed
-
-    private void btn_Ingresar_imagen2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ingresar_imagen2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_Ingresar_imagen2ActionPerformed
-
-    private void txt_Titulo2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_Titulo2MousePressed
-        if (txt_Titulo2.getText().equals("Ingrese el titulo de la información")) {
-            txt_Titulo2.setText("");
-            txt_Titulo2.setForeground(Color.black);
-        }
-        if (txt_Titulo1.getText().isEmpty()) {
-            txt_Titulo1.setText("Ingrese el titulo de la información");
-            txt_Titulo1.setForeground(Color.gray);
-        }
-        if (txt_Titulo3.getText().isEmpty()) {
-            txt_Titulo3.setText("Ingrese el titulo de la información");
-            txt_Titulo3.setForeground(Color.gray);
-        }
-    }//GEN-LAST:event_txt_Titulo2MousePressed
-
-    private void txt_Titulo3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_Titulo3MousePressed
-        if (txt_Titulo3.getText().equals("Ingrese el titulo de la información")) {
-            txt_Titulo3.setText("");
-            txt_Titulo3.setForeground(Color.black);
-        }
-        if (txt_Titulo1.getText().isEmpty()) {
-            txt_Titulo1.setText("Ingrese el titulo de la información");
-            txt_Titulo1.setForeground(Color.gray);
-        }
-        if (txt_Titulo2.getText().isEmpty()) {
-            txt_Titulo2.setText("Ingrese el titulo de la información");
-            txt_Titulo2.setForeground(Color.gray);
-        }
-    }//GEN-LAST:event_txt_Titulo3MousePressed
-
     private void txt_Titulo1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_Titulo1MousePressed
         if (txt_Titulo1.getText().equals("Ingrese el titulo de la información")) {
             txt_Titulo1.setText("");
             txt_Titulo1.setForeground(Color.black);
         }
-        if (txt_Titulo2.getText().isEmpty()) {
-            txt_Titulo2.setText("Ingrese el titulo de la información");
-            txt_Titulo2.setForeground(Color.gray);
-        }
-        if (txt_Titulo3.getText().isEmpty()) {
-            txt_Titulo3.setText("Ingrese el titulo de la información");
-            txt_Titulo3.setForeground(Color.gray);
-        }
+
     }//GEN-LAST:event_txt_Titulo1MousePressed
+
+    private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+        MostrarDatos(Base);
+        Vaciar_datos();
+    }//GEN-LAST:event_btn_actualizarActionPerformed
+
+    private void tabla_mostrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_mostrarMouseClicked
+        int seleccion = tabla_mostrar.getSelectedRow();
+        String codTabla = String.valueOf(tabla_mostrar.getValueAt(seleccion, 0));
+        Mostrar_datos_rec(Base, codTabla);
+    }//GEN-LAST:event_tabla_mostrarMouseClicked
+
+    private void btn_modifiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modifiActionPerformed
+
+        Modificar(Base);
+        MostrarDatos(Base);
+
+    }//GEN-LAST:event_btn_modifiActionPerformed
+
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+        if (cod_info_mod.equals("")) {
+            
+        }else{
+          int resultado = JOptionPane.showConfirmDialog(
+                null,
+                "Seguro que desea eliminar a la informacion\ncon el codigo: "+cod_info_mod,
+                "Confirmación",
+                JOptionPane.OK_CANCEL_OPTION);
+
+        // Verificar la opción seleccionada por el usuario
+        if (resultado == JOptionPane.OK_OPTION) {
+            // El usuario hizo clic en "Aceptar"
+            Eliminar(Base);
+        Vaciar_datos();
+        MostrarDatos(Base);
+    
+        } else {
+            // El usuario hizo clic en "Cancelar" o cerró la ventana
+            JOptionPane.showMessageDialog(null, "Operación cancelada.");
+        }
+        }
+        
+        
+    }//GEN-LAST:event_btn_eliminarActionPerformed
+
+    private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultarActionPerformed
+        String userInput = JOptionPane.showInputDialog("Ingresa el codigo de la informacion");
+                consulta(Base,userInput);
+    }//GEN-LAST:event_btn_consultarActionPerformed
+
+    public void Eliminar(ObjectContainer Base) {
+        Informacion inf = new Informacion();
+        inf.setCod_Info(cod_info_mod);
+
+        ObjectSet resul = Base.get(inf);
+        while (resul.hasNext()) {
+            Informacion nextElement = (Informacion) resul.next();
+            String codInf=nextElement.getCod_Info();
+            
+            
+            publicacion(Base, codInf);
+            
+            
+            Base.delete(nextElement);
+            JOptionPane.showMessageDialog(this, "Se elimino la informacion");
+
+        }
+
+    }
+    public void publicacion(ObjectContainer Base,String cod){
+    Publicacion_Info publ=new Publicacion_Info();
+    publ.setFK_Cod_Informacion(cod);
+    
+    ObjectSet result=Base.get(publ);
+    
+        while (result.hasNext()) {      
+            Publicacion_Info pub=(Publicacion_Info)result.next();
+            Base.delete(pub);
+            JOptionPane.showMessageDialog(this, "Se elimina la Publicacion");
+            
+        }
+    
+    
+    
+    
+    }
+
+    public void consulta(ObjectContainer Base,String cod) {
+        Informacion inf = new Informacion();
+        inf.setCod_Info(cod);
+        ObjectSet result = Base.get(inf);
+        while (result.hasNext()) {   
+            Informacion next = (Informacion) result.next();
+            cod_info_mod = next.getCod_Info();
+            txt_Titulo1.setText(next.getTitulo_Info());
+            txA_text_info1.setText(next.getTexto_Info());
+
+            byte[] imageData = next.getImagen();
+            if (imageData != null) {
+                ImageIcon icon = new ImageIcon(imageData);
+                imagen_1.setIcon(icon);
+            } else {
+                // Manejar el caso en el que no hay imagen.
+                imagen_1.setIcon(null); // Puedes establecer el icono a null o configurar un icono predeterminado.
+            }
+        }
+        cod_info_mod = "";
+        
+        
+    }
+    public void Modificar(ObjectContainer Base) {
+        Informacion inf = new Informacion();
+        inf.setCod_Info(cod_info_mod);
+        ObjectSet result = Base.get(inf);
+
+        Informacion ModInfo = (Informacion) result.next();
+
+        ModInfo.setTitulo_Info(txt_Titulo1.getText());
+        ModInfo.setTexto_Info(txA_text_info1.getText());
+        ModInfo.setImagen(imagen);
+        Base.store(ModInfo);
+        Base.commit();
+        Vaciar_datos();
+        JOptionPane.showMessageDialog(this, "Se Modifico exitosamente");
+        cod_info_mod = "";
+
+    }
+
+    String cod_info_mod = "";
+
+    public void Mostrar_datos_rec(ObjectContainer Base, String CodInfo) {
+        Informacion info = new Informacion();
+        info.setCod_Info(CodInfo);
+
+        ObjectSet result = Base.get(info);
+
+        if (result.hasNext()) {
+            Informacion next = (Informacion) result.next();
+            cod_info_mod = next.getCod_Info();
+            txt_Titulo1.setText(next.getTitulo_Info());
+            txA_text_info1.setText(next.getTexto_Info());
+
+            byte[] imageData = next.getImagen();
+            if (imageData != null) {
+                ImageIcon icon = new ImageIcon(imageData);
+                imagen_1.setIcon(icon);
+            } else {
+                // Manejar el caso en el que no hay imagen.
+                imagen_1.setIcon(null); // Puedes establecer el icono a null o configurar un icono predeterminado.
+            }
+        } else {
+            // Manejar el caso en el que no se encuentra ninguna información con el código especificado.
+            // Puedes mostrar un mensaje, limpiar los campos, etc.
+            JOptionPane.showMessageDialog(null, "No se encontró información con el código especificado.");
+        }
+    }
 
     public void Vaciar_datos() {
         txt_Titulo1.setText("");
         txA_text_info1.setText("");
-        imagen_1.setText("");
+        imagen_1.setIcon(null);
 
     }
 
     public byte[] AbrirArchivo(File archivo) {
 
-        byte[] imagen = new byte[1024 * 683];
+        byte[] imagen = new byte[220 * 160];
         try {
             FileInputStream entrada = new FileInputStream(archivo);
             entrada.read(imagen);
@@ -649,6 +671,10 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -665,49 +691,29 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
     private javax.swing.JLabel LblImagen4InfoNiño;
     private javax.swing.JLabel LblTitulo3InfNiño;
     private javax.swing.JButton btn_Ingresar_imagen;
-    private javax.swing.JButton btn_Ingresar_imagen1;
-    private javax.swing.JButton btn_Ingresar_imagen2;
+    private javax.swing.JButton btn_actualizar;
+    private javax.swing.JButton btn_consultar;
+    private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_ingresar;
+    private javax.swing.JButton btn_modifi;
     private javax.swing.JLabel imagen_1;
-    private javax.swing.JLabel imagen_2;
-    private javax.swing.JLabel imagen_3;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JTable tabla_mostrar;
     private javax.swing.JTextArea txA_text_info1;
-    private javax.swing.JTextArea txA_text_info2;
-    private javax.swing.JTextArea txA_text_info3;
     private javax.swing.JTextField txt_Titulo1;
-    private javax.swing.JTextField txt_Titulo2;
-    private javax.swing.JTextField txt_Titulo3;
     // End of variables declaration//GEN-END:variables
 }

@@ -187,7 +187,7 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
 
     private void BtnInfRepreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfRepreActionPerformed
     Base.close();
-        PagInfPariente inf = new PagInfPariente();
+        PagInfNiño inf = new PagInfNiño();
             inf.setVisible(true);
                 this.setVisible(false);
     }//GEN-LAST:event_BtnInfRepreActionPerformed
