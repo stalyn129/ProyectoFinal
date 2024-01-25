@@ -446,6 +446,14 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnActualizarPsicologoMouseClicked
 
     private void btn_ingresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresar1ActionPerformed
+        if (Txt_TituloConsejPsicologo1.getText().isEmpty() || 
+        txtAConsejoPsico1.getText().isEmpty() || 
+        txtAConsejoPsico2.getText().isEmpty() || 
+        Txt_TituloConsejPsicologo2.getText().isEmpty() ||
+        imagen_1==null || imagen_2==null) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.");
+        return;  
+    }
         Consejos miconsejo = new Consejos();
            //elcue.setCod_Cuento(Txt_Codigo.getText());
             String CodConsejo = Calcular_CodConsejos(Base);
@@ -463,9 +471,23 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
 
             Base.store(miconsejo);
             javax.swing.JOptionPane.showMessageDialog(this, "SE GUARDÓ EN LA BASE");
+            // Limpiar campos después de ingresar los datos
+            limpiarCampos();
             MostrarDatos(Base);
     }//GEN-LAST:event_btn_ingresar1ActionPerformed
 
+    private void limpiarCampos() {
+    Txt_TituloConsejPsicologo1.setText("");
+    txtAConsejoPsico1.setText("");
+    txtAConsejoPsico2.setText("");
+    Txt_TituloConsejPsicologo2.setText("");
+    
+    // Limpiar imágenes
+    imagen_2.setIcon(null);
+    imagen_1.setIcon(null);
+    
+    // También puedes limpiar otras propiedades si es necesario
+}
     private void btn_ingresar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ingresar1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_ingresar1MouseClicked
@@ -782,34 +804,40 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     
     public void ModificarConsejo(ObjectContainer Base, String CodigoCons, String NuevoTitulo1, String NuevoTitulo2, String NuevoTexto1, String NuevoTexto2, byte[] NuevaImagen1, byte[] NuevaImagen2) {
         try {
-            Consejos modiconsejo = new Consejos();
-            modiconsejo.setCod_consejo(CodigoCons);
-
-            ObjectSet result = Base.queryByExample(modiconsejo);
-
-            if (result.hasNext()) {
-                Consejos NueConse = (Consejos) result.next();
-
-                // Modificar los campos
-                NueConse.setTitulo1Consejo(NuevoTitulo1);
-                NueConse.setTitulo2Consejo(NuevoTitulo2);
-                NueConse.setTexConsejo1(NuevoTexto1);
-                NueConse.setTexConsejo2(NuevoTexto2);
-                NueConse.setImagenConsejo1(NuevaImagen1);
-                NueConse.setImagenConsejo2(NuevaImagen2);
-
-                // Almacenar los cambios en la base de datos
-                Base.store(NueConse);
-
-                JOptionPane.showMessageDialog(this, "Se modificó el consejo correctamente.");
-                MostrarDatos(Base);
-            } else {
-                JOptionPane.showMessageDialog(this, "Error: No se encontró el consejo para modificar.");
-            }
-        } catch (DatabaseClosedException | DatabaseReadOnlyException | Db4oIOException | HeadlessException e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        if (NuevoTitulo1 == null || NuevoTitulo2 == null || NuevoTexto1 == null || NuevoTexto2 == null ||
+            NuevaImagen1 == null || NuevaImagen2 == null) {
+            JOptionPane.showMessageDialog(this, "Error: Por favor, complete todos los campos.");
+            return;
         }
+
+        Consejos modiconsejo = new Consejos();
+        modiconsejo.setCod_consejo(CodigoCons);
+
+        ObjectSet result = Base.queryByExample(modiconsejo);
+
+        if (result.hasNext()) {
+            Consejos NueConse = (Consejos) result.next();
+
+            // Modificar los campos
+            NueConse.setTitulo1Consejo(NuevoTitulo1);
+            NueConse.setTitulo2Consejo(NuevoTitulo2);
+            NueConse.setTexConsejo1(NuevoTexto1);
+            NueConse.setTexConsejo2(NuevoTexto2);
+            NueConse.setImagenConsejo1(NuevaImagen1);
+            NueConse.setImagenConsejo2(NuevaImagen2);
+
+            // Almacenar los cambios en la base de datos
+            Base.store(NueConse);
+
+            JOptionPane.showMessageDialog(this, "Se modificó el consejo correctamente.");
+            MostrarDatos(Base);
+        } else {
+            JOptionPane.showMessageDialog(this, "Error: No se encontró el consejo para modificar.");
+        }
+    } catch (DatabaseClosedException | DatabaseReadOnlyException | Db4oIOException | HeadlessException e) {
+        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
     }
+}
     private void EliminarRegistro(ObjectContainer base, String Cod_Consejo) {
 
             Consejos conseElimi = new Consejos(Cod_Consejo, null, null, null, null, null, null, null, null);

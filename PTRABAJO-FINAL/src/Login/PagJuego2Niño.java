@@ -267,12 +267,12 @@ public class PagJuego2Niño extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnADifeNiño1ActionPerformed
 
     private void BtnADifeNiño2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnADifeNiño2ActionPerformed
-         int respuestaUsuario = Integer.parseInt(BtnADifeNiño2.getText().split("\\.")[1].trim());
+        int respuestaUsuario = Integer.parseInt(BtnADifeNiño2.getText().split("\\.")[1].trim());
         verificarRespuesta(Base, String.valueOf(jComboJuego.getSelectedItem()), respuestaUsuario);
     }//GEN-LAST:event_BtnADifeNiño2ActionPerformed
 
     private void BtnADifeNiño3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnADifeNiño3ActionPerformed
-         int respuestaUsuario = Integer.parseInt(BtnADifeNiño3.getText().split("\\.")[1].trim());
+        int respuestaUsuario = Integer.parseInt(BtnADifeNiño3.getText().split("\\.")[1].trim());
         verificarRespuesta(Base, String.valueOf(jComboJuego.getSelectedItem()), respuestaUsuario);
     }//GEN-LAST:event_BtnADifeNiño3ActionPerformed
 
@@ -361,14 +361,13 @@ public class PagJuego2Niño extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     // End of variables declaration//GEN-END:variables
 public void cargar_combo1(JComboBox jComboJuego) {
-
         Juego_Diferencias JBuscar = new Juego_Diferencias(null, null, null, 0, null, null);
         ObjectSet resul = Base.get(JBuscar);
+
         while (resul.hasNext()) {
             Juego_Diferencias JCombo = (Juego_Diferencias) resul.next();
             jComboJuego.addItem(JCombo.getDescripcion_Juego());
         }
-        //System.out.println(resul);
     }
 
     public void cargar_datos1() {
@@ -388,11 +387,11 @@ public void cargar_combo1(JComboBox jComboJuego) {
                 Image imagenJuego = Jmostrar.obtenerImagenComoImage();
                 LblImaNiñoDiferenciasJueg.setIcon(getScaledImageIcon(imagenJuego));
 
-                // Obtén las respuestas incorrectas y correctas
+                // Obtén la respuesta correcta
                 int respuestaCorrecta = Jmostrar.getRespuesta_Correcta();
 
-                // Genera dos números aleatorios
-                int[] numerosAleatorios = generarDosNumerosAleatorios();
+                // Genera dos números aleatorios diferentes al número correcto
+                int[] numerosAleatorios = generarDosNumerosAleatorios(respuestaCorrecta);
 
                 // Coloca las respuestas en un ArrayList para facilitar el reordenamiento aleatorio
                 List<Integer> respuestas = Arrays.asList(respuestaCorrecta, numerosAleatorios[0], numerosAleatorios[1]);
@@ -401,9 +400,9 @@ public void cargar_combo1(JComboBox jComboJuego) {
                 Collections.shuffle(respuestas);
 
                 // Asigna las respuestas a los botones
-                BtnADifeNiño1.setText("1. " + respuestas.get(0));
-                BtnADifeNiño2.setText("2. " + respuestas.get(1));
-                BtnADifeNiño3.setText("3. " + respuestas.get(2));
+                BtnADifeNiño1.setText("A. " + respuestas.get(0));
+                BtnADifeNiño2.setText("B. " + respuestas.get(1));
+                BtnADifeNiño3.setText("C. " + respuestas.get(2));
             }
         } else {
             System.out.println("No se encontraron datos para el juego seleccionado.");
@@ -412,33 +411,18 @@ public void cargar_combo1(JComboBox jComboJuego) {
         Base.commit();
     }
 
-    private ImageIcon getScaledImageIcon(Image image) {
-        if (image != null) {
-            return new ImageIcon(image.getScaledInstance(440, 280, Image.SCALE_SMOOTH));
-        } else {
-            return null;
-        }
-    }
-
-    private Juego_Diferencias obtenerInformacionDelJuego(ObjectContainer Base, String Descrip) {
-        Juego_Diferencias juego = new Juego_Diferencias(null, null, null, 0, null, null);
-
-        ObjectSet result = Base.get(juego);
-
-        if (result.hasNext()) {
-            return (Juego_Diferencias) result.next();
-        } else {
-
-            throw new IllegalStateException("No se encontró información del juego.");
-        }
-    }
-
-    public static int[] generarDosNumerosAleatorios() {
+    private int[] generarDosNumerosAleatorios(int numeroCorrecto) {
         Random random = new Random();
         int numerorandom1 = random.nextInt(20) + 1;
         int numerorandom2 = random.nextInt(20) + 1;
 
-        // Puedes devolver los números en un array, por ejemplo
+        // Verifica si los números aleatorios son iguales al número correcto
+        while (numerorandom1 == numeroCorrecto || numerorandom2 == numeroCorrecto || numerorandom1 == numerorandom2) {
+            numerorandom1 = random.nextInt(20) + 1;
+            numerorandom2 = random.nextInt(20) + 1;
+        }
+
+        // Devuelve los números en un array
         return new int[]{numerorandom1, numerorandom2};
     }
 
@@ -453,6 +437,26 @@ public void cargar_combo1(JComboBox jComboJuego) {
         } else {
             JOptionPane.showMessageDialog(this, "Respuesta incorrecta. Inténtelo de nuevo.", "Incorrecto", JOptionPane.ERROR_MESSAGE);
             // Aquí puedes agregar lógica adicional si deseas realizar alguna acción cuando la respuesta es incorrecta.
+        }
+    }
+
+    private ImageIcon getScaledImageIcon(Image image) {
+        if (image != null) {
+            return new ImageIcon(image.getScaledInstance(440, 280, Image.SCALE_SMOOTH));
+        } else {
+            return null;
+        }
+    }
+
+    private Juego_Diferencias obtenerInformacionDelJuego(ObjectContainer Base, String Descrip) {
+        Juego_Diferencias juego = new Juego_Diferencias(null, null, Descrip, 0, null, null);
+
+        ObjectSet result = Base.get(juego);
+
+        if (result.hasNext()) {
+            return (Juego_Diferencias) result.next();
+        } else {
+            throw new IllegalStateException("No se encontró información del juego.");
         }
     }
 

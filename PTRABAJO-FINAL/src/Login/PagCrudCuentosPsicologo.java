@@ -406,28 +406,54 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
     }
 
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
-        Cuento elcue = new Cuento();
-        elcue.setFK_CodPsicologo(RegistrarsePariente.Calcular_cod_Representante(Base));
+        // Validar campos antes de procesar la acción
+        if (Txt_Titulo.getText().isEmpty()
+                || txtAreaIntroduccion.getText().isEmpty()
+                || txtDesarrollo.getText().isEmpty()
+                || txtConclusion.getText().isEmpty() || lblImagenInicial == null || lblImagenFinal == null) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.");
+            return;  // Detener el proceso si los campos no están completos
+        }
 
-        String codigoIncremental = calcularIDCuen(Base);
+        try {
+            Cuento elcue = new Cuento();
+            elcue.setFK_CodPsicologo(RegistrarsePariente.Calcular_cod_Representante(Base));
 
-        elcue.setCod_Cuento(codigoIncremental);
-        elcue.setTitulo_Cuento(Txt_Titulo.getText());
-        elcue.setIntroduccion_Cuento(txtAreaIntroduccion.getText());
-        elcue.setNudo_Cuento(txtDesarrollo.getText());
-        elcue.setDesenlace_Cuento(txtConclusion.getText());
-        elcue.setImagen_Inicial(imagenInicial);
-        elcue.setImagen_Final(imagenFinal);
+            String codigoIncremental = calcularIDCuen(Base);
 
-        // Almacena la ruta del archivo seleccionado en la variable rutaImagenFinal
-        elcue.setRutaImagen(rutaImagenInicial);
-        elcue.setRutaImagen2(rutaImagenFinal);
+            elcue.setCod_Cuento(codigoIncremental);
+            elcue.setTitulo_Cuento(Txt_Titulo.getText());
+            elcue.setIntroduccion_Cuento(txtAreaIntroduccion.getText());
+            elcue.setNudo_Cuento(txtDesarrollo.getText());
+            elcue.setDesenlace_Cuento(txtConclusion.getText());
+            elcue.setImagen_Inicial(imagenInicial);
+            elcue.setImagen_Final(imagenFinal);
 
-        Base.store(elcue);
-        javax.swing.JOptionPane.showMessageDialog(this, "SE GUARDÓ EN LA BASE");
-        MostrarDatos(Base);
+            // Almacena la ruta del archivo seleccionado en la variable rutaImagenFinal
+            elcue.setRutaImagen(rutaImagenInicial);
+            elcue.setRutaImagen2(rutaImagenFinal);
 
+            Base.store(elcue);
+            javax.swing.JOptionPane.showMessageDialog(this, "SE GUARDÓ EN LA BASE");
+
+            // Limpiar campos después de ingresar los datos
+            limpiarCampos();
+
+            MostrarDatos(Base);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al guardar: " + e.getMessage());
+        }
     }//GEN-LAST:event_btnInsertarActionPerformed
+
+    private void limpiarCampos() {
+        Txt_Titulo.setText("");
+        txtAreaIntroduccion.setText("");
+        txtDesarrollo.setText("");
+        txtConclusion.setText("");
+
+        lblImagenFinal.setIcon(null);
+        lblImagenFinal.setIcon(null);
+    }
 
     private void btnImagenInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImagenInicialActionPerformed
         if (seleccionar.showDialog(null, null) == JFileChooser.APPROVE_OPTION) {
@@ -473,66 +499,79 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         try {
-        // Obtener el código del cuento que se desea modificar
-        String codigoCuento = JOptionPane.showInputDialog(this, "Ingrese el código del cuento a modificar:");
+            // Obtener el código del cuento que se desea modificar
+            String codigoCuento = JOptionPane.showInputDialog(this, "Ingrese el código del cuento a modificar:");
 
-        if (codigoCuento != null && !codigoCuento.isEmpty()) {
-            // Buscar el cuento con el código proporcionado
-            int indiceCuento = buscarCuentoPorCodigo(codigoCuento);
+            if (codigoCuento != null && !codigoCuento.isEmpty()) {
+                // Buscar el cuento con el código proporcionado
+                int indiceCuento = buscarCuentoPorCodigo(codigoCuento);
 
-            if (indiceCuento != -1) {
-                // Se encontró el cuento, obtener datos actuales
-                DefaultTableModel modelo = (DefaultTableModel) jTableCuentos.getModel();
-                String nuevoTitulo = validarCampo("Ingrese el nuevo título:", (String) modelo.getValueAt(indiceCuento, 1));
-                String nuevaIntroduccion = validarCampo("Ingrese la nueva introducción:", (String) modelo.getValueAt(indiceCuento, 2));
-                String nuevoDesarrollo = validarCampo("Ingrese el nuevo desarrollo:", (String) modelo.getValueAt(indiceCuento, 3));
-                String nuevaConclusion = validarCampo("Ingrese la nueva conclusión:", (String) modelo.getValueAt(indiceCuento, 4));
+                if (indiceCuento != -1) {
+                    // Se encontró el cuento, obtener datos actuales
+                    DefaultTableModel modelo = (DefaultTableModel) jTableCuentos.getModel();
+                    String nuevoTitulo = validarCampo("Ingrese el nuevo título:", (String) modelo.getValueAt(indiceCuento, 1));
+                    String nuevaIntroduccion = validarCampo("Ingrese la nueva introducción:", (String) modelo.getValueAt(indiceCuento, 2));
+                    String nuevoDesarrollo = validarCampo("Ingrese el nuevo desarrollo:", (String) modelo.getValueAt(indiceCuento, 3));
+                    String nuevaConclusion = validarCampo("Ingrese la nueva conclusión:", (String) modelo.getValueAt(indiceCuento, 4));
 
-                if (nuevoTitulo != null && nuevaIntroduccion != null && nuevoDesarrollo != null && nuevaConclusion != null) {
-                    byte[] nuevaImagen1 = obtenerNuevaImagen();
-                    byte[] nuevaImagen2 = obtenerNuevaImagen();
+                    if (nuevoTitulo != null && nuevaIntroduccion != null && nuevoDesarrollo != null && nuevaConclusion != null) {
+                        byte[] nuevaImagen1 = obtenerNuevaImagen();
+                        byte[] nuevaImagen2 = obtenerNuevaImagen();
 
-                    // Modificar el cuento con los nuevos valores
-                    Modificar_Cuento(Base, codigoCuento, nuevoTitulo, nuevaIntroduccion, nuevoDesarrollo, nuevaConclusion, nuevaImagen1, nuevaImagen2);
-                    MostrarDatos(Base);
+                        // Modificar el cuento con los nuevos valores
+                        Modificar_Cuento(Base, codigoCuento, nuevoTitulo, nuevaIntroduccion, nuevoDesarrollo, nuevaConclusion, nuevaImagen1, nuevaImagen2);
+                        MostrarDatos(Base);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Error: Todos los campos deben ser ingresados.");
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(this, "Error: Todos los campos deben ser ingresados.");
+                    JOptionPane.showMessageDialog(this, "Error: No se encontró el cuento con el código proporcionado.");
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Error: No se encontró el cuento con el código proporcionado.");
+                JOptionPane.showMessageDialog(this, "Debe ingresar un código válido para modificar.");
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "Debe ingresar un código válido para modificar.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al modificar: " + e.getMessage());
         }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Error al modificar: " + e.getMessage());
-    }
-} 
 
-private int buscarCuentoPorCodigo(String codigoCuento) {
-    DefaultTableModel modelo = (DefaultTableModel) jTableCuentos.getModel();
-    for (int i = 0; i < modelo.getRowCount(); i++) {
-        String codigoActual = (String) modelo.getValueAt(i, 0);
-        if (codigoActual.equals(codigoCuento)) {
-            return i; // Se encontró el cuento, devolver el índice de la fila
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private int buscarCuentoPorCodigo(String codigoCuento) {
+        DefaultTableModel modelo = (DefaultTableModel) jTableCuentos.getModel();
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            String codigoActual = (String) modelo.getValueAt(i, 0);
+            if (codigoActual.equals(codigoCuento)) {
+                return i; // Se encontró el cuento, devolver el índice de la fila
+            }
         }
+        return -1;
     }
-    return -1;
-}
 
     private String validarCampo(String mensaje, String valorActual) {
         String nuevoValor = JOptionPane.showInputDialog(this, mensaje, valorActual);
         return (nuevoValor != null && !nuevoValor.isEmpty()) ? nuevoValor : null;
-
-    }//GEN-LAST:event_btnModificarActionPerformed
-
+    }
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        String codigoAConsultar = JOptionPane.showInputDialog(this, "Ingrese el código a consultar");
+        // Mostrar un cuadro de diálogo para que el usuario elija el método de búsqueda
+        String[] opciones = {"Código", "Título"};
+        int seleccion = JOptionPane.showOptionDialog(this, "Seleccione el método de búsqueda:", "Método de Búsqueda", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
 
-        if (codigoAConsultar != null && !codigoAConsultar.isEmpty()) {
-            ConsultarRegistro(Base, codigoAConsultar);
-        } else {
-            JOptionPane.showMessageDialog(this, "Debe ingresar un código válido para consultar.");
+        if (seleccion != -1) {
+            String consulta = "";
+
+            if (seleccion == 0) {
+                // Búsqueda por código
+                consulta = JOptionPane.showInputDialog(this, "Ingrese el código a consultar");
+            } else {
+                // Búsqueda por título
+                consulta = JOptionPane.showInputDialog(this, "Ingrese el título a consultar");
+            }
+
+            if (consulta != null && !consulta.isEmpty()) {
+                ConsultarRegistro(Base, consulta, seleccion);
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar un valor válido para la consulta.");
+            }
         }
 
     }//GEN-LAST:event_btnConsultarActionPerformed
@@ -627,7 +666,7 @@ private int buscarCuentoPorCodigo(String codigoCuento) {
     }
 
     public byte[] AbrirArchivo(File archivo) {
-        try (FileInputStream entrada = new FileInputStream(archivo)) {
+        try ( FileInputStream entrada = new FileInputStream(archivo)) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             byte[] buffer = new byte[1024];
             int bytesRead;
@@ -727,13 +766,20 @@ private int buscarCuentoPorCodigo(String codigoCuento) {
         }
     }
 
-    private void ConsultarRegistro(ObjectContainer base, String CodCuento) {
-
+    private void ConsultarRegistro(ObjectContainer base, String consulta, int tipoConsulta) {
         // Creando un objeto de ejemplo para la consulta
-        Cuento especializacion = new Cuento(CodCuento, null, null, null, null, null, null, null, null, null);
+        Cuento ejemploConsulta;
+
+        if (tipoConsulta == 0) {
+            // Búsqueda por código
+            ejemploConsulta = new Cuento(consulta, null, null, null, null, null, null, null, null, null);
+        } else {
+            // Búsqueda por título
+            ejemploConsulta = new Cuento(null, null, consulta, null, null, null, null, null, null, null);
+        }
 
         // Consultando la base de datos
-        ObjectSet result = base.queryByExample(especializacion);
+        ObjectSet result = base.queryByExample(ejemploConsulta);
 
         if (result.hasNext()) {
             // Manejando el resultado (puedes querer mostrarlo o procesarlo)
