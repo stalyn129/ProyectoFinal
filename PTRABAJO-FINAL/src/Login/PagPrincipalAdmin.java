@@ -41,6 +41,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        cerrar_ = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -57,7 +58,6 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         BtnUsuario = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        cerrar_ = new javax.swing.JButton();
         panel_grafic = new javax.swing.JPanel();
         BtnPersonalidadAdmin = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
@@ -72,6 +72,14 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cerrar_.setText("X");
+        cerrar_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrar_ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cerrar_, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 500));
@@ -198,14 +206,6 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         jLabel10.setText("USUARIOS");
         jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 330, -1, 30));
-
-        cerrar_.setText("X");
-        cerrar_.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cerrar_ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(cerrar_, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 0, -1, -1));
 
         panel_grafic.setBackground(new java.awt.Color(255, 255, 255));
         panel_grafic.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));

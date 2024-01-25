@@ -108,6 +108,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         TxtTelfPari = new javax.swing.JTextField();
         jSeparator19 = new javax.swing.JSeparator();
         BtnRegresar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -440,6 +441,14 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
+
+        jButton1.setText("x");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
@@ -1240,6 +1249,11 @@ public class RegistrarsePariente extends javax.swing.JFrame {
     private void TxtTelfPariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtTelfPariActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtTelfPariActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Base.close();
+        System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
     public void Discapacidad_ingr(ObjectContainer Base) {
         Query query = Base.query();
         query.constrain(Discapacidad.class
@@ -1495,6 +1509,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
     private javax.swing.JTextField TxtTituloParien;
     private javax.swing.JTextField Txt_profecion;
     private javax.swing.JComboBox<String> cbx_discapacidad_pariente;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

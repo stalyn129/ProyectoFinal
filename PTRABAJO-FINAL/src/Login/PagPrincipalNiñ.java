@@ -35,6 +35,8 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnExit1 = new javax.swing.JButton();
+        btnExit2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         Cuentos = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -62,8 +64,23 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         JMnPgPrinNiño2 = new javax.swing.JMenu();
 
+        btnExit1.setText("x");
+        btnExit1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExit1ActionPerformed(evt);
+            }
+        });
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnExit2.setText("x");
+        btnExit2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExit2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnExit2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -267,6 +284,16 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
                     this.setVisible(false);
     }//GEN-LAST:event_jMenuItem1MousePressed
 
+    private void btnExit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit1ActionPerformed
+
+        System.exit(0);
+    }//GEN-LAST:event_btnExit1ActionPerformed
+
+    private void btnExit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit2ActionPerformed
+
+        System.exit(0);
+    }//GEN-LAST:event_btnExit2ActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -285,6 +312,9 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
     private javax.swing.JMenuBar MenuGenerlNiño;
     private javax.swing.JPanel MiniJuegos;
     private javax.swing.JPanel Test;
+    private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnExit1;
+    private javax.swing.JButton btnExit2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;

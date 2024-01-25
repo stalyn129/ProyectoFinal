@@ -35,6 +35,7 @@ public class PagTestNiño extends javax.swing.JFrame {
         BtnGrupEmocionesNiño3 = new javax.swing.ButtonGroup();
         BtnGrupEmocionesNiño4 = new javax.swing.ButtonGroup();
         BtnGrupEmocionesNiño5 = new javax.swing.ButtonGroup();
+        btnExit = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
@@ -88,6 +89,14 @@ public class PagTestNiño extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnExit.setText("x");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -317,6 +326,11 @@ public class PagTestNiño extends javax.swing.JFrame {
                     this.setVisible(false);
     }//GEN-LAST:event_JMnItmCerrarNiñoMousePressed
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+
+        System.exit(0);
+    }//GEN-LAST:event_btnExitActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -341,6 +355,7 @@ public class PagTestNiño extends javax.swing.JFrame {
     private javax.swing.JLabel LblTest5Niño;
     private javax.swing.JLabel LblTitulo3InfNiño;
     private javax.swing.JMenuBar MenuTestNiño;
+    private javax.swing.JButton btnExit;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JRadioButton jRadioButton1;

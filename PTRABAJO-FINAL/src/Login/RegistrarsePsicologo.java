@@ -107,6 +107,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         sp_años = new javax.swing.JSpinner();
         cbx_especializacion = new javax.swing.JComboBox<>();
         BtnRegresar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         Fondo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -398,6 +399,14 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
+
+        jButton1.setText("x");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
@@ -1025,6 +1034,11 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
 
     }//GEN-LAST:event_CmbBxNacionalidad3PsicolMousePressed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Base.close();
+        System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public static int Verificar_cedula_Persona(ObjectContainer Base, String cedula) {
         Persona elprson = new Persona();
         elprson.setCedula(cedula);
@@ -1199,6 +1213,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
     private javax.swing.JTextField TxtTelefono;
     private javax.swing.JComboBox<String> cbx_discapacidad;
     private javax.swing.JComboBox<String> cbx_especializacion;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;

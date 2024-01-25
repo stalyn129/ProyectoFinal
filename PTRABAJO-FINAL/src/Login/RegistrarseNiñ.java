@@ -83,6 +83,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
         jSeparator15 = new javax.swing.JSeparator();
         CfContraNiño = new javax.swing.JPasswordField();
         ConfirmarContraseña = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -288,6 +289,14 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
         jPanel2.add(ConfirmarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 220, -1, 20));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 650, 380));
+
+        jButton1.setText("x");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
@@ -592,6 +601,11 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CfContraNiñoActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Base.close();
+        System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton BtnDiscaNiñ;
@@ -621,6 +635,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
     private javax.swing.JTextField TxtApellidoNiño;
     private javax.swing.JTextField TxtApodoNiño;
     private javax.swing.JTextField TxtNombreNiño;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

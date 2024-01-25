@@ -99,6 +99,7 @@ public class PagInfNiño extends javax.swing.JFrame {
     private void initComponents() {
 
         jSeparator3 = new javax.swing.JSeparator();
+        btnExit = new javax.swing.JButton();
         PnlPrincipalInfNiño = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
@@ -126,6 +127,14 @@ public class PagInfNiño extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnExit.setText("x");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         PnlPrincipalInfNiño.setBackground(new java.awt.Color(255, 255, 255));
         PnlPrincipalInfNiño.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -243,6 +252,11 @@ public class PagInfNiño extends javax.swing.JFrame {
                     this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiño2MouseClicked
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+
+        System.exit(0);
+    }//GEN-LAST:event_btnExitActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -259,6 +273,7 @@ public class PagInfNiño extends javax.swing.JFrame {
     private javax.swing.JMenuBar MenuGenerlNiño;
     private javax.swing.JPanel PnlPrincipalInfNiño;
     private javax.swing.JTextArea Txt1InfNiño;
+    private javax.swing.JButton btnExit;
     private javax.swing.JComboBox<String> cbx_datos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem jMenuItem1;

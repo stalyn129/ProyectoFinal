@@ -33,6 +33,7 @@ public class PagCuentosNiño extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnExit = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -65,6 +66,14 @@ public class PagCuentosNiño extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnExit.setText("x");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -226,6 +235,11 @@ public class PagCuentosNiño extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiño2MouseClicked
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+
+        System.exit(0);
+    }//GEN-LAST:event_btnExitActionPerformed
+
 
     private ImageIcon getScaledImageIcon(Image image) {
         if (image != null) {
@@ -284,6 +298,7 @@ public class PagCuentosNiño extends javax.swing.JFrame {
     private javax.swing.JTextArea TxtConcluNiñoCuen;
     private javax.swing.JTextArea TxtDesarroNiñoCuen;
     private javax.swing.JTextArea TxtIntroNiñoCuen;
+    private javax.swing.JButton btnExit;
     private javax.swing.JComboBox<String> jCmbBoxCuentos;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;

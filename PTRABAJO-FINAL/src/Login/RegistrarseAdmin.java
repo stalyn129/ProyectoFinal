@@ -105,7 +105,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         TxtTelfAdmin = new javax.swing.JTextField();
         TxtCorreoAdmin = new javax.swing.JTextField();
         BtnRegresar = new javax.swing.JButton();
-        jLabel17 = new javax.swing.JLabel();
+        btnExit = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -388,14 +388,13 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel17.setText("X");
-        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel17MouseClicked(evt);
+        btnExit.setText("x");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
             }
         });
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
@@ -1059,11 +1058,10 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_TxtTelfAdminMousePressed
 
-    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
-
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         Base.close();
         System.exit(0);
-    }//GEN-LAST:event_jLabel17MouseClicked
+    }//GEN-LAST:event_btnExitActionPerformed
 
     public static String Calcular_IDAdmin(ObjectContainer Base) {
 
@@ -1202,6 +1200,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField TxtNombreAdmin;
     private javax.swing.JTextField TxtTelfAdmin;
     private javax.swing.JTextField TxtTituloAdmin;
+    private javax.swing.JButton btnExit;
     private javax.swing.JComboBox<String> cbx_discapasidad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1211,7 +1210,6 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

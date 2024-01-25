@@ -58,6 +58,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnExit = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -92,6 +93,14 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnExit.setText("x");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -459,6 +468,11 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
                 consulta(Base,userInput);
     }//GEN-LAST:event_btn_consultarActionPerformed
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+
+        System.exit(0);
+    }//GEN-LAST:event_btnExitActionPerformed
+
     public void Eliminar(ObjectContainer Base) {
         Informacion inf = new Informacion();
         inf.setCod_Info(cod_info_mod);
@@ -690,6 +704,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
     private javax.swing.JMenu JMnPgPrinPsicolo;
     private javax.swing.JLabel LblImagen4InfoNiño;
     private javax.swing.JLabel LblTitulo3InfNiño;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btn_Ingresar_imagen;
     private javax.swing.JButton btn_actualizar;
     private javax.swing.JButton btn_consultar;

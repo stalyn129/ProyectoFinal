@@ -76,7 +76,6 @@ public class Responder_Test_represent extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         txt_titulo_test = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
@@ -96,6 +95,7 @@ public class Responder_Test_represent extends javax.swing.JFrame {
         Ingresar_respuesta = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
+        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
@@ -105,15 +105,6 @@ public class Responder_Test_represent extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("X");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, -1, 30));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -277,6 +268,14 @@ public class Responder_Test_represent extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 440, 280));
 
+        jButton1.setText("x");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
+
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Preguntas");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, -1, -1));
@@ -390,11 +389,6 @@ public class Responder_Test_represent extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cargar_pregActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Base.close();
-        System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void Ingresar_respuestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ingresar_respuestaActionPerformed
         SwingUtilities.invokeLater(() -> {
             respuesta_ususario(Base);
@@ -484,6 +478,11 @@ public class Responder_Test_represent extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_txt_resp3MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Base.close();
+        System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void respuesta_ususario(ObjectContainer Base) {
         if (Que_respondi == 0) {

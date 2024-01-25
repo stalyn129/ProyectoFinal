@@ -52,6 +52,7 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnExit = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
@@ -81,6 +82,14 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnExit.setText("x");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(860, 500));
@@ -249,6 +258,11 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
                     this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinParienteMouseClicked
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+
+        System.exit(0);
+    }//GEN-LAST:event_btnExitActionPerformed
+
     public void caracteristicas_ponle(ObjectContainer Base, String titulo) {
         
             Test mitest = new Test();
@@ -405,6 +419,7 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
     private javax.swing.JLabel LblTestPariente1;
     private javax.swing.JLabel LblTestPariente2;
     private javax.swing.JMenuBar MenuCuentosNiño;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btn_Cargar;
     private javax.swing.JButton btn_responder;
     private javax.swing.JLabel jLabel2;

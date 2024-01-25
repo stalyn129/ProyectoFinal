@@ -38,6 +38,7 @@ public class RegistrarseGeneral extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        btnExit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         LbTitulo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -63,6 +64,14 @@ public class RegistrarseGeneral extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(105, 181, 12));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnExit.setText("x");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 40, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo3.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 280, 520));
@@ -229,6 +238,11 @@ JPasswordField passwordField = new JPasswordField();
                     this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+
+        System.exit(0);
+    }//GEN-LAST:event_btnExitActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -243,6 +257,7 @@ JPasswordField passwordField = new JPasswordField();
     private javax.swing.JLabel LbTitulo;
     private javax.swing.JLabel Pariente;
     private javax.swing.JLabel Psicologo;
+    private javax.swing.JButton btnExit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

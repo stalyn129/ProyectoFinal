@@ -61,6 +61,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnExit = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -106,6 +107,14 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnExit.setText("x");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -633,6 +642,11 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_JTConsejosMouseClicked
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+
+        System.exit(0);
+    }//GEN-LAST:event_btnExitActionPerformed
+
     public byte[] AbrirArchivo(File archivo) {
         try ( FileInputStream entrada = new FileInputStream(archivo)) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -915,6 +929,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     private javax.swing.JTable JTConsejos;
     private javax.swing.JTextField Txt_TituloConsejPsicologo1;
     private javax.swing.JTextField Txt_TituloConsejPsicologo2;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btn_Ingresar_imagen;
     private javax.swing.JButton btn_Ingresar_imagen1;
     private javax.swing.JButton btn_ingresar1;

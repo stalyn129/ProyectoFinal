@@ -89,6 +89,7 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableJuegoLab = new javax.swing.JTable();
         btn_Eliminar = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -274,6 +275,14 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
         jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 450));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 650, 450));
+
+        btnExit.setText("x");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoJuegosRepresentante.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, -110, 1860, 680));
@@ -511,6 +520,11 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtResInc2ActionPerformed
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+
+        System.exit(0);
+    }//GEN-LAST:event_btnExitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -552,6 +566,7 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
     private javax.swing.JMenu JMnPgPrinPsicolo;
     private javax.swing.JLabel LblInfor2Niño;
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btn_Eliminar;
     private javax.swing.JButton btn_Ingresar_imagen1;
     private javax.swing.JButton btn_consultar;

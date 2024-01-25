@@ -81,6 +81,7 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
         txtDescripcion = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableJDif = new javax.swing.JTable();
+        btnExit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenu3puntitosPsicologo = new javax.swing.JMenu();
@@ -263,6 +264,14 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 380));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 640, 380));
+
+        btnExit.setText("x");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -476,6 +485,11 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTableJDifMouseClicked
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+
+        System.exit(0);
+    }//GEN-LAST:event_btnExitActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -514,6 +528,7 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
     private javax.swing.JMenu JMnPgPrinPsicolo;
     private javax.swing.JLabel LblInfor2Niño;
     private javax.swing.JButton bnt_Actualizar;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btn_Eliminar;
     private javax.swing.JButton btn_Ingresar_imagen1;
     private javax.swing.JButton btn_Modificar;
