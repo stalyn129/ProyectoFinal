@@ -13,6 +13,7 @@ import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -212,18 +213,36 @@ public class InicioNiño extends javax.swing.JFrame {
     private void txt_contrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_contrActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_contrActionPerformed
+    public boolean Verificar_estado(ObjectContainer Base, String apodo) {
+        boolean estado = true;
+        Niño nin = new Niño();
+        nin.setApodo(apodo);
+        ObjectSet Result = Base.get(nin);
 
+        while (Result.hasNext()) {
+            Niño next = (Niño) Result.next();
+
+            estado = next.isEstado();
+        }
+        System.out.println("Estado: " + estado);
+        return estado;
+    }
     private void TXT_IngreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TXT_IngreMouseClicked
         if (!txt_usuario.getText().isEmpty()) {
             if (!String.valueOf(txt_contr.getPassword()).isEmpty()) {
 
                 if (Buscar_niño(Base, txt_usuario.getText(), String.valueOf(txt_contr.getPassword())) == 1) {
 
-                    javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
-                    Base.close();
-                    PagPrincipalNiñ elpagina = new PagPrincipalNiñ();
-                    elpagina.setVisible(true);
-                    this.setVisible(false);
+                    if (Verificar_estado(Base, txt_usuario.getText())) {
+                        javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
+                        Base.close();
+                        PagPrincipalNiñ elpagina = new PagPrincipalNiñ();
+                        elpagina.setVisible(true);
+                        this.setVisible(false);
+
+                    } else {
+                        JOptionPane.showMessageDialog(this, "El NIÑO A SIDO ELIMINADO");
+                    }
 
                 } else {
                     javax.swing.JOptionPane.showMessageDialog(this, "Los datos no se encuentran registrados");

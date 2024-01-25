@@ -7,8 +7,10 @@ package Login;
 
 import Clases.Administrador;
 import Clases.Niño;
+import Clases.Persona;
 import Clases.Psicologo;
 import Clases.Representante;
+import Clases.UserDataSingleton;
 import com.db4o.*;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -25,11 +27,13 @@ import org.jfree.data.general.DefaultPieDataset;
 public class PagPrincipalAdmin extends javax.swing.JFrame {
 
     ObjectContainer Base;
-
+    UserDataSingleton usarData;
     public PagPrincipalAdmin() {
         initComponents();
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
         mostrar_diagrama();
+        usarData = UserDataSingleton.getInstance();
+        Mostra_usuario(Base);
     }
 
     /**
@@ -63,6 +67,9 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         BtnCerrarPagina = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        Txt_Nombre = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel7 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -266,6 +273,18 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         jLabel2.setText("BIENVENIDO A: \" NI UNO MAS\"");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, -1, -1));
 
+        Txt_Nombre.setEditable(false);
+        Txt_Nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Txt_NombreActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 470, 110, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 492, 120, 0));
+
+        jLabel7.setText("Administrador:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, -1, -1));
+
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoAdmin.png"))); // NOI18N
         Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-570, 0, 1380, 540));
@@ -309,9 +328,9 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
 
     private void BtnParentescoAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnParentescoAdminActionPerformed
         Base.close();
-            Crud_Parentesco parentesco = new Crud_Parentesco();
-                parentesco.setVisible(true);
-                    this.setVisible(false);
+        Crud_Parentesco parentesco = new Crud_Parentesco();
+        parentesco.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnParentescoAdminActionPerformed
 
     private void BtnMiniReporActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMiniReporActionPerformed
@@ -335,8 +354,8 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     private void BtnDiscaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDiscaAdminActionPerformed
         Base.close();
         Crud_Discapacidad Disca = new Crud_Discapacidad();
-            Disca.setVisible(true);
-                this.setVisible(false);
+        Disca.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnDiscaAdminActionPerformed
 
     private void BtnNacionalidadMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnNacionalidadMouseExited
@@ -358,24 +377,24 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnDiscaAdminMouseClicked
 
     private void panel_graficMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_graficMouseClicked
-        
+
     }//GEN-LAST:event_panel_graficMouseClicked
 
     private void BtnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUsuarioActionPerformed
-         Base.close();
-        Reporte_Usuarios usa=new Reporte_Usuarios();
+        Base.close();
+        Reporte_Usuarios usa = new Reporte_Usuarios();
         usa.setVisible(true);
         this.setVisible(false);
-        
-        
+
+
     }//GEN-LAST:event_BtnUsuarioActionPerformed
 
     private void BtnPersonalidadAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPersonalidadAdminActionPerformed
         Base.close();
-        
-            Crud_Personalidad personalidad = new Crud_Personalidad();
-               personalidad.setVisible(true);
-                    this.setVisible(false); 
+
+        Crud_Personalidad personalidad = new Crud_Personalidad();
+        personalidad.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnPersonalidadAdminActionPerformed
 
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
@@ -399,6 +418,10 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
     }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
+
+    private void Txt_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_NombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Txt_NombreActionPerformed
     public void mostrar_diagrama() {
         DefaultPieDataset datos = new DefaultPieDataset();
         datos.setValue("Administradores", Num_Administradores(Base));
@@ -457,6 +480,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JButton BtnUsuario;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
+    private javax.swing.JTextField Txt_Nombre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -466,6 +490,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -474,6 +499,41 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel panel_grafic;
     // End of variables declaration//GEN-END:variables
+public void Mostra_usuario(ObjectContainer Base) {
+        String nombres = "";
+        Administrador admin = new Administrador();
+        admin.setID_Admin(usarData.getCod_Admin());
+        ObjectSet result = Base.get(admin);
+
+        while (result.hasNext()) {
+            Administrador adm = (Administrador) result.next();
+
+            String cedula = adm.getFK_Cedula();
+            nombres = Sacar_persona(Base, cedula);
+        }
+
+        Txt_Nombre.setText(nombres);
+
+    }
+
+    public String Sacar_persona(ObjectContainer Base, String cod) {
+        String nombre = "", apellido = "";
+        Persona person = new Persona();
+        person.setCedula(cod);
+        ObjectSet result = Base.get(person);
+
+        while (result.hasNext()) {
+            Persona next = (Persona) result.next();
+            nombre = next.getNombre();
+            apellido = next.getApellido();
+
+        }
+
+        String NomCompleto = nombre + " " + apellido;
+
+        return NomCompleto;
+    }
 }

@@ -242,6 +242,39 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         Recuperar = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla_mostrr = new javax.swing.JTable();
+        txt_consultar = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        btn_eliminar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        txt_codigo = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txt_nombre = new javax.swing.JTextField();
+        txt_apellido = new javax.swing.JTextField();
+        txt_email = new javax.swing.JTextField();
+        txt_direccion = new javax.swing.JTextField();
+        txt_telefono = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel8 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        cmbx_seleccion = new javax.swing.JComboBox<>();
+        txt_roll = new javax.swing.JTextField();
+        btn_buscar = new javax.swing.JButton();
+        txtP_contraseña = new javax.swing.JPasswordField();
+        jButton8 = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        txt_cod_rol = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla_niños = new javax.swing.JTable();
@@ -285,39 +318,6 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         btn_bus_usua = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabla_mostrr = new javax.swing.JTable();
-        txt_consultar = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        btn_eliminar = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        txt_codigo = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        txt_nombre = new javax.swing.JTextField();
-        txt_apellido = new javax.swing.JTextField();
-        txt_email = new javax.swing.JTextField();
-        txt_direccion = new javax.swing.JTextField();
-        txt_telefono = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel8 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        cmbx_seleccion = new javax.swing.JComboBox<>();
-        txt_roll = new javax.swing.JTextField();
-        btn_buscar = new javax.swing.JButton();
-        txtP_contraseña = new javax.swing.JPasswordField();
-        jButton8 = new javax.swing.JButton();
-        jLabel20 = new javax.swing.JLabel();
-        txt_cod_rol = new javax.swing.JTextField();
-        jLabel25 = new javax.swing.JLabel();
         BtnCerrarPagina = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
@@ -334,6 +334,167 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
 
         Recuperar.setBackground(new java.awt.Color(255, 255, 255));
         Recuperar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tabla_mostrr.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "CEDULA", "NOMBRE", "APELLIDO", "DIRECCION", "Fech_Nacimint.", "EMAIL", "Cod_Discap.", "Telefono"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabla_mostrr.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabla_mostrrMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabla_mostrr);
+
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 670, 210));
+
+        txt_consultar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel3.add(txt_consultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 130, 20));
+        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 150, 10));
+
+        btn_eliminar.setText("Eliminar");
+        btn_eliminar.setToolTipText("Elimina los datos existentes en la tabla");
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, 110, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel3.setText("Consultar:");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
+
+        jButton3.setText("Modificar");
+        jButton3.setToolTipText("Modifica los datos existentes en la tabla");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 40, 110, -1));
+
+        txt_codigo.setEditable(false);
+        jPanel3.add(txt_codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 90, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setText("Nombre:");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, -1, 20));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel5.setText("Codigo Rol:");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 20));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel6.setText("Direccion:");
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, -1, 20));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel7.setText("Email:");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, -1, 20));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel9.setText("Contraseña:");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, -1, 20));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel10.setText("Telefono:");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, -1, 20));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel11.setText("Cedula:");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, 20));
+        jPanel3.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 100, -1));
+        jPanel3.add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 100, -1));
+        jPanel3.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 160, -1));
+        jPanel3.add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 200, -1));
+        jPanel3.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 130, -1));
+        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 680, -1));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel8.setText("Apellido:");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, -1, 20));
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setText("Tipo Usuario:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
+
+        cmbx_seleccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Psicologo", "Representante", "Administrador" }));
+        cmbx_seleccion.setToolTipText("Selecciona lo siguiente");
+        jPanel2.add(cmbx_seleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 141, -1));
+
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 240, 40));
+
+        txt_roll.setEditable(false);
+        jPanel3.add(txt_roll, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 110, -1));
+
+        btn_buscar.setText("BUSCAR");
+        btn_buscar.setToolTipText("Busca por la cédula al usuario");
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 210, -1));
+        jPanel3.add(txtP_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, 130, -1));
+
+        jButton8.setText("Actualizar");
+        jButton8.setToolTipText("Actualiza los datos existentes en la tabla");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 110, -1));
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel20.setText("Rol:");
+        jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, 20));
+
+        txt_cod_rol.setEditable(false);
+        txt_cod_rol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_cod_rolActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txt_cod_rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 70, -1));
+
+        jLabel25.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel3.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, 110, 70));
+
+        Recuperar.addTab("Usuario", jPanel3);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -590,167 +751,6 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         jPanel4.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 0, 90, 70));
 
         Recuperar.addTab("Recuperar Eliminados", jPanel4);
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tabla_mostrr.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "CEDULA", "NOMBRE", "APELLIDO", "DIRECCION", "Fech_Nacimint.", "EMAIL", "Cod_Discap.", "Telefono"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tabla_mostrr.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabla_mostrrMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tabla_mostrr);
-
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 670, 210));
-
-        txt_consultar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel3.add(txt_consultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 130, 20));
-        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 150, 10));
-
-        btn_eliminar.setText("Eliminar");
-        btn_eliminar.setToolTipText("Elimina los datos existentes en la tabla");
-        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_eliminarActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, 110, -1));
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel3.setText("Consultar:");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
-
-        jButton3.setText("Modificar");
-        jButton3.setToolTipText("Modifica los datos existentes en la tabla");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 40, 110, -1));
-
-        txt_codigo.setEditable(false);
-        jPanel3.add(txt_codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 90, -1));
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setText("Nombre:");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, -1, 20));
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel5.setText("Codigo Rol:");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 20));
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel6.setText("Direccion:");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, -1, 20));
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel7.setText("Email:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, -1, 20));
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel9.setText("Contraseña:");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, -1, 20));
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel10.setText("Telefono:");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, -1, 20));
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel11.setText("Cedula:");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, 20));
-        jPanel3.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 100, -1));
-        jPanel3.add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 100, -1));
-        jPanel3.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 160, -1));
-        jPanel3.add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 200, -1));
-        jPanel3.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 130, -1));
-        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 680, -1));
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel8.setText("Apellido:");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, -1, 20));
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("Tipo Usuario:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
-
-        cmbx_seleccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Psicologo", "Representante", "Administrador" }));
-        cmbx_seleccion.setToolTipText("Selecciona lo siguiente");
-        jPanel2.add(cmbx_seleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 141, -1));
-
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 240, 40));
-
-        txt_roll.setEditable(false);
-        jPanel3.add(txt_roll, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 110, -1));
-
-        btn_buscar.setText("BUSCAR");
-        btn_buscar.setToolTipText("Busca por la cédula al usuario");
-        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_buscarActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 210, -1));
-        jPanel3.add(txtP_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, 130, -1));
-
-        jButton8.setText("Actualizar");
-        jButton8.setToolTipText("Actualiza los datos existentes en la tabla");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 110, -1));
-
-        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel20.setText("Rol:");
-        jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, 20));
-
-        txt_cod_rol.setEditable(false);
-        txt_cod_rol.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_cod_rolActionPerformed(evt);
-            }
-        });
-        jPanel3.add(txt_cod_rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 70, -1));
-
-        jLabel25.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
-        jPanel3.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, 110, 70));
-
-        Recuperar.addTab("Usuario", jPanel3);
 
         jPanel1.add(Recuperar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 720, 430));
         Recuperar.getAccessibleContext().setAccessibleName("");
