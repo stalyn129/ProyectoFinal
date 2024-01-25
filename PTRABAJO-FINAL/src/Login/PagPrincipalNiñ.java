@@ -36,7 +36,6 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
     private void initComponents() {
 
         btnExit1 = new javax.swing.JButton();
-        btnExit2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         Cuentos = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -53,6 +52,8 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
         BtnInfNiño = new javax.swing.JButton();
         Inf = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        BtnCerrarPagina = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -73,14 +74,6 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnExit2.setText("x");
-        btnExit2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExit2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnExit2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -103,6 +96,7 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
 
         BtnConseNiño.setBackground(new java.awt.Color(255, 255, 255));
         BtnConseNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Consejos.png"))); // NOI18N
+        BtnConseNiño.setToolTipText("Haz click aqui para entrar a los consejos");
         BtnConseNiño.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnConseNiño.setOpaque(false);
         BtnConseNiño.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +108,7 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
 
         BtnCuentosNiño1.setBackground(new java.awt.Color(255, 255, 255));
         BtnCuentosNiño1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CuentosNiño.png"))); // NOI18N
+        BtnCuentosNiño1.setToolTipText("Haz click aqui para entrar a los cuentos");
         BtnCuentosNiño1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnCuentosNiño1.setOpaque(false);
         BtnCuentosNiño1.addActionListener(new java.awt.event.ActionListener() {
@@ -133,6 +128,7 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
 
         BtnTestNiño2.setBackground(new java.awt.Color(255, 255, 255));
         BtnTestNiño2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TestIconoNiño.png"))); // NOI18N
+        BtnTestNiño2.setToolTipText("Haz click aqui para entrar a los test");
         BtnTestNiño2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnTestNiño2.setOpaque(false);
         BtnTestNiño2.addActionListener(new java.awt.event.ActionListener() {
@@ -152,6 +148,7 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
 
         BtnMiniJueNiño1.setBackground(new java.awt.Color(255, 255, 255));
         BtnMiniJueNiño1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JuegosNiños.png"))); // NOI18N
+        BtnMiniJueNiño1.setToolTipText("Haz click aqui para entrar a los minijuegos");
         BtnMiniJueNiño1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnMiniJueNiño1.setOpaque(false);
         BtnMiniJueNiño1.addActionListener(new java.awt.event.ActionListener() {
@@ -163,6 +160,7 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
 
         BtnInfNiño.setBackground(new java.awt.Color(255, 255, 255));
         BtnInfNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/InformacionNiño.png"))); // NOI18N
+        BtnInfNiño.setToolTipText("Haz click aqui para entrar a información");
         BtnInfNiño.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnInfNiño.setOpaque(false);
         BtnInfNiño.addActionListener(new java.awt.event.ActionListener() {
@@ -179,6 +177,29 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
         Inf.add(jLabel4);
 
         jPanel1.add(Inf, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 100, -1));
+
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
+            }
+        });
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 40, 30));
+
+        jLabel6.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, 70));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel5.setText("Puedes elegir entre todas estas opciones");
@@ -207,11 +228,13 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 800, 500));
 
         JMnItmCerrarNiño2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        JMnItmCerrarNiño2.setToolTipText("Configuración");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
         jMenuItem1.setText("Cerrar Sesión");
+        jMenuItem1.setToolTipText("Cierra la sesión iniciada");
         jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jMenuItem1MousePressed(evt);
@@ -222,6 +245,7 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
         MenuGenerlNiño.add(JMnItmCerrarNiño2);
 
         JMnPgPrinNiño2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
+        JMnPgPrinNiño2.setToolTipText("Regresa a la página principal");
         JMnPgPrinNiño2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JMnPgPrinNiño2MouseClicked(evt);
@@ -289,14 +313,18 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btnExit1ActionPerformed
 
-    private void btnExit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit2ActionPerformed
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
 
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_btnExit2ActionPerformed
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JButton BtnConseNiño;
     private javax.swing.JButton BtnCuentosNiño1;
     private javax.swing.JButton BtnInfNiño;
@@ -312,9 +340,7 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
     private javax.swing.JMenuBar MenuGenerlNiño;
     private javax.swing.JPanel MiniJuegos;
     private javax.swing.JPanel Test;
-    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnExit1;
-    private javax.swing.JButton btnExit2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -324,6 +350,7 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

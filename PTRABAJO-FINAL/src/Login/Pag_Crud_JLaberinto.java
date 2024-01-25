@@ -65,7 +65,6 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
-        LblInfor2Niño = new javax.swing.JLabel();
         lbl_ImagenLab = new javax.swing.JLabel();
         btn_Ingresar_imagen1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -89,7 +88,9 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableJuegoLab = new javax.swing.JTable();
         btn_Eliminar = new javax.swing.JButton();
-        btnExit = new javax.swing.JButton();
+        BtnCerrarPagina = new javax.swing.JButton();
+        LblInfor2Niño = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -117,11 +118,6 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
         jPanel3.setPreferredSize(new java.awt.Dimension(633, 1065));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        LblInfor2Niño.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
-        LblInfor2Niño.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LblInfor2Niño.setText("Juego del Laberinto");
-        jPanel3.add(LblInfor2Niño, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 170, -1));
-
         lbl_ImagenLab.setForeground(new java.awt.Color(204, 204, 204));
         lbl_ImagenLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_ImagenLab.setText(" Ingresar Imagen");
@@ -135,7 +131,7 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
             }
         });
         jPanel3.add(btn_Ingresar_imagen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, 160, -1));
-        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 170, 10));
+        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 520, 10));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel6.setText("Ingrese las opcion de respuesta correcta:");
@@ -145,10 +141,11 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel7.setText("Descripción:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, -1));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
 
         btn_consultar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_consultar.setText("Consultar");
+        btn_consultar.setToolTipText("Consulta los datos existentes en la tabla");
         btn_consultar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_consultarMouseClicked(evt);
@@ -163,6 +160,7 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
 
         btn_modificar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_modificar.setText("Modificar");
+        btn_modificar.setToolTipText("Modifica los datos existentes en la tabla");
         btn_modificar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_modificarMouseClicked(evt);
@@ -177,6 +175,7 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
 
         btnActualizar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnActualizar.setText("Actualizar");
+        btnActualizar.setToolTipText("Actualiza los datos existentes en la tabla");
         btnActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnActualizarMouseClicked(evt);
@@ -191,6 +190,7 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
 
         btn_ingresar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_ingresar.setText("Ingresar Juego");
+        btn_ingresar.setToolTipText("Ingresa datos nuevos a la tabla");
         btn_ingresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_ingresarMouseClicked(evt);
@@ -208,12 +208,13 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
         jLabel8.setText("Ingrese la imagen del laberinto");
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
 
+        txtDescripcion.setToolTipText("Escriba el");
         txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDescripcionActionPerformed(evt);
             }
         });
-        jPanel3.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 400, -1));
+        jPanel3.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 400, -1));
         jPanel3.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 480, 10));
 
         txtResInc1.addActionListener(new java.awt.event.ActionListener() {
@@ -238,7 +239,36 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
 
         jTableJuegoLab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
                 "Codigo_Juego", "Descripción", "RutaImagen", "Incorrecta 1", "Incorrecta 2", "Incorrecta 3", "Correcta"
@@ -258,6 +288,7 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
 
         btn_Eliminar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_Eliminar.setText("Eliminar");
+        btn_Eliminar.setToolTipText("Elimina los datos existentes en la tabla");
         btn_Eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_EliminarMouseClicked(evt);
@@ -272,17 +303,37 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
 
         jScrollPane3.setViewportView(jPanel3);
 
-        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 450));
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 330));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 650, 450));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 650, 300));
 
-        btnExit.setText("x");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
             }
         });
-        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
+
+        LblInfor2Niño.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
+        LblInfor2Niño.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblInfor2Niño.setText("Juego del Laberinto");
+        jPanel1.add(LblInfor2Niño, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 170, -1));
+
+        jLabel3.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 70));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoJuegosRepresentante.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, -110, 1860, 680));
@@ -293,10 +344,12 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
 
         JMenu3puntitosPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        JMenu3puntitosPsicologo.setToolTipText("Configuración");
 
         JMnItmCerrarPsicologo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         JMnItmCerrarPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
         JMnItmCerrarPsicologo.setText("Cerrar Sesión");
+        JMnItmCerrarPsicologo.setToolTipText("Cierra la sesión iniciada");
         JMnItmCerrarPsicologo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JMnItmCerrarPsicologoMouseClicked(evt);
@@ -310,6 +363,7 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
         jMenuBar1.add(JMenu3puntitosPsicologo);
 
         JMnPgPrinPsicolo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
+        JMnPgPrinPsicolo.setToolTipText("Resgresa a la página principal");
         JMnPgPrinPsicolo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JMnPgPrinPsicoloMouseClicked(evt);
@@ -321,24 +375,6 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void JMnPgPrinPsicoloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinPsicoloMouseClicked
-        Base.close();
-        PagPrincipalPsicologo principal = new PagPrincipalPsicologo();
-        principal.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_JMnPgPrinPsicoloMouseClicked
-
-    private void JMnItmCerrarPsicologoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JMnItmCerrarPsicologoMouseClicked
-
-    private void JMnItmCerrarPsicologoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMousePressed
-        Base.close();
-        InicioPsicologo loginPsicologo = new InicioPsicologo();
-        loginPsicologo.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_JMnItmCerrarPsicologoMousePressed
 
     private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
 
@@ -520,10 +556,31 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtResInc2ActionPerformed
 
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+    private void JMnItmCerrarPsicologoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JMnItmCerrarPsicologoMouseClicked
 
+    private void JMnItmCerrarPsicologoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMousePressed
+        Base.close();
+        InicioPsicologo loginPsicologo = new InicioPsicologo();
+        loginPsicologo.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_JMnItmCerrarPsicologoMousePressed
+
+    private void JMnPgPrinPsicoloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinPsicoloMouseClicked
+        Base.close();
+        PagPrincipalPsicologo principal = new PagPrincipalPsicologo();
+        principal.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_JMnPgPrinPsicoloMouseClicked
+
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
+
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_btnExitActionPerformed
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -561,12 +618,12 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
     private javax.swing.JMenu JMnPgPrinPsicolo;
     private javax.swing.JLabel LblInfor2Niño;
     private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnExit;
     private javax.swing.JButton btn_Eliminar;
     private javax.swing.JButton btn_Ingresar_imagen1;
     private javax.swing.JButton btn_consultar;
@@ -574,6 +631,7 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
     private javax.swing.JButton btn_modificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

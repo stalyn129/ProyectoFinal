@@ -32,7 +32,6 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnExit = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -47,6 +46,8 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
+        BtnCerrarPagina = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
         Fondo2 = new javax.swing.JLabel();
@@ -57,14 +58,6 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnExit.setText("x");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -86,6 +79,7 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
 
         BtnDifeNiñoJuego2.setBackground(new java.awt.Color(255, 255, 255));
         BtnDifeNiñoJuego2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/DiferenciasNiñoJueg.png"))); // NOI18N
+        BtnDifeNiñoJuego2.setToolTipText("Haz click aqui para entrar al juego de las diferencias");
         BtnDifeNiñoJuego2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnDifeNiñoJuego2.setOpaque(false);
         BtnDifeNiñoJuego2.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +91,7 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
 
         BtnLabeNiñoJuego1.setBackground(new java.awt.Color(255, 255, 255));
         BtnLabeNiñoJuego1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LaberintoNiñJueg.png"))); // NOI18N
+        BtnLabeNiñoJuego1.setToolTipText("Haz click aqui para entrar al juego del laberinto");
         BtnLabeNiñoJuego1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnLabeNiñoJuego1.setOpaque(false);
         BtnLabeNiñoJuego1.addActionListener(new java.awt.event.ActionListener() {
@@ -116,6 +111,7 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
 
         BtnRespondeNiñoJuego3.setBackground(new java.awt.Color(255, 255, 255));
         BtnRespondeNiñoJuego3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CorrectoNiñoJuego.png"))); // NOI18N
+        BtnRespondeNiñoJuego3.setToolTipText("Haz click aqui para entrar al juego responde lo correcto");
         BtnRespondeNiñoJuego3.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnRespondeNiñoJuego3.setOpaque(false);
         BtnRespondeNiñoJuego3.addActionListener(new java.awt.event.ActionListener() {
@@ -141,6 +137,29 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 100, -1));
 
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
+            }
+        });
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 40, 30));
+
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, 90, 70));
+
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoInfoNiñoJuego.png"))); // NOI18N
         Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, 10, 1690, 480));
@@ -156,11 +175,13 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 800, 500));
 
         JMnItmCerrarNiño2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        JMnItmCerrarNiño2.setToolTipText("Configuración");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
         jMenuItem1.setText("Cerrar Sesión");
+        jMenuItem1.setToolTipText("Cierra la sesión iniciada");
         jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jMenuItem1MousePressed(evt);
@@ -171,6 +192,7 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
         MenuGenerlNiño.add(JMnItmCerrarNiño2);
 
         JMnPgPrinNiño2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
+        JMnPgPrinNiño2.setToolTipText("Regresa a la página principal");
         JMnPgPrinNiño2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JMnPgPrinNiño2MouseClicked(evt);
@@ -204,6 +226,14 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
                     this.setVisible(false);
     }//GEN-LAST:event_BtnRespondeNiñoJuego3ActionPerformed
 
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
+
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
+
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
 
         Base.close();
@@ -219,14 +249,10 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiño2MouseClicked
 
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-
-        System.exit(0);
-    }//GEN-LAST:event_btnExitActionPerformed
-
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JButton BtnDifeNiñoJuego2;
     private javax.swing.JButton BtnLabeNiñoJuego1;
     private javax.swing.JButton BtnRespondeNiñoJuego3;
@@ -236,10 +262,10 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
     private javax.swing.JMenu JMnItmCerrarNiño2;
     private javax.swing.JMenu JMnPgPrinNiño2;
     private javax.swing.JMenuBar MenuGenerlNiño;
-    private javax.swing.JButton btnExit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

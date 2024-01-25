@@ -104,8 +104,9 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         jSeparator18 = new javax.swing.JSeparator();
         TxtTelfAdmin = new javax.swing.JTextField();
         TxtCorreoAdmin = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         BtnRegresar = new javax.swing.JButton();
-        btnExit = new javax.swing.JButton();
+        BtnCerrarPagina = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -256,11 +257,12 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel12.setText("Nueva Contraseña:");
+        jLabel12.setText("Ingrese Contraseña:");
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, -1, -1));
         jPanel2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 170, 10));
 
         BtnRegistrarAdmin.setText("Registrarse");
+        BtnRegistrarAdmin.setToolTipText("Haz click aqui para registrarte");
         BtnRegistrarAdmin.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnRegistrarAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -375,10 +377,16 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         });
         jPanel2.add(TxtCorreoAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 170, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 700, 390));
+        jLabel3.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 70));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 700, 400));
 
         BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
         BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar.setToolTipText("Regresar al apartado de registarse");
         BtnRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnRegresar.setOpaque(false);
         BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -388,13 +396,23 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
 
-        btnExit.setText("x");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
             }
         });
-        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
@@ -1058,10 +1076,13 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_TxtTelfAdminMousePressed
 
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        Base.close();
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
+
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_btnExitActionPerformed
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
     public static String Calcular_IDAdmin(ObjectContainer Base) {
 
@@ -1181,6 +1202,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JRadioButton BtnFemeninoAdmin;
     private javax.swing.ButtonGroup BtnGpDiscaAdmin;
     private javax.swing.ButtonGroup BtnGrpSexoAdmin;
@@ -1200,7 +1222,6 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField TxtNombreAdmin;
     private javax.swing.JTextField TxtTelfAdmin;
     private javax.swing.JTextField TxtTituloAdmin;
-    private javax.swing.JButton btnExit;
     private javax.swing.JComboBox<String> cbx_discapasidad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1211,6 +1232,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

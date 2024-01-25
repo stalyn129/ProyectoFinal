@@ -52,7 +52,6 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnExit = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
@@ -70,26 +69,20 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txt_nom = new javax.swing.JTextField();
+        BtnCerrarPagina = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
         LblTestPariente1 = new javax.swing.JLabel();
         LblTestPariente2 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
         MenuCuentosNiño = new javax.swing.JMenuBar();
         JMenu3puntitosNiño = new javax.swing.JMenu();
-        JMnItmCerrarPariente = new javax.swing.JMenuItem();
-        JMnPgPrinPariente = new javax.swing.JMenu();
+        JMnItmCerrarNiño = new javax.swing.JMenuItem();
+        JMnPgPrinNiño = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnExit.setText("x");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(860, 500));
@@ -107,6 +100,7 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
 
         btn_Cargar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_Cargar.setText("CARGAR");
+        btn_Cargar.setToolTipText("Haz click para cargar los test");
         btn_Cargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_CargarActionPerformed(evt);
@@ -130,6 +124,7 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
 
         btn_responder.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_responder.setText("Responder");
+        btn_responder.setToolTipText("Haz click para responder el test");
         btn_responder.setActionCommand("");
         btn_responder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,7 +169,30 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
 
         jScrollPane3.setViewportView(jPanel4);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 650, 350));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 650, 290));
+
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
+            }
+        });
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 40, 30));
+
+        jLabel9.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 80, 70));
 
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoTestRepresentante.png"))); // NOI18N
         Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -195,27 +213,30 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 798, 500));
 
         JMenu3puntitosNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        JMenu3puntitosNiño.setToolTipText("Configuración");
 
-        JMnItmCerrarPariente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        JMnItmCerrarPariente.setBackground(new java.awt.Color(255, 255, 255));
-        JMnItmCerrarPariente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
-        JMnItmCerrarPariente.setText("Cerrar Sesión");
-        JMnItmCerrarPariente.addMouseListener(new java.awt.event.MouseAdapter() {
+        JMnItmCerrarNiño.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        JMnItmCerrarNiño.setBackground(new java.awt.Color(255, 255, 255));
+        JMnItmCerrarNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
+        JMnItmCerrarNiño.setText("Cerrar Sesión");
+        JMnItmCerrarNiño.setToolTipText("Cierra la sesión iniciada");
+        JMnItmCerrarNiño.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                JMnItmCerrarParienteMousePressed(evt);
+                JMnItmCerrarNiñoMousePressed(evt);
             }
         });
-        JMenu3puntitosNiño.add(JMnItmCerrarPariente);
+        JMenu3puntitosNiño.add(JMnItmCerrarNiño);
 
         MenuCuentosNiño.add(JMenu3puntitosNiño);
 
-        JMnPgPrinPariente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
-        JMnPgPrinPariente.addMouseListener(new java.awt.event.MouseAdapter() {
+        JMnPgPrinNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
+        JMnPgPrinNiño.setToolTipText("Resgresa a la página principal");
+        JMnPgPrinNiño.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JMnPgPrinParienteMouseClicked(evt);
+                JMnPgPrinNiñoMouseClicked(evt);
             }
         });
-        MenuCuentosNiño.add(JMnPgPrinPariente);
+        MenuCuentosNiño.add(JMnPgPrinNiño);
 
         setJMenuBar(MenuCuentosNiño);
 
@@ -244,24 +265,27 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
         
     }//GEN-LAST:event_btn_responderActionPerformed
 
-    private void JMnItmCerrarParienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarParienteMousePressed
-        Base.close();
-            InicioRepresentante loginrepre = new InicioRepresentante();
-                loginrepre.setVisible(true);
-                    this.setVisible(false);
-    }//GEN-LAST:event_JMnItmCerrarParienteMousePressed
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
 
-    private void JMnPgPrinParienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinParienteMouseClicked
-        Base.close();
-            PagPrincipalRepresentante principalrepresetante = new PagPrincipalRepresentante();
-                principalrepresetante.setVisible(true);
-                    this.setVisible(false);
-    }//GEN-LAST:event_JMnPgPrinParienteMouseClicked
-
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_btnExitActionPerformed
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
+
+    private void JMnItmCerrarNiñoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarNiñoMousePressed
+        Base.close();
+        InicioRepresentante loginrepre = new InicioRepresentante();
+        loginrepre.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_JMnItmCerrarNiñoMousePressed
+
+    private void JMnPgPrinNiñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiñoMouseClicked
+        Base.close();
+        PagPrincipalRepresentante principalrepresetante = new PagPrincipalRepresentante();
+        principalrepresetante.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_JMnPgPrinNiñoMouseClicked
 
     public void caracteristicas_ponle(ObjectContainer Base, String titulo) {
         
@@ -411,15 +435,15 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMenu3puntitosNiño;
-    private javax.swing.JMenuItem JMnItmCerrarPariente;
-    private javax.swing.JMenu JMnPgPrinPariente;
+    private javax.swing.JMenuItem JMnItmCerrarNiño;
+    private javax.swing.JMenu JMnPgPrinNiño;
     private javax.swing.JLabel LblTestPariente1;
     private javax.swing.JLabel LblTestPariente2;
     private javax.swing.JMenuBar MenuCuentosNiño;
-    private javax.swing.JButton btnExit;
     private javax.swing.JButton btn_Cargar;
     private javax.swing.JButton btn_responder;
     private javax.swing.JLabel jLabel2;
@@ -427,6 +451,7 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;

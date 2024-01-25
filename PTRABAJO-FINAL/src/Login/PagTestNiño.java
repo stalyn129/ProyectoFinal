@@ -35,7 +35,6 @@ public class PagTestNiño extends javax.swing.JFrame {
         BtnGrupEmocionesNiño3 = new javax.swing.ButtonGroup();
         BtnGrupEmocionesNiño4 = new javax.swing.ButtonGroup();
         BtnGrupEmocionesNiño5 = new javax.swing.ButtonGroup();
-        btnExit = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
@@ -78,25 +77,19 @@ public class PagTestNiño extends javax.swing.JFrame {
         jRadioButton23 = new javax.swing.JRadioButton();
         jRadioButton24 = new javax.swing.JRadioButton();
         jRadioButton25 = new javax.swing.JRadioButton();
+        BtnCerrarPagina = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         LblInformacionNiño = new javax.swing.JLabel();
         LblInformacionNiño1 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
-        MenuTestNiño = new javax.swing.JMenuBar();
-        JMenu3puntitosNiño = new javax.swing.JMenu();
-        JMnItmCerrarNiño = new javax.swing.JMenuItem();
-        JMnPgPrinNiño = new javax.swing.JMenu();
+        MenuGenerlNiño = new javax.swing.JMenuBar();
+        JMnItmCerrarNiño2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        JMnPgPrinNiño2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnExit.setText("x");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -263,6 +256,29 @@ public class PagTestNiño extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 660, 300));
 
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
+            }
+        });
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 40, 30));
+
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 70, 70));
+
         LblInformacionNiño.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         LblInformacionNiño.setText("TEST");
         jPanel1.add(LblInformacionNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 60, 20));
@@ -282,58 +298,64 @@ public class PagTestNiño extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 800, 500));
 
-        MenuTestNiño.setBackground(new java.awt.Color(255, 255, 255));
+        JMnItmCerrarNiño2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        JMnItmCerrarNiño2.setToolTipText("Configuración");
 
-        JMenu3puntitosNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
-
-        JMnItmCerrarNiño.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        JMnItmCerrarNiño.setBackground(new java.awt.Color(255, 255, 255));
-        JMnItmCerrarNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
-        JMnItmCerrarNiño.setText("Cerrar Sesión");
-        JMnItmCerrarNiño.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setBackground(new java.awt.Color(255, 255, 255));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
+        jMenuItem1.setText("Cerrar Sesión");
+        jMenuItem1.setToolTipText("Cierra la sesión iniciada");
+        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                JMnItmCerrarNiñoMousePressed(evt);
+                jMenuItem1MousePressed(evt);
             }
         });
-        JMenu3puntitosNiño.add(JMnItmCerrarNiño);
+        JMnItmCerrarNiño2.add(jMenuItem1);
 
-        MenuTestNiño.add(JMenu3puntitosNiño);
+        MenuGenerlNiño.add(JMnItmCerrarNiño2);
 
-        JMnPgPrinNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
-        JMnPgPrinNiño.addMouseListener(new java.awt.event.MouseAdapter() {
+        JMnPgPrinNiño2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
+        JMnPgPrinNiño2.setToolTipText("Regresa a la página principal");
+        JMnPgPrinNiño2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JMnPgPrinNiñoMouseClicked(evt);
+                JMnPgPrinNiño2MouseClicked(evt);
             }
         });
-        MenuTestNiño.add(JMnPgPrinNiño);
+        MenuGenerlNiño.add(JMnPgPrinNiño2);
 
-        setJMenuBar(MenuTestNiño);
+        setJMenuBar(MenuGenerlNiño);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void JMnPgPrinNiñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiñoMouseClicked
-        Base.close();
-            PagPrincipalNiñ principalniño = new PagPrincipalNiñ();
-                principalniño.setVisible(true);
-                    this.setVisible(false);
-    }//GEN-LAST:event_JMnPgPrinNiñoMouseClicked
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
 
-    private void JMnItmCerrarNiñoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarNiñoMousePressed
-        Base.close();
-            InicioNiño login = new InicioNiño();
-                login.setVisible(true);
-                    this.setVisible(false);
-    }//GEN-LAST:event_JMnItmCerrarNiñoMousePressed
-
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_btnExitActionPerformed
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
+
+    private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
+
+        Base.close();
+        InicioNiño login = new InicioNiño();
+        login.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem1MousePressed
+
+    private void JMnPgPrinNiño2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiño2MouseClicked
+        Base.close();
+        PagPrincipalNiñ principalniño = new PagPrincipalNiñ();
+        principalniño.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_JMnPgPrinNiño2MouseClicked
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.ButtonGroup BtnGrupEmocionesNiño1;
     private javax.swing.ButtonGroup BtnGrupEmocionesNiño2;
     private javax.swing.ButtonGroup BtnGrupEmocionesNiño3;
@@ -341,9 +363,8 @@ public class PagTestNiño extends javax.swing.JFrame {
     private javax.swing.ButtonGroup BtnGrupEmocionesNiño5;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
-    private javax.swing.JMenu JMenu3puntitosNiño;
-    private javax.swing.JMenuItem JMnItmCerrarNiño;
-    private javax.swing.JMenu JMnPgPrinNiño;
+    private javax.swing.JMenu JMnItmCerrarNiño2;
+    private javax.swing.JMenu JMnPgPrinNiño2;
     private javax.swing.JLabel LblImagen4InfoNiño;
     private javax.swing.JLabel LblInfor2Niño;
     private javax.swing.JLabel LblInformacionNiño;
@@ -354,8 +375,9 @@ public class PagTestNiño extends javax.swing.JFrame {
     private javax.swing.JLabel LblTest4Niño;
     private javax.swing.JLabel LblTest5Niño;
     private javax.swing.JLabel LblTitulo3InfNiño;
-    private javax.swing.JMenuBar MenuTestNiño;
-    private javax.swing.JButton btnExit;
+    private javax.swing.JMenuBar MenuGenerlNiño;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JRadioButton jRadioButton1;

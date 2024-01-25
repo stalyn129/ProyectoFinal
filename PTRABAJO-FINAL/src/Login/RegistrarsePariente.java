@@ -54,7 +54,6 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         BtnGpDiscaParien = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         BtnFemenParien = new javax.swing.JRadioButton();
         BtnMasculiParien = new javax.swing.JRadioButton();
         jLabel8 = new javax.swing.JLabel();
@@ -107,8 +106,10 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         jSeparator18 = new javax.swing.JSeparator();
         TxtTelfPari = new javax.swing.JTextField();
         jSeparator19 = new javax.swing.JSeparator();
+        jLabel15 = new javax.swing.JLabel();
         BtnRegresar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        BtnCerrarPagina = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -118,9 +119,6 @@ public class RegistrarsePariente extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Familia.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 340, 130, 50));
 
         BtnGrpSexoParein.add(BtnFemenParien);
         BtnFemenParien.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
@@ -201,7 +199,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Rockwell Nova", 1, 24)); // NOI18N
         jLabel2.setText("REGISTRARSE");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, -1, -1));
 
         TxtCedParien.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtCedParien.setForeground(new java.awt.Color(153, 153, 153));
@@ -315,13 +313,14 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         jPanel2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 170, 10));
 
         BtnRegistrarParien.setText("Registrarse");
+        BtnRegistrarParien.setToolTipText("Haz click aqui para registrarte");
         BtnRegistrarParien.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnRegistrarParien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnRegistrarParienActionPerformed(evt);
             }
         });
-        jPanel2.add(BtnRegistrarParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, 100, 30));
+        jPanel2.add(BtnRegistrarParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 100, 30));
 
         jLabel13.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel13.setText("Apellidos:");
@@ -429,10 +428,16 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         jPanel2.add(TxtTelfPari, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 170, -1));
         jPanel2.add(jSeparator19, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 170, 10));
 
+        jLabel15.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, 80, 70));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 700, 390));
 
         BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
         BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar.setToolTipText("Regresa a la pestaña del registrarse");
         BtnRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnRegresar.setOpaque(false);
         BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -442,13 +447,26 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         });
         jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
 
-        jButton1.setText("x");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Familia.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 130, 50));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
@@ -1250,10 +1268,13 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtTelfPariActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Base.close();
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
+
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
     public void Discapacidad_ingr(ObjectContainer Base) {
         Query query = Base.query();
         query.constrain(Discapacidad.class
@@ -1483,6 +1504,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JRadioButton BtnFemenParien;
     private javax.swing.ButtonGroup BtnGpDiscaParien;
     private javax.swing.ButtonGroup BtnGrpSexoParein;
@@ -1509,13 +1531,13 @@ public class RegistrarsePariente extends javax.swing.JFrame {
     private javax.swing.JTextField TxtTituloParien;
     private javax.swing.JTextField Txt_profecion;
     private javax.swing.JComboBox<String> cbx_discapacidad_pariente;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

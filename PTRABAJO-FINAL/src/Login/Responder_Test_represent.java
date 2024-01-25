@@ -98,11 +98,16 @@ public class Responder_Test_represent extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        MenuCuentosNiño = new javax.swing.JMenuBar();
+        JMenu3puntitosNiño = new javax.swing.JMenu();
+        JMnItmCerrarNiño = new javax.swing.JMenuItem();
+        JMnPgPrinNiño = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
         setUndecorated(true);
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -125,12 +130,12 @@ public class Responder_Test_represent extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(txt_titulo_test, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(txt_titulo_test, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,12 +147,12 @@ public class Responder_Test_represent extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 430, 60));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 430, 60));
 
         list_preguntas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jScrollPane1.setViewportView(list_preguntas);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 270, 320));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, 270, 300));
 
         cargar_preg.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cargar_preg.setText("Iniciar a responder");
@@ -156,7 +161,7 @@ public class Responder_Test_represent extends javax.swing.JFrame {
                 cargar_pregActionPerformed(evt);
             }
         });
-        jPanel1.add(cargar_preg, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 410, -1));
+        jPanel1.add(cargar_preg, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 410, -1));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -266,7 +271,7 @@ public class Responder_Test_represent extends javax.swing.JFrame {
         jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 380, 10));
         jPanel3.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 380, 10));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 440, 280));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 440, 280));
 
         jButton1.setText("x");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -278,21 +283,37 @@ public class Responder_Test_represent extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Preguntas");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, -1, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Imagen de WhatsApp 2024-01-03 a las 07.58.17_8bdfab4c.jpg"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 800, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        JMenu3puntitosNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+
+        JMnItmCerrarNiño.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        JMnItmCerrarNiño.setBackground(new java.awt.Color(255, 255, 255));
+        JMnItmCerrarNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
+        JMnItmCerrarNiño.setText("Cerrar Sesión");
+        JMnItmCerrarNiño.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                JMnItmCerrarNiñoMousePressed(evt);
+            }
+        });
+        JMenu3puntitosNiño.add(JMnItmCerrarNiño);
+
+        MenuCuentosNiño.add(JMenu3puntitosNiño);
+
+        JMnPgPrinNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
+        JMnPgPrinNiño.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JMnPgPrinNiñoMouseClicked(evt);
+            }
+        });
+        MenuCuentosNiño.add(JMnPgPrinNiño);
+
+        setJMenuBar(MenuCuentosNiño);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -483,6 +504,20 @@ public class Responder_Test_represent extends javax.swing.JFrame {
         Base.close();
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void JMnItmCerrarNiñoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarNiñoMousePressed
+        Base.close();
+        InicioRepresentante loginrepre = new InicioRepresentante();
+        loginrepre.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_JMnItmCerrarNiñoMousePressed
+
+    private void JMnPgPrinNiñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiñoMouseClicked
+        Base.close();
+        PagPrincipalRepresentante principalrepresetante = new PagPrincipalRepresentante();
+        principalrepresetante.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_JMnPgPrinNiñoMouseClicked
 
     public void respuesta_ususario(ObjectContainer Base) {
         if (Que_respondi == 0) {
@@ -713,6 +748,10 @@ public class Responder_Test_represent extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Ingresar_respuesta;
+    private javax.swing.JMenu JMenu3puntitosNiño;
+    private javax.swing.JMenuItem JMnItmCerrarNiño;
+    private javax.swing.JMenu JMnPgPrinNiño;
+    private javax.swing.JMenuBar MenuCuentosNiño;
     private javax.swing.JButton cargar_preg;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;

@@ -44,7 +44,6 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnExit = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableNacionalidades = new javax.swing.JTable();
@@ -64,6 +63,12 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        jSeparator7 = new javax.swing.JSeparator();
+        BtnCerrarPagina = new javax.swing.JButton();
         Btn_Consultar = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -73,14 +78,6 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnExit.setText("x");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
-
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 500));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -88,7 +85,36 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
 
         jTableNacionalidades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
                 "Código", "Pais", "Nacionalidad", "Observación"
@@ -109,54 +135,59 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableNacionalidades);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 470, 400));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 460, 420));
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.setToolTipText("Elimina los datos existentes en la tabla");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 460, -1, -1));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 460, 100, -1));
 
         Btn_Modificar.setText("Modificar");
+        Btn_Modificar.setToolTipText("Modifica los datos existentes en la tabla");
         Btn_Modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_ModificarActionPerformed(evt);
             }
         });
-        jPanel1.add(Btn_Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 460, -1, -1));
+        jPanel1.add(Btn_Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 100, -1));
 
         btnActualizar.setText("Actualizar");
+        btnActualizar.setToolTipText("Actializa los datos existentes en la tabla");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, -1, -1));
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 100, -1));
 
         jButton1.setText("Consultar");
+        jButton1.setToolTipText("Consulta los datos existentes en la tabla");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 460, 100, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel2.setText("CRUD NACIONALIDADES");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 44, -1, 30));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 230, 40));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel3.setText("Nacionalidad:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, 20));
 
         Txt_Nacionalidad.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Txt_Nacionalidad.setForeground(new java.awt.Color(153, 153, 153));
         Txt_Nacionalidad.setText("Ejem: Ecuatoriano");
+        Txt_Nacionalidad.setToolTipText("Ingrese la nacionalidad");
         Txt_Nacionalidad.setBorder(null);
         Txt_Nacionalidad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -168,16 +199,17 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
                 Txt_NacionalidadActionPerformed(evt);
             }
         });
-        jPanel2.add(Txt_Nacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 240, 20));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 240, 10));
+        jPanel2.add(Txt_Nacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 210, 20));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 210, 10));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel4.setText("País:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, 20));
 
         Txt_Pais.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Txt_Pais.setForeground(new java.awt.Color(153, 153, 153));
         Txt_Pais.setText("Ejem: Ecuador");
+        Txt_Pais.setToolTipText("Ingrese el país");
         Txt_Pais.setBorder(null);
         Txt_Pais.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -189,12 +221,13 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
                 Txt_PaisActionPerformed(evt);
             }
         });
-        jPanel2.add(Txt_Pais, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 240, 20));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 240, 10));
+        jPanel2.add(Txt_Pais, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 210, 20));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 210, 10));
 
         Txt_Observacion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Txt_Observacion.setForeground(new java.awt.Color(153, 153, 153));
         Txt_Observacion.setText("Ejem: Este país...");
+        Txt_Observacion.setToolTipText("Ingrese la observación del país");
         Txt_Observacion.setBorder(null);
         Txt_Observacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -206,34 +239,64 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
                 Txt_ObservacionActionPerformed(evt);
             }
         });
-        jPanel2.add(Txt_Observacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 240, 20));
-        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 240, 10));
+        jPanel2.add(Txt_Observacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 210, 20));
+        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 210, 10));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel5.setText("Observación:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, 20));
 
         btnGuardar.setText("Guardar");
+        btnGuardar.setToolTipText("Guarda los datos ingresados");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, -1, -1));
+        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 500));
+        jLabel6.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 210, 90));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 270, 340));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 490, 100, 10));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 100, 10));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, 100, 10));
+        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 100, 10));
+
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
+            }
+        });
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 40, 30));
 
         Btn_Consultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
-        jPanel1.add(Btn_Consultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 810, 560));
+        jPanel1.add(Btn_Consultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 810, 550));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -25, -1, 510));
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        jMenu1.setToolTipText("Configuración");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
         jMenuItem1.setText("Cerrar Sesión");
+        jMenuItem1.setToolTipText("Cierra la Sesión iniciada");
         jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jMenuItem1MousePressed(evt);
@@ -244,6 +307,7 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
+        jMenu2.setToolTipText("Regresar a la página principal");
         jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu2MouseClicked(evt);
@@ -405,10 +469,13 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jMenu2MouseClicked
 
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
 
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_btnExitActionPerformed
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -444,6 +511,7 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JLabel Btn_Consultar;
     private javax.swing.JButton Btn_Modificar;
     private javax.swing.JTextField Txt_Nacionalidad;
@@ -451,13 +519,13 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
     private javax.swing.JTextField Txt_Pais;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -468,6 +536,10 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTable jTableNacionalidades;
     // End of variables declaration//GEN-END:variables
 

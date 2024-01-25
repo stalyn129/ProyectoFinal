@@ -32,7 +32,6 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnExit = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
@@ -51,6 +50,8 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         btnConsultar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        BtnCerrarPagina = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenu3puntitosPsicologo = new javax.swing.JMenu();
@@ -59,14 +60,6 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnExit.setText("x");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -85,7 +78,7 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         LblInfor2Niño.setFont(new java.awt.Font("Rockwell Nova", 1, 12)); // NOI18N
         LblInfor2Niño.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblInfor2Niño.setText("Título del foro:");
-        jPanel3.add(LblInfor2Niño, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+        jPanel3.add(LblInfor2Niño, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
 
         jSeparator5.setForeground(new java.awt.Color(153, 153, 153));
         jPanel3.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 330, 10));
@@ -108,10 +101,10 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
                 TxtTituloActionPerformed(evt);
             }
         });
-        jPanel3.add(TxtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 210, -1));
+        jPanel3.add(TxtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 210, -1));
 
         jSeparator7.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel3.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 210, 10));
+        jPanel3.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 210, 10));
 
         LblInfor2Niño1.setFont(new java.awt.Font("Rockwell Nova", 1, 12)); // NOI18N
         LblInfor2Niño1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -170,11 +163,34 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel11.setText("CRUD FOROS");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 30));
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, 30));
+
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 70));
 
         jScrollPane1.setViewportView(jPanel3);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 710, 390));
+
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
+            }
+        });
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 40, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 500));
@@ -182,10 +198,12 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 800, 500));
 
         JMenu3puntitosPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        JMenu3puntitosPsicologo.setToolTipText("Configuración");
 
         JMnItmCerrarPsicologo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         JMnItmCerrarPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
         JMnItmCerrarPsicologo.setText("Cerrar Sesión");
+        JMnItmCerrarPsicologo.setToolTipText("Cierra la sesión iniciada");
         JMnItmCerrarPsicologo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JMnItmCerrarPsicologoMouseClicked(evt);
@@ -199,6 +217,7 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         jMenuBar1.add(JMenu3puntitosPsicologo);
 
         JMnPgPrinPsicolo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
+        JMnPgPrinPsicolo.setToolTipText("Resgresa a la página principal");
         JMnPgPrinPsicolo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JMnPgPrinPsicoloMouseClicked(evt);
@@ -243,13 +262,15 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         PagPrincipalPsicologo principal = new PagPrincipalPsicologo();
         principal.setVisible(true);
         this.setVisible(false);
-
     }//GEN-LAST:event_JMnPgPrinPsicoloMouseClicked
 
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
 
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_btnExitActionPerformed
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,6 +312,7 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Actualizar;
+    private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
     private javax.swing.JMenu JMnPgPrinPsicolo;
@@ -300,11 +322,11 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
     private javax.swing.JTextField TxtTitulo;
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnExit;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;

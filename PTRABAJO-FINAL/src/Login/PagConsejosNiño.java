@@ -39,7 +39,6 @@ public class PagConsejosNiño extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnExit = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -61,6 +60,8 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JSeparator();
         LblTitConseNiño2 = new javax.swing.JLabel();
         CmBoxConsejosNiño = new javax.swing.JComboBox<>();
+        BtnCerrarPagina = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         LblInformacionNiño = new javax.swing.JLabel();
         LblInformacionNiño1 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
@@ -73,14 +74,6 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnExit.setText("x");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 500));
@@ -156,6 +149,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         LblTitConseNiño2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel4.add(LblTitConseNiño2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 410, 20));
 
+        CmBoxConsejosNiño.setToolTipText("Selecciona lo que mas te guste");
         CmBoxConsejosNiño.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CmBoxConsejosNiñoActionPerformed(evt);
@@ -168,6 +162,29 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 310));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 630, 310));
+
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
+            }
+        });
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 40, 30));
+
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 80, 70));
 
         LblInformacionNiño.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         LblInformacionNiño.setText("CONSEJOS");
@@ -189,11 +206,13 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 800, 500));
 
         JMnItmCerrarNiño2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        JMnItmCerrarNiño2.setToolTipText("Configuración");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
         jMenuItem1.setText("Cerrar Sesión");
+        jMenuItem1.setToolTipText("Cierra la sesión iniciada");
         jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jMenuItem1MousePressed(evt);
@@ -204,6 +223,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         MenuGenerlNiño.add(JMnItmCerrarNiño2);
 
         JMnPgPrinNiño2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
+        JMnPgPrinNiño2.setToolTipText("Regresa a la página principal");
         JMnPgPrinNiño2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JMnPgPrinNiño2MouseClicked(evt);
@@ -215,6 +235,20 @@ public class PagConsejosNiño extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CmBoxConsejosNiñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmBoxConsejosNiñoActionPerformed
+        if (CmBoxConsejosNiño.getSelectedItem() != null) {
+            cargar_datos1();
+        }
+    }//GEN-LAST:event_CmBoxConsejosNiñoActionPerformed
+
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
+
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
 
@@ -230,17 +264,6 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         principalniño.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiño2MouseClicked
-
-    private void CmBoxConsejosNiñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmBoxConsejosNiñoActionPerformed
-        if (CmBoxConsejosNiño.getSelectedItem() != null) {
-            cargar_datos1();
-        }
-    }//GEN-LAST:event_CmBoxConsejosNiñoActionPerformed
-
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-
-        System.exit(0);
-    }//GEN-LAST:event_btnExitActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -332,6 +355,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JComboBox<String> CmBoxConsejosNiño;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
@@ -347,7 +371,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
     private javax.swing.JMenuBar MenuGenerlNiño;
     private javax.swing.JTextArea TxtTextConsNiño1;
     private javax.swing.JTextArea TxtTextConsNiño2;
-    private javax.swing.JButton btnExit;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;

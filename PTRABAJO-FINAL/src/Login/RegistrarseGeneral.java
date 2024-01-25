@@ -38,7 +38,6 @@ public class RegistrarseGeneral extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        btnExit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         LbTitulo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -52,9 +51,10 @@ public class RegistrarseGeneral extends javax.swing.JFrame {
         Admin = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        Pariente = new javax.swing.JLabel();
+        BtnCerrarPagina = new javax.swing.JButton();
         BtnRepresentanteRegist = new javax.swing.JButton();
         BtnRegresar = new javax.swing.JButton();
+        Pariente = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,14 +64,6 @@ public class RegistrarseGeneral extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(105, 181, 12));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnExit.setText("x");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 40, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo3.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 280, 520));
@@ -130,9 +122,23 @@ public class RegistrarseGeneral extends javax.swing.JFrame {
         jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, 110, 10));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 420, 120, 10));
 
-        Pariente.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        Pariente.setText("REPRESENTANTE");
-        jPanel1.add(Pariente, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, -1, -1));
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
+            }
+        });
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 30));
 
         BtnRepresentanteRegist.setBackground(new java.awt.Color(255, 255, 255));
         BtnRepresentanteRegist.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Familia.png"))); // NOI18N
@@ -154,6 +160,10 @@ public class RegistrarseGeneral extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, 60, 40));
+
+        Pariente.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        Pariente.setText("REPRESENTANTE");
+        jPanel1.add(Pariente, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, -1, -1));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
@@ -238,16 +248,20 @@ JPasswordField passwordField = new JPasswordField();
                     this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
 
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_btnExitActionPerformed
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Admin;
     private javax.swing.JButton BtnAdminRegist;
+    private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JButton BtnInfanteRegist;
     private javax.swing.JButton BtnPsicologoRegist;
     private javax.swing.JButton BtnRegresar;
@@ -257,7 +271,6 @@ JPasswordField passwordField = new JPasswordField();
     private javax.swing.JLabel LbTitulo;
     private javax.swing.JLabel Pariente;
     private javax.swing.JLabel Psicologo;
-    private javax.swing.JButton btnExit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

@@ -45,7 +45,6 @@ UserDataSingleton usarData ;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnExit = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jPanel5 = new javax.swing.JPanel();
@@ -76,7 +75,9 @@ UserDataSingleton usarData ;
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla_preguntas = new javax.swing.JTable();
         btn_guardar_test = new javax.swing.JToggleButton();
-        BtnRegresar1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        BtnCerrarPagina = new javax.swing.JButton();
+        Fondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenu3puntitosPsicologo = new javax.swing.JMenu();
         JMnItmCerrarPsicologo = new javax.swing.JMenuItem();
@@ -85,14 +86,6 @@ UserDataSingleton usarData ;
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnExit.setText("x");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setForeground(new java.awt.Color(0, 255, 204));
@@ -118,6 +111,7 @@ UserDataSingleton usarData ;
         jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 20));
 
         cbx_destino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Niño", "Representante" }));
+        cbx_destino.setToolTipText("Seleciona el destinatario");
         cbx_destino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbx_destinoActionPerformed(evt);
@@ -183,6 +177,7 @@ UserDataSingleton usarData ;
         jPanel5.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 470, 150));
 
         btn_guardar1.setText("Guardar");
+        btn_guardar1.setToolTipText("Guarda los datos registrados");
         btn_guardar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_guardar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,7 +217,7 @@ UserDataSingleton usarData ;
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("INGRESAR TEST");
-        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, -1));
+        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
         jPanel5.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 150, 10));
         jPanel5.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 150, 10));
 
@@ -243,6 +238,7 @@ UserDataSingleton usarData ;
 
         btn_guardar_test.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_guardar_test.setText("Guardar el test");
+        btn_guardar_test.setToolTipText("Guarda los datos ingresados");
         btn_guardar_test.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_guardar_testActionPerformed(evt);
@@ -250,34 +246,49 @@ UserDataSingleton usarData ;
         });
         jPanel5.add(btn_guardar_test, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 160, -1));
 
+        jLabel6.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 70));
+
         jScrollPane3.setViewportView(jPanel5);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 710, 400));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 710, 400));
 
-        BtnRegresar1.setBackground(new java.awt.Color(255, 255, 255));
-        BtnRegresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
-        BtnRegresar1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnRegresar1.setOpaque(false);
-        BtnRegresar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRegresar1ActionPerformed(evt);
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
             }
         });
-        jPanel1.add(BtnRegresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 40, 30));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
+        Fondo.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 800, 530));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 810, 520));
 
         JMenu3puntitosPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        JMenu3puntitosPsicologo.setToolTipText("Configuración");
 
         JMnItmCerrarPsicologo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         JMnItmCerrarPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
         JMnItmCerrarPsicologo.setText("Cerrar Sesión");
+        JMnItmCerrarPsicologo.setToolTipText("Cierra la sesión iniciada");
         JMnItmCerrarPsicologo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JMnItmCerrarPsicologoMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                JMnItmCerrarPsicologoMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 JMnItmCerrarPsicologoMousePressed(evt);
@@ -288,6 +299,7 @@ UserDataSingleton usarData ;
         jMenuBar1.add(JMenu3puntitosPsicologo);
 
         JMnPgPrinPsicolo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
+        JMnPgPrinPsicolo.setToolTipText("Resgresa a la página principal");
         JMnPgPrinPsicolo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JMnPgPrinPsicoloMouseClicked(evt);
@@ -350,33 +362,25 @@ UserDataSingleton usarData ;
 
     private void JMnItmCerrarPsicologoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMousePressed
         Base.close();
-            InicioPsicologo loginPsicologo = new InicioPsicologo();
-                loginPsicologo.setVisible(true);
-                    this.setVisible(false);
+        InicioPsicologo loginPsicologo = new InicioPsicologo();
+        loginPsicologo.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_JMnItmCerrarPsicologoMousePressed
 
     private void JMnPgPrinPsicoloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinPsicoloMouseClicked
         Base.close();
-            PagPrincipalPsicologo principal = new PagPrincipalPsicologo();
-                principal.setVisible(true);
-                    this.setVisible(false);
+        PagPrincipalPsicologo principal = new PagPrincipalPsicologo();
+        principal.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinPsicoloMouseClicked
 
-    private void JMnItmCerrarPsicologoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMouseExited
-        // No tomar encuenta
-    }//GEN-LAST:event_JMnItmCerrarPsicologoMouseExited
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
 
-    private void BtnRegresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar1ActionPerformed
-        Base.close();
-        PagTest_Psicologo general = new PagTest_Psicologo();
-        general.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_BtnRegresar1ActionPerformed
-
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_btnExitActionPerformed
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
     //////////////////////////////////   TEST
     public void Crear_Test(ObjectContainer Base) {
@@ -581,11 +585,11 @@ UserDataSingleton usarData ;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnRegresar1;
+    private javax.swing.JButton BtnCerrarPagina;
+    private javax.swing.JLabel Fondo;
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
     private javax.swing.JMenu JMnPgPrinPsicolo;
-    private javax.swing.JButton btnExit;
     private javax.swing.JButton btn_guardar1;
     private javax.swing.JToggleButton btn_guardar_test;
     private javax.swing.JComboBox<String> cbx_destino;
@@ -597,6 +601,7 @@ UserDataSingleton usarData ;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;

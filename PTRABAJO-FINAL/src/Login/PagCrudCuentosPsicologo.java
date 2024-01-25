@@ -49,7 +49,6 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnExit = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableCuentos = new javax.swing.JTable();
@@ -85,6 +84,8 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         lblImagenInicial = new javax.swing.JLabel();
         jSeparator8 = new javax.swing.JSeparator();
         jSeparator12 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        BtnCerrarPagina = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenu3puntitosPsicologo = new javax.swing.JMenu();
@@ -94,19 +95,25 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnExit.setText("x");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
-
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTableCuentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
                 "Código", "Titulo", "Introducción", "Desarrollo", "Conclusión", "RutaImagen", "RutaImagen2"
@@ -125,6 +132,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 720, 110));
 
         btnActualizar.setText("Actualizar");
+        btnActualizar.setToolTipText("Actualiza los datos existentes en la tabla");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
@@ -133,6 +141,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, -1, -1));
 
         btnModificar.setText("Modificar");
+        btnModificar.setToolTipText("Modifica los datos existentes en la tabla");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
@@ -141,6 +150,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, -1, -1));
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.setToolTipText("Elimina los datos existentes en la tabla");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -149,6 +159,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 460, -1, -1));
 
         btnConsultar.setText("Consultar");
+        btnConsultar.setToolTipText("Consulta los datos existentes en la tabla");
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarActionPerformed(evt);
@@ -184,6 +195,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         Txt_Titulo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Txt_Titulo.setForeground(new java.awt.Color(153, 153, 153));
         Txt_Titulo.setText("Ejem: Las aventuras de...");
+        Txt_Titulo.setToolTipText("Escribe el titulo");
         Txt_Titulo.setBorder(null);
         Txt_Titulo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -199,7 +211,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
 
         lblTitulo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lblTitulo.setText("Titulo:");
-        jPanel4.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
+        jPanel4.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel11.setText("CRUD CUENTOS");
@@ -208,7 +220,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         txtDesarrollo.setColumns(20);
         txtDesarrollo.setLineWrap(true);
         txtDesarrollo.setRows(5);
-        txtDesarrollo.setToolTipText("");
+        txtDesarrollo.setToolTipText("Escribe el contenido de las historias");
         txtDesarrollo.setWrapStyleWord(true);
         jScrollPane5.setViewportView(txtDesarrollo);
 
@@ -217,7 +229,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         txtAreaIntroduccion.setColumns(20);
         txtAreaIntroduccion.setLineWrap(true);
         txtAreaIntroduccion.setRows(5);
-        txtAreaIntroduccion.setToolTipText("");
+        txtAreaIntroduccion.setToolTipText("Escribe el contenido de las historias");
         txtAreaIntroduccion.setWrapStyleWord(true);
         jScrollPane6.setViewportView(txtAreaIntroduccion);
 
@@ -226,7 +238,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         txtConclusion.setColumns(20);
         txtConclusion.setLineWrap(true);
         txtConclusion.setRows(5);
-        txtConclusion.setToolTipText("");
+        txtConclusion.setToolTipText("Escribe el contenido de las historias");
         txtConclusion.setWrapStyleWord(true);
         jScrollPane7.setViewportView(txtConclusion);
 
@@ -238,12 +250,14 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         jPanel4.add(lblConclusion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, 20));
 
         lblImagenFinal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblImagenFinal.setToolTipText("Selecciona la imagen del cuento");
         lblImagenFinal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblImagenFinal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel4.add(lblImagenFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, 270, 130));
         jPanel4.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 520, 120, 10));
 
         btnImagenFinal.setText("Agregar Imagen Final");
+        btnImagenFinal.setToolTipText("Selecciona la imagen correspondiente");
         btnImagenFinal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnImagenFinalActionPerformed(evt);
@@ -260,6 +274,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         jPanel4.add(btnInsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 480, 120, 40));
 
         btnImagenInicial.setText("Agregar Imagen Comienzo");
+        btnImagenInicial.setToolTipText("Selecciona la imagen correspondiente");
         btnImagenInicial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnImagenInicialActionPerformed(evt);
@@ -269,11 +284,17 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         jPanel4.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 270, 10));
 
         lblImagenInicial.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblImagenInicial.setToolTipText("Selecciona la imagen del cuento");
         lblImagenInicial.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblImagenInicial.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel4.add(lblImagenInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 270, 160));
         jPanel4.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 240, 10));
         jPanel4.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 290, 10));
+
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 70));
 
         jScrollPane4.setViewportView(jPanel4);
 
@@ -281,16 +302,36 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 720, 280));
 
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
+            }
+        });
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 40, 30));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 800, -1));
 
         JMenu3puntitosPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        JMenu3puntitosPsicologo.setToolTipText("Configuración");
 
         JMnItmCerrarPsicologo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         JMnItmCerrarPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
         JMnItmCerrarPsicologo.setText("Cerrar Sesión");
+        JMnItmCerrarPsicologo.setToolTipText("Cierra la sesión iniciada");
         JMnItmCerrarPsicologo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JMnItmCerrarPsicologoMouseClicked(evt);
@@ -304,6 +345,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         jMenuBar1.add(JMenu3puntitosPsicologo);
 
         JMnPgPrinPsicolo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
+        JMnPgPrinPsicolo.setToolTipText("Resgresa a la página principal");
         JMnPgPrinPsicolo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JMnPgPrinPsicoloMouseClicked(evt);
@@ -513,10 +555,13 @@ private int buscarCuentoPorCodigo(String codigoCuento) {
         this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinPsicoloMouseClicked
 
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
 
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_btnExitActionPerformed
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -605,6 +650,7 @@ private int buscarCuentoPorCodigo(String codigoCuento) {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
     private javax.swing.JMenu JMnPgPrinPsicolo;
@@ -612,13 +658,13 @@ private int buscarCuentoPorCodigo(String codigoCuento) {
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnImagenFinal;
     private javax.swing.JButton btnImagenInicial;
     private javax.swing.JButton btnInsertar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;

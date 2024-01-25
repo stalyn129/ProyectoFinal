@@ -51,6 +51,8 @@ public class Seleccion extends javax.swing.JFrame {
         PanelImagen = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         BtnRegresar = new javax.swing.JButton();
+        BtnCerrarPagina = new javax.swing.JButton();
+        LbTitulo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,12 +61,14 @@ public class Seleccion extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LbTitulo.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 36)); // NOI18N
-        LbTitulo.setText("Inicia Sesión En:");
-        jPanel1.add(LbTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 370, 50));
+        LbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LbTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel1.add(LbTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 80, 80));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 350, 10));
 
         BtnInfante.setBackground(new java.awt.Color(255, 255, 255));
         BtnInfante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/hermana-y-hermano.png"))); // NOI18N
+        BtnInfante.setToolTipText("Inicia Sesión como NIño/a");
         BtnInfante.setBorder(null);
         BtnInfante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +79,7 @@ public class Seleccion extends javax.swing.JFrame {
 
         BtnPsicologo.setBackground(new java.awt.Color(255, 255, 255));
         BtnPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/terapia.png"))); // NOI18N
+        BtnPsicologo.setToolTipText("Inicia Sesión como Psicológo/a");
         BtnPsicologo.setBorder(null);
         BtnPsicologo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,6 +90,7 @@ public class Seleccion extends javax.swing.JFrame {
 
         BtnAdmin.setBackground(new java.awt.Color(255, 255, 255));
         BtnAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/admin-con-ruedas-dentadas.png"))); // NOI18N
+        BtnAdmin.setToolTipText("Inicia Sesión como Administrador");
         BtnAdmin.setBorder(null);
         BtnAdmin.setBorderPainted(false);
         BtnAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -96,6 +102,7 @@ public class Seleccion extends javax.swing.JFrame {
 
         BtnRepresentante.setBackground(new java.awt.Color(255, 255, 255));
         BtnRepresentante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Familia.png"))); // NOI18N
+        BtnRepresentante.setToolTipText("Inicia Sesión como Representante");
         BtnRepresentante.setBorder(null);
         BtnRepresentante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +141,7 @@ public class Seleccion extends javax.swing.JFrame {
 
         BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
         BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar.setToolTipText("Regresar a la página de inicio");
         BtnRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnRegresar.setOpaque(false);
         BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -142,6 +150,28 @@ public class Seleccion extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 460, 60, 40));
+
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
+            }
+        });
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
+
+        LbTitulo1.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 36)); // NOI18N
+        LbTitulo1.setText("Inicia Sesión En:");
+        jPanel1.add(LbTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 370, 50));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
@@ -195,11 +225,20 @@ public class Seleccion extends javax.swing.JFrame {
                     this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
+
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Admin;
     private javax.swing.JButton BtnAdmin;
+    private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JButton BtnInfante;
     private javax.swing.JButton BtnPsicologo;
     private javax.swing.JButton BtnRegresar;
@@ -207,6 +246,7 @@ public class Seleccion extends javax.swing.JFrame {
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Infante;
     private javax.swing.JLabel LbTitulo;
+    private javax.swing.JLabel LbTitulo1;
     private javax.swing.JPanel PanelImagen;
     private javax.swing.JLabel Pariente;
     private javax.swing.JLabel Psicologo;

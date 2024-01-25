@@ -41,7 +41,6 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cerrar_ = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -61,6 +60,8 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         panel_grafic = new javax.swing.JPanel();
         BtnPersonalidadAdmin = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        BtnCerrarPagina = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
@@ -72,14 +73,6 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        cerrar_.setText("X");
-        cerrar_.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cerrar_ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cerrar_, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 500));
@@ -106,6 +99,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
 
         BtnParentescoAdmin.setBackground(new java.awt.Color(255, 255, 255));
         BtnParentescoAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ParentezcoAdmin.png"))); // NOI18N
+        BtnParentescoAdmin.setToolTipText("Haz click aqui para entrar a la pestaña de Parentesco");
         BtnParentescoAdmin.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnParentescoAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BtnParentescoAdmin.setOpaque(false);
@@ -118,6 +112,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
 
         BtnDiscaAdmin.setBackground(new java.awt.Color(255, 255, 255));
         BtnDiscaAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/DiscaAdmin.png"))); // NOI18N
+        BtnDiscaAdmin.setToolTipText("Haz click aqui para entrar a la pestaña de discapacidad");
         BtnDiscaAdmin.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnDiscaAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BtnDiscaAdmin.setOpaque(false);
@@ -139,6 +134,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
 
         BtnEspeciAdmin.setBackground(new java.awt.Color(255, 255, 255));
         BtnEspeciAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EspeciAdmin.png"))); // NOI18N
+        BtnEspeciAdmin.setToolTipText("Haz click aqui para entrar a la pestaña de Especialización");
         BtnEspeciAdmin.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnEspeciAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BtnEspeciAdmin.setOpaque(false);
@@ -155,6 +151,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
 
         BtnNacionalidad.setBackground(new java.awt.Color(255, 255, 255));
         BtnNacionalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/NacioAdmin.png"))); // NOI18N
+        BtnNacionalidad.setToolTipText("Haz click aqui para entrar a la pestaña de Nacionalidades");
         BtnNacionalidad.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnNacionalidad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BtnNacionalidad.setOpaque(false);
@@ -179,6 +176,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
 
         BtnMiniRepor.setBackground(new java.awt.Color(255, 255, 255));
         BtnMiniRepor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JuegosAdmin.png"))); // NOI18N
+        BtnMiniRepor.setToolTipText("Haz click aqui para entrar a la pestaña de Reporte Juegos");
         BtnMiniRepor.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnMiniRepor.setOpaque(false);
         BtnMiniRepor.addActionListener(new java.awt.event.ActionListener() {
@@ -194,6 +192,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
 
         BtnUsuario.setBackground(new java.awt.Color(255, 255, 255));
         BtnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuariosAdmin.png"))); // NOI18N
+        BtnUsuario.setToolTipText("Haz click aqui para entrar a la pestaña de Usuarios");
         BtnUsuario.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnUsuario.setOpaque(false);
         BtnUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -216,10 +215,11 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
                 panel_graficMouseClicked(evt);
             }
         });
-        jPanel5.add(panel_grafic, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 360, 310));
+        jPanel5.add(panel_grafic, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 310, 230));
 
         BtnPersonalidadAdmin.setBackground(new java.awt.Color(255, 255, 255));
         BtnPersonalidadAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/obligations_11323649.png"))); // NOI18N
+        BtnPersonalidadAdmin.setToolTipText("Haz click aqui para entrar a la pestaña de Personalidad");
         BtnPersonalidadAdmin.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnPersonalidadAdmin.setOpaque(false);
         BtnPersonalidadAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -233,11 +233,34 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         jLabel12.setText("PERSONALIDAD");
         jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, -1, 30));
 
+        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 70));
+
         jScrollPane2.setViewportView(jPanel5);
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 390));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 700, 390));
+
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
+            }
+        });
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 40, 30));
 
         jLabel2.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         jLabel2.setText("BIENVENIDO A: \" NI UNO MAS\"");
@@ -245,7 +268,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
 
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoAdmin.png"))); // NOI18N
         Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
-        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-560, -20, 1360, 540));
+        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-570, 0, 1380, 540));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         Fondo.setText(" ");
@@ -254,11 +277,13 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, -1, -1));
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        jMenu1.setToolTipText("Configuracion");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
         jMenuItem1.setText("Cerrar Sesión");
+        jMenuItem1.setToolTipText("Cierra la sesión iniciada");
         jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jMenuItem1MousePressed(evt);
@@ -269,6 +294,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
+        jMenu2.setToolTipText("Regresa a la página principal");
         jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu2MouseClicked(evt);
@@ -331,25 +357,6 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
 //        this.setVisible(false);
     }//GEN-LAST:event_BtnDiscaAdminMouseClicked
 
-    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
-        Base.close();
-        PagPrincipalAdmin paginaprinciadmi = new PagPrincipalAdmin();
-        paginaprinciadmi.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jMenu2MouseClicked
-
-    private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
-        Base.close();
-        IniciaAdmin loginadmin = new IniciaAdmin();
-        loginadmin.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jMenuItem1MousePressed
-
-    private void cerrar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrar_ActionPerformed
-        Base.close();
-        System.exit(0);
-    }//GEN-LAST:event_cerrar_ActionPerformed
-
     private void panel_graficMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_graficMouseClicked
         
     }//GEN-LAST:event_panel_graficMouseClicked
@@ -370,6 +377,28 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
                personalidad.setVisible(true);
                     this.setVisible(false); 
     }//GEN-LAST:event_BtnPersonalidadAdminActionPerformed
+
+    private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
+        Base.close();
+        IniciaAdmin loginadmin = new IniciaAdmin();
+        loginadmin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem1MousePressed
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        Base.close();
+        PagPrincipalAdmin paginaprinciadmi = new PagPrincipalAdmin();
+        paginaprinciadmi.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
+
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
     public void mostrar_diagrama() {
         DefaultPieDataset datos = new DefaultPieDataset();
         datos.setValue("Administradores", Num_Administradores(Base));
@@ -418,6 +447,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JButton BtnDiscaAdmin;
     private javax.swing.JButton BtnEspeciAdmin;
     private javax.swing.JButton BtnMiniRepor;
@@ -427,13 +457,13 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JButton BtnUsuario;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
-    private javax.swing.JButton cerrar_;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;

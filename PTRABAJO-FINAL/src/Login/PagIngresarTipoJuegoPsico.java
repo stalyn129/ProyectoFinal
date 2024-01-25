@@ -31,7 +31,6 @@ public class PagIngresarTipoJuegoPsico extends javax.swing.JFrame {
     private void initComponents() {
 
         Fondo1 = new javax.swing.JLabel();
-        btnExit = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         BtnLabeNiñoJuego1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -42,36 +41,28 @@ public class PagIngresarTipoJuegoPsico extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         BtnRespondeNiñoJuego3 = new javax.swing.JButton();
+        BtnCerrarPagina = new javax.swing.JButton();
         Fondo3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
-        MenuGenerlNiño = new javax.swing.JMenuBar();
-        JMnItmCerrarNiño2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        JMnPgPrinNiño2 = new javax.swing.JMenu();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        JMenu3puntitosPsicologo = new javax.swing.JMenu();
+        JMnItmCerrarPsicologo = new javax.swing.JMenuItem();
+        JMnPgPrinPsicolo = new javax.swing.JMenu();
 
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoInfoNiñoJuego.png"))); // NOI18N
         Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnExit.setText("x");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BtnLabeNiñoJuego1.setBackground(new java.awt.Color(255, 255, 255));
         BtnLabeNiñoJuego1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LaberintoNiñJueg.png"))); // NOI18N
+        BtnLabeNiñoJuego1.setToolTipText("Haz click aqui para entrar al minijuego laberinto");
         BtnLabeNiñoJuego1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnLabeNiñoJuego1.setOpaque(false);
         BtnLabeNiñoJuego1.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +82,7 @@ public class PagIngresarTipoJuegoPsico extends javax.swing.JFrame {
 
         BtnDifeNiñoJuego2.setBackground(new java.awt.Color(255, 255, 255));
         BtnDifeNiñoJuego2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/DiferenciasNiñoJueg.png"))); // NOI18N
+        BtnDifeNiñoJuego2.setToolTipText("Haz click aqui para entrar al minijuego diferencias");
         BtnDifeNiñoJuego2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnDifeNiñoJuego2.setOpaque(false);
         BtnDifeNiñoJuego2.addActionListener(new java.awt.event.ActionListener() {
@@ -118,6 +110,7 @@ public class PagIngresarTipoJuegoPsico extends javax.swing.JFrame {
 
         BtnRespondeNiñoJuego3.setBackground(new java.awt.Color(255, 255, 255));
         BtnRespondeNiñoJuego3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CorrectoNiñoJuego.png"))); // NOI18N
+        BtnRespondeNiñoJuego3.setToolTipText("Haz click aqui para entrar al minijuego responde lo correcto");
         BtnRespondeNiñoJuego3.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnRespondeNiñoJuego3.setOpaque(false);
         BtnRespondeNiñoJuego3.addActionListener(new java.awt.event.ActionListener() {
@@ -127,56 +120,76 @@ public class PagIngresarTipoJuegoPsico extends javax.swing.JFrame {
         });
         jPanel1.add(BtnRespondeNiñoJuego3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, 130, 80));
 
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
+            }
+        });
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
+
         Fondo3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoInfoNiñoJuego.png"))); // NOI18N
         Fondo3.setPreferredSize(new java.awt.Dimension(800, 500));
-        jPanel1.add(Fondo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, -20, 1690, 480));
+        jPanel1.add(Fondo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, 0, 1690, 480));
 
-        jLabel4.setFont(new java.awt.Font("Roboto", 1, 9)); // NOI18N
-        jLabel4.setText("Espero y te diviertas ");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, -1, 20));
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 80, 70));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
-        jLabel5.setText("Escoje el juego que mas te atraiga");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, -1, -1));
+        jLabel5.setText("Escoje el juego que Desees");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Rockwell Nova", 1, 24)); // NOI18N
         jLabel1.setText("LOS MINI JUEGOS ");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, 30));
-
-        jLabel3.setFont(new java.awt.Font("Rockwell Nova", 1, 20)); // NOI18N
-        jLabel3.setText("BIENVENIDOS Al AREA DE:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, -1, 40));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, -1, 30));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         Fondo.setPreferredSize(new java.awt.Dimension(800, 500));
-        jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 800, 530));
+        jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 800, 500));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
 
-        JMnItmCerrarNiño2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        JMenu3puntitosPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        JMenu3puntitosPsicologo.setToolTipText("Configuración");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setBackground(new java.awt.Color(255, 255, 255));
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
-        jMenuItem1.setText("Cerrar Sesión");
-        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem1MousePressed(evt);
-            }
-        });
-        JMnItmCerrarNiño2.add(jMenuItem1);
-
-        MenuGenerlNiño.add(JMnItmCerrarNiño2);
-
-        JMnPgPrinNiño2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
-        JMnPgPrinNiño2.addMouseListener(new java.awt.event.MouseAdapter() {
+        JMnItmCerrarPsicologo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        JMnItmCerrarPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
+        JMnItmCerrarPsicologo.setText("Cerrar Sesión");
+        JMnItmCerrarPsicologo.setToolTipText("Cierra la sesión iniciada");
+        JMnItmCerrarPsicologo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JMnPgPrinNiño2MouseClicked(evt);
+                JMnItmCerrarPsicologoMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                JMnItmCerrarPsicologoMousePressed(evt);
             }
         });
-        MenuGenerlNiño.add(JMnPgPrinNiño2);
+        JMenu3puntitosPsicologo.add(JMnItmCerrarPsicologo);
 
-        setJMenuBar(MenuGenerlNiño);
+        jMenuBar1.add(JMenu3puntitosPsicologo);
+
+        JMnPgPrinPsicolo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
+        JMnPgPrinPsicolo.setToolTipText("Resgresa a la página principal");
+        JMnPgPrinPsicolo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JMnPgPrinPsicoloMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(JMnPgPrinPsicolo);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -202,25 +215,31 @@ public class PagIngresarTipoJuegoPsico extends javax.swing.JFrame {
 //        this.setVisible(false);
     }//GEN-LAST:event_BtnRespondeNiñoJuego3ActionPerformed
 
-    private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
+    private void JMnItmCerrarPsicologoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JMnItmCerrarPsicologoMouseClicked
 
+    private void JMnItmCerrarPsicologoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMousePressed
         Base.close();
-        InicioPsicologo login = new InicioPsicologo();
-        login.setVisible(true);
+        InicioPsicologo loginPsicologo = new InicioPsicologo();
+        loginPsicologo.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jMenuItem1MousePressed
+    }//GEN-LAST:event_JMnItmCerrarPsicologoMousePressed
 
-    private void JMnPgPrinNiño2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiño2MouseClicked
+    private void JMnPgPrinPsicoloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinPsicoloMouseClicked
         Base.close();
-        PagPrincipalPsicologo principalpsico = new PagPrincipalPsicologo();
-        principalpsico.setVisible(true);
+        PagPrincipalPsicologo principal = new PagPrincipalPsicologo();
+        principal.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_JMnPgPrinNiño2MouseClicked
+    }//GEN-LAST:event_JMnPgPrinPsicoloMouseClicked
 
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
 
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_btnExitActionPerformed
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,24 +277,23 @@ public class PagIngresarTipoJuegoPsico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JButton BtnDifeNiñoJuego2;
     private javax.swing.JButton BtnLabeNiñoJuego1;
     private javax.swing.JButton BtnRespondeNiñoJuego3;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JLabel Fondo3;
-    private javax.swing.JMenu JMnItmCerrarNiño2;
-    private javax.swing.JMenu JMnPgPrinNiño2;
-    private javax.swing.JMenuBar MenuGenerlNiño;
-    private javax.swing.JButton btnExit;
+    private javax.swing.JMenu JMenu3puntitosPsicologo;
+    private javax.swing.JMenuItem JMnItmCerrarPsicologo;
+    private javax.swing.JMenu JMnPgPrinPsicolo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

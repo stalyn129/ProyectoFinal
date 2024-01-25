@@ -312,7 +312,6 @@ public class Reporte_test extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        BtnRegresar1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         cbx_Test = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
@@ -333,32 +332,30 @@ public class Reporte_test extends javax.swing.JFrame {
         txta_descripcion = new javax.swing.JTextArea();
         jPanel6 = new javax.swing.JPanel();
         txt_num_Secc = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        BtnCerrarPagina = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        JMenu3puntitosPsicologo = new javax.swing.JMenu();
+        JMnItmCerrarPsicologo = new javax.swing.JMenuItem();
+        JMnPgPrinPsicolo = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(800, 500));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        BtnRegresar1.setBackground(new java.awt.Color(255, 255, 255));
-        BtnRegresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
-        BtnRegresar1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnRegresar1.setOpaque(false);
-        BtnRegresar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRegresar1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BtnRegresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.add(cbx_Test, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 11, 259, -1));
+        jPanel2.add(cbx_Test, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 259, -1));
 
         jLabel2.setText("Test");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 14, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
 
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -367,6 +364,7 @@ public class Reporte_test extends javax.swing.JFrame {
 
         txt_titulo_re.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_titulo_re.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_titulo_re.setToolTipText("Ingrese el titulo");
         txt_titulo_re.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel3.add(txt_titulo_re, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 350, -1));
         jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 370, 20));
@@ -404,6 +402,7 @@ public class Reporte_test extends javax.swing.JFrame {
 
         txta_descripcion.setColumns(20);
         txta_descripcion.setRows(5);
+        txta_descripcion.setToolTipText("Ingrese el contenido del test");
         jScrollPane2.setViewportView(txta_descripcion);
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 440, 50));
@@ -426,20 +425,65 @@ public class Reporte_test extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jPanel3);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 630, 350));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 620, 310));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 690, 410));
+        jLabel8.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 80, 70));
 
-        jButton1.setText("x");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 690, 410));
+
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Imagen de WhatsApp 2024-01-03 a las 07.58.17_8bdfab4c.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
+
+        JMenu3puntitosPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        JMenu3puntitosPsicologo.setToolTipText("Configuración");
+
+        JMnItmCerrarPsicologo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        JMnItmCerrarPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
+        JMnItmCerrarPsicologo.setText("Cerrar Sesión");
+        JMnItmCerrarPsicologo.setToolTipText("Cierra la sesión iniciada");
+        JMnItmCerrarPsicologo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JMnItmCerrarPsicologoMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                JMnItmCerrarPsicologoMousePressed(evt);
+            }
+        });
+        JMenu3puntitosPsicologo.add(JMnItmCerrarPsicologo);
+
+        jMenuBar1.add(JMenu3puntitosPsicologo);
+
+        JMnPgPrinPsicolo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
+        JMnPgPrinPsicolo.setToolTipText("Resgresa a la página principal");
+        JMnPgPrinPsicolo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JMnPgPrinPsicoloMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(JMnPgPrinPsicolo);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -455,18 +499,31 @@ public class Reporte_test extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Base.close();
-        System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void JMnItmCerrarPsicologoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JMnItmCerrarPsicologoMouseClicked
 
-    private void BtnRegresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar1ActionPerformed
-        
+    private void JMnItmCerrarPsicologoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMousePressed
         Base.close();
-        PagTest_Psicologo general = new PagTest_Psicologo();
-        general.setVisible(true);
+        InicioPsicologo loginPsicologo = new InicioPsicologo();
+        loginPsicologo.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_BtnRegresar1ActionPerformed
+    }//GEN-LAST:event_JMnItmCerrarPsicologoMousePressed
+
+    private void JMnPgPrinPsicoloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinPsicoloMouseClicked
+        Base.close();
+        PagPrincipalPsicologo principal = new PagPrincipalPsicologo();
+        principal.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_JMnPgPrinPsicoloMouseClicked
+
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
+
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -505,11 +562,13 @@ public class Reporte_test extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnRegresar1;
+    private javax.swing.JButton BtnCerrarPagina;
+    private javax.swing.JMenu JMenu3puntitosPsicologo;
+    private javax.swing.JMenuItem JMnItmCerrarPsicologo;
+    private javax.swing.JMenu JMnPgPrinPsicolo;
     private javax.swing.JPanel barra_panel;
     private javax.swing.JComboBox<String> cbx_Test;
     private javax.swing.JComboBox<String> cbx_preguntas;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -517,6 +576,8 @@ public class Reporte_test extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

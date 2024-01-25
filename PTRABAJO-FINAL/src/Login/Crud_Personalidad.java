@@ -37,7 +37,6 @@ public class Crud_Personalidad extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        btnExit = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -48,12 +47,18 @@ public class Crud_Personalidad extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         btnGuardar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableParentesco = new javax.swing.JTable();
         btnActualizar1 = new javax.swing.JButton();
         btnModificar1 = new javax.swing.JButton();
         Btn_Consultar1 = new javax.swing.JButton();
         btnEliminar1 = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        BtnCerrarPagina = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -65,33 +70,26 @@ public class Crud_Personalidad extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnExit.setText("x");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
-
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setMinimumSize(new java.awt.Dimension(245, 500));
         jPanel2.setPreferredSize(new java.awt.Dimension(245, 500));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 230, 10));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 220, 10));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel6.setText("Observacion");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, 20));
+        jLabel6.setText("Observación:");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, 20));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel7.setText("Personalidad:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
         Txt_Observacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Txt_Observacion.setForeground(new java.awt.Color(153, 153, 153));
         Txt_Observacion.setText("Ejem: Soy muy....");
+        Txt_Observacion.setToolTipText("Ingresa la observación");
         Txt_Observacion.setBorder(null);
         Txt_Observacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -103,11 +101,12 @@ public class Crud_Personalidad extends javax.swing.JFrame {
                 Txt_ObservacionActionPerformed(evt);
             }
         });
-        jPanel2.add(Txt_Observacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 215, 20));
+        jPanel2.add(Txt_Observacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 220, 20));
 
         Txt_Parentesco.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Txt_Parentesco.setForeground(new java.awt.Color(153, 153, 153));
         Txt_Parentesco.setText("Ejem: Feliz");
+        Txt_Parentesco.setToolTipText("Ingresa la personalidad");
         Txt_Parentesco.setBorder(null);
         Txt_Parentesco.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -119,26 +118,62 @@ public class Crud_Personalidad extends javax.swing.JFrame {
                 Txt_ParentescoActionPerformed(evt);
             }
         });
-        jPanel2.add(Txt_Parentesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 215, 20));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 230, 10));
+        jPanel2.add(Txt_Parentesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 215, 20));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 220, 10));
 
         btnGuardar.setText("Guardar");
+        btnGuardar.setToolTipText("Guarda los datos ingresados");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 268, -1, -1));
+        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 80, -1));
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("CRUD PERSONALIDAD");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 30));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 220, 30));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 284, 500));
+        jLabel8.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 210, 90));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 270, 300));
 
         jTableParentesco.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
                 "Codigo", "Personalidad ", "Observacion"
@@ -159,51 +194,79 @@ public class Crud_Personalidad extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTableParentesco);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 477, 401));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 460, 400));
 
         btnActualizar1.setText("Actualizar");
+        btnActualizar1.setToolTipText("Actualiza los datos existentes en la tabla");
         btnActualizar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizar1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActualizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, -1, -1));
+        jPanel1.add(btnActualizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 100, -1));
 
         btnModificar1.setText("Modificar");
+        btnModificar1.setToolTipText("Modifica los datos existentes en la tabla");
         btnModificar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificar1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnModificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 440, -1, -1));
+        jPanel1.add(btnModificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 90, -1));
 
         Btn_Consultar1.setText("Consultar");
+        Btn_Consultar1.setToolTipText("Consulta los datos existentes en la tabla");
         Btn_Consultar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_Consultar1ActionPerformed(evt);
             }
         });
-        jPanel1.add(Btn_Consultar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 440, -1, -1));
+        jPanel1.add(Btn_Consultar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 100, -1));
 
         btnEliminar1.setText("Eliminar");
+        btnEliminar1.setToolTipText("Elimina los datos existentes en la tabla");
         btnEliminar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminar1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 440, -1, -1));
+        jPanel1.add(btnEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 90, -1));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 90, 10));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 100, 10));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, 90, 10));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, 100, 10));
+
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
+            }
+        });
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 480));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        jMenu1.setToolTipText("Configuración");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
         jMenuItem1.setText("Cerrar Sesión");
+        jMenuItem1.setToolTipText("Cierra la Sesión iniciada");
         jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jMenuItem1MousePressed(evt);
@@ -214,6 +277,7 @@ public class Crud_Personalidad extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
+        jMenu2.setToolTipText("Regresar a la página principal");
         jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu2MouseClicked(evt);
@@ -336,10 +400,13 @@ public class Crud_Personalidad extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jMenu2MouseClicked
 
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
 
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_btnExitActionPerformed
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -377,12 +444,12 @@ public class Crud_Personalidad extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JButton Btn_Consultar1;
     private javax.swing.JTextField Txt_Observacion;
     private javax.swing.JTextField Txt_Parentesco;
     private javax.swing.JButton btnActualizar1;
     private javax.swing.JButton btnEliminar1;
-    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar1;
     private javax.swing.JLabel jLabel1;
@@ -390,6 +457,7 @@ public class Crud_Personalidad extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -399,6 +467,10 @@ public class Crud_Personalidad extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTable jTableParentesco;
     // End of variables declaration//GEN-END:variables
 public void IngresarDatos(ObjectContainer base) {

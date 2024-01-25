@@ -58,7 +58,6 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnExit = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -84,6 +83,8 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         btn_modifi = new javax.swing.JButton();
         btn_actualizar = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JSeparator();
+        jLabel4 = new javax.swing.JLabel();
+        BtnCerrarPagina = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenu3puntitosPsicologo = new javax.swing.JMenu();
@@ -93,14 +94,6 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnExit.setText("x");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -123,6 +116,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
 
         txA_text_info1.setColumns(20);
         txA_text_info1.setRows(5);
+        txA_text_info1.setToolTipText("Ingresa el contenido");
         txA_text_info1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jScrollPane1.setViewportView(txA_text_info1);
 
@@ -164,6 +158,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
 
         btn_ingresar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_ingresar.setText("Ingresar");
+        btn_ingresar.setToolTipText("Ingresa Datos nuevos a la tabla");
         btn_ingresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_ingresarMouseClicked(evt);
@@ -179,6 +174,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         imagen_1.setForeground(new java.awt.Color(204, 204, 204));
         imagen_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_1.setText(" Ingresar Imagen");
+        imagen_1.setToolTipText("Selecciona la imagen");
         imagen_1.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel4.add(imagen_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 220, 230));
 
@@ -198,6 +194,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         jPanel4.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 30, 300));
 
         btn_Ingresar_imagen.setText("Ingresar Imagen");
+        btn_Ingresar_imagen.setToolTipText("Selecciona la imagen ");
         btn_Ingresar_imagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_Ingresar_imagenActionPerformed(evt);
@@ -213,6 +210,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         txt_Titulo1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_Titulo1.setForeground(new java.awt.Color(102, 102, 102));
         txt_Titulo1.setText("Ingrese el titulo de la información");
+        txt_Titulo1.setToolTipText("Ingresa el titulo");
         txt_Titulo1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txt_Titulo1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -227,11 +225,12 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Rockwell Nova", 0, 24)); // NOI18N
         jLabel2.setText("Información");
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, 37));
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 150, 37));
         jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 340, 240, 10));
 
         btn_eliminar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         btn_eliminar.setText("Eliminar");
+        btn_eliminar.setToolTipText("Elimina los datos existentes en la tabla");
         btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_eliminarActionPerformed(evt);
@@ -241,6 +240,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
 
         btn_consultar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         btn_consultar.setText("Consultar");
+        btn_consultar.setToolTipText("Consulta los datos existentes en la tabla");
         btn_consultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_consultarActionPerformed(evt);
@@ -250,6 +250,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
 
         btn_modifi.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         btn_modifi.setText("Modificar");
+        btn_modifi.setToolTipText("Modifica los datos existentes en la tabla");
         btn_modifi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_modifiActionPerformed(evt);
@@ -259,6 +260,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
 
         btn_actualizar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         btn_actualizar.setText("Actualizar");
+        btn_actualizar.setToolTipText("Actualiza los datos existentes en la tabla");
         btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_actualizarActionPerformed(evt);
@@ -267,11 +269,34 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         jPanel4.add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 510, 220, 30));
         jPanel4.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 230, 10));
 
+        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 70));
+
         jScrollPane3.setViewportView(jPanel4);
 
-        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 730, 400));
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 410));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 730, 420));
+
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
+            }
+        });
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 40, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
@@ -279,10 +304,12 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, -1, 500));
 
         JMenu3puntitosPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        JMenu3puntitosPsicologo.setToolTipText("Configuración");
 
         JMnItmCerrarPsicologo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         JMnItmCerrarPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
         JMnItmCerrarPsicologo.setText("Cerrar Sesión");
+        JMnItmCerrarPsicologo.setToolTipText("Cierra la sesión iniciada");
         JMnItmCerrarPsicologo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JMnItmCerrarPsicologoMouseClicked(evt);
@@ -296,6 +323,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         jMenuBar1.add(JMenu3puntitosPsicologo);
 
         JMnPgPrinPsicolo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
+        JMnPgPrinPsicolo.setToolTipText("Resgresa a la página principal");
         JMnPgPrinPsicolo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JMnPgPrinPsicoloMouseClicked(evt);
@@ -392,25 +420,6 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_ingresarMouseClicked
 
-    private void JMnItmCerrarPsicologoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JMnItmCerrarPsicologoMouseClicked
-
-    private void JMnItmCerrarPsicologoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMousePressed
-        Base.close();
-        InicioPsicologo loginPsicologo = new InicioPsicologo();
-        loginPsicologo.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_JMnItmCerrarPsicologoMousePressed
-
-    private void JMnPgPrinPsicoloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinPsicoloMouseClicked
-        Base.close();
-        PagPrincipalPsicologo principal = new PagPrincipalPsicologo();
-        principal.setVisible(true);
-        this.setVisible(false);
-
-    }//GEN-LAST:event_JMnPgPrinPsicoloMouseClicked
-
     private void txt_Titulo1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_Titulo1MousePressed
         if (txt_Titulo1.getText().equals("Ingrese el titulo de la información")) {
             txt_Titulo1.setText("");
@@ -468,10 +477,31 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
                 consulta(Base,userInput);
     }//GEN-LAST:event_btn_consultarActionPerformed
 
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
 
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_btnExitActionPerformed
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
+
+    private void JMnPgPrinPsicoloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinPsicoloMouseClicked
+        Base.close();
+        PagPrincipalPsicologo principal = new PagPrincipalPsicologo();
+        principal.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_JMnPgPrinPsicoloMouseClicked
+
+    private void JMnItmCerrarPsicologoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMousePressed
+        Base.close();
+        InicioPsicologo loginPsicologo = new InicioPsicologo();
+        loginPsicologo.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_JMnItmCerrarPsicologoMousePressed
+
+    private void JMnItmCerrarPsicologoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JMnItmCerrarPsicologoMouseClicked
 
     public void Eliminar(ObjectContainer Base) {
         Informacion inf = new Informacion();
@@ -699,12 +729,12 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
     private javax.swing.JMenu JMnPgPrinPsicolo;
     private javax.swing.JLabel LblImagen4InfoNiño;
     private javax.swing.JLabel LblTitulo3InfNiño;
-    private javax.swing.JButton btnExit;
     private javax.swing.JButton btn_Ingresar_imagen;
     private javax.swing.JButton btn_actualizar;
     private javax.swing.JButton btn_consultar;
@@ -715,6 +745,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;

@@ -61,7 +61,6 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnExit = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -99,22 +98,16 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         BtnActualizarPsicologo = new javax.swing.JButton();
         BtnConsultarPsicologo = new javax.swing.JButton();
         BtnModifiPsicologo = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        BtnCerrarPagina = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenu3puntitosPsicologo = new javax.swing.JMenu();
         JMnItmCerrarPsicologo = new javax.swing.JMenuItem();
-        JMnPgPrinPsicologo = new javax.swing.JMenu();
+        JMnPgPrinPsicolo = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnExit.setText("x");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -143,6 +136,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
 
         Txt_TituloConsejPsicologo2.setForeground(new java.awt.Color(102, 102, 102));
         Txt_TituloConsejPsicologo2.setText("Ingrese el Titulo");
+        Txt_TituloConsejPsicologo2.setToolTipText("Escribe el titulo del consejo");
         Txt_TituloConsejPsicologo2.setBorder(null);
         Txt_TituloConsejPsicologo2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -155,6 +149,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         imagen_2.setForeground(new java.awt.Color(204, 204, 204));
         imagen_2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_2.setText(" Ingresar Imagen");
+        imagen_2.setToolTipText("Selecciona la imagen ");
         imagen_2.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel4.add(imagen_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 260, 190));
 
@@ -165,6 +160,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         txtAConsejoPsico2.setColumns(20);
         txtAConsejoPsico2.setLineWrap(true);
         txtAConsejoPsico2.setRows(5);
+        txtAConsejoPsico2.setToolTipText("Escribe el contenido de los consejos");
         txtAConsejoPsico2.setWrapStyleWord(true);
         txtAConsejoPsico2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jScrollPane2.setViewportView(txtAConsejoPsico2);
@@ -172,6 +168,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 480, 310, 170));
 
         btn_Ingresar_imagen.setText("Ingresar Imagen");
+        btn_Ingresar_imagen.setToolTipText("Selecciona la imagen correspondiente");
         btn_Ingresar_imagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_Ingresar_imagenActionPerformed(evt);
@@ -189,6 +186,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         txtAConsejoPsico1.setColumns(20);
         txtAConsejoPsico1.setLineWrap(true);
         txtAConsejoPsico1.setRows(5);
+        txtAConsejoPsico1.setToolTipText("Escribe el contenido de los consejos");
         txtAConsejoPsico1.setWrapStyleWord(true);
         txtAConsejoPsico1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jScrollPane3.setViewportView(txtAConsejoPsico1);
@@ -202,6 +200,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
 
         Txt_TituloConsejPsicologo1.setForeground(new java.awt.Color(102, 102, 102));
         Txt_TituloConsejPsicologo1.setText("Ingrese el Titulo");
+        Txt_TituloConsejPsicologo1.setToolTipText("Escribe el titulo del consejo");
         Txt_TituloConsejPsicologo1.setBorder(null);
         Txt_TituloConsejPsicologo1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -217,7 +216,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel6.setText("Titulo del Consejo Número 1:");
-        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel7.setText("Ingrese la imagen para el consejo 1:");
@@ -227,11 +226,13 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         imagen_1.setForeground(new java.awt.Color(204, 204, 204));
         imagen_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen_1.setText(" Ingresar Imagen");
+        imagen_1.setToolTipText("Selecciona la imagen ");
         imagen_1.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel4.add(imagen_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 260, 190));
         jPanel4.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 310, 260, 10));
 
         btn_Ingresar_imagen1.setText("Ingresar Imagen");
+        btn_Ingresar_imagen1.setToolTipText("Selecciona la imagen correspondiente");
         btn_Ingresar_imagen1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_Ingresar_imagen1ActionPerformed(evt);
@@ -280,6 +281,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
 
         BtnEliminarPsicologo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         BtnEliminarPsicologo.setText("Eliminar");
+        BtnEliminarPsicologo.setToolTipText("Elimina los datos existentes en la tabla");
         BtnEliminarPsicologo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnEliminarPsicologoMouseClicked(evt);
@@ -294,6 +296,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
 
         btn_ingresar1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_ingresar1.setText("Ingresar");
+        btn_ingresar1.setToolTipText("Ingresa datos nuevos a la tabla");
         btn_ingresar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_ingresar1MouseClicked(evt);
@@ -308,6 +311,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
 
         BtnActualizarPsicologo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         BtnActualizarPsicologo.setText("Actualizar");
+        BtnActualizarPsicologo.setToolTipText("Actualiza los datos existentes en la tabla");
         BtnActualizarPsicologo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnActualizarPsicologoMouseClicked(evt);
@@ -322,6 +326,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
 
         BtnConsultarPsicologo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         BtnConsultarPsicologo.setText("Consultar");
+        BtnConsultarPsicologo.setToolTipText("Consulta los datos existentes en la tabla");
         BtnConsultarPsicologo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnConsultarPsicologoMouseClicked(evt);
@@ -336,6 +341,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
 
         BtnModifiPsicologo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         BtnModifiPsicologo.setText("Modificar");
+        BtnModifiPsicologo.setToolTipText("Modifica los datos existentes en la tabla");
         BtnModifiPsicologo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnModifiPsicologoMouseClicked(evt);
@@ -348,11 +354,34 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         });
         jPanel4.add(BtnModifiPsicologo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 1010, 100, -1));
 
+        jLabel8.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 70));
+
         jScrollPane1.setViewportView(jPanel4);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 430));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 410));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 760, 430));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 760, 410));
+
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
+            }
+        });
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 40, 30));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         Fondo.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -361,10 +390,12 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 800, 500));
 
         JMenu3puntitosPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        JMenu3puntitosPsicologo.setToolTipText("Configuración");
 
         JMnItmCerrarPsicologo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         JMnItmCerrarPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarSesion.png"))); // NOI18N
         JMnItmCerrarPsicologo.setText("Cerrar Sesión");
+        JMnItmCerrarPsicologo.setToolTipText("Cierra la sesión iniciada");
         JMnItmCerrarPsicologo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JMnItmCerrarPsicologoMouseClicked(evt);
@@ -377,31 +408,19 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
 
         jMenuBar1.add(JMenu3puntitosPsicologo);
 
-        JMnPgPrinPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
-        JMnPgPrinPsicologo.addMouseListener(new java.awt.event.MouseAdapter() {
+        JMnPgPrinPsicolo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
+        JMnPgPrinPsicolo.setToolTipText("Resgresa a la página principal");
+        JMnPgPrinPsicolo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JMnPgPrinPsicologoMouseClicked(evt);
+                JMnPgPrinPsicoloMouseClicked(evt);
             }
         });
-        jMenuBar1.add(JMnPgPrinPsicologo);
+        jMenuBar1.add(JMnPgPrinPsicolo);
 
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void JMnItmCerrarPsicologoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMouseClicked
-        InicioPsicologo loginPsicologo = new InicioPsicologo();
-            loginPsicologo.setVisible(true);
-                this.setVisible(false);
-    }//GEN-LAST:event_JMnItmCerrarPsicologoMouseClicked
-
-    private void JMnPgPrinPsicologoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinPsicologoMouseClicked
-        Base.close();
-            PagPrincipalPsicologo principalpsicologo = new PagPrincipalPsicologo();
-               principalpsicologo.setVisible(true); 
-                  this.setVisible(false);
-    }//GEN-LAST:event_JMnPgPrinPsicologoMouseClicked
 
     private void BtnConsultarPsicologoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConsultarPsicologoActionPerformed
         String codigoAConsultar = JOptionPane.showInputDialog(this, "Ingrese el código a consultar");
@@ -572,13 +591,6 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BtnModifiPsicologoActionPerformed
 
-    private void JMnItmCerrarPsicologoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMousePressed
-        Base.close();
-            InicioPsicologo loginPsicologo = new InicioPsicologo();
-                loginPsicologo.setVisible(true);
-                    this.setVisible(false);
-    }//GEN-LAST:event_JMnItmCerrarPsicologoMousePressed
-
     private void Txt_TituloConsejPsicologo1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_TituloConsejPsicologo1MousePressed
         if (Txt_TituloConsejPsicologo1.getText().equals("Ingrese el Titulo")) {
             Txt_TituloConsejPsicologo1.setText("");
@@ -642,10 +654,31 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_JTConsejosMouseClicked
 
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+    private void JMnItmCerrarPsicologoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JMnItmCerrarPsicologoMouseClicked
 
+    private void JMnItmCerrarPsicologoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMousePressed
+        Base.close();
+        InicioPsicologo loginPsicologo = new InicioPsicologo();
+        loginPsicologo.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_JMnItmCerrarPsicologoMousePressed
+
+    private void JMnPgPrinPsicoloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinPsicoloMouseClicked
+        Base.close();
+        PagPrincipalPsicologo principal = new PagPrincipalPsicologo();
+        principal.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_JMnPgPrinPsicoloMouseClicked
+
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
+
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_btnExitActionPerformed
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
     public byte[] AbrirArchivo(File archivo) {
         try ( FileInputStream entrada = new FileInputStream(archivo)) {
@@ -919,17 +952,17 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnActualizarPsicologo;
+    private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JButton BtnConsultarPsicologo;
     private javax.swing.JButton BtnEliminarPsicologo;
     private javax.swing.JButton BtnModifiPsicologo;
     private javax.swing.JLabel Fondo;
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
-    private javax.swing.JMenu JMnPgPrinPsicologo;
+    private javax.swing.JMenu JMnPgPrinPsicolo;
     private javax.swing.JTable JTConsejos;
     private javax.swing.JTextField Txt_TituloConsejPsicologo1;
     private javax.swing.JTextField Txt_TituloConsejPsicologo2;
-    private javax.swing.JButton btnExit;
     private javax.swing.JButton btn_Ingresar_imagen;
     private javax.swing.JButton btn_Ingresar_imagen1;
     private javax.swing.JButton btn_ingresar1;
@@ -942,6 +975,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

@@ -9,6 +9,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/TresPuntitos.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Configuraci&#xf3;n"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="JMnItmCerrarPsicologo">
@@ -20,6 +21,7 @@
                   <Image iconType="3" name="/Imagenes/CerrarSesion.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cerrar Sesi&#xf3;n"/>
+                <Property name="toolTipText" type="java.lang.String" value="Cierra la sesi&#xf3;n iniciada"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="JMnItmCerrarPsicologoMouseClicked"/>
@@ -33,6 +35,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/Casita.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Resgresa a la p&#xe1;gina principal"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="JMnPgPrinPsicoloMouseClicked"/>
@@ -66,19 +69,6 @@
     <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btnExit">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="x"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExitActionPerformed"/>
-      </Events>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="760" y="0" width="40" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -105,7 +95,7 @@
             <Component class="javax.swing.JTable" name="jTableCuentos">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="7" rowCount="0">
+                  <Table columnCount="7" rowCount="15">
                     <Column editable="true" title="C&#xf3;digo" type="java.lang.Object"/>
                     <Column editable="true" title="Titulo" type="java.lang.Object"/>
                     <Column editable="true" title="Introducci&#xf3;n" type="java.lang.Object"/>
@@ -164,6 +154,7 @@
         <Component class="javax.swing.JButton" name="btnActualizar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Actualizar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Actualiza los datos existentes en la&#xa0;tabla"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarActionPerformed"/>
@@ -177,6 +168,7 @@
         <Component class="javax.swing.JButton" name="btnModificar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Modificar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Modifica los datos existentes en la&#xa0;tabla"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificarActionPerformed"/>
@@ -190,6 +182,7 @@
         <Component class="javax.swing.JButton" name="btnEliminar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Elimina los datos existentes en la&#xa0;tabla"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarActionPerformed"/>
@@ -203,6 +196,7 @@
         <Component class="javax.swing.JButton" name="btnConsultar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Consultar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Consulta los datos existentes en la&#xa0;tabla"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultarActionPerformed"/>
@@ -322,6 +316,7 @@
                           <Color blue="99" green="99" red="99" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Ejem: Las aventuras de..."/>
+                        <Property name="toolTipText" type="java.lang.String" value="Escribe el titulo"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
                         </Property>
@@ -345,7 +340,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="40" y="60" width="-1" height="-1"/>
+                          <AbsoluteConstraints x="40" y="70" width="-1" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -379,7 +374,7 @@
                             <Property name="columns" type="int" value="20"/>
                             <Property name="lineWrap" type="boolean" value="true"/>
                             <Property name="rows" type="int" value="5"/>
-                            <Property name="toolTipText" type="java.lang.String" value=""/>
+                            <Property name="toolTipText" type="java.lang.String" value="Escribe el contenido de las historias"/>
                             <Property name="wrapStyleWord" type="boolean" value="true"/>
                           </Properties>
                         </Component>
@@ -402,7 +397,7 @@
                             <Property name="columns" type="int" value="20"/>
                             <Property name="lineWrap" type="boolean" value="true"/>
                             <Property name="rows" type="int" value="5"/>
-                            <Property name="toolTipText" type="java.lang.String" value=""/>
+                            <Property name="toolTipText" type="java.lang.String" value="Escribe el contenido de las historias"/>
                             <Property name="wrapStyleWord" type="boolean" value="true"/>
                           </Properties>
                         </Component>
@@ -425,7 +420,7 @@
                             <Property name="columns" type="int" value="20"/>
                             <Property name="lineWrap" type="boolean" value="true"/>
                             <Property name="rows" type="int" value="5"/>
-                            <Property name="toolTipText" type="java.lang.String" value=""/>
+                            <Property name="toolTipText" type="java.lang.String" value="Escribe el contenido de las historias"/>
                             <Property name="wrapStyleWord" type="boolean" value="true"/>
                           </Properties>
                         </Component>
@@ -454,6 +449,7 @@
                     <Component class="javax.swing.JLabel" name="lblImagenFinal">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Selecciona la imagen del cuento"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder/>
@@ -479,6 +475,7 @@
                     <Component class="javax.swing.JButton" name="btnImagenFinal">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Agregar Imagen Final"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Selecciona la imagen correspondiente"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnImagenFinalActionPerformed"/>
@@ -505,6 +502,7 @@
                     <Component class="javax.swing.JButton" name="btnImagenInicial">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Agregar Imagen Comienzo"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Selecciona la imagen correspondiente"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnImagenInicialActionPerformed"/>
@@ -525,6 +523,7 @@
                     <Component class="javax.swing.JLabel" name="lblImagenInicial">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Selecciona la imagen del cuento"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder/>
@@ -554,12 +553,53 @@
                         </Constraint>
                       </Constraints>
                     </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel2">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Rockwell" size="18" style="1"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/Imagenes/Ni Uno Mas-Logo-1 (1).png"/>
+                        </Property>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="0" y="0" width="80" height="70"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
             </Container>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JButton" name="BtnCerrarPagina">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Rockwell Extra Bold" size="18" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="x"/>
+            <Property name="toolTipText" type="java.lang.String" value="Cerrar Pagina dando click aqui"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="opaque" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BtnCerrarPaginaMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnCerrarPaginaActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="760" y="20" width="40" height="30"/>
+            </Constraint>
+          </Constraints>
+        </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">

@@ -106,8 +106,9 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         Especializacion3 = new javax.swing.JLabel();
         sp_años = new javax.swing.JSpinner();
         cbx_especializacion = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
         BtnRegresar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        BtnCerrarPagina = new javax.swing.JButton();
         Fondo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -262,6 +263,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         jPanel2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 170, 10));
 
         BtnRegistrarsePsicol.setText("Registrarse");
+        BtnRegistrarsePsicol.setToolTipText("Haz click para registrarse");
         BtnRegistrarsePsicol.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnRegistrarsePsicol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -387,10 +389,16 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         });
         jPanel2.add(cbx_especializacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 170, -1));
 
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 70, 70));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 690, 420));
 
         BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
         BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar.setToolTipText("Regresa a la pestaña de registrarse");
         BtnRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnRegresar.setOpaque(false);
         BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -400,13 +408,23 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         });
         jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
 
-        jButton1.setText("x");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, -1));
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
 
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
@@ -1034,10 +1052,13 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
 
     }//GEN-LAST:event_CmbBxNacionalidad3PsicolMousePressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Base.close();
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
+
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
     public static int Verificar_cedula_Persona(ObjectContainer Base, String cedula) {
         Persona elprson = new Persona();
@@ -1179,6 +1200,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Apellidos;
+    private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.ButtonGroup BtnGpDiscaPsicol;
     private javax.swing.ButtonGroup BtnGrpSexoPsicol;
     private javax.swing.JButton BtnRegistrarsePsicol;
@@ -1213,7 +1235,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
     private javax.swing.JTextField TxtTelefono;
     private javax.swing.JComboBox<String> cbx_discapacidad;
     private javax.swing.JComboBox<String> cbx_especializacion;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
