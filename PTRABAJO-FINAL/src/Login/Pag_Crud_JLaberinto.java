@@ -323,7 +323,7 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JMnPgPrinPsicoloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinPsicoloMouseClicked
-        //Base.close();
+        Base.close();
         PagPrincipalPsicologo principal = new PagPrincipalPsicologo();
         principal.setVisible(true);
         this.setVisible(false);
@@ -334,7 +334,7 @@ public class Pag_Crud_JLaberinto extends javax.swing.JFrame {
     }//GEN-LAST:event_JMnItmCerrarPsicologoMouseClicked
 
     private void JMnItmCerrarPsicologoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMousePressed
-        //Base.close();
+        Base.close();
         InicioPsicologo loginPsicologo = new InicioPsicologo();
         loginPsicologo.setVisible(true);
         this.setVisible(false);

@@ -196,7 +196,7 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
 
     private void BtnInfRepreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfRepreActionPerformed
     Base.close();
-        PagInfNiño inf = new PagInfNiño();
+        PagInfRepre inf = new PagInfRepre();
             inf.setVisible(true);
                 this.setVisible(false);
     }//GEN-LAST:event_BtnInfRepreActionPerformed
@@ -218,7 +218,7 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
 
     private void BtnCuenRepreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCuenRepreActionPerformed
     Base.close();
-        PagCuentosPariente cuentospariente = new PagCuentosPariente();
+        PagCuentosRepre cuentospariente = new PagCuentosRepre();
             cuentospariente.setVisible(true);
                 this.setVisible(false);
     }//GEN-LAST:event_BtnCuenRepreActionPerformed

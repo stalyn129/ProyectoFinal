@@ -166,7 +166,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         jPanel2.add(TxtApelliPsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 170, -1));
 
         ConfirmarContraseña.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        ConfirmarContraseña.setText("Confrimar Contraseña:");
+        ConfirmarContraseña.setText("Confirmar Contraseña:");
         jPanel2.add(ConfirmarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, -1, 20));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 160, 10));
 
@@ -187,7 +187,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         jPanel2.add(TxtNomPsicol, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 160, -1));
 
         Nombre.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        Nombre.setText("Nombres:");
+        Nombre.setText("Nombre:");
         jPanel2.add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
         FechaNacimiento.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N

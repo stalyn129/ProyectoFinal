@@ -117,7 +117,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel4.setText("Nombres:");
+        jLabel4.setText("Nombre:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -129,7 +129,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel7.setText("Edad:");
+        jLabel7.setText("Fecha de nacimiento:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -285,7 +285,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
         jPanel2.add(CfContraNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 250, 170, 20));
 
         ConfirmarContraseña.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        ConfirmarContraseña.setText("Confrimar Contraseña:");
+        ConfirmarContraseña.setText("Confirmar Contraseña:");
         jPanel2.add(ConfirmarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 220, -1, 20));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 650, 380));

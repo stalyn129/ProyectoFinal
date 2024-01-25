@@ -186,7 +186,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         jPanel2.add(TxtNombreAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 160, -1));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel4.setText("Nombres:");
+        jLabel4.setText("Nombre:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -270,7 +270,7 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         jPanel2.add(BtnRegistrarAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 100, 30));
 
         jLabel13.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel13.setText("Apellidos:");
+        jLabel13.setText("Apellido:");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
 
         NvContraAdmin.setForeground(new java.awt.Color(153, 153, 153));

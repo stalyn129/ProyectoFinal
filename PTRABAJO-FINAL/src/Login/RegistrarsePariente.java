@@ -190,7 +190,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         jPanel2.add(TxtNombreParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 160, -1));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel4.setText("Nombres:");
+        jLabel4.setText("Nombre:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
