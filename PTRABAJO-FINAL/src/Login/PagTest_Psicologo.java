@@ -143,7 +143,7 @@ public class PagTest_Psicologo extends javax.swing.JFrame {
         jPanel3.add(BtnTestPsico, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, 120, 70));
 
         BtnTestPsico1.setBackground(new java.awt.Color(255, 255, 255));
-        BtnTestPsico1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Test.png"))); // NOI18N
+        BtnTestPsico1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TestAdmin.png"))); // NOI18N
         BtnTestPsico1.setToolTipText("Haz click aqui para entrar a test");
         BtnTestPsico1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnTestPsico1.setOpaque(false);
@@ -155,7 +155,7 @@ public class PagTest_Psicologo extends javax.swing.JFrame {
         jPanel3.add(BtnTestPsico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 90, 70));
 
         BtnTestPsico2.setBackground(new java.awt.Color(255, 255, 255));
-        BtnTestPsico2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Test.png"))); // NOI18N
+        BtnTestPsico2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TestAdmin.png"))); // NOI18N
         BtnTestPsico2.setToolTipText("Haz click aqui para entrar a test");
         BtnTestPsico2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnTestPsico2.setOpaque(false);
@@ -303,7 +303,10 @@ public class PagTest_Psicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnTestPsico1ActionPerformed
 
     private void BtnTestPsico2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTestPsico2ActionPerformed
-        // TODO add your handling code here:
+        Base.close();
+        PagCrudTestPsicologo pctp =new PagCrudTestPsicologo();
+        pctp.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnTestPsico2ActionPerformed
 
     private void BtnTestPsico3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTestPsico3ActionPerformed
@@ -311,6 +314,7 @@ public class PagTest_Psicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnTestPsico3ActionPerformed
 
     private void BtnTestPsico4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTestPsico4ActionPerformed
+        Base.close();
         Reporte_test report=new Reporte_test();
         report.setVisible(true);
         this.setVisible(false);

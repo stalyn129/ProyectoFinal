@@ -123,7 +123,7 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
         jPanel1.add(BtnForoPsico, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 120, 70));
 
         BtnTestPsico.setBackground(new java.awt.Color(255, 255, 255));
-        BtnTestPsico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Test.png"))); // NOI18N
+        BtnTestPsico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/NeutroNiñoTest.png"))); // NOI18N
         BtnTestPsico.setToolTipText("Haz click aqui para entrar a test");
         BtnTestPsico.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnTestPsico.setOpaque(false);

@@ -297,7 +297,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Imagenes/Test.png"/>
+                      <Image iconType="3" name="/Imagenes/TestAdmin.png"/>
                     </Property>
                     <Property name="toolTipText" type="java.lang.String" value="Haz click aqui para entrar&#xa0;a test"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -322,7 +322,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Imagenes/Test.png"/>
+                      <Image iconType="3" name="/Imagenes/TestAdmin.png"/>
                     </Property>
                     <Property name="toolTipText" type="java.lang.String" value="Haz click aqui para entrar&#xa0;a test"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
