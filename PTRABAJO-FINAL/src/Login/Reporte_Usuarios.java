@@ -1007,14 +1007,14 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
     public void Modificar_Niño(ObjectContainer Base) {
 
         Niño person = new Niño();
-        person.setApodo(codNiño);
+        person.setApodo(niñosApodo);
         ObjectSet result = Base.get(person);
 
         Niño pr = (Niño) result.next();
 
         pr.setNombre(ntx_nombre.getText());
         pr.setApellido(ntx_apellido.getText());
-        pr.setApodo(txt_direccion.getText());
+
 ////////////////// FALTA NIÑO
         pr.setContraseña(String.valueOf(ntx_contra.getPassword()));
         Base.store(pr);
