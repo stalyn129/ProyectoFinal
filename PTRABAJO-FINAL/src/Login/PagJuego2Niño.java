@@ -10,8 +10,11 @@ import Clases.Puntuaciones;
 import Clases.UserDataSingleton;
 import Login.InicioNiño;
 import Login.InicioNiño;
+import Login.InicioNiño;
 import static Login.InicioNiño.extraer_Niño;
 import Login.PagMiniJuegoNiño;
+import Login.PagMiniJuegoNiño;
+import Login.PagPrincipalNiñ;
 import Login.PagPrincipalNiñ;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
@@ -28,10 +31,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author mauca
- */
 public class PagJuego2Niño extends javax.swing.JFrame {
 
     ObjectContainer Base;

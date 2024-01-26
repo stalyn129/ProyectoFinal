@@ -62,9 +62,11 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         BtnUsuario = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         panel_grafic = new javax.swing.JPanel();
-        BtnPersonalidadAdmin = new javax.swing.JButton();
+        BtnReportes = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        BtnPersonalidadAdmin1 = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
         BtnCerrarPagina = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         Txt_Nombre = new javax.swing.JTextField();
@@ -96,8 +98,9 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         jScrollPane2.setDoubleBuffered(true);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setMinimumSize(new java.awt.Dimension(683, 453));
-        jPanel5.setPreferredSize(new java.awt.Dimension(683, 453));
+        jPanel5.setMinimumSize(new java.awt.Dimension(683, 470));
+        jPanel5.setName(""); // NOI18N
+        jPanel5.setPreferredSize(new java.awt.Dimension(683, 470));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
@@ -224,26 +227,42 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         });
         jPanel5.add(panel_grafic, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 310, 230));
 
-        BtnPersonalidadAdmin.setBackground(new java.awt.Color(255, 255, 255));
-        BtnPersonalidadAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/obligations_11323649.png"))); // NOI18N
-        BtnPersonalidadAdmin.setToolTipText("Haz click aqui para entrar a la pestaña de Personalidad");
-        BtnPersonalidadAdmin.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnPersonalidadAdmin.setOpaque(false);
-        BtnPersonalidadAdmin.addActionListener(new java.awt.event.ActionListener() {
+        BtnReportes.setBackground(new java.awt.Color(255, 255, 255));
+        BtnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/informe.png"))); // NOI18N
+        BtnReportes.setToolTipText("Haz click aqui para entrar a la pestaña de Personalidad");
+        BtnReportes.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnReportes.setOpaque(false);
+        BtnReportes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPersonalidadAdminActionPerformed(evt);
+                BtnReportesActionPerformed(evt);
             }
         });
-        jPanel5.add(BtnPersonalidadAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, 70, 50));
+        jPanel5.add(BtnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 450, 70, 50));
 
         jLabel12.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
-        jLabel12.setText("PERSONALIDAD");
-        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, -1, 30));
+        jLabel12.setText("REPORTES");
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, -1, 30));
 
         jLabel4.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
         jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 70));
+
+        BtnPersonalidadAdmin1.setBackground(new java.awt.Color(255, 255, 255));
+        BtnPersonalidadAdmin1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/obligations_11323649.png"))); // NOI18N
+        BtnPersonalidadAdmin1.setToolTipText("Haz click aqui para entrar a la pestaña de Personalidad");
+        BtnPersonalidadAdmin1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnPersonalidadAdmin1.setOpaque(false);
+        BtnPersonalidadAdmin1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPersonalidadAdmin1ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(BtnPersonalidadAdmin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, 70, 50));
+
+        jLabel13.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
+        jLabel13.setText("PERSONALIDAD");
+        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, -1, 30));
 
         jScrollPane2.setViewportView(jPanel5);
 
@@ -389,13 +408,13 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
 
     }//GEN-LAST:event_BtnUsuarioActionPerformed
 
-    private void BtnPersonalidadAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPersonalidadAdminActionPerformed
+    private void BtnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReportesActionPerformed
         Base.close();
 
         Crud_Personalidad personalidad = new Crud_Personalidad();
         personalidad.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_BtnPersonalidadAdminActionPerformed
+    }//GEN-LAST:event_BtnReportesActionPerformed
 
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
         Base.close();
@@ -422,6 +441,10 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     private void Txt_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_NombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Txt_NombreActionPerformed
+
+    private void BtnPersonalidadAdmin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPersonalidadAdmin1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnPersonalidadAdmin1ActionPerformed
     public void mostrar_diagrama() {
         DefaultPieDataset datos = new DefaultPieDataset();
         datos.setValue("Administradores", Num_Administradores(Base));
@@ -476,7 +499,8 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JButton BtnMiniRepor;
     private javax.swing.JButton BtnNacionalidad;
     private javax.swing.JButton BtnParentescoAdmin;
-    private javax.swing.JButton BtnPersonalidadAdmin;
+    private javax.swing.JButton BtnPersonalidadAdmin1;
+    private javax.swing.JButton BtnReportes;
     private javax.swing.JButton BtnUsuario;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
@@ -485,6 +509,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
