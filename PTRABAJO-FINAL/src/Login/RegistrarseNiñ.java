@@ -364,13 +364,16 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
         if (camposLlenos()) {
             String sexo;
             String Discapacidad;
+            String Codigo;
 
             Niño MiNiño = new Niño();
-
+            Codigo = Calcular_ID_Niño(Base);
+            MiNiño.setCod_Niño(Codigo);
             MiNiño.setNombre(TxtNombreNiño.getText());
             MiNiño.setApellido(TxtApellidoNiño.getText());
             MiNiño.setApodo(TxtApodoNiño.getText());
             MiNiño.setFecha_Nacimiento(DateEdadNiño.getDate());
+            MiNiño.setEstado(true);
             if (BtnFemeninoNiñ.isSelected()) {
                 sexo = "F";
             } else {
@@ -399,11 +402,13 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
 
                 irAPaginaPrincipalniño();
             }
-
+            System.out.println("El codigo generado es" + Codigo);
         } else {
             JOptionPane.showMessageDialog(this, "Por favor, llene todos los campos antes de guardar.");
         }
+        
     }
+
 
     public static int Verificar_ApodoNiño(ObjectContainer Base, String apodo) {
         Niño miNiño = new Niño();
@@ -465,7 +470,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
 
             Incremental++;
 
-            Codigo = String.format("N%03d", Incremental);
+            Codigo = String.format("NI-%04d", Incremental);
 
             if (Verificar_CodigoNiño(Base, Codigo) == 0) {
                 rest = false;
@@ -476,10 +481,10 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
         return Codigo;
     }
 
-    public static int Verificar_CodigoNiño(ObjectContainer Base, String usuario) {
+    public static int Verificar_CodigoNiño(ObjectContainer Base, String Codigo) {
 
         Niño miNiño = new Niño();
-        miNiño.setUsuario(usuario);
+        miNiño.setCod_Niño(Codigo);
         ObjectSet result = Base.get(miNiño);
 
         return result.size();
@@ -747,4 +752,5 @@ public String Asignar_cod_Personalidad(ObjectContainer Base, String Personalidad
         }
         return true;
     }
+    
 }

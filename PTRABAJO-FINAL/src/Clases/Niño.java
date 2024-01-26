@@ -12,6 +12,7 @@ import java.util.Date;
  * @author Joel
  */
 public class Niño {
+    private String Cod_Niño;
     private String Nombre;
     private String Apellido;
     private char Sexo_Niño;
@@ -25,9 +26,9 @@ public class Niño {
 
     public Niño() {
     }
-////////////////////////////////////////////
 
-    public Niño(String Nombre, String Apellido, char Sexo_Niño, Date Fecha_Nacimiento, String Personalidad, String Discapacidad, String Apodo, String Usuario, String Contraseña, boolean Estado) {
+    public Niño(String Cod_Niño, String Nombre, String Apellido, char Sexo_Niño, Date Fecha_Nacimiento, String Personalidad, String Discapacidad, String Apodo, String Usuario, String Contraseña, boolean Estado) {
+        this.Cod_Niño = Cod_Niño;
         this.Nombre = Nombre;
         this.Apellido = Apellido;
         this.Sexo_Niño = Sexo_Niño;
@@ -40,20 +41,14 @@ public class Niño {
         this.Estado = Estado;
     }
 
-    @Override
-    public String toString() {
-        return "Ni\u00f1o{" + "Nombre=" + Nombre + ", Apellido=" + Apellido + ", Sexo_Ni\u00f1o=" + Sexo_Niño + ", Fecha_Nacimiento=" + Fecha_Nacimiento + ", Personalidad=" + Personalidad + ", Discapacidad=" + Discapacidad + ", Apodo=" + Apodo + ", Usuario=" + Usuario + ", Contrase\u00f1a=" + Contraseña + ", Estado=" + Estado + '}';
+    public String getCod_Niño() {
+        return Cod_Niño;
     }
 
-    public String getUsuario() {
-        return Usuario;
+    public void setCod_Niño(String Cod_Niño) {
+        this.Cod_Niño = Cod_Niño;
     }
 
-    public void setUsuario(String Usuario) {
-        this.Usuario = Usuario;
-    }
-
-    
     public String getNombre() {
         return Nombre;
     }
@@ -110,6 +105,14 @@ public class Niño {
         this.Apodo = Apodo;
     }
 
+    public String getUsuario() {
+        return Usuario;
+    }
+
+    public void setUsuario(String Usuario) {
+        this.Usuario = Usuario;
+    }
+
     public String getContraseña() {
         return Contraseña;
     }
@@ -126,8 +129,7 @@ public class Niño {
         this.Estado = Estado;
     }
 
-   
-    
-    
     
 }
+
+    

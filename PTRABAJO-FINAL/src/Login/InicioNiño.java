@@ -6,6 +6,7 @@
 package Login;
 
 import Clases.Niño;
+import Clases.UserDataSingleton;
 import Login.PagPrincipalNiñ;
 import Login.Seleccion;
 import Login.Seleccion;
@@ -22,8 +23,9 @@ import javax.swing.JOptionPane;
 public class InicioNiño extends javax.swing.JFrame {
 
     ObjectContainer Base;
-
+    UserDataSingleton usarData;
     public InicioNiño() {
+        usarData = UserDataSingleton.getInstance();
         initComponents();
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
 
@@ -234,6 +236,8 @@ public class InicioNiño extends javax.swing.JFrame {
                 if (Buscar_niño(Base, txt_usuario.getText(), String.valueOf(txt_contr.getPassword())) == 1) {
 
                     if (Verificar_estado(Base, txt_usuario.getText())) {
+                        usarData.setCod_niño(extraer_Niño(Base, txt_usuario.getText()));
+                        System.out.println("codigos_Pasoa::::" + usarData.getCod_niño());
                         javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
                         Base.close();
                         PagPrincipalNiñ elpagina = new PagPrincipalNiñ();
@@ -306,6 +310,18 @@ public class InicioNiño extends javax.swing.JFrame {
         elniño.setContraseña(Contraseña);
         ObjectSet result = Base.get(elniño);
         return result.size();
+
+    }
+    
+    public static String extraer_Niño(ObjectContainer Base, String usuario) {
+        Niño extraer = new Niño();
+        extraer.setApodo(usuario);
+        ObjectSet result = Base.get(extraer);
+
+        Niño ps = (Niño) result.next();
+        String cod_psic = ps.getCod_Niño();
+
+        return cod_psic;
 
     }
 

@@ -6,16 +6,22 @@
 package Login;
 
 import Clases.Juego_Diferencias;
+import Clases.Puntuaciones;
+import Clases.UserDataSingleton;
 import Login.InicioNiño;
 import Login.InicioNiño;
+import static Login.InicioNiño.extraer_Niño;
 import Login.PagMiniJuegoNiño;
 import Login.PagPrincipalNiñ;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
+import com.db4o.ext.DatabaseClosedException;
+import com.db4o.ext.DatabaseReadOnlyException;
 import java.awt.Image;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import javax.swing.ImageIcon;
@@ -28,15 +34,18 @@ import javax.swing.JOptionPane;
  */
 public class PagJuego2Niño extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PagJuego2Niño
-     */
     ObjectContainer Base;
+    UserDataSingleton usarData;
+    private Puntuaciones puntuacionActual;
 
     public PagJuego2Niño() {
         initComponents();
+        usarData = UserDataSingleton.getInstance();
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
         cargar_combo1(jComboJuego);
+
+        // Inicializar puntuacionActual
+        puntuacionActual = new Puntuaciones();
     }
 
     @SuppressWarnings("unchecked")
@@ -58,12 +67,17 @@ public class PagJuego2Niño extends javax.swing.JFrame {
         BtnADifeNiño1 = new javax.swing.JRadioButton();
         BtnADifeNiño2 = new javax.swing.JRadioButton();
         BtnADifeNiño3 = new javax.swing.JRadioButton();
+        BtnADifeNiño4 = new javax.swing.JRadioButton();
+        BtnADifeNiño5 = new javax.swing.JRadioButton();
         jComboJuego = new javax.swing.JComboBox<>();
         BtnRegresar1 = new javax.swing.JButton();
         LblInformacionNiño = new javax.swing.JLabel();
         LblInformacionNiño1 = new javax.swing.JLabel();
         BtnCerrarPagina = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtPuntuacion = new javax.swing.JTextField();
+        BtnTerminar = new javax.swing.JButton();
         Fondo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
         MenuGenerlNiño = new javax.swing.JMenuBar();
@@ -127,7 +141,7 @@ public class PagJuego2Niño extends javax.swing.JFrame {
                 BtnADifeNiño1ActionPerformed(evt);
             }
         });
-        jPanel3.add(BtnADifeNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 430, 60, 30));
+        jPanel3.add(BtnADifeNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 60, 30));
 
         BtnGrupDifeJuego2.add(BtnADifeNiño2);
         BtnADifeNiño2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -136,7 +150,7 @@ public class PagJuego2Niño extends javax.swing.JFrame {
                 BtnADifeNiño2ActionPerformed(evt);
             }
         });
-        jPanel3.add(BtnADifeNiño2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 430, 60, 30));
+        jPanel3.add(BtnADifeNiño2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 430, 60, 30));
 
         BtnGrupDifeJuego2.add(BtnADifeNiño3);
         BtnADifeNiño3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -145,7 +159,25 @@ public class PagJuego2Niño extends javax.swing.JFrame {
                 BtnADifeNiño3ActionPerformed(evt);
             }
         });
-        jPanel3.add(BtnADifeNiño3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, 60, 30));
+        jPanel3.add(BtnADifeNiño3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 430, 60, 30));
+
+        BtnGrupDifeJuego2.add(BtnADifeNiño4);
+        BtnADifeNiño4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        BtnADifeNiño4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnADifeNiño4ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(BtnADifeNiño4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 430, 60, 30));
+
+        BtnGrupDifeJuego2.add(BtnADifeNiño5);
+        BtnADifeNiño5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        BtnADifeNiño5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnADifeNiño5ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(BtnADifeNiño5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 60, 30));
 
         jComboJuego.setToolTipText("Selecciona la que mas te guste");
         jComboJuego.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -206,6 +238,25 @@ public class PagJuego2Niño extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 80, 70));
+
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel1.setText("Tu puntuación es:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 390, 100, 20));
+
+        txtPuntuacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPuntuacionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtPuntuacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 390, 40, -1));
+
+        BtnTerminar.setText("Terminar Juego");
+        BtnTerminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnTerminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnTerminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, -1, -1));
 
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoJuego2Niño.png"))); // NOI18N
         Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -299,6 +350,24 @@ public class PagJuego2Niño extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
+    private void txtPuntuacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPuntuacionActionPerformed
+
+    }//GEN-LAST:event_txtPuntuacionActionPerformed
+
+    private void BtnTerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTerminarActionPerformed
+        realizarAccionesAlTerminar();
+    }//GEN-LAST:event_BtnTerminarActionPerformed
+
+    private void BtnADifeNiño4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnADifeNiño4ActionPerformed
+        int respuestaUsuario = Integer.parseInt(BtnADifeNiño4.getText().split("\\.")[1].trim());
+        verificarRespuesta(Base, String.valueOf(jComboJuego.getSelectedItem()), respuestaUsuario);
+    }//GEN-LAST:event_BtnADifeNiño4ActionPerformed
+
+    private void BtnADifeNiño5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnADifeNiño5ActionPerformed
+        int respuestaUsuario = Integer.parseInt(BtnADifeNiño5.getText().split("\\.")[1].trim());
+        verificarRespuesta(Base, String.valueOf(jComboJuego.getSelectedItem()), respuestaUsuario);
+    }//GEN-LAST:event_BtnADifeNiño5ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -335,9 +404,12 @@ public class PagJuego2Niño extends javax.swing.JFrame {
     private javax.swing.JRadioButton BtnADifeNiño1;
     private javax.swing.JRadioButton BtnADifeNiño2;
     private javax.swing.JRadioButton BtnADifeNiño3;
+    private javax.swing.JRadioButton BtnADifeNiño4;
+    private javax.swing.JRadioButton BtnADifeNiño5;
     private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.ButtonGroup BtnGrupDifeJuego2;
     private javax.swing.JButton BtnRegresar1;
+    private javax.swing.JButton BtnTerminar;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMnItmCerrarNiño2;
@@ -351,6 +423,7 @@ public class PagJuego2Niño extends javax.swing.JFrame {
     private javax.swing.JLabel LblTituloDifeNiño2;
     private javax.swing.JMenuBar MenuGenerlNiño;
     private javax.swing.JComboBox<String> jComboJuego;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
@@ -359,6 +432,7 @@ public class PagJuego2Niño extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JTextField txtPuntuacion;
     // End of variables declaration//GEN-END:variables
 public void cargar_combo1(JComboBox jComboJuego) {
         Juego_Diferencias JBuscar = new Juego_Diferencias(null, null, null, 0, null, null);
@@ -391,10 +465,10 @@ public void cargar_combo1(JComboBox jComboJuego) {
                 int respuestaCorrecta = Jmostrar.getRespuesta_Correcta();
 
                 // Genera dos números aleatorios diferentes al número correcto
-                int[] numerosAleatorios = generarDosNumerosAleatorios(respuestaCorrecta);
+                int[] numerosAleatorios = generarNumerosAleatorios(respuestaCorrecta);
 
                 // Coloca las respuestas en un ArrayList para facilitar el reordenamiento aleatorio
-                List<Integer> respuestas = Arrays.asList(respuestaCorrecta, numerosAleatorios[0], numerosAleatorios[1]);
+                List<Integer> respuestas = Arrays.asList(respuestaCorrecta, numerosAleatorios[0], numerosAleatorios[1], numerosAleatorios[2], numerosAleatorios[3]);
 
                 // Mezcla aleatoriamente las respuestas
                 Collections.shuffle(respuestas);
@@ -403,6 +477,16 @@ public void cargar_combo1(JComboBox jComboJuego) {
                 BtnADifeNiño1.setText("A. " + respuestas.get(0));
                 BtnADifeNiño2.setText("B. " + respuestas.get(1));
                 BtnADifeNiño3.setText("C. " + respuestas.get(2));
+                BtnADifeNiño4.setText("D. " + respuestas.get(3));
+                BtnADifeNiño5.setText("E. " + respuestas.get(4));
+
+                txtPuntuacion.setEditable(false);
+
+                // Establecer el texto en "10"
+                txtPuntuacion.setText("10");
+
+                // Asegurarse de que la puntuación se muestre correctamente en el campo
+                txtPuntuacion.repaint();
             }
         } else {
             System.out.println("No se encontraron datos para el juego seleccionado.");
@@ -411,19 +495,25 @@ public void cargar_combo1(JComboBox jComboJuego) {
         Base.commit();
     }
 
-    private int[] generarDosNumerosAleatorios(int numeroCorrecto) {
+    private int[] generarNumerosAleatorios(int numeroCorrecto) {
         Random random = new Random();
         int numerorandom1 = random.nextInt(20) + 1;
         int numerorandom2 = random.nextInt(20) + 1;
+        int numerorandom3 = random.nextInt(20) + 1;
+        int numerorandom4 = random.nextInt(20) + 1;
 
         // Verifica si los números aleatorios son iguales al número correcto
-        while (numerorandom1 == numeroCorrecto || numerorandom2 == numeroCorrecto || numerorandom1 == numerorandom2) {
+        while (numerorandom1 == numeroCorrecto || numerorandom2 == numeroCorrecto || numerorandom3 == numeroCorrecto || numerorandom4 == numeroCorrecto
+                || numerorandom1 == numerorandom2 || numerorandom1 == numerorandom3 || numerorandom1 == numerorandom4
+                || numerorandom2 == numerorandom3 || numerorandom2 == numerorandom4 || numerorandom3 == numerorandom4) {
             numerorandom1 = random.nextInt(20) + 1;
             numerorandom2 = random.nextInt(20) + 1;
+            numerorandom3 = random.nextInt(20) + 1;
+            numerorandom4 = random.nextInt(20) + 1;
         }
 
         // Devuelve los números en un array
-        return new int[]{numerorandom1, numerorandom2};
+        return new int[]{numerorandom1, numerorandom2, numerorandom3, numerorandom4};
     }
 
     private void verificarRespuesta(ObjectContainer Base, String Descrip, int respuestaUsuario) {
@@ -434,7 +524,18 @@ public void cargar_combo1(JComboBox jComboJuego) {
         if (respuestaUsuario == juego.getRespuesta_Correcta()) {
             JOptionPane.showMessageDialog(this, "¡Felicidades! Respuesta correcta. Prueba otro laberinto.", "Correcto", JOptionPane.INFORMATION_MESSAGE);
             // Aquí puedes agregar lógica para cargar el próximo laberinto o realizar cualquier otra acción necesaria.
+
+            // Llama al método para realizar acciones al terminar, que incluye guardar la puntuación
+            realizarAccionesAlTerminar();
         } else {
+            // Restar puntuación al seleccionar una opción incorrecta
+            int puntuacionActual = Integer.parseInt(txtPuntuacion.getText());
+            puntuacionActual -= 2;
+            txtPuntuacion.setText(String.valueOf(puntuacionActual));
+
+            // Actualizar la visualización de la puntuación en el JTextField
+            txtPuntuacion.repaint();
+
             JOptionPane.showMessageDialog(this, "Respuesta incorrecta. Inténtelo de nuevo.", "Incorrecto", JOptionPane.ERROR_MESSAGE);
             // Aquí puedes agregar lógica adicional si deseas realizar alguna acción cuando la respuesta es incorrecta.
         }
@@ -460,4 +561,150 @@ public void cargar_combo1(JComboBox jComboJuego) {
         }
     }
 
+    public static String Calcular_ID_Puntuacion(ObjectContainer Base) {
+
+        boolean rest = true;
+        int Incremental = 0;
+        String Codigo = "";
+        try {
+            do {
+                Incremental++;
+                Codigo = String.format("PJD-%04d", Incremental);
+
+                if (Verificar_CodigoPutuacion(Base, Codigo) == 0) {
+                    rest = false;
+                }
+            } while (rest);
+        } catch (DatabaseClosedException | DatabaseReadOnlyException e) {
+            e.printStackTrace();
+        }
+        return Codigo;
+    }
+
+    public static int Verificar_CodigoPutuacion(ObjectContainer Base, String Codigo) {
+
+        try {
+            Puntuaciones miPuntuacion = new Puntuaciones();
+            miPuntuacion.setID_Puntuacion(Codigo);
+
+            ObjectSet result = Base.get(miPuntuacion);
+
+            return result.size();
+        } catch (DatabaseClosedException | DatabaseReadOnlyException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    private void realizarAccionesAlTerminar() {
+        try {
+            Puntuaciones puntuacion = new Puntuaciones();
+
+            // Obtener código de niño
+            String Cod_Niño = usarData.getCod_niño();
+
+            // Obtener descripción del juego seleccionado
+            String descrip = String.valueOf(jComboJuego.getSelectedItem());
+            Juego_Diferencias juego = obtenerInformacionDelJuego(Base, descrip);
+
+            // Obtener el código del juego
+            String codigoJuego = juego.getCod_Juego();
+
+            // Verificar si ya existe una puntuación para este juego y niño
+            Puntuaciones puntuacionExistente = obtenerPuntuacionExistente(Base, Cod_Niño, codigoJuego);
+
+            if (puntuacionExistente == null) {
+                // No hay puntuación existente, procede a almacenar la nueva puntuación
+                guardarNuevaPuntuacion(puntuacion, Cod_Niño, codigoJuego);
+            } else {
+                // Hay puntuación existente, compara con la nueva y actualiza si es mayor
+                int nuevaPuntuacion = Integer.parseInt(txtPuntuacion.getText());
+                int puntuacionExistenteValor = puntuacionExistente.getPuntuacion();
+
+                if (nuevaPuntuacion > puntuacionExistenteValor) {
+                    // La nueva puntuación es mayor, actualiza la puntuación existente
+                    actualizarPuntuacionExistente(puntuacionExistente, nuevaPuntuacion);
+                }
+            }
+
+        } catch (DatabaseClosedException | DatabaseReadOnlyException | NullPointerException e) {
+            e.printStackTrace();
+            System.err.println("Excepción al guardar la puntuación: " + e.getMessage());
+        } finally {
+            // Asegúrate de cerrar la base de datos adecuadamente
+        }
+    }
+
+    private void guardarNuevaPuntuacion(Puntuaciones puntuacion, String Cod_Niño, String codigoJuego) {
+        try {
+            // Generar ID de puntuación
+            String Codigo = Calcular_ID_Puntuacion(Base);
+            puntuacion.setID_Puntuacion(Codigo);
+            System.out.println("ID de Puntuación: " + Codigo);
+
+            puntuacion.setFK_Cod_Niño(Cod_Niño);
+            System.out.println("Código de Niño: " + Cod_Niño);
+
+            puntuacion.setFK_Cod_Minijuego(codigoJuego);
+            System.out.println("Código de Juego: " + codigoJuego);
+
+            // Obtener y asignar la fecha de juego
+            Date FechaJugado = new Date();
+            puntuacion.setFecha_Jugado(FechaJugado);
+            System.out.println("Fecha de Juego: " + FechaJugado);
+
+            // Obtener la puntuacionActual
+            int punt = Integer.parseInt(txtPuntuacion.getText());
+            puntuacion.setPuntuacion(punt);
+
+            // Almacenar la puntuación en la base de datos
+            Base.store(puntuacion);
+
+            // Mensajes de depuración adicionales
+            System.out.println("Puntuación almacenada correctamente:");
+            System.out.println(puntuacion);
+
+        } catch (DatabaseClosedException | DatabaseReadOnlyException e) {
+            e.printStackTrace();
+            System.err.println("Excepción al guardar la puntuación: " + e.getMessage());
+        }
+    }
+
+    private Puntuaciones obtenerPuntuacionExistente(ObjectContainer Base, String Cod_Niño, String codigoJuego) {
+        try {
+            Puntuaciones puntuacion = new Puntuaciones();
+            puntuacion.setFK_Cod_Niño(Cod_Niño);
+            puntuacion.setFK_Cod_Minijuego(codigoJuego);
+
+            ObjectSet result = Base.get(puntuacion);
+
+            if (result.hasNext()) {
+                return (Puntuaciones) result.next();
+            } else {
+                return null;
+            }
+        } catch (DatabaseClosedException | DatabaseReadOnlyException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private void actualizarPuntuacionExistente(Puntuaciones puntuacionExistente, int nuevaPuntuacion) {
+        try {
+            puntuacionExistente.setPuntuacion(nuevaPuntuacion);
+            // Actualizar la fecha o cualquier otro campo si es necesario
+            // puntuacionExistente.setFecha_Jugado(new Date());
+
+            // Almacenar la puntuación actualizada en la base de datos
+            Base.store(puntuacionExistente);
+
+            // Mensaje de depuración
+            System.out.println("Puntuación existente actualizada correctamente:");
+            System.out.println(puntuacionExistente);
+
+        } catch (DatabaseClosedException | DatabaseReadOnlyException e) {
+            e.printStackTrace();
+            System.err.println("Excepción al actualizar la puntuación: " + e.getMessage());
+        }
+    }
 }

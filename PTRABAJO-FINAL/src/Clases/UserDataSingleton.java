@@ -42,8 +42,8 @@ public class UserDataSingleton {
     // Métodos para establecer y obtener la cédula
 
     /**
-     * @return the cod_Psicologo
-     */
+    * @return the cod_Psicologo
+    */
     public String getCod_Psicologo() {
         return cod_Psicologo;
     }

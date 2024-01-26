@@ -141,7 +141,9 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnRegistrar1MouseClicked
 
     private void BtnRegistrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrar1ActionPerformed
-        // TODO add your handling code here:
+        RegistrarseGeneral reg = new RegistrarseGeneral();
+        reg.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnRegistrar1ActionPerformed
 
 

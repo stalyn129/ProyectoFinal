@@ -6,13 +6,6 @@
 package Login;
 
 import Clases.Juego_Diferencias;
-import Clases.Juego_Laberinto;
-import Login.InicioPsicologo;
-import Login.InicioPsicologo;
-import Login.PagPrincipalPsicologo;
-import Login.PagPrincipalPsicologo;
-import Login.RegistrarsePariente;
-import Login.RegistrarsePariente;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;

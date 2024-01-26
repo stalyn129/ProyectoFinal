@@ -475,7 +475,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 110, -1));
+        jPanel3.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 71, 110, 20));
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel20.setText("Rol:");
