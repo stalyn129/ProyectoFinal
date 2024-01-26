@@ -6,12 +6,13 @@
 package Login;
 
 import Clases.Cuento;
-import Login.InicioNiño;
-import Login.PagCrudCuentosPsicologo;
-import Login.PagPrincipalNiñ;
+import Clases.ValoracionCuentoNiño;
 import com.db4o.*;
 import com.db4o.ObjectContainer;
+import com.db4o.ext.DatabaseClosedException;
+import com.db4o.ext.DatabaseReadOnlyException;
 import java.awt.Image;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 
@@ -54,6 +55,9 @@ public class PagCuentosNiño extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         TxtDesarroNiñoCuen = new javax.swing.JTextArea();
         jCmbBoxCuentos = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        btnSi = new javax.swing.JButton();
+        BtnNo = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         LblInformacionNiño = new javax.swing.JLabel();
@@ -155,6 +159,25 @@ public class PagCuentosNiño extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jCmbBoxCuentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 110, -1));
+
+        jLabel1.setText("¿Le gusto el cuento?");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 830, -1, -1));
+
+        btnSi.setText("jButton1");
+        btnSi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 860, -1, -1));
+
+        BtnNo.setText("jButton2");
+        BtnNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnNoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(BtnNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 860, -1, -1));
 
         jScrollPane1.setViewportView(jPanel3);
 
@@ -263,6 +286,16 @@ public class PagCuentosNiño extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiño2MouseClicked
 
+    private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
+        String respuesta = "SI";
+        GuardarRespuestaCuento(Base, "", "");
+    }//GEN-LAST:event_btnSiActionPerformed
+
+    private void BtnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNoActionPerformed
+         String respuesta = "NO";
+        GuardarRespuestaCuento(Base, "", "");
+    }//GEN-LAST:event_BtnNoActionPerformed
+
 
     private ImageIcon getScaledImageIcon(Image image) {
         if (image != null) {
@@ -305,9 +338,90 @@ public class PagCuentosNiño extends javax.swing.JFrame {
             }
         });
     }
+    public void GuardarRespuestaCuento(ObjectContainer Base, String Cod_niño, String respuesta) {
+        try {
+            ValoracionCuentoNiño respuestaCuento = new ValoracionCuentoNiño();
+
+            // Generar ID de respuesta
+            String Codigo = Calcular_ID_Respuesta(Base);
+            respuestaCuento.setCod_Respuesta_usuario(Codigo);
+            System.out.println("ID de Respuesta: " + Codigo);
+
+            // Obtener código de representante
+            respuestaCuento.setFk_cod_niño(Cod_niño);
+            System.out.println("Código de Representante: " + Cod_niño);
+
+            // Establecer la respuesta
+            respuestaCuento.setRespuesta(respuesta);
+            System.out.println("Respuesta: " + respuesta);
+
+            // Obtener y asignar la fecha de respuesta
+            Date FechaRespuesta = new Date();
+            respuestaCuento.setFecha_respuesta(FechaRespuesta);
+            System.out.println("Fecha de Respuesta: " + FechaRespuesta);
+
+            // Obtener descripción del cuento seleccionado
+            String descrip = String.valueOf(jCmbBoxCuentos.getSelectedItem());
+            Cuento cuento = obtenerInformacionDelCuento(Base, descrip);
+
+            String codigoCuento = cuento.getCod_Cuento();
+            respuestaCuento.setFk_Cod_Cuento(codigoCuento);
+            System.out.println("Código de Cuento: " + codigoCuento);
+
+            // Almacenar la respuesta en la base de datos
+            Base.store(respuestaCuento);
+
+            // Mensajes de depuración adicionales
+            System.out.println("Respuesta almacenada correctamente:");
+            System.out.println(respuestaCuento);
+
+        } catch (DatabaseClosedException | DatabaseReadOnlyException | NullPointerException e) {
+            e.printStackTrace();
+            System.err.println("Excepción al guardar la respuesta: " + e.getMessage());
+        }
+    }
+
+    private Cuento obtenerInformacionDelCuento(ObjectContainer Base, String Descrip) {
+        Cuento micue = new Cuento(null, null, null, null, null, null, null, null, null, null, null, null);
+
+        ObjectSet result = Base.get(micue);
+
+        if (result.hasNext()) {
+            return (Cuento) result.next();
+        } else {
+            throw new IllegalStateException("No se encontró información del Cuento");
+        }
+    }
+
+    public static String Calcular_ID_Respuesta(ObjectContainer Base) {
+        boolean rest = true;
+        int Incremental = 0;
+        String Codigo;
+        do {
+
+            Incremental++;
+
+            Codigo = String.format("Res-%04d", Incremental);
+
+            if (Verificar_Resp(Base, Codigo) == 0) {
+                rest = false;
+            }
+
+        } while (rest);
+
+        return Codigo;
+    }
+
+    public static int Verificar_Resp(ObjectContainer Base, String Codigo) {
+        ValoracionCuentoNiño mires = new ValoracionCuentoNiño();
+        mires.setCod_Respuesta_usuario(Codigo);
+        ObjectSet result = Base.get(mires);
+        return result.size();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
+    private javax.swing.JButton BtnNo;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMnItmCerrarNiño2;
@@ -322,7 +436,9 @@ public class PagCuentosNiño extends javax.swing.JFrame {
     private javax.swing.JTextArea TxtConcluNiñoCuen;
     private javax.swing.JTextArea TxtDesarroNiñoCuen;
     private javax.swing.JTextArea TxtIntroNiñoCuen;
+    private javax.swing.JButton btnSi;
     private javax.swing.JComboBox<String> jCmbBoxCuentos;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
