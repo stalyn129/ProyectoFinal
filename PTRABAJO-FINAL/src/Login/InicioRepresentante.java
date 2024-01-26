@@ -7,6 +7,9 @@ package Login;
 
 import Clases.Persona;
 import Clases.Representante;
+import Clases.UserDataSingleton;
+import Login.PagPrincipalRepresentante;
+import Login.Seleccion;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
@@ -19,10 +22,13 @@ import javax.swing.JOptionPane;
  */
 public class InicioRepresentante extends javax.swing.JFrame {
 
-ObjectContainer Base;
+    ObjectContainer Base;
+    UserDataSingleton usarData;
+
     public InicioRepresentante() {
         initComponents();
-                    Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+        usarData = UserDataSingleton.getInstance();
+        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
@@ -230,7 +236,7 @@ ObjectContainer Base;
     private void txt_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_usuarioActionPerformed
-public boolean Estado_Activo(ObjectContainer Base, String cedula) {
+    public boolean Estado_Activo(ObjectContainer Base, String cedula) {
         Persona persn = new Persona();
         persn.setCedula(cedula);
 
@@ -241,7 +247,7 @@ public boolean Estado_Activo(ObjectContainer Base, String cedula) {
         System.out.println("Estado " + prs.isEstado());
         return prs.isEstado();
     }
-    
+
     private void TXT_IngreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TXT_IngreMouseClicked
         if (!txt_usuario.getText().equals("Usuario_Represent")) {
             if (!String.valueOf(txt_contr.getPassword()).equals("**********")) {
@@ -249,18 +255,20 @@ public boolean Estado_Activo(ObjectContainer Base, String cedula) {
                 if (Buscar_persona(Base, txt_usuario.getText(), String.valueOf(txt_contr.getPassword())) == 1) {
 
                     if (Buscar_usua_Representante(Base, txt_usuario.getText()) == 1) {
-                        
+
                         if (Estado_Activo(Base, txt_usuario.getText())) {
-                        
-                        javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
-                        Base.close();
-                        PagPrincipalRepresentante elpagina = new PagPrincipalRepresentante();
-                        elpagina.setVisible(true);
-                        this.setVisible(false);
-                        
-                        } else {    
-                                JOptionPane.showMessageDialog(this, "El REPRESENTANTE FUE ELIMINADO");
-                            }
+
+                            usarData.setCod_Representante(extraer_representante(Base, txt_usuario.getText()));
+                            System.out.println("codigos_Pasoa::::" + usarData.getCod_Representante());
+                            javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTAMENTE");
+                            Base.close();
+                            PagPrincipalRepresentante elpagina = new PagPrincipalRepresentante();
+                            elpagina.setVisible(true);
+                            this.setVisible(false);
+
+                        } else {
+                            JOptionPane.showMessageDialog(this, "El REPRESENTANTE FUE ELIMINADO");
+                        }
                     } else {
                         javax.swing.JOptionPane.showMessageDialog(this, "Al parecer el usuario registrano no es un representante");
 
@@ -279,7 +287,7 @@ public boolean Estado_Activo(ObjectContainer Base, String cedula) {
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Ingresa un Usuario", "ERROR", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-       
+
     }//GEN-LAST:event_TXT_IngreMouseClicked
 
     private void TXT_IngreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TXT_IngreMouseEntered
@@ -294,9 +302,9 @@ public boolean Estado_Activo(ObjectContainer Base, String cedula) {
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
         Base.close();
-            Seleccion selec = new Seleccion();
-                selec.setVisible(true);
-                    this.setVisible(false);
+        Seleccion selec = new Seleccion();
+        selec.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
     private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
@@ -307,7 +315,7 @@ public boolean Estado_Activo(ObjectContainer Base, String cedula) {
         System.exit(0);
     }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
-public static int Buscar_persona(ObjectContainer Base, String Cedula, String Contraseña) {
+    public static int Buscar_persona(ObjectContainer Base, String Cedula, String Contraseña) {
         Persona elperson = new Persona();
         elperson.setCedula(Cedula);
         elperson.setContraseña(Contraseña);
@@ -324,6 +332,17 @@ public static int Buscar_persona(ObjectContainer Base, String Cedula, String Con
 
     }
 
+     public static String extraer_representante(ObjectContainer Base, String usuario) {
+        Representante extraer = new Representante();
+        extraer.setFKCod_Cedula(usuario);
+        ObjectSet result = Base.get(extraer);
+
+        Representante ps = (Representante) result.next();
+        String cod_psic = ps.getCod_Repre();
+
+        return cod_psic;
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JButton BtnRegresar;
@@ -343,4 +362,5 @@ public static int Buscar_persona(ObjectContainer Base, String Cedula, String Con
     private javax.swing.JPasswordField txt_contr;
     private javax.swing.JTextField txt_usuario;
     // End of variables declaration//GEN-END:variables
+
 }

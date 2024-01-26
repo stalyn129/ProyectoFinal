@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -21,6 +22,8 @@ public class Cuento {
     private String Titulo_Cuento;
     private String Introduccion_Cuento;
     private String Nudo_Cuento;
+    private String representante;
+    private String quienPresiono;
     private String Desenlace_Cuento;
     private byte[] Imagen_Inicial;
     private byte[] Imagen_Final;
@@ -30,17 +33,36 @@ public class Cuento {
     public Cuento() {
     }
 
-    public Cuento(String Cod_Cuento, String FK_CodPsicologo, String Titulo_Cuento, String Introduccion_Cuento, String Nudo_Cuento, String Desenlace_Cuento, byte[] Imagen_Inicial, byte[] Imagen_Final, String RutaImagen, String RutaImagen2) {
+    public Cuento(String Cod_Cuento, String FK_CodPsicologo, String Titulo_Cuento, String Introduccion_Cuento, String Nudo_Cuento, String representante, String quienPresiono, String Desenlace_Cuento, byte[] Imagen_Inicial, byte[] Imagen_Final, String RutaImagen, String RutaImagen2) {
         this.Cod_Cuento = Cod_Cuento;
         this.FK_CodPsicologo = FK_CodPsicologo;
         this.Titulo_Cuento = Titulo_Cuento;
         this.Introduccion_Cuento = Introduccion_Cuento;
         this.Nudo_Cuento = Nudo_Cuento;
+        this.representante = representante;
+        this.quienPresiono = quienPresiono;
         this.Desenlace_Cuento = Desenlace_Cuento;
         this.Imagen_Inicial = Imagen_Inicial;
         this.Imagen_Final = Imagen_Final;
         this.RutaImagen = RutaImagen;
         this.RutaImagen2 = RutaImagen2;
+    }
+
+    public String getRepresentante() {
+        return representante;
+    }
+
+    public void setRepresentante(String representante) {
+        this.representante = representante;
+    }
+
+
+    public String getQuienPresiono() {
+        return quienPresiono;
+    }
+
+    public void setQuienPresiono(String quienPresiono) {
+        this.quienPresiono = quienPresiono;
     }
 
     public String getCod_Cuento() {
@@ -125,7 +147,7 @@ public class Cuento {
 
     public Image obtenerImagenComoImage() {
         if (Imagen_Inicial != null) {
-            try ( ByteArrayInputStream bais = new ByteArrayInputStream(Imagen_Inicial)) {
+            try (ByteArrayInputStream bais = new ByteArrayInputStream(Imagen_Inicial)) {
                 return ImageIO.read(bais);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -136,7 +158,7 @@ public class Cuento {
 
     public Image obtenerImagenFinalComoImage() {
         if (Imagen_Final != null) {
-            try ( ByteArrayInputStream bais = new ByteArrayInputStream(Imagen_Final)) {
+            try (ByteArrayInputStream bais = new ByteArrayInputStream(Imagen_Final)) {
                 return ImageIO.read(bais);
             } catch (IOException e) {
                 e.printStackTrace();

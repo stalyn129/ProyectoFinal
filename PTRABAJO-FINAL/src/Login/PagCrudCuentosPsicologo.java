@@ -632,6 +632,10 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -772,10 +776,10 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
 
         if (tipoConsulta == 0) {
             // Búsqueda por código
-            ejemploConsulta = new Cuento(consulta, null, null, null, null, null, null, null, null, null);
+            ejemploConsulta = new Cuento(consulta, null, null, null, null, null,null, null, null, null, null, null);
         } else {
             // Búsqueda por título
-            ejemploConsulta = new Cuento(null, null, consulta, null, null, null, null, null, null, null);
+            ejemploConsulta = new Cuento(null, null, consulta, null, null, null,null, null, null, null, null, null);
         }
 
         // Consultando la base de datos
@@ -817,7 +821,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
 
     private void EliminarRegistro(ObjectContainer base, String Cod_Cuento) {
 
-        Cuento cuen = new Cuento(Cod_Cuento, null, null, null, null, null, null, null, null, null);
+        Cuento cuen = new Cuento(Cod_Cuento, null, null, null, null, null, null, null, null, null, null, null);
 
         // Mensaje de depuración
         System.out.println("Buscando el registro en la base de datos...");

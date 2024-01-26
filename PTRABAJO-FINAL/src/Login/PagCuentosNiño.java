@@ -342,7 +342,7 @@ public class PagCuentosNiño extends javax.swing.JFrame {
 
 public void cargar_combo1(JComboBox jCmbBoxCuentos) {
   
-        Cuento CBuscar = new Cuento(null, null, null, null, null, null, null, null, null, null);
+        Cuento CBuscar = new Cuento(null, null, null, null, null, null, null, null, null, null, null, null);
         ObjectSet resul = Base.get(CBuscar);
         while (resul.hasNext()) {
             Cuento Dcombo = (Cuento) resul.next();
@@ -354,7 +354,7 @@ public void cargar_combo1(JComboBox jCmbBoxCuentos) {
     public void cargar_datos1() {
         String tit = String.valueOf(jCmbBoxCuentos.getSelectedItem());
 
-        Cuento CBuscar = new Cuento(null, null, tit , null, null, null, null, null, null, null);
+        Cuento CBuscar = new Cuento(null, null, tit , null, null, null, null, null, null, null, null, null);
         ObjectSet resul = Base.get(CBuscar);
         Cuento CMostrar = (Cuento) resul.next();
         LblTituloNiñoCuen.setText(CMostrar.getTitulo_Cuento());

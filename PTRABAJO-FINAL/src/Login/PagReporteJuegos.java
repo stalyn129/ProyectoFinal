@@ -173,14 +173,14 @@ public class PagReporteJuegos extends javax.swing.JFrame {
 
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
 
-        Base.close();
+//        Base.close();
         InicioNiño login = new InicioNiño();
         login.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem1MousePressed
 
     private void JMnPgPrinNiño2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiño2MouseClicked
-        Base.close();
+//        Base.close();
         PagPrincipalNiñ principalniño = new PagPrincipalNiñ();
         principalniño.setVisible(true);
         this.setVisible(false);
