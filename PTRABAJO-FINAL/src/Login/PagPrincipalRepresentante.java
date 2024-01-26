@@ -114,7 +114,7 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
         jPanel1.add(BtnInfRepre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 120, 70));
 
         BtnTestRepre.setBackground(new java.awt.Color(255, 255, 255));
-        BtnTestRepre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Test.png"))); // NOI18N
+        BtnTestRepre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/InfAdmin.png"))); // NOI18N
         BtnTestRepre.setToolTipText("Haz click aqui para entrar a test");
         BtnTestRepre.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         BtnTestRepre.setOpaque(false);

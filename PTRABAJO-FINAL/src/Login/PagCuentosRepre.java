@@ -290,13 +290,16 @@ public class PagCuentosRepre extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
+
         String respuesta = "SI";
-        GuardarRespuestaCuento(Base, "", "");
+        String codRepre = usarData.getCod_Representante();
+        GuardarRespuestaCuento(Base, codRepre, respuesta);
     }//GEN-LAST:event_btnSiActionPerformed
 
     private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
         String respuesta = "NO";
-        GuardarRespuestaCuento(Base, "", "");
+        String codRepre = usarData.getCod_Representante();
+        GuardarRespuestaCuento(Base, codRepre, respuesta);
     }//GEN-LAST:event_btnNoActionPerformed
 
     private ImageIcon getScaledImageIcon(Image image) {
@@ -340,10 +343,12 @@ public class PagCuentosRepre extends javax.swing.JFrame {
         });
     }
 
-
     public void GuardarRespuestaCuento(ObjectContainer Base, String Cod_Representante, String respuesta) {
         try {
             ValoracionCuento respuestaCuento = new ValoracionCuento();
+
+            // Obtener código de niño
+            Cod_Representante = usarData.getCod_Representante();
 
             // Generar ID de respuesta
             String Codigo = Calcular_ID_Respuesta(Base);

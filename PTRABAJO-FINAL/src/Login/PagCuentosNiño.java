@@ -6,6 +6,7 @@
 package Login;
 
 import Clases.Cuento;
+import Clases.UserDataSingleton;
 import Clases.ValoracionCuentoNiño;
 import com.db4o.*;
 import com.db4o.ObjectContainer;
@@ -23,11 +24,13 @@ import javax.swing.JComboBox;
 public class PagCuentosNiño extends javax.swing.JFrame {
 
     ObjectContainer Base;
+    UserDataSingleton usarData;
 
     public PagCuentosNiño() {
         initComponents();
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
         cargar_combo1(jCmbBoxCuentos);
+        usarData = UserDataSingleton.getInstance();
     }
 
     @SuppressWarnings("unchecked")
@@ -85,8 +88,8 @@ public class PagCuentosNiño extends javax.swing.JFrame {
         jScrollPane1.setDoubleBuffered(true);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setMinimumSize(new java.awt.Dimension(520, 833));
-        jPanel3.setPreferredSize(new java.awt.Dimension(520, 833));
+        jPanel3.setMinimumSize(new java.awt.Dimension(520, 915));
+        jPanel3.setPreferredSize(new java.awt.Dimension(520, 915));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LblInfor2Niño.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
@@ -163,21 +166,21 @@ public class PagCuentosNiño extends javax.swing.JFrame {
         jLabel1.setText("¿Le gusto el cuento?");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 830, -1, -1));
 
-        btnSi.setText("jButton1");
+        btnSi.setText("Si");
         btnSi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSiActionPerformed(evt);
             }
         });
-        jPanel3.add(btnSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 860, -1, -1));
+        jPanel3.add(btnSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 860, -1, -1));
 
-        BtnNo.setText("jButton2");
+        BtnNo.setText("No");
         BtnNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnNoActionPerformed(evt);
             }
         });
-        jPanel3.add(BtnNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 860, -1, -1));
+        jPanel3.add(BtnNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 860, -1, -1));
 
         jScrollPane1.setViewportView(jPanel3);
 
@@ -288,14 +291,16 @@ public class PagCuentosNiño extends javax.swing.JFrame {
 
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
         String respuesta = "SI";
-        GuardarRespuestaCuento(Base, "", "");
+        String codNiño = usarData.getCod_niño();
+        GuardarRespuestaCuento(Base, codNiño, respuesta);
     }//GEN-LAST:event_btnSiActionPerformed
 
     private void BtnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNoActionPerformed
-         String respuesta = "NO";
-        GuardarRespuestaCuento(Base, "", "");
-    }//GEN-LAST:event_BtnNoActionPerformed
+        String respuesta = "NO";
+        String codNiño = usarData.getCod_niño();
+        GuardarRespuestaCuento(Base, codNiño, respuesta);
 
+    }//GEN-LAST:event_BtnNoActionPerformed
 
     private ImageIcon getScaledImageIcon(Image image) {
         if (image != null) {
@@ -305,7 +310,6 @@ public class PagCuentosNiño extends javax.swing.JFrame {
         }
     }
 
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -338,9 +342,13 @@ public class PagCuentosNiño extends javax.swing.JFrame {
             }
         });
     }
+
     public void GuardarRespuestaCuento(ObjectContainer Base, String Cod_niño, String respuesta) {
         try {
             ValoracionCuentoNiño respuestaCuento = new ValoracionCuentoNiño();
+
+            // Obtener código de niño
+            Cod_niño = usarData.getCod_niño();
 
             // Generar ID de respuesta
             String Codigo = Calcular_ID_Respuesta(Base);
@@ -349,7 +357,7 @@ public class PagCuentosNiño extends javax.swing.JFrame {
 
             // Obtener código de representante
             respuestaCuento.setFk_cod_niño(Cod_niño);
-            System.out.println("Código de Representante: " + Cod_niño);
+            System.out.println("Código de Niño: " + Cod_niño);
 
             // Establecer la respuesta
             respuestaCuento.setRespuesta(respuesta);
@@ -401,7 +409,7 @@ public class PagCuentosNiño extends javax.swing.JFrame {
 
             Incremental++;
 
-            Codigo = String.format("Res-%04d", Incremental);
+            Codigo = String.format("Resp-%04d", Incremental);
 
             if (Verificar_Resp(Base, Codigo) == 0) {
                 rest = false;
@@ -456,8 +464,8 @@ public class PagCuentosNiño extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator9;
     // End of variables declaration//GEN-END:variables
 
-public void cargar_combo1(JComboBox jCmbBoxCuentos) {
-  
+    public void cargar_combo1(JComboBox jCmbBoxCuentos) {
+
         Cuento CBuscar = new Cuento(null, null, null, null, null, null, null, null, null, null, null, null);
         ObjectSet resul = Base.get(CBuscar);
         while (resul.hasNext()) {
@@ -470,21 +478,21 @@ public void cargar_combo1(JComboBox jCmbBoxCuentos) {
     public void cargar_datos1() {
         String tit = String.valueOf(jCmbBoxCuentos.getSelectedItem());
 
-        Cuento CBuscar = new Cuento(null, null, tit , null, null, null, null, null, null, null, null, null);
+        Cuento CBuscar = new Cuento(null, null, tit, null, null, null, null, null, null, null, null, null);
         ObjectSet resul = Base.get(CBuscar);
         Cuento CMostrar = (Cuento) resul.next();
         LblTituloNiñoCuen.setText(CMostrar.getTitulo_Cuento());
-        
+
         TxtIntroNiñoCuen.setText(CMostrar.getIntroduccion_Cuento());
         TxtDesarroNiñoCuen.setText(CMostrar.getNudo_Cuento());
         TxtConcluNiñoCuen.setText(CMostrar.getDesenlace_Cuento());
-        
-        // Rellena las imágenes en los JLabel correspondientes
-                Image introduccionImage = CMostrar.obtenerImagenComoImage();
-                LblImaNiñoCuenIntrodu.setIcon(getScaledImageIcon(introduccionImage));
 
-                Image conclusiónImage = CMostrar.obtenerImagenFinalComoImage();
-                LblImaNiñoConclu.setIcon(getScaledImageIcon(conclusiónImage));
+        // Rellena las imágenes en los JLabel correspondientes
+        Image introduccionImage = CMostrar.obtenerImagenComoImage();
+        LblImaNiñoCuenIntrodu.setIcon(getScaledImageIcon(introduccionImage));
+
+        Image conclusiónImage = CMostrar.obtenerImagenFinalComoImage();
+        LblImaNiñoConclu.setIcon(getScaledImageIcon(conclusiónImage));
 
         Base.commit();
     }
