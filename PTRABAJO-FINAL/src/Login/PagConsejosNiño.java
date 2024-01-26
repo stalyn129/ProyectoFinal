@@ -6,13 +6,18 @@
 package Login;
 
 import Clases.Consejos;
+import Clases.UserDataSingleton;
+import Clases.ValoracionConseNiño;
 import Login.InicioNiño;
 import Login.PagCrudForoPsicologo;
 import Login.PagPrincipalNiñ;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
+import com.db4o.ext.DatabaseClosedException;
+import com.db4o.ext.DatabaseReadOnlyException;
 import java.awt.Image;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 
@@ -22,12 +27,14 @@ import javax.swing.JComboBox;
  */
 public class PagConsejosNiño extends javax.swing.JFrame {
 
-   
     ObjectContainer Base;
+    UserDataSingleton usarData;
+
     public PagConsejosNiño() {
         initComponents();
-            Base = Db4o.openFile("src/BBDD/BaseDat.yap");
-            cargar_combo1(CmBoxConsejosNiño);
+        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+        cargar_combo1(CmBoxConsejosNiño);
+        usarData = UserDataSingleton.getInstance();
     }
 
     /**
@@ -60,6 +67,9 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JSeparator();
         LblTitConseNiño2 = new javax.swing.JLabel();
         CmBoxConsejosNiño = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        btnSi = new javax.swing.JButton();
+        btnNo = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         LblInformacionNiño = new javax.swing.JLabel();
@@ -89,8 +99,8 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         jScrollPane1.setDoubleBuffered(true);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setMinimumSize(new java.awt.Dimension(568, 566));
-        jPanel4.setPreferredSize(new java.awt.Dimension(568, 566));
+        jPanel4.setMinimumSize(new java.awt.Dimension(568, 640));
+        jPanel4.setPreferredSize(new java.awt.Dimension(568, 640));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LblInfor2Niño.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
@@ -156,6 +166,25 @@ public class PagConsejosNiño extends javax.swing.JFrame {
             }
         });
         jPanel4.add(CmBoxConsejosNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 150, 20));
+
+        jLabel1.setText("¿Te parecio Bien el consejo?");
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 570, -1, -1));
+
+        btnSi.setText("SI");
+        btnSi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 600, -1, -1));
+
+        btnNo.setText("NO");
+        btnNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNoActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 600, -1, -1));
 
         jScrollPane1.setViewportView(jPanel4);
 
@@ -265,6 +294,18 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiño2MouseClicked
 
+    private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
+        String respuesta = "SI";
+        String codNiño = usarData.getCod_niño();
+        GuardarRespuestaCuento(Base, codNiño, respuesta);
+    }//GEN-LAST:event_btnSiActionPerformed
+
+    private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
+      String respuesta = "NO";
+        String codNiño = usarData.getCod_niño();
+        GuardarRespuestaCuento(Base, codNiño, respuesta);
+    }//GEN-LAST:event_btnNoActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -299,10 +340,10 @@ public class PagConsejosNiño extends javax.swing.JFrame {
             }
         });
     }
-    
+
     public void cargar_combo1(JComboBox jComboJuego) {
 
-         Consejos ConBuscar = new Consejos(null, null, null, null, null, null, null, null, null);
+        Consejos ConBuscar = new Consejos(null, null, null, null, null, null, null, null, null);
         ObjectSet resul = Base.get(ConBuscar);
         while (resul.hasNext()) {
             Consejos JConCombo = (Consejos) resul.next();
@@ -310,7 +351,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         }
         //System.out.println(resul);
     }
-    
+
     public void cargar_datos1() {
 
         String titulo = String.valueOf(CmBoxConsejosNiño.getSelectedItem());
@@ -328,15 +369,14 @@ public class PagConsejosNiño extends javax.swing.JFrame {
                 // Rellena las imágenes en los JLabel correspondientes
                 Image imagenConsejo1 = Conmostrar.obtenerImagenConsejo1();
                 LblImaConseNiño1.setIcon(getScaledImageIcon(imagenConsejo1));
-                
+
                 Image imagenConsejo2 = Conmostrar.obtenerImagenConsejo2();
                 LblImaConseNiño2.setIcon(getScaledImageIcon(imagenConsejo2));
 
                 // Obtener los textos
-                
                 TxtTextConsNiño1.setText(Conmostrar.getTexConsejo1());
                 TxtTextConsNiño2.setText(Conmostrar.getTexConsejo2());
-                
+
             }
         } else {
 
@@ -345,13 +385,96 @@ public class PagConsejosNiño extends javax.swing.JFrame {
 
         Base.commit();
     }
-    
+
     private ImageIcon getScaledImageIcon(Image image) {
         if (image != null) {
             return new ImageIcon(image.getScaledInstance(350, 110, Image.SCALE_SMOOTH));
         } else {
             return null;
         }
+    }
+    public void GuardarRespuestaCuento(ObjectContainer Base, String Cod_niño, String respuesta) {
+        try {
+            ValoracionConseNiño respuesconsej = new ValoracionConseNiño();
+
+            // Obtener código de niño
+            Cod_niño = usarData.getCod_niño();
+
+            // Generar ID de respuesta
+            String Codigo = Calcular_ID_Respuesta(Base);
+            respuesconsej.setCod_Respuesta_usuario(Codigo);
+            System.out.println("ID de Respuesta: " + Codigo);
+
+            // Obtener código de representante
+            respuesconsej.setFk_cod_niño(Cod_niño);
+            System.out.println("Código de Niño: " + Cod_niño);
+
+            // Establecer la respuesta
+            respuesconsej.setRespuesta(respuesta);
+            System.out.println("Respuesta: " + respuesta);
+
+            // Obtener y asignar la fecha de respuesta
+            Date FechaRespuesta = new Date();
+            respuesconsej.setFecha_respuesta(FechaRespuesta);
+            System.out.println("Fecha de Respuesta: " + FechaRespuesta);
+
+            // Obtener descripción del cuento seleccionado
+            String descrip = String.valueOf(CmBoxConsejosNiño.getSelectedItem());
+            Consejos conse = obtenerInformacionDelCuento(Base, descrip);
+
+            String codiconse = conse.getCod_consejo();
+            respuesconsej.setFk_Cod_Consejo(codiconse);
+            System.out.println("Código de Consejo: " + codiconse);
+
+            // Almacenar la respuesta en la base de datos
+            Base.store(respuesconsej);
+
+            // Mensajes de depuración adicionales
+            System.out.println("Respuesta almacenada correctamente:");
+            System.out.println(respuesconsej);
+
+        } catch (DatabaseClosedException | DatabaseReadOnlyException | NullPointerException e) {
+            e.printStackTrace();
+            System.err.println("Excepción al guardar la respuesta: " + e.getMessage());
+        }
+    }
+
+    private Consejos obtenerInformacionDelCuento(ObjectContainer Base, String descrip) {
+        Consejos micue = new Consejos(null, null, null, null, null, null, null, null, null);
+
+        ObjectSet result = Base.get(micue);
+
+        if (result.hasNext()) {
+            return (Consejos) result.next();
+        } else {
+            throw new IllegalStateException("No se encontró información del Cuento");
+        }
+    }
+
+    public static String Calcular_ID_Respuesta(ObjectContainer Base) {
+        boolean rest = true;
+        int Incremental = 0;
+        String Codigo;
+        do {
+
+            Incremental++;
+
+            Codigo = String.format("ReC-%04d", Incremental);
+
+            if (Verificar_Resp(Base, Codigo) == 0) {
+                rest = false;
+            }
+
+        } while (rest);
+
+        return Codigo;
+    }
+
+    public static int Verificar_Resp(ObjectContainer Base, String Codigo) {
+        ValoracionConseNiño mires = new ValoracionConseNiño();
+        mires.setCod_Respuesta_usuario(Codigo);
+        ObjectSet result = Base.get(mires);
+        return result.size();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -371,6 +494,9 @@ public class PagConsejosNiño extends javax.swing.JFrame {
     private javax.swing.JMenuBar MenuGenerlNiño;
     private javax.swing.JTextArea TxtTextConsNiño1;
     private javax.swing.JTextArea TxtTextConsNiño2;
+    private javax.swing.JButton btnNo;
+    private javax.swing.JButton btnSi;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;

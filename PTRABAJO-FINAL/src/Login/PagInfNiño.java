@@ -6,11 +6,16 @@
 package Login;
 
 import Clases.Informacion;
+import Clases.UserDataSingleton;
+import Clases.ValoracionInfoNiño;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
+import com.db4o.ext.DatabaseClosedException;
+import com.db4o.ext.DatabaseReadOnlyException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -25,12 +30,15 @@ public class PagInfNiño extends javax.swing.JFrame {
      * Creates new form PagInfNiño
      */
     ObjectContainer Base;
+    UserDataSingleton usarData;
+
     public PagInfNiño() {
         initComponents();
-            Base = Db4o.openFile("src/BBDD/BaseDat.yap");
-            Mostrar_datos_info(Base);
-            mostra_info(Base);
-             
+        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+        Mostrar_datos_info(Base);
+        mostra_info(Base);
+        usarData = UserDataSingleton.getInstance();
+
         cbx_datos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -40,36 +48,33 @@ public class PagInfNiño extends javax.swing.JFrame {
         });
     }
 
-    public void Mostrar_datos_info(ObjectContainer Base){
-    
-        Informacion info=new Informacion();
-        ObjectSet result=Base.get(info);
+    public void Mostrar_datos_info(ObjectContainer Base) {
+
+        Informacion info = new Informacion();
+        ObjectSet result = Base.get(info);
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
-        if (result.size()!=0) {
-         while (result.hasNext()) {
-            Informacion next =(Informacion) result.next();
-            model.addElement(next.getTitulo_Info());
-            
-            
-            
-        }
-        cbx_datos.setModel(model);   
-        }else{
+        if (result.size() != 0) {
+            while (result.hasNext()) {
+                Informacion next = (Informacion) result.next();
+                model.addElement(next.getTitulo_Info());
+
+            }
+            cbx_datos.setModel(model);
+        } else {
             JOptionPane.showMessageDialog(this, "No hay informacion Disponible");
-        
+
         }
-        
-    
+
     }
-    
-    public void mostra_info(ObjectContainer Base ){
-    String seleccion=cbx_datos.getSelectedItem().toString();
+
+    public void mostra_info(ObjectContainer Base) {
+        String seleccion = cbx_datos.getSelectedItem().toString();
         if (!seleccion.isEmpty()) {
-            Informacion info=new Informacion();
+            Informacion info = new Informacion();
             info.setTitulo_Info(seleccion);
-            ObjectSet result=Base.get(info);
-            
-            Informacion im=(Informacion)result.next();
+            ObjectSet result = Base.get(info);
+
+            Informacion im = (Informacion) result.next();
             LblTitulo1InfNiño.setText(im.getTitulo_Info());
             Txt1InfNiño.setText(im.getTexto_Info());
             byte[] imageData = im.getImagen();
@@ -80,15 +85,11 @@ public class PagInfNiño extends javax.swing.JFrame {
                 // Manejar el caso en el que no hay imagen.
                 LblImagen1InfoNiño.setIcon(null); // Puedes establecer el icono a null o configurar un icono predeterminado.
             }
-            
+
         }
-    
-    
+
     }
-    
-    
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -113,6 +114,9 @@ public class PagInfNiño extends javax.swing.JFrame {
         Txt1InfNiño = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         cbx_datos = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        btnSi = new javax.swing.JButton();
+        btnNo = new javax.swing.JButton();
         LblInformacionNiño = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         BtnCerrarPagina = new javax.swing.JButton();
@@ -138,8 +142,8 @@ public class PagInfNiño extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMaximumSize(new java.awt.Dimension(2147483647, 340));
-        jPanel1.setMinimumSize(new java.awt.Dimension(593, 340));
-        jPanel1.setPreferredSize(new java.awt.Dimension(593, 340));
+        jPanel1.setMinimumSize(new java.awt.Dimension(593, 390));
+        jPanel1.setPreferredSize(new java.awt.Dimension(593, 390));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LblInfor2Niño.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
@@ -183,6 +187,25 @@ public class PagInfNiño extends javax.swing.JFrame {
 
         cbx_datos.setToolTipText("Selecciona lo que mas te guste");
         jPanel1.add(cbx_datos, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 130, -1));
+
+        jLabel3.setText("¿Te parecio buena la informacion?");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, -1, -1));
+
+        btnSi.setText("SI");
+        btnSi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, -1, -1));
+
+        btnNo.setText("NO");
+        btnNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, -1, -1));
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -280,7 +303,100 @@ public class PagInfNiño extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiño2MouseClicked
 
+    private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
+        String respuesta = "SI";
+        String codNiño = usarData.getCod_niño();
+        GuardarRespuestaCuento(Base, codNiño, respuesta);
+    }//GEN-LAST:event_btnSiActionPerformed
 
+    private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
+        String respuesta = "NO";
+        String codNiño = usarData.getCod_niño();
+        GuardarRespuestaCuento(Base, codNiño, respuesta);
+    }//GEN-LAST:event_btnNoActionPerformed
+ public void GuardarRespuestaCuento(ObjectContainer Base, String Cod_niño, String respuesta) {
+        try {
+            ValoracionInfoNiño respuestinfo = new ValoracionInfoNiño();
+
+            // Obtener código de niño
+            Cod_niño = usarData.getCod_niño();
+
+            // Generar ID de respuesta
+            String Codigo = Calcular_ID_Respuesta(Base);
+            respuestinfo.setCod_Respuesta_usuario(Codigo);
+            System.out.println("ID de Respuesta: " + Codigo);
+
+            // Obtener código de representante
+            respuestinfo.setFk_cod_niño(Cod_niño);
+            System.out.println("Código de Niño: " + Cod_niño);
+
+            // Establecer la respuesta
+            respuestinfo.setRespuesta(respuesta);
+            System.out.println("Respuesta: " + respuesta);
+
+            // Obtener y asignar la fecha de respuesta
+            Date FechaRespuesta = new Date();
+            respuestinfo.setFecha_respuesta(FechaRespuesta);
+            System.out.println("Fecha de Respuesta: " + FechaRespuesta);
+
+            // Obtener descripción del cuento seleccionado
+            String descrip = String.valueOf(cbx_datos.getSelectedItem());
+            Informacion info = obtenerInformacionDelCuento(Base, descrip);
+
+            String codigoinfo = info.getCod_Info();
+            respuestinfo.setFk_Cod_info(codigoinfo);
+            System.out.println("Código de informacion: " + codigoinfo);
+
+            // Almacenar la respuesta en la base de datos
+            Base.store(respuestinfo);
+
+            // Mensajes de depuración adicionales
+            System.out.println("Respuesta almacenada correctamente:");
+            System.out.println(respuestinfo);
+
+        } catch (DatabaseClosedException | DatabaseReadOnlyException | NullPointerException e) {
+            e.printStackTrace();
+            System.err.println("Excepción al guardar la respuesta: " + e.getMessage());
+        }
+    }
+
+    private Informacion obtenerInformacionDelCuento(ObjectContainer Base, String descrip) {
+        Informacion micue = new Informacion(null, null, null, null);
+
+        ObjectSet result = Base.get(micue);
+
+        if (result.hasNext()) {
+            return (Informacion) result.next();
+        } else {
+            throw new IllegalStateException("No se encontró información del Cuento");
+        }
+    }
+
+    public static String Calcular_ID_Respuesta(ObjectContainer Base) {
+        boolean rest = true;
+        int Incremental = 0;
+        String Codigo;
+        do {
+
+            Incremental++;
+
+            Codigo = String.format("ReI-%04d", Incremental);
+
+            if (Verificar_Resp(Base, Codigo) == 0) {
+                rest = false;
+            }
+
+        } while (rest);
+
+        return Codigo;
+    }
+
+    public static int Verificar_Resp(ObjectContainer Base, String Codigo) {
+        ValoracionInfoNiño mires = new ValoracionInfoNiño();
+        mires.setCod_Respuesta_usuario(Codigo);
+        ObjectSet result = Base.get(mires);
+        return result.size();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
@@ -297,9 +413,12 @@ public class PagInfNiño extends javax.swing.JFrame {
     private javax.swing.JMenuBar MenuGenerlNiño;
     private javax.swing.JPanel PnlPrincipalInfNiño;
     private javax.swing.JTextArea Txt1InfNiño;
+    private javax.swing.JButton btnNo;
+    private javax.swing.JButton btnSi;
     private javax.swing.JComboBox<String> cbx_datos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -309,4 +428,5 @@ public class PagInfNiño extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     // End of variables declaration//GEN-END:variables
+
 }
