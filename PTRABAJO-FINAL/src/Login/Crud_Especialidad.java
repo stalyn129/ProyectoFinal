@@ -5,8 +5,10 @@
  */
 package Login;
 
+import Clases.Discapacidad;
 import java.awt.Color;
 import Clases.Especializacion;
+import Clases.Persona;
 import Login.IniciaAdmin;
 import Login.PagPrincipalAdmin;
 import javax.swing.JOptionPane;
@@ -443,6 +445,7 @@ public class Crud_Especialidad extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Crud_Especialidad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -576,27 +579,68 @@ public void Ingresar_Datos(ObjectContainer Base) {
         }
     }
 
+//    private void EliminarRegistro2(ObjectContainer base, String Cod_Especializacion) {
+//
+//        Especializacion especializacion = new Especializacion(Cod_Especializacion, null, null);
+//
+//        // Mensaje de depuración
+//        System.out.println("Buscando el registro en la base de datos...");
+//
+//        ObjectSet result = base.queryByExample(especializacion);
+//
+//        if (result.hasNext()) {
+//            // Mensaje de depuración
+//            System.out.println("Eliminando el registro de la base de datos...");
+//
+//            base.delete(result.next());
+//            JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+//            Limpiar();
+//            MostrarDatos(base); 
+//        } else {
+//            JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+//        }
+//    }
+    
     private void EliminarRegistro(ObjectContainer base, String Cod_Especializacion) {
 
-        Especializacion especializacion = new Especializacion(Cod_Especializacion, null, null);
+         Especializacion especializacion = new Especializacion(Cod_Especializacion, null, null);
 
         // Mensaje de depuración
         System.out.println("Buscando el registro en la base de datos...");
 
         ObjectSet result = base.queryByExample(especializacion);
-
         if (result.hasNext()) {
-            // Mensaje de depuración
-            System.out.println("Eliminando el registro de la base de datos...");
+            Especializacion midiscas = (Especializacion) result.next();
+            String dis = midiscas.getCod_Especializacion();
 
-            base.delete(result.next());
-            JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
-            Limpiar();
-            MostrarDatos(base); 
+            Persona per = new Persona();
+            per.setCod_Especialidad(dis);
+
+            ObjectSet rest = base.get(per);
+
+            if (rest.size() == 0) {
+
+                System.out.println("Eliminando el registro de la base de datos...");
+
+                base.delete(midiscas);
+                JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+                Limpiar();
+                MostrarDatos(base);
+
+            } else {
+                JOptionPane.showMessageDialog(this, "No se Puede eliminar a esta Especialidad \n"
+                        + "Ya se encuentra registra con " + rest.size() + " Usuarios");
+            }
+
+            // Mensaje de depuración
         } else {
             JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
         }
     }
+
+    
+    
+    
 
     private void ConsultarRegistro(ObjectContainer base, String Cod_Especializacion) {
 

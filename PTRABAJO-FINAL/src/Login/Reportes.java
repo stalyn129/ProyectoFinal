@@ -37,6 +37,9 @@ public class Reportes extends javax.swing.JFrame {
         JMnPgPrinNiño2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(800, 500));
+        setMinimumSize(new java.awt.Dimension(800, 500));
+        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Cuentos");
@@ -48,6 +51,11 @@ public class Reportes extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, -1, -1));
 
         btnConsejos.setText("Consejos");
+        btnConsejos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsejosActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnConsejos, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, -1, -1));
 
         btnInformacion.setText("Informacion");
@@ -111,7 +119,7 @@ public class Reportes extends javax.swing.JFrame {
     }//GEN-LAST:event_JMnPgPrinNiño2MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnJuegosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJuegosActionPerformed
@@ -119,6 +127,12 @@ public class Reportes extends javax.swing.JFrame {
         pagRep.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnJuegosActionPerformed
+
+    private void btnConsejosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsejosActionPerformed
+    ReporteConsejos pagRep = new ReporteConsejos();
+        pagRep.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnConsejosActionPerformed
 
     /**
      * @param args the command line arguments

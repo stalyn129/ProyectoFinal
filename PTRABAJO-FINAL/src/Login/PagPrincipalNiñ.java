@@ -281,7 +281,7 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
 
     private void BtnTestNiño2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTestNiño2ActionPerformed
         Base.close();
-            PagTestNiño test = new PagTestNiño();
+            PagTest_Niño test = new PagTest_Niño();
                 test.setVisible(true);
                     this.setVisible(false);
     }//GEN-LAST:event_BtnTestNiño2ActionPerformed

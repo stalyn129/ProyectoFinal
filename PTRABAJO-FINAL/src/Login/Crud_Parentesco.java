@@ -5,8 +5,11 @@
  */
 package Login;
 
+import Clases.Nacionalidad;
 import java.awt.Color;
 import Clases.Parentesco;
+import Clases.Persona;
+import Clases.Representante;
 import Login.IniciaAdmin;
 import Login.IniciaAdmin;
 import Login.IniciaAdmin;
@@ -552,6 +555,8 @@ public class Crud_Parentesco extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -716,28 +721,65 @@ public void IngresarDatos(ObjectContainer base) {
         }
     }
 
-    private void EliminarRegistro(ObjectContainer base, String codigoParentesco) {
+//    private void EliminarRegistro2(ObjectContainer base, String codigoParentesco) {
+//
+//        Parentesco midisca = new Parentesco(codigoParentesco, null, null);
+//
+//        // Mensaje de depuración
+//        System.out.println("Buscando el registro en la base de datos...");
+//
+//        ObjectSet result = base.queryByExample(midisca);
+//
+//        if (result.hasNext()) {
+//            // Mensaje de depuración
+//            System.out.println("Eliminando el registro de la base de datos...");
+//
+//            base.delete(result.next());
+//            JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+//            Limpiar();
+//            MostrarDatos(base);
+//        } else {
+//            JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+//        }
+//    }
+ private void EliminarRegistro(ObjectContainer base, String codigoParentesco) {
 
-        Parentesco midisca = new Parentesco(codigoParentesco, null, null);
+       Parentesco midisca = new Parentesco(codigoParentesco, null, null);
 
         // Mensaje de depuración
         System.out.println("Buscando el registro en la base de datos...");
 
         ObjectSet result = base.queryByExample(midisca);
-
         if (result.hasNext()) {
-            // Mensaje de depuración
-            System.out.println("Eliminando el registro de la base de datos...");
+            Parentesco midiscas = (Parentesco) result.next();
+            String dis = midiscas.getCod_Parentesco();
 
-            base.delete(result.next());
-            JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
-            Limpiar();
-            MostrarDatos(base);
+            Representante per = new Representante();
+            per.setFKCod_parentesco(dis);
+
+            ObjectSet rest = base.get(per);
+
+            if (rest.size() == 0) {
+
+                System.out.println("Eliminando el registro de la base de datos...");
+
+                base.delete(midiscas);
+                JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+                Limpiar();
+                MostrarDatos(base);
+
+            } else {
+                JOptionPane.showMessageDialog(this, "No se Puede eliminar al Parentesco\n"
+                        + "Ya se encuentra registra con " + rest.size() + " Usuarios");
+            }
+
+            // Mensaje de depuración
         } else {
             JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
         }
     }
-
+ 
+ 
     //Verificacion
     public static int Verificacion_Paren(ObjectContainer Base, String Codigo) {
         Parentesco miDis = new Parentesco();

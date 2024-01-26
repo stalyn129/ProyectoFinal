@@ -15,17 +15,18 @@ import com.db4o.query.Query;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author alexa
  */
 public final class PagCrudTestPsicologo extends javax.swing.JFrame {
-String cod;
+
+    String cod;
     String cod_Tipo_test = "TTR01";
     String codigotest;
     ObjectContainer Base;
-UserDataSingleton usarData ;
+    UserDataSingleton usarData;
+
     /**
      * Creates new form Crud_TEST
      */
@@ -57,8 +58,6 @@ UserDataSingleton usarData ;
         txt_pregunta = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
         txt_respuesta_2 = new javax.swing.JTextField();
         txt_respuesta_1 = new javax.swing.JTextField();
         txt_respuesta_3 = new javax.swing.JTextField();
@@ -76,6 +75,8 @@ UserDataSingleton usarData ;
         tabla_preguntas = new javax.swing.JTable();
         btn_guardar_test = new javax.swing.JToggleButton();
         jLabel6 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        btn_otro_test = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -117,9 +118,9 @@ UserDataSingleton usarData ;
                 cbx_destinoActionPerformed(evt);
             }
         });
-        jPanel4.add(cbx_destino, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 80, -1));
+        jPanel4.add(cbx_destino, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 110, -1));
 
-        jPanel5.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, 100, 50));
+        jPanel5.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, 130, 50));
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -131,11 +132,16 @@ UserDataSingleton usarData ;
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel5.setText("Ingrese las preguntas");
+        jLabel5.setText("Ingresar Pregunta");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         txt_pregunta.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txt_pregunta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txt_pregunta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_preguntaActionPerformed(evt);
+            }
+        });
         jPanel3.add(txt_pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 420, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
@@ -145,13 +151,6 @@ UserDataSingleton usarData ;
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel13.setText("Respueta 3: ");
         jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, -1, -1));
-
-        jTextField1.setEditable(false);
-        jTextField1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 80, 20));
-
-        jLabel14.setText("Codigo:");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, -1, 20));
 
         txt_respuesta_2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,7 +173,7 @@ UserDataSingleton usarData ;
         });
         jPanel3.add(txt_respuesta_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, 110, -1));
 
-        jPanel5.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 470, 150));
+        jPanel5.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 470, 150));
 
         btn_guardar1.setText("Guardar");
         btn_guardar1.setToolTipText("Guarda los datos registrados");
@@ -184,27 +183,27 @@ UserDataSingleton usarData ;
                 btn_guardar1ActionPerformed(evt);
             }
         });
-        jPanel5.add(btn_guardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, 400, 30));
+        jPanel5.add(btn_guardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, 180, 30));
 
         txtA_descrip.setColumns(20);
         txtA_descrip.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtA_descrip.setRows(5);
         jScrollPane1.setViewportView(txtA_descrip);
 
-        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 290, 40));
+        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 290, 40));
 
         lbl_enunciado_guardar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_enunciado_guardar.setForeground(new java.awt.Color(255, 0, 0));
         lbl_enunciado_guardar.setText("Guarda para poder Ingresa las preguntas");
-        jPanel5.add(lbl_enunciado_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 230, 20));
+        jPanel5.add(lbl_enunciado_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 230, 20));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Ingrese una descripcion:");
-        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 160, 20));
+        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 160, 20));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Ingrese el titulo del test:");
-        jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 160, 20));
+        jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 160, 20));
 
         txt_titulo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_titulo.setForeground(new java.awt.Color(153, 153, 153));
@@ -213,13 +212,13 @@ UserDataSingleton usarData ;
                 txt_tituloActionPerformed(evt);
             }
         });
-        jPanel5.add(txt_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 290, -1));
+        jPanel5.add(txt_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 290, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("INGRESAR TEST");
-        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
-        jPanel5.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 150, 10));
-        jPanel5.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 150, 10));
+        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+        jPanel5.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 150, 10));
+        jPanel5.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 150, 10));
 
         tabla_preguntas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -234,26 +233,37 @@ UserDataSingleton usarData ;
         ));
         jScrollPane2.setViewportView(tabla_preguntas);
 
-        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, 550, 90));
+        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 620, 90));
 
         btn_guardar_test.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btn_guardar_test.setText("Guardar el test");
+        btn_guardar_test.setText("Guardar Encabezado");
         btn_guardar_test.setToolTipText("Guarda los datos ingresados");
         btn_guardar_test.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_guardar_testActionPerformed(evt);
             }
         });
-        jPanel5.add(btn_guardar_test, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 160, -1));
+        jPanel5.add(btn_guardar_test, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 290, -1));
 
         jLabel6.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
         jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 70));
+        jPanel5.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 680, 10));
+
+        btn_otro_test.setText("Ingresar otro test");
+        btn_otro_test.setToolTipText("Guarda los datos registrados");
+        btn_otro_test.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_otro_test.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_otro_testActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btn_otro_test, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 10, 120, 30));
 
         jScrollPane3.setViewportView(jPanel5);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 710, 400));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 710, 400));
 
         BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
         BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
@@ -331,8 +341,7 @@ UserDataSingleton usarData ;
     private void btn_guardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar1ActionPerformed
         try {
             Crear_preguntas(Base);
-            javax.swing.JOptionPane.showMessageDialog(this, "Se guardo los datos de la pregunta");
-            
+
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Hay un error en crear pregunta");
         }
@@ -382,18 +391,36 @@ UserDataSingleton usarData ;
         System.exit(0);
     }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
+    private void btn_otro_testActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_otro_testActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) tabla_preguntas.getModel();
+        modelo.setRowCount(0);
+
+        txt_titulo.setText("");
+        txtA_descrip.setText("");
+        Bloquear_edicion_antes_test();
+        DesBloquear_edicion_test();
+        lbl_enunciado_guardar.setForeground(Color.red);
+
+
+    }//GEN-LAST:event_btn_otro_testActionPerformed
+
+    private void txt_preguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_preguntaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_preguntaActionPerformed
+
     //////////////////////////////////   TEST
     public void Crear_Test(ObjectContainer Base) {
         try {
             Test eltest = new Test();
             codigotest = Calcular_IDtest(Base);
             eltest.setID_Test(codigotest);
-            
-                System.out.println("codigo_de Psic_"+usarData.getCod_Psicologo());
+
+            System.out.println("codigo_de Psic_" + usarData.getCod_Psicologo());
             eltest.setFKCod_Psicologo(usarData.getCod_Psicologo());
             eltest.setTitulo_Test(txt_titulo.getText());
             eltest.setDescripcion_Test(txtA_descrip.getText());
             eltest.setCod_destinatario(cbx_destino.getSelectedItem().toString());
+
             Base.store(eltest);
 
         } catch (DatabaseClosedException | DatabaseReadOnlyException e) {
@@ -433,13 +460,12 @@ UserDataSingleton usarData ;
 
     //////////////////////////////////////////  Preguntas
     public void Crear_preguntas(ObjectContainer Base) {
-        String cod_opcion_respuest = Calcular_Cod_Op_repuesta(Base);
-        if (txt_respuesta_1.getText().trim().isEmpty() || txt_respuesta_2.getText().trim().isEmpty() || txt_respuesta_3.getText().trim().isEmpty() || cod_opcion_respuest == null) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Debe ingresar al menos una respuesta y el código de opción de respuesta no debe ser nulo.");
+
+        if (txt_respuesta_1.getText().trim().isEmpty() || txt_respuesta_2.getText().trim().isEmpty() || txt_respuesta_3.getText().trim().isEmpty() || txt_pregunta.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Debe ingresar todas las respuestas y el código de opción de respuesta no debe ser nulo.");
             return;
         } else {
 
-            
             try {
                 ////////////////Pregunta
                 cod = Calcular_IDPregunta(Base);
@@ -508,7 +534,7 @@ UserDataSingleton usarData ;
         return Codigo;
     }
 
-    public  String Calcular_IDPregunta(ObjectContainer Base) {
+    public String Calcular_IDPregunta(ObjectContainer Base) {
 
         boolean rest = true;
         int Incremental = 0;
@@ -575,6 +601,10 @@ UserDataSingleton usarData ;
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -592,11 +622,11 @@ UserDataSingleton usarData ;
     private javax.swing.JMenu JMnPgPrinPsicolo;
     private javax.swing.JButton btn_guardar1;
     private javax.swing.JToggleButton btn_guardar_test;
+    private javax.swing.JButton btn_otro_test;
     private javax.swing.JComboBox<String> cbx_destino;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -613,7 +643,7 @@ UserDataSingleton usarData ;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel lbl_enunciado_guardar;
     private javax.swing.JTable tabla_preguntas;
     private javax.swing.JTextArea txtA_descrip;
@@ -640,12 +670,23 @@ UserDataSingleton usarData ;
 
     }
 
+    public void DesBloquear_edicion_test() {
+        btn_guardar_test.setEnabled(true);
+        txt_titulo.setEnabled(true);
+        txtA_descrip.setEnabled(true);
+        cbx_destino.setEnabled(true);
+
+    }
+
     public void Bloquear_edicion_antes_test() {
 
         txt_pregunta.setEnabled(false);
         txt_respuesta_1.setEnabled(false);
         txt_respuesta_2.setEnabled(false);
         txt_respuesta_3.setEnabled(false);
+
+        btn_guardar1.setEnabled(false);
+        
 
     }
 
@@ -655,6 +696,9 @@ UserDataSingleton usarData ;
         txt_respuesta_1.setEnabled(true);
         txt_respuesta_2.setEnabled(true);
         txt_respuesta_3.setEnabled(true);
+
+        btn_guardar1.setEnabled(true);
+   
 
     }
 

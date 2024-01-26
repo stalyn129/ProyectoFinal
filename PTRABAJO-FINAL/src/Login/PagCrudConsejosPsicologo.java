@@ -6,9 +6,8 @@
 package Login;
 
 import Clases.Consejos;
-import Login.InicioPsicologo;
-import Login.PagCrudForoPsicologo;
-import Login.PagPrincipalPsicologo;
+import Clases.ValoracionConseNiño;
+
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
@@ -838,25 +837,58 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
     }
 }
-    private void EliminarRegistro(ObjectContainer base, String Cod_Consejo) {
+//    private void EliminarRegistro(ObjectContainer base, String Cod_Consejo) {
+//
+//            Consejos conseElimi = new Consejos(Cod_Consejo, null, null, null, null, null, null, null, null);
+//
+//            // Mensaje de depuración
+//            System.out.println("Buscando el registro en la base de datos...");
+//
+//            ObjectSet result = base.queryByExample(conseElimi);
+//
+//            if (result.hasNext()) {
+//
+//                base.delete(result.next());
+//                JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+//                MostrarDatos(base); 
+//            } else {
+//                JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+//            }
+//        }
+     private void EliminarRegistro(ObjectContainer Base, String Cod_Cons) {
 
-            Consejos conseElimi = new Consejos(Cod_Consejo, null, null, null, null, null, null, null, null);
+        Consejos cosnej = new Consejos();
+        cosnej.setCod_consejo(Cod_Cons);
+        // Mensaje de depuración
+        System.out.println("Buscando el registro en la base de datos...");
+
+        ObjectSet result = Base.queryByExample(cosnej);
+
+        if (result.hasNext()) {
+            Consejos cos = (Consejos) result.next();
+            String cod = cos.getCod_consejo();
+
+            ValoracionConseNiño consej = new ValoracionConseNiño();
+            consej.setFk_Cod_Consejo(cod);
+            ObjectSet rest = Base.get(consej);
+            if (rest.size() == 0) {
+                System.out.println("Eliminando el registro de la base de datos...");
+
+                Base.delete(cos);
+                JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+                MostrarDatos(Base); // Actualizar la tabla después de la eliminación 
+
+            } else {
+
+                JOptionPane.showMessageDialog(this, "No se puede eliminar el consejo porque ya tiene un registro");
+
+            }
 
             // Mensaje de depuración
-            System.out.println("Buscando el registro en la base de datos...");
-
-            ObjectSet result = base.queryByExample(conseElimi);
-
-            if (result.hasNext()) {
-
-                base.delete(result.next());
-                JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
-                MostrarDatos(base); 
-            } else {
-                JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
-            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
         }
-    
+    }
     public  String Calcular_CodConsejos(ObjectContainer Base) {
 
         boolean rest = true;

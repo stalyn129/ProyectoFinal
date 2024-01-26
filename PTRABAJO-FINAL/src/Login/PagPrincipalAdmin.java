@@ -411,7 +411,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     private void BtnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReportesActionPerformed
         Base.close();
 
-        Crud_Personalidad personalidad = new Crud_Personalidad();
+        Reportes personalidad = new Reportes();
         personalidad.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnReportesActionPerformed

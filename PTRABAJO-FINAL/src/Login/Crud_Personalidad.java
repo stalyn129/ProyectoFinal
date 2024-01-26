@@ -5,9 +5,12 @@
  */
 package Login;
 
+import Clases.Niño;
+import Clases.Parentesco;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import Clases.Personalidad;
+import Clases.Representante;
 import javax.swing.table.DefaultTableModel;
 import com.db4o.*;
 import com.db4o.ext.DatabaseClosedException;
@@ -434,6 +437,7 @@ public class Crud_Personalidad extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Crud_Personalidad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -589,7 +593,29 @@ public void IngresarDatos(ObjectContainer base) {
         }
     }
 
-    private void EliminarRegistro(ObjectContainer base, String codigoParentesco) {
+//    private void EliminarRegistro2(ObjectContainer base, String codigoParentesco) {
+//
+//        Personalidad midisca = new Personalidad(codigoParentesco, null, null);
+//
+//        // Mensaje de depuración
+//        System.out.println("Buscando el registro en la base de datos...");
+//
+//        ObjectSet result = base.queryByExample(midisca);
+//
+//        if (result.hasNext()) {
+//            // Mensaje de depuración
+//            System.out.println("Eliminando el registro de la base de datos...");
+//
+//            base.delete(result.next());
+//            JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+//            Limpiar();
+//            MostrarDatos(base);
+//        } else {
+//            JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+//        }
+//    }
+
+     private void EliminarRegistro(ObjectContainer base, String codigoParentesco) {
 
         Personalidad midisca = new Personalidad(codigoParentesco, null, null);
 
@@ -597,20 +623,34 @@ public void IngresarDatos(ObjectContainer base) {
         System.out.println("Buscando el registro en la base de datos...");
 
         ObjectSet result = base.queryByExample(midisca);
-
         if (result.hasNext()) {
-            // Mensaje de depuración
-            System.out.println("Eliminando el registro de la base de datos...");
+            Personalidad midiscas = (Personalidad) result.next();
+            String dis = midiscas.getCod_Personalidad();
 
-            base.delete(result.next());
-            JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
-            Limpiar();
-            MostrarDatos(base);
+            Niño per = new Niño();
+            per.setPersonalidad(dis);
+
+            ObjectSet rest = base.get(per);
+
+            if (rest.size() == 0) {
+
+                System.out.println("Eliminando el registro de la base de datos...");
+
+                base.delete(midiscas);
+                JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+                Limpiar();
+                MostrarDatos(base);
+
+            } else {
+                JOptionPane.showMessageDialog(this, "No se Puede eliminar a la Personalidad\n"
+                        + "Ya se encuentra registra con " + rest.size() + " Niños");
+            }
+
+            // Mensaje de depuración
         } else {
             JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
         }
     }
-
     //Verificacion
     public static int Verificacion_disca(ObjectContainer Base, String Codigo) {
         Personalidad miDis = new Personalidad();

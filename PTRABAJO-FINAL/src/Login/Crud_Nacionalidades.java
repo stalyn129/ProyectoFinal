@@ -6,8 +6,10 @@
 package Login;
 
 import BBDD.Contenedor_Base;
+import Clases.Especializacion;
 import com.db4o.*;
 import Clases.Nacionalidad;
+import Clases.Persona;
 import Login.IniciaAdmin;
 import Login.PagPrincipalAdmin;
 import Login.PagPrincipalAdmin;
@@ -500,6 +502,7 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Crud_Nacionalidades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -658,6 +661,27 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         }
     }
 
+//    private void EliminarRegistro2(ObjectContainer base, String codigoNacionalidad) {
+//
+//        Nacionalidad nacionalidad = new Nacionalidad(codigoNacionalidad, null, null, null);
+//
+//        // Mensaje de depuración
+//        System.out.println("Buscando el registro en la base de datos...");
+//
+//        ObjectSet result = base.queryByExample(nacionalidad);
+//
+//        if (result.hasNext()) {
+//            // Mensaje de depuración
+//            System.out.println("Eliminando el registro de la base de datos...");
+//
+//            base.delete(result.next());
+//            JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+//            Limpiar();
+//            MostrarDatos(base); // Actualizar la tabla después de la eliminación
+//        } else {
+//            JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+//        }
+//    }
     private void EliminarRegistro(ObjectContainer base, String codigoNacionalidad) {
 
         Nacionalidad nacionalidad = new Nacionalidad(codigoNacionalidad, null, null, null);
@@ -666,15 +690,30 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         System.out.println("Buscando el registro en la base de datos...");
 
         ObjectSet result = base.queryByExample(nacionalidad);
-
         if (result.hasNext()) {
-            // Mensaje de depuración
-            System.out.println("Eliminando el registro de la base de datos...");
+            Nacionalidad midiscas = (Nacionalidad) result.next();
+            String dis = midiscas.getCod_Nacionalidad();
 
-            base.delete(result.next());
-            JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
-            Limpiar();
-            MostrarDatos(base); // Actualizar la tabla después de la eliminación
+            Persona per = new Persona();
+            per.setCod_Nacionalidad(dis);
+
+            ObjectSet rest = base.get(per);
+
+            if (rest.size() == 0) {
+
+                System.out.println("Eliminando el registro de la base de datos...");
+
+                base.delete(midiscas);
+                JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+                Limpiar();
+                MostrarDatos(base);
+
+            } else {
+                JOptionPane.showMessageDialog(this, "No se Puede eliminar a esta Nacionalidad \n"
+                        + "Ya se encuentra registra con " + rest.size() + " Usuarios");
+            }
+
+            // Mensaje de depuración
         } else {
             JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
         }

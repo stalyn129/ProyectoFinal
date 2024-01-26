@@ -32,11 +32,11 @@ import org.jfree.data.category.DefaultCategoryDataset;
  * @author alexa
  */
 public class Reporte_test extends javax.swing.JFrame {
-    
+
     String cod_Test = "";
     ObjectContainer Base;
     UserDataSingleton usarData = UserDataSingleton.getInstance();
-    
+
     String titulo = "";
 
     /**
@@ -45,123 +45,174 @@ public class Reporte_test extends javax.swing.JFrame {
     public Reporte_test() {
         initComponents();
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
-        
+
         Mostrar_test(Base);
-        
+
         cbx_Test.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Mostrar_datos_seleccion(Base);
-                
+
             }
         });
-        
+
         cbx_preguntas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 respuesta_cod(Base);
                 Grafica_mostrar();
-                
+
             }
         });
-        
+
         Mostrar_datos_seleccion(Base);
     }
-    
+
     public void Mostrar_test(ObjectContainer Base) {
         try {
             Test elTest = new Test();
+
             elTest.setFKCod_Psicologo(usarData.getCod_Psicologo());
-            
+
             ObjectSet Result = Base.get(elTest);
             DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
-            
+
             if (Result.size() != 0) {
-                
+
                 while (Result.hasNext()) {
                     Test tst = (Test) Result.next();
                     titulo = tst.getTitulo_Test();
                     modelo.addElement(titulo);
                 }
-                
+
             } else {
-                
+
                 JOptionPane.showMessageDialog(this, "No se a Publicado ningun test");
-                
+
             }
             cbx_Test.setModel(modelo);
-            
+
         } catch (DatabaseClosedException | Db4oIOException | HeadlessException e) {
         }
-        
-    }
-    
-   public void Mostrar_datos_seleccion(ObjectContainer Base) {
-    Object selectedTestItem = cbx_Test.getSelectedItem();
 
-    if (selectedTestItem != null) {
-        String tit = selectedTestItem.toString();
+    }
+
+    public void Eliminar(ObjectContainer Base) {
+
         Test eltst = new Test();
-        eltst.setTitulo_Test(tit);
-        eltst.setFKCod_Psicologo(usarData.getCod_Psicologo());
+        eltst.setID_Test(cod_Test);
 
         ObjectSet result = Base.get(eltst);
+        while (result.hasNext()) {
+            Test next = (Test) result.next();
+            String codTest = next.getID_Test();
+            int confir = JOptionPane.showConfirmDialog(this, "¿Desea eliminar el Test: " + next.getTitulo_Test(), "Confirmar", JOptionPane.OK_CANCEL_OPTION);
+            if (confir == JOptionPane.OK_OPTION) {
 
-        if (result.hasNext()) {
-            Test tst = (Test) result.next();
-            cod_Test = tst.getID_Test();
-            txt_titulo_re.setText(tst.getTitulo_Test());
-            txta_descripcion.setText(tst.getDescripcion_Test());
-            Mostrar_preguntas(Base);
-        } else {
-            // Manejar la situación en la que no hay resultados
-            JOptionPane.showMessageDialog(null, "No se encontraron datos para el test seleccionado");
+                if (mostra_num_encuestados(Base, codTest) == 0) {
+
+                    Preguntas pre = new Preguntas();
+                    pre.setFK_Codigo_Test(codTest);
+                    ObjectSet resulta = Base.get(pre);
+                    if (resulta.size() != 0) {
+                        
+                        while (resulta.hasNext()) {
+                            Preguntas next1 = (Preguntas) resulta.next();
+                            String codPreg = next1.getCod_Pregunta();
+
+                            Opcion_Respuesta op = new Opcion_Respuesta();
+                            op.setFK_CodPregunta(codPreg);
+                            ObjectSet resp = Base.get(op);
+                            if (resp.size() != 0) {
+                                while (resp.hasNext()) {
+                                    Opcion_Respuesta next2 = (Opcion_Respuesta) resp.next();
+                                    Base.delete(next2);
+
+                                }
+                            }
+
+                            Base.delete(next1);
+
+                        }
+                    }
+                    Base.delete(next);
+                } else {
+                    JOptionPane.showMessageDialog(this, "El test ya contiene resgistros relacionados" );
+                }
+                
+            }
+            
+
         }
-    } else {
-        // Manejar la situación en la que el elemento seleccionado es nulo
-        
+
     }
-}
-    
+
+    public void Mostrar_datos_seleccion(ObjectContainer Base) {
+        Object selectedTestItem = cbx_Test.getSelectedItem();
+
+        if (selectedTestItem != null) {
+            String tit = selectedTestItem.toString();
+            Test eltst = new Test();
+            eltst.setTitulo_Test(tit);
+            eltst.setFKCod_Psicologo(usarData.getCod_Psicologo());
+
+            ObjectSet result = Base.get(eltst);
+
+            if (result.hasNext()) {
+                Test tst = (Test) result.next();
+                cod_Test = tst.getID_Test();
+                txt_titulo_re.setText(tst.getTitulo_Test());
+                txta_descripcion.setText(tst.getDescripcion_Test());
+                Mostrar_preguntas(Base);
+            } else {
+                // Manejar la situación en la que no hay resultados
+                JOptionPane.showMessageDialog(null, "No se encontraron datos para el test seleccionado");
+            }
+        } else {
+            // Manejar la situación en la que el elemento seleccionado es nulo
+
+        }
+    }
+
     public void Mostrar_preguntas(ObjectContainer Base) {
         Preguntas resp = new Preguntas();
         resp.setFK_Codigo_Test(cod_Test);
-        
+
         ObjectSet result = Base.get(resp);
         DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
         int num = result.size();
         if (result.size() != 0) {
             while (result.hasNext()) {
                 Preguntas next = (Preguntas) result.next();
-                
+
                 modelo.addElement(next.getEnunciado());
-                
+
             }
-            int numeorEncues = mostra_num_encuestados(Base);
+            int numeorEncues = mostra_num_encuestados(Base, cod_Test);
             numeorEncues = numeorEncues / num;
             txt_num.setText(String.valueOf(numeorEncues));
-            
+
         } else {
             modelo.addElement("");
             JOptionPane.showMessageDialog(this, "Ho hay preguntas del test");
         }
         cbx_preguntas.setModel(modelo);
-        
+
     }
-    
-    public int mostra_num_encuestados(ObjectContainer Base) {
+
+    public int mostra_num_encuestados(ObjectContainer Base, String cod_Test) {
         Respuesta_Usuario res = new Respuesta_Usuario();
         res.setFK_Cod_text(cod_Test);
-        
+
         ObjectSet result = Base.get(res);
         System.out.println("cuantas encuestas_" + result.size());
         return result.size();
     }
-    
+
     public void respuesta_cod(ObjectContainer Base) {
-        
+
         respuesta1 = "";
-        
+
         respuesta2 = "";
         respuesta3 = "";
         CodRes1 = "";
@@ -172,28 +223,28 @@ public class Reporte_test extends javax.swing.JFrame {
         numRes3 = 0;
         String opcion = cbx_preguntas.getSelectedItem().toString();
         if (!opcion.isEmpty()) {
-            
+
             Preguntas op = new Preguntas();
             op.setEnunciado(opcion);
             ObjectSet result = Base.get(op);
-            
+
             Preguntas opRes = (Preguntas) result.next();
             pregunta_pre_txt = opRes.getEnunciado();
             codPregunta = opRes.getCod_Pregunta();
             opcional_respuesta(Base);
         }
-        
+
     }
     String pregunta_pre_txt = "";
     String codPregunta = "";
-    
+
     public void opcional_respuesta(ObjectContainer Base) {
-        
+
         Opcion_Respuesta opRes = new Opcion_Respuesta();
         opRes.setFK_CodPregunta(codPregunta);
-        
+
         ObjectSet result = Base.get(opRes);
-        
+
         while (result.hasNext()) {
             Opcion_Respuesta next = (Opcion_Respuesta) result.next();
             String cod = next.getCod_Opciones();
@@ -216,39 +267,39 @@ public class Reporte_test extends javax.swing.JFrame {
                 numRes3 = calcular_respuestas_num(Base, cod);
                 System.out.println("cos ::" + CodRes3 + " Respuuesta 33::" + respuesta3 + " numeor :::" + numRes3);
             }
-            
+
         }
         Grafica_mostrar();
         Mas_alto();
-        
+
     }
-    
+
     public void Mas_alto() {
         SwingUtilities.invokeLater(() -> {
             if (numRes1 > numRes2 && numRes1 > numRes3) {
                 System.out.println("variable1 es la más alta: " + numRes1);
-                
+
                 txt_mayor.setText(respuesta1);
                 txt_num_Secc.setText(String.valueOf(numRes1));
-                
+
             } else if (numRes2 > numRes1 && numRes2 > numRes3) {
                 System.out.println("variable2 es la más alta: " + numRes2);
-                
+
                 txt_mayor.setText(respuesta2);
                 txt_num_Secc.setText(String.valueOf(numRes2));
-                
+
             } else if (numRes3 > numRes1 && numRes3 > numRes2) {
                 System.out.println("variable3 es la más alta: " + numRes3);
-                
+
                 txt_mayor.setText(respuesta3);
                 txt_num_Secc.setText(String.valueOf(numRes3));
-                
+
             } else {
                 System.out.println("Las variables son iguales o hay empates.");
             }
         });
     }
-    
+
     String respuesta1 = "";
     String respuesta2 = "";
     String respuesta3 = "";
@@ -258,23 +309,23 @@ public class Reporte_test extends javax.swing.JFrame {
     int numRes1 = 0;
     int numRes2 = 0;
     int numRes3 = 0;
-    
+
     public int calcular_respuestas_num(ObjectContainer Base, String cod) {
         Respuesta_Usuario Res = new Respuesta_Usuario();
         Res.setFK_cod_Opciones(cod);
-        
+
         ObjectSet result = Base.get(Res);
-        
+
         return result.size();
     }
-    
+
     public void Grafica_mostrar() {
         DefaultCategoryDataset datos = new DefaultCategoryDataset();
-        
-//        datos.setValue(numRes1, respuesta1, respuesta1);
-//        datos.setValue(numRes2, respuesta2, respuesta2);
-//        datos.setValue(numRes3, respuesta3, respuesta3);
-        
+
+        datos.setValue(numRes1, respuesta1, respuesta1);
+        datos.setValue(numRes2, respuesta2, respuesta2);
+        datos.setValue(numRes3, respuesta3, respuesta3);
+
         JFreeChart grafico_barras = ChartFactory.createBarChart3D(
                 "Resultado de la pregunta",
                 "Opciones de Respuesta",
@@ -285,7 +336,7 @@ public class Reporte_test extends javax.swing.JFrame {
                 true,
                 false
         );
-        
+
         ChartPanel panel = new ChartPanel(grafico_barras);
         panel.setMouseWheelEnabled(true);
         panel.setPreferredSize(new Dimension(390, 250));
@@ -333,6 +384,7 @@ public class Reporte_test extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         txt_num_Secc = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -341,17 +393,18 @@ public class Reporte_test extends javax.swing.JFrame {
         JMnPgPrinPsicolo = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 500));
+        setMinimumSize(new java.awt.Dimension(800, 500));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.add(cbx_Test, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 259, -1));
+        jPanel2.add(cbx_Test, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 259, -1));
 
-        jLabel2.setText("Test");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("Test:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -360,16 +413,15 @@ public class Reporte_test extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Test:");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         txt_titulo_re.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txt_titulo_re.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_titulo_re.setToolTipText("Ingrese el titulo");
         txt_titulo_re.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel3.add(txt_titulo_re, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 350, -1));
-        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 370, 20));
+        jPanel3.add(txt_titulo_re, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 350, 20));
+        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 370, 20));
 
-        jPanel3.add(cbx_preguntas, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 190, -1));
+        jPanel3.add(cbx_preguntas, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 230, -1));
 
         jLabel4.setText("Preguntas:");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, 20));
@@ -380,32 +432,34 @@ public class Reporte_test extends javax.swing.JFrame {
         barra_panel.setLayout(barra_panelLayout);
         barra_panelLayout.setHorizontalGroup(
             barra_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         barra_panelLayout.setVerticalGroup(
             barra_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanel3.add(barra_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 390, 250));
+        jPanel3.add(barra_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 390, 250));
 
         jLabel5.setText("Numero de Encuestados:");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, -1, 20));
-        jPanel3.add(txt_num, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 120, 30, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, -1, 20));
+
+        txt_num.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel3.add(txt_num, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 30, -1));
 
         jLabel6.setText("Mayor aceptacion:");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, 90, 20));
-        jPanel3.add(txt_mayor, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 460, 230, -1));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 90, 20));
+        jPanel3.add(txt_mayor, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 230, -1));
 
         jLabel7.setText("Numero de Selecciones:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 490, -1, -1));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, -1, -1));
 
         txta_descripcion.setColumns(20);
         txta_descripcion.setRows(5);
         txta_descripcion.setToolTipText("Ingrese el contenido del test");
         jScrollPane2.setViewportView(txta_descripcion);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 440, 50));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 510, 50));
 
         jPanel6.setBackground(new java.awt.Color(204, 255, 204));
 
@@ -413,26 +467,40 @@ public class Reporte_test extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 610, 10));
-        jPanel3.add(txt_num_Secc, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 490, 40, -1));
+
+        txt_num_Secc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_num_SeccActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txt_num_Secc, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 470, 40, -1));
 
         jScrollPane1.setViewportView(jPanel3);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 620, 310));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 620, 310));
 
         jLabel8.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 80, 70));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 70));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 690, 410));
+        jButton1.setText("Eliminar Test");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 110, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 690, 410));
 
         BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
         BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
@@ -450,10 +518,13 @@ public class Reporte_test extends javax.swing.JFrame {
                 BtnCerrarPaginaActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 40, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
+        jLabel1.setMaximumSize(new java.awt.Dimension(800, 500));
+        jLabel1.setMinimumSize(new java.awt.Dimension(800, 500));
+        jLabel1.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 480));
 
         JMenu3puntitosPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
         JMenu3puntitosPsicologo.setToolTipText("Configuración");
@@ -493,7 +564,7 @@ public class Reporte_test extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -525,6 +596,15 @@ public class Reporte_test extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
+    private void txt_num_SeccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_num_SeccActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_num_SeccActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Eliminar(Base);
+         Mostrar_test(Base);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -552,6 +632,8 @@ public class Reporte_test extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -569,6 +651,7 @@ public class Reporte_test extends javax.swing.JFrame {
     private javax.swing.JPanel barra_panel;
     private javax.swing.JComboBox<String> cbx_Test;
     private javax.swing.JComboBox<String> cbx_preguntas;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

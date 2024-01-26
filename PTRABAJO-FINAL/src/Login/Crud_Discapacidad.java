@@ -555,6 +555,9 @@ public void IngresarDatos(ObjectContainer base) {
         }
     }
 
+    
+    
+    
     private void EliminarRegistro(ObjectContainer base, String codigoDiscapacidad) {
 
         Discapacidad midisca = new Discapacidad(codigoDiscapacidad, null, null);
@@ -565,18 +568,37 @@ public void IngresarDatos(ObjectContainer base) {
         ObjectSet result = base.queryByExample(midisca);
 
         if (result.hasNext()) {
-            // Mensaje de depuración
-            System.out.println("Eliminando el registro de la base de datos...");
+            Discapacidad midiscas = (Discapacidad) result.next();
+            String dis = midiscas.getCod_Discapacidad();
 
-            base.delete(result.next());
-            JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
-            Limpiar();
-            MostrarDatos(base);
+            Persona per = new Persona();
+            per.setCod_Discapacidad(dis);
+
+            ObjectSet rest = base.get(per);
+
+            if (rest.size() == 0) {
+
+                System.out.println("Eliminando el registro de la base de datos...");
+
+                base.delete(midiscas);
+                JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+                Limpiar();
+                MostrarDatos(base);
+
+            } else {
+                JOptionPane.showMessageDialog(this, "No se Puede eliminar a esta Discapacida \n"
+                        + "Ya se encuentra registra con " + rest.size() + " Usuarios");
+            }
+
+            // Mensaje de depuración
         } else {
             JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
         }
     }
 
+    
+    
+    
     //Verificacion
     public static int Verificacion_disca(ObjectContainer Base, String Codigo) {
         Discapacidad miDis = new Discapacidad();

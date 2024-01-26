@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Login;
+
 import Login.*;
 import BBDD.*;
 import Clases.*;
@@ -22,25 +23,25 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author alexa
  */
-public class PagTestPariente extends javax.swing.JFrame {
+public class PagTest_Niño extends javax.swing.JFrame {
 
     ObjectContainer Base;
-UserDataSingleton usarData = UserDataSingleton.getInstance();
+    UserDataSingleton usarData = UserDataSingleton.getInstance();
 
     /**
      * Creates new form Responder_test_Repre
      */
-    public PagTestPariente() {
+    public PagTest_Niño() {
         initComponents();
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
         lista_test.addListSelectionListener(e -> {
-        if (!e.getValueIsAdjusting()) {
-            
-            String elementoSeleccionado = lista_test.getSelectedValue();
-            caracteristicas_ponle(Base, elementoSeleccionado);
-            
-        }
-    });
+            if (!e.getValueIsAdjusting()) {
+
+                String elementoSeleccionado = lista_test.getSelectedValue();
+                caracteristicas_ponle(Base, elementoSeleccionado);
+
+            }
+        });
     }
 
     /**
@@ -120,8 +121,8 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
         jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 263, 250));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Test Disponibles");
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
+        jLabel2.setText("Test Disponibles para Niños");
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
 
         btn_responder.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_responder.setText("Responder");
@@ -247,24 +248,21 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
 
     private void btn_CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CargarActionPerformed
         MostrarDatos_test(Base);
-        
+
     }//GEN-LAST:event_btn_CargarActionPerformed
 
     private void lista_testMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lista_testMouseClicked
-       
+
     }//GEN-LAST:event_lista_testMouseClicked
 
     private void btn_responderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_responderActionPerformed
-         
-                Base.close();
-             Responder_Test_represent__1 respo=new Responder_Test_represent__1();
-             respo.setVisible(true);
-             this.setVisible(false);
-             
-             
-       
-        
-        
+
+        Base.close();
+        Responder_Test_Niño__1 respo = new Responder_Test_Niño__1();
+        respo.setVisible(true);
+        this.setVisible(false);
+
+
     }//GEN-LAST:event_btn_responderActionPerformed
 
     private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
@@ -290,76 +288,68 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
     }//GEN-LAST:event_JMnPgPrinNiñoMouseClicked
 
     public void caracteristicas_ponle(ObjectContainer Base, String titulo) {
-        
-            Test mitest = new Test();
-            mitest.setTitulo_Test(titulo);
-            ObjectSet result = Base.get(mitest);
 
-            while (result.hasNext()) {
+        Test mitest = new Test();
+        mitest.setTitulo_Test(titulo);
+        ObjectSet result = Base.get(mitest);
 
-                Test elts = (Test) result.next();
-                
-                usarData.setCod_test_repre(elts.getID_Test());
-                
-                txt_titulo_test.setText(elts.getTitulo_Test());
-                txa_descr.setText(elts.getDescripcion_Test());
+        while (result.hasNext()) {
 
-                String CodPsic=elts.getFKCod_Psicologo();
-                
-                
-                String nom=Autor_del_test(Base, CodPsic);
-                txt_nom.setText(nom);
-                
-                Preguntas lapre = new Preguntas();
-                lapre.setFK_Codigo_Test(elts.getID_Test());
+            Test elts = (Test) result.next();
 
-                ObjectSet rsr = Base.get(lapre);
+            usarData.setCod_test_repre(elts.getID_Test());
 
-                String res = String.valueOf(rsr.size());
-                txt_num.setText(res);
-                
-               
+            txt_titulo_test.setText(elts.getTitulo_Test());
+            txa_descr.setText(elts.getDescripcion_Test());
 
-            }
-        
+            String CodPsic = elts.getFKCod_Psicologo();
+
+            String nom = Autor_del_test(Base, CodPsic);
+            txt_nom.setText(nom);
+
+            Preguntas lapre = new Preguntas();
+            lapre.setFK_Codigo_Test(elts.getID_Test());
+
+            ObjectSet rsr = Base.get(lapre);
+
+            String res = String.valueOf(rsr.size());
+            txt_num.setText(res);
+
+        }
 
     }
-    
-    public String Autor_del_test( ObjectContainer Base,String cod){
-    String codpi="";
-    String nom="",apell="";
-    Psicologo elpisic=new Psicologo();
-    elpisic.setCod_Psicologo(cod);
-    ObjectSet resul=Base.get(elpisic);
+
+    public String Autor_del_test(ObjectContainer Base, String cod) {
+        String codpi = "";
+        String nom = "", apell = "";
+        Psicologo elpisic = new Psicologo();
+        elpisic.setCod_Psicologo(cod);
+        ObjectSet resul = Base.get(elpisic);
         while (resul.hasNext()) {
-            Psicologo nextElement = (Psicologo)resul.next();
-            codpi=nextElement.getFK_Cedula();
+            Psicologo nextElement = (Psicologo) resul.next();
+            codpi = nextElement.getFK_Cedula();
         }
-        
-        ///////////////////////////////////////////////////////////////////////////////////////
-        Persona person=new Persona();
-        person.setCedula(codpi);
-        ObjectSet resPer=Base.get(person);
-        while (resPer.hasNext()) {
-            Persona next =(Persona) resPer.next();
-            nom=next.getNombre();
-            apell=next.getApellido();
-            
-        }
-        String nombre=nom+" "+apell;
-        
-    
-    return nombre;
-    }
-        
 
-    
+        ///////////////////////////////////////////////////////////////////////////////////////
+        Persona person = new Persona();
+        person.setCedula(codpi);
+        ObjectSet resPer = Base.get(person);
+        while (resPer.hasNext()) {
+            Persona next = (Persona) resPer.next();
+            nom = next.getNombre();
+            apell = next.getApellido();
+
+        }
+        String nombre = nom + " " + apell;
+
+        return nombre;
+    }
 
     //////////////////////Mostra test
     public void MostrarDatos_test(ObjectContainer Base) {
         try {
             Test eltest = new Test();
-            eltest.setCod_destinatario("Representante");
+            eltest.setCod_destinatario("Niño");
             ObjectSet result = Base.get(eltest);
 
             // Asegúrate de que la lista tenga un modelo adecuado (DefaultListModel)
@@ -374,7 +364,7 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
             // Limpiar el modelo antes de agregar nuevas filas
             modeloDefault.clear();
 
-            javax.swing.JOptionPane.showMessageDialog(this, "Tenemos a disposicion " + result.size()+" Test");
+            javax.swing.JOptionPane.showMessageDialog(this, "Tenemos a disposicion " + result.size() + " Test");
 
             // Verifica si hay datos en la base de datos antes de iterar sobre ellos
             if (result.size() > 0) {
@@ -392,7 +382,7 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
             // Maneja las excepciones y muestra un mensaje de error
             javax.swing.JOptionPane.showMessageDialog(this, "Error al mostrar datos: " + e.getMessage());
         }
-        
+
     }
 
     /**
@@ -412,14 +402,30 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PagTestPariente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PagTest_Niño.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PagTestPariente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PagTest_Niño.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PagTestPariente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PagTest_Niño.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PagTestPariente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PagTest_Niño.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -440,7 +446,7 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PagTestPariente().setVisible(true);
+                new PagTest_Niño().setVisible(true);
             }
         });
     }
