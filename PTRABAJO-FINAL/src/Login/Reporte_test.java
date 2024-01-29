@@ -386,6 +386,8 @@ public class Reporte_test extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
+        BtnRegresar = new javax.swing.JButton();
+        Fondo1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenu3puntitosPsicologo = new javax.swing.JMenu();
@@ -394,7 +396,10 @@ public class Reporte_test extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setMinimumSize(new java.awt.Dimension(800, 500));
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -436,7 +441,7 @@ public class Reporte_test extends javax.swing.JFrame {
         );
         barra_panelLayout.setVerticalGroup(
             barra_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 250, Short.MAX_VALUE)
         );
 
         jPanel3.add(barra_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 390, 250));
@@ -471,7 +476,7 @@ public class Reporte_test extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
 
         jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 610, 10));
@@ -520,11 +525,29 @@ public class Reporte_test extends javax.swing.JFrame {
         });
         jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 40, 30));
 
+        BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar.setToolTipText("Regresar a la página de inicio");
+        BtnRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar.setOpaque(false);
+        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 440, 60, 40));
+
+        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoInfRepresentante.png"))); // NOI18N
+        Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, -70, 1710, 600));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(800, 500));
         jLabel1.setMinimumSize(new java.awt.Dimension(800, 500));
         jLabel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 480));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 480));
 
         JMenu3puntitosPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
         JMenu3puntitosPsicologo.setToolTipText("Configuración");
@@ -555,17 +578,6 @@ public class Reporte_test extends javax.swing.JFrame {
         jMenuBar1.add(JMnPgPrinPsicolo);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -604,6 +616,13 @@ public class Reporte_test extends javax.swing.JFrame {
         Eliminar(Base);
          Mostrar_test(Base);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+        Base.close();
+        PagTest_Psicologo test = new PagTest_Psicologo();
+        test.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -645,6 +664,8 @@ public class Reporte_test extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
+    private javax.swing.JButton BtnRegresar;
+    private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
     private javax.swing.JMenu JMnPgPrinPsicolo;

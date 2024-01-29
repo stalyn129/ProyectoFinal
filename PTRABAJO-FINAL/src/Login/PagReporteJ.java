@@ -55,19 +55,24 @@ public class PagReporteJ extends javax.swing.JFrame {
         btnActualizarDif = new javax.swing.JButton();
         btnConsultarDif = new javax.swing.JButton();
         btnEliminarDif = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
         BtnRegresar = new javax.swing.JButton();
+        BtnCerrarPagina = new javax.swing.JButton();
+        LblTestPariente2 = new javax.swing.JLabel();
+        LblTestPariente1 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        MenuGenerlNiño = new javax.swing.JMenuBar();
-        JMnItmCerrarNiño2 = new javax.swing.JMenu();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        JMnPgPrinNiño2 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jTableJLab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -118,7 +123,7 @@ public class PagReporteJ extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(97, 97, 97)
                 .addComponent(btnActualizarLab)
@@ -132,7 +137,7 @@ public class PagReporteJ extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -192,7 +197,7 @@ public class PagReporteJ extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
+                .addContainerGap(72, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
@@ -214,25 +219,12 @@ public class PagReporteJ extends javax.swing.JFrame {
                     .addComponent(btnActualizarDif)
                     .addComponent(btnConsultarDif)
                     .addComponent(btnEliminarDif))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Juego Diferencias", jPanel3);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 695, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 353, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Juego Responde", jPanel4);
-
-        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 700, 380));
+        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 720, 360));
 
         BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
         BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
@@ -243,15 +235,46 @@ public class PagReporteJ extends javax.swing.JFrame {
                 BtnRegresarActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 50, 40));
+        jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 440, 50, 40));
+
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
+            }
+        });
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
+
+        LblTestPariente2.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
+        LblTestPariente2.setText("REPORTE JUEGOS");
+        jPanel1.add(LblTestPariente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 200, 30));
+
+        LblTestPariente1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
+        LblTestPariente1.setText("BIENVENIDO AL AREA DE:");
+        jPanel1.add(LblTestPariente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 290, 20));
+
+        jLabel9.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 810, 500));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 480));
 
-        JMnItmCerrarNiño2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
-        JMnItmCerrarNiño2.setToolTipText("Configuración");
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        jMenu1.setToolTipText("Configuracion");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setBackground(new java.awt.Color(255, 255, 255));
@@ -263,38 +286,23 @@ public class PagReporteJ extends javax.swing.JFrame {
                 jMenuItem1MousePressed(evt);
             }
         });
-        JMnItmCerrarNiño2.add(jMenuItem1);
+        jMenu1.add(jMenuItem1);
 
-        MenuGenerlNiño.add(JMnItmCerrarNiño2);
+        jMenuBar1.add(jMenu1);
 
-        JMnPgPrinNiño2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
-        JMnPgPrinNiño2.setToolTipText("Regresa a la página principal");
-        JMnPgPrinNiño2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
+        jMenu2.setToolTipText("Regresa a la página principal");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JMnPgPrinNiño2MouseClicked(evt);
+                jMenu2MouseClicked(evt);
             }
         });
-        MenuGenerlNiño.add(JMnPgPrinNiño2);
+        jMenuBar1.add(jMenu2);
 
-        setJMenuBar(MenuGenerlNiño);
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
-
-        //Base.close();
-        InicioNiño login = new InicioNiño();
-        login.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jMenuItem1MousePressed
-
-    private void JMnPgPrinNiño2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiño2MouseClicked
-        //Base.close();
-        PagPrincipalNiñ principalniño = new PagPrincipalNiñ();
-        principalniño.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_JMnPgPrinNiño2MouseClicked
 
     private void btnEliminarDifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDifActionPerformed
        String codigoAEliminar = JOptionPane.showInputDialog(this, "Ingrese el código a eliminar:");
@@ -379,10 +387,32 @@ public class PagReporteJ extends javax.swing.JFrame {
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
 
         Base.close();
-        Seleccion selec = new Seleccion();
-        selec.setVisible(true);
+        Reportes repor = new Reportes();
+        repor.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
+
+    private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
+        Base.close();
+        IniciaAdmin loginadmin = new IniciaAdmin();
+        loginadmin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem1MousePressed
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        Base.close();
+        PagPrincipalAdmin paginaprinciadmi = new PagPrincipalAdmin();
+        paginaprinciadmi.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
+
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
    
     
     //Metodos del juego diferencias
@@ -701,10 +731,10 @@ public class PagReporteJ extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JButton BtnRegresar;
-    private javax.swing.JMenu JMnItmCerrarNiño2;
-    private javax.swing.JMenu JMnPgPrinNiño2;
-    private javax.swing.JMenuBar MenuGenerlNiño;
+    private javax.swing.JLabel LblTestPariente1;
+    private javax.swing.JLabel LblTestPariente2;
     private javax.swing.JButton btnActualizarDif;
     private javax.swing.JButton btnActualizarLab;
     private javax.swing.JButton btnConsultarDif;
@@ -713,11 +743,14 @@ public class PagReporteJ extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarLab;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;

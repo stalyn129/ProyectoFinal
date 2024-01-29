@@ -237,11 +237,11 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
                 BtnReportesActionPerformed(evt);
             }
         });
-        jPanel5.add(BtnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 450, 70, 50));
+        jPanel5.add(BtnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 70, 50));
 
         jLabel12.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         jLabel12.setText("REPORTES");
-        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, -1, 30));
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 400, -1, 30));
 
         jLabel4.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -258,7 +258,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
                 BtnPersonalidadAdmin1ActionPerformed(evt);
             }
         });
-        jPanel5.add(BtnPersonalidadAdmin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, 70, 50));
+        jPanel5.add(BtnPersonalidadAdmin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 390, 70, 50));
 
         jLabel13.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         jLabel13.setText("PERSONALIDAD");
@@ -443,7 +443,10 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_Txt_NombreActionPerformed
 
     private void BtnPersonalidadAdmin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPersonalidadAdmin1ActionPerformed
-        // TODO add your handling code here:
+        Base.close();
+        Crud_Personalidad personalidad = new Crud_Personalidad();
+          personalidad.setVisible(true);
+                this.setVisible(false);  
     }//GEN-LAST:event_BtnPersonalidadAdmin1ActionPerformed
     public void mostrar_diagrama() {
         DefaultPieDataset datos = new DefaultPieDataset();
@@ -455,7 +458,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         JFreeChart grafico_circular = ChartFactory.createPieChart("Numero de tipos de Usuarios", datos, true, true, false);
         ChartPanel panel = new ChartPanel(grafico_circular);
         panel.setMouseWheelEnabled(true);
-        panel.setPreferredSize(new Dimension(250, 160));
+        panel.setPreferredSize(new Dimension(310, 230));
 
         panel_grafic.setLayout(new BorderLayout());
         panel_grafic.add(panel, BorderLayout.NORTH);

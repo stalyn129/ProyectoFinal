@@ -45,11 +45,16 @@ public class ReporteConsejos extends javax.swing.JFrame {
         btnActualizar = new javax.swing.JButton();
         btnConsultar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        BtnRegresar = new javax.swing.JButton();
+        BtnCerrarPagina = new javax.swing.JButton();
+        LblTestPariente1 = new javax.swing.JLabel();
+        LblTestPariente2 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        MenuGenerlNiño = new javax.swing.JMenuBar();
-        JMnItmCerrarNiño2 = new javax.swing.JMenu();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        JMnPgPrinNiño2 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 500));
@@ -132,11 +137,53 @@ public class ReporteConsejos extends javax.swing.JFrame {
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 610, 370));
 
+        BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar.setOpaque(false);
+        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 440, 50, 40));
+
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
+            }
+        });
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
+
+        LblTestPariente1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
+        LblTestPariente1.setText("BIENVENIDO AL AREA DE:");
+        getContentPane().add(LblTestPariente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 290, 20));
+
+        LblTestPariente2.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
+        LblTestPariente2.setText("REPORTE CONSEJOS");
+        getContentPane().add(LblTestPariente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 200, 30));
+
+        jLabel9.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 70));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 800, 490));
 
-        JMnItmCerrarNiño2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
-        JMnItmCerrarNiño2.setToolTipText("Configuración");
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
+        jMenu1.setToolTipText("Configuracion");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setBackground(new java.awt.Color(255, 255, 255));
@@ -148,38 +195,23 @@ public class ReporteConsejos extends javax.swing.JFrame {
                 jMenuItem1MousePressed(evt);
             }
         });
-        JMnItmCerrarNiño2.add(jMenuItem1);
+        jMenu1.add(jMenuItem1);
 
-        MenuGenerlNiño.add(JMnItmCerrarNiño2);
+        jMenuBar1.add(jMenu1);
 
-        JMnPgPrinNiño2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
-        JMnPgPrinNiño2.setToolTipText("Regresa a la página principal");
-        JMnPgPrinNiño2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Casita.png"))); // NOI18N
+        jMenu2.setToolTipText("Regresa a la página principal");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JMnPgPrinNiño2MouseClicked(evt);
+                jMenu2MouseClicked(evt);
             }
         });
-        MenuGenerlNiño.add(JMnPgPrinNiño2);
+        jMenuBar1.add(jMenu2);
 
-        setJMenuBar(MenuGenerlNiño);
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
-
-        //Base.close();
-        InicioNiño login = new InicioNiño();
-        login.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jMenuItem1MousePressed
-
-    private void JMnPgPrinNiño2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiño2MouseClicked
-        //Base.close();
-        PagPrincipalNiñ principalniño = new PagPrincipalNiñ();
-        principalniño.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_JMnPgPrinNiño2MouseClicked
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         String codigoAEliminar = JOptionPane.showInputDialog(this, "Ingrese el código a eliminar:");
@@ -220,6 +252,36 @@ public class ReporteConsejos extends javax.swing.JFrame {
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         MostrarDatos(Base);
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+
+        Base.close();
+        Reportes repor = new Reportes();
+        repor.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresarActionPerformed
+
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
+
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
+
+    private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
+        //        Base.close();
+        IniciaAdmin loginadmin = new IniciaAdmin();
+        loginadmin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem1MousePressed
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        //        Base.close();
+        PagPrincipalAdmin paginaprinciadmi = new PagPrincipalAdmin();
+        paginaprinciadmi.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenu2MouseClicked
 
     
      
@@ -395,13 +457,18 @@ public class ReporteConsejos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu JMnItmCerrarNiño2;
-    private javax.swing.JMenu JMnPgPrinNiño2;
-    private javax.swing.JMenuBar MenuGenerlNiño;
+    private javax.swing.JButton BtnCerrarPagina;
+    private javax.swing.JButton BtnRegresar;
+    private javax.swing.JLabel LblTestPariente1;
+    private javax.swing.JLabel LblTestPariente2;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

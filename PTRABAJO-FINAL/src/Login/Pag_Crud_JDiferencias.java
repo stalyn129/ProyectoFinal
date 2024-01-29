@@ -6,6 +6,7 @@
 package Login;
 
 import Clases.Juego_Diferencias;
+import Clases.Puntuaciones;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
@@ -365,43 +366,43 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_ingresar1MouseClicked
 
     private void btn_ingresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresar1ActionPerformed
-           // Validar campos antes de procesar la acción
-    if (txtDescripcion.getText().isEmpty() || txtNumDiferencias.getText().isEmpty()) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.");
-        return;  // Detener el proceso si los campos no están completos
-    }
+        // Validar campos antes de procesar la acción
+        if (txtDescripcion.getText().isEmpty() || txtNumDiferencias.getText().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.");
+            return;  // Detener el proceso si los campos no están completos
+        }
 
-    Juego_Diferencias Juego_Dif = new Juego_Diferencias();
-    String codigoJDif = CalcularIDJuego(Base);
-    Juego_Dif.setCod_Juego(codigoJDif);
-    Juego_Dif.setFK_CodPsicologo(RegistrarsePariente.Calcular_cod_Representante(Base));
-    Juego_Dif.setDescripcion_Juego(txtDescripcion.getText());
-    
-    try {
-        int respuestaCorrecta = Integer.parseInt(txtNumDiferencias.getText());
-        Juego_Dif.setRespuesta_Correcta(respuestaCorrecta);
-    } catch (NumberFormatException e) {
-        System.err.println("Error al convertir el texto a entero: " + e.getMessage());
-    }
+        Juego_Diferencias Juego_Dif = new Juego_Diferencias();
+        String codigoJDif = CalcularIDJuego(Base);
+        Juego_Dif.setCod_Juego(codigoJDif);
+        Juego_Dif.setFK_CodPsicologo(RegistrarsePariente.Calcular_cod_Representante(Base));
+        Juego_Dif.setDescripcion_Juego(txtDescripcion.getText());
 
-    Juego_Dif.setImagen_Dif(imagen);
-    Juego_Dif.setRutaImagen(rutaImagen);
+        try {
+            int respuestaCorrecta = Integer.parseInt(txtNumDiferencias.getText());
+            Juego_Dif.setRespuesta_Correcta(respuestaCorrecta);
+        } catch (NumberFormatException e) {
+            System.err.println("Error al convertir el texto a entero: " + e.getMessage());
+        }
 
-    Base.store(Juego_Dif);
-    javax.swing.JOptionPane.showMessageDialog(this, "SE GUARDÓ EN LA BASE");
+        Juego_Dif.setImagen_Dif(imagen);
+        Juego_Dif.setRutaImagen(rutaImagen);
 
-    // Limpiar campos después de ingresar los datos
-    limpiarCampos();
+        Base.store(Juego_Dif);
+        javax.swing.JOptionPane.showMessageDialog(this, "SE GUARDÓ EN LA BASE");
 
-    MostrarDatos(Base);
+        // Limpiar campos después de ingresar los datos
+        limpiarCampos();
+
+        MostrarDatos(Base);
     }//GEN-LAST:event_btn_ingresar1ActionPerformed
 
     private void limpiarCampos() {
-    txtDescripcion.setText("");
-    txtNumDiferencias.setText("");
-    lblImagenDiferencias.setIcon(null);
-}
-    
+        txtDescripcion.setText("");
+        txtNumDiferencias.setText("");
+        lblImagenDiferencias.setIcon(null);
+    }
+
     private void btn_ingresar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ingresar3MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_ingresar3MouseClicked
@@ -422,57 +423,57 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
 
     private void btn_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarActionPerformed
         try {
-        DefaultTableModel modelo = (DefaultTableModel) jTableJDif.getModel();
-        int filaSeleccionada = jTableJDif.getSelectedRow();
+            DefaultTableModel modelo = (DefaultTableModel) jTableJDif.getModel();
+            int filaSeleccionada = jTableJDif.getSelectedRow();
 
-        if (filaSeleccionada == -1) {
-            JOptionPane.showMessageDialog(this, "Seleccione una fila para modificar.");
-            return;
-        }
-
-        String codigoJuego = (String) modelo.getValueAt(filaSeleccionada, 0);
-        String nuevaDescripcion = JOptionPane.showInputDialog(this, "Ingrese la nueva descripción:", modelo.getValueAt(filaSeleccionada, 1));
-
-        if (nuevaDescripcion == null) {
-            JOptionPane.showMessageDialog(this, "Error: La descripción no puede ser nula.");
-            return;
-        }
-
-        String input = JOptionPane.showInputDialog(this, "Ingrese la nueva opción correcta:", modelo.getValueAt(filaSeleccionada, 2));
-
-        if (input == null) {
-            JOptionPane.showMessageDialog(this, "Error: La opción correcta no puede ser nula.");
-            return;
-        }
-
-        int nuevaOpCorrecta = 0;
-
-        try {
-            nuevaOpCorrecta = Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Error al ingresar la opción correcta. Asegúrese de ingresar un número entero.");
-            return;
-        }
-
-        JFileChooser fileChooser = new JFileChooser();
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Imágenes", "jpg", "jpeg", "png", "gif");
-        fileChooser.setFileFilter(filter);
-
-        int result = fileChooser.showOpenDialog(this);
-
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
-            String nuevaRutaImagen = selectedFile.getAbsolutePath();
-            byte[] nuevaImagen = AbrirArchivo(selectedFile); // Utiliza el método AbrirArchivo para obtener el arreglo de bytes
-
-            if (nuevaImagen != null) {
-                ModificarJuego(Base, codigoJuego, nuevaDescripcion, nuevaOpCorrecta, nuevaImagen, nuevaRutaImagen);
-                MostrarDatos(Base);
+            if (filaSeleccionada == -1) {
+                JOptionPane.showMessageDialog(this, "Seleccione una fila para modificar.");
+                return;
             }
+
+            String codigoJuego = (String) modelo.getValueAt(filaSeleccionada, 0);
+            String nuevaDescripcion = JOptionPane.showInputDialog(this, "Ingrese la nueva descripción:", modelo.getValueAt(filaSeleccionada, 1));
+
+            if (nuevaDescripcion == null) {
+                JOptionPane.showMessageDialog(this, "Error: La descripción no puede ser nula.");
+                return;
+            }
+
+            String input = JOptionPane.showInputDialog(this, "Ingrese la nueva opción correcta:", modelo.getValueAt(filaSeleccionada, 2));
+
+            if (input == null) {
+                JOptionPane.showMessageDialog(this, "Error: La opción correcta no puede ser nula.");
+                return;
+            }
+
+            int nuevaOpCorrecta = 0;
+
+            try {
+                nuevaOpCorrecta = Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Error al ingresar la opción correcta. Asegúrese de ingresar un número entero.");
+                return;
+            }
+
+            JFileChooser fileChooser = new JFileChooser();
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Imágenes", "jpg", "jpeg", "png", "gif");
+            fileChooser.setFileFilter(filter);
+
+            int result = fileChooser.showOpenDialog(this);
+
+            if (result == JFileChooser.APPROVE_OPTION) {
+                File selectedFile = fileChooser.getSelectedFile();
+                String nuevaRutaImagen = selectedFile.getAbsolutePath();
+                byte[] nuevaImagen = AbrirArchivo(selectedFile); // Utiliza el método AbrirArchivo para obtener el arreglo de bytes
+
+                if (nuevaImagen != null) {
+                    ModificarJuego(Base, codigoJuego, nuevaDescripcion, nuevaOpCorrecta, nuevaImagen, nuevaRutaImagen);
+                    MostrarDatos(Base);
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al modificar: " + e.getMessage());
         }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Error al modificar: " + e.getMessage());
-    }
     }//GEN-LAST:event_btn_ModificarActionPerformed
 
     private void bnt_ActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bnt_ActualizarMouseClicked
@@ -722,35 +723,35 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
 
     public void ModificarJuego(ObjectContainer Base, String CodigoJuego, String Nueva_Descripcion, int NuevaOpCorrecta, byte[] NuevaImagen, String NuevaRuta) {
         try {
-        if (Nueva_Descripcion == null || NuevaRuta == null) {
-            JOptionPane.showMessageDialog(this, "Error: La descripción y la ruta de la imagen no pueden ser nulas.");
-            return;
+            if (Nueva_Descripcion == null || NuevaRuta == null) {
+                JOptionPane.showMessageDialog(this, "Error: La descripción y la ruta de la imagen no pueden ser nulas.");
+                return;
+            }
+
+            Juego_Diferencias JDif = new Juego_Diferencias();
+            JDif.setCod_Juego(CodigoJuego);
+
+            ObjectSet result = Base.get(JDif);
+
+            if (result.hasNext()) {
+                Juego_Diferencias nuevoJuego = (Juego_Diferencias) result.next();
+
+                nuevoJuego.setDescripcion_Juego(Nueva_Descripcion);
+                nuevoJuego.setRespuesta_Correcta(NuevaOpCorrecta);
+                nuevoJuego.setImagen_Dif(NuevaImagen);
+                nuevoJuego.setRutaImagen(NuevaRuta);
+                Base.store(nuevoJuego);
+
+                JOptionPane.showMessageDialog(this, "Se modificó los datos del juego correctamente.");
+
+                MostrarDatos(Base);
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Error: No se encontró el juego para modificar.");
+            }
+        } catch (DatabaseClosedException | DatabaseReadOnlyException | Db4oIOException | HeadlessException e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
         }
-
-        Juego_Diferencias JDif = new Juego_Diferencias();
-        JDif.setCod_Juego(CodigoJuego);
-
-        ObjectSet result = Base.get(JDif);
-
-        if (result.hasNext()) {
-            Juego_Diferencias nuevoJuego = (Juego_Diferencias) result.next();
-
-            nuevoJuego.setDescripcion_Juego(Nueva_Descripcion);
-            nuevoJuego.setRespuesta_Correcta(NuevaOpCorrecta);
-            nuevoJuego.setImagen_Dif(NuevaImagen);
-            nuevoJuego.setRutaImagen(NuevaRuta);
-            Base.store(nuevoJuego);
-
-            JOptionPane.showMessageDialog(this, "Se modificó los datos del juego correctamente.");
-
-            MostrarDatos(Base);
-
-        } else {
-            JOptionPane.showMessageDialog(this, "Error: No se encontró el juego para modificar.");
-        }
-    } catch (DatabaseClosedException | DatabaseReadOnlyException | Db4oIOException | HeadlessException e) {
-        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-    }
     }
 
     public void ValidaDescripcion(String Descripcion) throws Exception {
@@ -767,12 +768,25 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
         ObjectSet result = base.queryByExample(elimJue);
 
         if (result.hasNext()) {
-            // Mensaje de depuración
-            System.out.println("Eliminando el registro de la base de datos...");
+            Juego_Diferencias elimJ = (Juego_Diferencias) result.next();
+            String codj = elimJ.getCod_Juego();
 
-            base.delete(result.next());
-            JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
-            MostrarDatos(base); // Actualizar la tabla después de la eliminación
+            Puntuaciones punts = new Puntuaciones();
+            punts.setFK_Cod_Minijuego(codj);
+            ObjectSet rest = base.get(punts);
+
+            if (rest.size() == 0) {
+                // Mensaje de depuración
+                System.out.println("Eliminando el registro de la base de datos...");
+
+                base.delete(result.next());
+                JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+                MostrarDatos(base); // Actualizar la tabla después de la eliminación
+            } else {
+                JOptionPane.showMessageDialog(this, "No se puede eliminar porque \n Contiene datos relacionados", "Error", JOptionPane.ERROR_MESSAGE);
+
+            }
+
         } else {
             JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
         }
@@ -807,8 +821,6 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
         Path path = Paths.get(rutaImagen);
         return Files.readAllBytes(path);
     }
-
-    
 
     private String extraerRutaDesdeDescripcion(String descripcionImagen) {
         // Separar la descripción usando el carácter '|'

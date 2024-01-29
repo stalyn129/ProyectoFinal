@@ -12,18 +12,16 @@ import com.db4o.ObjectContainer;
  *
  * @author mauca
  */
-
-
 public class PagPrincipalNiñ extends javax.swing.JFrame {
 
     /**
      * Creates new form PagPrincipalNiñ
      */
     ObjectContainer Base;
-    
+
     public PagPrincipalNiñ() {
         initComponents();
-         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
@@ -260,52 +258,52 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
 
     private void JMnPgPrinNiño2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiño2MouseClicked
         Base.close();
-            PagPrincipalNiñ principalniño = new PagPrincipalNiñ();
-                principalniño.setVisible(true);
-                    this.setVisible(false);
+        PagPrincipalNiñ principalniño = new PagPrincipalNiñ();
+        principalniño.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiño2MouseClicked
 
     private void BtnConseNiñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConseNiñoActionPerformed
-        Base.close();    
-            PagConsejosNiño consejos = new PagConsejosNiño();
-                consejos.setVisible(true);
-                    this.setVisible(false);
+        Base.close();
+        PagConsejosNiño consejos = new PagConsejosNiño();
+        consejos.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnConseNiñoActionPerformed
 
     private void BtnCuentosNiño1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCuentosNiño1ActionPerformed
-        Base.close();    
-            PagCuentosNiño cuentos = new PagCuentosNiño();
-                cuentos.setVisible(true);
-                    this.setVisible(false);
+        Base.close();
+        PagCuentosNiño cuentos = new PagCuentosNiño();
+        cuentos.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnCuentosNiño1ActionPerformed
 
     private void BtnTestNiño2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTestNiño2ActionPerformed
         Base.close();
-            PagTest_Niño test = new PagTest_Niño();
-                test.setVisible(true);
-                    this.setVisible(false);
+        PagTest_Niño test = new PagTest_Niño();
+        test.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnTestNiño2ActionPerformed
 
     private void BtnMiniJueNiño1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMiniJueNiño1ActionPerformed
-        Base.close();    
-            PagMiniJuegoNiño minijuego = new PagMiniJuegoNiño();
-                minijuego.setVisible(true);
-                    this.setVisible(false);
+        Base.close();
+        PagMiniJuegoNiño minijuego = new PagMiniJuegoNiño();
+        minijuego.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnMiniJueNiño1ActionPerformed
 
     private void BtnInfNiñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfNiñoActionPerformed
         Base.close();
-            PagInfNiño informacion = new PagInfNiño();
-                informacion.setVisible(true);
-                    this.setVisible(false);
+        PagInfNiño informacion = new PagInfNiño();
+        informacion.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnInfNiñoActionPerformed
 
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
-    
+
         Base.close();
-            InicioNiño login = new InicioNiño();
-                login.setVisible(true);
-                    this.setVisible(false);
+        InicioNiño login = new InicioNiño();
+        login.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jMenuItem1MousePressed
 
     private void btnExit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit1ActionPerformed
@@ -320,7 +318,6 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
     private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
     }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -42,7 +42,6 @@ public class PagTest_Psicologo extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        BtnTestPsico = new javax.swing.JButton();
         BtnTestPsico1 = new javax.swing.JButton();
         BtnTestPsico2 = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
@@ -52,6 +51,7 @@ public class PagTest_Psicologo extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         BtnCerrarPagina = new javax.swing.JButton();
+        Fondo1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenu3puntitosPsicologo = new javax.swing.JMenu();
@@ -59,6 +59,9 @@ public class PagTest_Psicologo extends javax.swing.JFrame {
         JMnPgPrinPsicolo = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(800, 500));
+        setPreferredSize(new java.awt.Dimension(800, 500));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -130,18 +133,6 @@ public class PagTest_Psicologo extends javax.swing.JFrame {
         jLabel2.setText("NIÑO/A");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 110, -1));
 
-        BtnTestPsico.setBackground(new java.awt.Color(255, 255, 255));
-        BtnTestPsico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Test.png"))); // NOI18N
-        BtnTestPsico.setToolTipText("Haz click aqui para entrar a test");
-        BtnTestPsico.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnTestPsico.setOpaque(false);
-        BtnTestPsico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnTestPsicoActionPerformed(evt);
-            }
-        });
-        jPanel3.add(BtnTestPsico, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, 120, 70));
-
         BtnTestPsico1.setBackground(new java.awt.Color(255, 255, 255));
         BtnTestPsico1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TestAdmin.png"))); // NOI18N
         BtnTestPsico1.setToolTipText("Haz click aqui para entrar a test");
@@ -206,8 +197,14 @@ public class PagTest_Psicologo extends javax.swing.JFrame {
         });
         jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
 
+        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoInfoNiñoConsejos.png"))); // NOI18N
+        Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-880, -50, 1710, 600));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
 
         JMenu3puntitosPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
         JMenu3puntitosPsicologo.setToolTipText("Configuración");
@@ -238,17 +235,6 @@ public class PagTest_Psicologo extends javax.swing.JFrame {
         jMenuBar1.add(JMnPgPrinPsicolo);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -291,15 +277,11 @@ public class PagTest_Psicologo extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
-    private void BtnTestPsicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTestPsicoActionPerformed
-        Base.close();
-        PagTest_Psicologo eltes = new PagTest_Psicologo();
-        eltes.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_BtnTestPsicoActionPerformed
-
     private void BtnTestPsico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTestPsico1ActionPerformed
-       
+        Base.close();
+        PagCrudTestPsicologo pctp =new PagCrudTestPsicologo();
+        pctp.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnTestPsico1ActionPerformed
 
     private void BtnTestPsico2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTestPsico2ActionPerformed
@@ -310,7 +292,10 @@ public class PagTest_Psicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnTestPsico2ActionPerformed
 
     private void BtnTestPsico3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTestPsico3ActionPerformed
-        // TODO add your handling code here:
+        Base.close();
+        Reporte_test report=new Reporte_test();
+        report.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnTestPsico3ActionPerformed
 
     private void BtnTestPsico4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTestPsico4ActionPerformed
@@ -358,11 +343,11 @@ public class PagTest_Psicologo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
-    private javax.swing.JButton BtnTestPsico;
     private javax.swing.JButton BtnTestPsico1;
     private javax.swing.JButton BtnTestPsico2;
     private javax.swing.JButton BtnTestPsico3;
     private javax.swing.JButton BtnTestPsico4;
+    private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
     private javax.swing.JMenu JMnPgPrinPsicolo;

@@ -37,10 +37,9 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        BtnCuenPsico = new javax.swing.JButton();
+        BtnTestPsico = new javax.swing.JButton();
         BtnInfPsico = new javax.swing.JButton();
         BtnForoPsico = new javax.swing.JButton();
-        BtnTestPsico = new javax.swing.JButton();
         BtnConsePsico = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -56,6 +55,7 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         BtnCuenPsico1 = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
+        BtnCuenPsico2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
@@ -81,17 +81,17 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
         jLabel4.setText("Puedes elegir entre todas estas opciones");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, -1, 20));
 
-        BtnCuenPsico.setBackground(new java.awt.Color(255, 255, 255));
-        BtnCuenPsico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/libro.png"))); // NOI18N
-        BtnCuenPsico.setToolTipText("Haz click aqui para entrar a cuentos");
-        BtnCuenPsico.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnCuenPsico.setOpaque(false);
-        BtnCuenPsico.addActionListener(new java.awt.event.ActionListener() {
+        BtnTestPsico.setBackground(new java.awt.Color(255, 255, 255));
+        BtnTestPsico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TestIconoNiño.png"))); // NOI18N
+        BtnTestPsico.setToolTipText("Haz click aqui para entrar a cuentos");
+        BtnTestPsico.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnTestPsico.setOpaque(false);
+        BtnTestPsico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCuenPsicoActionPerformed(evt);
+                BtnTestPsicoActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnCuenPsico, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 120, 70));
+        jPanel1.add(BtnTestPsico, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, 120, 70));
 
         BtnInfPsico.setBackground(new java.awt.Color(255, 255, 255));
         BtnInfPsico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/InformacionNiño.png"))); // NOI18N
@@ -121,18 +121,6 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BtnForoPsico, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 120, 70));
-
-        BtnTestPsico.setBackground(new java.awt.Color(255, 255, 255));
-        BtnTestPsico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/NeutroNiñoTest.png"))); // NOI18N
-        BtnTestPsico.setToolTipText("Haz click aqui para entrar a test");
-        BtnTestPsico.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnTestPsico.setOpaque(false);
-        BtnTestPsico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnTestPsicoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BtnTestPsico, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, 120, 70));
 
         BtnConsePsico.setBackground(new java.awt.Color(255, 255, 255));
         BtnConsePsico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Consejos_1.png"))); // NOI18N
@@ -234,6 +222,18 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
         });
         jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 40, 30));
 
+        BtnCuenPsico2.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCuenPsico2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/libro.png"))); // NOI18N
+        BtnCuenPsico2.setToolTipText("Haz click aqui para entrar a cuentos");
+        BtnCuenPsico2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnCuenPsico2.setOpaque(false);
+        BtnCuenPsico2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCuenPsico2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCuenPsico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 120, 70));
+
         jLabel3.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
@@ -282,12 +282,12 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnCuenPsicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCuenPsicoActionPerformed
-        Base.close();
-        PagCrudCuentosPsicologo cuentos = new PagCrudCuentosPsicologo();
-        cuentos.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_BtnCuenPsicoActionPerformed
+    private void BtnTestPsicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTestPsicoActionPerformed
+        Base.close(); 
+        PagTest_Psicologo eltes = new PagTest_Psicologo(); 
+            eltes.setVisible(true); 
+                this.setVisible(false);
+    }//GEN-LAST:event_BtnTestPsicoActionPerformed
 
     private void BtnInfPsicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfPsicoActionPerformed
         Base.close();
@@ -302,13 +302,6 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
         foro.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnForoPsicoActionPerformed
-
-    private void BtnTestPsicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTestPsicoActionPerformed
-        Base.close();
-        PagTest_Psicologo eltes = new PagTest_Psicologo();
-        eltes.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_BtnTestPsicoActionPerformed
 
     private void BtnConsePsicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConsePsicoActionPerformed
         Base.close();
@@ -366,12 +359,19 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
+    private void BtnCuenPsico2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCuenPsico2ActionPerformed
+        Base.close();
+        PagCrudCuentosPsicologo cuentos = new PagCrudCuentosPsicologo();
+        cuentos.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnCuenPsico2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JButton BtnConsePsico;
-    private javax.swing.JButton BtnCuenPsico;
     private javax.swing.JButton BtnCuenPsico1;
+    private javax.swing.JButton BtnCuenPsico2;
     private javax.swing.JButton BtnForoPsico;
     private javax.swing.JButton BtnInfPsico;
     private javax.swing.JButton BtnTestPsico;

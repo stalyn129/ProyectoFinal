@@ -78,6 +78,8 @@ public final class PagCrudTestPsicologo extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         btn_otro_test = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
+        BtnRegresar = new javax.swing.JButton();
+        Fondo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenu3puntitosPsicologo = new javax.swing.JMenu();
@@ -86,10 +88,13 @@ public final class PagCrudTestPsicologo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
+        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setForeground(new java.awt.Color(0, 255, 204));
+        jPanel1.setMinimumSize(new java.awt.Dimension(800, 500));
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
@@ -283,11 +288,27 @@ public final class PagCrudTestPsicologo extends javax.swing.JFrame {
         });
         jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 40, 30));
 
+        BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar.setToolTipText("Regresar a la página de inicio");
+        BtnRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar.setOpaque(false);
+        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 460, 60, 40));
+
+        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoInfRepresentante.png"))); // NOI18N
+        Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, -40, 1710, 600));
+
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         Fondo.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 800, 530));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 810, 520));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 800, 500));
 
         JMenu3puntitosPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
         JMenu3puntitosPsicologo.setToolTipText("Configuración");
@@ -407,6 +428,13 @@ public final class PagCrudTestPsicologo extends javax.swing.JFrame {
     private void txt_preguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_preguntaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_preguntaActionPerformed
+
+    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+        Base.close();
+        PagTest_Psicologo test = new PagTest_Psicologo();
+        test.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresarActionPerformed
 
     //////////////////////////////////   TEST
     public void Crear_Test(ObjectContainer Base) {
@@ -616,7 +644,9 @@ public final class PagCrudTestPsicologo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
+    private javax.swing.JButton BtnRegresar;
     private javax.swing.JLabel Fondo;
+    private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
     private javax.swing.JMenu JMnPgPrinPsicolo;
