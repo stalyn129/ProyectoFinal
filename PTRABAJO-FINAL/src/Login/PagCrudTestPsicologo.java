@@ -14,6 +14,8 @@ import com.db4o.ext.Db4oIOException;
 import com.db4o.query.Query;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -35,6 +37,7 @@ public final class PagCrudTestPsicologo extends javax.swing.JFrame {
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
         usarData = UserDataSingleton.getInstance();
         Bloquear_edicion_antes_test();
+        ocultarColumna();
     }
 
     /**
@@ -88,7 +91,6 @@ public final class PagCrudTestPsicologo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
-        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
@@ -127,7 +129,7 @@ public final class PagCrudTestPsicologo extends javax.swing.JFrame {
 
         jPanel5.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, 130, 50));
 
-        jPanel3.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel3.setBackground(new java.awt.Color(204, 235, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.setForeground(new java.awt.Color(204, 255, 204));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -199,7 +201,7 @@ public final class PagCrudTestPsicologo extends javax.swing.JFrame {
 
         lbl_enunciado_guardar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_enunciado_guardar.setForeground(new java.awt.Color(255, 0, 0));
-        lbl_enunciado_guardar.setText("Guarda para poder Ingresa las preguntas");
+        lbl_enunciado_guardar.setText("Guardar para poder Ingresa las preguntas");
         jPanel5.add(lbl_enunciado_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 230, 20));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -268,7 +270,7 @@ public final class PagCrudTestPsicologo extends javax.swing.JFrame {
 
         jScrollPane3.setViewportView(jPanel5);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 710, 400));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 710, 400));
 
         BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
         BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
@@ -286,7 +288,7 @@ public final class PagCrudTestPsicologo extends javax.swing.JFrame {
                 BtnCerrarPaginaActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 40, 30));
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, 40, 30));
 
         BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
         BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
@@ -633,6 +635,14 @@ public final class PagCrudTestPsicologo extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -751,6 +761,20 @@ public final class PagCrudTestPsicologo extends javax.swing.JFrame {
             });
         }
 
+    }
+    private void ocultarColumna() {
+
+        // Obtén el TableColumnModel de la tabla
+        TableColumnModel columnModel = tabla_preguntas.getColumnModel();
+
+        // Obtiene la columna en función del índice proporcionado
+        TableColumn columna = columnModel.getColumn(0);
+
+        // Hace que la columna no sea visible
+        columna.setMinWidth(0);
+        columna.setMaxWidth(0);
+        columna.setWidth(0);
+        columna.setPreferredWidth(0);
     }
 
 }

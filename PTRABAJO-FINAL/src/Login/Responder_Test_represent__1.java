@@ -173,7 +173,8 @@ public class Responder_Test_represent__1 extends javax.swing.JFrame {
             resp.setFK_cod_pregunta(codSelecccion);
             System.out.println("Cod_Opcion: " + seleccion_preg());
             resp.setFK_cod_Opciones(seleccion_preg());
-            resp.setFK_cod_tipo_usua("");
+            resp.setFk_Cod_Usuario(usarData.getCod_Representante());
+            resp.setTipo_usuario("Representante");
             resp.setFecha_respuesta(new Date());
             Base.store(resp);
             cumpl=true;
@@ -582,7 +583,7 @@ public class Responder_Test_represent__1 extends javax.swing.JFrame {
         if (tabla_datos.getRowCount() == 0) {
             JOptionPane.showMessageDialog(this, "Las preguntas finalizaron");
             Base.close();
-            PagTest_Niño pag=new PagTest_Niño();
+            PagTestPariente pag=new PagTestPariente();
             pag.setVisible(true);
             this.setVisible(false);
         }   
@@ -746,6 +747,14 @@ public class Responder_Test_represent__1 extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Responder_Test_represent__1.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

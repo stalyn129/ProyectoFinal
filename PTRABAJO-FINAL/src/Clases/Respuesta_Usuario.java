@@ -17,19 +17,21 @@ public class Respuesta_Usuario {
     private String FK_Cod_text;
     private String FK_cod_pregunta;
     private String FK_cod_Opciones;
-    private String FK_cod_tipo_usua;
+    private String tipo_usuario;
     private Date fecha_respuesta;
+    private String Fk_Cod_Usuario;
 
     public Respuesta_Usuario() {
     }
 
-    public Respuesta_Usuario(String Cod_Respuesta_usuario, String FK_Cod_text, String FK_cod_pregunta, String FK_cod_Opciones, String FK_cod_tipo_usua, Date fecha_respuesta) {
+    public Respuesta_Usuario(String Cod_Respuesta_usuario, String FK_Cod_text, String FK_cod_pregunta, String FK_cod_Opciones, String tipo_usuario, Date fecha_respuesta, String Fk_Cod_Usuario) {
         this.Cod_Respuesta_usuario = Cod_Respuesta_usuario;
         this.FK_Cod_text = FK_Cod_text;
         this.FK_cod_pregunta = FK_cod_pregunta;
         this.FK_cod_Opciones = FK_cod_Opciones;
-        this.FK_cod_tipo_usua = FK_cod_tipo_usua;
+        this.tipo_usuario = tipo_usuario;
         this.fecha_respuesta = fecha_respuesta;
+        this.Fk_Cod_Usuario = Fk_Cod_Usuario;
     }
 
     public String getCod_Respuesta_usuario() {
@@ -64,12 +66,12 @@ public class Respuesta_Usuario {
         this.FK_cod_Opciones = FK_cod_Opciones;
     }
 
-    public String getFK_cod_tipo_usua() {
-        return FK_cod_tipo_usua;
+    public String getTipo_usuario() {
+        return tipo_usuario;
     }
 
-    public void setFK_cod_tipo_usua(String FK_cod_tipo_usua) {
-        this.FK_cod_tipo_usua = FK_cod_tipo_usua;
+    public void setTipo_usuario(String tipo_usuario) {
+        this.tipo_usuario = tipo_usuario;
     }
 
     public Date getFecha_respuesta() {
@@ -80,6 +82,14 @@ public class Respuesta_Usuario {
         this.fecha_respuesta = fecha_respuesta;
     }
 
-    
+    public String getFk_Cod_Usuario() {
+        return Fk_Cod_Usuario;
+    }
+
+    public void setFk_Cod_Usuario(String Fk_Cod_Usuario) {
+        this.Fk_Cod_Usuario = Fk_Cod_Usuario;
+    }
+
+
     
 }

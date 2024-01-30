@@ -156,27 +156,28 @@ public class Responder_Test_Niño__1 extends javax.swing.JFrame {
     }
 
     public boolean guardar_seleccion(ObjectContainer Base) {
-        boolean cumpl=false;
+        boolean cumpl = false;
         if (seleccion_preg().equals("")) {
             JOptionPane.showMessageDialog(this, "Seleccione una respuesta");
         } else {
             Respuesta_Usuario resp = new Respuesta_Usuario();
             String cod = Calcular_IDRespuesra_Usua(Base);
-            
+
             System.out.println("Codigo_respuesta: " + cod);
-            
+
             resp.setCod_Respuesta_usuario(cod);
             resp.setFK_Cod_text(usarData.getCod_test_repre());
-            
+
             System.out.println("Codigo_PREGUNTA: " + codSelecccion);
-            
+
             resp.setFK_cod_pregunta(codSelecccion);
             System.out.println("Cod_Opcion: " + seleccion_preg());
             resp.setFK_cod_Opciones(seleccion_preg());
-            resp.setFK_cod_tipo_usua("");
+            resp.setFk_Cod_Usuario(usarData.getCod_niño());
+            resp.setTipo_usuario("Niño");
             resp.setFecha_respuesta(new Date());
             Base.store(resp);
-            cumpl=true;
+            cumpl = true;
 
         }
         return cumpl;
@@ -220,15 +221,14 @@ public class Responder_Test_Niño__1 extends javax.swing.JFrame {
             DefaultTableModel modeloLista = (DefaultTableModel) tabla_datos.getModel();
 
             // Eliminar el elemento del modelo
-
-             modeloLista.removeRow(indiceSeleccionado);
+            modeloLista.removeRow(indiceSeleccionado);
         } else {
             JOptionPane.showMessageDialog(this, "Por favor, selecciona un elemento para eliminar.");
         }
     }
 
     private void ocultarColumna() {
-        
+
         // Obtén el TableColumnModel de la tabla
         TableColumnModel columnModel = tabla_datos.getColumnModel();
 
@@ -241,6 +241,7 @@ public class Responder_Test_Niño__1 extends javax.swing.JFrame {
         columna.setWidth(0);
         columna.setPreferredWidth(0);
     }
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -282,7 +283,6 @@ public class Responder_Test_Niño__1 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 500));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -588,28 +588,28 @@ public class Responder_Test_Niño__1 extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_resp3ActionPerformed
 
     private void Ingresar_respuestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ingresar_respuestaActionPerformed
-        
-        boolean est=guardar_seleccion(Base);
+
+        boolean est = guardar_seleccion(Base);
         if (est) {
-          eliminarElementoSeleccionado();
-        txt_pregunta.setText("");
-        txt_resp1.setText("");
-        txt_resp2.setText("");
-        txt_resp3.setText("");
-        txt_resp2.setBackground(new Color(204, 255, 204));
-        txt_resp1.setBackground(new Color(204, 255, 204));
-        txt_resp3.setBackground(new Color(204, 255, 204));
-        if (tabla_datos.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(this, "Las preguntas finalizaron");
-            Base.close();
-            PagTestPariente pag=new PagTestPariente();
-            pag.setVisible(true);
-            this.setVisible(false);
-        }   
+            eliminarElementoSeleccionado();
+            txt_pregunta.setText("");
+            txt_resp1.setText("");
+            txt_resp2.setText("");
+            txt_resp3.setText("");
+            txt_resp2.setBackground(new Color(204, 255, 204));
+            txt_resp1.setBackground(new Color(204, 255, 204));
+            txt_resp3.setBackground(new Color(204, 255, 204));
+            if (tabla_datos.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "Las preguntas finalizaron");
+                Base.close();
+                PagTest_Niño pag = new PagTest_Niño();
+                pag.setVisible(true);
+                this.setVisible(false);
+            }
         } else {
         }
-        
-        
+
+
     }//GEN-LAST:event_Ingresar_respuestaActionPerformed
 
     private void txt_resp1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_resp1MouseEntered
@@ -738,8 +738,8 @@ public class Responder_Test_Niño__1 extends javax.swing.JFrame {
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
         Base.close();
-        Responder_Test_represent test = new Responder_Test_represent();
-        test.setVisible(true);
+        PagTest_Niño pag = new PagTest_Niño();
+        pag.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
@@ -773,6 +773,22 @@ public class Responder_Test_Niño__1 extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Responder_Test_Niño__1.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
