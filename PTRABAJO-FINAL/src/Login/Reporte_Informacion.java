@@ -68,6 +68,7 @@ public class Reporte_Informacion extends javax.swing.JFrame {
         LblTestPariente1 = new javax.swing.JLabel();
         BtnCerrarPagina = new javax.swing.JButton();
         BtnRegresar = new javax.swing.JButton();
+        Fondo1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -75,6 +76,8 @@ public class Reporte_Informacion extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(800, 500));
+        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -265,20 +268,22 @@ public class Reporte_Informacion extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Reporte Informacion niño", jPanel2);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 780, 350));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 780, 350));
 
         jLabel9.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 70));
 
-        LblTestPariente2.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
+        LblTestPariente2.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
+        LblTestPariente2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblTestPariente2.setText("REPORTE INFORMACIÓN");
-        getContentPane().add(LblTestPariente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 230, 30));
+        getContentPane().add(LblTestPariente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 350, 30));
 
         LblTestPariente1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
+        LblTestPariente1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblTestPariente1.setText("BIENVENIDO AL AREA DE:");
-        getContentPane().add(LblTestPariente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 290, 20));
+        getContentPane().add(LblTestPariente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 350, 20));
 
         BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
         BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
@@ -308,6 +313,10 @@ public class Reporte_Informacion extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 440, 50, 40));
+
+        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGeneralReportes.png"))); // NOI18N
+        Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
+        getContentPane().add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, -50, 1670, 560));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 800, 490));
@@ -412,14 +421,14 @@ public class Reporte_Informacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminar1ActionPerformed
 
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
-        //        Base.close();
+        Base.close();
         IniciaAdmin loginadmin = new IniciaAdmin();
         loginadmin.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem1MousePressed
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
-        //        Base.close();
+        Base.close();
         PagPrincipalAdmin paginaprinciadmi = new PagPrincipalAdmin();
         paginaprinciadmi.setVisible(true);
         this.setVisible(false);
@@ -800,6 +809,7 @@ public class Reporte_Informacion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JButton BtnRegresar;
+    private javax.swing.JLabel Fondo1;
     private javax.swing.JLabel LblTestPariente1;
     private javax.swing.JLabel LblTestPariente2;
     private javax.swing.JPanel PanelGraficoNiño;

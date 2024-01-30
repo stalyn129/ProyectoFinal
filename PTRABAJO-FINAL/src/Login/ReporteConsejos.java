@@ -58,6 +58,7 @@ public class ReporteConsejos extends javax.swing.JFrame {
         LblTestPariente1 = new javax.swing.JLabel();
         LblTestPariente2 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        Fondo1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -66,6 +67,7 @@ public class ReporteConsejos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
+        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -194,17 +196,23 @@ public class ReporteConsejos extends javax.swing.JFrame {
         getContentPane().add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
 
         LblTestPariente1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
+        LblTestPariente1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblTestPariente1.setText("BIENVENIDO AL AREA DE:");
-        getContentPane().add(LblTestPariente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 290, 20));
+        getContentPane().add(LblTestPariente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 320, 20));
 
-        LblTestPariente2.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
-        LblTestPariente2.setText("REPORTE CONSEJOS");
-        getContentPane().add(LblTestPariente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 200, 30));
+        LblTestPariente2.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
+        LblTestPariente2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblTestPariente2.setText("REPORTE DE CONSEJOS");
+        getContentPane().add(LblTestPariente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 210, 30));
 
         jLabel9.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 70));
+
+        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGeneralReportes.png"))); // NOI18N
+        Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
+        getContentPane().add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, -20, 1670, 500));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 800, 490));
@@ -297,14 +305,14 @@ public class ReporteConsejos extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
-        //        Base.close();
+        Base.close();
         IniciaAdmin loginadmin = new IniciaAdmin();
         loginadmin.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem1MousePressed
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
-        //        Base.close();
+        Base.close();
         PagPrincipalAdmin paginaprinciadmi = new PagPrincipalAdmin();
         paginaprinciadmi.setVisible(true);
         this.setVisible(false);
@@ -509,6 +517,7 @@ public class ReporteConsejos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JButton BtnRegresar;
+    private javax.swing.JLabel Fondo1;
     private javax.swing.JLabel LblTestPariente1;
     private javax.swing.JLabel LblTestPariente2;
     private javax.swing.JPanel PanelGraficConsej;

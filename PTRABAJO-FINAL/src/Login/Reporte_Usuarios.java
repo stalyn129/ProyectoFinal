@@ -319,6 +319,10 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
         BtnCerrarPagina = new javax.swing.JButton();
+        BtnRegresar = new javax.swing.JButton();
+        Fondo1 = new javax.swing.JLabel();
+        LblTestPariente2 = new javax.swing.JLabel();
+        LblTestPariente1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -330,6 +334,8 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setMinimumSize(new java.awt.Dimension(800, 500));
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Recuperar.setBackground(new java.awt.Color(255, 255, 255));
@@ -373,7 +379,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabla_mostrr);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 670, 210));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 670, 140));
 
         txt_consultar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel3.add(txt_consultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 130, 20));
@@ -752,7 +758,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
 
         Recuperar.addTab("Recuperar Eliminados", jPanel4);
 
-        jPanel1.add(Recuperar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 720, 430));
+        jPanel1.add(Recuperar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 720, 370));
         Recuperar.getAccessibleContext().setAccessibleName("");
 
         BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
@@ -773,15 +779,40 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         });
         jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
 
+        BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar.setOpaque(false);
+        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 440, 50, 40));
+
+        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGeneralReportes.png"))); // NOI18N
+        Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, -20, 1670, 500));
+
+        LblTestPariente2.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
+        LblTestPariente2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblTestPariente2.setText("REPORTE DE USUARIOS");
+        jPanel1.add(LblTestPariente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 350, 30));
+
+        LblTestPariente1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
+        LblTestPariente1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblTestPariente1.setText("BIENVENIDO AL AREA DE:");
+        jPanel1.add(LblTestPariente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 350, 20));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 480));
 
         jLabel27.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
         jPanel1.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, 90, 70));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 480));
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
         jMenu1.setToolTipText("Configuracion");
@@ -951,6 +982,14 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
     private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
     }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
+
+    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+
+        Base.close();
+        Reportes repor = new Reportes();
+        repor.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresarActionPerformed
     public void eliminar_persona() {
 
         Persona person = new Persona();
@@ -1133,6 +1172,10 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
+    private javax.swing.JButton BtnRegresar;
+    private javax.swing.JLabel Fondo1;
+    private javax.swing.JLabel LblTestPariente1;
+    private javax.swing.JLabel LblTestPariente2;
     private javax.swing.JTabbedPane Recuperar;
     private javax.swing.JButton btn_bus_usua;
     private javax.swing.JButton btn_buscar;
