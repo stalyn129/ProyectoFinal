@@ -5,8 +5,17 @@
  */
 package Login;
 
+import Clases.Foro;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
+import com.db4o.ext.DatabaseClosedException;
+import com.db4o.ext.DatabaseReadOnlyException;
+import java.awt.Color;
+import java.awt.HeadlessException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import java.util.Date;
 
 /**
  *
@@ -18,9 +27,10 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     ObjectContainer Base;
+
     public PagCrudForoPsicologo() {
         initComponents();
-            Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
@@ -37,8 +47,6 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         LblInfor2Niño = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        TxtIntroNiñoCuen = new javax.swing.JTextArea();
         TxtTitulo = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
         LblInfor2Niño1 = new javax.swing.JLabel();
@@ -51,6 +59,8 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TxtIntroForo = new javax.swing.JTextArea();
         BtnCerrarPagina = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -83,19 +93,13 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         jSeparator5.setForeground(new java.awt.Color(153, 153, 153));
         jPanel3.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 330, 10));
 
-        TxtIntroNiñoCuen.setColumns(20);
-        TxtIntroNiñoCuen.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        TxtIntroNiñoCuen.setLineWrap(true);
-        TxtIntroNiñoCuen.setRows(5);
-        TxtIntroNiñoCuen.setWrapStyleWord(true);
-        TxtIntroNiñoCuen.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        TxtIntroNiñoCuen.setEnabled(false);
-        jScrollPane5.setViewportView(TxtIntroNiñoCuen);
-
-        jPanel3.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 330, 110));
-
         TxtTitulo.setText("Ingrese un título");
         TxtTitulo.setBorder(null);
+        TxtTitulo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                TxtTituloMousePressed(evt);
+            }
+        });
         TxtTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtTituloActionPerformed(evt);
@@ -116,11 +120,11 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo_Foro", "Titulo", "Desripción"
+                "Codigo_Foro", "Titulo", "Desripción", "Fecha_Creación"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -140,6 +144,11 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 240, -1, -1));
 
         jButton2.setText("Modificar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 620, -1, -1));
 
         Actualizar.setText("Actualizar");
@@ -159,6 +168,11 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         jPanel3.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 620, -1, -1));
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
         jPanel3.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 620, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
@@ -169,6 +183,12 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 70));
+
+        TxtIntroForo.setColumns(20);
+        TxtIntroForo.setRows(5);
+        jScrollPane2.setViewportView(TxtIntroForo);
+
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 330, 120));
 
         jScrollPane1.setViewportView(jPanel3);
 
@@ -231,20 +251,119 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TxtTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtTituloActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_TxtTituloActionPerformed
 
     private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
-        // TODO add your handling code here:
+       jTableForos.setVisible(true);
+        MostrarDatos(Base);
     }//GEN-LAST:event_ActualizarActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnConsultarActionPerformed
+        // Mostrar un cuadro de diálogo para que el usuario elija el método de búsqueda
+        String[] opciones = {"Código", "Título"};
+        int seleccion = JOptionPane.showOptionDialog(this, "Seleccione el método de búsqueda:", "Método de Búsqueda", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
 
+        if (seleccion != -1) {
+            String consulta = "";
+
+            if (seleccion == 0) {
+                // Búsqueda por código
+                consulta = JOptionPane.showInputDialog(this, "Ingrese el código a consultar");
+            } else {
+                // Búsqueda por título
+                consulta = JOptionPane.showInputDialog(this, "Ingrese el título a consultar");
+            }
+
+            if (consulta != null && !consulta.isEmpty()) {
+                ConsultarRegistro(Base, consulta, seleccion);
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar un valor válido para la consulta.");
+            }
+        }
+    }//GEN-LAST:event_btnConsultarActionPerformed
+   
+    private void ConsultarRegistro(ObjectContainer base, String consulta, int tipoConsulta) {
+        // Creando un objeto de ejemplo para la consulta
+        Foro ejemploConsulta;
+
+        if (tipoConsulta == 0) {
+            // Búsqueda por código
+            ejemploConsulta = new Foro(consulta, null, null, null);
+        } else {
+            // Búsqueda por título
+            ejemploConsulta = new Foro(null, consulta, null, null);
+        }
+
+        // Consultando la base de datos
+        ObjectSet result = base.queryByExample(ejemploConsulta);
+
+        if (result.hasNext()) {
+            // Manejando el resultado (puedes querer mostrarlo o procesarlo)
+            Foro registroConsultado = (Foro) result.next();
+            System.out.println("Registro consultado: " + registroConsultado);
+            JOptionPane.showMessageDialog(this, "El registro se ha consultado con éxito");
+
+            // Llamar al método ConsultarDatos para mostrar el registro en la tabla
+            ConsultarDatos(Base, registroConsultado);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+        }
+    }
+    
+    public void ConsultarDatos(ObjectContainer base, Foro consulta) {
+        DefaultTableModel modelo = (DefaultTableModel) jTableForos.getModel();
+
+        // Limpiar el modelo antes de agregar nuevas filas
+        modelo.setRowCount(0);
+
+        if (consulta != null) {
+            // Agregar el registro consultado a la tabla
+            modelo.addRow(new Object[]{
+                consulta.getCod_Foro(),
+                consulta.getTitulo_Foro(),
+                consulta.getDescripcion(),
+                consulta.getFecha_Creacion()
+
+            });
+        }
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        // Validar campos antes de procesar la acción
+        if (TxtTitulo.getText().isEmpty()
+                || TxtIntroForo.getText().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.");
+            return;  // Detener el proceso si los campos no están completos
+        }
+
+        try {
+            Foro elForo = new Foro();
+            //elcue.setFK_CodPsicologo(RegistrarsePariente.Calcular_cod_Representante(Base));
+
+            String codigoIncremental = calcularIDCuen(Base);
+
+            elForo.setCod_Foro(codigoIncremental);
+            elForo.setTitulo_Foro(TxtTitulo.getText());
+            elForo.setDescripcion(TxtIntroForo.getText());
+            Date ObtenerFecha = new Date();
+            elForo.setFecha_Creacion(ObtenerFecha);
+
+            Base.store(elForo);
+            javax.swing.JOptionPane.showMessageDialog(this, "LOS DATOS HAN SIDO GUARDADOS EXITOSAMENTE");
+
+            // Limpiar campos después de ingresar los datos
+            limpiarCampos();
+
+            MostrarDatos(Base);
+        } catch (DatabaseClosedException | DatabaseReadOnlyException | HeadlessException e) {
+            JOptionPane.showMessageDialog(this, "Error al guardar: " + e.getMessage());
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+    private void limpiarCampos() {
+        TxtTitulo.setText("");
+        TxtIntroForo.setText("");
+    }
 
     private void JMnItmCerrarPsicologoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMouseClicked
         // TODO add your handling code here:
@@ -271,6 +390,77 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
     private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
     }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
+
+    private void TxtTituloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtTituloMousePressed
+        if (TxtTitulo.getText().equals("Ingrese un título")) {
+            TxtTitulo.setText("");
+            TxtTitulo.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_TxtTituloMousePressed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        String codigoAEliminar = JOptionPane.showInputDialog(this, "Ingrese el código a eliminar:");
+
+        if (codigoAEliminar != null && !codigoAEliminar.isEmpty()) {
+            EliminarRegistro(Base, codigoAEliminar);
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un código válido para eliminar.");
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+    
+    private void EliminarRegistro(ObjectContainer base, String Cod_Foro) {
+
+        Foro elimForo = new Foro(Cod_Foro,null, null, null);
+
+        // Mensaje de depuración
+        System.out.println("Buscando el registro en la base de datos...");
+
+        ObjectSet result = base.queryByExample(elimForo);
+
+        if (result.hasNext()) {
+            // Mensaje de depuración
+            System.out.println("Eliminando el registro de la base de datos...");
+
+            base.delete(result.next());
+            JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+            MostrarDatos(base); // Actualizar la tabla después de la eliminación
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+        }
+    }
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            // Obtener el código del cuento que se desea modificar
+            String codigoCuento = JOptionPane.showInputDialog(this, "Ingrese el código del cuento a modificar:");
+
+            if (codigoCuento != null && !codigoCuento.isEmpty()) {
+                // Buscar el cuento con el código proporcionado
+                int indiceCuento = buscarForoPorCodigo(codigoCuento);
+
+                if (indiceCuento != -1) {
+                    // Se encontró el cuento, obtener datos actuales
+                    DefaultTableModel modelo = (DefaultTableModel) jTableForos.getModel();
+                    String nuevoTitulo = validarCampo("Ingrese el nuevo título:", (String) modelo.getValueAt(indiceCuento, 1));
+                    String nuevaIntroduccion = validarCampo("Ingrese la nueva introducción:", (String) modelo.getValueAt(indiceCuento, 2));
+                    
+                    if (nuevoTitulo != null && nuevaIntroduccion != null) {
+
+                        // Modificar el cuento con los nuevos valores
+                        Modificar_Foro(Base, codigoCuento, nuevoTitulo, nuevaIntroduccion);
+                        MostrarDatos(Base);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Error: Todos los campos deben ser ingresados.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error: No se encontró el cuento con el código proporcionado.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar un código válido para modificar.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al modificar: " + e.getMessage());
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,6 +491,10 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -318,7 +512,7 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
     private javax.swing.JMenu JMnPgPrinPsicolo;
     private javax.swing.JLabel LblInfor2Niño;
     private javax.swing.JLabel LblInfor2Niño1;
-    private javax.swing.JTextArea TxtIntroNiñoCuen;
+    private javax.swing.JTextArea TxtIntroForo;
     private javax.swing.JTextField TxtTitulo;
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnEliminar;
@@ -331,10 +525,94 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTable jTableForos;
     // End of variables declaration//GEN-END:variables
+public static String calcularIDCuen(ObjectContainer base) {
+        boolean rest = true;
+        int incremental = 0;
+        String codigo;
+
+        do {
+            incremental++;
+            codigo = String.format("FORO-%04d", incremental);
+
+            if (VerificarForo(base, codigo) == 0) {
+                rest = false;
+            }
+
+        } while (rest);
+
+        return codigo;
+    }
+
+    public static int VerificarForo(ObjectContainer Base, String Codigo) {
+        Foro elForo = new Foro();
+        elForo.setCod_Foro(Codigo);
+        ObjectSet result = Base.get(elForo);
+        return result.size();
+    }
+    
+     public void MostrarDatos(ObjectContainer Base) {
+        Foro miForo = new Foro();
+        ObjectSet result = Base.get(miForo);
+
+        DefaultTableModel modelo = (DefaultTableModel) jTableForos.getModel();
+
+        // Limpiar el modelo antes de agregar nuevas filas
+        modelo.setRowCount(0);
+
+        while (result.hasNext()) {
+            Foro mosForo = (Foro) result.next();
+            modelo.addRow(new Object[]{
+                mosForo.getCod_Foro(), 
+                mosForo.getTitulo_Foro(),
+                mosForo.getDescripcion(),
+                mosForo.getFecha_Creacion()
+            });
+        }
+
+    }
+     
+     private int buscarForoPorCodigo(String codigoCuento) {
+        DefaultTableModel modelo = (DefaultTableModel) jTableForos.getModel();
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            String codigoActual = (String) modelo.getValueAt(i, 0);
+            if (codigoActual.equals(codigoCuento)) {
+                return i; 
+            }
+        }
+        return -1;
+    }
+     
+    private String validarCampo(String mensaje, String valorActual) {
+        String nuevoValor = JOptionPane.showInputDialog(this, mensaje, valorActual);
+        return (nuevoValor != null && !nuevoValor.isEmpty()) ? nuevoValor : null;
+    }
+    
+    public void Modificar_Foro(ObjectContainer base, String Codigo, String Titulo, String Introduccion) {
+        try {
+            Foro miForo = new Foro();
+            miForo.setCod_Foro(Codigo);
+
+            ObjectSet result = base.queryByExample(miForo);
+
+            if (result.hasNext()) {
+                Foro nuevoForo = (Foro) result.next();
+
+                nuevoForo.setTitulo_Foro(Titulo);
+                nuevoForo.setDescripcion(Introduccion);
+
+                base.store(nuevoForo);
+                JOptionPane.showMessageDialog(this, "Se modificó el foro correctamente.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Error: No se encontró el foro para modificar.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al modificar el foro: " + e.getMessage());
+        }
+    }
 }

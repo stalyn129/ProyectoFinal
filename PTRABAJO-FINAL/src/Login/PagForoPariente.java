@@ -5,9 +5,16 @@
  */
 package Login;
 
-import Login.PagPrincipalNiñ;
+import Clases.Comentario;
+import Clases.Foro;
+import Clases.Persona;
+import Clases.UserDataSingleton;
 import com.db4o.*;
 import com.db4o.ObjectContainer;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,10 +23,14 @@ import com.db4o.ObjectContainer;
 public class PagForoPariente extends javax.swing.JFrame {
 
     ObjectContainer Base;
-    
+    UserDataSingleton usarData;
+
     public PagForoPariente() {
         initComponents();
-            Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+        cargar_combo1(jComboForos);
+        usarData = UserDataSingleton.getInstance();
+
     }
 
     /**
@@ -35,15 +46,20 @@ public class PagForoPariente extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel12 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtDescripcion = new javax.swing.JTextArea();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        txtParticipaciones = new javax.swing.JTextArea();
         jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtArea_Comentario = new javax.swing.JTextArea();
+        btnPublicar = new javax.swing.JButton();
+        jComboForos = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblFondo = new javax.swing.JLabel();
         MenuCuentosNiño = new javax.swing.JMenuBar();
@@ -68,18 +84,21 @@ public class PagForoPariente extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel11.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel11.setText("Participaciones:");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, -1, 20));
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 560, 20));
+        jLabel11.setText("Comentar:");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, 20));
+        jPanel3.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 560, 20));
         jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 560, 10));
 
-        jLabel12.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel12.setText("Título:");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 20));
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        txtDescripcion.setColumns(20);
+        txtDescripcion.setLineWrap(true);
+        txtDescripcion.setRows(5);
+        txtDescripcion.setWrapStyleWord(true);
+        txtDescripcion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtDescripcionMousePressed(evt);
+            }
+        });
+        jScrollPane2.setViewportView(txtDescripcion);
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 510, -1));
 
@@ -87,21 +106,61 @@ public class PagForoPariente extends javax.swing.JFrame {
         jLabel13.setText("Descripción:");
         jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, 20));
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane3.setViewportView(jTextArea2);
+        txtParticipaciones.setColumns(20);
+        txtParticipaciones.setLineWrap(true);
+        txtParticipaciones.setRows(5);
+        txtParticipaciones.setWrapStyleWord(true);
+        txtParticipaciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtParticipacionesMousePressed(evt);
+            }
+        });
+        jScrollPane3.setViewportView(txtParticipaciones);
 
-        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 630, 290));
+        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 390, 290));
 
         jLabel14.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel14.setText("Participaciones:");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, 20));
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, -1, 20));
+
+        jLabel15.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel15.setText("Título:");
+        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 20));
+
+        txtArea_Comentario.setColumns(20);
+        txtArea_Comentario.setLineWrap(true);
+        txtArea_Comentario.setRows(5);
+        txtArea_Comentario.setWrapStyleWord(true);
+        jScrollPane4.setViewportView(txtArea_Comentario);
+
+        jPanel3.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 230, 100));
+
+        btnPublicar.setText("Publicar Comentario");
+        btnPublicar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPublicarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnPublicar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 230, 20));
 
         jScrollPane1.setViewportView(jPanel3);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 370));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 330));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 660, 370));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 710, 330));
+
+        jComboForos.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jComboForos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboForosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboForos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 550, 30));
+
+        jLabel12.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("Selecciona aqui el foro en el que desees participar:");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 550, 30));
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -140,18 +199,196 @@ public class PagForoPariente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JMnPgPrinNiñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiñoMouseClicked
-        Base.close();        
-            PagPrincipalRepresentante principalrepresetante = new PagPrincipalRepresentante();
-                principalrepresetante.setVisible(true);
-                    this.setVisible(false);
+        Base.close();
+        PagPrincipalRepresentante principalrepresetante = new PagPrincipalRepresentante();
+        principalrepresetante.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiñoMouseClicked
 
     private void JMnItmCerrarNiñoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarNiñoMousePressed
         Base.close();
-            InicioRepresentante loginrepre = new InicioRepresentante();
-                loginrepre.setVisible(true);
-                    this.setVisible(false);
+        InicioRepresentante loginrepre = new InicioRepresentante();
+        loginrepre.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_JMnItmCerrarNiñoMousePressed
+
+    private void jComboForosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboForosActionPerformed
+        if (jComboForos.getSelectedItem() != null) {
+            cargar_datos1();
+            String tit = String.valueOf(jComboForos.getSelectedItem());
+            Foro CBuscar = new Foro(null, tit, null, null);
+            ObjectSet<Foro> result = Base.get(CBuscar);
+
+            if (result != null && result.hasNext()) {
+                Foro CMostrar = result.next();
+                String codigoForo = CMostrar.getCod_Foro();
+                cargarComentariosPorForo(codigoForo);
+            } else {
+                System.out.println("No se encontraron resultados para la búsqueda del foro.");
+            }
+        }
+    }//GEN-LAST:event_jComboForosActionPerformed
+
+    private void btnPublicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPublicarActionPerformed
+        try {
+            // Validar campos antes de procesar la acción
+            if (txtArea_Comentario.getText().isEmpty()) {
+                throw new IllegalArgumentException("Por favor, complete todos los campos.");
+            }
+
+            // Procesar la acción
+            Comentario elComent = new Comentario();
+            String codigoIncremental = calcularIDComent(Base);
+            elComent.setID_Comentario(codigoIncremental);
+            elComent.setContenido_Comen(txtArea_Comentario.getText());
+
+            String tit = String.valueOf(jComboForos.getSelectedItem());
+            Foro CBuscar = new Foro(null, tit, null, null);
+            ObjectSet<Foro> result = Base.get(CBuscar);
+
+            if (result != null && result.hasNext()) {
+                Foro CMostrar = result.next();
+                String codigoForo = CMostrar.getCod_Foro();
+                elComent.setFK_Cod_Foro(codigoForo);
+                elComent.setFecha_Comen(new Date());
+
+                // Obtener el código del participante
+                String codigoParticipante = obtenerCodigoParticipante(usarData);
+
+                System.out.println("Código del participante: " + codigoParticipante);
+
+// Verificar si se pudo obtener el código del participante
+                if (!codigoParticipante.isEmpty()) {
+                    elComent.setFK_Cod_Participante(codigoParticipante);
+
+                    // Obtener el nombre del usuario
+                    String nombreUsuario = obtenerNombreUsuario(codigoParticipante);
+                    System.out.println("Nombre del usuario: " + nombreUsuario);
+                    elComent.setNombre_Usario(nombreUsuario);
+
+                    // Almacenar el comentario en la base de datos
+                    Base.store(elComent);
+                    javax.swing.JOptionPane.showMessageDialog(this, "LOS DATOS HAN SIDO GUARDADOS EXITOSAMENTE");
+
+                    // Obtener todos los comentarios de la base de datos y cargar solo los del foro actual
+                    cargarComentariosEnTxtParticipaciones(codigoForo);
+                } else {
+                    System.out.println("Error al obtener el código del participante.");
+
+                }
+            } else {
+                System.out.println("No se encontraron resultados para la búsqueda del foro.");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+            e.printStackTrace();  // Imprimir la traza de la excepción
+        }
+    }//GEN-LAST:event_btnPublicarActionPerformed
+
+    private void txtParticipacionesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtParticipacionesMousePressed
+        txtParticipaciones.setEditable(false);
+    }//GEN-LAST:event_txtParticipacionesMousePressed
+
+    private void txtDescripcionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDescripcionMousePressed
+        txtDescripcion.setEditable(false);
+    }//GEN-LAST:event_txtDescripcionMousePressed
+
+    private void cargarComentariosEnTxtParticipaciones(String codigoForoActual) {
+        // Obtener todos los comentarios de la base de datos
+        ObjectSet<Comentario> comentarios = Base.query(Comentario.class);
+
+        // Limpiar el contenido actual del txtParticipaciones
+        txtParticipaciones.setText("");
+
+        // Iterar sobre los comentarios y agregar solo aquellos del foro actual al txtParticipaciones
+        for (Comentario comentario : comentarios) {
+            if (codigoForoActual.equals(comentario.getFK_Cod_Foro())) {
+                // Formatear la información del comentario
+                String nombreUsuario = obtenerNombreUsuario(comentario.getFK_Cod_Participante());
+                String contenidoComentario = comentario.getContenido_Comen();
+                String fechaComentario = formatoFecha(comentario.getFecha_Comen());
+
+                // Crear el formato deseado
+                String comentarioFormateado = String.format(
+                        "Nombre: %s\nContenido del comentario: %s\nFecha del comentario: %s\n\n",
+                        nombreUsuario, contenidoComentario, fechaComentario
+                );
+
+                // Agregar el comentario formateado al txtParticipaciones
+                txtParticipaciones.append(comentarioFormateado);
+            }
+        }
+    }
+
+    private void cargarComentariosPorForo(String codigoForo) {
+        // Obtener todos los comentarios de la base de datos y cargar solo los del foro actual
+        cargarComentariosEnTxtParticipaciones(codigoForo);
+    }
+
+    private String obtenerNombreUsuario(String codigoParticipante) {
+        String nombreCompleto = Sacar_persona(Base, codigoParticipante);
+        return (nombreCompleto != null) ? nombreCompleto : "Nombre no disponible";
+    }
+
+    private String Sacar_persona(ObjectContainer Base, String cod) {
+        String nombre = "Nombre no disponible";
+        String apellido = "";
+
+        try {
+            System.out.println("Buscando persona con código: " + cod);
+            Persona person = new Persona();
+            person.setCedula(cod);
+            ObjectSet<Persona> result = Base.get(person);
+
+            if (result != null && result.hasNext()) {
+                Persona next = result.next();
+                nombre = next.getNombre();
+                apellido = next.getApellido();
+            } else {
+                System.out.println("No se encontraron resultados para la búsqueda de la persona.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error al buscar persona: " + e.getMessage());
+            // Manejar la excepción según sea necesario
+        }
+
+        if (!nombre.isEmpty() && !apellido.isEmpty()) {
+            return nombre + " " + apellido;
+        } else {
+            return "Nombre no disponible";
+        }
+    }
+
+    private String formatoFecha(Date fecha) {
+        if (fecha == null) {
+            return "Fecha no disponible";
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        return sdf.format(fecha);
+    }
+
+    private String obtenerCodigoParticipante(Object usarData) {
+        try {
+            String codigoParticipante = "";
+            if (usarData instanceof UserDataSingleton) {
+                codigoParticipante = ((UserDataSingleton) usarData).getCod_Representante();
+            } else if (usarData instanceof UserDataSingleton) {
+                codigoParticipante = ((UserDataSingleton) usarData).getCod_Psicologo();
+            }
+
+            // Verificar que se obtiene el código del participante correctamente
+            System.out.println("Código del participante: " + codigoParticipante);
+
+            return codigoParticipante;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al obtener el código del participante: " + e.getMessage());
+            e.printStackTrace();
+            return "";
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -179,6 +416,7 @@ public class PagForoPariente extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(PagForoPariente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -188,25 +426,80 @@ public class PagForoPariente extends javax.swing.JFrame {
         });
     }
 
+    public static String calcularIDComent(ObjectContainer base) {
+        boolean rest = true;
+        int incremental = 0;
+        String codigo;
+
+        do {
+            incremental++;
+            codigo = String.format("COM-%04d", incremental);
+
+            if (VerificarComent(base, codigo) == 0) {
+                rest = false;
+            }
+
+        } while (rest);
+
+        return codigo;
+    }
+
+    public static int VerificarComent(ObjectContainer Base, String Codigo) {
+        Comentario elComent = new Comentario();
+        elComent.setID_Comentario(Codigo);
+        ObjectSet result = Base.get(elComent);
+        return result.size();
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu JMenu3puntitosNiño;
     private javax.swing.JMenuItem JMnItmCerrarNiño;
     private javax.swing.JMenu JMnPgPrinNiño;
     private javax.swing.JMenuBar MenuCuentosNiño;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnPublicar;
+    private javax.swing.JComboBox<String> jComboForos;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JLabel lblFondo;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JTextArea txtArea_Comentario;
+    private javax.swing.JTextArea txtDescripcion;
+    private javax.swing.JTextArea txtParticipaciones;
     // End of variables declaration//GEN-END:variables
+
+    public void cargar_combo1(JComboBox jComboForos) {
+
+        Foro FBuscar = new Foro(null, null, null, null);
+        ObjectSet resul = Base.get(FBuscar);
+        while (resul.hasNext()) {
+            Foro Dcombo = (Foro) resul.next();
+            jComboForos.addItem(Dcombo.getTitulo_Foro());
+        }
+        Base.commit();
+    }
+
+    public void cargar_datos1() {
+        String tit = String.valueOf(jComboForos.getSelectedItem());
+
+        Foro CBuscar = new Foro(null, tit, null, null);
+        ObjectSet resul = Base.get(CBuscar);
+        Foro CMostrar = (Foro) resul.next();
+        lblTitulo.setText(CMostrar.getTitulo_Foro());
+        txtDescripcion.setText(CMostrar.getDescripcion());
+
+        Base.commit();
+    }
+
 }
