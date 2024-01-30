@@ -5,9 +5,23 @@
  */
 package Login;
 
+import Clases.ValoracionCuento;
+import Clases.ValoracionCuentoNiño;
+import Clases.ValoracionInfoNiño;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
+import com.db4o.ext.Db4oIOException;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -23,6 +37,10 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
     public Reporte_Cuentos() {
         initComponents();
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
+        MostrarDatosInfoRepre(Base);
+        MostrarDatoCuentoNiño(Base);
+        mostrar_diagrama_cuentoNiño();
+        mostrar_diagrama_cuentoRepre();
     }
 
     /**
@@ -415,6 +433,339 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
             }
         });
     }
+    private void ConsultarRegistro(ObjectContainer Base, String consulta, int tipoConsulta) {
+        // Creando un objeto de ejemplo para la consulta
+        ValoracionCuento ejemploConsulta = new ValoracionCuento(null, null, null, null, null);
+
+        // Consultando la base de datos
+        ObjectSet result;
+
+        try {
+            // Verificar el tipo de consulta para decidir qué campo usar
+            if (tipoConsulta == 0) {
+                // Búsqueda por código
+                ejemploConsulta.setCod_Respuesta_usuario(consulta);
+                result = Base.queryByExample(ejemploConsulta);
+            } else if (tipoConsulta == 1) {
+                // Búsqueda por código niño
+                ejemploConsulta.setFK_cod_Representante(consulta);
+                result = Base.queryByExample(ejemploConsulta);
+            } else if (tipoConsulta == 2) {
+                // Búsqueda por código miniJuego
+                ejemploConsulta.setFk_Cod_Cuento(consulta);
+                result = Base.queryByExample(ejemploConsulta);
+            } else {
+                // Tipo de consulta no válido
+                JOptionPane.showMessageDialog(this, "Tipo de consulta no válido");
+                return;
+            }
+
+            if (result.hasNext()) {
+                // Mostrar o procesar los registros encontrados
+                List<ValoracionCuento> registrosConsultados = new ArrayList<>();
+                while (result.hasNext()) {
+                    ValoracionCuento registroConsultado = (ValoracionCuento) result.next();
+                    System.out.println("Registro consultado: " + registroConsultado);
+                    registrosConsultados.add(registroConsultado);
+                }
+                JOptionPane.showMessageDialog(this, "Registros consultados con éxito");
+
+                // Llamar al método ConsultarDatos pasando la lista de registros consultados
+                ConsultarDatos(Base, registrosConsultados);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontraron registros en la base de datos");
+            }
+        } catch (Db4oIOException ex) {
+            // Manejar la excepción aquí, puedes mostrar un mensaje de error o realizar otras acciones
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al realizar la consulta en la base de datos");
+        }
+    }
+
+    private void ConsultarDatos(ObjectContainer Base, List<ValoracionCuento> registrosConsultados) {
+        // Obtener el modelo de la tabla
+        DefaultTableModel modelo = (DefaultTableModel) jTableInformacion.getModel();
+
+        // Limpiar el modelo antes de agregar nuevas filas
+        modelo.setRowCount(0);
+
+        if (!registrosConsultados.isEmpty()) {
+            for (ValoracionCuento registroConsultado : registrosConsultados) {
+                modelo.addRow(new Object[]{
+                    registroConsultado.getCod_Respuesta_usuario(),
+                    registroConsultado.getFK_cod_Representante(),
+                    registroConsultado.getFk_Cod_Cuento(),
+                    registroConsultado.getRespuesta(),
+                    registroConsultado.getFecha_respuesta(),});
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontraron registros en la base de datos");
+        }
+    }
+
+    private void EliminarRegistro(ObjectContainer Base, String Cod_Cuento) {
+
+        ValoracionCuento cuen = new ValoracionCuento(Cod_Cuento, null, null, null, null);
+
+        // Mensaje de depuración
+        System.out.println("Buscando el registro en la base de datos...");
+
+        ObjectSet result = Base.queryByExample(cuen);
+
+        if (result.hasNext()) {
+            // Mensaje de depuración
+            System.out.println("Eliminando el registro de la base de datos...");
+
+            Base.delete(result.next());
+            JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+            MostrarDatosInfoRepre(Base); // Actualizar la tabla después de la eliminación
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+        }
+    }
+
+    public void MostrarDatosInfoRepre(ObjectContainer Base) {
+        ValoracionCuento puntu = new ValoracionCuento();
+        ObjectSet result = Base.get(puntu);
+
+        // Obtener el modelo de la tabla
+        DefaultTableModel modelo = (DefaultTableModel) jTableInformacion.getModel();
+
+        // Limpiar el modelo antes de agregar nuevas filas
+        modelo.setRowCount(0);
+
+        while (result.hasNext()) {
+            ValoracionCuento mivalo = (ValoracionCuento) result.next();
+            modelo.addRow(new Object[]{
+                mivalo.getCod_Respuesta_usuario(),
+                mivalo.getFK_cod_Representante(),
+                mivalo.getFk_Cod_Cuento(),
+                mivalo.getRespuesta(),
+                mivalo.getFecha_respuesta(),});
+        }
+
+    }
+
+    public void ConsultarDatos(ObjectContainer Base, ValoracionCuento consulta) {
+        DefaultTableModel modelo = (DefaultTableModel) jTableInformacion.getModel();
+
+        // Limpiar el modelo antes de agregar nuevas filas
+        modelo.setRowCount(0);
+
+        if (consulta != null) {
+            // Agregar el registro consultado a la tabla
+            modelo.addRow(new Object[]{
+                consulta.getCod_Respuesta_usuario(),
+                consulta.getFK_cod_Representante(),
+                consulta.getFk_Cod_Cuento(),
+                consulta.getRespuesta(),
+                consulta.getFecha_respuesta()
+            });
+        }
+    }
+
+    //Aqui Termina
+    //Metodos juego laberinto
+    private void ConsultarRegistroInfoNiño(ObjectContainer Base, String consulta, int tipoConsulta) {
+        // Creando un objeto de ejemplo para la consulta
+        ValoracionCuentoNiño ejemploConsulta = new ValoracionCuentoNiño(null, null, null, null, null);
+
+        // Consultando la base de datos
+        ObjectSet result;
+
+        try {
+            // Verificar el tipo de consulta para decidir qué campo usar
+            if (tipoConsulta == 0) {
+                // Búsqueda por código
+                ejemploConsulta.setCod_Respuesta_usuario(consulta);
+                result = Base.queryByExample(ejemploConsulta);
+            } else if (tipoConsulta == 1) {
+                // Búsqueda por código niño
+                ejemploConsulta.setFk_cod_niño(consulta);
+                result = Base.queryByExample(ejemploConsulta);
+            } else if (tipoConsulta == 2) {
+                // Búsqueda por código miniJuego
+                ejemploConsulta.setFk_Cod_Cuento(consulta);
+                result = Base.queryByExample(ejemploConsulta);
+            } else {
+                // Tipo de consulta no válido
+                JOptionPane.showMessageDialog(this, "Tipo de consulta no válido");
+                return;
+            }
+
+            if (result.hasNext()) {
+                // Mostrar o procesar los registros encontrados
+                List<ValoracionCuentoNiño> registrosConsultados = new ArrayList<>();
+                while (result.hasNext()) {
+                    ValoracionCuentoNiño registroConsultado = (ValoracionCuentoNiño) result.next();
+                    System.out.println("Registro consultado: " + registroConsultado);
+                    registrosConsultados.add(registroConsultado);
+                }
+                JOptionPane.showMessageDialog(this, "Registros consultados con éxito");
+
+                // Llamar al método ConsultarDatos pasando la lista de registros consultados
+                ConsultarDatosLab(Base, registrosConsultados);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontraron registros en la base de datos");
+            }
+        } catch (Db4oIOException ex) {
+            // Manejar la excepción aquí, puedes mostrar un mensaje de error o realizar otras acciones
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al realizar la consulta en la base de datos");
+        }
+    }
+
+    private void ConsultarDatosLab(ObjectContainer Base, List<ValoracionCuentoNiño> registrosConsultados) {
+        // Obtener el modelo de la tabla
+        DefaultTableModel modelo = (DefaultTableModel) jTableInfoniño.getModel();
+
+        // Limpiar el modelo antes de agregar nuevas filas
+        modelo.setRowCount(0);
+
+        if (!registrosConsultados.isEmpty()) {
+            for (ValoracionCuentoNiño registroConsultado : registrosConsultados) {
+                modelo.addRow(new Object[]{
+                    registroConsultado.getCod_Respuesta_usuario(),
+                    registroConsultado.getFk_cod_niño(),
+                    registroConsultado.getFk_Cod_Cuento(),
+                    registroConsultado.getRespuesta(),
+                    registroConsultado.getFecha_respuesta()
+                });
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontraron registros en la base de datos");
+        }
+    }
+
+    private void EliminarRegistroLab(ObjectContainer base, String Cod_Lab) {
+
+        ValoracionCuentoNiño cuen = new ValoracionCuentoNiño(Cod_Lab, null, null, null, null);
+
+        // Mensaje de depuración
+        System.out.println("Buscando el registro en la base de datos...");
+
+        ObjectSet result = base.queryByExample(cuen);
+
+        if (result.hasNext()) {
+            // Mensaje de depuración
+            System.out.println("Eliminando el registro de la base de datos...");
+
+            base.delete(result.next());
+            JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+            MostrarDatosInfoRepre(base); // Actualizar la tabla después de la eliminación
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+        }
+    }
+
+    public void MostrarDatoCuentoNiño(ObjectContainer Base) {
+        ValoracionCuentoNiño RespLab = new ValoracionCuentoNiño();
+        ObjectSet result = Base.get(RespLab);
+
+        // Obtener el modelo de la tabla
+        DefaultTableModel modelo = (DefaultTableModel) jTableInfoniño.getModel();
+
+        // Limpiar el modelo antes de agregar nuevas filas
+        modelo.setRowCount(0);
+
+        while (result.hasNext()) {
+            ValoracionCuentoNiño miRespuesta = (ValoracionCuentoNiño) result.next();
+            modelo.addRow(new Object[]{
+                miRespuesta.getCod_Respuesta_usuario(),
+                miRespuesta.getFk_cod_niño(),
+                miRespuesta.getFk_Cod_Cuento(),
+                miRespuesta.getRespuesta(),
+                miRespuesta.getFecha_respuesta()
+            });
+        }
+
+    }
+
+    public void ConsultarDatos(ObjectContainer base, ValoracionCuentoNiño consulta) {
+        DefaultTableModel modelo = (DefaultTableModel) jTableInfoniño.getModel();
+
+        // Limpiar el modelo antes de agregar nuevas filas
+        modelo.setRowCount(0);
+
+        if (consulta != null) {
+            // Agregar el registro consultado a la tabla
+            modelo.addRow(new Object[]{
+                consulta.getCod_Respuesta_usuario(),
+                consulta.getFk_cod_niño(),
+                consulta.getFk_Cod_Cuento(),
+                consulta.getRespuesta(),
+                consulta.getFecha_respuesta()
+            });
+        }
+    }
+
+
+    public int num_si(ObjectContainer Base) {
+
+        ValoracionCuento puntu = new ValoracionCuento();
+        puntu.setRespuesta("SI");
+        ObjectSet result = Base.get(puntu);
+        return result.size();
+    }
+
+    public int num_No(ObjectContainer Base) {
+
+        ValoracionCuento puntu = new ValoracionCuento();
+        puntu.setRespuesta("NO");
+        ObjectSet result = Base.get(puntu);
+        return result.size();
+    }
+
+    public void mostrar_diagrama_cuentoRepre() {
+        DefaultPieDataset datos = new DefaultPieDataset();
+        datos.setValue("Si les gusto", num_si(Base));
+        datos.setValue("No les gusto", num_No(Base));
+
+        JFreeChart grafico_circular = ChartFactory.createPieChart("Numero de Respuestas", datos, true, true, false);
+        ChartPanel panel = new ChartPanel(grafico_circular);
+        panel.setMouseWheelEnabled(true);
+        panel.setPreferredSize(new Dimension(310, 230));
+
+        PanelGraficoPadre.setLayout(new BorderLayout());
+        PanelGraficoPadre.add(panel, BorderLayout.NORTH);
+
+        pack();
+        repaint();
+    }
+    
+    public int num_si_niño(ObjectContainer Base) {
+
+        ValoracionCuentoNiño puntu = new ValoracionCuentoNiño();
+        puntu.setRespuesta("SI");
+        ObjectSet result = Base.get(puntu);
+        return result.size();
+    }
+
+    public int num_No_niño(ObjectContainer Base) {
+
+        ValoracionCuentoNiño puntu = new ValoracionCuentoNiño();
+        puntu.setRespuesta("NO");
+        ObjectSet result = Base.get(puntu);
+        return result.size();
+    }
+
+    public void mostrar_diagrama_cuentoNiño() {
+        DefaultPieDataset datos = new DefaultPieDataset();
+        datos.setValue("Si les gusto", num_si_niño(Base));
+        datos.setValue("No les gusto", num_No_niño(Base));
+
+        JFreeChart grafico_circular = ChartFactory.createPieChart("Numero de Respuestas", datos, true, true, false);
+        ChartPanel panel = new ChartPanel(grafico_circular);
+        panel.setMouseWheelEnabled(true);
+        panel.setPreferredSize(new Dimension(310, 230));
+
+        PanelGraficoNiño.setLayout(new BorderLayout());
+        PanelGraficoNiño.add(panel, BorderLayout.NORTH);
+
+        pack();
+        repaint();
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
