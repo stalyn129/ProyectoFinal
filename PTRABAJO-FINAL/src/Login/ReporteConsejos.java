@@ -5,15 +5,22 @@
  */
 package Login;
 
+import Clases.RespuestasLab;
 import Clases.ValoracionConseNiño;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.ext.Db4oIOException;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -22,11 +29,12 @@ import javax.swing.table.DefaultTableModel;
 public class ReporteConsejos extends javax.swing.JFrame {
 
     ObjectContainer Base;
-    
+
     public ReporteConsejos() {
         initComponents();
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
         MostrarDatos(Base);
+        mostrar_diagrama();
     }
 
     /**
@@ -49,6 +57,7 @@ public class ReporteConsejos extends javax.swing.JFrame {
         BtnCerrarPagina = new javax.swing.JButton();
         LblTestPariente1 = new javax.swing.JLabel();
         LblTestPariente2 = new javax.swing.JLabel();
+        PanelGraficConsej = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -57,9 +66,7 @@ public class ReporteConsejos extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 500));
         setMinimumSize(new java.awt.Dimension(800, 500));
-        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTableConsejos.setModel(new javax.swing.table.DefaultTableModel(
@@ -109,33 +116,34 @@ public class ReporteConsejos extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnActualizar)
-                        .addGap(105, 105, 105)
-                        .addComponent(btnConsultar)
-                        .addGap(122, 122, 122)
-                        .addComponent(btnEliminar))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(btnActualizar)
+                .addGap(101, 101, 101)
+                .addComponent(btnConsultar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEliminar)
+                .addGap(60, 60, 60))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnActualizar)
                     .addComponent(btnConsultar)
                     .addComponent(btnEliminar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Reporte Consejos", jPanel1);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 610, 370));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 520, 330));
 
         BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
         BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
@@ -173,6 +181,19 @@ public class ReporteConsejos extends javax.swing.JFrame {
         LblTestPariente2.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         LblTestPariente2.setText("REPORTE CONSEJOS");
         getContentPane().add(LblTestPariente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 200, 30));
+
+        javax.swing.GroupLayout PanelGraficConsejLayout = new javax.swing.GroupLayout(PanelGraficConsej);
+        PanelGraficConsej.setLayout(PanelGraficConsejLayout);
+        PanelGraficConsejLayout.setHorizontalGroup(
+            PanelGraficConsejLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        PanelGraficConsejLayout.setVerticalGroup(
+            PanelGraficConsejLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 270, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(PanelGraficConsej, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 250, 270));
 
         jLabel9.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -283,80 +304,75 @@ public class ReporteConsejos extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jMenu2MouseClicked
 
-    
-     
-    //Metodos del juego diferencias
     private void ConsultarRegistro(ObjectContainer Base, String consulta, int tipoConsulta) {
-     // Creando un objeto de ejemplo para la consulta
         ValoracionConseNiño ejemploConsulta = new ValoracionConseNiño(null, null, null, null, null);
 
-    // Consultando la base de datos
-    ObjectSet result;
+        // Consultando la base de datos
+        ObjectSet result;
 
-    try {
-        // Verificar el tipo de consulta para decidir qué campo usar
-        if (tipoConsulta == 0) {
-            // Búsqueda por código
-            ejemploConsulta.setCod_Respuesta_usuario(consulta);
-            result = Base.queryByExample(ejemploConsulta);
-        } else if (tipoConsulta == 1) {
-            // Búsqueda por código niño
-            ejemploConsulta.setFk_cod_niño(consulta);
-            result = Base.queryByExample(ejemploConsulta);
-        } else if (tipoConsulta == 2) {
-            // Búsqueda por código miniJuego
-            ejemploConsulta.setFk_Cod_Consejo(consulta);
-            result = Base.queryByExample(ejemploConsulta);
-        } else {
-            // Tipo de consulta no válido
-            JOptionPane.showMessageDialog(this, "Tipo de consulta no válido");
-            return;
-        }
-
-        if (result.hasNext()) {
-            // Mostrar o procesar los registros encontrados
-            List<ValoracionConseNiño> registrosConsultados = new ArrayList<>();
-            while (result.hasNext()) {
-                ValoracionConseNiño registroConsultado = (ValoracionConseNiño) result.next();
-                System.out.println("Registro consultado: " + registroConsultado);
-                registrosConsultados.add(registroConsultado);
+        try {
+            // Verificar el tipo de consulta para decidir qué campo usar
+            if (tipoConsulta == 0) {
+                // Búsqueda por código
+                ejemploConsulta.setCod_Respuesta_usuario(consulta);
+                result = Base.queryByExample(ejemploConsulta);
+            } else if (tipoConsulta == 1) {
+                // Búsqueda por código niño
+                ejemploConsulta.setFk_cod_niño(consulta);
+                result = Base.queryByExample(ejemploConsulta);
+            } else if (tipoConsulta == 2) {
+                ejemploConsulta.setFk_Cod_Consejo(consulta);
+                result = Base.queryByExample(ejemploConsulta);
+            } else {
+                // Tipo de consulta no válido
+                JOptionPane.showMessageDialog(this, "Tipo de consulta no válido");
+                return;
             }
-            JOptionPane.showMessageDialog(this, "Registros consultados con éxito");
 
-            // Llamar al método ConsultarDatos pasando la lista de registros consultados
-            ConsultarDatos(Base, registrosConsultados);
+            if (result.hasNext()) {
+                // Mostrar o procesar los registros encontrados
+                List<ValoracionConseNiño> registrosConsultados = new ArrayList<>();
+                while (result.hasNext()) {
+                    ValoracionConseNiño registroConsultado = (ValoracionConseNiño) result.next();
+                    System.out.println("Registro consultado: " + registroConsultado);
+                    registrosConsultados.add(registroConsultado);
+                }
+                JOptionPane.showMessageDialog(this, "Registros consultados con éxito");
+
+                // Llamar al método ConsultarDatos pasando la lista de registros consultados
+                ConsultarDatos(Base, registrosConsultados);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontraron registros en la base de datos");
+            }
+        } catch (Db4oIOException ex) {
+            // Manejar la excepción aquí, puedes mostrar un mensaje de error o realizar otras acciones
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al realizar la consulta en la base de datos");
+        }
+    }
+
+    private void ConsultarDatos(ObjectContainer Base, List<ValoracionConseNiño> registrosConsultados) {
+        // Obtener el modelo de la tabla
+        DefaultTableModel modelo = (DefaultTableModel) jTableConsejos.getModel();
+
+        // Limpiar el modelo antes de agregar nuevas filas
+        modelo.setRowCount(0);
+
+        if (!registrosConsultados.isEmpty()) {
+            for (ValoracionConseNiño registroConsultado : registrosConsultados) {
+                modelo.addRow(new Object[]{
+                    registroConsultado.getCod_Respuesta_usuario(),
+                    registroConsultado.getFk_cod_niño(),
+                    registroConsultado.getFk_Cod_Consejo(),
+                    registroConsultado.getRespuesta(),
+                    registroConsultado.getFecha_respuesta()
+                });
+            }
         } else {
             JOptionPane.showMessageDialog(this, "No se encontraron registros en la base de datos");
         }
-    } catch (Db4oIOException ex) {
-        // Manejar la excepción aquí, puedes mostrar un mensaje de error o realizar otras acciones
-        ex.printStackTrace();
-        JOptionPane.showMessageDialog(this, "Error al realizar la consulta en la base de datos");
     }
-}
-    
-    private void ConsultarDatos(ObjectContainer Base, List<ValoracionConseNiño> registrosConsultados) {
-    // Obtener el modelo de la tabla
-    DefaultTableModel modelo = (DefaultTableModel) jTableConsejos.getModel();
 
-    // Limpiar el modelo antes de agregar nuevas filas
-    modelo.setRowCount(0);
-
-    if (!registrosConsultados.isEmpty()) {
-        for (ValoracionConseNiño registroConsultado : registrosConsultados) {
-            modelo.addRow(new Object[]{
-                registroConsultado.getCod_Respuesta_usuario(),
-                registroConsultado.getFk_cod_niño(),
-                registroConsultado.getFk_Cod_Consejo(),
-                registroConsultado.getRespuesta(),
-                registroConsultado.getFecha_respuesta()
-            });
-        }
-    } else {
-        JOptionPane.showMessageDialog(this, "No se encontraron registros en la base de datos");
-    }
-}
-    
     private void EliminarRegistro(ObjectContainer Base, String Cod_Cons) {
 
         ValoracionConseNiño cosnej = new ValoracionConseNiño(Cod_Cons, null, null, null, null);
@@ -377,18 +393,13 @@ public class ReporteConsejos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
         }
     }
-    
-    
+
     public void MostrarDatos(ObjectContainer Base) {
         ValoracionConseNiño puntu = new ValoracionConseNiño();
         ObjectSet result = Base.get(puntu);
 
-     
+        DefaultTableModel modelo = (DefaultTableModel) jTableConsejos.getModel();
 
-    // Obtener el modelo de la tabla
-    DefaultTableModel modelo = (DefaultTableModel) jTableConsejos.getModel();
-
-        // Limpiar el modelo antes de agregar nuevas filas
         modelo.setRowCount(0);
 
         while (result.hasNext()) {
@@ -401,26 +412,26 @@ public class ReporteConsejos extends javax.swing.JFrame {
                 miPuntuacion.getFecha_respuesta()
             });
         }
-
     }
-    
+
     public void ConsultarDatos(ObjectContainer Base, ValoracionConseNiño consulta) {
-    DefaultTableModel modelo = (DefaultTableModel) jTableConsejos.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) jTableConsejos.getModel();
 
-    // Limpiar el modelo antes de agregar nuevas filas
-    modelo.setRowCount(0);
+        // Limpiar el modelo antes de agregar nuevas filas
+        modelo.setRowCount(0);
 
-    if (consulta != null) {
-        // Agregar el registro consultado a la tabla
-        modelo.addRow(new Object[]{
-            consulta.getCod_Respuesta_usuario(),
-            consulta.getFk_cod_niño(),
-            consulta.getFk_Cod_Consejo(),
-            consulta.getRespuesta(),
-            consulta.getFecha_respuesta()
-        });
+        if (consulta != null) {
+            // Agregar el registro consultado a la tabla
+            modelo.addRow(new Object[]{
+                consulta.getCod_Respuesta_usuario(),
+                consulta.getFk_cod_niño(),
+                consulta.getFk_Cod_Consejo(),
+                consulta.getRespuesta(),
+                consulta.getFecha_respuesta()
+            });
+        }
     }
-}
+
     /**
      * @param args the command line arguments
      */
@@ -456,11 +467,45 @@ public class ReporteConsejos extends javax.swing.JFrame {
         });
     }
 
+  public int num_si(ObjectContainer Base) {
+
+        ValoracionConseNiño puntu = new ValoracionConseNiño();
+        puntu.setRespuesta("SI");
+        ObjectSet result = Base.get(puntu);
+        return result.size();
+    }
+
+    public int num_No(ObjectContainer Base) {
+
+        ValoracionConseNiño puntu = new ValoracionConseNiño();
+        puntu.setRespuesta("NO");
+        ObjectSet result = Base.get(puntu);
+        return result.size();
+    }
+
+    public void mostrar_diagrama() {
+        DefaultPieDataset datos = new DefaultPieDataset();
+        datos.setValue("Si les gusto", num_si(Base));
+        datos.setValue("No les gusto", num_No(Base));
+
+        JFreeChart grafico_circular = ChartFactory.createPieChart("Numero de Respuestas", datos, true, true, false);
+        ChartPanel panel = new ChartPanel(grafico_circular);
+        panel.setMouseWheelEnabled(true);
+        panel.setPreferredSize(new Dimension(310, 230));
+
+        PanelGraficConsej.setLayout(new BorderLayout());
+        PanelGraficConsej.add(panel, BorderLayout.NORTH);
+
+        pack();
+        repaint();
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JButton BtnRegresar;
     private javax.swing.JLabel LblTestPariente1;
     private javax.swing.JLabel LblTestPariente2;
+    private javax.swing.JPanel PanelGraficConsej;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnEliminar;

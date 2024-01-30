@@ -11,10 +11,18 @@ import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.ext.Db4oIOException;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -23,12 +31,14 @@ import javax.swing.table.DefaultTableModel;
 public class PagReporteJ extends javax.swing.JFrame {
 
     ObjectContainer Base;
-    
+
     public PagReporteJ() {
         initComponents();
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
         MostrarDatos(Base);
         MostrarDatosLab(Base);
+        mostrarDiagramaLaberinto();
+        mostrarDiagramaDiferencias();
     }
 
     /**
@@ -48,6 +58,7 @@ public class PagReporteJ extends javax.swing.JFrame {
         btnActualizarLab = new javax.swing.JButton();
         btnConsultarLab = new javax.swing.JButton();
         btnEliminarLab = new javax.swing.JButton();
+        PanelJuegoLaberinto = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -55,6 +66,7 @@ public class PagReporteJ extends javax.swing.JFrame {
         btnActualizarDif = new javax.swing.JButton();
         btnConsultarDif = new javax.swing.JButton();
         btnEliminarDif = new javax.swing.JButton();
+        PanelJuegoDiferencias = new javax.swing.JPanel();
         BtnRegresar = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
         LblTestPariente2 = new javax.swing.JLabel();
@@ -71,6 +83,8 @@ public class PagReporteJ extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -116,39 +130,64 @@ public class PagReporteJ extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout PanelJuegoLaberintoLayout = new javax.swing.GroupLayout(PanelJuegoLaberinto);
+        PanelJuegoLaberinto.setLayout(PanelJuegoLaberintoLayout);
+        PanelJuegoLaberintoLayout.setHorizontalGroup(
+            PanelJuegoLaberintoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        PanelJuegoLaberintoLayout.setVerticalGroup(
+            PanelJuegoLaberintoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 180, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(btnActualizarLab)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnConsultarLab)
-                .addGap(148, 148, 148)
-                .addComponent(btnEliminarLab)
-                .addGap(51, 51, 51)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(btnActualizarLab)
+                        .addGap(61, 61, 61)
+                        .addComponent(btnConsultarLab)
+                        .addGap(75, 75, 75)
+                        .addComponent(btnEliminarLab))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(PanelJuegoLaberinto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(PanelJuegoLaberinto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnActualizarLab)
                     .addComponent(btnConsultarLab)
-                    .addComponent(btnEliminarLab)
-                    .addComponent(jLabel2))
-                .addGap(19, 19, 19))
+                    .addComponent(btnEliminarLab))
+                .addGap(47, 47, 47)
+                .addComponent(jLabel2)
+                .addGap(40, 40, 40))
         );
 
         jTabbedPane1.addTab("Juego Laberinto", jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jTableDiferencias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -192,39 +231,59 @@ public class PagReporteJ extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout PanelJuegoDiferenciasLayout = new javax.swing.GroupLayout(PanelJuegoDiferencias);
+        PanelJuegoDiferencias.setLayout(PanelJuegoDiferenciasLayout);
+        PanelJuegoDiferenciasLayout.setHorizontalGroup(
+            PanelJuegoDiferenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        PanelJuegoDiferenciasLayout.setVerticalGroup(
+            PanelJuegoDiferenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 180, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(72, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(btnActualizarDif)
-                .addGap(121, 121, 121)
-                .addComponent(btnConsultarDif)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnEliminarDif)
-                .addGap(115, 115, 115))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(btnActualizarDif)
+                        .addGap(114, 114, 114)
+                        .addComponent(btnConsultarDif)
+                        .addGap(113, 113, 113)
+                        .addComponent(btnEliminarDif))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(PanelJuegoDiferencias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnActualizarDif)
-                    .addComponent(btnConsultarDif)
-                    .addComponent(btnEliminarDif))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(PanelJuegoDiferencias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnActualizarDif)
+                        .addComponent(btnEliminarDif))
+                    .addComponent(btnConsultarDif))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Juego Diferencias", jPanel3);
 
-        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 720, 360));
+        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 790, 340));
 
         BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
         BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
@@ -305,7 +364,7 @@ public class PagReporteJ extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarDifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDifActionPerformed
-       String codigoAEliminar = JOptionPane.showInputDialog(this, "Ingrese el código a eliminar:");
+        String codigoAEliminar = JOptionPane.showInputDialog(this, "Ingrese el código a eliminar:");
 
         if (codigoAEliminar != null && !codigoAEliminar.isEmpty()) {
             EliminarRegistro(Base, codigoAEliminar);
@@ -315,29 +374,29 @@ public class PagReporteJ extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarDifActionPerformed
 
     private void btnConsultarDifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarDifActionPerformed
-       String[] opciones = {"Código", "Código Niño", "Código MiniJuego"};
-    int seleccion = JOptionPane.showOptionDialog(this, "Seleccione el método de búsqueda:", "Método de Búsqueda", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+        String[] opciones = {"Código", "Código Niño", "Código MiniJuego"};
+        int seleccion = JOptionPane.showOptionDialog(this, "Seleccione el método de búsqueda:", "Método de Búsqueda", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
 
-    if (seleccion != -1) {
-        String consulta = "";
+        if (seleccion != -1) {
+            String consulta = "";
 
-        if (seleccion == 0) {
-            // Búsqueda por código
-            consulta = JOptionPane.showInputDialog(this, "Ingrese el código a consultar");
-        } else if (seleccion == 1) {
-            // Búsqueda por código niño
-            consulta = JOptionPane.showInputDialog(this, "Ingrese el código niño a consultar");
-        } else if (seleccion == 2) {
-            // Búsqueda por código miniJuego
-            consulta = JOptionPane.showInputDialog(this, "Ingrese el código miniJuego a consultar");
+            if (seleccion == 0) {
+                // Búsqueda por código
+                consulta = JOptionPane.showInputDialog(this, "Ingrese el código a consultar");
+            } else if (seleccion == 1) {
+                // Búsqueda por código niño
+                consulta = JOptionPane.showInputDialog(this, "Ingrese el código niño a consultar");
+            } else if (seleccion == 2) {
+                // Búsqueda por código miniJuego
+                consulta = JOptionPane.showInputDialog(this, "Ingrese el código miniJuego a consultar");
+            }
+
+            if (consulta != null && !consulta.isEmpty()) {
+                ConsultarRegistro(Base, consulta, seleccion);
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar un valor válido para la consulta.");
+            }
         }
-
-        if (consulta != null && !consulta.isEmpty()) {
-            ConsultarRegistro(Base, consulta, seleccion);
-        } else {
-            JOptionPane.showMessageDialog(this, "Debe ingresar un valor válido para la consulta.");
-        }
-    }
     }//GEN-LAST:event_btnConsultarDifActionPerformed
 
     private void btnActualizarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarLabActionPerformed
@@ -346,28 +405,28 @@ public class PagReporteJ extends javax.swing.JFrame {
 
     private void btnConsultarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarLabActionPerformed
         String[] opciones = {"Código", "Código Niño", "Código MiniJuego"};
-    int seleccion = JOptionPane.showOptionDialog(this, "Seleccione el método de búsqueda:", "Método de Búsqueda", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+        int seleccion = JOptionPane.showOptionDialog(this, "Seleccione el método de búsqueda:", "Método de Búsqueda", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
 
-    if (seleccion != -1) {
-        String consulta = "";
+        if (seleccion != -1) {
+            String consulta = "";
 
-        if (seleccion == 0) {
-            // Búsqueda por código
-            consulta = JOptionPane.showInputDialog(this, "Ingrese el código a consultar");
-        } else if (seleccion == 1) {
-            // Búsqueda por código niño
-            consulta = JOptionPane.showInputDialog(this, "Ingrese el código niño a consultar");
-        } else if (seleccion == 2) {
-            // Búsqueda por código miniJuego
-            consulta = JOptionPane.showInputDialog(this, "Ingrese el código miniJuego a consultar");
+            if (seleccion == 0) {
+                // Búsqueda por código
+                consulta = JOptionPane.showInputDialog(this, "Ingrese el código a consultar");
+            } else if (seleccion == 1) {
+                // Búsqueda por código niño
+                consulta = JOptionPane.showInputDialog(this, "Ingrese el código niño a consultar");
+            } else if (seleccion == 2) {
+                // Búsqueda por código miniJuego
+                consulta = JOptionPane.showInputDialog(this, "Ingrese el código miniJuego a consultar");
+            }
+
+            if (consulta != null && !consulta.isEmpty()) {
+                ConsultarRegistro(Base, consulta, seleccion);
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar un valor válido para la consulta.");
+            }
         }
-
-        if (consulta != null && !consulta.isEmpty()) {
-            ConsultarRegistro(Base, consulta, seleccion);
-        } else {
-            JOptionPane.showMessageDialog(this, "Debe ingresar un valor válido para la consulta.");
-        }
-    }
     }//GEN-LAST:event_btnConsultarLabActionPerformed
 
     private void btnActualizarDifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarDifActionPerformed
@@ -413,80 +472,79 @@ public class PagReporteJ extends javax.swing.JFrame {
     private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
     }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
-   
-    
+
     //Metodos del juego diferencias
     private void ConsultarRegistro(ObjectContainer Base, String consulta, int tipoConsulta) {
-     // Creando un objeto de ejemplo para la consulta
-    Puntuaciones ejemploConsulta = new Puntuaciones(null, null, null, 0, null);
+        // Creando un objeto de ejemplo para la consulta
+        Puntuaciones ejemploConsulta = new Puntuaciones(null, null, null, 0, null);
 
-    // Consultando la base de datos
-    ObjectSet result;
+        // Consultando la base de datos
+        ObjectSet result;
 
-    try {
-        // Verificar el tipo de consulta para decidir qué campo usar
-        if (tipoConsulta == 0) {
-            // Búsqueda por código
-            ejemploConsulta.setID_Puntuacion(consulta);
-            result = Base.queryByExample(ejemploConsulta);
-        } else if (tipoConsulta == 1) {
-            // Búsqueda por código niño
-            ejemploConsulta.setFK_Cod_Niño(consulta);
-            result = Base.queryByExample(ejemploConsulta);
-        } else if (tipoConsulta == 2) {
-            // Búsqueda por código miniJuego
-            ejemploConsulta.setFK_Cod_Minijuego(consulta);
-            result = Base.queryByExample(ejemploConsulta);
-        } else {
-            // Tipo de consulta no válido
-            JOptionPane.showMessageDialog(this, "Tipo de consulta no válido");
-            return;
-        }
-
-        if (result.hasNext()) {
-            // Mostrar o procesar los registros encontrados
-            List<Puntuaciones> registrosConsultados = new ArrayList<>();
-            while (result.hasNext()) {
-                Puntuaciones registroConsultado = (Puntuaciones) result.next();
-                System.out.println("Registro consultado: " + registroConsultado);
-                registrosConsultados.add(registroConsultado);
+        try {
+            // Verificar el tipo de consulta para decidir qué campo usar
+            if (tipoConsulta == 0) {
+                // Búsqueda por código
+                ejemploConsulta.setID_Puntuacion(consulta);
+                result = Base.queryByExample(ejemploConsulta);
+            } else if (tipoConsulta == 1) {
+                // Búsqueda por código niño
+                ejemploConsulta.setFK_Cod_Niño(consulta);
+                result = Base.queryByExample(ejemploConsulta);
+            } else if (tipoConsulta == 2) {
+                // Búsqueda por código miniJuego
+                ejemploConsulta.setFK_Cod_Minijuego(consulta);
+                result = Base.queryByExample(ejemploConsulta);
+            } else {
+                // Tipo de consulta no válido
+                JOptionPane.showMessageDialog(this, "Tipo de consulta no válido");
+                return;
             }
-            JOptionPane.showMessageDialog(this, "Registros consultados con éxito");
 
-            // Llamar al método ConsultarDatos pasando la lista de registros consultados
-            ConsultarDatos(Base, registrosConsultados);
+            if (result.hasNext()) {
+                // Mostrar o procesar los registros encontrados
+                List<Puntuaciones> registrosConsultados = new ArrayList<>();
+                while (result.hasNext()) {
+                    Puntuaciones registroConsultado = (Puntuaciones) result.next();
+                    System.out.println("Registro consultado: " + registroConsultado);
+                    registrosConsultados.add(registroConsultado);
+                }
+                JOptionPane.showMessageDialog(this, "Registros consultados con éxito");
+
+                // Llamar al método ConsultarDatos pasando la lista de registros consultados
+                ConsultarDatos(Base, registrosConsultados);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontraron registros en la base de datos");
+            }
+        } catch (Db4oIOException ex) {
+            // Manejar la excepción aquí, puedes mostrar un mensaje de error o realizar otras acciones
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al realizar la consulta en la base de datos");
+        }
+    }
+
+    private void ConsultarDatos(ObjectContainer Base, List<Puntuaciones> registrosConsultados) {
+        // Obtener el modelo de la tabla
+        DefaultTableModel modelo = (DefaultTableModel) jTableDiferencias.getModel();
+
+        // Limpiar el modelo antes de agregar nuevas filas
+        modelo.setRowCount(0);
+
+        if (!registrosConsultados.isEmpty()) {
+            for (Puntuaciones registroConsultado : registrosConsultados) {
+                modelo.addRow(new Object[]{
+                    registroConsultado.getID_Puntuacion(),
+                    registroConsultado.getFK_Cod_Niño(),
+                    registroConsultado.getFK_Cod_Minijuego(),
+                    registroConsultado.getPuntuacion(),
+                    registroConsultado.getFecha_Jugado()
+                });
+            }
         } else {
             JOptionPane.showMessageDialog(this, "No se encontraron registros en la base de datos");
         }
-    } catch (Db4oIOException ex) {
-        // Manejar la excepción aquí, puedes mostrar un mensaje de error o realizar otras acciones
-        ex.printStackTrace();
-        JOptionPane.showMessageDialog(this, "Error al realizar la consulta en la base de datos");
     }
-}
-    
-    private void ConsultarDatos(ObjectContainer Base, List<Puntuaciones> registrosConsultados) {
-    // Obtener el modelo de la tabla
-    DefaultTableModel modelo = (DefaultTableModel) jTableDiferencias.getModel();
 
-    // Limpiar el modelo antes de agregar nuevas filas
-    modelo.setRowCount(0);
-
-    if (!registrosConsultados.isEmpty()) {
-        for (Puntuaciones registroConsultado : registrosConsultados) {
-            modelo.addRow(new Object[]{
-                registroConsultado.getID_Puntuacion(),
-                registroConsultado.getFK_Cod_Niño(),
-                registroConsultado.getFK_Cod_Minijuego(),
-                registroConsultado.getPuntuacion(),
-                registroConsultado.getFecha_Jugado()
-            });
-        }
-    } else {
-        JOptionPane.showMessageDialog(this, "No se encontraron registros en la base de datos");
-    }
-}
-    
     private void EliminarRegistro(ObjectContainer Base, String Cod_Cuento) {
 
         Puntuaciones cuen = new Puntuaciones(Cod_Cuento, null, null, 0, null);
@@ -507,16 +565,13 @@ public class PagReporteJ extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
         }
     }
-    
-    
+
     public void MostrarDatos(ObjectContainer Base) {
         Puntuaciones puntu = new Puntuaciones();
         ObjectSet result = Base.get(puntu);
 
-     
-
-    // Obtener el modelo de la tabla
-    DefaultTableModel modelo = (DefaultTableModel) jTableDiferencias.getModel();
+        // Obtener el modelo de la tabla
+        DefaultTableModel modelo = (DefaultTableModel) jTableDiferencias.getModel();
 
         // Limpiar el modelo antes de agregar nuevas filas
         modelo.setRowCount(0);
@@ -533,100 +588,98 @@ public class PagReporteJ extends javax.swing.JFrame {
         }
 
     }
-    
+
     public void ConsultarDatos(ObjectContainer Base, Puntuaciones consulta) {
-    DefaultTableModel modelo = (DefaultTableModel) jTableDiferencias.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) jTableDiferencias.getModel();
 
-    // Limpiar el modelo antes de agregar nuevas filas
-    modelo.setRowCount(0);
+        // Limpiar el modelo antes de agregar nuevas filas
+        modelo.setRowCount(0);
 
-    if (consulta != null) {
-        // Agregar el registro consultado a la tabla
-        modelo.addRow(new Object[]{
-            consulta.getID_Puntuacion(),
-            consulta.getFK_Cod_Niño(),
-            consulta.getFK_Cod_Minijuego(),
-            consulta.getPuntuacion(),
-            consulta.getFecha_Jugado()
-        });
-    }
-}
-    
-    //Aqui Termina
-    
-    //Metodos juego laberinto
-    
-    private void ConsultarRegistroLab(ObjectContainer Base, String consulta, int tipoConsulta) {
-     // Creando un objeto de ejemplo para la consulta
-    RespuestasLab ejemploConsulta = new RespuestasLab(null, null, null, 0, null);
-
-    // Consultando la base de datos
-    ObjectSet result;
-
-    try {
-        // Verificar el tipo de consulta para decidir qué campo usar
-        if (tipoConsulta == 0) {
-            // Búsqueda por código
-            ejemploConsulta.setID_Respuesta(consulta);
-            result = Base.queryByExample(ejemploConsulta);
-        } else if (tipoConsulta == 1) {
-            // Búsqueda por código niño
-            ejemploConsulta.setFK_Cod_Niño(consulta);
-            result = Base.queryByExample(ejemploConsulta);
-        } else if (tipoConsulta == 2) {
-            // Búsqueda por código miniJuego
-            ejemploConsulta.setFK_Cod_Minijuego(consulta);
-            result = Base.queryByExample(ejemploConsulta);
-        } else {
-            // Tipo de consulta no válido
-            JOptionPane.showMessageDialog(this, "Tipo de consulta no válido");
-            return;
+        if (consulta != null) {
+            // Agregar el registro consultado a la tabla
+            modelo.addRow(new Object[]{
+                consulta.getID_Puntuacion(),
+                consulta.getFK_Cod_Niño(),
+                consulta.getFK_Cod_Minijuego(),
+                consulta.getPuntuacion(),
+                consulta.getFecha_Jugado()
+            });
         }
+    }
 
-        if (result.hasNext()) {
-            // Mostrar o procesar los registros encontrados
-            List<RespuestasLab> registrosConsultados = new ArrayList<>();
-            while (result.hasNext()) {
-                RespuestasLab registroConsultado = (RespuestasLab) result.next();
-                System.out.println("Registro consultado: " + registroConsultado);
-                registrosConsultados.add(registroConsultado);
+    //Aqui Termina
+    //Metodos juego laberinto
+    private void ConsultarRegistroLab(ObjectContainer Base, String consulta, int tipoConsulta) {
+        // Creando un objeto de ejemplo para la consulta
+        RespuestasLab ejemploConsulta = new RespuestasLab(null, null, null, 0, null);
+
+        // Consultando la base de datos
+        ObjectSet result;
+
+        try {
+            // Verificar el tipo de consulta para decidir qué campo usar
+            if (tipoConsulta == 0) {
+                // Búsqueda por código
+                ejemploConsulta.setID_Respuesta(consulta);
+                result = Base.queryByExample(ejemploConsulta);
+            } else if (tipoConsulta == 1) {
+                // Búsqueda por código niño
+                ejemploConsulta.setFK_Cod_Niño(consulta);
+                result = Base.queryByExample(ejemploConsulta);
+            } else if (tipoConsulta == 2) {
+                // Búsqueda por código miniJuego
+                ejemploConsulta.setFK_Cod_Minijuego(consulta);
+                result = Base.queryByExample(ejemploConsulta);
+            } else {
+                // Tipo de consulta no válido
+                JOptionPane.showMessageDialog(this, "Tipo de consulta no válido");
+                return;
             }
-            JOptionPane.showMessageDialog(this, "Registros consultados con éxito");
 
-            // Llamar al método ConsultarDatos pasando la lista de registros consultados
-            ConsultarDatosLab(Base, registrosConsultados);
+            if (result.hasNext()) {
+                // Mostrar o procesar los registros encontrados
+                List<RespuestasLab> registrosConsultados = new ArrayList<>();
+                while (result.hasNext()) {
+                    RespuestasLab registroConsultado = (RespuestasLab) result.next();
+                    System.out.println("Registro consultado: " + registroConsultado);
+                    registrosConsultados.add(registroConsultado);
+                }
+                JOptionPane.showMessageDialog(this, "Registros consultados con éxito");
+
+                // Llamar al método ConsultarDatos pasando la lista de registros consultados
+                ConsultarDatosLab(Base, registrosConsultados);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontraron registros en la base de datos");
+            }
+        } catch (Db4oIOException ex) {
+            // Manejar la excepción aquí, puedes mostrar un mensaje de error o realizar otras acciones
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al realizar la consulta en la base de datos");
+        }
+    }
+
+    private void ConsultarDatosLab(ObjectContainer Base, List<RespuestasLab> registrosConsultados) {
+        // Obtener el modelo de la tabla
+        DefaultTableModel modelo = (DefaultTableModel) jTableJLab.getModel();
+
+        // Limpiar el modelo antes de agregar nuevas filas
+        modelo.setRowCount(0);
+
+        if (!registrosConsultados.isEmpty()) {
+            for (RespuestasLab registroConsultado : registrosConsultados) {
+                modelo.addRow(new Object[]{
+                    registroConsultado.getID_Respuesta(),
+                    registroConsultado.getFK_Cod_Niño(),
+                    registroConsultado.getFK_Cod_Minijuego(),
+                    registroConsultado.getPuntuacion(),
+                    registroConsultado.getFecha_Jugado()
+                });
+            }
         } else {
             JOptionPane.showMessageDialog(this, "No se encontraron registros en la base de datos");
         }
-    } catch (Db4oIOException ex) {
-        // Manejar la excepción aquí, puedes mostrar un mensaje de error o realizar otras acciones
-        ex.printStackTrace();
-        JOptionPane.showMessageDialog(this, "Error al realizar la consulta en la base de datos");
     }
-}
-    
-    private void ConsultarDatosLab(ObjectContainer Base, List<RespuestasLab> registrosConsultados) {
-    // Obtener el modelo de la tabla
-    DefaultTableModel modelo = (DefaultTableModel) jTableJLab.getModel();
 
-    // Limpiar el modelo antes de agregar nuevas filas
-    modelo.setRowCount(0);
-
-    if (!registrosConsultados.isEmpty()) {
-        for (RespuestasLab registroConsultado : registrosConsultados) {
-            modelo.addRow(new Object[]{
-                registroConsultado.getID_Respuesta(),
-                registroConsultado.getFK_Cod_Niño(),
-                registroConsultado.getFK_Cod_Minijuego(),
-                registroConsultado.getPuntuacion(),
-                registroConsultado.getFecha_Jugado()
-            });
-        }
-    } else {
-        JOptionPane.showMessageDialog(this, "No se encontraron registros en la base de datos");
-    }
-}
-    
     private void EliminarRegistroLab(ObjectContainer base, String Cod_Lab) {
 
         RespuestasLab cuen = new RespuestasLab(Cod_Lab, null, null, 0, null);
@@ -647,16 +700,13 @@ public class PagReporteJ extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
         }
     }
-    
-    
+
     public void MostrarDatosLab(ObjectContainer Base) {
         RespuestasLab RespLab = new RespuestasLab();
         ObjectSet result = Base.get(RespLab);
 
-     
-
-    // Obtener el modelo de la tabla
-    DefaultTableModel modelo = (DefaultTableModel) jTableJLab.getModel();
+        // Obtener el modelo de la tabla
+        DefaultTableModel modelo = (DefaultTableModel) jTableJLab.getModel();
 
         // Limpiar el modelo antes de agregar nuevas filas
         modelo.setRowCount(0);
@@ -673,26 +723,25 @@ public class PagReporteJ extends javax.swing.JFrame {
         }
 
     }
-    
+
     public void ConsultarDatosLab(ObjectContainer base, RespuestasLab consulta) {
-    DefaultTableModel modelo = (DefaultTableModel) jTableJLab.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) jTableJLab.getModel();
 
-    // Limpiar el modelo antes de agregar nuevas filas
-    modelo.setRowCount(0);
+        // Limpiar el modelo antes de agregar nuevas filas
+        modelo.setRowCount(0);
 
-    if (consulta != null) {
-        // Agregar el registro consultado a la tabla
-        modelo.addRow(new Object[]{
-            consulta.getID_Respuesta(),
-            consulta.getFK_Cod_Niño(),
-            consulta.getFK_Cod_Minijuego(),
-            consulta.getPuntuacion(),
-            consulta.getFecha_Jugado()
-        });
+        if (consulta != null) {
+            // Agregar el registro consultado a la tabla
+            modelo.addRow(new Object[]{
+                consulta.getID_Respuesta(),
+                consulta.getFK_Cod_Niño(),
+                consulta.getFK_Cod_Minijuego(),
+                consulta.getPuntuacion(),
+                consulta.getFecha_Jugado()
+            });
+        }
     }
-}
 
-    
     /**
      * @param args the command line arguments
      */
@@ -727,14 +776,95 @@ public class PagReporteJ extends javax.swing.JFrame {
             }
         });
     }
-    
-    
+
+    public int contarPuntajesLaberinto(ObjectContainer base, int puntaje) {
+        RespuestasLab respuestaLab = new RespuestasLab();
+        respuestaLab.setPuntuacion(puntaje);
+        ObjectSet result = base.queryByExample(respuestaLab);
+        return result.size();
+    }
+
+    public void mostrarDiagramaLaberinto() {
+        DefaultPieDataset datos = new DefaultPieDataset();
+
+        // Obtener todos los puntajes distintos presentes en la base de datos
+        ObjectSet<RespuestasLab> resultados = Base.get(new RespuestasLab());
+        Set<Integer> puntajesDistintos = new HashSet<>();
+
+        while (resultados.hasNext()) {
+            RespuestasLab respuestaLab = resultados.next();
+            puntajesDistintos.add(respuestaLab.getPuntuacion());
+        }
+
+        // Agregar los puntajes al conjunto de datos de la gráfica
+        for (Integer puntaje : puntajesDistintos) {
+            String etiqueta = "Puntaje " + puntaje + " en Laberinto";
+            int cantidad = contarPuntajesLaberinto(Base, puntaje);
+            datos.setValue(etiqueta, cantidad);
+        }
+
+        // Crear y mostrar la gráfica
+        JFreeChart graficoCircularLaberinto = ChartFactory.createPieChart("Número de Puntajes - Laberinto", datos, true, true, false);
+        ChartPanel panel = new ChartPanel(graficoCircularLaberinto);
+        panel.setMouseWheelEnabled(true);
+        panel.setPreferredSize(new Dimension(310, 230));
+
+        PanelJuegoLaberinto.setLayout(new BorderLayout());
+        PanelJuegoLaberinto.add(panel, BorderLayout.NORTH);
+
+        pack();
+        repaint();
+      
+    }
+
+    public int contarPuntajesDiferencias(ObjectContainer base, int puntaje) {
+        // Ajusta la clase y los atributos según tus necesidades
+        Puntuaciones puntuacion = new Puntuaciones();
+        puntuacion.setPuntuacion(puntaje);
+        ObjectSet result = base.queryByExample(puntuacion);
+        return result.size();
+    }
+
+    public void mostrarDiagramaDiferencias() {
+        DefaultPieDataset datos = new DefaultPieDataset();
+
+        // Obtener todos los puntajes distintos presentes en la base de datos
+        ObjectSet<Puntuaciones> resultados = Base.get(new Puntuaciones());
+        Set<Integer> puntajesDistintos = new HashSet<>();
+
+        while (resultados.hasNext()) {
+            Puntuaciones puntuacion = resultados.next();
+            puntajesDistintos.add(puntuacion.getPuntuacion());
+        }
+
+        // Agregar los puntajes al conjunto de datos de la gráfica
+        for (Integer puntaje : puntajesDistintos) {
+            String etiqueta = "Puntaje " + puntaje + " en Diferencias";
+            int cantidad = contarPuntajesDiferencias(Base, puntaje);
+            datos.setValue(etiqueta, cantidad);
+        }
+
+        // Crear y mostrar la gráfica
+        JFreeChart graficoCircularDiferencias = ChartFactory.createPieChart("Número de Puntajes - Diferencias", datos, true, true, false);
+        ChartPanel panel = new ChartPanel(graficoCircularDiferencias);
+        panel.setMouseWheelEnabled(true);
+        panel.setPreferredSize(new Dimension(310, 230));
+
+        PanelJuegoDiferencias.setLayout(new BorderLayout());
+        PanelJuegoDiferencias.add(panel, BorderLayout.NORTH);
+
+        pack();
+        repaint();
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JButton BtnRegresar;
     private javax.swing.JLabel LblTestPariente1;
     private javax.swing.JLabel LblTestPariente2;
+    private javax.swing.JPanel PanelJuegoDiferencias;
+    private javax.swing.JPanel PanelJuegoLaberinto;
     private javax.swing.JButton btnActualizarDif;
     private javax.swing.JButton btnActualizarLab;
     private javax.swing.JButton btnConsultarDif;

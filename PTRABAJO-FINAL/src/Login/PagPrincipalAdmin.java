@@ -28,6 +28,8 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
 
     ObjectContainer Base;
     UserDataSingleton usarData;
+    
+    
     public PagPrincipalAdmin() {
         initComponents();
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
@@ -237,11 +239,11 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
                 BtnReportesActionPerformed(evt);
             }
         });
-        jPanel5.add(BtnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 70, 50));
+        jPanel5.add(BtnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 70, 50));
 
         jLabel12.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         jLabel12.setText("REPORTES");
-        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 400, -1, 30));
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, -1, 30));
 
         jLabel4.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -544,7 +546,6 @@ public void Mostra_usuario(ObjectContainer Base) {
         }
 
         Txt_Nombre.setText(nombres);
-
     }
 
     public String Sacar_persona(ObjectContainer Base, String cod) {
