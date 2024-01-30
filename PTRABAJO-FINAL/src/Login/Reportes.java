@@ -50,9 +50,7 @@ public class Reportes extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 500));
         setMinimumSize(new java.awt.Dimension(800, 500));
-        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BtnInfNiño.setBackground(new java.awt.Color(255, 255, 255));
@@ -206,7 +204,9 @@ public class Reportes extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnInfNiño1ActionPerformed
 
     private void BtnInfNiño2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfNiño2ActionPerformed
-        // TODO add your handling code here:
+        Reporte_Informacion reportin=new Reporte_Informacion();
+        reportin.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnInfNiño2ActionPerformed
 
     private void BtnInfNiño3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfNiño3ActionPerformed

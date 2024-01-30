@@ -5,7 +5,6 @@
  */
 package Login;
 
-import Clases.RespuestasLab;
 import Clases.ValoracionConseNiño;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
@@ -51,13 +50,13 @@ public class ReporteConsejos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableConsejos = new javax.swing.JTable();
         btnActualizar = new javax.swing.JButton();
+        PanelGraficConsej = new javax.swing.JPanel();
         btnConsultar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         BtnRegresar = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
         LblTestPariente1 = new javax.swing.JLabel();
         LblTestPariente2 = new javax.swing.JLabel();
-        PanelGraficConsej = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -68,6 +67,8 @@ public class ReporteConsejos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jTableConsejos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -97,6 +98,17 @@ public class ReporteConsejos extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout PanelGraficConsejLayout = new javax.swing.GroupLayout(PanelGraficConsej);
+        PanelGraficConsej.setLayout(PanelGraficConsejLayout);
+        PanelGraficConsejLayout.setHorizontalGroup(
+            PanelGraficConsejLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        PanelGraficConsejLayout.setVerticalGroup(
+            PanelGraficConsejLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 270, Short.MAX_VALUE)
+        );
+
         btnConsultar.setText("Consultar");
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,34 +128,41 @@ public class ReporteConsejos extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(btnActualizar)
-                .addGap(101, 101, 101)
-                .addComponent(btnConsultar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnEliminar)
-                .addGap(60, 60, 60))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(btnActualizar)
+                        .addGap(101, 101, 101)
+                        .addComponent(btnConsultar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEliminar)
+                        .addGap(46, 46, 46)))
+                .addComponent(PanelGraficConsej, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnActualizar)
-                    .addComponent(btnConsultar)
-                    .addComponent(btnEliminar))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnActualizar)
+                            .addComponent(btnConsultar)
+                            .addComponent(btnEliminar)))
+                    .addComponent(PanelGraficConsej, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Reporte Consejos", jPanel1);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 520, 330));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 780, 350));
 
         BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
         BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
@@ -181,19 +200,6 @@ public class ReporteConsejos extends javax.swing.JFrame {
         LblTestPariente2.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         LblTestPariente2.setText("REPORTE CONSEJOS");
         getContentPane().add(LblTestPariente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 200, 30));
-
-        javax.swing.GroupLayout PanelGraficConsejLayout = new javax.swing.GroupLayout(PanelGraficConsej);
-        PanelGraficConsej.setLayout(PanelGraficConsejLayout);
-        PanelGraficConsejLayout.setHorizontalGroup(
-            PanelGraficConsejLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
-        );
-        PanelGraficConsejLayout.setVerticalGroup(
-            PanelGraficConsejLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 270, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(PanelGraficConsej, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 250, 270));
 
         jLabel9.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -404,7 +410,7 @@ public class ReporteConsejos extends javax.swing.JFrame {
 
         while (result.hasNext()) {
             ValoracionConseNiño miPuntuacion = (ValoracionConseNiño) result.next();
-            modelo.addRow(new Object[]{
+        modelo.addRow(new Object[]{
                 miPuntuacion.getCod_Respuesta_usuario(),
                 miPuntuacion.getFk_cod_niño(),
                 miPuntuacion.getFk_Cod_Consejo(),
