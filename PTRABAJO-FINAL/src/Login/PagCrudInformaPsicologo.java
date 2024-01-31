@@ -17,10 +17,16 @@ import com.db4o.ext.DatabaseClosedException;
 import com.db4o.ext.DatabaseReadOnlyException;
 import java.awt.Color;
 import java.awt.HeadlessException;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Date;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -150,6 +156,9 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         tabla_mostrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabla_mostrarMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tabla_mostrarMousePressed(evt);
             }
         });
         jScrollPane2.setViewportView(tabla_mostrar);
@@ -434,9 +443,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     private void tabla_mostrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_mostrarMouseClicked
-        int seleccion = tabla_mostrar.getSelectedRow();
-        String codTabla = String.valueOf(tabla_mostrar.getValueAt(seleccion, 0));
-        Mostrar_datos_rec(Base, codTabla);
+
     }//GEN-LAST:event_tabla_mostrarMouseClicked
 
     private void btn_modifiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modifiActionPerformed
@@ -448,33 +455,33 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         if (cod_info_mod.equals("")) {
-            
-        }else{
-          int resultado = JOptionPane.showConfirmDialog(
-                null,
-                "Seguro que desea eliminar a la informacion\ncon el codigo: "+cod_info_mod,
-                "Confirmación",
-                JOptionPane.OK_CANCEL_OPTION);
 
-        // Verificar la opción seleccionada por el usuario
-        if (resultado == JOptionPane.OK_OPTION) {
-            // El usuario hizo clic en "Aceptar"
-            Eliminar(Base);
-        Vaciar_datos();
-        MostrarDatos(Base);
-    
         } else {
-            // El usuario hizo clic en "Cancelar" o cerró la ventana
-            JOptionPane.showMessageDialog(null, "Operación cancelada.");
+            int resultado = JOptionPane.showConfirmDialog(
+                    null,
+                    "Seguro que desea eliminar a la informacion\ncon el codigo: " + cod_info_mod,
+                    "Confirmación",
+                    JOptionPane.OK_CANCEL_OPTION);
+
+            // Verificar la opción seleccionada por el usuario
+            if (resultado == JOptionPane.OK_OPTION) {
+                // El usuario hizo clic en "Aceptar"
+                Eliminar(Base);
+                Vaciar_datos();
+                MostrarDatos(Base);
+
+            } else {
+                // El usuario hizo clic en "Cancelar" o cerró la ventana
+                JOptionPane.showMessageDialog(null, "Operación cancelada.");
+            }
         }
-        }
-        
-        
+
+
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultarActionPerformed
         String userInput = JOptionPane.showInputDialog("Ingresa el codigo de la informacion");
-                consulta(Base,userInput);
+        consulta(Base, userInput);
     }//GEN-LAST:event_btn_consultarActionPerformed
 
     private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
@@ -503,6 +510,16 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JMnItmCerrarPsicologoMouseClicked
 
+    private void tabla_mostrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_mostrarMousePressed
+        imagen_1.setIcon(null);
+        txt_Titulo1.setText("");
+        txA_text_info1.setText("");
+
+        int seleccion = tabla_mostrar.getSelectedRow();
+        String codTabla = String.valueOf(tabla_mostrar.getValueAt(seleccion, 0));
+        Mostrar_datos_rec(Base, codTabla);
+    }//GEN-LAST:event_tabla_mostrarMousePressed
+
     public void Eliminar(ObjectContainer Base) {
         Informacion inf = new Informacion();
         inf.setCod_Info(cod_info_mod);
@@ -510,49 +527,45 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         ObjectSet resul = Base.get(inf);
         while (resul.hasNext()) {
             Informacion nextElement = (Informacion) resul.next();
-            String codInf=nextElement.getCod_Info();
-            
-            
+            String codInf = nextElement.getCod_Info();
+
             publicacion(Base, codInf);
-            
-            
+
             Base.delete(nextElement);
             JOptionPane.showMessageDialog(this, "Se elimino la informacion");
 
         }
 
     }
-    public void publicacion(ObjectContainer Base,String cod){
-    Publicacion_Info publ=new Publicacion_Info();
-    publ.setFK_Cod_Informacion(cod);
-    
-    ObjectSet result=Base.get(publ);
-    
-        while (result.hasNext()) {      
-            Publicacion_Info pub=(Publicacion_Info)result.next();
+
+    public void publicacion(ObjectContainer Base, String cod) {
+        Publicacion_Info publ = new Publicacion_Info();
+        publ.setFK_Cod_Informacion(cod);
+
+        ObjectSet result = Base.get(publ);
+
+        while (result.hasNext()) {
+            Publicacion_Info pub = (Publicacion_Info) result.next();
             Base.delete(pub);
             JOptionPane.showMessageDialog(this, "Se elimina la Publicacion");
-            
+
         }
-    
-    
-    
-    
+
     }
 
-    public void consulta(ObjectContainer Base,String cod) {
+    public void consulta(ObjectContainer Base, String cod) {
         Informacion inf = new Informacion();
         inf.setCod_Info(cod);
         ObjectSet result = Base.get(inf);
-        while (result.hasNext()) {   
+        while (result.hasNext()) {
             Informacion next = (Informacion) result.next();
             cod_info_mod = next.getCod_Info();
             txt_Titulo1.setText(next.getTitulo_Info());
             txA_text_info1.setText(next.getTexto_Info());
 
-            byte[] imageData = next.getImagen();
-            if (imageData != null) {
-                ImageIcon icon = new ImageIcon(imageData);
+
+            if (imagen != null) {
+                ImageIcon icon = new ImageIcon(imagen);
                 imagen_1.setIcon(icon);
             } else {
                 // Manejar el caso en el que no hay imagen.
@@ -560,60 +573,84 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
             }
         }
         cod_info_mod = "";
-        
-        
+
     }
+
     public void Modificar(ObjectContainer Base) {
         if (!cod_info_mod.isEmpty()) {
+            
             Informacion inf = new Informacion();
             inf.setCod_Info(cod_info_mod);
             ObjectSet result = Base.get(inf);
-            
+
             Informacion ModInfo = (Informacion) result.next();
-            
+
             ModInfo.setTitulo_Info(txt_Titulo1.getText());
             ModInfo.setTexto_Info(txA_text_info1.getText());
+
             ModInfo.setImagen(imagen);
             Base.store(ModInfo);
             Base.commit();
             Vaciar_datos();
-            JOptionPane.showMessageDialog(this, "Se Modifico exitosamente");
+            JOptionPane.showMessageDialog(this, "Se Modificó exitosamente");
             cod_info_mod = "";
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Primero seleccionar la información");
         }
-        
-
     }
-
     String cod_info_mod = "";
 
+//    public void Mostrar_datos_rec(ObjectContainer Base, String CodInfo) {
+//
+//        Informacion info = new Informacion();
+//        info.setCod_Info(CodInfo);
+//
+//        ObjectSet result = Base.get(info);
+//
+//        if (result.hasNext()) {
+//            Informacion next = (Informacion) result.next();
+//            cod_info_mod = next.getCod_Info();
+//            txt_Titulo1.setText(next.getTitulo_Info());
+//            txA_text_info1.setText(next.getTexto_Info());
+//
+//            imagen=next.getImagen();
+//           
+//               imagen_1.setIcon(new ImageIcon(imagen));  
+//            
+//           
+//
+//        } else {
+//            
+//            JOptionPane.showMessageDialog(null, "No se encontró información con el código especificado.");
+//        }
+//    }
+
     public void Mostrar_datos_rec(ObjectContainer Base, String CodInfo) {
-        Informacion info = new Informacion();
-        info.setCod_Info(CodInfo);
+    Informacion info = new Informacion();
+    info.setCod_Info(CodInfo);
 
-        ObjectSet result = Base.get(info);
+    ObjectSet result = Base.get(info);
 
-        if (result.hasNext()) {
-            Informacion next = (Informacion) result.next();
-            cod_info_mod = next.getCod_Info();
-            txt_Titulo1.setText(next.getTitulo_Info());
-            txA_text_info1.setText(next.getTexto_Info());
+    if (result.hasNext()) {
+        Informacion next = (Informacion)result.next();
+        cod_info_mod = next.getCod_Info();
+        txt_Titulo1.setText(next.getTitulo_Info());
+        txA_text_info1.setText(next.getTexto_Info());
 
-            byte[] imageData = next.getImagen();
-            if (imageData != null) {
-                ImageIcon icon = new ImageIcon(imageData);
-                imagen_1.setIcon(icon);
-            } else {
-                // Manejar el caso en el que no hay imagen.
-                imagen_1.setIcon(null); // Puedes establecer el icono a null o configurar un icono predeterminado.
-            }
+        // Asegúrate de manejar casos en los que la imagen puede ser null
+        imagen = next.getImagen();
+        if (imagen != null && imagen.length > 0) {
+            // Convierte el array de bytes a ImageIcon y establece el icono en tu JLabel
+            ImageIcon imageIcon = new ImageIcon(imagen);
+            imagen_1.setIcon(imageIcon);
         } else {
-            // Manejar el caso en el que no se encuentra ninguna información con el código especificado.
-            // Puedes mostrar un mensaje, limpiar los campos, etc.
-            JOptionPane.showMessageDialog(null, "No se encontró información con el código especificado.");
+            // Si la imagen es null, puedes establecer un icono predeterminado o limpiar el JLabel
+            imagen_1.setIcon(null);
         }
+    } else {
+        JOptionPane.showMessageDialog(null, "No se encontró información con el código especificado.");
     }
+}
 
     public void Vaciar_datos() {
         txt_Titulo1.setText("");
@@ -716,6 +753,14 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(PagCrudInformaPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
