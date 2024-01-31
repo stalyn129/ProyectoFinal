@@ -398,18 +398,56 @@ public class PagInfRepre extends javax.swing.JFrame {
     }//GEN-LAST:event_JMnPgPrinNiñoMouseClicked
 
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
-
         String respuesta = "SI";
-        String codRepre = usarData.getCod_Representante();
-        GuardarRespuestaCuento(Base, codRepre, respuesta);
+        String codNiño = usarData.getCod_niño();
+
+        // Verificar si ya hay una respuesta almacenada
+        if (verificarRespuestaExistente(Base, codNiño)) {
+            String[] options = {"Si", "No"};
+            int opcion = JOptionPane.showOptionDialog(this, "Ya existe una respuesta. ¿Desea modificarla?", "Confirmar",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+
+            if (opcion == JOptionPane.NO_OPTION) {
+                return; // El usuario seleccionó "No", no hacemos nada
+            }
+        }
+
+        // Aquí se ejecutará solo si el usuario selecciona "Si" o si no hay respuesta existente
+        GuardarRespuestaCuento(Base, codNiño, respuesta);
     }//GEN-LAST:event_btnSiActionPerformed
 
     private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
         String respuesta = "NO";
-        String codRepre = usarData.getCod_Representante();
-        GuardarRespuestaCuento(Base, codRepre, respuesta);
-    }//GEN-LAST:event_btnNoActionPerformed
+        String codNiño = usarData.getCod_niño();
 
+        // Verificar si ya hay una respuesta almacenada
+        if (verificarRespuestaExistente(Base, codNiño)) {
+            String[] options = {"Si", "No"};
+            int opcion = JOptionPane.showOptionDialog(this, "Ya existe una respuesta. ¿Desea modificarla?", "Confirmar",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+
+            if (opcion == JOptionPane.NO_OPTION) {
+                return; // El usuario seleccionó "No", no hacemos nada
+            }
+        }
+
+        // Aquí se ejecutará solo si el usuario selecciona "No" o si no hay respuesta existente
+        GuardarRespuestaCuento(Base, codNiño, respuesta);
+    }//GEN-LAST:event_btnNoActionPerformed
+    private boolean verificarRespuestaExistente(ObjectContainer Base, String codRepre) {
+        try {
+            ValoracionInfoRepre ejemploConsulta = new ValoracionInfoRepre();
+            ejemploConsulta.setFK_cod_Representante(codRepre);
+
+            ObjectSet<ValoracionInfoRepre> resultados = Base.queryByExample(ejemploConsulta);
+
+            return resultados.hasNext();
+        } catch (DatabaseClosedException | DatabaseReadOnlyException e) {
+            e.printStackTrace();
+            System.err.println("Excepción al verificar respuesta existente: " + e.getMessage());
+            return false;
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;

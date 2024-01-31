@@ -20,6 +20,7 @@ import java.awt.Image;
 import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -297,48 +298,62 @@ public class PagConsejosNiño extends javax.swing.JFrame {
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
         String respuesta = "SI";
         String codNiño = usarData.getCod_niño();
+
+        // Verificar si ya hay una respuesta almacenada
+        if (verificarRespuestaExistente(Base, codNiño)) {
+            String[] options = {"Si", "No"};
+            int opcion = JOptionPane.showOptionDialog(this, "Ya existe una respuesta. ¿Desea modificarla?", "Confirmar",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+
+            if (opcion == JOptionPane.NO_OPTION) {
+                return; // El usuario seleccionó "No", no hacemos nada
+            }
+        }
+
+        // Aquí se ejecutará solo si el usuario selecciona "Si" o si no hay respuesta existente
         GuardarRespuestaCuento(Base, codNiño, respuesta);
     }//GEN-LAST:event_btnSiActionPerformed
 
     private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
-      String respuesta = "NO";
+        String respuesta = "NO";
         String codNiño = usarData.getCod_niño();
+
+        // Verificar si ya hay una respuesta almacenada
+        if (verificarRespuestaExistente(Base, codNiño)) {
+            String[] options = {"Si", "No"};
+            int opcion = JOptionPane.showOptionDialog(this, "Ya existe una respuesta. ¿Desea modificarla?", "Confirmar",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+
+            if (opcion == JOptionPane.NO_OPTION) {
+                return; // El usuario seleccionó "No", no hacemos nada
+            }
+        }
+
+        // Aquí se ejecutará solo si el usuario selecciona "No" o si no hay respuesta existente
         GuardarRespuestaCuento(Base, codNiño, respuesta);
     }//GEN-LAST:event_btnNoActionPerformed
 
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PagCrudForoPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PagCrudForoPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PagCrudForoPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PagCrudForoPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new PagConsejosNiño().setVisible(true);
             }
         });
+    }
+
+    private boolean verificarRespuestaExistente(ObjectContainer Base, String codNiño) {
+        try {
+            ValoracionConseNiño ejemploConsulta = new ValoracionConseNiño();
+            ejemploConsulta.setFk_cod_niño(codNiño);
+
+            ObjectSet<ValoracionConseNiño> resultados = Base.queryByExample(ejemploConsulta);
+
+            return resultados.hasNext();
+        } catch (DatabaseClosedException | DatabaseReadOnlyException e) {
+            e.printStackTrace();
+            System.err.println("Excepción al verificar respuesta existente: " + e.getMessage());
+            return false;
+        }
     }
 
     public void cargar_combo1(JComboBox jComboJuego) {
@@ -393,6 +408,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
             return null;
         }
     }
+
     public void GuardarRespuestaCuento(ObjectContainer Base, String Cod_niño, String respuesta) {
         try {
             ValoracionConseNiño respuesconsej = new ValoracionConseNiño();

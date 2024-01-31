@@ -7,7 +7,6 @@ package Login;
 
 import Clases.ValoracionCuento;
 import Clases.ValoracionCuentoNiño;
-import Clases.ValoracionInfoNiño;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;

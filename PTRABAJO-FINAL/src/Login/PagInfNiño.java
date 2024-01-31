@@ -306,15 +306,41 @@ public class PagInfNiño extends javax.swing.JFrame {
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
         String respuesta = "SI";
         String codNiño = usarData.getCod_niño();
+
+        // Verificar si ya hay una respuesta almacenada
+        if (verificarRespuestaExistente(Base, codNiño)) {
+            String[] options = {"Si", "No"};
+            int opcion = JOptionPane.showOptionDialog(this, "Ya existe una respuesta. ¿Desea modificarla?", "Confirmar",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+
+            if (opcion == JOptionPane.NO_OPTION) {
+                return; // El usuario seleccionó "No", no hacemos nada
+            }
+        }
+
+        // Aquí se ejecutará solo si el usuario selecciona "Si" o si no hay respuesta existente
         GuardarRespuestaCuento(Base, codNiño, respuesta);
     }//GEN-LAST:event_btnSiActionPerformed
 
     private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
         String respuesta = "NO";
         String codNiño = usarData.getCod_niño();
+
+        // Verificar si ya hay una respuesta almacenada
+        if (verificarRespuestaExistente(Base, codNiño)) {
+            String[] options = {"Si", "No"};
+            int opcion = JOptionPane.showOptionDialog(this, "Ya existe una respuesta. ¿Desea modificarla?", "Confirmar",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+
+            if (opcion == JOptionPane.NO_OPTION) {
+                return; // El usuario seleccionó "No", no hacemos nada
+            }
+        }
+
+        // Aquí se ejecutará solo si el usuario selecciona "No" o si no hay respuesta existente
         GuardarRespuestaCuento(Base, codNiño, respuesta);
     }//GEN-LAST:event_btnNoActionPerformed
- public void GuardarRespuestaCuento(ObjectContainer Base, String Cod_niño, String respuesta) {
+    public void GuardarRespuestaCuento(ObjectContainer Base, String Cod_niño, String respuesta) {
         try {
             ValoracionInfoNiño respuestinfo = new ValoracionInfoNiño();
 
@@ -396,6 +422,21 @@ public class PagInfNiño extends javax.swing.JFrame {
         mires.setCod_Respuesta_usuario(Codigo);
         ObjectSet result = Base.get(mires);
         return result.size();
+    }
+
+    private boolean verificarRespuestaExistente(ObjectContainer Base, String codNiño) {
+        try {
+            ValoracionInfoNiño ejemploConsulta = new ValoracionInfoNiño();
+            ejemploConsulta.setFk_cod_niño(codNiño);
+
+            ObjectSet<ValoracionInfoNiño> resultados = Base.queryByExample(ejemploConsulta);
+
+            return resultados.hasNext();
+        } catch (DatabaseClosedException | DatabaseReadOnlyException e) {
+            e.printStackTrace();
+            System.err.println("Excepción al verificar respuesta existente: " + e.getMessage());
+            return false;
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
