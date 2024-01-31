@@ -391,7 +391,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
             try {
                 if (archivo.getName().endsWith("jpg") || archivo.getName().endsWith("jpeg") || archivo.getName().endsWith("png") || archivo.getName().endsWith("gif")) {
                     imagen = AbrirArchivo(archivo); // Almacena la imagen seleccionada en la variable imagen
-                    imagen_1.setIcon(new ImageIcon(imagen)); // Actualiza la imagen mostrada en la interfaz
+                    imagen_1.setIcon(new ImageIcon(imagen));
                 } else {
                     JOptionPane.showMessageDialog(null, "Archivo no compatible");
                 }
@@ -469,7 +469,6 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
                 Eliminar(Base);
                 Vaciar_datos();
                 MostrarDatos(Base);
-
             } else {
                 // El usuario hizo clic en "Cancelar" o cerró la ventana
                 JOptionPane.showMessageDialog(null, "Operación cancelada.");
@@ -547,8 +546,6 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         while (result.hasNext()) {
             Publicacion_Info pub = (Publicacion_Info) result.next();
             Base.delete(pub);
-            JOptionPane.showMessageDialog(this, "Se elimina la Publicacion");
-
         }
 
     }
@@ -562,7 +559,6 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
             cod_info_mod = next.getCod_Info();
             txt_Titulo1.setText(next.getTitulo_Info());
             txA_text_info1.setText(next.getTexto_Info());
-
 
             if (imagen != null) {
                 ImageIcon icon = new ImageIcon(imagen);
@@ -578,7 +574,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
 
     public void Modificar(ObjectContainer Base) {
         if (!cod_info_mod.isEmpty()) {
-            
+
             Informacion inf = new Informacion();
             inf.setCod_Info(cod_info_mod);
             ObjectSet result = Base.get(inf);
@@ -624,33 +620,32 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
 //            JOptionPane.showMessageDialog(null, "No se encontró información con el código especificado.");
 //        }
 //    }
-
     public void Mostrar_datos_rec(ObjectContainer Base, String CodInfo) {
-    Informacion info = new Informacion();
-    info.setCod_Info(CodInfo);
+        Informacion info = new Informacion();
+        info.setCod_Info(CodInfo);
 
-    ObjectSet result = Base.get(info);
+        ObjectSet result = Base.get(info);
 
-    if (result.hasNext()) {
-        Informacion next = (Informacion)result.next();
-        cod_info_mod = next.getCod_Info();
-        txt_Titulo1.setText(next.getTitulo_Info());
-        txA_text_info1.setText(next.getTexto_Info());
+        if (result.hasNext()) {
+            Informacion next = (Informacion) result.next();
+            cod_info_mod = next.getCod_Info();
+            txt_Titulo1.setText(next.getTitulo_Info());
+            txA_text_info1.setText(next.getTexto_Info());
 
-        // Asegúrate de manejar casos en los que la imagen puede ser null
-        imagen = next.getImagen();
-        if (imagen != null && imagen.length > 0) {
-            // Convierte el array de bytes a ImageIcon y establece el icono en tu JLabel
-            ImageIcon imageIcon = new ImageIcon(imagen);
-            imagen_1.setIcon(imageIcon);
+            // Asegúrate de manejar casos en los que la imagen puede ser null
+            imagen = next.getImagen();
+            if (imagen != null && imagen.length > 0) {
+                // Convierte el array de bytes a ImageIcon y establece el icono en tu JLabel
+                ImageIcon imageIcon = new ImageIcon(imagen);
+                imagen_1.setIcon(imageIcon);
+            } else {
+                // Si la imagen es null, puedes establecer un icono predeterminado o limpiar el JLabel
+                imagen_1.setIcon(null);
+            }
         } else {
-            // Si la imagen es null, puedes establecer un icono predeterminado o limpiar el JLabel
-            imagen_1.setIcon(null);
+            JOptionPane.showMessageDialog(null, "No se encontró información con el código especificado.");
         }
-    } else {
-        JOptionPane.showMessageDialog(null, "No se encontró información con el código especificado.");
     }
-}
 
     public void Vaciar_datos() {
         txt_Titulo1.setText("");

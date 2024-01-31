@@ -8,6 +8,7 @@ package Login;
 import Clases.Comentario;
 import Clases.Foro;
 import Clases.Persona;
+import Clases.Representante;
 import Clases.UserDataSingleton;
 import com.db4o.*;
 import com.db4o.ObjectContainer;
@@ -327,8 +328,42 @@ public class PagForoPariente extends javax.swing.JFrame {
     }
 
     private String obtenerNombreUsuario(String codigoParticipante) {
-        String nombreCompleto = Sacar_persona(Base, codigoParticipante);
-        return (nombreCompleto != null) ? nombreCompleto : "Nombre no disponible";
+       
+        String nom="",apell="";
+        Representante repre=new Representante();
+        repre.setCod_Repre(codigoParticipante);
+        ObjectSet result=Base.get(repre);
+        
+        if (result.size()!=0) {
+            while (result.hasNext()) {
+                Representante next =(Representante) result.next();
+                String cod=next.getFKCod_Cedula();
+                
+                Persona person=new Persona();
+                person.setCedula(cod);
+                ObjectSet rest=Base.get(person);
+                
+                while (rest.hasNext()) {
+                    Persona next1 =(Persona) rest.next();
+                    nom=next1.getNombre();
+                    apell=next1.getApellido();
+                    
+                    
+                    
+                }
+                
+            }
+            String nombre=nom+" "+apell;
+            return nombre;
+            
+        }else{
+        
+            JOptionPane.showMessageDialog(this, "No se encontro al representante");
+        
+        }
+        
+ 
+        return null;
     }
 
     private String Sacar_persona(ObjectContainer Base, String cod) {
