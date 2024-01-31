@@ -448,6 +448,7 @@ public class Reporte_test extends javax.swing.JFrame {
         jLabel3.setText("Test:");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
+        txt_titulo_re.setEditable(false);
         txt_titulo_re.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_titulo_re.setToolTipText("Ingrese el titulo");
         txt_titulo_re.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -478,16 +479,20 @@ public class Reporte_test extends javax.swing.JFrame {
         jLabel5.setText("Numero de Encuestados:");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, -1, 20));
 
+        txt_num.setEditable(false);
         txt_num.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel3.add(txt_num, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, 30, -1));
 
         jLabel6.setText("Mayor aceptacion:");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 90, 20));
+
+        txt_mayor.setEditable(false);
         jPanel3.add(txt_mayor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 230, -1));
 
         jLabel7.setText("Numero de Selecciones:");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
 
+        txta_descripcion.setEditable(false);
         txta_descripcion.setColumns(20);
         txta_descripcion.setRows(5);
         txta_descripcion.setToolTipText("Ingrese el contenido del test");
@@ -510,6 +515,7 @@ public class Reporte_test extends javax.swing.JFrame {
 
         jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 810, 610, 10));
 
+        txt_num_Secc.setEditable(false);
         txt_num_Secc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_num_SeccActionPerformed(evt);
@@ -668,7 +674,7 @@ public class Reporte_test extends javax.swing.JFrame {
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
 
         Base.close();
-        Reportes repor = new Reportes();
+        PagTest_Psicologo repor = new PagTest_Psicologo();
         repor.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
@@ -682,7 +688,7 @@ public class Reporte_test extends javax.swing.JFrame {
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         Base.close();
-        PagPrincipalAdmin paginaprinciadmi = new PagPrincipalAdmin();
+        PagPrincipalPsicologo paginaprinciadmi = new PagPrincipalPsicologo();
         paginaprinciadmi.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenu2MouseClicked
@@ -712,6 +718,14 @@ public class Reporte_test extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Reporte_test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

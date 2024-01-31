@@ -58,7 +58,6 @@ public class Reportes extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
-        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BtnInfNiño.setBackground(new java.awt.Color(255, 255, 255));
@@ -280,13 +279,13 @@ public class Reportes extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
     private void BtnReportTestNiñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReportTestNiñoActionPerformed
-       Reporte_test_niño niño = new Reporte_test_niño();
+       Reporte_test_niño_Admin niño = new Reporte_test_niño_Admin();
             niño.setVisible(true);
                 this.setVisible(false);
     }//GEN-LAST:event_BtnReportTestNiñoActionPerformed
 
     private void BtnReporteTestRepreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReporteTestRepreActionPerformed
-        Reporte_test representante = new Reporte_test();
+        Reporte_test_Admin representante = new Reporte_test_Admin();
             representante.setVisible(true);
                 this.setVisible(false);
     }//GEN-LAST:event_BtnReporteTestRepreActionPerformed
@@ -316,6 +315,7 @@ public class Reportes extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Reportes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

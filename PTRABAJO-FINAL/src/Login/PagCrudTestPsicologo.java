@@ -13,6 +13,7 @@ import com.db4o.ext.DatabaseReadOnlyException;
 import com.db4o.ext.Db4oIOException;
 import com.db4o.query.Query;
 import java.awt.Color;
+import java.awt.HeadlessException;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
@@ -213,7 +214,6 @@ public final class PagCrudTestPsicologo extends javax.swing.JFrame {
         jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 160, 20));
 
         txt_titulo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txt_titulo.setForeground(new java.awt.Color(153, 153, 153));
         txt_titulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_tituloActionPerformed(evt);
@@ -374,13 +374,20 @@ public final class PagCrudTestPsicologo extends javax.swing.JFrame {
 
     private void btn_guardar_testActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar_testActionPerformed
         try {
+            if (!txt_titulo.getText().isEmpty() && !txtA_descrip.getText().isEmpty()) {
             Crear_Test(Base);
             javax.swing.JOptionPane.showMessageDialog(this, "Se guardo los datos del test");
             Bloquear_edicion_test();
             Desabilitar_Bloquear_edicion_antes_test();
             lbl_enunciado_guardar.setForeground(Color.white);
-
-        } catch (Exception e) {
+    
+            }else{
+            javax.swing.JOptionPane.showMessageDialog(this, "Llene todo lo requerido");
+            }
+            
+            
+        } catch (HeadlessException e) {
+            
         }
     }//GEN-LAST:event_btn_guardar_testActionPerformed
 
@@ -627,6 +634,22 @@ public final class PagCrudTestPsicologo extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(PagCrudTestPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

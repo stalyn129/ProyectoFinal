@@ -33,7 +33,7 @@ import org.jfree.data.general.DefaultPieDataset;
  *
  * @author alexa
  */
-public class Reporte_test_niño extends javax.swing.JFrame {
+public class Reporte_test_niño_Admin extends javax.swing.JFrame {
 
     String cod_Test = "";
     ObjectContainer Base;
@@ -44,7 +44,7 @@ public class Reporte_test_niño extends javax.swing.JFrame {
     /**
      * Creates new form Reporte_test
      */
-    public Reporte_test_niño() {
+    public Reporte_test_niño_Admin() {
         initComponents();
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
 
@@ -75,7 +75,6 @@ public class Reporte_test_niño extends javax.swing.JFrame {
         try {
             Test elTest = new Test();
 
-            elTest.setFKCod_Psicologo(usarData.getCod_Psicologo());
             elTest.setCod_destinatario("Niño");
             ObjectSet Result = Base.get(elTest);
             DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
@@ -156,7 +155,7 @@ public class Reporte_test_niño extends javax.swing.JFrame {
             String tit = selectedTestItem.toString();
             Test eltst = new Test();
             eltst.setTitulo_Test(tit);
-            eltst.setFKCod_Psicologo(usarData.getCod_Psicologo());
+
 
             ObjectSet result = Base.get(eltst);
 
@@ -611,7 +610,7 @@ public class Reporte_test_niño extends javax.swing.JFrame {
 
         LblTestPariente2.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         LblTestPariente2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LblTestPariente2.setText("REPORTE DE TEST DEL NIÑO/A");
+        LblTestPariente2.setText("REPORTE DE TEST DEL NIÑO/A GENERAL");
         jPanel1.add(LblTestPariente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 350, 30));
 
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGeneralReportes.png"))); // NOI18N
@@ -677,7 +676,7 @@ public class Reporte_test_niño extends javax.swing.JFrame {
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
 
         Base.close();
-        PagTest_Psicologo repor = new PagTest_Psicologo();
+        Reportes repor = new Reportes();
         repor.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
@@ -691,7 +690,7 @@ public class Reporte_test_niño extends javax.swing.JFrame {
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
                 Base.close();
-        PagPrincipalPsicologo paginaprinciadmi = new PagPrincipalPsicologo();
+        PagPrincipalAdmin paginaprinciadmi = new PagPrincipalAdmin();
         paginaprinciadmi.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenu2MouseClicked
@@ -713,14 +712,46 @@ public class Reporte_test_niño extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Reporte_test_niño.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reporte_test_niño_Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Reporte_test_niño.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reporte_test_niño_Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Reporte_test_niño.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reporte_test_niño_Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Reporte_test_niño.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reporte_test_niño_Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -757,7 +788,7 @@ public class Reporte_test_niño extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Reporte_test_niño().setVisible(true);
+                new Reporte_test_niño_Admin().setVisible(true);
             }
         });
     }

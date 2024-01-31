@@ -8,7 +8,6 @@ package Login;
 import Clases.Respuesta_Usuario;
 import Clases.*;
 import Clases.UserDataSingleton;
-
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
@@ -33,7 +32,7 @@ import org.jfree.data.general.DefaultPieDataset;
  *
  * @author alexa
  */
-public class Reporte_test_niño extends javax.swing.JFrame {
+public class Reporte_test_Admin extends javax.swing.JFrame {
 
     String cod_Test = "";
     ObjectContainer Base;
@@ -44,7 +43,7 @@ public class Reporte_test_niño extends javax.swing.JFrame {
     /**
      * Creates new form Reporte_test
      */
-    public Reporte_test_niño() {
+    public Reporte_test_Admin() {
         initComponents();
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
 
@@ -74,9 +73,7 @@ public class Reporte_test_niño extends javax.swing.JFrame {
     public void Mostrar_test(ObjectContainer Base) {
         try {
             Test elTest = new Test();
-
-            elTest.setFKCod_Psicologo(usarData.getCod_Psicologo());
-            elTest.setCod_destinatario("Niño");
+            elTest.setCod_destinatario("Representante");
             ObjectSet Result = Base.get(elTest);
             DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
 
@@ -156,7 +153,7 @@ public class Reporte_test_niño extends javax.swing.JFrame {
             String tit = selectedTestItem.toString();
             Test eltst = new Test();
             eltst.setTitulo_Test(tit);
-            eltst.setFKCod_Psicologo(usarData.getCod_Psicologo());
+
 
             ObjectSet result = Base.get(eltst);
 
@@ -196,7 +193,7 @@ public class Reporte_test_niño extends javax.swing.JFrame {
 
         } else {
             modelo.addElement("");
-            JOptionPane.showMessageDialog(this, "No hay preguntas del test");
+            JOptionPane.showMessageDialog(this, "Ho hay preguntas del test");
         }
         cbx_preguntas.setModel(modelo);
 
@@ -331,7 +328,7 @@ public class Reporte_test_niño extends javax.swing.JFrame {
 
         JFreeChart grafico_barras = ChartFactory.createBarChart3D(
                 "Resultado de la pregunta",
-                "Opciones de Respuesta para niños",
+                "Opciones de Respuesta",
                 "Resultados",
                 datos,
                 PlotOrientation.VERTICAL,
@@ -342,7 +339,7 @@ public class Reporte_test_niño extends javax.swing.JFrame {
 
         ChartPanel panel = new ChartPanel(grafico_barras);
         panel.setMouseWheelEnabled(true);
-        panel.setPreferredSize(new Dimension(500, 250));
+        panel.setPreferredSize(new Dimension(390, 250));
 
         // Asegúrate de estar ejecutando en el hilo de eventos de Swing
         SwingUtilities.invokeLater(() -> {
@@ -362,11 +359,11 @@ public class Reporte_test_niño extends javax.swing.JFrame {
         datos.setValue(respuesta2, numRes2);
         datos.setValue(respuesta3, numRes3);
 
-        JFreeChart grafico_circular = ChartFactory.createPieChart("Respuestas de Niños", datos, true, true, false);
+        JFreeChart grafico_circular = ChartFactory.createPieChart("Respuestas de Representantes", datos, true, true, false);
         ChartPanel panel = new ChartPanel(grafico_circular);
         panel.setMouseWheelEnabled(true);
         panel.setPreferredSize(new Dimension(310, 230));
-        
+
         SwingUtilities.invokeLater(() -> {
             grafic_circu.removeAll();
             grafic_circu.setLayout(new BorderLayout());
@@ -395,6 +392,7 @@ public class Reporte_test_niño extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txt_titulo_re = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
+        cbx_preguntas = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         barra_panel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -406,7 +404,6 @@ public class Reporte_test_niño extends javax.swing.JFrame {
         txta_descripcion = new javax.swing.JTextArea();
         jPanel6 = new javax.swing.JPanel();
         txt_num_Secc = new javax.swing.JTextField();
-        cbx_preguntas = new javax.swing.JComboBox<>();
         jPanel7 = new javax.swing.JPanel();
         grafic_circu = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -434,11 +431,11 @@ public class Reporte_test_niño extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cbx_Test.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
-        jPanel2.add(cbx_Test, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 320, -1));
+        jPanel2.add(cbx_Test, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 259, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Test:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -456,40 +453,42 @@ public class Reporte_test_niño extends javax.swing.JFrame {
         jPanel3.add(txt_titulo_re, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 350, 20));
         jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 370, 20));
 
-        jLabel4.setText("Preguntas:");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, 20));
+        cbx_preguntas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        jPanel3.add(cbx_preguntas, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 230, -1));
 
-        barra_panel.setBackground(new java.awt.Color(204, 252, 252));
-        barra_panel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jLabel4.setText("Preguntas:");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, 20));
+
+        barra_panel.setBackground(new java.awt.Color(204, 251, 252));
 
         javax.swing.GroupLayout barra_panelLayout = new javax.swing.GroupLayout(barra_panel);
         barra_panel.setLayout(barra_panelLayout);
         barra_panelLayout.setHorizontalGroup(
             barra_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 498, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         barra_panelLayout.setVerticalGroup(
             barra_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 248, Short.MAX_VALUE)
+            .addGap(0, 250, Short.MAX_VALUE)
         );
 
-        jPanel3.add(barra_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 500, 250));
+        jPanel3.add(barra_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 500, 250));
 
         jLabel5.setText("Numero de Encuestados:");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 20));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, -1, 20));
 
         txt_num.setEditable(false);
         txt_num.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel3.add(txt_num, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 30, -1));
+        jPanel3.add(txt_num, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, 30, -1));
 
         jLabel6.setText("Mayor aceptacion:");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 110, 20));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 90, 20));
 
         txt_mayor.setEditable(false);
-        jPanel3.add(txt_mayor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 130, -1));
+        jPanel3.add(txt_mayor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 230, -1));
 
         jLabel7.setText("Numero de Selecciones:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, -1, 20));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
 
         txta_descripcion.setEditable(false);
         txta_descripcion.setColumns(20);
@@ -497,7 +496,7 @@ public class Reporte_test_niño extends javax.swing.JFrame {
         txta_descripcion.setToolTipText("Ingrese el contenido del test");
         jScrollPane2.setViewportView(txta_descripcion);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 460, 60));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 510, 50));
 
         jPanel6.setBackground(new java.awt.Color(204, 255, 204));
 
@@ -505,26 +504,22 @@ public class Reporte_test_niño extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 830, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
 
-        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 10, 830));
+        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 810, 610, 10));
 
         txt_num_Secc.setEditable(false);
-        txt_num_Secc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_num_Secc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_num_SeccActionPerformed(evt);
             }
         });
-        jPanel3.add(txt_num_Secc, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 40, -1));
-
-        cbx_preguntas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
-        jPanel3.add(cbx_preguntas, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 360, -1));
+        jPanel3.add(txt_num_Secc, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 40, -1));
 
         jPanel7.setBackground(new java.awt.Color(204, 255, 204));
 
@@ -532,14 +527,14 @@ public class Reporte_test_niño extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 810, Short.MAX_VALUE)
         );
 
-        jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 830, 570, 10));
+        jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, 10, 810));
 
         grafic_circu.setBackground(new java.awt.Color(204, 251, 251));
 
@@ -554,11 +549,11 @@ public class Reporte_test_niño extends javax.swing.JFrame {
             .addGap(0, 250, Short.MAX_VALUE)
         );
 
-        jPanel3.add(grafic_circu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, 480, 250));
+        jPanel3.add(grafic_circu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 520, 480, 250));
 
         jScrollPane1.setViewportView(jPanel3);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 560, 250));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 620, 260));
 
         jLabel8.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -571,9 +566,9 @@ public class Reporte_test_niño extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, 110, -1));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 110, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 680, 360));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 690, 360));
 
         BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
         BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
@@ -611,8 +606,8 @@ public class Reporte_test_niño extends javax.swing.JFrame {
 
         LblTestPariente2.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         LblTestPariente2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LblTestPariente2.setText("REPORTE DE TEST DEL NIÑO/A");
-        jPanel1.add(LblTestPariente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 350, 30));
+        LblTestPariente2.setText("REPORTE DE TESTS DEL REPRESENTANTE_GENERAL");
+        jPanel1.add(LblTestPariente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 380, 30));
 
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGeneralReportes.png"))); // NOI18N
         Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -677,21 +672,21 @@ public class Reporte_test_niño extends javax.swing.JFrame {
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
 
         Base.close();
-        PagTest_Psicologo repor = new PagTest_Psicologo();
+        Reportes repor = new Reportes();
         repor.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
-              Base.close();
+       Base.close();
         IniciaAdmin loginadmin = new IniciaAdmin();
         loginadmin.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem1MousePressed
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
-                Base.close();
-        PagPrincipalPsicologo paginaprinciadmi = new PagPrincipalPsicologo();
+        Base.close();
+        PagPrincipalAdmin paginaprinciadmi = new PagPrincipalAdmin();
         paginaprinciadmi.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenu2MouseClicked
@@ -713,13 +708,13 @@ public class Reporte_test_niño extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Reporte_test_niño.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reporte_test_Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Reporte_test_niño.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reporte_test_Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Reporte_test_niño.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reporte_test_Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Reporte_test_niño.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reporte_test_Admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -757,7 +752,7 @@ public class Reporte_test_niño extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Reporte_test_niño().setVisible(true);
+                new Reporte_test_Admin().setVisible(true);
             }
         });
     }
