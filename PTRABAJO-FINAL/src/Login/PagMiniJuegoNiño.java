@@ -41,9 +41,6 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
         BtnLabeNiñoJuego1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        BtnRespondeNiñoJuego3 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         BtnCerrarPagina = new javax.swing.JButton();
@@ -87,7 +84,7 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
                 BtnDifeNiñoJuego2ActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnDifeNiñoJuego2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 120, 80));
+        jPanel1.add(BtnDifeNiñoJuego2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 120, 80));
 
         BtnLabeNiñoJuego1.setBackground(new java.awt.Color(255, 255, 255));
         BtnLabeNiñoJuego1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LaberintoNiñJueg.png"))); // NOI18N
@@ -109,33 +106,13 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 100, -1));
 
-        BtnRespondeNiñoJuego3.setBackground(new java.awt.Color(255, 255, 255));
-        BtnRespondeNiñoJuego3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CorrectoNiñoJuego.png"))); // NOI18N
-        BtnRespondeNiñoJuego3.setToolTipText("Haz click aqui para entrar al juego responde lo correcto");
-        BtnRespondeNiñoJuego3.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnRespondeNiñoJuego3.setOpaque(false);
-        BtnRespondeNiñoJuego3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRespondeNiñoJuego3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BtnRespondeNiñoJuego3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, 130, 80));
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel12.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jLabel12.setText("Responde lo correcto");
-        jPanel3.add(jLabel12);
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, 130, -1));
-
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel13.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel13.setText("Diferencias");
         jPanel4.add(jLabel13);
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 100, -1));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 300, 100, -1));
 
         BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
         BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
@@ -219,13 +196,6 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
                     this.setVisible(false);
     }//GEN-LAST:event_BtnLabeNiñoJuego1ActionPerformed
 
-    private void BtnRespondeNiñoJuego3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRespondeNiñoJuego3ActionPerformed
-        Base.close();
-            PagJuego3Niño RespondeCorrecto = new PagJuego3Niño();
-                RespondeCorrecto.setVisible(true);
-                    this.setVisible(false);
-    }//GEN-LAST:event_BtnRespondeNiñoJuego3ActionPerformed
-
     private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
@@ -255,7 +225,6 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
     private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JButton BtnDifeNiñoJuego2;
     private javax.swing.JButton BtnLabeNiñoJuego1;
-    private javax.swing.JButton BtnRespondeNiñoJuego3;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JLabel Fondo2;
@@ -263,7 +232,6 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
     private javax.swing.JMenu JMnPgPrinNiño2;
     private javax.swing.JMenuBar MenuGenerlNiño;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -273,7 +241,6 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }
