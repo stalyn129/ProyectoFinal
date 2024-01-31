@@ -80,7 +80,11 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
         setMinimumSize(new java.awt.Dimension(800, 500));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(800, 500));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -105,7 +109,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         jLabel3.setText("PARENTESCO");
-        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, -1, 30));
+        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, 30));
 
         BtnParentescoAdmin.setBackground(new java.awt.Color(255, 255, 255));
         BtnParentescoAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ParentezcoAdmin.png"))); // NOI18N
@@ -118,7 +122,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
                 BtnParentescoAdminActionPerformed(evt);
             }
         });
-        jPanel5.add(BtnParentescoAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 70, 50));
+        jPanel5.add(BtnParentescoAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 70, 50));
 
         BtnDiscaAdmin.setBackground(new java.awt.Color(255, 255, 255));
         BtnDiscaAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/DiscaAdmin.png"))); // NOI18N
@@ -136,11 +140,11 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
                 BtnDiscaAdminActionPerformed(evt);
             }
         });
-        jPanel5.add(BtnDiscaAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 70, 50));
+        jPanel5.add(BtnDiscaAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 70, 50));
 
         jLabel11.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         jLabel11.setText("DISCAPACIDAD");
-        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, -1, 30));
+        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, -1, 30));
 
         BtnEspeciAdmin.setBackground(new java.awt.Color(255, 255, 255));
         BtnEspeciAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EspeciAdmin.png"))); // NOI18N
@@ -153,11 +157,11 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
                 BtnEspeciAdminActionPerformed(evt);
             }
         });
-        jPanel5.add(BtnEspeciAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, 70, 50));
+        jPanel5.add(BtnEspeciAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 70, 50));
 
         jLabel1.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         jLabel1.setText("ESPECIALIZACIÓN");
-        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, -1, 30));
+        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, -1, 30));
 
         BtnNacionalidad.setBackground(new java.awt.Color(255, 255, 255));
         BtnNacionalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/NacioAdmin.png"))); // NOI18N
@@ -178,11 +182,11 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
                 BtnNacionalidadActionPerformed(evt);
             }
         });
-        jPanel5.add(BtnNacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 70, 50));
+        jPanel5.add(BtnNacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, 70, 50));
 
         jLabel6.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         jLabel6.setText("NACIONALIDADES");
-        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, -1, 30));
+        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, -1, 30));
 
         BtnUsuario.setBackground(new java.awt.Color(255, 255, 255));
         BtnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuariosAdmin.png"))); // NOI18N
@@ -194,11 +198,11 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
                 BtnUsuarioActionPerformed(evt);
             }
         });
-        jPanel5.add(BtnUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 70, 50));
+        jPanel5.add(BtnUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 70, 50));
 
         jLabel10.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         jLabel10.setText("USUARIOS");
-        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 330, -1, 30));
+        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, -1, 30));
 
         panel_grafic.setBackground(new java.awt.Color(255, 255, 255));
         panel_grafic.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -209,7 +213,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
                 panel_graficMouseClicked(evt);
             }
         });
-        jPanel5.add(panel_grafic, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 310, 230));
+        jPanel5.add(panel_grafic, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 310, 230));
 
         BtnReportes.setBackground(new java.awt.Color(255, 255, 255));
         BtnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/informe.png"))); // NOI18N
@@ -221,11 +225,11 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
                 BtnReportesActionPerformed(evt);
             }
         });
-        jPanel5.add(BtnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 70, 50));
+        jPanel5.add(BtnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 70, 50));
 
         jLabel12.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         jLabel12.setText("REPORTES");
-        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, 30));
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 340, -1, 30));
 
         jLabel4.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -242,11 +246,11 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
                 BtnPersonalidadAdmin1ActionPerformed(evt);
             }
         });
-        jPanel5.add(BtnPersonalidadAdmin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 390, 70, 50));
+        jPanel5.add(BtnPersonalidadAdmin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, 70, 50));
 
         jLabel13.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         jLabel13.setText("PERSONALIDAD");
-        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, -1, 30));
+        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, -1, 30));
 
         jScrollPane2.setViewportView(jPanel5);
 
@@ -277,16 +281,19 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, -1, -1));
 
         Txt_Nombre.setEditable(false);
+        Txt_Nombre.setFont(new java.awt.Font("Roboto", 1, 11)); // NOI18N
+        Txt_Nombre.setOpaque(false);
         Txt_Nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Txt_NombreActionPerformed(evt);
             }
         });
-        jPanel1.add(Txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 470, 110, -1));
+        jPanel1.add(Txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 470, 120, 20));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 492, 120, 0));
 
+        jLabel7.setFont(new java.awt.Font("Rockwell", 1, 11)); // NOI18N
         jLabel7.setText("Administrador:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 470, -1, 20));
 
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoAdmin.png"))); // NOI18N
         Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));

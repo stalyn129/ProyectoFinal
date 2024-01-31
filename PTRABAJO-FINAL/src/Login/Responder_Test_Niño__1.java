@@ -356,14 +356,14 @@ public class Responder_Test_Niño__1 extends javax.swing.JFrame {
         txt_pregunta.setEditable(false);
         txt_pregunta.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_pregunta.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel3.add(txt_pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 540, -1));
+        jPanel3.add(txt_pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 560, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Pregunta:");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         txt_resp2.setEditable(false);
-        txt_resp2.setBackground(new java.awt.Color(204, 255, 204));
+        txt_resp2.setBackground(new java.awt.Color(255, 255, 255));
         txt_resp2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_resp2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txt_resp2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -386,10 +386,10 @@ public class Responder_Test_Niño__1 extends javax.swing.JFrame {
                 txt_resp2ActionPerformed(evt);
             }
         });
-        jPanel3.add(txt_resp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 310, -1));
+        jPanel3.add(txt_resp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 500, -1));
 
         txt_resp1.setEditable(false);
-        txt_resp1.setBackground(new java.awt.Color(204, 255, 204));
+        txt_resp1.setBackground(new java.awt.Color(255, 255, 255));
         txt_resp1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_resp1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txt_resp1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -412,10 +412,10 @@ public class Responder_Test_Niño__1 extends javax.swing.JFrame {
                 txt_resp1ActionPerformed(evt);
             }
         });
-        jPanel3.add(txt_resp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 310, -1));
+        jPanel3.add(txt_resp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 500, -1));
 
         txt_resp3.setEditable(false);
-        txt_resp3.setBackground(new java.awt.Color(204, 255, 204));
+        txt_resp3.setBackground(new java.awt.Color(255, 255, 255));
         txt_resp3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_resp3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txt_resp3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -438,7 +438,7 @@ public class Responder_Test_Niño__1 extends javax.swing.JFrame {
                 txt_resp3ActionPerformed(evt);
             }
         });
-        jPanel3.add(txt_resp3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 310, -1));
+        jPanel3.add(txt_resp3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 500, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("2.");
@@ -451,7 +451,7 @@ public class Responder_Test_Niño__1 extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("1.");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, 20));
-        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 380, 10));
+        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 560, 10));
 
         Ingresar_respuesta.setBackground(new java.awt.Color(255, 255, 255));
         Ingresar_respuesta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -462,9 +462,9 @@ public class Responder_Test_Niño__1 extends javax.swing.JFrame {
                 Ingresar_respuestaActionPerformed(evt);
             }
         });
-        jPanel3.add(Ingresar_respuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 360, 20));
-        jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 380, 10));
-        jPanel3.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 380, 10));
+        jPanel3.add(Ingresar_respuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 320, 20));
+        jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 380, 10));
+        jPanel3.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 430, 10));
 
         txt_cod_3.setEditable(false);
         txt_cod_3.setBackground(new java.awt.Color(255, 255, 255));
@@ -602,9 +602,7 @@ public class Responder_Test_Niño__1 extends javax.swing.JFrame {
             if (tabla_datos.getRowCount() == 0) {
                 JOptionPane.showMessageDialog(this, "Las preguntas finalizaron");
                 Base.close();
-                PagTest_Niño pag = new PagTest_Niño();
-                pag.setVisible(true);
-                this.setVisible(false);
+                
             }
         } else {
         }

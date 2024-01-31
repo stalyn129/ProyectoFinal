@@ -104,10 +104,10 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         jPanel4.setPreferredSize(new java.awt.Dimension(568, 640));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        LblInfor2Niño.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
+        LblInfor2Niño.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         LblInfor2Niño.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblInfor2Niño.setText("Consejos Sobre El Bullying");
-        jPanel4.add(LblInfor2Niño, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 610, -1));
+        jPanel4.add(LblInfor2Niño, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 610, -1));
         jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 280, 10));
 
         jSeparator2.setForeground(new java.awt.Color(153, 153, 153));
@@ -166,10 +166,11 @@ public class PagConsejosNiño extends javax.swing.JFrame {
                 CmBoxConsejosNiñoActionPerformed(evt);
             }
         });
-        jPanel4.add(CmBoxConsejosNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 150, 20));
+        jPanel4.add(CmBoxConsejosNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 20));
 
-        jLabel1.setText("¿Te parecio Bien el consejo?");
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 570, -1, -1));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("¿Te parecio sirvio el consejo?");
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 570, 180, 10));
 
         btnSi.setText("SI");
         btnSi.addActionListener(new java.awt.event.ActionListener() {
@@ -177,7 +178,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
                 btnSiActionPerformed(evt);
             }
         });
-        jPanel4.add(btnSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 600, -1, -1));
+        jPanel4.add(btnSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 600, -1, -1));
 
         btnNo.setText("NO");
         btnNo.addActionListener(new java.awt.event.ActionListener() {
@@ -185,7 +186,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
                 btnNoActionPerformed(evt);
             }
         });
-        jPanel4.add(btnNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 600, -1, -1));
+        jPanel4.add(btnNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 600, -1, -1));
 
         jScrollPane1.setViewportView(jPanel4);
 

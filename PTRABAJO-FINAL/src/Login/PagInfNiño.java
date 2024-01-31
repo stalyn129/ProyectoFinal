@@ -186,7 +186,7 @@ public class PagInfNiño extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         cbx_datos.setToolTipText("Selecciona lo que mas te guste");
-        jPanel1.add(cbx_datos, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 130, -1));
+        jPanel1.add(cbx_datos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, -1));
 
         jLabel3.setText("¿Te parecio buena la informacion?");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, -1, -1));

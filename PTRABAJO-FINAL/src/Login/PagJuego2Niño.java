@@ -68,7 +68,6 @@ public class PagJuego2Niño extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtPuntuacion = new javax.swing.JTextField();
-        BtnTerminar = new javax.swing.JButton();
         Fondo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
         MenuGenerlNiño = new javax.swing.JMenuBar();
@@ -96,10 +95,10 @@ public class PagJuego2Niño extends javax.swing.JFrame {
         jPanel3.setPreferredSize(new java.awt.Dimension(520, 486));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        LblTituloDifeNiño2.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
+        LblTituloDifeNiño2.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         LblTituloDifeNiño2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblTituloDifeNiño2.setText("LAS DIFERENCIAS");
-        jPanel3.add(LblTituloDifeNiño2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 630, -1));
+        jPanel3.add(LblTituloDifeNiño2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 480, -1));
 
         LblPreguntaDifeNiño.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         LblPreguntaDifeNiño.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -117,10 +116,10 @@ public class PagJuego2Niño extends javax.swing.JFrame {
         jSeparator5.setForeground(new java.awt.Color(153, 153, 153));
         jPanel3.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 590, 10));
 
-        LblTituloDifeNiño1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
+        LblTituloDifeNiño1.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         LblTituloDifeNiño1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblTituloDifeNiño1.setText("HOY TENEMOS EL JUEGO DE:");
-        jPanel3.add(LblTituloDifeNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 630, -1));
+        jPanel3.add(LblTituloDifeNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 480, -1));
 
         LblSubTituDiferenJuegNiño.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         jPanel3.add(LblSubTituDiferenJuegNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 590, 20));
@@ -132,7 +131,7 @@ public class PagJuego2Niño extends javax.swing.JFrame {
                 BtnADifeNiño1ActionPerformed(evt);
             }
         });
-        jPanel3.add(BtnADifeNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 60, 30));
+        jPanel3.add(BtnADifeNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, 60, 30));
 
         BtnGrupDifeJuego2.add(BtnADifeNiño2);
         BtnADifeNiño2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -141,7 +140,7 @@ public class PagJuego2Niño extends javax.swing.JFrame {
                 BtnADifeNiño2ActionPerformed(evt);
             }
         });
-        jPanel3.add(BtnADifeNiño2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 430, 60, 30));
+        jPanel3.add(BtnADifeNiño2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 60, 30));
 
         BtnGrupDifeJuego2.add(BtnADifeNiño3);
         BtnADifeNiño3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -150,7 +149,7 @@ public class PagJuego2Niño extends javax.swing.JFrame {
                 BtnADifeNiño3ActionPerformed(evt);
             }
         });
-        jPanel3.add(BtnADifeNiño3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 430, 60, 30));
+        jPanel3.add(BtnADifeNiño3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 60, 30));
 
         BtnGrupDifeJuego2.add(BtnADifeNiño4);
         BtnADifeNiño4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -159,7 +158,7 @@ public class PagJuego2Niño extends javax.swing.JFrame {
                 BtnADifeNiño4ActionPerformed(evt);
             }
         });
-        jPanel3.add(BtnADifeNiño4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 430, 60, 30));
+        jPanel3.add(BtnADifeNiño4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, 60, 30));
 
         BtnGrupDifeJuego2.add(BtnADifeNiño5);
         BtnADifeNiño5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -168,7 +167,7 @@ public class PagJuego2Niño extends javax.swing.JFrame {
                 BtnADifeNiño5ActionPerformed(evt);
             }
         });
-        jPanel3.add(BtnADifeNiño5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 60, 30));
+        jPanel3.add(BtnADifeNiño5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 420, 60, 30));
 
         jComboJuego.setToolTipText("Selecciona la que mas te guste");
         jComboJuego.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -177,7 +176,7 @@ public class PagJuego2Niño extends javax.swing.JFrame {
                 jComboJuegoActionPerformed(evt);
             }
         });
-        jPanel3.add(jComboJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 140, 20));
+        jPanel3.add(jComboJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 20));
 
         jScrollPane1.setViewportView(jPanel3);
 
@@ -240,14 +239,6 @@ public class PagJuego2Niño extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtPuntuacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 390, 40, -1));
-
-        BtnTerminar.setText("Terminar Juego");
-        BtnTerminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnTerminarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BtnTerminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, -1, -1));
 
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoJuego2Niño.png"))); // NOI18N
         Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -345,10 +336,6 @@ public class PagJuego2Niño extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtPuntuacionActionPerformed
 
-    private void BtnTerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTerminarActionPerformed
-        realizarAccionesAlTerminar();
-    }//GEN-LAST:event_BtnTerminarActionPerformed
-
     private void BtnADifeNiño4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnADifeNiño4ActionPerformed
         int respuestaUsuario = Integer.parseInt(BtnADifeNiño4.getText().split("\\.")[1].trim());
         verificarRespuesta(Base, String.valueOf(jComboJuego.getSelectedItem()), respuestaUsuario);
@@ -400,7 +387,6 @@ public class PagJuego2Niño extends javax.swing.JFrame {
     private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.ButtonGroup BtnGrupDifeJuego2;
     private javax.swing.JButton BtnRegresar1;
-    private javax.swing.JButton BtnTerminar;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMnItmCerrarNiño2;
