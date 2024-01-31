@@ -81,9 +81,7 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 500));
         setMinimumSize(new java.awt.Dimension(800, 500));
-        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 500));
@@ -387,7 +385,13 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
     private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
-        // TODO add your handling code here:
+        String codigoAEliminar = JOptionPane.showInputDialog(this, "Ingrese el código a eliminar:");
+
+        if (codigoAEliminar != null && !codigoAEliminar.isEmpty()) {
+            EliminarRegistro(Base, codigoAEliminar);
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un código válido para eliminar.");
+        }
     }//GEN-LAST:event_btnEliminar1ActionPerformed
 
     private void btnConsultar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultar1ActionPerformed
@@ -480,6 +484,7 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
             }
         });
     }
+
     private void ConsultarRegistro(ObjectContainer Base, String consulta, int tipoConsulta) {
         // Creando un objeto de ejemplo para la consulta
         ValoracionCuento ejemploConsulta = new ValoracionCuento(null, null, null, null, null);
@@ -746,7 +751,6 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
         }
     }
 
-
     public int num_si(ObjectContainer Base) {
 
         ValoracionCuento puntu = new ValoracionCuento();
@@ -779,7 +783,7 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
         pack();
         repaint();
     }
-    
+
     public int num_si_niño(ObjectContainer Base) {
 
         ValoracionCuentoNiño puntu = new ValoracionCuentoNiño();
@@ -812,7 +816,7 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
         pack();
         repaint();
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;

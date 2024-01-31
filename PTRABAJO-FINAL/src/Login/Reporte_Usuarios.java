@@ -513,7 +513,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Apellido", "Apodo", "Fecha_nacim.", "Sexo", "cod_discapacidad"
+                "Nombre", "Apellido", "Apodo", "Fecha_nacim.", "Sexo", "Discapacidad"
             }
         ));
         tabla_niños.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -986,8 +986,8 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
 
         Base.close();
-        Reportes repor = new Reportes();
-        repor.setVisible(true);
+        PagPrincipalAdmin mipagpriad = new PagPrincipalAdmin();
+        mipagpriad.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
     public void eliminar_persona() {

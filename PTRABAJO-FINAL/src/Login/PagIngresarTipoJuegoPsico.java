@@ -14,11 +14,10 @@ import com.db4o.ObjectContainer;
  */
 public class PagIngresarTipoJuegoPsico extends javax.swing.JFrame {
 
-    ObjectContainer Base;
+    
 
     public PagIngresarTipoJuegoPsico() {
         initComponents();
-        Base = Db4o.openFile("src/BBDD/BaseDat.yap");
     }
 
     /**
@@ -38,9 +37,6 @@ public class PagIngresarTipoJuegoPsico extends javax.swing.JFrame {
         BtnDifeNiñoJuego2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        BtnRespondeNiñoJuego3 = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
         Fondo3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -90,7 +86,7 @@ public class PagIngresarTipoJuegoPsico extends javax.swing.JFrame {
                 BtnDifeNiñoJuego2ActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnDifeNiñoJuego2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 120, 80));
+        jPanel1.add(BtnDifeNiñoJuego2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, 120, 80));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -98,27 +94,7 @@ public class PagIngresarTipoJuegoPsico extends javax.swing.JFrame {
         jLabel13.setText("Diferencias");
         jPanel4.add(jLabel13);
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 100, -1));
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel12.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jLabel12.setText("Responde lo correcto");
-        jPanel3.add(jLabel12);
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, 130, -1));
-
-        BtnRespondeNiñoJuego3.setBackground(new java.awt.Color(255, 255, 255));
-        BtnRespondeNiñoJuego3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CorrectoNiñoJuego.png"))); // NOI18N
-        BtnRespondeNiñoJuego3.setToolTipText("Haz click aqui para entrar al minijuego responde lo correcto");
-        BtnRespondeNiñoJuego3.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnRespondeNiñoJuego3.setOpaque(false);
-        BtnRespondeNiñoJuego3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRespondeNiñoJuego3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BtnRespondeNiñoJuego3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, 130, 80));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, 100, -1));
 
         BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
         BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
@@ -195,39 +171,28 @@ public class PagIngresarTipoJuegoPsico extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnLabeNiñoJuego1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLabeNiñoJuego1ActionPerformed
-        Base.close();
         Pag_Crud_JLaberinto laberinto = new Pag_Crud_JLaberinto();
         laberinto.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnLabeNiñoJuego1ActionPerformed
 
     private void BtnDifeNiñoJuego2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDifeNiñoJuego2ActionPerformed
-        Base.close();
         Pag_Crud_JDiferencias Df = new Pag_Crud_JDiferencias();
         Df.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnDifeNiñoJuego2ActionPerformed
-
-    private void BtnRespondeNiñoJuego3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRespondeNiñoJuego3ActionPerformed
-//        Base.close();
-//        PagJuego3Niño RespondeCorrecto = new PagJuego3Niño();
-//        RespondeCorrecto.setVisible(true);
-//        this.setVisible(false);
-    }//GEN-LAST:event_BtnRespondeNiñoJuego3ActionPerformed
 
     private void JMnItmCerrarPsicologoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_JMnItmCerrarPsicologoMouseClicked
 
     private void JMnItmCerrarPsicologoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarPsicologoMousePressed
-        Base.close();
         InicioPsicologo loginPsicologo = new InicioPsicologo();
         loginPsicologo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_JMnItmCerrarPsicologoMousePressed
 
     private void JMnPgPrinPsicoloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinPsicoloMouseClicked
-        Base.close();
         PagPrincipalPsicologo principal = new PagPrincipalPsicologo();
         principal.setVisible(true);
         this.setVisible(false);
@@ -280,7 +245,6 @@ public class PagIngresarTipoJuegoPsico extends javax.swing.JFrame {
     private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JButton BtnDifeNiñoJuego2;
     private javax.swing.JButton BtnLabeNiñoJuego1;
-    private javax.swing.JButton BtnRespondeNiñoJuego3;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JLabel Fondo3;
@@ -288,7 +252,6 @@ public class PagIngresarTipoJuegoPsico extends javax.swing.JFrame {
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
     private javax.swing.JMenu JMnPgPrinPsicolo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
@@ -296,7 +259,6 @@ public class PagIngresarTipoJuegoPsico extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }

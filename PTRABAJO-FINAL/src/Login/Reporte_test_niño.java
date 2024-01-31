@@ -196,7 +196,7 @@ public class Reporte_test_niño extends javax.swing.JFrame {
 
         } else {
             modelo.addElement("");
-            JOptionPane.showMessageDialog(this, "Ho hay preguntas del test");
+            JOptionPane.showMessageDialog(this, "No hay preguntas del test");
         }
         cbx_preguntas.setModel(modelo);
 

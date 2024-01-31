@@ -564,20 +564,25 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         
     }
     public void Modificar(ObjectContainer Base) {
-        Informacion inf = new Informacion();
-        inf.setCod_Info(cod_info_mod);
-        ObjectSet result = Base.get(inf);
-
-        Informacion ModInfo = (Informacion) result.next();
-
-        ModInfo.setTitulo_Info(txt_Titulo1.getText());
-        ModInfo.setTexto_Info(txA_text_info1.getText());
-        ModInfo.setImagen(imagen);
-        Base.store(ModInfo);
-        Base.commit();
-        Vaciar_datos();
-        JOptionPane.showMessageDialog(this, "Se Modifico exitosamente");
-        cod_info_mod = "";
+        if (!cod_info_mod.isEmpty()) {
+            Informacion inf = new Informacion();
+            inf.setCod_Info(cod_info_mod);
+            ObjectSet result = Base.get(inf);
+            
+            Informacion ModInfo = (Informacion) result.next();
+            
+            ModInfo.setTitulo_Info(txt_Titulo1.getText());
+            ModInfo.setTexto_Info(txA_text_info1.getText());
+            ModInfo.setImagen(imagen);
+            Base.store(ModInfo);
+            Base.commit();
+            Vaciar_datos();
+            JOptionPane.showMessageDialog(this, "Se Modifico exitosamente");
+            cod_info_mod = "";
+        }else{
+            JOptionPane.showMessageDialog(this, "Primero seleccionar la información");
+        }
+        
 
     }
 

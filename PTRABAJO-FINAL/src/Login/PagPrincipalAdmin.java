@@ -59,8 +59,6 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         BtnNacionalidad = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        BtnMiniRepor = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         BtnUsuario = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         panel_grafic = new javax.swing.JPanel();
@@ -186,22 +184,6 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         jLabel6.setText("NACIONALIDADES");
         jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, -1, 30));
 
-        BtnMiniRepor.setBackground(new java.awt.Color(255, 255, 255));
-        BtnMiniRepor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JuegosAdmin.png"))); // NOI18N
-        BtnMiniRepor.setToolTipText("Haz click aqui para entrar a la pestaña de Reporte Juegos");
-        BtnMiniRepor.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnMiniRepor.setOpaque(false);
-        BtnMiniRepor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnMiniReporActionPerformed(evt);
-            }
-        });
-        jPanel5.add(BtnMiniRepor, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 70, 50));
-
-        jLabel5.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
-        jLabel5.setText("MINI JUEGOS");
-        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, 30));
-
         BtnUsuario.setBackground(new java.awt.Color(255, 255, 255));
         BtnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuariosAdmin.png"))); // NOI18N
         BtnUsuario.setToolTipText("Haz click aqui para entrar a la pestaña de Usuarios");
@@ -239,11 +221,11 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
                 BtnReportesActionPerformed(evt);
             }
         });
-        jPanel5.add(BtnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 70, 50));
+        jPanel5.add(BtnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 70, 50));
 
         jLabel12.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         jLabel12.setText("REPORTES");
-        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, -1, 30));
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, 30));
 
         jLabel4.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -353,10 +335,6 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         parentesco.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnParentescoAdminActionPerformed
-
-    private void BtnMiniReporActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMiniReporActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnMiniReporActionPerformed
 
     private void BtnNacionalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNacionalidadActionPerformed
         Base.close();
@@ -501,7 +479,6 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JButton BtnDiscaAdmin;
     private javax.swing.JButton BtnEspeciAdmin;
-    private javax.swing.JButton BtnMiniRepor;
     private javax.swing.JButton BtnNacionalidad;
     private javax.swing.JButton BtnParentescoAdmin;
     private javax.swing.JButton BtnPersonalidadAdmin1;
@@ -518,7 +495,6 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
