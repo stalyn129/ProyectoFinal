@@ -158,7 +158,7 @@ public class PagInfRepre extends javax.swing.JFrame {
 
             Incremental++;
 
-            Codigo = String.format("ReIn-%04d", Incremental);
+            Codigo = String.format("Ren-%04d", Incremental);
 
             if (Verificar_Resp(Base, Codigo) == 0) {
                 rest = false;

@@ -387,7 +387,7 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
         String codigoAEliminar = JOptionPane.showInputDialog(this, "Ingrese el código a eliminar:");
 
         if (codigoAEliminar != null && !codigoAEliminar.isEmpty()) {
-            EliminarRegistro(Base, codigoAEliminar);
+            EliminarRegistroNiño(Base, codigoAEliminar);
         } else {
             JOptionPane.showMessageDialog(this, "Debe ingresar un código válido para eliminar.");
         }
@@ -574,6 +574,8 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
         }
     }
+    
+   
 
     public void MostrarDatosInfoRepre(ObjectContainer Base) {
         ValoracionCuento puntu = new ValoracionCuento();
@@ -616,7 +618,7 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
     }
 
     //Aqui Termina
-    //Metodos juego laberinto
+    //Metodos niño
     private void ConsultarRegistroInfoNiño(ObjectContainer Base, String consulta, int tipoConsulta) {
         // Creando un objeto de ejemplo para la consulta
         ValoracionCuentoNiño ejemploConsulta = new ValoracionCuentoNiño(null, null, null, null, null);
@@ -655,7 +657,7 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Registros consultados con éxito");
 
                 // Llamar al método ConsultarDatos pasando la lista de registros consultados
-                ConsultarDatosLab(Base, registrosConsultados);
+                ConsultarDatosNiño(Base, registrosConsultados);
             } else {
                 JOptionPane.showMessageDialog(this, "No se encontraron registros en la base de datos");
             }
@@ -666,7 +668,7 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
         }
     }
 
-    private void ConsultarDatosLab(ObjectContainer Base, List<ValoracionCuentoNiño> registrosConsultados) {
+    private void ConsultarDatosNiño(ObjectContainer Base, List<ValoracionCuentoNiño> registrosConsultados) {
         // Obtener el modelo de la tabla
         DefaultTableModel modelo = (DefaultTableModel) jTableInfoniño.getModel();
 
@@ -688,9 +690,9 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
         }
     }
 
-    private void EliminarRegistroLab(ObjectContainer base, String Cod_Lab) {
+    private void EliminarRegistroNiño(ObjectContainer base, String Cod_valo) {
 
-        ValoracionCuentoNiño cuen = new ValoracionCuentoNiño(Cod_Lab, null, null, null, null);
+        ValoracionCuentoNiño cuen = new ValoracionCuentoNiño(Cod_valo, null, null, null, null);
 
         // Mensaje de depuración
         System.out.println("Buscando el registro en la base de datos...");
@@ -703,7 +705,7 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
 
             base.delete(result.next());
             JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
-            MostrarDatosInfoRepre(base); // Actualizar la tabla después de la eliminación
+            MostrarDatoCuentoNiño(base); // Actualizar la tabla después de la eliminación
         } else {
             JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
         }

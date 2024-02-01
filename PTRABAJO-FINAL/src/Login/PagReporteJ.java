@@ -430,7 +430,7 @@ public class PagReporteJ extends javax.swing.JFrame {
             }
 
             if (consulta != null && !consulta.isEmpty()) {
-                ConsultarRegistro(Base, consulta, seleccion);
+                ConsultarRegistroLab(Base, consulta, seleccion);
             } else {
                 JOptionPane.showMessageDialog(this, "Debe ingresar un valor válido para la consulta.");
             }
@@ -445,7 +445,7 @@ public class PagReporteJ extends javax.swing.JFrame {
         String codigoAEliminar = JOptionPane.showInputDialog(this, "Ingrese el código a eliminar:");
 
         if (codigoAEliminar != null && !codigoAEliminar.isEmpty()) {
-            EliminarRegistro(Base, codigoAEliminar);
+            EliminarRegistroLab(Base, codigoAEliminar);
         } else {
             JOptionPane.showMessageDialog(this, "Debe ingresar un código válido para eliminar.");
         }
@@ -568,7 +568,7 @@ public class PagReporteJ extends javax.swing.JFrame {
 
             Base.delete(result.next());
             JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
-            MostrarDatos(Base); // Actualizar la tabla después de la eliminación
+            MostrarDatos(Base);
         } else {
             JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
         }
@@ -703,7 +703,7 @@ public class PagReporteJ extends javax.swing.JFrame {
 
             base.delete(result.next());
             JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
-            MostrarDatos(base); // Actualizar la tabla después de la eliminación
+            MostrarDatosLab(base);
         } else {
             JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
         }

@@ -11,6 +11,7 @@ import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.ext.Db4oIOException;
+import com.db4o.query.Predicate;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -357,7 +358,7 @@ public class Reporte_Informacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        String[] opciones = {"Código", "Código Niño", "Código Consejo"};
+        String[] opciones = {"Código", "Código Representante", "Código Consejo"};
         int seleccion = JOptionPane.showOptionDialog(this, "Seleccione el método de búsqueda:", "Método de Búsqueda", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
 
         if (seleccion != -1) {
@@ -368,10 +369,10 @@ public class Reporte_Informacion extends javax.swing.JFrame {
                 consulta = JOptionPane.showInputDialog(this, "Ingrese el código a consultar");
             } else if (seleccion == 1) {
                 // Búsqueda por código niño
-                consulta = JOptionPane.showInputDialog(this, "Ingrese el código niño a consultar");
+                consulta = JOptionPane.showInputDialog(this, "Ingrese el código Represnetante a consultar");
             } else if (seleccion == 2) {
                 // Búsqueda por código miniJuego
-                consulta = JOptionPane.showInputDialog(this, "Ingrese el código miniJuego a consultar");
+                consulta = JOptionPane.showInputDialog(this, "Ingrese el código de informacion a consultar");
             }
 
             if (consulta != null && !consulta.isEmpty()) {
@@ -409,15 +410,43 @@ public class Reporte_Informacion extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
     private void btnActualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizar1ActionPerformed
-        // TODO add your handling code here:
+        MostrarDatoInfoNiño(Base);
     }//GEN-LAST:event_btnActualizar1ActionPerformed
 
     private void btnConsultar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultar1ActionPerformed
-        // TODO add your handling code here:
+        String[] opciones = {"Código", "Código Niño", "Código Consejo"};
+        int seleccion = JOptionPane.showOptionDialog(this, "Seleccione el método de búsqueda:", "Método de Búsqueda", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+
+        if (seleccion != -1) {
+            String consulta = "";
+
+            if (seleccion == 0) {
+                // Búsqueda por código
+                consulta = JOptionPane.showInputDialog(this, "Ingrese el código a consultar");
+            } else if (seleccion == 1) {
+                // Búsqueda por código niño
+                consulta = JOptionPane.showInputDialog(this, "Ingrese el código niño a consultar");
+            } else if (seleccion == 2) {
+                // Búsqueda por código miniJuego
+                consulta = JOptionPane.showInputDialog(this, "Ingrese el código miniJuego a consultar");
+            }
+
+            if (consulta != null && !consulta.isEmpty()) {
+                ConsultarRegistroInfoNiño(Base, consulta, seleccion);
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar un valor válido para la consulta.");
+            }
+        }
     }//GEN-LAST:event_btnConsultar1ActionPerformed
 
     private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
-        // TODO add your handling code here:
+       String codigoAEliminar = JOptionPane.showInputDialog(this, "Ingrese el código a eliminar:");
+
+        if (codigoAEliminar != null && !codigoAEliminar.isEmpty()) {
+            EliminarRegistroInfoniño(Base, codigoAEliminar);
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un código válido para eliminar.");
+        }
     }//GEN-LAST:event_btnEliminar1ActionPerformed
 
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
@@ -434,7 +463,7 @@ public class Reporte_Informacion extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jMenu2MouseClicked
 
-    private void ConsultarRegistro(ObjectContainer Base, String consulta, int tipoConsulta) {
+   private void ConsultarRegistro(ObjectContainer Base, String consulta, int tipoConsulta) {
         // Creando un objeto de ejemplo para la consulta
         ValoracionInfoRepre ejemploConsulta = new ValoracionInfoRepre(null, null, null, null, null);
 
@@ -504,14 +533,14 @@ public class Reporte_Informacion extends javax.swing.JFrame {
         }
     }
 
-    private void EliminarRegistro(ObjectContainer Base, String Cod_Cuento) {
+    private void EliminarRegistro(ObjectContainer Base, String Cod_Info) {
 
-        ValoracionInfoRepre cuen = new ValoracionInfoRepre(Cod_Cuento, null, null, null, null);
+        ValoracionInfoRepre info = new ValoracionInfoRepre(Cod_Info, null, null, null, null);
 
         // Mensaje de depuración
         System.out.println("Buscando el registro en la base de datos...");
 
-        ObjectSet result = Base.queryByExample(cuen);
+        ObjectSet result = Base.queryByExample(info);
 
         if (result.hasNext()) {
             // Mensaje de depuración
@@ -524,6 +553,8 @@ public class Reporte_Informacion extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
         }
     }
+    
+   
 
     public void MostrarDatosInfoRepre(ObjectContainer Base) {
         ValoracionInfoRepre puntu = new ValoracionInfoRepre();
@@ -566,7 +597,7 @@ public class Reporte_Informacion extends javax.swing.JFrame {
     }
 
     //Aqui Termina
-    //Metodos juego laberinto
+    //Metodos Informacion
     private void ConsultarRegistroInfoNiño(ObjectContainer Base, String consulta, int tipoConsulta) {
         // Creando un objeto de ejemplo para la consulta
         ValoracionInfoNiño ejemploConsulta = new ValoracionInfoNiño(null, null, null, null, null);
@@ -605,7 +636,7 @@ public class Reporte_Informacion extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Registros consultados con éxito");
 
                 // Llamar al método ConsultarDatos pasando la lista de registros consultados
-                ConsultarDatosLab(Base, registrosConsultados);
+                ConsultarDatosInfoniño(Base, registrosConsultados);
             } else {
                 JOptionPane.showMessageDialog(this, "No se encontraron registros en la base de datos");
             }
@@ -616,7 +647,7 @@ public class Reporte_Informacion extends javax.swing.JFrame {
         }
     }
 
-    private void ConsultarDatosLab(ObjectContainer Base, List<ValoracionInfoNiño> registrosConsultados) {
+    private void ConsultarDatosInfoniño(ObjectContainer Base, List<ValoracionInfoNiño> registrosConsultados) {
         // Obtener el modelo de la tabla
         DefaultTableModel modelo = (DefaultTableModel) jTableInfoniño.getModel();
 
@@ -638,7 +669,7 @@ public class Reporte_Informacion extends javax.swing.JFrame {
         }
     }
 
-    private void EliminarRegistroLab(ObjectContainer base, String Cod_Lab) {
+    private void EliminarRegistroInfoniño(ObjectContainer base, String Cod_Lab) {
 
         ValoracionInfoNiño cuen = new ValoracionInfoNiño(Cod_Lab, null, null, null, null);
 
@@ -653,7 +684,7 @@ public class Reporte_Informacion extends javax.swing.JFrame {
 
             base.delete(result.next());
             JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
-            MostrarDatosInfoRepre(base); // Actualizar la tabla después de la eliminación
+            MostrarDatoInfoNiño(base);
         } else {
             JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
         }
@@ -682,7 +713,7 @@ public class Reporte_Informacion extends javax.swing.JFrame {
 
     }
 
-    public void ConsultarDatosLab(ObjectContainer base, ValoracionInfoNiño consulta) {
+    public void ConsultarDatosInfoniño(ObjectContainer base, ValoracionInfoNiño consulta) {
         DefaultTableModel modelo = (DefaultTableModel) jTableInfoniño.getModel();
 
         // Limpiar el modelo antes de agregar nuevas filas
@@ -771,7 +802,7 @@ public class Reporte_Informacion extends javax.swing.JFrame {
         pack();
         repaint();
     }
-    
+
     public int num_si_niño(ObjectContainer Base) {
 
         ValoracionInfoNiño puntu = new ValoracionInfoNiño();
