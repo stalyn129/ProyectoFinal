@@ -13,7 +13,10 @@ import Clases.UserDataSingleton;
 import com.db4o.*;
 import com.db4o.ObjectContainer;
 import java.text.SimpleDateFormat;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
@@ -299,26 +302,30 @@ public class PagForoPariente extends javax.swing.JFrame {
         // Obtener todos los comentarios de la base de datos
         ObjectSet<Comentario> comentarios = Base.query(Comentario.class);
 
+        // Filtrar comentarios solo para el foro actual
+        List<Comentario> comentariosForoActual = comentarios.stream()
+                .filter(comentario -> codigoForoActual.equals(comentario.getFK_Cod_Foro()))
+                .sorted(Comparator.comparing(Comentario::getFecha_Comen))
+                .collect(Collectors.toList());
+
         // Limpiar el contenido actual del txtParticipaciones
         txtParticipaciones.setText("");
 
-        // Iterar sobre los comentarios y agregar solo aquellos del foro actual al txtParticipaciones
-        for (Comentario comentario : comentarios) {
-            if (codigoForoActual.equals(comentario.getFK_Cod_Foro())) {
-                // Formatear la información del comentario
-                String nombreUsuario = obtenerNombreUsuario(comentario.getFK_Cod_Participante());
-                String contenidoComentario = comentario.getContenido_Comen();
-                String fechaComentario = formatoFecha(comentario.getFecha_Comen());
+        // Iterar sobre los comentarios ordenados y agregar solo aquellos del foro actual al txtParticipaciones
+        for (Comentario comentario : comentariosForoActual) {
+            // Formatear la información del comentario
+            String nombreUsuario = obtenerNombreUsuario(comentario.getFK_Cod_Participante());
+            String contenidoComentario = comentario.getContenido_Comen();
+            String fechaComentario = formatoFecha(comentario.getFecha_Comen());
 
-                // Crear el formato deseado
-                String comentarioFormateado = String.format(
-                        "Nombre: %s\nContenido del comentario: %s\nFecha del comentario: %s\n\n",
-                        nombreUsuario, contenidoComentario, fechaComentario
-                );
+            // Crear el formato deseado
+            String comentarioFormateado = String.format(
+                    "Nombre: %s\nContenido del comentario: %s\nFecha del comentario: %s\n\n",
+                    nombreUsuario, contenidoComentario, fechaComentario
+            );
 
-                // Agregar el comentario formateado al txtParticipaciones
-                txtParticipaciones.append(comentarioFormateado);
-            }
+            // Agregar el comentario formateado al txtParticipaciones
+            txtParticipaciones.append(comentarioFormateado);
         }
     }
 
@@ -328,41 +335,38 @@ public class PagForoPariente extends javax.swing.JFrame {
     }
 
     private String obtenerNombreUsuario(String codigoParticipante) {
-       
-        String nom="",apell="";
-        Representante repre=new Representante();
+
+        String nom = "", apell = "";
+        Representante repre = new Representante();
         repre.setCod_Repre(codigoParticipante);
-        ObjectSet result=Base.get(repre);
-        
-        if (result.size()!=0) {
+        ObjectSet result = Base.get(repre);
+
+        if (result.size() != 0) {
             while (result.hasNext()) {
-                Representante next =(Representante) result.next();
-                String cod=next.getFKCod_Cedula();
-                
-                Persona person=new Persona();
+                Representante next = (Representante) result.next();
+                String cod = next.getFKCod_Cedula();
+
+                Persona person = new Persona();
                 person.setCedula(cod);
-                ObjectSet rest=Base.get(person);
-                
+                ObjectSet rest = Base.get(person);
+
                 while (rest.hasNext()) {
-                    Persona next1 =(Persona) rest.next();
-                    nom=next1.getNombre();
-                    apell=next1.getApellido();
-                    
-                    
-                    
+                    Persona next1 = (Persona) rest.next();
+                    nom = next1.getNombre();
+                    apell = next1.getApellido();
+
                 }
-                
+
             }
-            String nombre=nom+" "+apell;
+            String nombre = nom + " " + apell;
             return nombre;
-            
-        }else{
-        
+
+        } else {
+
             JOptionPane.showMessageDialog(this, "No se encontro al representante");
-        
+
         }
-        
- 
+
         return null;
     }
 
