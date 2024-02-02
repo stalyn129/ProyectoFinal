@@ -37,10 +37,10 @@ public class Reportes extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         BtnCerrarPagina = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JSeparator();
-        BtnReportTestNiño = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
         BtnReporteTestRepre = new javax.swing.JButton();
+        BtnReporteTestRepre1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -131,18 +131,6 @@ public class Reportes extends javax.swing.JFrame {
         getContentPane().add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
         getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, 120, 10));
 
-        BtnReportTestNiño.setBackground(new java.awt.Color(255, 255, 255));
-        BtnReportTestNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TestNiño.png"))); // NOI18N
-        BtnReportTestNiño.setToolTipText("Haz click aqui para entrar a reporte test niño/a");
-        BtnReportTestNiño.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnReportTestNiño.setOpaque(false);
-        BtnReportTestNiño.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnReportTestNiñoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(BtnReportTestNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 120, 70));
-
         jLabel8.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         jLabel8.setText("TEST REPRESENTANTE");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, -1, 20));
@@ -159,6 +147,18 @@ public class Reportes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BtnReporteTestRepre, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 120, 70));
+
+        BtnReporteTestRepre1.setBackground(new java.awt.Color(255, 255, 255));
+        BtnReporteTestRepre1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TestNiño.png"))); // NOI18N
+        BtnReporteTestRepre1.setToolTipText("Haz click aqui para entrar a reporte test niño/a");
+        BtnReporteTestRepre1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnReporteTestRepre1.setOpaque(false);
+        BtnReporteTestRepre1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnReporteTestRepre1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnReporteTestRepre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 120, 70));
 
         jLabel7.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         jLabel7.setText("TEST NIÑO/A");
@@ -278,17 +278,17 @@ public class Reportes extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
-    private void BtnReportTestNiñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReportTestNiñoActionPerformed
-       Reporte_test_niño_Admin niño = new Reporte_test_niño_Admin();
-            niño.setVisible(true);
-                this.setVisible(false);
-    }//GEN-LAST:event_BtnReportTestNiñoActionPerformed
-
     private void BtnReporteTestRepreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReporteTestRepreActionPerformed
         Reporte_test_Admin representante = new Reporte_test_Admin();
             representante.setVisible(true);
                 this.setVisible(false);
     }//GEN-LAST:event_BtnReporteTestRepreActionPerformed
+
+    private void BtnReporteTestRepre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReporteTestRepre1ActionPerformed
+        Reporte_test_niño_Admin niño = new Reporte_test_niño_Admin();
+            niño.setVisible(true);
+                this.setVisible(false);
+    }//GEN-LAST:event_BtnReporteTestRepre1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,8 +332,8 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JButton BtnInfNiño1;
     private javax.swing.JButton BtnInfNiño2;
     private javax.swing.JButton BtnInfNiño3;
-    private javax.swing.JButton BtnReportTestNiño;
     private javax.swing.JButton BtnReporteTestRepre;
+    private javax.swing.JButton BtnReporteTestRepre1;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JLabel LblInformacionNiño;
     private javax.swing.JLabel LblInformacionNiño1;

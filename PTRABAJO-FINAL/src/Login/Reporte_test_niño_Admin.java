@@ -176,31 +176,37 @@ public class Reporte_test_niño_Admin extends javax.swing.JFrame {
     }
 
     public void Mostrar_preguntas(ObjectContainer Base) {
-        Preguntas resp = new Preguntas();
-        resp.setFK_Codigo_Test(cod_Test);
+        try {
+            Preguntas resp = new Preguntas();
+            resp.setFK_Codigo_Test(cod_Test);
 
-        ObjectSet result = Base.get(resp);
-        DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
-        int num = result.size();
-        if (result.size() != 0) {
-            while (result.hasNext()) {
-                Preguntas next = (Preguntas) result.next();
+            ObjectSet result = Base.get(resp);
+            DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
 
-                modelo.addElement(next.getEnunciado());
+            int num = result.size();
+            System.out.println("Número de preguntas en la base de datos: " + num);
 
+            // Comprueba si hay preguntas antes de mostrar el mensaje
+            if (num > 0) {
+                while (result.hasNext()) {
+                    Preguntas next = (Preguntas) result.next();
+                    modelo.addElement(next.getEnunciado());
+                }
+
+                int numeorEncues = mostra_num_encuestados(Base, cod_Test);
+                numeorEncues = numeorEncues / num;
+                txt_num.setText(String.valueOf(numeorEncues));
+            } else {
+                // No hay preguntas, simplemente no hagas nada y termina la función
+                return;
             }
-            int numeorEncues = mostra_num_encuestados(Base, cod_Test);
-            numeorEncues = numeorEncues / num;
-            txt_num.setText(String.valueOf(numeorEncues));
 
-        } else {
-            modelo.addElement("");
-            JOptionPane.showMessageDialog(this, "No hay preguntas del test");
+            cbx_preguntas.setModel(modelo);
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Manejo de la excepción, si es necesario.
         }
-        cbx_preguntas.setModel(modelo);
-
     }
-
     public int mostra_num_encuestados(ObjectContainer Base, String cod_Test) {
         Respuesta_Usuario res = new Respuesta_Usuario();
         res.setFK_Cod_text(cod_Test);
@@ -411,7 +417,6 @@ public class Reporte_test_niño_Admin extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
-        BtnRegresar = new javax.swing.JButton();
         LblTestPariente1 = new javax.swing.JLabel();
         LblTestPariente2 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
@@ -592,17 +597,6 @@ public class Reporte_test_niño_Admin extends javax.swing.JFrame {
         });
         jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
 
-        BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
-        BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
-        BtnRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnRegresar.setOpaque(false);
-        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRegresarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 440, 50, 40));
-
         LblTestPariente1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         LblTestPariente1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblTestPariente1.setText("BIENVENIDO AL AREA DE:");
@@ -672,14 +666,6 @@ public class Reporte_test_niño_Admin extends javax.swing.JFrame {
         Eliminar(Base);
         Mostrar_test(Base);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
-
-        Base.close();
-        Reportes repor = new Reportes();
-        repor.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_BtnRegresarActionPerformed
 
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
               Base.close();
@@ -795,7 +781,6 @@ public class Reporte_test_niño_Admin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
-    private javax.swing.JButton BtnRegresar;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JLabel LblTestPariente1;
     private javax.swing.JLabel LblTestPariente2;
