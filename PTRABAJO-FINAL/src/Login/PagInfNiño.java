@@ -131,6 +131,7 @@ public class PagInfNiño extends javax.swing.JFrame {
         jSeparator3.setForeground(new java.awt.Color(153, 153, 153));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PnlPrincipalInfNiño.setBackground(new java.awt.Color(255, 255, 255));
@@ -278,6 +279,7 @@ public class PagInfNiño extends javax.swing.JFrame {
         setJMenuBar(MenuGenerlNiño);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked

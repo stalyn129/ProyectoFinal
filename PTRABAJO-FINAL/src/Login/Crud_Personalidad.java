@@ -135,8 +135,8 @@ public class Crud_Personalidad extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("CRUD PERSONALIDAD");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 220, 30));
+        jLabel3.setText("GESTIÓN PERSONALIDAD");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 250, 30));
 
         jLabel8.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

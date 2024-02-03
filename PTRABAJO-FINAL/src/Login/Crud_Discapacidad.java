@@ -62,6 +62,7 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -128,8 +129,8 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
         jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 90, -1));
 
         jLabel5.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel5.setText("CRUD DISCAPACIDAD");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, 30));
+        jLabel5.setText("GESTIÓN DISCAPACIDAD");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 280, 300));
 
@@ -277,6 +278,7 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void Txt_DiscapacidadMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_DiscapacidadMousePressed

@@ -52,6 +52,7 @@ public class PagIngresarTipoJuegoPsico extends javax.swing.JFrame {
         Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -168,6 +169,7 @@ public class PagIngresarTipoJuegoPsico extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnLabeNiñoJuego1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLabeNiñoJuego1ActionPerformed

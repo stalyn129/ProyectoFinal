@@ -84,7 +84,6 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(800, 500));
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(800, 500));
-        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -334,6 +333,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnParentescoAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnParentescoAdminActionPerformed

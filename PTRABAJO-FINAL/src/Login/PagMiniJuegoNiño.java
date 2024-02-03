@@ -54,6 +54,7 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
         JMnPgPrinNiño2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -180,6 +181,7 @@ public class PagMiniJuegoNiño extends javax.swing.JFrame {
         setJMenuBar(MenuGenerlNiño);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnDifeNiñoJuego2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDifeNiñoJuego2ActionPerformed

@@ -80,18 +80,11 @@ public class Comentario {
         this.Fecha_Comen = Fecha_Comen;
     }
 
-    
-    
-
     @Override
     public String toString() {
-        return "Comentario{"
-                + "ID_Comentario='" + ID_Comentario + '\''
-                + ", Contenido_Comen='" + Contenido_Comen + '\''
-                + ", FK_Cod_Foro='" + FK_Cod_Foro + '\''
-                + ", FK_Cod_Participante='" + FK_Cod_Participante + '\''
-                + ", Fecha_Comen=" + Fecha_Comen
-                + '}';
+        return "Comentario{" + "ID_Comentario=" + ID_Comentario + ", FK_Cod_Foro=" + FK_Cod_Foro + ", FK_Cod_Participante=" + FK_Cod_Participante + ", Contenido_Comen=" + Contenido_Comen + ", Nombre_Usario=" + Nombre_Usario + ", Fecha_Comen=" + Fecha_Comen + '}';
     }
+    
+   
 
 }

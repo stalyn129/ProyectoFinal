@@ -106,6 +106,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         JMnPgPrinPsicolo = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -419,6 +420,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnConsultarPsicologoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConsultarPsicologoActionPerformed

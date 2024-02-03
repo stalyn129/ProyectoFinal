@@ -74,6 +74,7 @@ public class PagCuentosRepre extends javax.swing.JFrame {
         JMnPgPrinNiño = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -219,7 +220,7 @@ public class PagCuentosRepre extends javax.swing.JFrame {
 
         LblInformacionNiño1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         LblInformacionNiño1.setText("BIENVENIDOS AL AREA DE:");
-        jPanel1.add(LblInformacionNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 290, 20));
+        jPanel1.add(LblInformacionNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 250, 20));
 
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoCuentosRepresentante.png"))); // NOI18N
         Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -260,6 +261,7 @@ public class PagCuentosRepre extends javax.swing.JFrame {
         setJMenuBar(MenuCuentosNiño);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCmbBoxCuentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCmbBoxCuentosActionPerformed

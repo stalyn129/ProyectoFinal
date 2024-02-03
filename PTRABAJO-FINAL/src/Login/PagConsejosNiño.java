@@ -84,6 +84,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -223,7 +224,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
 
         LblInformacionNiño1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         LblInformacionNiño1.setText("BIENVENIDOS AL AREA DE:");
-        jPanel1.add(LblInformacionNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 290, 20));
+        jPanel1.add(LblInformacionNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 250, 20));
 
         Fondo1.setBackground(new java.awt.Color(255, 255, 255));
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoInfoNiñoConsejos.png"))); // NOI18N
@@ -265,6 +266,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         setJMenuBar(MenuGenerlNiño);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void CmBoxConsejosNiñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmBoxConsejosNiñoActionPerformed

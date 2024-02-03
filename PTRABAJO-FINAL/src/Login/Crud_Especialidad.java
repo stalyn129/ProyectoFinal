@@ -67,6 +67,7 @@ public class Crud_Especialidad extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -80,14 +81,14 @@ public class Crud_Especialidad extends javax.swing.JFrame {
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, 20));
 
         jTextField1.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jTextField1.setText("CRUD ESPECIALIDAD");
+        jTextField1.setText("GESTIÓN ESPECIALIDAD");
         jTextField1.setBorder(null);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 215, -1));
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 240, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel7.setText("Especialización:");
@@ -290,6 +291,7 @@ public class Crud_Especialidad extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

@@ -219,11 +219,11 @@
                   <Font name="Rockwell" size="18" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="CRUD PERSONALIDAD"/>
+                <Property name="text" type="java.lang.String" value="GESTI&#xd3;N PERSONALIDAD"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="20" y="90" width="220" height="30"/>
+                  <AbsoluteConstraints x="10" y="90" width="250" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>

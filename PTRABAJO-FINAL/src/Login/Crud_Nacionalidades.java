@@ -78,6 +78,7 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -178,9 +179,9 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel2.setText("CRUD NACIONALIDADES");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 230, 40));
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel2.setText("GESTIÓN NACIONALIDADES");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 210, 40));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel3.setText("Nacionalidad:");
@@ -320,6 +321,7 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void Txt_NacionalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_NacionalidadActionPerformed

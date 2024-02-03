@@ -93,6 +93,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         JMnPgPrinPsicolo = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -356,6 +357,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void Txt_TituloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Txt_TituloMousePressed

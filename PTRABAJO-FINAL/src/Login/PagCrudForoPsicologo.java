@@ -62,6 +62,7 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         TxtIntroForo = new javax.swing.JTextArea();
         BtnCerrarPagina = new javax.swing.JButton();
+        btnParticipar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenu3puntitosPsicologo = new javax.swing.JMenu();
@@ -69,6 +70,7 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         JMnPgPrinPsicolo = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -212,6 +214,14 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         });
         jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 40, 30));
 
+        btnParticipar.setText("Participar");
+        btnParticipar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnParticiparActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnParticipar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, -1, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 500));
 
@@ -248,6 +258,7 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void TxtTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtTituloActionPerformed
@@ -462,6 +473,13 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void btnParticiparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnParticiparActionPerformed
+        Base.close();
+        PagForoPsicologo foro = new PagForoPsicologo();
+        foro.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnParticiparActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -516,6 +534,7 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
     private javax.swing.JTextField TxtTitulo;
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnParticipar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

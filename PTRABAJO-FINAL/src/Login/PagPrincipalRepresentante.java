@@ -60,7 +60,6 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(800, 500));
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(800, 500));
-        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -220,6 +219,7 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
         setJMenuBar(MenuCuentosNiño);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnInfRepreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfRepreActionPerformed
