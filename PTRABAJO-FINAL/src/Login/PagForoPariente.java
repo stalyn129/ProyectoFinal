@@ -55,10 +55,13 @@ public class PagForoPariente extends javax.swing.JFrame {
         txtArea_Comentario = new javax.swing.JTextArea();
         btnPublicar = new javax.swing.JButton();
         jComboForos = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
         btnMinimizar1 = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
+        LblTestPariente1 = new javax.swing.JLabel();
+        LblTestPariente2 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        Fondo1 = new javax.swing.JLabel();
         lblFondo = new javax.swing.JLabel();
         MenuCuentosNiño = new javax.swing.JMenuBar();
         JMenu3puntitosNiño = new javax.swing.JMenu();
@@ -84,9 +87,9 @@ public class PagForoPariente extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel11.setText("Comentar:");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, 20));
-        jPanel3.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 560, 20));
-        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 560, 10));
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, 20));
+        jPanel3.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 560, 20));
+        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 560, 10));
 
         txtDescripcion.setColumns(20);
         txtDescripcion.setLineWrap(true);
@@ -99,11 +102,11 @@ public class PagForoPariente extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(txtDescripcion);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 510, -1));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 510, -1));
 
         jLabel13.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel13.setText("Descripción:");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, 20));
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, 20));
 
         txtParticipaciones.setColumns(20);
         txtParticipaciones.setLineWrap(true);
@@ -116,15 +119,15 @@ public class PagForoPariente extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(txtParticipaciones);
 
-        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 390, 290));
+        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 390, 290));
 
         jLabel14.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel14.setText("Participaciones:");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, -1, 20));
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, -1, 20));
 
         jLabel15.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel15.setText("Título:");
-        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 20));
+        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, 20));
 
         txtArea_Comentario.setColumns(20);
         txtArea_Comentario.setLineWrap(true);
@@ -132,7 +135,7 @@ public class PagForoPariente extends javax.swing.JFrame {
         txtArea_Comentario.setWrapStyleWord(true);
         jScrollPane4.setViewportView(txtArea_Comentario);
 
-        jPanel3.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 230, 100));
+        jPanel3.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 230, 100));
 
         btnPublicar.setText("Publicar Comentario");
         btnPublicar.addActionListener(new java.awt.event.ActionListener() {
@@ -140,13 +143,7 @@ public class PagForoPariente extends javax.swing.JFrame {
                 btnPublicarActionPerformed(evt);
             }
         });
-        jPanel3.add(btnPublicar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 230, 20));
-
-        jScrollPane1.setViewportView(jPanel3);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 330));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 710, 330));
+        jPanel3.add(btnPublicar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 230, 20));
 
         jComboForos.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jComboForos.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +151,18 @@ public class PagForoPariente extends javax.swing.JFrame {
                 jComboForosActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboForos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 550, 30));
+        jPanel3.add(jComboForos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 630, 20));
+
+        jLabel12.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("Selecciona aqui el foro en el que desees participar:");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 460, 30));
+
+        jScrollPane1.setViewportView(jPanel3);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 330));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 710, 330));
 
         btnMinimizar1.setBackground(new java.awt.Color(255, 255, 255));
         btnMinimizar1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
@@ -192,15 +200,24 @@ public class PagForoPariente extends javax.swing.JFrame {
         });
         getContentPane().add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 30, 30));
 
-        jLabel12.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("Selecciona aqui el foro en el que desees participar:");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 550, 30));
+        LblTestPariente1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
+        LblTestPariente1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblTestPariente1.setText("BIENVENIDO AL AREA DE:");
+        getContentPane().add(LblTestPariente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 300, 20));
+
+        LblTestPariente2.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
+        LblTestPariente2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblTestPariente2.setText("FORO");
+        getContentPane().add(LblTestPariente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 210, 30));
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 70));
+
+        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGeneralReportes.png"))); // NOI18N
+        Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
+        getContentPane().add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, -20, 1670, 500));
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 480));
@@ -528,9 +545,12 @@ public class PagForoPariente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
+    private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMenu3puntitosNiño;
     private javax.swing.JMenuItem JMnItmCerrarNiño;
     private javax.swing.JMenu JMnPgPrinNiño;
+    private javax.swing.JLabel LblTestPariente1;
+    private javax.swing.JLabel LblTestPariente2;
     private javax.swing.JMenuBar MenuCuentosNiño;
     private javax.swing.JButton btnMinimizar1;
     private javax.swing.JButton btnPublicar;

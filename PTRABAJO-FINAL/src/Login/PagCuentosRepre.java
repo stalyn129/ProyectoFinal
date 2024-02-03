@@ -164,7 +164,7 @@ public class PagCuentosRepre extends javax.swing.JFrame {
                 jCmbBoxCuentosActionPerformed(evt);
             }
         });
-        jPanel3.add(jCmbBoxCuentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 290, -1));
+        jPanel3.add(jCmbBoxCuentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, -1));
 
         btnSi.setText("SI");
         btnSi.addActionListener(new java.awt.event.ActionListener() {

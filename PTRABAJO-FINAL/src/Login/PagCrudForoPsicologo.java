@@ -57,13 +57,18 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         Actualizar = new javax.swing.JButton();
         btnConsultar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         TxtIntroForo = new javax.swing.JTextArea();
+        btnParticipar = new javax.swing.JButton();
+        jSeparator8 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        jSeparator9 = new javax.swing.JSeparator();
         BtnCerrarPagina = new javax.swing.JButton();
         btnMinimizar1 = new javax.swing.JButton();
-        btnParticipar = new javax.swing.JButton();
+        Fondo1 = new javax.swing.JLabel();
+        LblTestPariente2 = new javax.swing.JLabel();
+        LblTestPariente1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenu3puntitosPsicologo = new javax.swing.JMenu();
@@ -84,6 +89,7 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         jScrollPane1.setDoubleBuffered(true);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jPanel3.setMinimumSize(new java.awt.Dimension(700, 670));
         jPanel3.setPreferredSize(new java.awt.Dimension(700, 670));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -91,11 +97,12 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         LblInfor2Niño.setFont(new java.awt.Font("Rockwell Nova", 1, 12)); // NOI18N
         LblInfor2Niño.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblInfor2Niño.setText("Título del foro:");
-        jPanel3.add(LblInfor2Niño, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+        jPanel3.add(LblInfor2Niño, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 110, -1));
 
         jSeparator5.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel3.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 330, 10));
+        jPanel3.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 580, 630, 10));
 
+        TxtTitulo.setForeground(new java.awt.Color(204, 204, 204));
         TxtTitulo.setText("Ingrese un título");
         TxtTitulo.setBorder(null);
         TxtTitulo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -108,19 +115,49 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
                 TxtTituloActionPerformed(evt);
             }
         });
-        jPanel3.add(TxtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 210, -1));
+        jPanel3.add(TxtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 220, -1));
 
         jSeparator7.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel3.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 210, 10));
+        jPanel3.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 220, 10));
 
-        LblInfor2Niño1.setFont(new java.awt.Font("Rockwell Nova", 1, 12)); // NOI18N
+        LblInfor2Niño1.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         LblInfor2Niño1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LblInfor2Niño1.setText("Descripción del foro");
-        jPanel3.add(LblInfor2Niño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 120, -1));
+        LblInfor2Niño1.setText("Descripción del Foro:");
+        jPanel3.add(LblInfor2Niño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 160, -1));
 
+        jTableForos.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jTableForos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
                 "Codigo_Foro", "Titulo", "Desripción", "Fecha_Creación"
@@ -136,66 +173,80 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jTableForos);
 
-        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 630, 310));
+        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 630, 340));
 
+        jButton1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jButton1.setText("Publicar Foro");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 240, -1, -1));
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 230, -1));
 
+        jButton2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jButton2.setText("Modificar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 620, -1, -1));
+        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 600, 110, -1));
 
+        Actualizar.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         Actualizar.setText("Actualizar");
         Actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ActualizarActionPerformed(evt);
             }
         });
-        jPanel3.add(Actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 620, -1, -1));
+        jPanel3.add(Actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, 110, -1));
 
+        btnConsultar.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         btnConsultar.setText("Consultar");
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarActionPerformed(evt);
             }
         });
-        jPanel3.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 620, -1, -1));
+        jPanel3.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 600, 110, -1));
 
+        btnEliminar.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
-        jPanel3.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 620, -1, -1));
-
-        jLabel11.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel11.setText("CRUD FOROS");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, 30));
-
-        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 70));
+        jPanel3.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 600, 110, -1));
 
         TxtIntroForo.setColumns(20);
         TxtIntroForo.setRows(5);
         jScrollPane2.setViewportView(TxtIntroForo);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 330, 120));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 330, 140));
+
+        btnParticipar.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        btnParticipar.setText("Participar");
+        btnParticipar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnParticiparActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnParticipar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 220, -1));
+
+        jSeparator8.setForeground(new java.awt.Color(153, 153, 153));
+        jPanel3.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 220, 10));
+
+        jSeparator6.setForeground(new java.awt.Color(153, 153, 153));
+        jPanel3.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 330, 10));
+
+        jSeparator9.setForeground(new java.awt.Color(153, 153, 153));
+        jPanel3.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 230, 10));
 
         jScrollPane1.setViewportView(jPanel3);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 710, 390));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 710, 340));
 
         BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
         BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
@@ -233,13 +284,24 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         });
         jPanel1.add(btnMinimizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 30, 30));
 
-        btnParticipar.setText("Participar");
-        btnParticipar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnParticiparActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnParticipar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, -1, -1));
+        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGeneralReportes.png"))); // NOI18N
+        Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-880, 0, 1670, 500));
+
+        LblTestPariente2.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
+        LblTestPariente2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblTestPariente2.setText("FORO");
+        jPanel1.add(LblTestPariente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 210, 30));
+
+        LblTestPariente1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
+        LblTestPariente1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblTestPariente1.setText("BIENVENIDO AL AREA DE:");
+        jPanel1.add(LblTestPariente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 300, 20));
+
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 90, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 500));
@@ -552,11 +614,14 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Actualizar;
     private javax.swing.JButton BtnCerrarPagina;
+    private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
     private javax.swing.JMenu JMnPgPrinPsicolo;
     private javax.swing.JLabel LblInfor2Niño;
     private javax.swing.JLabel LblInfor2Niño1;
+    private javax.swing.JLabel LblTestPariente1;
+    private javax.swing.JLabel LblTestPariente2;
     private javax.swing.JTextArea TxtIntroForo;
     private javax.swing.JTextField TxtTitulo;
     private javax.swing.JButton btnConsultar;
@@ -566,7 +631,6 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
@@ -575,7 +639,10 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTable jTableForos;
     // End of variables declaration//GEN-END:variables
 public static String calcularIDCuen(ObjectContainer base) {

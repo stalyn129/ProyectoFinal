@@ -70,7 +70,6 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         DateFechaNaciParien = new com.toedter.calendar.JDateChooser();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
         TxtCedParien = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
@@ -107,10 +106,12 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         TxtTelfPari = new javax.swing.JTextField();
         jSeparator19 = new javax.swing.JSeparator();
         jLabel15 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator20 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
         BtnRegresar = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
         btnMinimizar1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -125,7 +126,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         BtnGrpSexoParein.add(BtnFemenParien);
         BtnFemenParien.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         BtnFemenParien.setText("Femenino");
-        jPanel2.add(BtnFemenParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+        jPanel2.add(BtnFemenParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, -1, -1));
 
         BtnGrpSexoParein.add(BtnMasculiParien);
         BtnMasculiParien.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
@@ -135,22 +136,22 @@ public class RegistrarsePariente extends javax.swing.JFrame {
                 BtnMasculiParienActionPerformed(evt);
             }
         });
-        jPanel2.add(BtnMasculiParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
+        jPanel2.add(BtnMasculiParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 80, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel8.setText("Discapacidad:");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, 100, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 100, -1));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel6.setText("Sexo:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-        jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 80, 10));
-        jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 80, 10));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 170, 10));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, -1, -1));
+        jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, 80, 10));
+        jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, 80, 10));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 170, 10));
 
         Especializacion3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Especializacion3.setText("Telefono:");
-        jPanel2.add(Especializacion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, -1, -1));
+        jPanel2.add(Especializacion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
 
         TxtApellidoParien.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtApellidoParien.setForeground(new java.awt.Color(153, 153, 153));
@@ -166,12 +167,12 @@ public class RegistrarsePariente extends javax.swing.JFrame {
                 TxtApellidoParienActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtApellidoParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 170, -1));
+        jPanel2.add(TxtApellidoParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 170, -1));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel5.setText("Confirmar Contraseña:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 267, -1, 20));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 160, 10));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, -1, 30));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 160, 10));
 
         TxtNombreParien.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtNombreParien.setForeground(new java.awt.Color(153, 153, 153));
@@ -187,21 +188,17 @@ public class RegistrarsePariente extends javax.swing.JFrame {
                 TxtNombreParienActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtNombreParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 160, -1));
+        jPanel2.add(TxtNombreParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 160, -1));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel4.setText("Nombre:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel7.setText("Fecha de Nacimiento:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, -1, -1));
-        jPanel2.add(DateFechaNaciParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 160, -1));
-        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 160, 10));
-
-        jLabel2.setFont(new java.awt.Font("Rockwell Nova", 1, 24)); // NOI18N
-        jLabel2.setText("REGISTRARSE");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
+        jPanel2.add(DateFechaNaciParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 160, -1));
+        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 160, 10));
 
         TxtCedParien.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtCedParien.setForeground(new java.awt.Color(153, 153, 153));
@@ -217,16 +214,16 @@ public class RegistrarsePariente extends javax.swing.JFrame {
                 TxtCedParienActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtCedParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 160, -1));
-        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 160, 10));
+        jPanel2.add(TxtCedParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 160, -1));
+        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 160, 10));
 
         jLabel9.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel9.setText("Cedula:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
 
         Nacionalidad.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Nacionalidad.setText("Nacionalidad:");
-        jPanel2.add(Nacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, -1, -1));
+        jPanel2.add(Nacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, -1, -1));
 
         CmbBxNacionalidad.setBorder(null);
         CmbBxNacionalidad.addActionListener(new java.awt.event.ActionListener() {
@@ -234,10 +231,10 @@ public class RegistrarsePariente extends javax.swing.JFrame {
                 CmbBxNacionalidadActionPerformed(evt);
             }
         });
-        jPanel2.add(CmbBxNacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 170, -1));
+        jPanel2.add(CmbBxNacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 170, -1));
         jPanel2.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, -1, -1));
-        jPanel2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, 170, 10));
-        jPanel2.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 170, 10));
+        jPanel2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 170, 10));
+        jPanel2.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, 170, 10));
 
         TxtTituloParien.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtTituloParien.setForeground(new java.awt.Color(153, 153, 153));
@@ -253,12 +250,12 @@ public class RegistrarsePariente extends javax.swing.JFrame {
                 TxtTituloParienActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtTituloParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, 170, -1));
+        jPanel2.add(TxtTituloParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, 170, -1));
 
         jLabel10.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel10.setText("Titulo:");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, -1, -1));
-        jPanel2.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, 170, 10));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, -1, -1));
+        jPanel2.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 170, 10));
 
         TxtDirrecParien.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtDirrecParien.setForeground(new java.awt.Color(153, 153, 153));
@@ -274,12 +271,12 @@ public class RegistrarsePariente extends javax.swing.JFrame {
                 TxtDirrecParienActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtDirrecParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 170, -1));
+        jPanel2.add(TxtDirrecParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, 170, -1));
 
         jLabel11.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel11.setText("Dirección:");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, -1, -1));
-        jPanel2.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 170, 10));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, -1, -1));
+        jPanel2.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 170, 10));
 
         CmbBxParentesco.setBorder(null);
         CmbBxParentesco.addActionListener(new java.awt.event.ActionListener() {
@@ -287,15 +284,15 @@ public class RegistrarsePariente extends javax.swing.JFrame {
                 CmbBxParentescoActionPerformed(evt);
             }
         });
-        jPanel2.add(CmbBxParentesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 170, -1));
+        jPanel2.add(CmbBxParentesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 170, -1));
 
         Nacionalidad1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Nacionalidad1.setText("Parentesco:");
-        jPanel2.add(Nacionalidad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
+        jPanel2.add(Nacionalidad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel12.setText("Ocupación:");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, -1, -1));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, -1, -1));
 
         TxtOcupaParien.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtOcupaParien.setForeground(new java.awt.Color(153, 153, 153));
@@ -311,8 +308,8 @@ public class RegistrarsePariente extends javax.swing.JFrame {
                 TxtOcupaParienActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtOcupaParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 170, -1));
-        jPanel2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 170, 10));
+        jPanel2.add(TxtOcupaParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 170, -1));
+        jPanel2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 170, 10));
 
         BtnRegistrarParien.setText("Registrarse");
         BtnRegistrarParien.setToolTipText("Haz click aqui para registrarte");
@@ -322,12 +319,12 @@ public class RegistrarsePariente extends javax.swing.JFrame {
                 BtnRegistrarParienActionPerformed(evt);
             }
         });
-        jPanel2.add(BtnRegistrarParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 100, 30));
+        jPanel2.add(BtnRegistrarParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, 120, 30));
 
         jLabel13.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel13.setText("Apellidos:");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
-        jPanel2.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 170, 10));
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+        jPanel2.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 340, 120, 10));
 
         CfContraParien.setForeground(new java.awt.Color(153, 153, 153));
         CfContraParien.setText("**********");
@@ -342,12 +339,12 @@ public class RegistrarsePariente extends javax.swing.JFrame {
                 CfContraParienActionPerformed(evt);
             }
         });
-        jPanel2.add(CfContraParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 170, -1));
-        jPanel2.add(jSeparator16, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 170, 10));
+        jPanel2.add(CfContraParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, 170, -1));
+        jPanel2.add(jSeparator16, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 170, 10));
 
         jLabel14.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel14.setText("Nueva Contraseña:");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, -1, -1));
+        jLabel14.setText("Contraseña:");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, -1, -1));
 
         NvContraParien.setForeground(new java.awt.Color(153, 153, 153));
         NvContraParien.setText("**********");
@@ -362,7 +359,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
                 NvContraParienActionPerformed(evt);
             }
         });
-        jPanel2.add(NvContraParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 170, -1));
+        jPanel2.add(NvContraParien, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 170, -1));
 
         Txt_profecion.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         Txt_profecion.setForeground(new java.awt.Color(153, 153, 153));
@@ -378,23 +375,23 @@ public class RegistrarsePariente extends javax.swing.JFrame {
                 Txt_profecionActionPerformed(evt);
             }
         });
-        jPanel2.add(Txt_profecion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 170, 20));
+        jPanel2.add(Txt_profecion, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 170, 20));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel3.setText("Profesion:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, -1, -1));
-        jPanel2.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, 170, 10));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, -1, 20));
+        jPanel2.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, 170, 10));
 
         cbx_discapacidad_pariente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbx_discapacidad_parienteActionPerformed(evt);
             }
         });
-        jPanel2.add(cbx_discapacidad_pariente, new org.netbeans.lib.awtextra.AbsoluteConstraints(565, 40, 120, -1));
+        jPanel2.add(cbx_discapacidad_pariente, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 170, -1));
 
         Especializacion2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Especializacion2.setText("Correo:");
-        jPanel2.add(Especializacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, -1, -1));
+        jPanel2.add(Especializacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, -1, -1));
 
         TxtCorreoPa.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtCorreoPa.setForeground(new java.awt.Color(153, 153, 153));
@@ -410,8 +407,8 @@ public class RegistrarsePariente extends javax.swing.JFrame {
                 TxtCorreoPaActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtCorreoPa, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, 170, -1));
-        jPanel2.add(jSeparator18, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 170, 10));
+        jPanel2.add(TxtCorreoPa, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 170, -1));
+        jPanel2.add(jSeparator18, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 170, 10));
 
         TxtTelfPari.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         TxtTelfPari.setForeground(new java.awt.Color(153, 153, 153));
@@ -427,15 +424,24 @@ public class RegistrarsePariente extends javax.swing.JFrame {
                 TxtTelfPariActionPerformed(evt);
             }
         });
-        jPanel2.add(TxtTelfPari, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 170, -1));
-        jPanel2.add(jSeparator19, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 170, 10));
+        jPanel2.add(TxtTelfPari, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 170, -1));
+        jPanel2.add(jSeparator19, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 170, 10));
 
         jLabel15.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, 80, 70));
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 0, 80, 70));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 700, 390));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Familia.png"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 380, 130, 50));
+        jPanel2.add(jSeparator20, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 170, 10));
+
+        jLabel2.setFont(new java.awt.Font("Rockwell Nova", 1, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("REGISTRARSE");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 10, 210, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 700, 430));
 
         BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
         BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
@@ -484,9 +490,6 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnMinimizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 30, 30));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Familia.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 130, 50));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
@@ -1590,6 +1593,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator18;
     private javax.swing.JSeparator jSeparator19;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator20;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator6;
