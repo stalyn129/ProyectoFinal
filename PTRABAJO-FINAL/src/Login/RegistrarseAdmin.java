@@ -108,12 +108,17 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         btnMinimizar1 = new javax.swing.JButton();
         BtnRegresar = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
+        Fondo2 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
+        Fondo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(800, 500));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMinimumSize(new java.awt.Dimension(800, 500));
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -432,8 +437,16 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 30, 30));
 
+        Fondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGeneralReportes.png"))); // NOI18N
+        Fondo2.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPanel1.add(Fondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-880, -20, 1690, 530));
+
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
+
+        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGeneralReportes.png"))); // NOI18N
+        Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-880, -20, 1690, 510));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1240,6 +1253,8 @@ public class RegistrarseAdmin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CmbBxNacionalidad2Admin;
     private com.toedter.calendar.JDateChooser DateFechaNaciAdmin;
     private javax.swing.JLabel Fondo;
+    private javax.swing.JLabel Fondo1;
+    private javax.swing.JLabel Fondo2;
     private javax.swing.JLabel Nacionalidad;
     private javax.swing.JPasswordField NvContraAdmin;
     private javax.swing.JTextField TxtApelliAdmin;

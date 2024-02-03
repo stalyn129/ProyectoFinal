@@ -86,10 +86,12 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         btnMinimizar1 = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
+        Fondo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -269,7 +271,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
         jPanel2.add(NvContraNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 170, 20));
 
         NuevaContraseña.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        NuevaContraseña.setText("Nueva Contraseña:");
+        NuevaContraseña.setText("Contraseña:");
         jPanel2.add(NuevaContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, -1, -1));
         jPanel2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 170, 10));
         jPanel2.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 170, 10));
@@ -336,19 +338,14 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
         });
         jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
 
+        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGeneralReportes.png"))); // NOI18N
+        Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-880, -20, 1680, 540));
+
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -677,6 +674,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
     private javax.swing.JLabel ConfirmarContraseña;
     private com.toedter.calendar.JDateChooser DateEdadNiño;
     private javax.swing.JLabel Fondo;
+    private javax.swing.JLabel Fondo1;
     private javax.swing.JLabel NuevaContraseña;
     private javax.swing.JPasswordField NvContraNiño;
     private javax.swing.JSeparator Separador1;

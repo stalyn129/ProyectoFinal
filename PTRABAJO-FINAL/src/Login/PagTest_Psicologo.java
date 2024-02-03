@@ -70,7 +70,7 @@ public class PagTest_Psicologo extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 140, 10));
+        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 120, 10));
 
         jLabel9.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -99,8 +99,8 @@ public class PagTest_Psicologo extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("NIÑO/A");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 160, -1));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 140, 10));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 160, -1));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 120, 10));
 
         BtnTestPsico3.setBackground(new java.awt.Color(255, 255, 255));
         BtnTestPsico3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ReportePsicologo.png"))); // NOI18N
@@ -117,8 +117,8 @@ public class PagTest_Psicologo extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Rockwell", 1, 10)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("REPRESENTANTE");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 160, -1));
-        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 140, 10));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 160, -1));
+        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 120, 10));
 
         BtnTestPsico4.setBackground(new java.awt.Color(255, 255, 255));
         BtnTestPsico4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ReportePsicologo.png"))); // NOI18N
@@ -138,7 +138,7 @@ public class PagTest_Psicologo extends javax.swing.JFrame {
         jLabel3.setText("Reporte Test");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 250, -1));
         jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 170, 10));
-        jPanel2.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 140, 10));
+        jPanel2.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 120, 10));
 
         jLabel10.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel10.setText("Elije la opción a la que desee ingresar:");

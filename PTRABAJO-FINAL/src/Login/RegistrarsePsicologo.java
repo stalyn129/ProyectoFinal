@@ -110,10 +110,12 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         btnMinimizar1 = new javax.swing.JButton();
         BtnRegresar = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
+        Fondo2 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -259,7 +261,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         jPanel2.add(Direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, -1, -1));
 
         NuevaContraseña.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        NuevaContraseña.setText("Nueva Contraseña:");
+        NuevaContraseña.setText("Contraseña:");
         jPanel2.add(NuevaContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, -1, -1));
         jPanel2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 170, 10));
 
@@ -445,19 +447,14 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         });
         jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 30, 30));
 
+        Fondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGeneralReportes.png"))); // NOI18N
+        Fondo2.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPanel1.add(Fondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-880, -20, 1690, 550));
+
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -1247,6 +1244,7 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
     private javax.swing.JLabel FechaNacimiento;
     private javax.swing.JRadioButton Femenino;
     private javax.swing.JLabel Fondo1;
+    private javax.swing.JLabel Fondo2;
     private javax.swing.JRadioButton Masculino;
     private javax.swing.JLabel Nacionalidad_lbl;
     private javax.swing.JLabel Nombre;
