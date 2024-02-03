@@ -73,6 +73,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         btnNo = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        btnMinimizar1 = new javax.swing.JButton();
         LblInformacionNiño = new javax.swing.JLabel();
         LblInformacionNiño1 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
@@ -218,6 +219,24 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 80, 70));
 
+        btnMinimizar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnMinimizar1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        btnMinimizar1.setText("—");
+        btnMinimizar1.setToolTipText("Minimizar Pagina dando click aqui");
+        btnMinimizar1.setBorder(null);
+        btnMinimizar1.setOpaque(false);
+        btnMinimizar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinimizar1MouseClicked(evt);
+            }
+        });
+        btnMinimizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimizar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMinimizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, 30, 30));
+
         LblInformacionNiño.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         LblInformacionNiño.setText("CONSEJOS");
         jPanel1.add(LblInformacionNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 120, 20));
@@ -335,6 +354,14 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         // Aquí se ejecutará solo si el usuario selecciona "No" o si no hay respuesta existente
         GuardarRespuestaCuento(Base, codNiño, respuesta);
     }//GEN-LAST:event_btnNoActionPerformed
+
+    private void btnMinimizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMinimizar1MouseClicked
+
+    private void btnMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar1ActionPerformed
+        this.setState(PagConsejosNiño.ICONIFIED);
+    }//GEN-LAST:event_btnMinimizar1ActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -513,6 +540,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
     private javax.swing.JMenuBar MenuGenerlNiño;
     private javax.swing.JTextArea TxtTextConsNiño1;
     private javax.swing.JTextArea TxtTextConsNiño2;
+    private javax.swing.JButton btnMinimizar1;
     private javax.swing.JButton btnNo;
     private javax.swing.JButton btnSi;
     private javax.swing.JLabel jLabel1;

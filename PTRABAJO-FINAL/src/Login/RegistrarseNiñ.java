@@ -84,10 +84,12 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
         CfContraNiño = new javax.swing.JPasswordField();
         ConfirmarContraseña = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        btnMinimizar1 = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -298,6 +300,24 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 650, 380));
 
+        btnMinimizar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnMinimizar1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        btnMinimizar1.setText("—");
+        btnMinimizar1.setToolTipText("Cerrar Pagina dando click aqui");
+        btnMinimizar1.setBorder(null);
+        btnMinimizar1.setOpaque(false);
+        btnMinimizar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinimizar1MouseClicked(evt);
+            }
+        });
+        btnMinimizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimizar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMinimizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 30, 30));
+
         BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
         BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
         BtnCerrarPagina.setText("x");
@@ -331,6 +351,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
@@ -632,6 +653,14 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
+    private void btnMinimizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMinimizar1MouseClicked
+
+    private void btnMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar1ActionPerformed
+        this.setState(RegistrarseNiñ.ICONIFIED);
+    }//GEN-LAST:event_btnMinimizar1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
@@ -662,6 +691,7 @@ public class RegistrarseNiñ extends javax.swing.JFrame {
     private javax.swing.JTextField TxtApellidoNiño;
     private javax.swing.JTextField TxtApodoNiño;
     private javax.swing.JTextField TxtNombreNiño;
+    private javax.swing.JButton btnMinimizar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

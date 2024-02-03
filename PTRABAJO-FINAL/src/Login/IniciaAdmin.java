@@ -60,6 +60,7 @@ public class IniciaAdmin extends javax.swing.JFrame {
         txt_contr = new javax.swing.JPasswordField();
         txt_usuario = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        btnMinimizar1 = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -198,6 +199,24 @@ public class IniciaAdmin extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 350, 410));
 
+        btnMinimizar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnMinimizar1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        btnMinimizar1.setText("—");
+        btnMinimizar1.setToolTipText("Minimizar Pagina dando click aqui");
+        btnMinimizar1.setBorder(null);
+        btnMinimizar1.setOpaque(false);
+        btnMinimizar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinimizar1MouseClicked(evt);
+            }
+        });
+        btnMinimizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimizar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMinimizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 30, 30));
+
         BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
         BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
         BtnCerrarPagina.setText("x");
@@ -214,7 +233,7 @@ public class IniciaAdmin extends javax.swing.JFrame {
                 BtnCerrarPaginaActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 30, 30));
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -373,6 +392,14 @@ public class IniciaAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_cod_adActionPerformed
 
+    private void btnMinimizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMinimizar1MouseClicked
+
+    private void btnMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar1ActionPerformed
+        this.setState(IniciaAdmin.ICONIFIED);
+    }//GEN-LAST:event_btnMinimizar1ActionPerformed
+
     private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
@@ -416,6 +443,7 @@ public class IniciaAdmin extends javax.swing.JFrame {
     private javax.swing.JButton BtnRegresar;
     private javax.swing.JPanel Pnl_Ingre;
     private javax.swing.JLabel TXT_Ingre;
+    private javax.swing.JButton btnMinimizar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;

@@ -76,6 +76,7 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
         jTableJDif = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         BtnCerrarPagina = new javax.swing.JButton();
+        btnMinimizar1 = new javax.swing.JButton();
         LblInfor2Niño = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
@@ -86,6 +87,7 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
         JMnPgPrinPsicolo = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -282,7 +284,25 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
                 BtnCerrarPaginaActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 30, 30));
+
+        btnMinimizar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnMinimizar1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        btnMinimizar1.setText("—");
+        btnMinimizar1.setToolTipText("Minimizar Pagina dando click aqui");
+        btnMinimizar1.setBorder(null);
+        btnMinimizar1.setOpaque(false);
+        btnMinimizar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinimizar1MouseClicked(evt);
+            }
+        });
+        btnMinimizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimizar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMinimizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 30, 30));
 
         LblInfor2Niño.setFont(new java.awt.Font("Rockwell Nova", 1, 24)); // NOI18N
         LblInfor2Niño.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -334,6 +354,7 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_Ingresar_imagen1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ingresar_imagen1ActionPerformed
@@ -554,6 +575,14 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
+    private void btnMinimizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMinimizar1MouseClicked
+
+    private void btnMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar1ActionPerformed
+        this.setState(Pag_Crud_JDiferencias.ICONIFIED);
+    }//GEN-LAST:event_btnMinimizar1ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -594,6 +623,7 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
     private javax.swing.JMenu JMnPgPrinPsicolo;
     private javax.swing.JLabel LblInfor2Niño;
     private javax.swing.JButton bnt_Actualizar;
+    private javax.swing.JButton btnMinimizar1;
     private javax.swing.JButton btn_Eliminar;
     private javax.swing.JButton btn_Ingresar_imagen1;
     private javax.swing.JButton btn_Modificar;

@@ -63,6 +63,7 @@ public class PagCuentosRepre extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnNo = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
+        btnMinimizar1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         LblInformacionNiño = new javax.swing.JLabel();
         LblInformacionNiño1 = new javax.swing.JLabel();
@@ -207,7 +208,25 @@ public class PagCuentosRepre extends javax.swing.JFrame {
                 BtnCerrarPaginaActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 40, 30));
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 30, 30));
+
+        btnMinimizar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnMinimizar1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        btnMinimizar1.setText("—");
+        btnMinimizar1.setToolTipText("Minimizar Pagina dando click aqui");
+        btnMinimizar1.setBorder(null);
+        btnMinimizar1.setOpaque(false);
+        btnMinimizar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinimizar1MouseClicked(evt);
+            }
+        });
+        btnMinimizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimizar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMinimizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 30, 30));
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -329,6 +348,14 @@ public class PagCuentosRepre extends javax.swing.JFrame {
         // Aquí se ejecutará solo si el usuario selecciona "No" o si no hay respuesta existente
         GuardarRespuestaCuento(Base, codRepre, respuesta);
     }//GEN-LAST:event_btnNoActionPerformed
+
+    private void btnMinimizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMinimizar1MouseClicked
+
+    private void btnMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar1ActionPerformed
+        this.setState(PagCuentosRepre.ICONIFIED);
+    }//GEN-LAST:event_btnMinimizar1ActionPerformed
     private boolean verificarRespuestaExistente(ObjectContainer Base, String codRepre) {
         try {
             ValoracionCuento ejemploConsulta = new ValoracionCuento();
@@ -491,6 +518,7 @@ public class PagCuentosRepre extends javax.swing.JFrame {
     private javax.swing.JTextArea TxtConcluNiñoCuen;
     private javax.swing.JTextArea TxtDesarroNiñoCuen;
     private javax.swing.JTextArea TxtIntroNiñoCuen;
+    private javax.swing.JButton btnMinimizar1;
     private javax.swing.JButton btnNo;
     private javax.swing.JButton btnSi;
     private javax.swing.JComboBox<String> jCmbBoxCuentos;

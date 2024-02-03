@@ -46,6 +46,7 @@ public class Reportes extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        btnMinimizar1 = new javax.swing.JButton();
         Fondo1 = new javax.swing.JLabel();
         LblInformacionNiño = new javax.swing.JLabel();
         LblInformacionNiño1 = new javax.swing.JLabel();
@@ -58,6 +59,7 @@ public class Reportes extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BtnInfNiño.setBackground(new java.awt.Color(255, 255, 255));
@@ -128,7 +130,7 @@ public class Reportes extends javax.swing.JFrame {
                 BtnCerrarPaginaActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
+        getContentPane().add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 30, 30));
         getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, 120, 10));
 
         jLabel8.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
@@ -181,6 +183,24 @@ public class Reportes extends javax.swing.JFrame {
         jLabel3.setText("CONSEJOS");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, -1, 30));
 
+        btnMinimizar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnMinimizar1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        btnMinimizar1.setText("—");
+        btnMinimizar1.setToolTipText("Cerrar Pagina dando click aqui");
+        btnMinimizar1.setBorder(null);
+        btnMinimizar1.setOpaque(false);
+        btnMinimizar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinimizar1MouseClicked(evt);
+            }
+        });
+        btnMinimizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimizar1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnMinimizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 30, 30));
+
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoTestRepresentante.png"))); // NOI18N
         Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, 0, 1670, 480));
@@ -230,6 +250,7 @@ public class Reportes extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnInfNiñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfNiñoActionPerformed
@@ -290,6 +311,14 @@ public class Reportes extends javax.swing.JFrame {
                 this.setVisible(false);
     }//GEN-LAST:event_BtnReporteTestRepre1ActionPerformed
 
+    private void btnMinimizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMinimizar1MouseClicked
+
+    private void btnMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar1ActionPerformed
+        this.setState(Reportes.ICONIFIED);
+    }//GEN-LAST:event_btnMinimizar1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -337,6 +366,7 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JLabel Fondo1;
     private javax.swing.JLabel LblInformacionNiño;
     private javax.swing.JLabel LblInformacionNiño1;
+    private javax.swing.JButton btnMinimizar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

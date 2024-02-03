@@ -82,6 +82,7 @@ public final class PagCrudTestPsicologo extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         btn_otro_test = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
+        btnMinimizar1 = new javax.swing.JButton();
         BtnRegresar = new javax.swing.JButton();
         Fondo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
@@ -271,7 +272,7 @@ public final class PagCrudTestPsicologo extends javax.swing.JFrame {
 
         jScrollPane3.setViewportView(jPanel5);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 710, 400));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 710, 390));
 
         BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
         BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
@@ -289,7 +290,25 @@ public final class PagCrudTestPsicologo extends javax.swing.JFrame {
                 BtnCerrarPaginaActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, 40, 30));
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 30, 30));
+
+        btnMinimizar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnMinimizar1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        btnMinimizar1.setText("—");
+        btnMinimizar1.setToolTipText("Minimizar Pagina dando click aqui");
+        btnMinimizar1.setBorder(null);
+        btnMinimizar1.setOpaque(false);
+        btnMinimizar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinimizar1MouseClicked(evt);
+            }
+        });
+        btnMinimizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimizar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMinimizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 30, 30));
 
         BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
         BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
@@ -446,6 +465,14 @@ public final class PagCrudTestPsicologo extends javax.swing.JFrame {
         test.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
+
+    private void btnMinimizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMinimizar1MouseClicked
+
+    private void btnMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar1ActionPerformed
+        this.setState(PagCrudTestPsicologo.ICONIFIED);
+    }//GEN-LAST:event_btnMinimizar1ActionPerformed
 
     //////////////////////////////////   TEST
     public void Crear_Test(ObjectContainer Base) {
@@ -685,6 +712,7 @@ public final class PagCrudTestPsicologo extends javax.swing.JFrame {
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
     private javax.swing.JMenu JMnPgPrinPsicolo;
+    private javax.swing.JButton btnMinimizar1;
     private javax.swing.JButton btn_guardar1;
     private javax.swing.JToggleButton btn_guardar_test;
     private javax.swing.JButton btn_otro_test;

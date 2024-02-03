@@ -68,6 +68,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
         BtnPersonalidadAdmin1 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         BtnCerrarPagina = new javax.swing.JButton();
+        btnMinimizar1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         Txt_Nombre = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
@@ -273,7 +274,25 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
                 BtnCerrarPaginaActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 40, 30));
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 30, 30));
+
+        btnMinimizar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnMinimizar1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        btnMinimizar1.setText("—");
+        btnMinimizar1.setToolTipText("Minimizar Pagina dando click aqui");
+        btnMinimizar1.setBorder(null);
+        btnMinimizar1.setOpaque(false);
+        btnMinimizar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinimizar1MouseClicked(evt);
+            }
+        });
+        btnMinimizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimizar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMinimizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 30, 30));
 
         jLabel2.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         jLabel2.setText("BIENVENIDO A: \" NI UNO MAS\"");
@@ -435,6 +454,14 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
           personalidad.setVisible(true);
                 this.setVisible(false);  
     }//GEN-LAST:event_BtnPersonalidadAdmin1ActionPerformed
+
+    private void btnMinimizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMinimizar1MouseClicked
+
+    private void btnMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar1ActionPerformed
+        this.setState(PagPrincipalAdmin.ICONIFIED);
+    }//GEN-LAST:event_btnMinimizar1ActionPerformed
     public void mostrar_diagrama() {
         DefaultPieDataset datos = new DefaultPieDataset();
         datos.setValue("Administradores", Num_Administradores(Base));
@@ -494,6 +521,7 @@ public class PagPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JTextField Txt_Nombre;
+    private javax.swing.JButton btnMinimizar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

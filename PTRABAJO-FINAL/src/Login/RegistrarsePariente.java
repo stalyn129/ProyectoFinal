@@ -109,10 +109,12 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         BtnRegresar = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
+        btnMinimizar1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -465,6 +467,24 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         });
         jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
 
+        btnMinimizar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnMinimizar1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        btnMinimizar1.setText("—");
+        btnMinimizar1.setToolTipText("Cerrar Pagina dando click aqui");
+        btnMinimizar1.setBorder(null);
+        btnMinimizar1.setOpaque(false);
+        btnMinimizar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinimizar1MouseClicked(evt);
+            }
+        });
+        btnMinimizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimizar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMinimizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 30, 30));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Familia.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 130, 50));
 
@@ -483,6 +503,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
@@ -1275,6 +1296,14 @@ public class RegistrarsePariente extends javax.swing.JFrame {
     private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
     }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
+
+    private void btnMinimizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMinimizar1MouseClicked
+
+    private void btnMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar1ActionPerformed
+        this.setState(RegistrarsePariente.ICONIFIED);
+    }//GEN-LAST:event_btnMinimizar1ActionPerformed
     public void Discapacidad_ingr(ObjectContainer Base) {
         Query query = Base.query();
         query.constrain(Discapacidad.class
@@ -1530,6 +1559,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
     private javax.swing.JTextField TxtTelfPari;
     private javax.swing.JTextField TxtTituloParien;
     private javax.swing.JTextField Txt_profecion;
+    private javax.swing.JButton btnMinimizar1;
     private javax.swing.JComboBox<String> cbx_discapacidad_pariente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

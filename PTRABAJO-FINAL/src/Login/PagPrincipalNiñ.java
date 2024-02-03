@@ -41,6 +41,7 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         BtnConseNiño = new javax.swing.JButton();
         BtnCuentosNiño1 = new javax.swing.JButton();
+        btnMinimizar1 = new javax.swing.JButton();
         Test = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         BtnTestNiño2 = new javax.swing.JButton();
@@ -118,6 +119,24 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
         });
         jPanel1.add(BtnCuentosNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, 120, 70));
 
+        btnMinimizar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnMinimizar1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        btnMinimizar1.setText("—");
+        btnMinimizar1.setToolTipText("Minimizar Pagina dando click aqui");
+        btnMinimizar1.setBorder(null);
+        btnMinimizar1.setOpaque(false);
+        btnMinimizar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinimizar1MouseClicked(evt);
+            }
+        });
+        btnMinimizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimizar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMinimizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 30, 30));
+
         Test.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel12.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
@@ -194,7 +213,7 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
                 BtnCerrarPaginaActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 40, 30));
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 30, 30));
 
         jLabel6.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -322,6 +341,14 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
+    private void btnMinimizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMinimizar1MouseClicked
+
+    private void btnMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar1ActionPerformed
+        this.setState(PagPrincipalNiñ.ICONIFIED);
+    }//GEN-LAST:event_btnMinimizar1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
@@ -341,6 +368,7 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
     private javax.swing.JPanel MiniJuegos;
     private javax.swing.JPanel Test;
     private javax.swing.JButton btnExit1;
+    private javax.swing.JButton btnMinimizar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;

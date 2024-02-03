@@ -71,6 +71,7 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
         txt_nom = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         BtnCerrarPagina = new javax.swing.JButton();
+        btnMinimizar1 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
         LblTestPariente1 = new javax.swing.JLabel();
@@ -83,6 +84,7 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -189,7 +191,25 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
                 BtnCerrarPaginaActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 40, 30));
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 30, 30));
+
+        btnMinimizar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnMinimizar1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        btnMinimizar1.setText("—");
+        btnMinimizar1.setToolTipText("Minimizar Pagina dando click aqui");
+        btnMinimizar1.setBorder(null);
+        btnMinimizar1.setOpaque(false);
+        btnMinimizar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinimizar1MouseClicked(evt);
+            }
+        });
+        btnMinimizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimizar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMinimizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 30, 30));
 
         jLabel9.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -243,6 +263,7 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
         setJMenuBar(MenuCuentosNiño);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CargarActionPerformed
@@ -288,6 +309,14 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
         principalrepresetante.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiñoMouseClicked
+
+    private void btnMinimizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMinimizar1MouseClicked
+
+    private void btnMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar1ActionPerformed
+        this.setState(PagTestPariente.ICONIFIED);
+    }//GEN-LAST:event_btnMinimizar1ActionPerformed
 
     public void caracteristicas_ponle(ObjectContainer Base, String titulo) {
         
@@ -455,6 +484,7 @@ UserDataSingleton usarData = UserDataSingleton.getInstance();
     private javax.swing.JLabel LblTestPariente1;
     private javax.swing.JLabel LblTestPariente2;
     private javax.swing.JMenuBar MenuCuentosNiño;
+    private javax.swing.JButton btnMinimizar1;
     private javax.swing.JButton btn_Cargar;
     private javax.swing.JButton btn_responder;
     private javax.swing.JLabel jLabel2;

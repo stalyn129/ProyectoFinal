@@ -5,8 +5,6 @@
  */
 package Login;
 
-import Login.*;
-import BBDD.*;
 import Clases.*;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
@@ -15,9 +13,6 @@ import com.db4o.ext.DatabaseClosedException;
 import com.db4o.ext.Db4oIOException;
 import java.awt.HeadlessException;
 import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
-import javax.swing.ListModel;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -72,6 +67,7 @@ public class PagTest_Niño extends javax.swing.JFrame {
         txt_nom = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         BtnCerrarPagina = new javax.swing.JButton();
+        btnMinimizar1 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
         LblTestPariente1 = new javax.swing.JLabel();
@@ -84,6 +80,7 @@ public class PagTest_Niño extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -190,7 +187,25 @@ public class PagTest_Niño extends javax.swing.JFrame {
                 BtnCerrarPaginaActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 40, 30));
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 30, 30));
+
+        btnMinimizar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnMinimizar1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        btnMinimizar1.setText("—");
+        btnMinimizar1.setToolTipText("Minimizar Pagina dando click aqui");
+        btnMinimizar1.setBorder(null);
+        btnMinimizar1.setOpaque(false);
+        btnMinimizar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinimizar1MouseClicked(evt);
+            }
+        });
+        btnMinimizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimizar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMinimizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 30, 30));
 
         jLabel9.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -244,6 +259,7 @@ public class PagTest_Niño extends javax.swing.JFrame {
         setJMenuBar(MenuGenerlNiño);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CargarActionPerformed
@@ -287,6 +303,14 @@ public class PagTest_Niño extends javax.swing.JFrame {
         principalniño.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiño2MouseClicked
+
+    private void btnMinimizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMinimizar1MouseClicked
+
+    private void btnMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar1ActionPerformed
+        this.setState(PagTest_Niño.ICONIFIED);
+    }//GEN-LAST:event_btnMinimizar1ActionPerformed
 
     public void caracteristicas_ponle(ObjectContainer Base, String titulo) {
 
@@ -461,6 +485,7 @@ public class PagTest_Niño extends javax.swing.JFrame {
     private javax.swing.JLabel LblTestPariente1;
     private javax.swing.JLabel LblTestPariente2;
     private javax.swing.JMenuBar MenuGenerlNiño;
+    private javax.swing.JButton btnMinimizar1;
     private javax.swing.JButton btn_Cargar;
     private javax.swing.JButton btn_responder;
     private javax.swing.JLabel jLabel2;

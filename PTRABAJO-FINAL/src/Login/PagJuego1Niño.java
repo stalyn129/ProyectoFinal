@@ -8,10 +8,6 @@ package Login;
 import Clases.Juego_Laberinto;
 import Clases.RespuestasLab;
 import Clases.UserDataSingleton;
-import Login.InicioNiño;
-import Login.PagMiniJuegoNiño;
-import Login.PagPrincipalNiñ;
-import Login.Pag_Crud_JLaberinto;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
@@ -63,6 +59,7 @@ public class PagJuego1Niño extends javax.swing.JFrame {
         BtnALabeNiño4 = new javax.swing.JRadioButton();
         jComboJuego = new javax.swing.JComboBox<>();
         BtnRegresar1 = new javax.swing.JButton();
+        btnMinimizar1 = new javax.swing.JButton();
         LblInformacionNiño1 = new javax.swing.JLabel();
         LblInformacionNiño = new javax.swing.JLabel();
         BtnCerrarPagina = new javax.swing.JButton();
@@ -163,7 +160,6 @@ public class PagJuego1Niño extends javax.swing.JFrame {
         });
         jPanel3.add(BtnALabeNiño4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 60, 30));
 
-        jComboJuego.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
         jComboJuego.setToolTipText("Selecciona el que mas te guste");
         jComboJuego.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,6 +186,24 @@ public class PagJuego1Niño extends javax.swing.JFrame {
         });
         jPanel1.add(BtnRegresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 40, 30));
 
+        btnMinimizar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnMinimizar1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        btnMinimizar1.setText("—");
+        btnMinimizar1.setToolTipText("Minimizar Pagina dando click aqui");
+        btnMinimizar1.setBorder(null);
+        btnMinimizar1.setOpaque(false);
+        btnMinimizar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinimizar1MouseClicked(evt);
+            }
+        });
+        btnMinimizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimizar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMinimizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 30, 30));
+
         LblInformacionNiño1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         LblInformacionNiño1.setText("BIENVENIDOS AL JUEGO DEL:");
         jPanel1.add(LblInformacionNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 300, 20));
@@ -214,7 +228,7 @@ public class PagJuego1Niño extends javax.swing.JFrame {
                 BtnCerrarPaginaActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 40, 30));
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 30, 30));
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -319,6 +333,14 @@ public class PagJuego1Niño extends javax.swing.JFrame {
     private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
     }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
+
+    private void btnMinimizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMinimizar1MouseClicked
+
+    private void btnMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar1ActionPerformed
+        this.setState(PagJuego1Niño.ICONIFIED);
+    }//GEN-LAST:event_btnMinimizar1ActionPerformed
 
     public void cargar_combo1(JComboBox jComboJuego) {
 
@@ -633,6 +655,7 @@ public class PagJuego1Niño extends javax.swing.JFrame {
     private javax.swing.JLabel LblTituloLabeNiño1;
     private javax.swing.JLabel LblTituloLabeNiño2;
     private javax.swing.JMenuBar MenuGenerlNiño;
+    private javax.swing.JButton btnMinimizar1;
     private javax.swing.JComboBox<String> jComboJuego;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMenuItem1;

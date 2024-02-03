@@ -33,8 +33,9 @@ public class Inicio extends javax.swing.JFrame {
         LbTitulo = new javax.swing.JLabel();
         Logo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        BtnCerrarPagina = new javax.swing.JButton();
         BtnIniciarSesion = new javax.swing.JButton();
+        btnMinimizar1 = new javax.swing.JButton();
+        BtnCerrarPagina = new javax.swing.JButton();
         BtnRegistrar1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
@@ -54,24 +55,6 @@ public class Inicio extends javax.swing.JFrame {
         PanelPrincipal.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 290, 300));
         PanelPrincipal.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 320, 10));
 
-        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
-        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
-        BtnCerrarPagina.setText("x");
-        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
-        BtnCerrarPagina.setBorder(null);
-        BtnCerrarPagina.setOpaque(false);
-        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtnCerrarPaginaMouseClicked(evt);
-            }
-        });
-        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCerrarPaginaActionPerformed(evt);
-            }
-        });
-        PanelPrincipal.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
-
         BtnIniciarSesion.setBackground(new java.awt.Color(255, 255, 255));
         BtnIniciarSesion.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
         BtnIniciarSesion.setText("INICIAR SESIÓN");
@@ -89,6 +72,42 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         PanelPrincipal.add(BtnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 400, 180, 40));
+
+        btnMinimizar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnMinimizar1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        btnMinimizar1.setText("—");
+        btnMinimizar1.setToolTipText("Minimizar Pagina dando click aqui");
+        btnMinimizar1.setBorder(null);
+        btnMinimizar1.setOpaque(false);
+        btnMinimizar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinimizar1MouseClicked(evt);
+            }
+        });
+        btnMinimizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimizar1ActionPerformed(evt);
+            }
+        });
+        PanelPrincipal.add(btnMinimizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 30, 30));
+
+        BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        BtnCerrarPagina.setText("x");
+        BtnCerrarPagina.setToolTipText("Cerrar Pagina dando click aqui");
+        BtnCerrarPagina.setBorder(null);
+        BtnCerrarPagina.setOpaque(false);
+        BtnCerrarPagina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCerrarPaginaMouseClicked(evt);
+            }
+        });
+        BtnCerrarPagina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarPaginaActionPerformed(evt);
+            }
+        });
+        PanelPrincipal.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 30, 30));
 
         BtnRegistrar1.setBackground(new java.awt.Color(255, 255, 255));
         BtnRegistrar1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
@@ -120,14 +139,6 @@ public class Inicio extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
-       System.exit(0);
-    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
-
-    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
-
     private void BtnIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnIniciarSesionMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnIniciarSesionMouseClicked
@@ -148,6 +159,22 @@ public class Inicio extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegistrar1ActionPerformed
 
+    private void btnMinimizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMinimizar1MouseClicked
+
+    private void btnMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar1ActionPerformed
+        this.setState(Inicio.ICONIFIED);
+    }//GEN-LAST:event_btnMinimizar1ActionPerformed
+
+    private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCerrarPaginaMouseClicked
+
+    private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
@@ -157,6 +184,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel LbTitulo;
     private javax.swing.JLabel Logo;
     private javax.swing.JPanel PanelPrincipal;
+    private javax.swing.JButton btnMinimizar1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables

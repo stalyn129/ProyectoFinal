@@ -418,6 +418,7 @@ public class Reporte_test_niño_Admin extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
         LblTestPariente1 = new javax.swing.JLabel();
+        btnMinimizar2 = new javax.swing.JButton();
         LblTestPariente2 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -428,6 +429,7 @@ public class Reporte_test_niño_Admin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 500));
@@ -595,12 +597,30 @@ public class Reporte_test_niño_Admin extends javax.swing.JFrame {
                 BtnCerrarPaginaActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 30, 30));
 
         LblTestPariente1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         LblTestPariente1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblTestPariente1.setText("BIENVENIDO AL AREA DE:");
         jPanel1.add(LblTestPariente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 350, 20));
+
+        btnMinimizar2.setBackground(new java.awt.Color(255, 255, 255));
+        btnMinimizar2.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        btnMinimizar2.setText("—");
+        btnMinimizar2.setToolTipText("Cerrar Pagina dando click aqui");
+        btnMinimizar2.setBorder(null);
+        btnMinimizar2.setOpaque(false);
+        btnMinimizar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinimizar2MouseClicked(evt);
+            }
+        });
+        btnMinimizar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimizar2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMinimizar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 30, 30));
 
         LblTestPariente2.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         LblTestPariente2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -648,6 +668,7 @@ public class Reporte_test_niño_Admin extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
@@ -680,6 +701,14 @@ public class Reporte_test_niño_Admin extends javax.swing.JFrame {
         paginaprinciadmi.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void btnMinimizar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizar2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMinimizar2MouseClicked
+
+    private void btnMinimizar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar2ActionPerformed
+        this.setState(Reporte_test_niño_Admin.ICONIFIED);
+    }//GEN-LAST:event_btnMinimizar2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -785,6 +814,8 @@ public class Reporte_test_niño_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel LblTestPariente1;
     private javax.swing.JLabel LblTestPariente2;
     private javax.swing.JPanel barra_panel;
+    private javax.swing.JButton btnMinimizar1;
+    private javax.swing.JButton btnMinimizar2;
     private javax.swing.JComboBox<String> cbx_Test;
     private javax.swing.JComboBox<String> cbx_preguntas;
     private javax.swing.JPanel grafic_circu;

@@ -69,6 +69,7 @@ public class Reporte_Informacion extends javax.swing.JFrame {
         LblTestPariente1 = new javax.swing.JLabel();
         BtnCerrarPagina = new javax.swing.JButton();
         BtnRegresar = new javax.swing.JButton();
+        btnMinimizar2 = new javax.swing.JButton();
         Fondo1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -78,7 +79,7 @@ public class Reporte_Informacion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
-        setPreferredSize(new java.awt.Dimension(800, 500));
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -302,7 +303,7 @@ public class Reporte_Informacion extends javax.swing.JFrame {
                 BtnCerrarPaginaActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
+        getContentPane().add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 30, 30));
 
         BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
         BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
@@ -314,6 +315,24 @@ public class Reporte_Informacion extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 440, 50, 40));
+
+        btnMinimizar2.setBackground(new java.awt.Color(255, 255, 255));
+        btnMinimizar2.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        btnMinimizar2.setText("—");
+        btnMinimizar2.setToolTipText("Cerrar Pagina dando click aqui");
+        btnMinimizar2.setBorder(null);
+        btnMinimizar2.setOpaque(false);
+        btnMinimizar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinimizar2MouseClicked(evt);
+            }
+        });
+        btnMinimizar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimizar2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnMinimizar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 30, 30));
 
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGeneralReportes.png"))); // NOI18N
         Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -351,6 +370,7 @@ public class Reporte_Informacion extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
@@ -462,6 +482,14 @@ public class Reporte_Informacion extends javax.swing.JFrame {
         paginaprinciadmi.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void btnMinimizar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizar2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMinimizar2MouseClicked
+
+    private void btnMinimizar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar2ActionPerformed
+        this.setState(Reporte_Informacion.ICONIFIED);
+    }//GEN-LAST:event_btnMinimizar2ActionPerformed
 
    private void ConsultarRegistro(ObjectContainer Base, String consulta, int tipoConsulta) {
         // Creando un objeto de ejemplo para la consulta
@@ -851,6 +879,8 @@ public class Reporte_Informacion extends javax.swing.JFrame {
     private javax.swing.JButton btnConsultar1;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnEliminar1;
+    private javax.swing.JButton btnMinimizar1;
+    private javax.swing.JButton btnMinimizar2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;

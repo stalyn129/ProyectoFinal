@@ -99,6 +99,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         BtnModifiPsicologo = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         BtnCerrarPagina = new javax.swing.JButton();
+        btnMinimizar1 = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenu3puntitosPsicologo = new javax.swing.JMenu();
@@ -381,7 +382,25 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
                 BtnCerrarPaginaActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 40, 30));
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 30, 30));
+
+        btnMinimizar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnMinimizar1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        btnMinimizar1.setText("—");
+        btnMinimizar1.setToolTipText("Minimizar Pagina dando click aqui");
+        btnMinimizar1.setBorder(null);
+        btnMinimizar1.setOpaque(false);
+        btnMinimizar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinimizar1MouseClicked(evt);
+            }
+        });
+        btnMinimizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimizar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMinimizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 30, 30));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         Fondo.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -702,6 +721,14 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     private void BtnCerrarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaActionPerformed
         System.exit(0);
     }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
+
+    private void btnMinimizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMinimizar1MouseClicked
+
+    private void btnMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar1ActionPerformed
+        this.setState(PagCrudConsejosPsicologo.ICONIFIED);
+    }//GEN-LAST:event_btnMinimizar1ActionPerformed
 
     public byte[] AbrirArchivo(File archivo) {
         try ( FileInputStream entrada = new FileInputStream(archivo)) {
@@ -1025,6 +1052,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     private javax.swing.JTable JTConsejos;
     private javax.swing.JTextField Txt_TituloConsejPsicologo1;
     private javax.swing.JTextField Txt_TituloConsejPsicologo2;
+    private javax.swing.JButton btnMinimizar1;
     private javax.swing.JButton btn_Ingresar_imagen;
     private javax.swing.JButton btn_Ingresar_imagen1;
     private javax.swing.JButton btn_ingresar1;

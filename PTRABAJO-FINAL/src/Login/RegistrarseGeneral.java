@@ -40,6 +40,7 @@ public class RegistrarseGeneral extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         LbTitulo = new javax.swing.JLabel();
+        btnMinimizar1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         BtnInfanteRegist = new javax.swing.JButton();
         BtnPsicologoRegist = new javax.swing.JButton();
@@ -58,6 +59,7 @@ public class RegistrarseGeneral extends javax.swing.JFrame {
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -73,6 +75,24 @@ public class RegistrarseGeneral extends javax.swing.JFrame {
         LbTitulo.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 36)); // NOI18N
         LbTitulo.setText("Registrate Como:");
         jPanel1.add(LbTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 380, 50));
+
+        btnMinimizar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnMinimizar1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
+        btnMinimizar1.setText("—");
+        btnMinimizar1.setToolTipText("Minimizar Pagina dando click aqui");
+        btnMinimizar1.setBorder(null);
+        btnMinimizar1.setOpaque(false);
+        btnMinimizar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinimizar1MouseClicked(evt);
+            }
+        });
+        btnMinimizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimizar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMinimizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 30, 30));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 370, 10));
 
         BtnInfanteRegist.setBackground(new java.awt.Color(255, 255, 255));
@@ -138,7 +158,7 @@ public class RegistrarseGeneral extends javax.swing.JFrame {
                 BtnCerrarPaginaActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 30));
+        jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 30));
 
         BtnRepresentanteRegist.setBackground(new java.awt.Color(255, 255, 255));
         BtnRepresentanteRegist.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Familia.png"))); // NOI18N
@@ -180,6 +200,7 @@ public class RegistrarseGeneral extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnInfanteRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInfanteRegistActionPerformed
@@ -256,6 +277,14 @@ JPasswordField passwordField = new JPasswordField();
         System.exit(0);
     }//GEN-LAST:event_BtnCerrarPaginaActionPerformed
 
+    private void btnMinimizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMinimizar1MouseClicked
+
+    private void btnMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar1ActionPerformed
+        this.setState(RegistrarseGeneral.ICONIFIED);
+    }//GEN-LAST:event_btnMinimizar1ActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -271,6 +300,7 @@ JPasswordField passwordField = new JPasswordField();
     private javax.swing.JLabel LbTitulo;
     private javax.swing.JLabel Pariente;
     private javax.swing.JLabel Psicologo;
+    private javax.swing.JButton btnMinimizar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
