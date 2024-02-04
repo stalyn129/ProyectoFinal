@@ -95,6 +95,11 @@ public class ValoracionCuento {
         this.fecha_respuesta = fecha_respuesta;
     }
 
+    @Override
+    public String toString() {
+        return "ValoracionCuento{" + "Cod_Respuesta_usuario=" + Cod_Respuesta_usuario + ", FK_cod_Representante=" + FK_cod_Representante + ", Fk_Cod_Cuento=" + Fk_Cod_Cuento + ", respuesta=" + respuesta + ", fecha_respuesta=" + fecha_respuesta + '}';
+    }
+
     
 }
     
