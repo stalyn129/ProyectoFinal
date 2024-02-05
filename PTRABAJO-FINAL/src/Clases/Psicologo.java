@@ -14,15 +14,17 @@ public class Psicologo {
     private String FK_Cedula;
     private String FK_Cod_Especialidad;
     private int Años_Experiencia;
+     private String Codigo_vinculacion;
 
     public Psicologo() {
     }
 
-    public Psicologo(String Cod_Psicologo, String FK_Cedula, String FK_Cod_Especialidad, int Años_Experiencia) {
+    public Psicologo(String Cod_Psicologo, String FK_Cedula, String FK_Cod_Especialidad, int Años_Experiencia, String Codigo_vinculacion) {
         this.Cod_Psicologo = Cod_Psicologo;
         this.FK_Cedula = FK_Cedula;
         this.FK_Cod_Especialidad = FK_Cod_Especialidad;
         this.Años_Experiencia = Años_Experiencia;
+        this.Codigo_vinculacion = Codigo_vinculacion;
     }
 
     public String getCod_Psicologo() {
@@ -57,10 +59,13 @@ public class Psicologo {
         this.Años_Experiencia = Años_Experiencia;
     }
 
-    @Override
-    public String toString() {
-        return "Psicologo{" + "Cod_Psicologo=" + Cod_Psicologo + ", FK_Cedula=" + FK_Cedula + ", FK_Cod_Especialidad=" + FK_Cod_Especialidad + ", A\u00f1os_Experiencia=" + Años_Experiencia + '}';
+    public String getCodigo_vinculacion() {
+        return Codigo_vinculacion;
     }
-   
+
+    public void setCodigo_vinculacion(String Codigo_vinculacion) {
+        this.Codigo_vinculacion = Codigo_vinculacion;
+    }
+
     
 }

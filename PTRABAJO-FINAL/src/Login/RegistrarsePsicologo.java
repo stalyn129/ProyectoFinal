@@ -23,6 +23,7 @@ import com.db4o.query.Query;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.util.Date;
+import java.util.Random;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -114,7 +115,10 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         Fondo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(800, 500));
+        setMinimumSize(new java.awt.Dimension(800, 500));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -873,6 +877,53 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         }
 
     }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+    public  String Calcular_Cod_Vinculacion(ObjectContainer Base) {
+
+        boolean rest = true;
+
+        String Codigo;
+        do {
+
+            int longitudCodigo = 8;
+            Codigo = generarCodigo(longitudCodigo);
+
+            if (Verificar_Codigo_Verificar(Base, Codigo) == 0) {
+                rest = false;
+            }
+
+        } while (rest);
+
+        return Codigo;
+    }
+
+    public int Verificar_Codigo_Verificar(ObjectContainer Base, String Codigo) {
+
+        Psicologo pisic = new Psicologo();
+        pisic.setCodigo_vinculacion(Codigo);
+
+        ObjectSet result = Base.get(pisic);
+
+        return result.size();
+    }
+    
+    
+    
+    
+    public static String generarCodigo(int longitud) {
+        String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        StringBuilder codigo = new StringBuilder();
+
+        Random random = new Random();
+
+        for (int i = 0; i < longitud; i++) {
+            int indice = random.nextInt(caracteres.length());
+            codigo.append(caracteres.charAt(indice));
+        }
+
+        return codigo.toString();
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public void Guarda_psicologo() {
         Psicologo elpsic = new Psicologo();
@@ -885,6 +936,11 @@ public class RegistrarsePsicologo extends javax.swing.JFrame {
         String especialid = Asignar_cod_Especialidad(Base, cbx_especializacion.getSelectedItem().toString());
         elpsic.setFK_Cod_Especialidad(especialid);
         elpsic.setAños_Experiencia((int) sp_años.getValue());
+        String covincu = Calcular_Cod_Vinculacion(Base);
+        System.out.println("Cod_vincula: " + covincu);
+
+        elpsic.setCodigo_vinculacion(covincu);
+
 
         Base.set(elpsic);
 

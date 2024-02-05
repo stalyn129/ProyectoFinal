@@ -35,6 +35,7 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
 
         btnExit1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         Cuentos = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         Consejos = new javax.swing.JPanel();
@@ -78,6 +79,14 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setText("Vinculacion");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 470, 100, 20));
 
         Cuentos.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -349,6 +358,15 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
         this.setState(PagPrincipalNiñ.ICONIFIED);
     }//GEN-LAST:event_btnMinimizar1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // JOptionPane.showMessageDialog(this, "Este es el codigo\n Para vincular"+Sacar_codigo_Verficar(Base));
+
+        Base.close();
+        vincular_niño vin=new vincular_niño();
+        vin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
@@ -369,6 +387,7 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
     private javax.swing.JPanel Test;
     private javax.swing.JButton btnExit1;
     private javax.swing.JButton btnMinimizar1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;

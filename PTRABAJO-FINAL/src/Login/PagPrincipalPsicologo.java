@@ -35,6 +35,7 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         BtnTestPsico = new javax.swing.JButton();
@@ -76,6 +77,14 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 500));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setText("Capasitar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 470, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         jLabel2.setText("BIENVENIDO A: \" NI UNO MAS\"");
@@ -397,6 +406,13 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
         this.setState(PagPrincipalPsicologo.ICONIFIED);
     }//GEN-LAST:event_btnMinimizar1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Base.close();
+        peticion_Psicologo pet=new peticion_Psicologo();
+        pet.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
@@ -412,6 +428,7 @@ public class PagPrincipalPsicologo extends javax.swing.JFrame {
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
     private javax.swing.JMenu JMnPgPrinPsicolo;
     private javax.swing.JButton btnMinimizar1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

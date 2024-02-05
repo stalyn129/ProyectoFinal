@@ -34,6 +34,7 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -77,6 +78,14 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel4.setText("Puedes elegir entre todas estas opciones");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, -1, 20));
+
+        jButton1.setText("Vincular");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 450, 100, 20));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -201,7 +210,7 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
 
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoRepre.png"))); // NOI18N
         Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
-        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-570, -40, 1370, 550));
+        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-570, -40, 1370, 530));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         Fondo.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -300,6 +309,13 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
         this.setState(PagPrincipalRepresentante.ICONIFIED);
     }//GEN-LAST:event_btnMinimizar1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Base.close();
+        Vincular_niño_represe vin=new Vincular_niño_represe();
+        vin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -315,6 +331,7 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
     private javax.swing.JMenu JMnPgPrinNiño;
     private javax.swing.JMenuBar MenuCuentosNiño;
     private javax.swing.JButton btnMinimizar1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
