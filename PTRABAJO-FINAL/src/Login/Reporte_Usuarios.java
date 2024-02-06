@@ -15,6 +15,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -85,7 +87,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
                         pers.getNombre(),
                         pers.getApellido(),
                         pers.getDireccion(),
-                        pers.getFecha_Nacimiento(),
+                        formatoFecha(pers.getFecha_Nacimiento()),
                         pers.getEmail(),
                         pers.getCod_Discapacidad(),
                         pers.getTelefono()
@@ -99,6 +101,15 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
 
         }
 
+    }
+
+    private String formatoFecha(Date fecha) {
+        if (fecha == null) {
+            return "Fecha no disponible";
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        return sdf.format(fecha);
     }
 
     public void eleccion_tipo() {
@@ -158,7 +169,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
                     pers.getNombre(),
                     pers.getApellido(),
                     pers.getDireccion(),
-                    pers.getFecha_Nacimiento(),
+                    formatoFecha(pers.getFecha_Nacimiento()),
                     pers.getEmail(),
                     pers.getCod_Discapacidad(),
                     pers.getTelefono()
@@ -189,7 +200,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
                     pers.getNombre(),
                     pers.getApellido(),
                     pers.getDireccion(),
-                    pers.getFecha_Nacimiento(),
+                    formatoFecha(pers.getFecha_Nacimiento()),
                     pers.getEmail(),
                     pers.getCod_Discapacidad(),
                     pers.getTelefono()
@@ -220,7 +231,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
                     pers.getNombre(),
                     pers.getApellido(),
                     pers.getDireccion(),
-                    pers.getFecha_Nacimiento(),
+                    formatoFecha(pers.getFecha_Nacimiento()),
                     pers.getEmail(),
                     pers.getCod_Discapacidad(),
                     pers.getTelefono()
@@ -889,7 +900,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Modificar_person(Base);
-         eleccion_tipo();
+        eleccion_tipo();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void recu_usaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recu_usaActionPerformed
@@ -965,13 +976,13 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         eliminar_niño();
-  mostrar_niños(Base);
+        mostrar_niños(Base);
 
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         Modificar_Niño(Base);
-          mostrar_niños(Base);
+        mostrar_niños(Base);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void txt_cod_rolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cod_rolActionPerformed
@@ -1121,11 +1132,11 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         ntx_apodo.setText(prs.getApodo());
         ntx_sexo.setText(String.valueOf(prs.getSexo_Niño()));
         ntx_contra.setText(prs.getContraseña());
-        
 
     }
 
-    String Cod_Roll_tip="";
+    String Cod_Roll_tip = "";
+
     public String tipo_persona(ObjectContainer Base, String cedula) {
         String tipo = "";
 
@@ -1133,9 +1144,9 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         admin.setFK_Cedula(cedula);
         ObjectSet resultAdmin = Base.get(admin);
         if (resultAdmin.size() != 0) {
-            Administrador ad=(Administrador)resultAdmin.next();
-            Cod_Roll_tip=ad.getID_Admin();
-            
+            Administrador ad = (Administrador) resultAdmin.next();
+            Cod_Roll_tip = ad.getID_Admin();
+
             tipo = "Administrador";
             return tipo;
         }
@@ -1144,8 +1155,8 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         repre.setFKCod_Cedula(cedula);
         ObjectSet resultrepe = Base.get(repre);
         if (resultrepe.size() != 0) {
-            Representante ad=(Representante)resultrepe.next();
-            Cod_Roll_tip=ad.getCod_Repre();
+            Representante ad = (Representante) resultrepe.next();
+            Cod_Roll_tip = ad.getCod_Repre();
             tipo = "Representante";
             return tipo;
         }
@@ -1154,8 +1165,8 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
         psic.setFK_Cedula(cedula);
         ObjectSet resulPsic = Base.get(psic);
         if (resulPsic.size() != 0) {
-            Psicologo ad=(Psicologo)resulPsic.next();
-            Cod_Roll_tip=ad.getCod_Psicologo();
+            Psicologo ad = (Psicologo) resulPsic.next();
+            Cod_Roll_tip = ad.getCod_Psicologo();
             tipo = "Psicologo";
             return tipo;
         }
@@ -1478,7 +1489,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
     public void mostrar_niños(ObjectContainer Base) {
 
         Niño psic = new Niño();
-        
+
         ObjectSet person = Base.get(psic);
         DefaultTableModel modelo = (DefaultTableModel) tabla_niños.getModel();
         // Limpiar el modelo antes de agregar nuevas filas
@@ -1487,17 +1498,16 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
             while (person.hasNext()) {
                 Niño pers = (Niño) person.next();
                 if (pers.isEstado()) {
-                 modelo.addRow(new Object[]{
-                    pers.getNombre(),
-                    pers.getApellido(),
-                    pers.getApodo(),
-                    pers.getFecha_Nacimiento(),
-                    pers.getSexo_Niño(),
-                    pers.getDiscapacidad()
+                    modelo.addRow(new Object[]{
+                        pers.getNombre(),
+                        pers.getApellido(),
+                        pers.getApodo(),
+                        formatoFecha(pers.getFecha_Nacimiento()),
+                        pers.getSexo_Niño(),
+                        pers.getDiscapacidad()
 
-                });   
+                    });
                 }
-                
 
             }
         }
@@ -1531,7 +1541,7 @@ public class Reporte_Usuarios extends javax.swing.JFrame {
                         pers.getNombre(),
                         pers.getApellido(),
                         pers.getApodo(),
-                        pers.getFecha_Nacimiento(),
+                        formatoFecha(pers.getFecha_Nacimiento()),
                         pers.getSexo_Niño(),
                         pers.getDiscapacidad()
                     });

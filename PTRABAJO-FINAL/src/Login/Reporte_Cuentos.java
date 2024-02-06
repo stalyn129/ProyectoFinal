@@ -17,8 +17,10 @@ import com.db4o.ObjectSet;
 import com.db4o.ext.Db4oIOException;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -157,7 +159,7 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Cod_Respuesta", "Cod_Representante", "Cod_Cuento", "Valoracion", "Fecha Valoracion"
+                "Cod_Respuesta", "Representante", "Cuento", "Valoracion", "Fecha Valoracion"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -251,7 +253,7 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Cod_Respuestas", "Cod_Niño", "Cod_Cuento", "Valoracion", "Fecha Valoracion"
+                "Cod_Respuestas", "Niño", "Cuento", "Valoracion", "Fecha Valoracion"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -583,7 +585,7 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
                     registroConsultado.getFK_cod_Representante(),
                     registroConsultado.getFk_Cod_Cuento(),
                     registroConsultado.getRespuesta(),
-                    registroConsultado.getFecha_respuesta(),});
+                    formatoFecha(registroConsultado.getFecha_respuesta()),});
             }
         } else {
             JOptionPane.showMessageDialog(this, "No se encontraron registros en la base de datos");
@@ -628,9 +630,19 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
                 Mostrar_nombre_Represent(Base, mivalo.getFK_cod_Representante()),
                 Mostrar_Titulo_Cuento(Base, mivalo.getFk_Cod_Cuento()),
                 mivalo.getRespuesta(),
-                mivalo.getFecha_respuesta(),});
+                formatoFecha(mivalo.getFecha_respuesta()),
+            });
         }
 
+    }
+
+    private String formatoFecha(Date fecha) {
+        if (fecha == null) {
+            return "Fecha no disponible";
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        return sdf.format(fecha);
     }
 
     public String Mostrar_Titulo_Cuento(ObjectContainer Base, String cod) {
@@ -763,7 +775,7 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
                     registroConsultado.getFk_cod_niño(),
                     registroConsultado.getFk_Cod_Cuento(),
                     registroConsultado.getRespuesta(),
-                    registroConsultado.getFecha_respuesta()
+                    formatoFecha(registroConsultado.getFecha_respuesta()),
                 });
             }
         } else {
@@ -809,7 +821,7 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
                 Mostrar_nombre_nin(Base, miRespuesta.getFk_cod_niño()),
                 Mostrar_Titulo_Cuento(Base, miRespuesta.getFk_Cod_Cuento()),
                 miRespuesta.getRespuesta(),
-                miRespuesta.getFecha_respuesta()
+                formatoFecha(miRespuesta.getFecha_respuesta()),
             });
         }
     }

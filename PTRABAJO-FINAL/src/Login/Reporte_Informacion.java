@@ -5,6 +5,10 @@
  */
 package Login;
 
+import Clases.Informacion;
+import Clases.Niño;
+import Clases.Persona;
+import Clases.Representante;
 import Clases.ValoracionInfoNiño;
 import Clases.ValoracionInfoRepre;
 import com.db4o.Db4o;
@@ -14,7 +18,9 @@ import com.db4o.ext.Db4oIOException;
 import com.db4o.query.Predicate;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -92,7 +98,7 @@ public class Reporte_Informacion extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Cod_Respuesta", "Cod_Representante", "Cod_Informacion", "Valoracion", "Fecha Valoracion"
+                "Cod_Respuesta", "Representante", "Informacion", "Valoracion", "Fecha Valoracion"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -186,7 +192,7 @@ public class Reporte_Informacion extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Cod_Respuestas", "Cod_Niño", "Cod_Información", "Valoracion", "Fecha Valoracion"
+                "Cod_Respuestas", "Niño", "Información", "Valoracion", "Fecha Valoracion"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -460,7 +466,7 @@ public class Reporte_Informacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultar1ActionPerformed
 
     private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
-       String codigoAEliminar = JOptionPane.showInputDialog(this, "Ingrese el código a eliminar:");
+        String codigoAEliminar = JOptionPane.showInputDialog(this, "Ingrese el código a eliminar:");
 
         if (codigoAEliminar != null && !codigoAEliminar.isEmpty()) {
             EliminarRegistroInfoniño(Base, codigoAEliminar);
@@ -491,7 +497,7 @@ public class Reporte_Informacion extends javax.swing.JFrame {
         this.setState(Reporte_Informacion.ICONIFIED);
     }//GEN-LAST:event_btnMinimizar2ActionPerformed
 
-   private void ConsultarRegistro(ObjectContainer Base, String consulta, int tipoConsulta) {
+    private void ConsultarRegistro(ObjectContainer Base, String consulta, int tipoConsulta) {
         // Creando un objeto de ejemplo para la consulta
         ValoracionInfoRepre ejemploConsulta = new ValoracionInfoRepre(null, null, null, null, null);
 
@@ -554,7 +560,7 @@ public class Reporte_Informacion extends javax.swing.JFrame {
                     registroConsultado.getFK_cod_Representante(),
                     registroConsultado.getFk_Cod_Infor(),
                     registroConsultado.getRespuesta(),
-                    registroConsultado.getFecha_respuesta(),});
+                    formatoFecha(registroConsultado.getFecha_respuesta()),});
             }
         } else {
             JOptionPane.showMessageDialog(this, "No se encontraron registros en la base de datos");
@@ -581,8 +587,6 @@ public class Reporte_Informacion extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
         }
     }
-    
-   
 
     public void MostrarDatosInfoRepre(ObjectContainer Base) {
         ValoracionInfoRepre puntu = new ValoracionInfoRepre();
@@ -598,12 +602,48 @@ public class Reporte_Informacion extends javax.swing.JFrame {
             ValoracionInfoRepre mivalo = (ValoracionInfoRepre) result.next();
             modelo.addRow(new Object[]{
                 mivalo.getCod_Respuesta_usuario(),
-                mivalo.getFK_cod_Representante(),
-                mivalo.getFk_Cod_Infor(),
+                Mostrar_nombre_Represent(Base, mivalo.getFK_cod_Representante()),
+                Mostrar_Titulo_informa(Base, mivalo.getFk_Cod_Infor()),
                 mivalo.getRespuesta(),
-                mivalo.getFecha_respuesta(),});
+                formatoFecha(mivalo.getFecha_respuesta()),
+            });
         }
 
+    }
+      private String formatoFecha(Date fecha) {
+        if (fecha == null) {
+            return "Fecha no disponible";
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        return sdf.format(fecha);
+    }
+
+    public String Mostrar_nombre_Represent(ObjectContainer Base, String cod) {
+        String nombres = "";
+        Representante nin = new Representante();
+        nin.setCod_Repre(cod);
+
+        ObjectSet result = Base.get(nin);
+        if (result.size() != 0) {
+            while (result.hasNext()) {
+                Representante next = (Representante) result.next();
+
+                Persona person = new Persona();
+                person.setCedula(next.getFKCod_Cedula());
+                ObjectSet resu = Base.get(person);
+                while (resu.hasNext()) {
+                    Persona next1 = (Persona) resu.next();
+
+                    nombres = next1.getNombre() + " " + next1.getApellido();
+
+                }
+            }
+
+        } else {
+            System.out.println("No se encontro al Psicologo");
+        }
+        return nombres;
     }
 
     public void ConsultarDatos(ObjectContainer Base, ValoracionInfoRepre consulta) {
@@ -619,7 +659,7 @@ public class Reporte_Informacion extends javax.swing.JFrame {
                 consulta.getFK_cod_Representante(),
                 consulta.getFk_Cod_Infor(),
                 consulta.getRespuesta(),
-                consulta.getFecha_respuesta()
+                formatoFecha(consulta.getFecha_respuesta())
             });
         }
     }
@@ -689,7 +729,7 @@ public class Reporte_Informacion extends javax.swing.JFrame {
                     registroConsultado.getFk_cod_niño(),
                     registroConsultado.getFk_Cod_info(),
                     registroConsultado.getRespuesta(),
-                    registroConsultado.getFecha_respuesta()
+                    formatoFecha(registroConsultado.getFecha_respuesta()),
                 });
             }
         } else {
@@ -732,13 +772,54 @@ public class Reporte_Informacion extends javax.swing.JFrame {
             ValoracionInfoNiño miRespuesta = (ValoracionInfoNiño) result.next();
             modelo.addRow(new Object[]{
                 miRespuesta.getCod_Respuesta_usuario(),
-                miRespuesta.getFk_cod_niño(),
-                miRespuesta.getFk_Cod_info(),
+                Mostrar_nombre_nin(Base, miRespuesta.getFk_cod_niño()),
+                Mostrar_Titulo_informa(Base, miRespuesta.getFk_Cod_info()),
                 miRespuesta.getRespuesta(),
-                miRespuesta.getFecha_respuesta()
+                formatoFecha(miRespuesta.getFecha_respuesta()),
             });
         }
 
+    }
+    
+
+    public String Mostrar_nombre_nin(ObjectContainer Base, String cod) {
+        String nombres = "";
+        Niño nin = new Niño();
+        nin.setCod_Niño(cod);
+
+        ObjectSet result = Base.get(nin);
+        if (result.size() != 0) {
+            while (result.hasNext()) {
+                Niño next = (Niño) result.next();
+
+                nombres = next.getNombre() + " " + next.getApellido();
+
+            }
+
+        } else {
+            System.out.println("No se encontro al niño");
+        }
+        return nombres;
+    }
+
+    public String Mostrar_Titulo_informa(ObjectContainer Base, String cod) {
+        String Titulo = "";
+        Informacion info = new Informacion();
+        info.setCod_Info(cod);
+
+        ObjectSet result = Base.get(info);
+        if (result.size() != 0) {
+            while (result.hasNext()) {
+                Informacion next = (Informacion) result.next();
+
+                Titulo = next.getTitulo_Info();
+
+            }
+
+        } else {
+            System.out.println("No se encontro al niño");
+        }
+        return Titulo;
     }
 
     public void ConsultarDatosInfoniño(ObjectContainer base, ValoracionInfoNiño consulta) {
@@ -879,7 +960,6 @@ public class Reporte_Informacion extends javax.swing.JFrame {
     private javax.swing.JButton btnConsultar1;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnEliminar1;
-    private javax.swing.JButton btnMinimizar1;
     private javax.swing.JButton btnMinimizar2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel9;

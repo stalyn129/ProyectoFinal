@@ -5,6 +5,8 @@
  */
 package Login;
 
+import Clases.Consejos;
+import Clases.Niño;
 import Clases.ValoracionConseNiño;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
@@ -12,7 +14,9 @@ import com.db4o.ObjectSet;
 import com.db4o.ext.Db4oIOException;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -67,10 +71,8 @@ public class ReporteConsejos extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 500));
         setMinimumSize(new java.awt.Dimension(800, 500));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -83,7 +85,7 @@ public class ReporteConsejos extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID_Consejo", "Cod_Niño", "Cod_Consejo", "Valoracion", "Fecha Valoracion"
+                "ID_Consejo", "Niño", "Consejo", "Valoracion", "Fecha Valoracion"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -409,7 +411,7 @@ public class ReporteConsejos extends javax.swing.JFrame {
                     registroConsultado.getFk_cod_niño(),
                     registroConsultado.getFk_Cod_Consejo(),
                     registroConsultado.getRespuesta(),
-                    registroConsultado.getFecha_respuesta()
+                    formatoFecha(registroConsultado.getFecha_respuesta())
                 });
             }
         } else {
@@ -448,14 +450,62 @@ public class ReporteConsejos extends javax.swing.JFrame {
 
         while (result.hasNext()) {
             ValoracionConseNiño miPuntuacion = (ValoracionConseNiño) result.next();
-        modelo.addRow(new Object[]{
+            modelo.addRow(new Object[]{
                 miPuntuacion.getCod_Respuesta_usuario(),
-                miPuntuacion.getFk_cod_niño(),
-                miPuntuacion.getFk_Cod_Consejo(),
+                Mostrar_nombre_nin(Base, miPuntuacion.getFk_cod_niño()),
+                Mostrar_Titulo_Consejo(Base, miPuntuacion.getFk_Cod_Consejo()),
                 miPuntuacion.getRespuesta(),
-                miPuntuacion.getFecha_respuesta()
+                formatoFecha(miPuntuacion.getFecha_respuesta()),
             });
         }
+    }
+        private String formatoFecha(Date fecha) {
+        if (fecha == null) {
+            return "Fecha no disponible";
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        return sdf.format(fecha);
+    }
+
+    public String Mostrar_nombre_nin(ObjectContainer Base, String cod) {
+        String nombres = "";
+        Niño nin = new Niño();
+        nin.setCod_Niño(cod);
+
+        ObjectSet result = Base.get(nin);
+        if (result.size() != 0) {
+            while (result.hasNext()) {
+                Niño next = (Niño) result.next();
+
+                nombres = next.getNombre() + " " + next.getApellido();
+
+            }
+
+        } else {
+            System.out.println("No se encontro al niño");
+        }
+        return nombres;
+    }
+
+    public String Mostrar_Titulo_Consejo(ObjectContainer Base, String cod) {
+        String Titulo = "";
+        Consejos consej = new Consejos();
+        consej.setCod_consejo(cod);
+
+        ObjectSet result = Base.get(consej);
+        if (result.size() != 0) {
+            while (result.hasNext()) {
+                Consejos next = (Consejos) result.next();
+
+                Titulo = next.getTitulo1Consejo();
+
+            }
+
+        } else {
+            System.out.println("No se encontro el consejo");
+        }
+        return Titulo;
     }
 
     public void ConsultarDatos(ObjectContainer Base, ValoracionConseNiño consulta) {
@@ -511,7 +561,7 @@ public class ReporteConsejos extends javax.swing.JFrame {
         });
     }
 
-  public int num_si(ObjectContainer Base) {
+    public int num_si(ObjectContainer Base) {
 
         ValoracionConseNiño puntu = new ValoracionConseNiño();
         puntu.setRespuesta("SI");

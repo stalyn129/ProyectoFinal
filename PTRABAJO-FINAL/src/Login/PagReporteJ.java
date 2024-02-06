@@ -5,6 +5,9 @@
  */
 package Login;
 
+import Clases.Juego_Diferencias;
+import Clases.Juego_Laberinto;
+import Clases.Niño;
 import Clases.Puntuaciones;
 import Clases.RespuestasLab;
 import com.db4o.Db4o;
@@ -13,7 +16,9 @@ import com.db4o.ObjectSet;
 import com.db4o.ext.Db4oIOException;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -102,7 +107,7 @@ public class PagReporteJ extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID_Respuesta", "ID_Niño", "ID_LAB", "Puntuacion", "Fecha Juego"
+                "ID_Respuesta", "Niño", "Minijuego", "Puntuacion", "Fecha Juego"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -203,7 +208,7 @@ public class PagReporteJ extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID_Puntuacion", "Cod_Niño", "Cod_Minijuego", "Puntuacion", "Fecha Jugado"
+                "ID_Puntuacion", "Niño", "Minijuego", "Puntuacion", "Fecha Jugado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -274,7 +279,7 @@ public class PagReporteJ extends javax.swing.JFrame {
                 .addComponent(PanelJuegoDiferencias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(106, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -573,7 +578,7 @@ public class PagReporteJ extends javax.swing.JFrame {
                     registroConsultado.getFK_Cod_Niño(),
                     registroConsultado.getFK_Cod_Minijuego(),
                     registroConsultado.getPuntuacion(),
-                    registroConsultado.getFecha_Jugado()
+                    formatoFecha(registroConsultado.getFecha_Jugado())
                 });
             }
         } else {
@@ -616,13 +621,53 @@ public class PagReporteJ extends javax.swing.JFrame {
             Puntuaciones miPuntuacion = (Puntuaciones) result.next();
             modelo.addRow(new Object[]{
                 miPuntuacion.getID_Puntuacion(),
-                miPuntuacion.getFK_Cod_Niño(),
-                miPuntuacion.getFK_Cod_Minijuego(),
+                Mostrar_nombre_nin(Base, miPuntuacion.getFK_Cod_Niño()),
+                Mostrar_nombre_juegoDife(Base, miPuntuacion.getFK_Cod_Minijuego()),
                 miPuntuacion.getPuntuacion(),
-                miPuntuacion.getFecha_Jugado()
+                formatoFecha(miPuntuacion.getFecha_Jugado()),
             });
         }
 
+    }
+
+    public String Mostrar_nombre_juegoDife(ObjectContainer Base, String cod) {
+        String nombre = "";
+        Juego_Diferencias juegdifere = new Juego_Diferencias();
+        juegdifere.setCod_Juego(cod);
+
+        ObjectSet result = Base.get(juegdifere);
+        if (result.size() != 0) {
+            while (result.hasNext()) {
+                Juego_Diferencias next = (Juego_Diferencias) result.next();
+
+                nombre = next.getDescripcion_Juego();
+
+            }
+
+        } else {
+            System.out.println("No se encontro al niño");
+        }
+        return nombre;
+    }
+
+    public String Mostrar_nombre_nin(ObjectContainer Base, String cod) {
+        String nombres = "";
+        Niño nin = new Niño();
+        nin.setCod_Niño(cod);
+
+        ObjectSet result = Base.get(nin);
+        if (result.size() != 0) {
+            while (result.hasNext()) {
+                Niño next = (Niño) result.next();
+
+                nombres = next.getNombre() + " " + next.getApellido();
+
+            }
+
+        } else {
+            System.out.println("No se encontro al niño");
+        }
+        return nombres;
     }
 
     public void ConsultarDatos(ObjectContainer Base, Puntuaciones consulta) {
@@ -638,7 +683,7 @@ public class PagReporteJ extends javax.swing.JFrame {
                 consulta.getFK_Cod_Niño(),
                 consulta.getFK_Cod_Minijuego(),
                 consulta.getPuntuacion(),
-                consulta.getFecha_Jugado()
+                formatoFecha(consulta.getFecha_Jugado())
             });
         }
     }
@@ -708,7 +753,7 @@ public class PagReporteJ extends javax.swing.JFrame {
                     registroConsultado.getFK_Cod_Niño(),
                     registroConsultado.getFK_Cod_Minijuego(),
                     registroConsultado.getPuntuacion(),
-                    registroConsultado.getFecha_Jugado()
+                    formatoFecha(registroConsultado.getFecha_Jugado())
                 });
             }
         } else {
@@ -751,13 +796,40 @@ public class PagReporteJ extends javax.swing.JFrame {
             RespuestasLab miRespuesta = (RespuestasLab) result.next();
             modelo.addRow(new Object[]{
                 miRespuesta.getID_Respuesta(),
-                miRespuesta.getFK_Cod_Niño(),
-                miRespuesta.getFK_Cod_Minijuego(),
+                Mostrar_nombre_nin(Base, miRespuesta.getFK_Cod_Niño()),
+                Mostrar_nombre_juegoLabe(Base, miRespuesta.getFK_Cod_Minijuego()),
                 miRespuesta.getPuntuacion(),
-                miRespuesta.getFecha_Jugado()
+                formatoFecha(miRespuesta.getFecha_Jugado()),
             });
         }
+    }
+     private String formatoFecha(Date fecha) {
+        if (fecha == null) {
+            return "Fecha no disponible";
+        }
 
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        return sdf.format(fecha);
+    }
+
+    public String Mostrar_nombre_juegoLabe(ObjectContainer Base, String cod) {
+        String nombre = "";
+        Juego_Laberinto juegLaber = new Juego_Laberinto();
+        juegLaber.setCod_Juego(cod);
+
+        ObjectSet result = Base.get(juegLaber);
+        if (result.size() != 0) {
+            while (result.hasNext()) {
+                Juego_Laberinto next = (Juego_Laberinto) result.next();
+
+                nombre = next.getDescripcion_Juego();
+
+            }
+
+        } else {
+            System.out.println("No se encontro el juego");
+        }
+        return nombre;
     }
 
     public void ConsultarDatosLab(ObjectContainer base, RespuestasLab consulta) {
@@ -850,7 +922,7 @@ public class PagReporteJ extends javax.swing.JFrame {
 
         pack();
         repaint();
-      
+
     }
 
     public int contarPuntajesDiferencias(ObjectContainer base, int puntaje) {
@@ -891,7 +963,7 @@ public class PagReporteJ extends javax.swing.JFrame {
 
         pack();
         repaint();
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

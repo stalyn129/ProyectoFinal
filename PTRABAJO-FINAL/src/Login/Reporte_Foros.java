@@ -13,7 +13,9 @@ import com.db4o.ObjectSet;
 import com.db4o.ext.Db4oIOException;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -420,7 +422,7 @@ public class Reporte_Foros extends javax.swing.JFrame {
                 registroConsultado.getNombre_Usario(),
                 nombreForo,
                 registroConsultado.getContenido_Comen(),
-                registroConsultado.getFecha_Comen()
+                formatoFecha(registroConsultado.getFecha_Comen())
             });
         }
     } else {
@@ -464,9 +466,17 @@ public class Reporte_Foros extends javax.swing.JFrame {
                 miComentario.getNombre_Usario(),
                 nombreForo,
                 miComentario.getContenido_Comen(),
-                miComentario.getFecha_Comen()
+                formatoFecha(miComentario.getFecha_Comen()),
             });
         }
+    }
+     private String formatoFecha(Date fecha) {
+        if (fecha == null) {
+            return "Fecha no disponible";
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        return sdf.format(fecha);
     }
 
     private void EliminarRegistroComent(ObjectContainer base, String Cod_Com) {
