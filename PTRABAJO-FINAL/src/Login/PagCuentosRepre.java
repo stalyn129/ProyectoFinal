@@ -62,6 +62,7 @@ public class PagCuentosRepre extends javax.swing.JFrame {
         btnSi = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnNo = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         BtnCerrarPagina = new javax.swing.JButton();
         btnMinimizar1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -185,6 +186,9 @@ public class PagCuentosRepre extends javax.swing.JFrame {
             }
         });
         jPanel3.add(btnNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 860, 80, -1));
+
+        jLabel3.setText("La respuesta se actualizara ala ultima que escojas");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 890, -1, -1));
 
         jScrollPane1.setViewportView(jPanel3);
 
@@ -315,29 +319,30 @@ public class PagCuentosRepre extends javax.swing.JFrame {
         String respuesta = "SI";
         String codRepre = usarData.getCod_Representante();
 
-        // Verificar si ya hay una respuesta almacenada
         if (verificarRespuestaExistente(Base, codRepre)) {
-            String[] options = {"Si", "No"};
-            int opcion = JOptionPane.showOptionDialog(this, "Ya existe una respuesta. ¿Desea modificarla?", "Confirmar",
-                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+            int opcion = JOptionPane.showOptionDialog(this, "Gracias por su respuesta", "Confirmar",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{}, null);
 
             if (opcion == JOptionPane.NO_OPTION) {
-                return; // El usuario seleccionó "No", no hacemos nada
+                return;
             }
         }
 
+        // Obtener código del cuento seleccionado
+        String codigoCuento = obtenerCodigoCuentoSeleccionado();
+
         // Aquí se ejecutará solo si el usuario selecciona "Si" o si no hay respuesta existente
-        GuardarRespuestaCuento(Base, codRepre, respuesta);
+        GuardarRespuestaCuento(Base, codRepre, codigoCuento, respuesta);
     }//GEN-LAST:event_btnSiActionPerformed
 
     private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
         String respuesta = "NO";
         String codRepre = usarData.getCod_Representante();
+        String codCuento;
 
-        // Verificar si ya hay una respuesta almacenada
         if (verificarRespuestaExistente(Base, codRepre)) {
             String[] options = {"Si", "No"};
-            int opcion = JOptionPane.showOptionDialog(this, "Ya existe una respuesta. ¿Desea modificarla?", "Confirmar",
+            int opcion = JOptionPane.showOptionDialog(this, "Gracias por su respuesta", "Confirmar",
                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
 
             if (opcion == JOptionPane.NO_OPTION) {
@@ -345,8 +350,12 @@ public class PagCuentosRepre extends javax.swing.JFrame {
             }
         }
 
+        // Obtener código del cuento seleccionado
+        codCuento = obtenerCodigoCuentoSeleccionado();
+
         // Aquí se ejecutará solo si el usuario selecciona "No" o si no hay respuesta existente
-        GuardarRespuestaCuento(Base, codRepre, respuesta);
+        GuardarRespuestaCuento(Base, codRepre, codCuento, respuesta);
+
     }//GEN-LAST:event_btnNoActionPerformed
 
     private void btnMinimizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizar1MouseClicked
@@ -356,29 +365,6 @@ public class PagCuentosRepre extends javax.swing.JFrame {
     private void btnMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar1ActionPerformed
         this.setState(PagCuentosRepre.ICONIFIED);
     }//GEN-LAST:event_btnMinimizar1ActionPerformed
-    private boolean verificarRespuestaExistente(ObjectContainer Base, String codRepre) {
-        try {
-            ValoracionCuento ejemploConsulta = new ValoracionCuento();
-            ejemploConsulta.setFK_cod_Representante(codRepre);
-
-            ObjectSet<ValoracionCuento> resultados = Base.queryByExample(ejemploConsulta);
-
-            return resultados.hasNext();
-        } catch (DatabaseClosedException | DatabaseReadOnlyException e) {
-            e.printStackTrace();
-            System.err.println("Excepción al verificar respuesta existente: " + e.getMessage());
-            return false;
-        }
-    }
-
-    private ImageIcon getScaledImageIcon(Image image) {
-        if (image != null) {
-            return new ImageIcon(image.getScaledInstance(210, 180, Image.SCALE_SMOOTH));
-        } else {
-            return null;
-        }
-    }
-
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -416,81 +402,181 @@ public class PagCuentosRepre extends javax.swing.JFrame {
         });
     }
 
-    public void GuardarRespuestaCuento(ObjectContainer Base, String Cod_Representante, String respuesta) {
+    private boolean verificarRespuestaExistente(ObjectContainer Base, String codRepre) {
         try {
-            ValoracionCuento respuestaCuento = new ValoracionCuento();
+            ValoracionCuento ejemploConsulta = new ValoracionCuento();
+            ejemploConsulta.setFK_cod_Representante(codRepre);
 
-            // Obtener código de niño
-            Cod_Representante = usarData.getCod_Representante();
+            ObjectSet<ValoracionCuento> resultados = Base.queryByExample(ejemploConsulta);
 
-            // Generar ID de respuesta
-            String Codigo = Calcular_ID_Respuesta(Base);
-            respuestaCuento.setCod_Respuesta_usuario(Codigo);
-            System.out.println("ID de Respuesta: " + Codigo);
+            return resultados.hasNext();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Excepción al verificar respuesta existente: " + e.getMessage());
+            return false;
+        }
+    }
 
-            // Obtener código de representante
-            respuestaCuento.setFK_cod_Representante(Cod_Representante);
-            System.out.println("Código de Representante: " + Cod_Representante);
+    private ValoracionCuento obtenerRespuestaExistente(ObjectContainer Base, String Cod_repre, String Cod_Cuent) {
+        try {
+            ValoracionCuento ejemploConsulta = new ValoracionCuento();
+            ejemploConsulta.setFK_cod_Representante(Cod_repre);
+            ejemploConsulta.setFk_Cod_Cuento(Cod_Cuent);
 
-            // Establecer la respuesta
-            respuestaCuento.setRespuesta(respuesta);
-            System.out.println("Respuesta: " + respuesta);
+            ObjectSet<ValoracionCuento> resultados = Base.queryByExample(ejemploConsulta);
 
-            // Obtener y asignar la fecha de respuesta
-            Date FechaRespuesta = new Date();
-            respuestaCuento.setFecha_respuesta(FechaRespuesta);
-            System.out.println("Fecha de Respuesta: " + FechaRespuesta);
+            if (resultados.hasNext()) {
+                return resultados.next();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Excepción al obtener respuesta existente: " + e.getMessage());
+        }
+        return null;
+    }
 
-            // Obtener descripción del cuento seleccionado
-            String descrip = String.valueOf(jCmbBoxCuentos.getSelectedItem());
-            Cuento cuento = obtenerInformacionDelCuento(Base, descrip);
+    private ImageIcon getScaledImageIcon(Image image) {
+        if (image != null) {
+            return new ImageIcon(image.getScaledInstance(210, 180, Image.SCALE_SMOOTH));
+        } else {
+            return null;
+        }
+    }
 
-            String codigoCuento = cuento.getCod_Cuento();
-            respuestaCuento.setFk_Cod_Cuento(codigoCuento);
-            System.out.println("Código de Cuento: " + codigoCuento);
+    public void GuardarRespuestaCuento(ObjectContainer Base, String Cod_repre, String Cod_Cuento, String respuesta) {
+        try {
+            // Verificar si ya existe una respuesta para el niño
+            ValoracionCuento respuestaExistente = obtenerRespuestaExistente(Base, Cod_repre, Cod_Cuento);
 
-            // Almacenar la respuesta en la base de datos
-            Base.store(respuestaCuento);
+            if (respuestaExistente != null) {
+                // Actualizar la respuesta existente
+                respuestaExistente.setRespuesta(respuesta);
+                respuestaExistente.setFecha_respuesta(new Date());
+                Base.store(respuestaExistente);
 
-            // Mensajes de depuración adicionales
-            System.out.println("Respuesta almacenada correctamente:");
-            System.out.println(respuestaCuento);
+                System.out.println("Respuesta actualizada correctamente:");
+                System.out.println(respuestaExistente);
+            } else {
+                // Crear una nueva instancia solo si no hay respuesta existente
+                ValoracionCuento respuestaCuento = new ValoracionCuento();
 
-        } catch (DatabaseClosedException | DatabaseReadOnlyException | NullPointerException e) {
+                // Obtener código de niño
+                Cod_repre = usarData.getCod_Representante();
+
+                // Obtener código del cuento seleccionado
+                String codigoCuento = obtenerCodigoCuentoSeleccionado();
+                if (codigoCuento != null) {
+                    respuestaCuento.setFk_Cod_Cuento(codigoCuento);
+                    System.out.println("Código de Cuento: " + codigoCuento);
+                } else {
+                    System.err.println("No se pudo obtener el código del cuento seleccionado.");
+                    return;
+                }
+
+                // Generar ID de respuesta
+                String Codigo = Calcular_ID_Respuesta(Base);
+                respuestaCuento.setCod_Respuesta_usuario(Codigo);
+                System.out.println("ID de Respuesta: " + Codigo);
+
+                // Obtener código de representante
+                respuestaCuento.setFK_cod_Representante(Cod_repre);
+                System.out.println("Código de Representante: " + Cod_repre);
+
+                // Establecer la respuesta
+                respuestaCuento.setRespuesta(respuesta);
+                System.out.println("Respuesta: " + respuesta);
+
+                // Obtener y asignar la fecha de respuesta
+                Date FechaRespuesta = new Date();
+                respuestaCuento.setFecha_respuesta(FechaRespuesta);
+                System.out.println("Fecha de Respuesta: " + FechaRespuesta);
+
+                // Almacenar la respuesta en la base de datos
+                Base.store(respuestaCuento);
+
+                // Mensajes de depuración adicionales
+                System.out.println("Respuesta almacenada correctamente:");
+                System.out.println(respuestaCuento);
+            }
+        } catch (Exception e) {
             e.printStackTrace();
             System.err.println("Excepción al guardar la respuesta: " + e.getMessage());
         }
     }
 
-    private Cuento obtenerInformacionDelCuento(ObjectContainer Base, String Descrip) {
-        Cuento micue = new Cuento(null, null, null, null, null, null, null, null, null, null, null, null);
+    public String obtenerCodigoCuentoSeleccionado() {
+        try {
+            // Obtener descripción del cuento seleccionado
+            String descrip = String.valueOf(jCmbBoxCuentos.getSelectedItem());
 
-        ObjectSet result = Base.get(micue);
+            // Obtener el índice seleccionado en lugar del valor
+            int selectedIndex = jCmbBoxCuentos.getSelectedIndex();
 
-        if (result.hasNext()) {
-            return (Cuento) result.next();
+            // Obtener el objeto Cuento desde la base de datos usando el índice
+            Cuento cuento = obtenerInformacionDelCuento(Base, selectedIndex);
+
+            if (cuento != null) {
+                return cuento.getCod_Cuento();
+            } else {
+                System.err.println("No se pudo obtener el código del cuento seleccionado.");
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Excepción al obtener el código del cuento seleccionado: " + e.getMessage());
+            return null;
+        }
+    }
+
+    private Cuento obtenerInformacionDelCuento(ObjectContainer Base, int selectedIndex) {
+        // Obtener todos los cuentos
+        ObjectSet<Cuento> result = Base.queryByExample(Cuento.class);
+
+        // Validar que el índice esté dentro del rango
+        if (selectedIndex >= 0 && selectedIndex < result.size()) {
+            // Obtener el cuento en la posición del índice
+            return result.get(selectedIndex);
         } else {
-            throw new IllegalStateException("No se encontró información del Cuento");
+            throw new IllegalStateException("Índice fuera de rango al obtener información del cuento");
         }
     }
 
     public static String Calcular_ID_Respuesta(ObjectContainer Base) {
-        boolean rest = true;
-        int Incremental = 0;
-        String Codigo;
-        do {
+        try {
+            // Obtener el último ID almacenado
+            ValoracionCuento ejemploConsulta = new ValoracionCuento();
+            ObjectSet<ValoracionCuento> resultados = Base.queryByExample(ejemploConsulta);
+            String ultimoID = "Resp-0000";
 
-            Incremental++;
+            while (resultados.hasNext()) {
+                ValoracionCuento respuesta = resultados.next();
+                String actualID = respuesta.getCod_Respuesta_usuario();
 
-            Codigo = String.format("Res-%04d", Incremental);
-
-            if (Verificar_Resp(Base, Codigo) == 0) {
-                rest = false;
+                if (actualID != null && actualID.startsWith("Resp-")) {
+                    try {
+                        // Intentar convertir la parte numérica a un entero
+                        int numero = Integer.parseInt(actualID.substring(5));
+                        // Incrementar el último ID encontrado
+                        if (numero > Integer.parseInt(ultimoID.substring(5))) {
+                            ultimoID = actualID;
+                        }
+                    } catch (NumberFormatException e) {
+                        // Manejar la excepción si la parte numérica no es válida
+                        e.printStackTrace();
+                    }
+                }
             }
 
-        } while (rest);
+            // Incrementar el último ID encontrado
+            int numero = Integer.parseInt(ultimoID.substring(5)) + 1;
+            String nuevoID = "Resp-" + String.format("%04d", numero);
 
-        return Codigo;
+            return nuevoID;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Excepción al calcular el ID de respuesta: " + e.getMessage());
+            return null;
+        }
     }
 
     public static int Verificar_Resp(ObjectContainer Base, String Codigo) {
@@ -524,6 +610,7 @@ public class PagCuentosRepre extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jCmbBoxCuentos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

@@ -62,6 +62,7 @@ public class PagCuentosNiño extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnSi = new javax.swing.JButton();
         BtnNo = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         btnMinimizar1 = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -77,7 +78,6 @@ public class PagCuentosNiño extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -168,8 +168,8 @@ public class PagCuentosNiño extends javax.swing.JFrame {
         });
         jPanel3.add(jCmbBoxCuentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, -1));
 
-        jLabel1.setText("¿Le gusto el cuento?");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 830, -1, -1));
+        jLabel1.setText("La respuesta se actualizara ala ultima que escojas");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 890, -1, -1));
 
         btnSi.setText("Si");
         btnSi.addActionListener(new java.awt.event.ActionListener() {
@@ -186,6 +186,9 @@ public class PagCuentosNiño extends javax.swing.JFrame {
             }
         });
         jPanel3.add(BtnNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 860, -1, -1));
+
+        jLabel3.setText("¿Le gusto el cuento?");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 830, -1, -1));
 
         jScrollPane1.setViewportView(jPanel3);
 
@@ -315,46 +318,44 @@ public class PagCuentosNiño extends javax.swing.JFrame {
 
     private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
         String respuesta = "SI";
-    String codNiño = usarData.getCod_niño();
+        String codNiño = usarData.getCod_niño();
 
-    if (verificarRespuestaExistente(Base, codNiño)) {
-        String[] options = {"Si", "No"};
-        int opcion = JOptionPane.showOptionDialog(this, "Ya existe una respuesta. ¿Desea modificarla?", "Confirmar",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+        if (verificarRespuestaExistente(Base, codNiño)) {
+            int opcion = JOptionPane.showOptionDialog(this, "Gracias por su respuesta", "Confirmar",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{}, null);
 
-        if (opcion == JOptionPane.NO_OPTION) {
-            return; // El usuario seleccionó "No", no hacemos nada
+            if (opcion == JOptionPane.NO_OPTION) {
+                return; // El usuario seleccionó "No", no hacemos nada
+            }
         }
-    }
 
-    // Obtener código del cuento seleccionado
-    String codigoCuento = obtenerCodigoCuentoSeleccionado();
-    
-    // Aquí se ejecutará solo si el usuario selecciona "Si" o si no hay respuesta existente
-    GuardarRespuestaCuento(Base, codNiño, codigoCuento, respuesta);
+        // Obtener código del cuento seleccionado
+        String codigoCuento = obtenerCodigoCuentoSeleccionado();
+
+        // Aquí se ejecutará solo si el usuario selecciona "Si" o si no hay respuesta existente
+        GuardarRespuestaCuento(Base, codNiño, codigoCuento, respuesta);
     }//GEN-LAST:event_btnSiActionPerformed
 
     private void BtnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNoActionPerformed
         String respuesta = "NO";
-    String codNiño = usarData.getCod_niño();
-    String codCuento;
+        String codNiño = usarData.getCod_niño();
+        String codCuento;
 
-    if (verificarRespuestaExistente(Base, codNiño)) {
-        String[] options = {"Si", "No"};
-        int opcion = JOptionPane.showOptionDialog(this, "Ya existe una respuesta. ¿Desea modificarla?", "Confirmar",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+        if (verificarRespuestaExistente(Base, codNiño)) {
+            int opcion = JOptionPane.showOptionDialog(this, "Gracias por su respuesta", "Confirmar",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{}, null);
 
-        if (opcion == JOptionPane.NO_OPTION) {
-            return; // El usuario seleccionó "No", no hacemos nada
+            if (opcion == JOptionPane.NO_OPTION) {
+                return; // El usuario seleccionó "No", no hacemos nada
+            }
         }
-    }
 
-    // Obtener código del cuento seleccionado
-    codCuento = obtenerCodigoCuentoSeleccionado();
-    
-    // Aquí se ejecutará solo si el usuario selecciona "No" o si no hay respuesta existente
-    GuardarRespuestaCuento(Base, codNiño, codCuento, respuesta);
-    
+        // Obtener código del cuento seleccionado
+        codCuento = obtenerCodigoCuentoSeleccionado();
+
+        // Aquí se ejecutará solo si el usuario selecciona "No" o si no hay respuesta existente
+        GuardarRespuestaCuento(Base, codNiño, codCuento, respuesta);
+
     }//GEN-LAST:event_BtnNoActionPerformed
 
     private void btnMinimizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizar1MouseClicked
@@ -364,6 +365,39 @@ public class PagCuentosNiño extends javax.swing.JFrame {
     private void btnMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar1ActionPerformed
         this.setState(PagCuentosNiño.ICONIFIED);
     }//GEN-LAST:event_btnMinimizar1ActionPerformed
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(PagCrudCuentosPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(PagCrudCuentosPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(PagCrudCuentosPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(PagCrudCuentosPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PagCuentosNiño().setVisible(true);
+            }
+        });
+    }
+
     private boolean verificarRespuestaExistente(ObjectContainer Base, String codNiño) {
         try {
             ValoracionCuentoNiño ejemploConsulta = new ValoracionCuentoNiño();
@@ -403,39 +437,6 @@ public class PagCuentosNiño extends javax.swing.JFrame {
         } else {
             return null;
         }
-    }
-
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PagCrudCuentosPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PagCrudCuentosPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PagCrudCuentosPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PagCrudCuentosPsicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PagCuentosNiño().setVisible(true);
-            }
-        });
     }
 
     public void GuardarRespuestaCuento(ObjectContainer Base, String Cod_niño, String Cod_Cuento, String respuesta) {
@@ -499,13 +500,16 @@ public class PagCuentosNiño extends javax.swing.JFrame {
         }
     }
 
-    private String obtenerCodigoCuentoSeleccionado() {
+    public String obtenerCodigoCuentoSeleccionado() {
         try {
             // Obtener descripción del cuento seleccionado
             String descrip = String.valueOf(jCmbBoxCuentos.getSelectedItem());
 
-            // Obtener el objeto Cuento desde la base de datos
-            Cuento cuento = obtenerInformacionDelCuento(Base, descrip);
+            // Obtener el índice seleccionado en lugar del valor
+            int selectedIndex = jCmbBoxCuentos.getSelectedIndex();
+
+            // Obtener el objeto Cuento desde la base de datos usando el índice
+            Cuento cuento = obtenerInformacionDelCuento(Base, selectedIndex);
 
             if (cuento != null) {
                 return cuento.getCod_Cuento();
@@ -520,15 +524,16 @@ public class PagCuentosNiño extends javax.swing.JFrame {
         }
     }
 
-    private Cuento obtenerInformacionDelCuento(ObjectContainer Base, String Descrip) {
-        Cuento micue = new Cuento(null, null, null, null, null, null, null, null, null, null, null, null);
+    private Cuento obtenerInformacionDelCuento(ObjectContainer Base, int selectedIndex) {
+        // Obtener todos los cuentos
+        ObjectSet<Cuento> result = Base.queryByExample(Cuento.class);
 
-        ObjectSet result = Base.get(micue);
-
-        if (result.hasNext()) {
-            return (Cuento) result.next();
+        // Validar que el índice esté dentro del rango
+        if (selectedIndex >= 0 && selectedIndex < result.size()) {
+            // Obtener el cuento en la posición del índice
+            return result.get(selectedIndex);
         } else {
-            throw new IllegalStateException("No se encontró información del Cuento");
+            throw new IllegalStateException("Índice fuera de rango al obtener información del cuento");
         }
     }
 
@@ -537,20 +542,30 @@ public class PagCuentosNiño extends javax.swing.JFrame {
             // Obtener el último ID almacenado
             ValoracionCuentoNiño ejemploConsulta = new ValoracionCuentoNiño();
             ObjectSet<ValoracionCuentoNiño> resultados = Base.queryByExample(ejemploConsulta);
-            String ultimoID = "NI-0000"; // Inicializar con el primer posible ID
+            String ultimoID = "Resp-0000";
 
             while (resultados.hasNext()) {
                 ValoracionCuentoNiño respuesta = resultados.next();
                 String actualID = respuesta.getCod_Respuesta_usuario();
 
-                if (actualID.compareTo(ultimoID) > 0) {
-                    ultimoID = actualID;
+                if (actualID != null && actualID.startsWith("Resp-")) {
+                    try {
+                        // Intentar convertir la parte numérica a un entero
+                        int numero = Integer.parseInt(actualID.substring(5));
+                        // Incrementar el último ID encontrado
+                        if (numero > Integer.parseInt(ultimoID.substring(5))) {
+                            ultimoID = actualID;
+                        }
+                    } catch (NumberFormatException e) {
+                        // Manejar la excepción si la parte numérica no es válida
+                        e.printStackTrace();
+                    }
                 }
             }
 
             // Incrementar el último ID encontrado
-            int numero = Integer.parseInt(ultimoID.substring(3)) + 1;
-            String nuevoID = "NI-" + String.format("%04d", numero);
+            int numero = Integer.parseInt(ultimoID.substring(5)) + 1;
+            String nuevoID = "Resp-" + String.format("%04d", numero);
 
             return nuevoID;
         } catch (Exception e) {
@@ -589,6 +604,7 @@ public class PagCuentosNiño extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jCmbBoxCuentos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
