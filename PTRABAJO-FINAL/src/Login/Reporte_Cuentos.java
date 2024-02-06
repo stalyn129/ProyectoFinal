@@ -5,6 +5,10 @@
  */
 package Login;
 
+import Clases.Cuento;
+import Clases.Niño;
+import Clases.Persona;
+import Clases.Representante;
 import Clases.ValoracionCuento;
 import Clases.ValoracionCuentoNiño;
 import com.db4o.Db4o;
@@ -621,12 +625,59 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
             ValoracionCuento mivalo = (ValoracionCuento) result.next();
             modelo.addRow(new Object[]{
                 mivalo.getCod_Respuesta_usuario(),
-                mivalo.getFK_cod_Representante(),
-                mivalo.getFk_Cod_Cuento(),
+                Mostrar_nombre_Represent(Base, mivalo.getFK_cod_Representante()),
+                Mostrar_Titulo_Cuento(Base, mivalo.getFk_Cod_Cuento()),
                 mivalo.getRespuesta(),
                 mivalo.getFecha_respuesta(),});
         }
 
+    }
+
+    public String Mostrar_Titulo_Cuento(ObjectContainer Base, String cod) {
+        String Titulo = "";
+        Cuento cuen = new Cuento();
+        cuen.setCod_Cuento(cod);
+
+        ObjectSet result = Base.get(cuen);
+        if (result.size() != 0) {
+            while (result.hasNext()) {
+                Cuento next = (Cuento) result.next();
+
+                Titulo = next.getTitulo_Cuento();
+
+            }
+
+        } else {
+            System.out.println("No se encontro al niño");
+        }
+        return Titulo;
+    }
+
+    public String Mostrar_nombre_Represent(ObjectContainer Base, String cod) {
+        String nombres = "";
+        Representante nin = new Representante();
+        nin.setCod_Repre(cod);
+
+        ObjectSet result = Base.get(nin);
+        if (result.size() != 0) {
+            while (result.hasNext()) {
+                Representante next = (Representante) result.next();
+
+                Persona person = new Persona();
+                person.setCedula(next.getFKCod_Cedula());
+                ObjectSet resu = Base.get(person);
+                while (resu.hasNext()) {
+                    Persona next1 = (Persona) resu.next();
+
+                    nombres = next1.getNombre() + " " + next1.getApellido();
+
+                }
+            }
+
+        } else {
+            System.out.println("No se encontro al Psicologo");
+        }
+        return nombres;
     }
 
     public void ConsultarDatos(ObjectContainer Base, ValoracionCuento consulta) {
@@ -755,12 +806,32 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
             ValoracionCuentoNiño miRespuesta = (ValoracionCuentoNiño) result.next();
             modelo.addRow(new Object[]{
                 miRespuesta.getCod_Respuesta_usuario(),
-                miRespuesta.getFk_cod_niño(),
-                miRespuesta.getFk_Cod_Cuento(),
+                Mostrar_nombre_nin(Base, miRespuesta.getFk_cod_niño()),
+                Mostrar_Titulo_Cuento(Base, miRespuesta.getFk_Cod_Cuento()),
                 miRespuesta.getRespuesta(),
                 miRespuesta.getFecha_respuesta()
             });
         }
+    }
+
+    public String Mostrar_nombre_nin(ObjectContainer Base, String cod) {
+        String nombres = "";
+        Niño nin = new Niño();
+        nin.setCod_Niño(cod);
+
+        ObjectSet result = Base.get(nin);
+        if (result.size() != 0) {
+            while (result.hasNext()) {
+                Niño next = (Niño) result.next();
+
+                nombres = next.getNombre() + " " + next.getApellido();
+
+            }
+
+        } else {
+            System.out.println("No se encontro al niño");
+        }
+        return nombres;
     }
 
     public static void eliminarElementosNulos(List<?> lista) {
