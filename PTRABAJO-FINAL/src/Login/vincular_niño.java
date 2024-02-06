@@ -69,8 +69,8 @@ public class vincular_niño extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
+        jToggleButton1 = new javax.swing.JToggleButton();
         jTabbedPane1__ = new javax.swing.JTabbedPane();
-        jPanel4 = new javax.swing.JPanel();
         pnl_soli = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_soli = new javax.swing.JTable();
@@ -85,9 +85,12 @@ public class vincular_niño extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jPanel8 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        BtnRegresar1 = new javax.swing.JButton();
+        LblTestPariente1 = new javax.swing.JLabel();
+        LblTestPariente2 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        Fondo1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         MenuGenerlNiño = new javax.swing.JMenuBar();
         JMnItmCerrarNiño2 = new javax.swing.JMenu();
@@ -96,28 +99,34 @@ public class vincular_niño extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 640, 30));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 635, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 392, Short.MAX_VALUE)
-        );
+        jToggleButton1.setBackground(new java.awt.Color(148, 226, 240));
+        jToggleButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jToggleButton1.setText("Solicitudes");
+        jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jToggleButton1MousePressed(evt);
+            }
+        });
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
 
-        jTabbedPane1__.addTab("tab2", jPanel4);
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 610, 30));
 
         pnl_soli.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_soli.setMinimumSize(new java.awt.Dimension(615, 342));
+        pnl_soli.setPreferredSize(new java.awt.Dimension(615, 342));
         pnl_soli.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tabla_soli.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -146,21 +155,22 @@ public class vincular_niño extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabla_soli);
 
-        pnl_soli.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 560, 170));
+        pnl_soli.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 570, 170));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         jLabel2.setText("Tener en cuenta");
-        pnl_soli.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
+        pnl_soli.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 80, -1));
 
         jScrollPane2.setBorder(null);
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("No aceptes solicitudes de gente estraña, asegurate de que\nes una persona conocidad, y si en caso se no serlo no \ntemas y ten confianza en rechararla.");
+        jTextArea1.setText("No aceptes solicitudes de gente extraña, asegurate de que\nes una persona conocidad, y si en caso se no serlo no \ntemas y ten confianza en rechararla.");
         jScrollPane2.setViewportView(jTextArea1);
 
-        pnl_soli.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 510, 60));
-        pnl_soli.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 308, 590, 10));
+        pnl_soli.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 480, 60));
+        pnl_soli.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 258, 590, 10));
 
         jScrollPane3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jScrollPane3.setMinimumSize(new java.awt.Dimension(0, 0));
@@ -171,10 +181,10 @@ public class vincular_niño extends javax.swing.JFrame {
         txt_comentario.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         jScrollPane3.setViewportView(txt_comentario);
 
-        pnl_soli.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 520, 60));
+        pnl_soli.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 570, 40));
 
         jLabel3.setText("Aplastar la fila para mostrar el comentario");
-        pnl_soli.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+        pnl_soli.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
         jTabbedPane1__.addTab("Resi_soli", pnl_soli);
 
@@ -197,34 +207,58 @@ public class vincular_niño extends javax.swing.JFrame {
 
         jTabbedPane1__.addTab("peticones_vinc", jPanel2);
 
-        jPanel1.add(jTabbedPane1__, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, 420));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 605, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 342, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1__.addTab("tab2", jPanel4);
+
+        jPanel1.add(jTabbedPane1__, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 610, 370));
+
+        BtnRegresar1.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar1.setToolTipText("Regresa al iniciar sesión");
+        BtnRegresar1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar1.setOpaque(false);
+        BtnRegresar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 440, 50, 40));
+
+        LblTestPariente1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
+        LblTestPariente1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblTestPariente1.setText("BIENVENIDO AL AREA DE:");
+        jPanel1.add(LblTestPariente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 300, 20));
+
+        LblTestPariente2.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
+        LblTestPariente2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblTestPariente2.setText("VINCULACIÓN");
+        jPanel1.add(LblTestPariente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 210, 30));
 
         jLabel9.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 80, 70));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 70));
 
-        jToggleButton1.setBackground(new java.awt.Color(148, 226, 240));
-        jToggleButton1.setText("Solicitudes");
-        jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jToggleButton1MousePressed(evt);
-            }
-        });
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, -1, 20));
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 100, 420));
+        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGeneralReportes.png"))); // NOI18N
+        Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, -10, 1670, 490));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 480));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         JMnItmCerrarNiño2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
         JMnItmCerrarNiño2.setToolTipText("Configuración");
@@ -253,17 +287,6 @@ public class vincular_niño extends javax.swing.JFrame {
         MenuGenerlNiño.add(JMnPgPrinNiño2);
 
         setJMenuBar(MenuGenerlNiño);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
 
         pack();
         setLocationRelativeTo(null);
@@ -346,6 +369,13 @@ public class vincular_niño extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tabla_soliMousePressed
 
+    private void BtnRegresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar1ActionPerformed
+        Base.close();
+        PagPrincipalNiñ prin = new PagPrincipalNiñ();
+        prin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresar1ActionPerformed
+
     private void ocultarColumna() {
 
         // Obtén el TableColumnModel de la tabla
@@ -400,8 +430,12 @@ public class vincular_niño extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnRegresar1;
+    private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMnItmCerrarNiño2;
     private javax.swing.JMenu JMnPgPrinNiño2;
+    private javax.swing.JLabel LblTestPariente1;
+    private javax.swing.JLabel LblTestPariente2;
     private javax.swing.JMenuBar MenuGenerlNiño;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -411,7 +445,6 @@ public class vincular_niño extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
@@ -430,58 +463,53 @@ public class vincular_niño extends javax.swing.JFrame {
 
     /////////////////////////////////////////////////////////// FUNCION TABLA SOLICITUD ////////////////////////////////////////
     public void Mostrar_tabla(ObjectContainer Base) {
+        try {
+            tabla_soli.setDefaultRenderer(Object.class, new Render());
 
-        tabla_soli.setDefaultRenderer(Object.class, new Render());
+            solicitud soli = new solicitud();
+            soli.setFKcod_niño(usarData.getCod_niño());
+            soli.setEstado_solicitud1("Pendiente");
+            ObjectSet result = Base.get(soli);
 
-        solicitud soli = new solicitud();
-        soli.setFKcod_niño(usarData.getCod_niño());
-        soli.setEstado_solicitud1("Pendiente");
-        ObjectSet result = Base.get(soli);
+            DefaultTableModel modelo = (DefaultTableModel) tabla_soli.getModel();
+            modelo.setRowCount(0);
+            tabla_soli.setRowHeight(30);
 
-        DefaultTableModel modelo = (DefaultTableModel) tabla_soli.getModel();
-        modelo.setRowCount(0);
-        tabla_soli.setRowHeight(30);
+            if (result.size() != 0) {
+                while (result.hasNext()) {
+                    JButton boton_1 = new JButton("ACEPTAR");
+                    boton_1.setName("btn_Acept");
+                    boton_1.setBackground(new Color(93, 255, 97)); // Establece el color de fondo del botón
+                    boton_1.addActionListener(e -> {
+                        // Cambia el color al hacer clic
+                        boton_1.setBackground(new Color(204, 255, 242));
+                    });
 
-        if (result.size() != 0) {
+                    JButton boton_2 = new JButton("RECHAZAR");
+                    boton_2.setName("btn_rechaz");
+                    boton_2.setBackground(new Color(255, 12, 1)); // Establece el color de fondo del botón
+                    boton_2.addActionListener(e -> {
+                        // Cambia el color al hacer clic
+                        boton_2.setBackground(new Color(204, 255, 242));
+                    });
 
-            while (result.hasNext()) {
-
-                JButton boton_1 = new JButton("ACEPTAR");
-                boton_1.setName("btn_Acept");
-                boton_1.setBackground(new Color(93, 255, 97)); // Establece el color de fondo del botón
-
-                boton_1.addActionListener(e -> {
-                    // Cambia el color al hacer clic
-                    boton_1.setBackground(new Color(204, 255, 242));
-                });
-//////////////////////////////////////////////
-                JButton boton_2 = new JButton("RECHAZAR");
-                boton_2.setName("btn_rechaz");
-                boton_2.setBackground(new Color(255, 12, 1)); // Establece el color de fondo del botón
-
-                boton_2.addActionListener(e -> {
-                    // Cambia el color al hacer clic
-                    boton_2.setBackground(new Color(204, 255, 242));
-                });
-
-                /////////////////////////////////
-                solicitud next = (solicitud) result.next();
-
-                modelo.addRow(new Object[]{
-                    next.getCod_solicitud(),
-                    next.getFKcod_representante(),
-                    next.getFecha_soli(),
-                    boton_1,
-                    boton_2
-
-                });
-
+                    solicitud next = (solicitud) result.next();
+                    modelo.addRow(new Object[]{
+                        next.getCod_solicitud(),
+                        next.getFKcod_representante(),
+                        next.getFecha_soli(),
+                        boton_1,
+                        boton_2
+                    });
+                }
+            } else {
+                // Si no hay solicitudes, simplemente no hagas nada y termina la función
+                return;
             }
-
-        } else {
-            JOptionPane.showMessageDialog(this, "No Hay solicitudes recientes");
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Manejo de la excepción, si es necesario.
         }
-
     }
 
     public void estado_aceptado(ObjectContainer Base, String codSoli) {

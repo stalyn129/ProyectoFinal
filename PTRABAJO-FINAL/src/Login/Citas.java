@@ -38,13 +38,15 @@ public class Citas extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         BtnRegresar5 = new javax.swing.JButton();
+        LblTestPariente1 = new javax.swing.JLabel();
+        LblTestPariente2 = new javax.swing.JLabel();
         pnl_soli = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_Citas = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        Fondo1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenu3puntitosPsicologo = new javax.swing.JMenu();
@@ -52,12 +54,12 @@ public class Citas extends javax.swing.JFrame {
         JMnPgPrinPsicolo = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(800, 500));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMinimumSize(new java.awt.Dimension(800, 500));
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setText("Bienvenido al apartado de citas");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
 
         BtnRegresar5.setBackground(new java.awt.Color(255, 255, 255));
         BtnRegresar5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
@@ -69,7 +71,17 @@ public class Citas extends javax.swing.JFrame {
                 BtnRegresar5ActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnRegresar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 460, 50, 40));
+        jPanel1.add(BtnRegresar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 460, 50, 40));
+
+        LblTestPariente1.setFont(new java.awt.Font("Rockwell Nova", 1, 20)); // NOI18N
+        LblTestPariente1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblTestPariente1.setText("BIENVENIDO AL AREA DE:");
+        jPanel1.add(LblTestPariente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 300, 20));
+
+        LblTestPariente2.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
+        LblTestPariente2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblTestPariente2.setText("CITAS");
+        jPanel1.add(LblTestPariente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 210, 30));
 
         pnl_soli.setBackground(new java.awt.Color(255, 255, 255));
         pnl_soli.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -100,20 +112,24 @@ public class Citas extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbl_Citas);
 
-        pnl_soli.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 560, 130));
+        pnl_soli.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 560, 130));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Rockwell", 3, 24)); // NOI18N
         jLabel3.setText("Citas aceptadas:");
         pnl_soli.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Rockwell", 3, 24)); // NOI18N
         jLabel4.setText("Solicitudes de citas disponibles:");
         pnl_soli.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
-        jPanel1.add(pnl_soli, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 650, 380));
+        jPanel1.add(pnl_soli, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 670, 320));
+
+        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGeneralReportes.png"))); // NOI18N
+        Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, -10, 1690, 510));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, -1));
 
         JMenu3puntitosPsicologo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
         JMenu3puntitosPsicologo.setToolTipText("Configuración");
@@ -149,11 +165,11 @@ public class Citas extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 809, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -302,11 +318,13 @@ public class Citas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnRegresar5;
+    private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
     private javax.swing.JMenu JMnPgPrinPsicolo;
+    private javax.swing.JLabel LblTestPariente1;
+    private javax.swing.JLabel LblTestPariente2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuBar jMenuBar1;

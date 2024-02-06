@@ -35,7 +35,6 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
 
         btnExit1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         Cuentos = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         Consejos = new javax.swing.JPanel();
@@ -45,7 +44,7 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
         btnMinimizar1 = new javax.swing.JButton();
         Test = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        BtnTestNiño2 = new javax.swing.JButton();
+        BtnVinculacionNiño = new javax.swing.JButton();
         MiniJuegos = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         BtnMiniJueNiño1 = new javax.swing.JButton();
@@ -53,6 +52,9 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
         Inf = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         BtnCerrarPagina = new javax.swing.JButton();
+        BtnTestNiño3 = new javax.swing.JButton();
+        Cuentos1 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -80,21 +82,13 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Vinculacion");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 470, 100, 20));
-
         Cuentos.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel14.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jLabel14.setText("Cuentos");
+        jLabel14.setText("Vinculación");
         Cuentos.add(jLabel14);
 
-        jPanel1.add(Cuentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 100, -1));
+        jPanel1.add(Cuentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 380, 110, -1));
 
         Consejos.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -102,7 +96,7 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
         jLabel15.setText("Consejos");
         Consejos.add(jLabel15);
 
-        jPanel1.add(Consejos, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 100, -1));
+        jPanel1.add(Consejos, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 380, 100, -1));
 
         BtnConseNiño.setBackground(new java.awt.Color(255, 255, 255));
         BtnConseNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Consejos.png"))); // NOI18N
@@ -114,7 +108,7 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
                 BtnConseNiñoActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnConseNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 120, 70));
+        jPanel1.add(BtnConseNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 120, 70));
 
         BtnCuentosNiño1.setBackground(new java.awt.Color(255, 255, 255));
         BtnCuentosNiño1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CuentosNiño.png"))); // NOI18N
@@ -126,7 +120,7 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
                 BtnCuentosNiño1ActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnCuentosNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, 120, 70));
+        jPanel1.add(BtnCuentosNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 120, 70));
 
         btnMinimizar1.setBackground(new java.awt.Color(255, 255, 255));
         btnMinimizar1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
@@ -152,19 +146,19 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
         jLabel12.setText("Test");
         Test.add(jLabel12);
 
-        jPanel1.add(Test, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 100, -1));
+        jPanel1.add(Test, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 110, -1));
 
-        BtnTestNiño2.setBackground(new java.awt.Color(255, 255, 255));
-        BtnTestNiño2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TestIconoNiño.png"))); // NOI18N
-        BtnTestNiño2.setToolTipText("Haz click aqui para entrar a los test");
-        BtnTestNiño2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnTestNiño2.setOpaque(false);
-        BtnTestNiño2.addActionListener(new java.awt.event.ActionListener() {
+        BtnVinculacionNiño.setBackground(new java.awt.Color(255, 255, 255));
+        BtnVinculacionNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/people_9364221.png"))); // NOI18N
+        BtnVinculacionNiño.setToolTipText("Haz click aqui para entrar a la vinculacion");
+        BtnVinculacionNiño.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnVinculacionNiño.setOpaque(false);
+        BtnVinculacionNiño.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnTestNiño2ActionPerformed(evt);
+                BtnVinculacionNiñoActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnTestNiño2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 120, 70));
+        jPanel1.add(BtnVinculacionNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, 110, 70));
 
         MiniJuegos.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -223,6 +217,26 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 30, 30));
+
+        BtnTestNiño3.setBackground(new java.awt.Color(255, 255, 255));
+        BtnTestNiño3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TestIconoNiño.png"))); // NOI18N
+        BtnTestNiño3.setToolTipText("Haz click aqui para entrar a los test");
+        BtnTestNiño3.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnTestNiño3.setOpaque(false);
+        BtnTestNiño3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnTestNiño3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnTestNiño3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 120, 70));
+
+        Cuentos1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel16.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel16.setText("Cuentos");
+        Cuentos1.add(jLabel16);
+
+        jPanel1.add(Cuentos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 100, -1));
 
         jLabel6.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -308,12 +322,13 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_BtnCuentosNiño1ActionPerformed
 
-    private void BtnTestNiño2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTestNiño2ActionPerformed
+    private void BtnVinculacionNiñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVinculacionNiñoActionPerformed
+        
         Base.close();
-        PagTest_Niño test = new PagTest_Niño();
-        test.setVisible(true);
+        vincular_niño vin=new vincular_niño();
+        vin.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_BtnTestNiño2ActionPerformed
+    }//GEN-LAST:event_BtnVinculacionNiñoActionPerformed
 
     private void BtnMiniJueNiño1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMiniJueNiño1ActionPerformed
         Base.close();
@@ -358,14 +373,12 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
         this.setState(PagPrincipalNiñ.ICONIFIED);
     }//GEN-LAST:event_btnMinimizar1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // JOptionPane.showMessageDialog(this, "Este es el codigo\n Para vincular"+Sacar_codigo_Verficar(Base));
-
-        Base.close();
-        vincular_niño vin=new vincular_niño();
-        vin.setVisible(true);
+    private void BtnTestNiño3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTestNiño3ActionPerformed
+       Base.close();
+        PagTest_Niño test = new PagTest_Niño();
+        test.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BtnTestNiño3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -374,9 +387,11 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
     private javax.swing.JButton BtnCuentosNiño1;
     private javax.swing.JButton BtnInfNiño;
     private javax.swing.JButton BtnMiniJueNiño1;
-    private javax.swing.JButton BtnTestNiño2;
+    private javax.swing.JButton BtnTestNiño3;
+    private javax.swing.JButton BtnVinculacionNiño;
     private javax.swing.JPanel Consejos;
     private javax.swing.JPanel Cuentos;
+    private javax.swing.JPanel Cuentos1;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JPanel Inf;
@@ -387,12 +402,12 @@ public class PagPrincipalNiñ extends javax.swing.JFrame {
     private javax.swing.JPanel Test;
     private javax.swing.JButton btnExit1;
     private javax.swing.JButton btnMinimizar1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

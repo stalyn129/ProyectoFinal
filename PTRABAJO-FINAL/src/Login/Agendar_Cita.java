@@ -41,6 +41,7 @@ public class Agendar_Cita extends javax.swing.JFrame {
         jComboPsicologos = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        Fondo1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lblFondo = new javax.swing.JLabel();
         MenuCuentosNiño = new javax.swing.JMenuBar();
@@ -49,14 +50,18 @@ public class Agendar_Cita extends javax.swing.JFrame {
         JMnPgPrinNiño = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMinimumSize(new java.awt.Dimension(800, 500));
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         jLabel2.setText("Solicitar cita");
         jLabel2.setToolTipText("");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, 60));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, 60));
 
         jComboPsicologos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
         jComboPsicologos.addActionListener(new java.awt.event.ActionListener() {
@@ -64,7 +69,7 @@ public class Agendar_Cita extends javax.swing.JFrame {
                 jComboPsicologosActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboPsicologos, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 250, 30));
+        jPanel1.add(jComboPsicologos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 520, 20));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -79,16 +84,21 @@ public class Agendar_Cita extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 520, 200));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 520, 230));
+
+        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGeneralReportes.png"))); // NOI18N
+        Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, -30, 1690, 520));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("<html>Con cual de nuestros siguientes especialistas deseas solicitar tu cita:<html>");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 230, 50));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 520, 40));
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
-        jPanel1.add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 390));
+        jPanel1.add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 480));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 390));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 480));
 
         JMenu3puntitosNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
         JMenu3puntitosNiño.setToolTipText("Configuración");
@@ -371,6 +381,7 @@ public class Agendar_Cita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMenu3puntitosNiño;
     private javax.swing.JMenuItem JMnItmCerrarNiño;
     private javax.swing.JMenu JMnPgPrinNiño;
