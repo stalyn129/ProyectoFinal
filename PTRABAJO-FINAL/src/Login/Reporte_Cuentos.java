@@ -14,6 +14,8 @@ import com.db4o.ext.Db4oIOException;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -40,6 +42,7 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
         MostrarDatoCuentoNiño(Base);
         mostrar_diagrama_cuentoNiño();
         mostrar_diagrama_cuentoRepre();
+
     }
 
     /**
@@ -603,8 +606,6 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
         }
     }
-    
-   
 
     public void MostrarDatosInfoRepre(ObjectContainer Base) {
         ValoracionCuento puntu = new ValoracionCuento();
@@ -760,7 +761,16 @@ public class Reporte_Cuentos extends javax.swing.JFrame {
                 miRespuesta.getFecha_respuesta()
             });
         }
+    }
 
+    public static void eliminarElementosNulos(List<?> lista) {
+        Iterator<?> iterador = lista.iterator();
+
+        while (iterador.hasNext()) {
+            if (iterador.next() == null) {
+                iterador.remove();
+            }
+        }
     }
 
     public void ConsultarDatos(ObjectContainer base, ValoracionCuentoNiño consulta) {

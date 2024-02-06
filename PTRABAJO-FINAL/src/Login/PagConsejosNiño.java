@@ -71,6 +71,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnSi = new javax.swing.JButton();
         btnNo = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         BtnCerrarPagina = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnMinimizar1 = new javax.swing.JButton();
@@ -172,7 +173,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("¿Te parecio sirvio el consejo?");
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 570, 180, 10));
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, 180, 10));
 
         btnSi.setText("SI");
         btnSi.addActionListener(new java.awt.event.ActionListener() {
@@ -180,7 +181,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
                 btnSiActionPerformed(evt);
             }
         });
-        jPanel4.add(btnSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 600, -1, -1));
+        jPanel4.add(btnSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 580, -1, -1));
 
         btnNo.setText("NO");
         btnNo.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +189,10 @@ public class PagConsejosNiño extends javax.swing.JFrame {
                 btnNoActionPerformed(evt);
             }
         });
-        jPanel4.add(btnNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 600, -1, -1));
+        jPanel4.add(btnNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 580, -1, -1));
+
+        jLabel3.setText("La respuesta se actualizara ala ultima que escojas");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 610, -1, -1));
 
         jScrollPane1.setViewportView(jPanel4);
 
@@ -321,38 +325,41 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         String respuesta = "SI";
         String codNiño = usarData.getCod_niño();
 
-        // Verificar si ya hay una respuesta almacenada
         if (verificarRespuestaExistente(Base, codNiño)) {
-            String[] options = {"Si", "No"};
-            int opcion = JOptionPane.showOptionDialog(this, "Ya existe una respuesta. ¿Desea modificarla?", "Confirmar",
-                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+            int opcion = JOptionPane.showOptionDialog(this, "Gracias por su respuesta", "Confirmar",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{}, null);
 
             if (opcion == JOptionPane.NO_OPTION) {
                 return; // El usuario seleccionó "No", no hacemos nada
             }
         }
 
+        // Obtener código del cuento seleccionado
+        String codigoConsejo = obtenerCodigoInfoSeleccionado();
+
         // Aquí se ejecutará solo si el usuario selecciona "Si" o si no hay respuesta existente
-        GuardarRespuestaCuento(Base, codNiño, respuesta);
+        GuardarRespuestaConsejos(Base, codNiño, codigoConsejo, respuesta);
     }//GEN-LAST:event_btnSiActionPerformed
 
     private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
         String respuesta = "NO";
         String codNiño = usarData.getCod_niño();
+        String codConse;
 
-        // Verificar si ya hay una respuesta almacenada
         if (verificarRespuestaExistente(Base, codNiño)) {
-            String[] options = {"Si", "No"};
-            int opcion = JOptionPane.showOptionDialog(this, "Ya existe una respuesta. ¿Desea modificarla?", "Confirmar",
-                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
-
+            int opcion = JOptionPane.showOptionDialog(this, "Gracias por su respuesta", "Confirmar",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{}, null);
+            
             if (opcion == JOptionPane.NO_OPTION) {
                 return; // El usuario seleccionó "No", no hacemos nada
             }
         }
 
+        // Obtener código del cuento seleccionado
+        codConse = obtenerCodigoInfoSeleccionado();
+
         // Aquí se ejecutará solo si el usuario selecciona "No" o si no hay respuesta existente
-        GuardarRespuestaCuento(Base, codNiño, respuesta);
+        GuardarRespuestaConsejos(Base, codNiño, codConse, respuesta);
     }//GEN-LAST:event_btnNoActionPerformed
 
     private void btnMinimizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizar1MouseClicked
@@ -369,21 +376,6 @@ public class PagConsejosNiño extends javax.swing.JFrame {
                 new PagConsejosNiño().setVisible(true);
             }
         });
-    }
-
-    private boolean verificarRespuestaExistente(ObjectContainer Base, String codNiño) {
-        try {
-            ValoracionConseNiño ejemploConsulta = new ValoracionConseNiño();
-            ejemploConsulta.setFk_cod_niño(codNiño);
-
-            ObjectSet<ValoracionConseNiño> resultados = Base.queryByExample(ejemploConsulta);
-
-            return resultados.hasNext();
-        } catch (DatabaseClosedException | DatabaseReadOnlyException e) {
-            e.printStackTrace();
-            System.err.println("Excepción al verificar respuesta existente: " + e.getMessage());
-            return false;
-        }
     }
 
     public void cargar_combo1(JComboBox jComboJuego) {
@@ -439,81 +431,173 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         }
     }
 
-    public void GuardarRespuestaCuento(ObjectContainer Base, String Cod_niño, String respuesta) {
+    private boolean verificarRespuestaExistente(ObjectContainer Base, String codniño) {
         try {
-            ValoracionConseNiño respuesconsej = new ValoracionConseNiño();
+            ValoracionConseNiño ejemploConsulta = new ValoracionConseNiño();
+            ejemploConsulta.setFk_cod_niño(codniño);
 
-            // Obtener código de niño
-            Cod_niño = usarData.getCod_niño();
+            ObjectSet<ValoracionConseNiño> resultados = Base.queryByExample(ejemploConsulta);
 
-            // Generar ID de respuesta
-            String Codigo = Calcular_ID_Respuesta(Base);
-            respuesconsej.setCod_Respuesta_usuario(Codigo);
-            System.out.println("ID de Respuesta: " + Codigo);
+            return resultados.hasNext();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Excepción al verificar respuesta existente: " + e.getMessage());
+            return false;
+        }
+    }
 
-            // Obtener código de representante
-            respuesconsej.setFk_cod_niño(Cod_niño);
-            System.out.println("Código de Niño: " + Cod_niño);
+    private ValoracionConseNiño obtenerRespuestaExistente(ObjectContainer Base, String Cod_repre, String Cod_Cons) {
+        try {
+            ValoracionConseNiño ejemploConsulta = new ValoracionConseNiño();
+            ejemploConsulta.setFk_cod_niño(Cod_repre);
+            ejemploConsulta.setFk_Cod_Consejo(Cod_Cons);
 
-            // Establecer la respuesta
-            respuesconsej.setRespuesta(respuesta);
-            System.out.println("Respuesta: " + respuesta);
+            ObjectSet<ValoracionConseNiño> resultados = Base.queryByExample(ejemploConsulta);
 
-            // Obtener y asignar la fecha de respuesta
-            Date FechaRespuesta = new Date();
-            respuesconsej.setFecha_respuesta(FechaRespuesta);
-            System.out.println("Fecha de Respuesta: " + FechaRespuesta);
+            if (resultados.hasNext()) {
+                return resultados.next();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Excepción al obtener respuesta existente: " + e.getMessage());
+        }
+        return null;
+    }
 
-            // Obtener descripción del cuento seleccionado
-            String descrip = String.valueOf(CmBoxConsejosNiño.getSelectedItem());
-            Consejos conse = obtenerInformacionDelCuento(Base, descrip);
+    public void GuardarRespuestaConsejos(ObjectContainer Base, String Cod_niño, String Cod_conse, String respuesta) {
+        try {
+            // Verificar si ya existe una respuesta para el niño
+            ValoracionConseNiño respuestaExistente = obtenerRespuestaExistente(Base, Cod_niño, Cod_conse);
 
-            String codiconse = conse.getCod_consejo();
-            respuesconsej.setFk_Cod_Consejo(codiconse);
-            System.out.println("Código de Consejo: " + codiconse);
+            if (respuestaExistente != null) {
+                // Actualizar la respuesta existente
+                respuestaExistente.setRespuesta(respuesta);
+                respuestaExistente.setFecha_respuesta(new Date());
+                Base.store(respuestaExistente);
 
-            // Almacenar la respuesta en la base de datos
-            Base.store(respuesconsej);
+                System.out.println("Respuesta actualizada correctamente:");
+                System.out.println(respuestaExistente);
+            } else {
+                // Crear una nueva instancia solo si no hay respuesta existente
+                ValoracionConseNiño respuestaCuento = new ValoracionConseNiño();
 
-            // Mensajes de depuración adicionales
-            System.out.println("Respuesta almacenada correctamente:");
-            System.out.println(respuesconsej);
+                // Obtener código de niño
+                Cod_niño = usarData.getCod_niño();
 
-        } catch (DatabaseClosedException | DatabaseReadOnlyException | NullPointerException e) {
+                // Obtener código del cuento seleccionado
+                String codigoConsejo = obtenerCodigoInfoSeleccionado();
+                if (codigoConsejo != null) {
+                    respuestaCuento.setFk_Cod_Consejo(codigoConsejo);
+                    System.out.println("Código de la info: " + codigoConsejo);
+                } else {
+                    System.err.println("No se pudo obtener el código dela info seleccionado.");
+                    return;
+                }
+
+                // Generar ID de respuesta
+                String Codigo = Calcular_ID_Respuesta(Base);
+                respuestaCuento.setCod_Respuesta_usuario(Codigo);
+                System.out.println("ID de Respuesta: " + Codigo);
+
+                // Obtener código de representante
+                respuestaCuento.setFk_cod_niño(Cod_niño);
+                System.out.println("Código de niño: " + Cod_niño);
+
+                // Establecer la respuesta
+                respuestaCuento.setRespuesta(respuesta);
+                System.out.println("Respuesta: " + respuesta);
+
+                // Obtener y asignar la fecha de respuesta
+                Date FechaRespuesta = new Date();
+                respuestaCuento.setFecha_respuesta(FechaRespuesta);
+                System.out.println("Fecha de Respuesta: " + FechaRespuesta);
+
+                // Almacenar la respuesta en la base de datos
+                Base.store(respuestaCuento);
+
+                // Mensajes de depuración adicionales
+                System.out.println("Respuesta almacenada correctamente:");
+                System.out.println(respuestaCuento);
+            }
+        } catch (Exception e) {
             e.printStackTrace();
             System.err.println("Excepción al guardar la respuesta: " + e.getMessage());
         }
     }
 
-    private Consejos obtenerInformacionDelCuento(ObjectContainer Base, String descrip) {
-        Consejos micue = new Consejos(null, null, null, null, null, null, null, null, null);
+    public String obtenerCodigoInfoSeleccionado() {
+        try {
+            // Obtener descripción del cuento seleccionado
+            String descrip = String.valueOf(CmBoxConsejosNiño.getSelectedItem());
 
-        ObjectSet result = Base.get(micue);
+            // Obtener el índice seleccionado en lugar del valor
+            int selectedIndex = CmBoxConsejosNiño.getSelectedIndex();
 
-        if (result.hasNext()) {
-            return (Consejos) result.next();
+            // Obtener el objeto Cuento desde la base de datos usando el índice
+            Consejos conse = obtenerInformacionDelCuento(Base, selectedIndex);
+
+            if (conse != null) {
+                return conse.getCod_consejo();
+            } else {
+                System.err.println("No se pudo obtener el código dela info seleccionado.");
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Excepción al obtener el código del cuento seleccionado: " + e.getMessage());
+            return null;
+        }
+    }
+
+    private Consejos obtenerInformacionDelCuento(ObjectContainer Base, int selectedIndex) {
+        // Obtener todos los cuentos
+        ObjectSet<Consejos> result = Base.queryByExample(Consejos.class);
+
+        // Validar que el índice esté dentro del rango
+        if (selectedIndex >= 0 && selectedIndex < result.size()) {
+            // Obtener el cuento en la posición del índice
+            return result.get(selectedIndex);
         } else {
-            throw new IllegalStateException("No se encontró información del Cuento");
+            throw new IllegalStateException("Índice fuera de rango al obtener información del cuento");
         }
     }
 
     public static String Calcular_ID_Respuesta(ObjectContainer Base) {
-        boolean rest = true;
-        int Incremental = 0;
-        String Codigo;
-        do {
+        try {
+            // Obtener el último ID almacenado
+            ValoracionConseNiño ejemploConsulta = new ValoracionConseNiño();
+            ObjectSet<ValoracionConseNiño> resultados = Base.queryByExample(ejemploConsulta);
+            String ultimoID = "Resp-0000";
 
-            Incremental++;
+            while (resultados.hasNext()) {
+                ValoracionConseNiño respuesta = resultados.next();
+                String actualID = respuesta.getCod_Respuesta_usuario();
 
-            Codigo = String.format("ReC-%04d", Incremental);
-
-            if (Verificar_Resp(Base, Codigo) == 0) {
-                rest = false;
+                if (actualID != null && actualID.startsWith("Resp-")) {
+                    try {
+                        // Intentar convertir la parte numérica a un entero
+                        int numero = Integer.parseInt(actualID.substring(5));
+                        // Incrementar el último ID encontrado
+                        if (numero > Integer.parseInt(ultimoID.substring(5))) {
+                            ultimoID = actualID;
+                        }
+                    } catch (NumberFormatException e) {
+                        // Manejar la excepción si la parte numérica no es válida
+                        e.printStackTrace();
+                    }
+                }
             }
 
-        } while (rest);
+            // Incrementar el último ID encontrado
+            int numero = Integer.parseInt(ultimoID.substring(5)) + 1;
+            String nuevoID = "Resp-" + String.format("%04d", numero);
 
-        return Codigo;
+            return nuevoID;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Excepción al calcular el ID de respuesta: " + e.getMessage());
+            return null;
+        }
     }
 
     public static int Verificar_Resp(ObjectContainer Base, String Codigo) {
@@ -545,6 +629,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
     private javax.swing.JButton btnSi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
