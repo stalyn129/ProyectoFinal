@@ -10,6 +10,9 @@ import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JButton;
@@ -33,25 +36,24 @@ public class peticion_Psicologo extends javax.swing.JFrame {
         initComponents();
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
         usarData = UserDataSingleton.getInstance();
+        botones = new ArrayList<>();
         mostrar_peticiones(Base);
-        Mostra_Diagnosticos();
+        Mostra_Diagnosticos(Base);
         cod_vin(Base);
     }
 
-    
     public void cod_vin(ObjectContainer Base) {
         Psicologo psic = new Psicologo();
         psic.setCod_Psicologo(usarData.getCod_Psicologo());
-         ObjectSet result=Base.get(psic);
-         
-         if (result.size()!=0) {
-            Psicologo ne=(Psicologo)result.next();
+        ObjectSet result = Base.get(psic);
+
+        if (result.size() != 0) {
+            Psicologo ne = (Psicologo) result.next();
             cod_vinculacion.setText(ne.getCodigo_vinculacion());
         }
 
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,7 +103,7 @@ public class peticion_Psicologo extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setText("Codigo Vinculacion:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, -1, 20));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, -1, 20));
         jPanel3.add(cod_vinculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 100, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 700, 30));
@@ -188,7 +190,7 @@ public class peticion_Psicologo extends javax.swing.JFrame {
         jLabel6.setText("Diagnosticos disponibles");
         jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 11, -1, -1));
 
-        jPanel5.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel5.setLayout(new java.awt.GridLayout(5, 1));
         jScrollPane3.setViewportView(jPanel5);
 
         jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 39, 420, 300));
@@ -265,6 +267,7 @@ public class peticion_Psicologo extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void JMnItmCerrarNiñoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarNiñoMousePressed
@@ -361,6 +364,8 @@ public class peticion_Psicologo extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(peticion_Psicologo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -521,9 +526,8 @@ public class peticion_Psicologo extends javax.swing.JFrame {
                 Base.commit();
 
                 JOptionPane.showMessageDialog(this, "Se ACEPTO la Peticion");
-
+                Crear_Diagnostico(Base, cod_peti);
             }
-            Crear_Diagnostico(Base, cod_peti);
 
         } else {
 
@@ -585,8 +589,8 @@ public class peticion_Psicologo extends javax.swing.JFrame {
     public void Crear_Diagnostico(ObjectContainer Base, String cod_peticion) {
         Diagnosticos dig = new Diagnosticos();
 
-        String codDia = calcular_Diagnostico(Base);
-        System.out.println("Coss diag :" + codDia);
+        String codDia = generarYVerificarDiagnostico(Base);
+        System.out.println("Coss diag___________ :" + codDia);
 
         dig.setCod_Diagnostico(codDia);
         dig.setFkCod_Psicologo(usarData.getCod_Psicologo());
@@ -597,32 +601,35 @@ public class peticion_Psicologo extends javax.swing.JFrame {
         int num = calcular_num_Diag(Base);
         System.out.println("Num diag_" + num);
 
-        dig.setNumber_diag(num);
-        Base.store(dig);
-        JOptionPane.showMessageDialog(this, "Diagnostico N°" + num + " agregado");
-
-    }
-
-    public String calcular_Diagnostico(ObjectContainer Base) {
-        boolean rep = true;
-        int incremental = 0;
-        String cod = "";
-        while (rep) {
-            incremental++;
-            cod = String.format("DG%03d", incremental);
-            if (verificra_cos_Diag(Base, cod) == 0) {
-                rep = false;
-            }
-
+        //  dig.setNumber_diag(num);
+        if (verificarCodigoDiagnostico(Base, codDia) == 0) {
+            Base.store(dig);
+            Base.commit();
+            JOptionPane.showMessageDialog(this, "Diagnostico N°" + num + " agregado");
+        } else {
+            // Manejar el caso en el que ya existe un diagnóstico con la misma clave
+            JOptionPane.showMessageDialog(this, "Ya existe un diagnóstico con la misma clave");
         }
-        return cod;
-
     }
 
-    public int verificra_cos_Diag(ObjectContainer Base, String codsoli) {
-        Diagnosticos sol = new Diagnosticos();
-        sol.setCod_Diagnostico(codsoli);
-        ObjectSet result = Base.get(sol);
+    public String generarYVerificarDiagnostico(ObjectContainer base) {
+        String codigo;
+        boolean codigoUnico = false;
+        int intentos = 0;
+
+        do {
+            intentos++;
+            codigo = String.format("DG%03d", intentos);
+            codigoUnico = verificarCodigoDiagnostico(base, codigo) == 0;
+        } while (!codigoUnico);
+
+        return codigo;
+    }
+
+    private int verificarCodigoDiagnostico(ObjectContainer base, String codigo) {
+        Diagnosticos diagnostico = new Diagnosticos();
+        diagnostico.setCod_Diagnostico(codigo);
+        ObjectSet result = base.get(diagnostico);
 
         return result.size();
     }
@@ -653,29 +660,35 @@ public class peticion_Psicologo extends javax.swing.JFrame {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void Mostra_Diagnosticos() {
+    public void Mostra_Diagnosticos(ObjectContainer Base) {
         Diagnosticos dis = new Diagnosticos();
-        dis.setFkCod_Psicologo(usarData.getCod_Psicologo());
-        dis.setEstado_diag("En Proceso");
+        //dis.setFkCod_Psicologo(usarData.getCod_Psicologo());
+        // dis.setEstado_diag("En Proceso");
 
         ObjectSet result = Base.get(dis);
+        System.out.println("mm " + result.size());
 
         if (result.size() != 0) {
-
             while (result.hasNext()) {
                 Diagnosticos next = (Diagnosticos) result.next();
-                JButton boton = new JButton("Cod_diAG " + next.getCod_Diagnostico() + "  Numero_diag N°"+next.getNumber_diag());
+                JButton boton = new JButton("Codigo Diagnostico " + next.getCod_Diagnostico() + "           Numero N°" + next.getNumber_diag());
+
+                // Agregar un ActionListener al botón
+                boton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        // La función específica que deseas ejecutar al hacer clic en el botón
+                        System.out.println("Botón clickeado: " + next.getCod_Diagnostico());
+                        // Agrega aquí la lógica específica que deseas para este botón
+                    }
+                });
                 jPanel5.add(boton);
                 botones.add(boton);
-
                 jPanel5.updateUI();
-
             }
-
         } else {
             System.out.println("No se encontro Diagnosticos disponibles");
         }
-
     }
 
 }

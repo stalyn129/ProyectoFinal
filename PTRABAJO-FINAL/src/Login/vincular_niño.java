@@ -71,8 +71,6 @@ public class vincular_niño extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jTabbedPane1__ = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
         pnl_soli = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_soli = new javax.swing.JTable();
@@ -90,7 +88,6 @@ public class vincular_niño extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
-        btn_acesoria = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         MenuGenerlNiño = new javax.swing.JMenuBar();
         JMnItmCerrarNiño2 = new javax.swing.JMenu();
@@ -105,7 +102,7 @@ public class vincular_niño extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 440, 30));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 640, 30));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -115,36 +112,10 @@ public class vincular_niño extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 402, Short.MAX_VALUE)
+            .addGap(0, 392, Short.MAX_VALUE)
         );
 
         jTabbedPane1__.addTab("tab2", jPanel4);
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 635, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 402, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1__.addTab("tab3", jPanel6);
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 635, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 402, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1__.addTab("tab4", jPanel7);
 
         pnl_soli.setBackground(new java.awt.Color(255, 255, 255));
         pnl_soli.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -226,7 +197,7 @@ public class vincular_niño extends javax.swing.JFrame {
 
         jTabbedPane1__.addTab("peticones_vinc", jPanel2);
 
-        jPanel1.add(jTabbedPane1__, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, 430));
+        jPanel1.add(jTabbedPane1__, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, 420));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -250,15 +221,7 @@ public class vincular_niño extends javax.swing.JFrame {
         });
         jPanel3.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, -1, 20));
 
-        btn_acesoria.setText("Acesoria");
-        btn_acesoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_acesoriaActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btn_acesoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 100, 430));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 100, 420));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 480));
@@ -295,7 +258,7 @@ public class vincular_niño extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 944, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,6 +266,7 @@ public class vincular_niño extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
@@ -337,6 +301,16 @@ public class vincular_niño extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JButton boton=new JButton("Boton "+indice+"<br/>vrtvh<br/>vrt     rrtver<br/>csergtgr     t</html>");
+        // boton.setPreferredSize(new Dimension(100, 50));
+        jPanel8.add(boton);
+        botones.add(boton);
+        indice++;
+        jPanel8.updateUI();
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void tabla_soliMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_soliMousePressed
         int selecionTable = tabla_soli.getSelectedRow();
         codSoli = String.valueOf(tabla_soli.getValueAt(selecionTable, 0));
@@ -370,32 +344,7 @@ public class vincular_niño extends javax.swing.JFrame {
 
             }
         }
-
     }//GEN-LAST:event_tabla_soliMousePressed
-
-    private void btn_acesoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_acesoriaActionPerformed
-
-        String nombrePanelDeseado = "peticones_vinc";
-
-        // Iterar a través de las pestañas y seleccionar por nombre
-        for (int i = 0; i < jTabbedPane1__.getTabCount(); i++) {
-            Component componente = jTabbedPane1__.getComponentAt(i);
-            if (jTabbedPane1__.getTitleAt(i).equals(nombrePanelDeseado)) {
-                jTabbedPane1__.setSelectedComponent(componente);
-                break;
-            }
-        }
-    }//GEN-LAST:event_btn_acesoriaActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JButton boton=new JButton("Boton "+indice+"<br/>vrtvh<br/>vrt     rrtver<br/>csergtgr     t</html>");
-       // boton.setPreferredSize(new Dimension(100, 50));
-        jPanel8.add(boton);
-        botones.add(boton);
-        indice++;
-        jPanel8.updateUI();
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ocultarColumna() {
 
@@ -439,6 +388,8 @@ public class vincular_niño extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -452,7 +403,6 @@ public class vincular_niño extends javax.swing.JFrame {
     private javax.swing.JMenu JMnItmCerrarNiño2;
     private javax.swing.JMenu JMnPgPrinNiño2;
     private javax.swing.JMenuBar MenuGenerlNiño;
-    private javax.swing.JButton btn_acesoria;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -464,8 +414,6 @@ public class vincular_niño extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

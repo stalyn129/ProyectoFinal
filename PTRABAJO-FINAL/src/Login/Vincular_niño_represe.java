@@ -28,10 +28,10 @@ import javax.swing.table.TableColumnModel;
  * @author alexa
  */
 public class Vincular_niño_represe extends javax.swing.JFrame {
-    
+
     ObjectContainer Base;
     UserDataSingleton usarData;
-    
+
     public Vincular_niño_represe() {
         initComponents();
         ocultarColumna();
@@ -55,8 +55,6 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         Solicitar = new javax.swing.JButton();
         tabbedpanel__ = new javax.swing.JTabbedPane();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txt_busc = new javax.swing.JTextField();
@@ -149,32 +147,6 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Solicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 50, 130, 40));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 625, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 382, Short.MAX_VALUE)
-        );
-
-        tabbedpanel__.addTab("tab3", jPanel5);
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 625, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 382, Short.MAX_VALUE)
-        );
-
-        tabbedpanel__.addTab("tab4", jPanel6);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -387,6 +359,7 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void JMnItmCerrarNiñoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnItmCerrarNiñoMousePressed
@@ -403,38 +376,10 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiñoMouseClicked
 
-    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-        if (!txt_busc.getText().isEmpty()) {
-            
-            Buscar_niño(Base, txt_busc.getText());
-        }
-
-    }//GEN-LAST:event_btn_buscarActionPerformed
-
-    private void btn_solicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_solicitarActionPerformed
-        if (!txt_areaComentario.getText().isEmpty()) {
-            if (comprobar_soli(Base) == 0) {
-                solicitud_crear(Base);
-            } else {
-                JOptionPane.showMessageDialog(this, "Ya se encuentra pendiende una solicitud al niño");
-            }
-            
-            txt_busc.setText("");
-            txt_apodo.setText("");
-            txt_nombre.setText("");
-            txt_apellido.setText("");
-            txt_areaComentario.setText("");
-        } else {
-            JOptionPane.showMessageDialog(this, "Ingrese un comentario para el niño");
-        }
-        
-
-    }//GEN-LAST:event_btn_solicitarActionPerformed
-
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
-        
+
         Base.close();
-        PagPrincipalRepresentante mipagpriad = new PagPrincipalRepresentante();
+        PagPrincipalAdmin mipagpriad = new PagPrincipalAdmin();
         mipagpriad.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
@@ -452,12 +397,8 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nombreActionPerformed
-
     private void SolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SolicitarActionPerformed
-        
+
         String nombrePanelDeseado = "Pedir_psico";
 
         // Iterar a través de las pestañas y seleccionar por nombre
@@ -471,39 +412,64 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
 
     }//GEN-LAST:event_SolicitarActionPerformed
 
-    private void tabla_acepMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_acepMousePressed
-        int selecionTable = tabla_acep.getSelectedRow();
-        String codNiño = String.valueOf(tabla_acep.getValueAt(selecionTable, 1));
-        cargar_datos_niño(Base, codNiño);
-        
-        codSolicitud_aceptada = String.valueOf(tabla_acep.getValueAt(selecionTable, 0));
-
-    }//GEN-LAST:event_tabla_acepMousePressed
-
     private void btn_buscar_psicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscar_psicActionPerformed
         if (!txt_cod_vincu.getText().isEmpty()) {
-            
+
             cod_vincu_mostr(Base, txt_cod_vincu.getText());
-            
+
         } else {
             JOptionPane.showMessageDialog(this, "Ingresar el codigo de vinculacion");
         }
-        
 
     }//GEN-LAST:event_btn_buscar_psicActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if (!txt_envias.getText().isEmpty()) {
             Creap_peticion(Base);
-            
-            
+
         } else {
             JOptionPane.showMessageDialog(this, "Ingresar un Mensaje para el Psicologo");
         }
-        
 
     }//GEN-LAST:event_jButton4ActionPerformed
-    
+
+    private void tabla_acepMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_acepMousePressed
+        int selecionTable = tabla_acep.getSelectedRow();
+
+        codSolicitud_aceptada = String.valueOf(tabla_acep.getValueAt(selecionTable, 0));
+        cargar_datos_niño(Base, codSolicitud_aceptada);
+    }//GEN-LAST:event_tabla_acepMousePressed
+
+    private void btn_solicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_solicitarActionPerformed
+        if (!txt_areaComentario.getText().isEmpty()) {
+            if (comprobar_soli(Base) == 0) {
+                solicitud_crear(Base);
+            } else {
+                JOptionPane.showMessageDialog(this, "Ya se encuentra pendiende una solicitud al niño");
+            }
+
+            txt_busc.setText("");
+            txt_apodo.setText("");
+            txt_nombre.setText("");
+            txt_apellido.setText("");
+            txt_areaComentario.setText("");
+        } else {
+            JOptionPane.showMessageDialog(this, "Ingrese un comentario para el niño");
+        }
+
+    }//GEN-LAST:event_btn_solicitarActionPerformed
+
+    private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nombreActionPerformed
+
+    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
+        if (!txt_busc.getText().isEmpty()) {
+
+            Buscar_niño(Base, txt_busc.getText());
+        }
+    }//GEN-LAST:event_btn_buscarActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -526,6 +492,8 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Vincular_niño_represe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -569,8 +537,6 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -595,10 +561,10 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
     public void solicitud_crear(ObjectContainer Base) {
         if (!cod_niño.isEmpty()) {
             solicitud soli = new solicitud();
-            
+
             String cod = calcular_solicitud(Base);
             System.out.println("codigo soli: " + cod);
-            
+
             soli.setCod_solicitud(cod);
             soli.setFKcod_representante(usarData.getCod_Representante());
             System.out.println("es: " + cod_niño);
@@ -607,15 +573,15 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
             soli.setFecha_soli(new Date());
             soli.setComentario_soli(txt_areaComentario.getText());
             Base.store(soli);
-            
+
             JOptionPane.showMessageDialog(this, "Se envio la solicitud");
-            
+
         } else {
             JOptionPane.showMessageDialog(this, "Buscar primero al niño para enviar un solisitud");
         }
-        
+
     }
-    
+
     public String calcular_solicitud(ObjectContainer Base) {
         boolean rep = true;
         int incremental = 0;
@@ -626,116 +592,132 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
             if (verificra_cos_solli(Base, cod) == 0) {
                 rep = false;
             }
-            
+
         }
         return cod;
-        
+
     }
-    
+
     public int verificra_cos_solli(ObjectContainer Base, String codsoli) {
         solicitud sol = new solicitud();
         sol.setCod_solicitud(codsoli);
         ObjectSet result = Base.get(sol);
-        
+
         return result.size();
     }
-    
+
     String cod_niño = "";
-    
+
     public void Buscar_niño(ObjectContainer Base, String Apodo) {
-        
+
         Niño nini = new Niño();
         nini.setApodo(Apodo);
         ObjectSet Result = Base.get(nini);
-        
+
         if (Result.size() != 0) {
             while (Result.hasNext()) {
                 Niño next = (Niño) Result.next();
                 cod_niño = next.getCod_Niño();
-                
+
                 txt_apodo.setText(next.getApodo());
                 txt_nombre.setText(next.getNombre());
                 txt_apellido.setText(next.getApellido());
             }
-            
+
         } else {
             JOptionPane.showMessageDialog(this, "El apodo ingresador no exist\nRECUERDA QUE DEBE ESTA ESCRITO IGUAL A LO REGISTRADOS");
-            
+
         }
-        
+
     }
-    
+
     public int comprobar_soli(ObjectContainer Base) {
         solicitud solis = new solicitud();
         solis.setFKcod_niño(cod_niño);
         solis.setFKcod_representante(usarData.getCod_Representante());
         solis.setEstado_solicitud1("Pendiente");
-        
+
         ObjectSet result = Base.get(solis);
-        
+
         return result.size();
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //////////////////////////////////////////////////// MOSTRAR TABLA DE SOLICITUDES ACEPTADAS ///////////////////////////////
     String codSolicitud_aceptada = "";
-    
+    String cod_niño__ = "";
+
     public void Mostrar_tabla_aceptados(ObjectContainer Base) {
+
         solicitud soli = new solicitud();
         soli.setFKcod_representante(usarData.getCod_Representante());
         soli.setEstado_solicitud1("Aceptada");
-        
+
         DefaultTableModel modelo = (DefaultTableModel) tabla_acep.getModel();
         modelo.setRowCount(0);
-        
+
         ObjectSet result = Base.get(soli);
         if (result.size() != 0) {
-            
+
             while (result.hasNext()) {
                 solicitud next = (solicitud) result.next();
-                
+
                 modelo.addRow(new Object[]{
                     next.getCod_solicitud(),
-                  
-                    
                     Mostrar_nombre_nin(Base, next.getFKcod_niño()),
                     Mostrar_nombre_Represent(Base, next.getFKcod_representante())
-                
+
                 });
-                
+
             }
-            
+
         } else {
         }
-        
+
     }
-    
+
     public void cargar_datos_niño(ObjectContainer Base, String cod) {
-        Niño nin = new Niño();
-        nin.setCod_Niño(cod);
-        
-        ObjectSet result = Base.get(nin);
-        
-        if (result.size() != 0) {
+     
+                solicitud soli = new solicitud();
+                soli.setCod_solicitud(cod);
+
+                ObjectSet rest = Base.get(soli);
+                while (rest.hasNext()) {
+                    solicitud next1 = (solicitud) rest.next();
+
+                    String cod_ni = next1.getFKcod_niño();
+                    Niño nin = new Niño();
+                    nin.setCod_Niño(cod_ni);
+
+                    ObjectSet res = Base.get(nin);
+
+                    if (res.size() != 0) {
+
+                        while (res.hasNext()) {
+                            Niño n = (Niño) res.next();
+
+                            pt_apodo.setText(n.getApodo());
+                            pt_nombre.setText(n.getNombre());
+                            pt_apellido.setText(n.getApellido());
+
+                        }
+
+                    } else {
+                        System.out.println("No se encuentra al niño");
+                    }
+
+                }
+
             
-            while (result.hasNext()) {
-                Niño next = (Niño) result.next();
-                
-                pt_apodo.setText(next.getApodo());
-                pt_nombre.setText(next.getNombre());
-                pt_apellido.setText(next.getApellido());
-                
-            }
-            
-        }
-        
+
     }
+
     String cod_psic = "";
-    
+
     public void cod_vincu_mostr(ObjectContainer Base, String codVincu) {
         Psicologo psic = new Psicologo();
         psic.setCodigo_vinculacion(codVincu);
-        
+
         ObjectSet result = Base.get(psic);
         if (result.size() != 0) {
             while (result.hasNext()) {
@@ -743,67 +725,67 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
                 cod_psic = next.getCod_Psicologo();
                 String codPsic = next.getFK_Cedula();
                 cod_nombre(Base, codPsic);
-                
+
             }
-            
+
         } else {
             JOptionPane.showMessageDialog(this, "No se encontro al Psicologo");
         }
-        
+
     }
-    
+
     public void cod_nombre(ObjectContainer Base, String cedula) {
         Persona person = new Persona();
         person.setCedula(cedula);
-        
+
         ObjectSet result = Base.get(person);
-        
+
         while (result.hasNext()) {
             Persona next = (Persona) result.next();
-            
+
             jTextField2.setText(next.getNombre() + " " + next.getApellido());
             jTextField3.setText(next.getCod_Especialidad());
-            
+
         }
-        
+
     }
-    
+
     public void Creap_peticion(ObjectContainer Base) {
         if (!codSolicitud_aceptada.isEmpty()) {
             peticion_psico pet = new peticion_psico();
-            
+
             String cod = calcular_peticion(Base);
             System.out.println("codigo soli: " + cod);
-            
+
             pet.setCod_Peticion(cod);
             pet.setFkCod_Psicologo(cod_psic);
             pet.setFKcod_solicitud(codSolicitud_aceptada);
             pet.setDescripcion(txt_envias.getText());
             pet.setEstado_peticion("Pendiente");
             pet.setFecha_pet(new Date());
-            
+
             Base.store(pet);
-            
+
             JOptionPane.showMessageDialog(this, "Se encio la Peticion");
-            
+
             pt_apodo.setText("");
             pt_nombre.setText("");
             pt_apellido.setText("");
-            
+
             cod_psic = "";
             codSolicitud_aceptada = "";
             txt_cod_vincu.setText("");
             jTextField2.setText("");
             jTextField3.setText("");
             txt_envias.setText("");
-            
+
         } else {
-            
+
             JOptionPane.showMessageDialog(this, "Seleccionar Una fila de la tabla");
         }
-        
+
     }
-    
+
     public String calcular_peticion(ObjectContainer Base) {
         boolean rep = true;
         int incremental = 0;
@@ -814,21 +796,20 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
             if (verificra_cos_peticion(Base, cod) == 0) {
                 rep = false;
             }
-            
+
         }
         return cod;
-        
+
     }
-    
+
     public int verificra_cos_peticion(ObjectContainer Base, String codsoli) {
         peticion_psico sol = new peticion_psico();
         sol.setCod_Peticion(codsoli);
         ObjectSet result = Base.get(sol);
-        
+
         return result.size();
     }
 
-    
     private void ocultarColumna() {
 
         // Obtén el TableColumnModel de la tabla
@@ -870,6 +851,7 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
         }
         return nombres;
     }
+
     public String Mostrar_nombre_nin(ObjectContainer Base, String cod) {
         String nombres = "";
         Niño nin = new Niño();
