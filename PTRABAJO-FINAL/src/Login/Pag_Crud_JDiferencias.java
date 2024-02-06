@@ -239,11 +239,11 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo", "Descripción", "Respuesta", "Ruta Imagen"
+                "Codigo", "Descripción", "Respuesta"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, false
+                false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
