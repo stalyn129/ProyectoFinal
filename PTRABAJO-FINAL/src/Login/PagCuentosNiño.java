@@ -68,6 +68,7 @@ public class PagCuentosNiño extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         LblInformacionNiño = new javax.swing.JLabel();
         LblInformacionNiño1 = new javax.swing.JLabel();
+        BtnRegresar = new javax.swing.JButton();
         Fondo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
         MenuGenerlNiño = new javax.swing.JMenuBar();
@@ -245,6 +246,18 @@ public class PagCuentosNiño extends javax.swing.JFrame {
         LblInformacionNiño1.setText("BIENVENIDOS AL AREA DE:");
         jPanel1.add(LblInformacionNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 250, 20));
 
+        BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar.setToolTipText("Regresa al iniciar sesión");
+        BtnRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar.setOpaque(false);
+        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
+
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoInfoNiñoCuentos.png"))); // NOI18N
         Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, 0, 1690, 510));
@@ -365,6 +378,13 @@ public class PagCuentosNiño extends javax.swing.JFrame {
     private void btnMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar1ActionPerformed
         this.setState(PagCuentosNiño.ICONIFIED);
     }//GEN-LAST:event_btnMinimizar1ActionPerformed
+
+    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+        Base.close();
+        PagPrincipalNiñ prin = new PagPrincipalNiñ();
+        prin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresarActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -585,6 +605,7 @@ public class PagCuentosNiño extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JButton BtnNo;
+    private javax.swing.JButton BtnRegresar;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMnItmCerrarNiño2;

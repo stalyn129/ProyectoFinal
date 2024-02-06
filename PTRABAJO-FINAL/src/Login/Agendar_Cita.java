@@ -9,20 +9,27 @@ import Clases.Especializacion;
 import Clases.Nacionalidad;
 import Clases.Persona;
 import Clases.Psicologo;
+import Clases.Solicitud_Cita;
+import Clases.UserDataSingleton;
+import Clases.solicitud;
 import com.db4o.*;
 import com.db4o.ObjectContainer;
+import com.toedter.calendar.JDateChooser;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 
 public class Agendar_Cita extends javax.swing.JFrame {
 
     ObjectContainer Base;
-
+    UserDataSingleton usarData;
+    
     public Agendar_Cita() {
         initComponents();
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
         cargarComboPsicologos();
+        usarData = UserDataSingleton.getInstance();
     }
 
     @SuppressWarnings("unchecked")
@@ -136,7 +143,7 @@ public class Agendar_Cita extends javax.swing.JFrame {
         mostrarDatosPsicologo(nombrePsicologo);
     }//GEN-LAST:event_jComboPsicologosActionPerformed
 
-    private void cargarComboPsicologos() {
+        private void cargarComboPsicologos() {
         List<Psicologo> listaPsicologos = obtenerListaPsicologos();
 
         for (Psicologo psicologo : listaPsicologos) {
@@ -211,7 +218,7 @@ public class Agendar_Cita extends javax.swing.JFrame {
                             // Realiza la acción correspondiente según la opción seleccionada
                             if (opcion == JOptionPane.YES_OPTION) {
                                 // Lógica para solicitar la cita
-                                // solicitarCita(psicologo);
+                                solicitarCita(psicologo);
                             } else {
                                 // Lógica para cancelar
                                 // (puedes dejarlo vacío o agregar un mensaje de cancelación)
@@ -235,6 +242,68 @@ public class Agendar_Cita extends javax.swing.JFrame {
         } finally {
             // Cierra la base de datos
         }
+    }
+
+    private void solicitarCita(Psicologo psicologo) {
+        try {
+            // Crea un JDateChooser para permitir al usuario seleccionar la fecha y hora deseada para la cita
+            JDateChooser dateChooser = new JDateChooser();
+
+            // Establece el límite máximo como la fecha actual
+            dateChooser.setMinSelectableDate(new Date());
+
+            int option = JOptionPane.showConfirmDialog(this, dateChooser, "Seleccione la fecha y hora de la cita", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+            if (option == JOptionPane.OK_OPTION) {
+                // Obtiene la fecha y hora seleccionada
+                Date fechaHoraCita = dateChooser.getDate();
+
+                // Verifica que se haya seleccionado una fecha y hora válidas
+                if (fechaHoraCita != null && fechaHoraCita.after(new Date())) {
+                    // Crea una nueva instancia de Solicitud_Cita
+                    Solicitud_Cita nuevaSolicitud = new Solicitud_Cita();
+                    String Cod_Sol = Calcular_ID_Respuesta(Base);
+                    nuevaSolicitud.setCod_solicitud(Cod_Sol);
+                    String Cod_Repre = usarData.getCod_Representante();
+                    nuevaSolicitud.setFKcod_representante(Cod_Repre);
+
+                    String codNiñoVinculado = obtenerCodigoNiñoPorRepresentante(Cod_Repre);
+
+                    if (codNiñoVinculado != null) {
+                        // Hay una solicitud vinculada, puedes usar el código del niño
+                        nuevaSolicitud.setFKcod_niño(codNiñoVinculado);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "No tiene un niño vinculado a su cuenta");
+                    }
+
+                    nuevaSolicitud.setEstado_solicitud1(false);
+                    nuevaSolicitud.setFecha_soli(new Date());
+                    nuevaSolicitud.setFKcod_psicologo(psicologo.getCod_Psicologo());
+
+                    // Guarda la nueva solicitud en la base de datos
+                    Base.store(nuevaSolicitud);
+
+                    // Muestra un mensaje de confirmación
+                    JOptionPane.showMessageDialog(this, "Cita solicitada con éxito. Se ha enviado una solicitud a " + obtenerNombrePsicologo(psicologo), "Cita solicitada", JOptionPane.INFORMATION_MESSAGE);
+                    System.out.println(nuevaSolicitud);
+                } else {
+                    // El usuario canceló la selección de fecha y hora o seleccionó una fecha pasada
+                    JOptionPane.showMessageDialog(this, "Solicitud de cita cancelada o fecha no válida. Seleccione una fecha futura.", "Cancelado", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        } finally {
+
+        }
+    }
+
+    private String obtenerCodigoNiñoPorRepresentante(String codRepresentante) {
+        ObjectSet<solicitud> solicitudes = Base.queryByExample(new solicitud(null, codRepresentante, null, null, null, null));
+
+        while (solicitudes.hasNext()) {
+            solicitud soli = solicitudes.next();
+            return soli.getFKcod_niño();
+        }
+        return null;
     }
 
     private Persona buscarPersonaPorCedula(String cedula) {
@@ -314,4 +383,41 @@ public class Agendar_Cita extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblFondo;
     // End of variables declaration//GEN-END:variables
+public static String Calcular_ID_Respuesta(ObjectContainer Base) {
+        try {
+            // Obtener el último ID almacenado
+            Solicitud_Cita ejemploConsulta = new Solicitud_Cita();
+            ObjectSet<Solicitud_Cita> resultados = Base.queryByExample(ejemploConsulta);
+            String ultimoID = "SOL-0000";
+
+            while (resultados.hasNext()) {
+                Solicitud_Cita respuesta = resultados.next();
+                String actualID = respuesta.getCod_solicitud();
+
+                if (actualID != null && actualID.startsWith("SOL-")) {
+                    try {
+                        // Intentar convertir la parte numérica a un entero
+                        int numero = Integer.parseInt(actualID.substring(5));
+                        // Incrementar el último ID encontrado
+                        if (numero > Integer.parseInt(ultimoID.substring(5))) {
+                            ultimoID = actualID;
+                        }
+                    } catch (NumberFormatException e) {
+                        // Manejar la excepción si la parte numérica no es válida
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            // Incrementar el último ID encontrado
+            int numero = Integer.parseInt(ultimoID.substring(5)) + 1;
+            String nuevoID = "SOL-" + String.format("%04d", numero);
+
+            return nuevoID;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Excepción al calcular el ID de respuesta: " + e.getMessage());
+            return null;
+        }
+    }
 }

@@ -72,6 +72,7 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         jSeparator6 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
         BtnCerrarPagina = new javax.swing.JButton();
+        BtnRegresar = new javax.swing.JButton();
         Btn_Consultar = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -139,7 +140,7 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableNacionalidades);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 460, 420));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 460, 400));
 
         btnEliminar.setText("Eliminar");
         btnEliminar.setToolTipText("Elimina los datos existentes en la tabla");
@@ -305,6 +306,18 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 30, 30));
+
+        BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar.setToolTipText("Regresa al iniciar sesión");
+        BtnRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar.setOpaque(false);
+        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
 
         Btn_Consultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(Btn_Consultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 810, 550));
@@ -508,6 +521,13 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
         this.setState(Crud_Nacionalidades.ICONIFIED);
     }//GEN-LAST:event_btnMinimizar1ActionPerformed
 
+    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+        Base.close();
+        PagPrincipalAdmin prin = new PagPrincipalAdmin();
+        prin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresarActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -544,6 +564,7 @@ public class Crud_Nacionalidades extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
+    private javax.swing.JButton BtnRegresar;
     private javax.swing.JLabel Btn_Consultar;
     private javax.swing.JButton Btn_Modificar;
     private javax.swing.JTextField Txt_Nacionalidad;

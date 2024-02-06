@@ -69,9 +69,10 @@ public class PagTest_Niño extends javax.swing.JFrame {
         BtnCerrarPagina = new javax.swing.JButton();
         btnMinimizar1 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        Fondo1 = new javax.swing.JLabel();
         LblTestPariente1 = new javax.swing.JLabel();
         LblTestPariente2 = new javax.swing.JLabel();
+        BtnRegresar1 = new javax.swing.JButton();
+        Fondo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
         MenuGenerlNiño = new javax.swing.JMenuBar();
         JMnItmCerrarNiño2 = new javax.swing.JMenu();
@@ -212,10 +213,6 @@ public class PagTest_Niño extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 80, 70));
 
-        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoTestRepresentante.png"))); // NOI18N
-        Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
-        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, -10, 1690, 510));
-
         LblTestPariente1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         LblTestPariente1.setText("BIENVENIDOS AL AREA DE:");
         jPanel1.add(LblTestPariente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 290, 20));
@@ -223,6 +220,22 @@ public class PagTest_Niño extends javax.swing.JFrame {
         LblTestPariente2.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         LblTestPariente2.setText("TEST");
         jPanel1.add(LblTestPariente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 60, 30));
+
+        BtnRegresar1.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar1.setToolTipText("Regresa al iniciar sesión");
+        BtnRegresar1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar1.setOpaque(false);
+        BtnRegresar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
+
+        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoTestRepresentante.png"))); // NOI18N
+        Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, -10, 1690, 510));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         Fondo.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -311,6 +324,13 @@ public class PagTest_Niño extends javax.swing.JFrame {
     private void btnMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar1ActionPerformed
         this.setState(PagTest_Niño.ICONIFIED);
     }//GEN-LAST:event_btnMinimizar1ActionPerformed
+
+    private void BtnRegresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar1ActionPerformed
+        Base.close();
+        PagPrincipalNiñ prin = new PagPrincipalNiñ();
+        prin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresar1ActionPerformed
 
     public void caracteristicas_ponle(ObjectContainer Base, String titulo) {
 
@@ -478,6 +498,8 @@ public class PagTest_Niño extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
+    private javax.swing.JButton BtnRegresar;
+    private javax.swing.JButton BtnRegresar1;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMnItmCerrarNiño2;

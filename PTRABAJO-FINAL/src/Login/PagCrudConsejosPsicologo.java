@@ -100,6 +100,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         BtnCerrarPagina = new javax.swing.JButton();
         btnMinimizar1 = new javax.swing.JButton();
+        BtnRegresar5 = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenu3puntitosPsicologo = new javax.swing.JMenu();
@@ -175,7 +176,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
                 btn_Ingresar_imagenActionPerformed(evt);
             }
         });
-        jPanel4.add(btn_Ingresar_imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 630, 160, -1));
+        jPanel4.add(btn_Ingresar_imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 630, 160, -1));
         jPanel4.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 410, 260, 10));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -239,7 +240,7 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
                 btn_Ingresar_imagen1ActionPerformed(evt);
             }
         });
-        jPanel4.add(btn_Ingresar_imagen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 160, -1));
+        jPanel4.add(btn_Ingresar_imagen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 160, -1));
         jPanel4.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 730, 700, 20));
         jPanel4.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1050, 700, 20));
 
@@ -362,9 +363,9 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jPanel4);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 410));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 380));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 760, 410));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 760, -1));
 
         BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
         BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
@@ -401,6 +402,18 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnMinimizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 30, 30));
+
+        BtnRegresar5.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar5.setToolTipText("Regresa al iniciar sesión");
+        BtnRegresar5.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar5.setOpaque(false);
+        BtnRegresar5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresar5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         Fondo.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -730,6 +743,13 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
         this.setState(PagCrudConsejosPsicologo.ICONIFIED);
     }//GEN-LAST:event_btnMinimizar1ActionPerformed
 
+    private void BtnRegresar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar5ActionPerformed
+        Base.close();
+        PagPrincipalPsicologo prin = new PagPrincipalPsicologo();
+        prin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresar5ActionPerformed
+
     public byte[] AbrirArchivo(File archivo) {
         try ( FileInputStream entrada = new FileInputStream(archivo)) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -1045,6 +1065,8 @@ public class PagCrudConsejosPsicologo extends javax.swing.JFrame {
     private javax.swing.JButton BtnConsultarPsicologo;
     private javax.swing.JButton BtnEliminarPsicologo;
     private javax.swing.JButton BtnModifiPsicologo;
+    private javax.swing.JButton BtnRegresar4;
+    private javax.swing.JButton BtnRegresar5;
     private javax.swing.JLabel Fondo;
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;

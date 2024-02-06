@@ -67,6 +67,7 @@ public class PagForoPsicologo extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         LblTestPariente2 = new javax.swing.JLabel();
         LblTestPariente1 = new javax.swing.JLabel();
+        BtnRegresar4 = new javax.swing.JButton();
         Fondo1 = new javax.swing.JLabel();
         lblFondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -220,6 +221,18 @@ public class PagForoPsicologo extends javax.swing.JFrame {
         LblTestPariente1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblTestPariente1.setText("BIENVENIDO AL AREA DE:");
         getContentPane().add(LblTestPariente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 300, 20));
+
+        BtnRegresar4.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar4.setToolTipText("Regresa al iniciar sesión");
+        BtnRegresar4.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar4.setOpaque(false);
+        BtnRegresar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresar4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnRegresar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 440, 50, 40));
 
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGeneralReportes.png"))); // NOI18N
         Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -381,6 +394,13 @@ public class PagForoPsicologo extends javax.swing.JFrame {
         principal.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinPsicoloMouseClicked
+
+    private void BtnRegresar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar4ActionPerformed
+        Base.close();
+        PagPrincipalPsicologo prin = new PagPrincipalPsicologo();
+        prin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresar4ActionPerformed
 
     private void cargarComentariosEnTxtParticipaciones(String codigoForoActual) {
         // Obtener todos los comentarios de la base de datos
@@ -563,6 +583,7 @@ public class PagForoPsicologo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
+    private javax.swing.JButton BtnRegresar4;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;

@@ -434,7 +434,7 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
         
         Base.close();
-        PagPrincipalAdmin mipagpriad = new PagPrincipalAdmin();
+        PagPrincipalRepresentante mipagpriad = new PagPrincipalRepresentante();
         mipagpriad.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed

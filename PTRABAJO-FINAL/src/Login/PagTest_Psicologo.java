@@ -53,6 +53,7 @@ public class PagTest_Psicologo extends javax.swing.JFrame {
         btnMinimizar1 = new javax.swing.JButton();
         LblTestPariente1 = new javax.swing.JLabel();
         LblTestPariente2 = new javax.swing.JLabel();
+        BtnRegresar4 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -193,6 +194,18 @@ public class PagTest_Psicologo extends javax.swing.JFrame {
         LblTestPariente2.setText("TEST");
         jPanel1.add(LblTestPariente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 210, 30));
 
+        BtnRegresar4.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar4.setToolTipText("Regresa al iniciar sesión");
+        BtnRegresar4.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar4.setOpaque(false);
+        BtnRegresar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresar4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
+
         jLabel4.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
@@ -296,6 +309,13 @@ public class PagTest_Psicologo extends javax.swing.JFrame {
         this.setState(PagTest_Psicologo.ICONIFIED);
     }//GEN-LAST:event_btnMinimizar1ActionPerformed
 
+    private void BtnRegresar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar4ActionPerformed
+        Base.close();
+        PagPrincipalPsicologo prin = new PagPrincipalPsicologo();
+        prin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresar4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -336,6 +356,7 @@ public class PagTest_Psicologo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
+    private javax.swing.JButton BtnRegresar4;
     private javax.swing.JButton BtnTestPsico2;
     private javax.swing.JButton BtnTestPsico3;
     private javax.swing.JButton BtnTestPsico4;

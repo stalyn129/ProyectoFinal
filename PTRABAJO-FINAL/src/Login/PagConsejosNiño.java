@@ -71,12 +71,12 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnSi = new javax.swing.JButton();
         btnNo = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         BtnCerrarPagina = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnMinimizar1 = new javax.swing.JButton();
         LblInformacionNiño = new javax.swing.JLabel();
         LblInformacionNiño1 = new javax.swing.JLabel();
+        BtnRegresar = new javax.swing.JButton();
         Fondo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
         MenuGenerlNiño = new javax.swing.JMenuBar();
@@ -172,7 +172,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         jPanel4.add(CmBoxConsejosNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 20));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("¿Te parecio sirvio el consejo?");
+        jLabel1.setText("¿Te ha gustado este consejo?");
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, 180, 10));
 
         btnSi.setText("SI");
@@ -190,9 +190,6 @@ public class PagConsejosNiño extends javax.swing.JFrame {
             }
         });
         jPanel4.add(btnNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 580, -1, -1));
-
-        jLabel3.setText("La respuesta se actualizara ala ultima que escojas");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 610, -1, -1));
 
         jScrollPane1.setViewportView(jPanel4);
 
@@ -248,6 +245,18 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         LblInformacionNiño1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         LblInformacionNiño1.setText("BIENVENIDOS AL AREA DE:");
         jPanel1.add(LblInformacionNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 250, 20));
+
+        BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar.setToolTipText("Regresa al iniciar sesión");
+        BtnRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar.setOpaque(false);
+        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
 
         Fondo1.setBackground(new java.awt.Color(255, 255, 255));
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoInfoNiñoConsejos.png"))); // NOI18N
@@ -370,6 +379,13 @@ public class PagConsejosNiño extends javax.swing.JFrame {
         this.setState(PagConsejosNiño.ICONIFIED);
     }//GEN-LAST:event_btnMinimizar1ActionPerformed
 
+    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+        Base.close();
+        PagPrincipalNiñ prin = new PagPrincipalNiñ();
+        prin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresarActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -425,7 +441,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
 
     private ImageIcon getScaledImageIcon(Image image) {
         if (image != null) {
-            return new ImageIcon(image.getScaledInstance(350, 110, Image.SCALE_SMOOTH));
+            return new ImageIcon(image.getScaledInstance(240, 170, Image.SCALE_SMOOTH));
         } else {
             return null;
         }
@@ -609,6 +625,7 @@ public class PagConsejosNiño extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
+    private javax.swing.JButton BtnRegresar;
     private javax.swing.JComboBox<String> CmBoxConsejosNiño;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
@@ -629,7 +646,6 @@ public class PagConsejosNiño extends javax.swing.JFrame {
     private javax.swing.JButton btnSi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;

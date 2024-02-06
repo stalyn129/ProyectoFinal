@@ -87,6 +87,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         jSeparator12 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         BtnCerrarPagina = new javax.swing.JButton();
+        BtnRegresar5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenu3puntitosPsicologo = new javax.swing.JMenu();
@@ -331,6 +332,18 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 30, 30));
+
+        BtnRegresar5.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar5.setToolTipText("Regresa al iniciar sesión");
+        BtnRegresar5.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar5.setOpaque(false);
+        BtnRegresar5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresar5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
@@ -623,6 +636,13 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
         this.setState(PagCrudCuentosPsicologo.ICONIFIED);
     }//GEN-LAST:event_btnMinimizar1ActionPerformed
 
+    private void BtnRegresar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar5ActionPerformed
+        Base.close();
+        PagPrincipalPsicologo prin = new PagPrincipalPsicologo();
+        prin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresar5ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -715,6 +735,7 @@ public class PagCrudCuentosPsicologo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
+    private javax.swing.JButton BtnRegresar5;
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
     private javax.swing.JMenu JMnPgPrinPsicolo;

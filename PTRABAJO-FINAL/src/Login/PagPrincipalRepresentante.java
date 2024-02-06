@@ -49,6 +49,12 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         BtnCuenRepre = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
+        BtnForoRepre1 = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        BtnCuenRepre1 = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
@@ -93,7 +99,7 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
         jLabel5.setText("Información");
         jPanel2.add(jLabel5);
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 100, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 100, -1));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -101,7 +107,7 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
         jLabel6.setText("Foros");
         jPanel3.add(jLabel6);
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 100, -1));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 100, -1));
 
         BtnForoRepre.setBackground(new java.awt.Color(255, 255, 255));
         BtnForoRepre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Foro.png"))); // NOI18N
@@ -113,7 +119,7 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
                 BtnForoRepreActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnForoRepre, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 120, 70));
+        jPanel1.add(BtnForoRepre, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 120, 70));
 
         btnMinimizar1.setBackground(new java.awt.Color(255, 255, 255));
         btnMinimizar1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
@@ -143,7 +149,7 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
                 BtnInfRepreActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnInfRepre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 120, 70));
+        jPanel1.add(BtnInfRepre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 120, 70));
 
         BtnTestRepre.setBackground(new java.awt.Color(255, 255, 255));
         BtnTestRepre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/InfAdmin.png"))); // NOI18N
@@ -155,7 +161,7 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
                 BtnTestRepreActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnTestRepre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 120, 70));
+        jPanel1.add(BtnTestRepre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 120, 70));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -163,7 +169,7 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
         jLabel7.setText("Test");
         jPanel4.add(jLabel7);
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 90, -1));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 90, -1));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -171,7 +177,7 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
         jLabel8.setText("Cuentos");
         jPanel5.add(jLabel8);
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 340, 100, -1));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 100, -1));
 
         BtnCuenRepre.setBackground(new java.awt.Color(255, 255, 255));
         BtnCuenRepre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/libro.png"))); // NOI18N
@@ -183,7 +189,7 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
                 BtnCuenRepreActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnCuenRepre, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 120, 70));
+        jPanel1.add(BtnCuenRepre, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 120, 70));
 
         BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
         BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
@@ -202,6 +208,46 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 30, 30));
+
+        BtnForoRepre1.setBackground(new java.awt.Color(255, 255, 255));
+        BtnForoRepre1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/terapia.png"))); // NOI18N
+        BtnForoRepre1.setToolTipText("Haz click aqui para entrar a foros");
+        BtnForoRepre1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnForoRepre1.setOpaque(false);
+        BtnForoRepre1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnForoRepre1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnForoRepre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, 120, 70));
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel10.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel10.setText("Solicitar cita");
+        jPanel6.add(jLabel10);
+
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, 100, -1));
+
+        BtnCuenRepre1.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCuenRepre1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/libro.png"))); // NOI18N
+        BtnCuenRepre1.setToolTipText("Haz click aqui para entrar a cuentos");
+        BtnCuenRepre1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnCuenRepre1.setOpaque(false);
+        BtnCuenRepre1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCuenRepre1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnCuenRepre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, 120, 70));
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel11.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel11.setText("Vicular Niño");
+        jPanel7.add(jLabel11);
+
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 100, -1));
 
         jLabel9.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -316,12 +362,28 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void BtnForoRepre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnForoRepre1ActionPerformed
+        Base.close();
+        Agendar_Cita agendar = new Agendar_Cita();
+        agendar.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnForoRepre1ActionPerformed
+
+    private void BtnCuenRepre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCuenRepre1ActionPerformed
+        Base.close();
+        Vincular_niño_represe vin=new Vincular_niño_represe();
+        vin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnCuenRepre1ActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JButton BtnCuenRepre;
+    private javax.swing.JButton BtnCuenRepre1;
     private javax.swing.JButton BtnForoRepre;
+    private javax.swing.JButton BtnForoRepre1;
     private javax.swing.JButton BtnInfRepre;
     private javax.swing.JButton BtnTestRepre;
     private javax.swing.JLabel Fondo;
@@ -332,6 +394,8 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
     private javax.swing.JMenuBar MenuCuentosNiño;
     private javax.swing.JButton btnMinimizar1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -345,5 +409,7 @@ public class PagPrincipalRepresentante extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     // End of variables declaration//GEN-END:variables
 }

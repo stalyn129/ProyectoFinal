@@ -76,7 +76,6 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         tabla_mostrar = new javax.swing.JTable();
         btn_ingresar = new javax.swing.JButton();
         imagen_1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
         btn_Ingresar_imagen = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -92,6 +91,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         BtnCerrarPagina = new javax.swing.JButton();
         btnMinimizar1 = new javax.swing.JButton();
+        BtnRegresar4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenu3puntitosPsicologo = new javax.swing.JMenu();
@@ -165,7 +165,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tabla_mostrar);
 
-        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 380, 130));
+        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 630, 130));
 
         btn_ingresar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_ingresar.setText("Ingresar");
@@ -187,22 +187,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         imagen_1.setText(" Ingresar Imagen");
         imagen_1.setToolTipText("Selecciona la imagen");
         imagen_1.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel4.add(imagen_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 220, 230));
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        jPanel4.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 30, 300));
+        jPanel4.add(imagen_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 250, 230));
 
         btn_Ingresar_imagen.setText("Ingresar Imagen");
         btn_Ingresar_imagen.setToolTipText("Selecciona la imagen ");
@@ -211,11 +196,11 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
                 btn_Ingresar_imagenActionPerformed(evt);
             }
         });
-        jPanel4.add(btn_Ingresar_imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 220, -1));
+        jPanel4.add(btn_Ingresar_imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 310, 220, -1));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel3.setText("Ingresar su informacion:");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 130, 200, -1));
+        jLabel3.setText("Ingresar la información:");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 200, -1));
         jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 260, 10));
 
         txt_Titulo1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -231,13 +216,13 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         jPanel4.add(txt_Titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 270, 20));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel5.setText("Ingresar el titulo de la información 1:");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 70, 260, -1));
+        jLabel5.setText("Ingresar el titulo de la información:");
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 260, -1));
 
         jLabel2.setFont(new java.awt.Font("Rockwell Nova", 0, 24)); // NOI18N
         jLabel2.setText("Información");
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 150, 37));
-        jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 340, 240, 10));
+        jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 240, 10));
 
         btn_eliminar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         btn_eliminar.setText("Eliminar");
@@ -247,7 +232,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
                 btn_eliminarActionPerformed(evt);
             }
         });
-        jPanel4.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, 220, 30));
+        jPanel4.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 560, 130, 30));
 
         btn_consultar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         btn_consultar.setText("Consultar");
@@ -257,7 +242,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
                 btn_consultarActionPerformed(evt);
             }
         });
-        jPanel4.add(btn_consultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, 220, 30));
+        jPanel4.add(btn_consultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 560, 130, 30));
 
         btn_modifi.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         btn_modifi.setText("Modificar");
@@ -267,7 +252,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
                 btn_modifiActionPerformed(evt);
             }
         });
-        jPanel4.add(btn_modifi, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 220, 30));
+        jPanel4.add(btn_modifi, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, 130, 30));
 
         btn_actualizar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         btn_actualizar.setText("Actualizar");
@@ -277,7 +262,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
                 btn_actualizarActionPerformed(evt);
             }
         });
-        jPanel4.add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 510, 220, 30));
+        jPanel4.add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 560, 120, 30));
         jPanel4.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 230, 10));
 
         jLabel4.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
@@ -289,7 +274,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 410));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 730, 420));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 730, 410));
 
         BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
         BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
@@ -326,6 +311,18 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnMinimizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 30, 30));
+
+        BtnRegresar4.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar4.setToolTipText("Regresa al iniciar sesión");
+        BtnRegresar4.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar4.setOpaque(false);
+        BtnRegresar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresar4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
@@ -407,20 +404,29 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
     }
 
     private void btn_Ingresar_imagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ingresar_imagenActionPerformed
-        if (seleccionar.showDialog(null, null) == JFileChooser.APPROVE_OPTION) {
-            File archivo = seleccionar.getSelectedFile();
-            try {
-                if (archivo.getName().endsWith("jpg") || archivo.getName().endsWith("jpeg") || archivo.getName().endsWith("png") || archivo.getName().endsWith("gif")) {
-                    imagen = AbrirArchivo(archivo); // Almacena la imagen seleccionada en la variable imagen
-                    imagen_1.setIcon(new ImageIcon(imagen));
-                } else {
-                    JOptionPane.showMessageDialog(null, "Archivo no compatible");
-                }
-            } catch (HeadlessException e) {
-                e.printStackTrace(); // Manejo básico de errores, imprime la traza de la excepción
-                JOptionPane.showMessageDialog(null, "Error al abrir el archivo");
+       if (seleccionar.showDialog(null, null) == JFileChooser.APPROVE_OPTION) {
+        File archivo = seleccionar.getSelectedFile();
+        try {
+            if (archivo.getName().endsWith("jpg") || archivo.getName().endsWith("jpeg") || archivo.getName().endsWith("png") || archivo.getName().endsWith("gif")) {
+                // Cargar la imagen desde el archivo
+                BufferedImage imagenOriginal = ImageIO.read(archivo);
+                
+                // Redimensionar la imagen al tamaño deseado (220x230)
+                Image imagenRedimensionada = imagenOriginal.getScaledInstance(220, 230, Image.SCALE_SMOOTH);
+
+                // Crear un ImageIcon con la imagen redimensionada
+                ImageIcon icono = new ImageIcon(imagenRedimensionada);
+                
+                // Asignar el ImageIcon al JLabel
+                imagen_1.setIcon(icono);
+            } else {
+                JOptionPane.showMessageDialog(null, "Archivo no compatible");
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al abrir el archivo");
         }
+    }
     }//GEN-LAST:event_btn_Ingresar_imagenActionPerformed
 
     private void btn_ingresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ingresarMouseClicked
@@ -547,6 +553,13 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
     private void btnMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar1ActionPerformed
         this.setState(PagCrudInformaPsicologo.ICONIFIED);
     }//GEN-LAST:event_btnMinimizar1ActionPerformed
+
+    private void BtnRegresar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar4ActionPerformed
+        Base.close();
+        PagPrincipalPsicologo prin = new PagPrincipalPsicologo();
+        prin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresar4ActionPerformed
 
     public void Eliminar(ObjectContainer Base) {
         Informacion inf = new Informacion();
@@ -804,6 +817,11 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
+    private javax.swing.JButton BtnRegresar;
+    private javax.swing.JButton BtnRegresar1;
+    private javax.swing.JButton BtnRegresar2;
+    private javax.swing.JButton BtnRegresar3;
+    private javax.swing.JButton BtnRegresar4;
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
     private javax.swing.JMenu JMnPgPrinPsicolo;
@@ -825,7 +843,6 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

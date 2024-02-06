@@ -306,14 +306,14 @@ public class vincular_niño extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
-
+        Base.close();
         InicioNiño login = new InicioNiño();
         login.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem1MousePressed
 
     private void JMnPgPrinNiño2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMnPgPrinNiño2MouseClicked
-
+        Base.close();
         PagPrincipalNiñ principalniño = new PagPrincipalNiñ();
         principalniño.setVisible(true);
         this.setVisible(false);

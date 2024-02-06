@@ -39,9 +39,12 @@ public class Citas extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        BtnRegresar5 = new javax.swing.JButton();
         pnl_soli = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_Citas = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenu3puntitosPsicologo = new javax.swing.JMenu();
@@ -55,6 +58,18 @@ public class Citas extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setText("Bienvenido al apartado de citas");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
+
+        BtnRegresar5.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar5.setToolTipText("Regresa al iniciar sesión");
+        BtnRegresar5.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar5.setOpaque(false);
+        BtnRegresar5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresar5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 460, 50, 40));
 
         pnl_soli.setBackground(new java.awt.Color(255, 255, 255));
         pnl_soli.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -85,7 +100,15 @@ public class Citas extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbl_Citas);
 
-        pnl_soli.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 560, 170));
+        pnl_soli.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 560, 130));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel3.setText("Citas aceptadas:");
+        pnl_soli.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setText("Solicitudes de citas disponibles:");
+        pnl_soli.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         jPanel1.add(pnl_soli, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 650, 380));
 
@@ -182,6 +205,13 @@ public class Citas extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_tbl_CitasMousePressed
+
+    private void BtnRegresar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar5ActionPerformed
+        Base.close();
+        PagPrincipalPsicologo prin = new PagPrincipalPsicologo();
+        prin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresar5ActionPerformed
     
     public void estado_aceptado(ObjectContainer Base, String codSoli) {
         if (!codSoli.isEmpty()) {
@@ -271,11 +301,14 @@ public class Citas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnRegresar5;
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
     private javax.swing.JMenu JMnPgPrinPsicolo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

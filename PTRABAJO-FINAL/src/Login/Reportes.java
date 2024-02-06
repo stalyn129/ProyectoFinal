@@ -47,10 +47,11 @@ public class Reportes extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnMinimizar1 = new javax.swing.JButton();
-        Fondo1 = new javax.swing.JLabel();
         LblInformacionNiño = new javax.swing.JLabel();
         LblInformacionNiño1 = new javax.swing.JLabel();
+        BtnRegresar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        Fondo1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -201,10 +202,6 @@ public class Reportes extends javax.swing.JFrame {
         });
         getContentPane().add(btnMinimizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 30, 30));
 
-        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoTestRepresentante.png"))); // NOI18N
-        Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
-        getContentPane().add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, 0, 1670, 480));
-
         LblInformacionNiño.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         LblInformacionNiño.setText("REPORTES");
         getContentPane().add(LblInformacionNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 120, 20));
@@ -213,10 +210,26 @@ public class Reportes extends javax.swing.JFrame {
         LblInformacionNiño1.setText("BIENVENIDOS AL AREA DE:");
         getContentPane().add(LblInformacionNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 290, 20));
 
+        BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar.setToolTipText("Regresa al iniciar sesión");
+        BtnRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar.setOpaque(false);
+        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 440, 50, 40));
+
         jLabel9.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ni Uno Mas-Logo-1 (1).png"))); // NOI18N
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 70));
+
+        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoTestRepresentante.png"))); // NOI18N
+        Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
+        getContentPane().add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, 0, 1670, 480));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 480));
@@ -319,6 +332,13 @@ public class Reportes extends javax.swing.JFrame {
         this.setState(Reportes.ICONIFIED);
     }//GEN-LAST:event_btnMinimizar1ActionPerformed
 
+    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+
+        PagPrincipalAdmin prin = new PagPrincipalAdmin();
+        prin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -361,6 +381,7 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JButton BtnInfNiño1;
     private javax.swing.JButton BtnInfNiño2;
     private javax.swing.JButton BtnInfNiño3;
+    private javax.swing.JButton BtnRegresar;
     private javax.swing.JButton BtnReporteTestRepre;
     private javax.swing.JButton BtnReporteTestRepre1;
     private javax.swing.JLabel Fondo1;

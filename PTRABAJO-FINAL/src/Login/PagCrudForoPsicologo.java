@@ -48,7 +48,6 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         LblInfor2Niño = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         TxtTitulo = new javax.swing.JTextField();
-        jSeparator7 = new javax.swing.JSeparator();
         LblInfor2Niño1 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableForos = new javax.swing.JTable();
@@ -59,15 +58,15 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         TxtIntroForo = new javax.swing.JTextArea();
-        btnParticipar = new javax.swing.JButton();
         jSeparator8 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
         jSeparator9 = new javax.swing.JSeparator();
         BtnCerrarPagina = new javax.swing.JButton();
         btnMinimizar1 = new javax.swing.JButton();
-        Fondo1 = new javax.swing.JLabel();
         LblTestPariente2 = new javax.swing.JLabel();
         LblTestPariente1 = new javax.swing.JLabel();
+        BtnRegresar5 = new javax.swing.JButton();
+        Fondo1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -97,7 +96,7 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         LblInfor2Niño.setFont(new java.awt.Font("Rockwell Nova", 1, 12)); // NOI18N
         LblInfor2Niño.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblInfor2Niño.setText("Título del foro:");
-        jPanel3.add(LblInfor2Niño, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 110, -1));
+        jPanel3.add(LblInfor2Niño, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 110, -1));
 
         jSeparator5.setForeground(new java.awt.Color(153, 153, 153));
         jPanel3.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 580, 630, 10));
@@ -115,10 +114,7 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
                 TxtTituloActionPerformed(evt);
             }
         });
-        jPanel3.add(TxtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 220, -1));
-
-        jSeparator7.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel3.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 220, 10));
+        jPanel3.add(TxtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 220, -1));
 
         LblInfor2Niño1.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         LblInfor2Niño1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -226,17 +222,8 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 330, 140));
 
-        btnParticipar.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        btnParticipar.setText("Participar");
-        btnParticipar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnParticiparActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btnParticipar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 220, -1));
-
         jSeparator8.setForeground(new java.awt.Color(153, 153, 153));
-        jPanel3.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 220, 10));
+        jPanel3.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 220, 10));
 
         jSeparator6.setForeground(new java.awt.Color(153, 153, 153));
         jPanel3.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 330, 10));
@@ -284,10 +271,6 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         });
         jPanel1.add(btnMinimizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 30, 30));
 
-        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGeneralReportes.png"))); // NOI18N
-        Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
-        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-880, 0, 1690, 500));
-
         LblTestPariente2.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         LblTestPariente2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblTestPariente2.setText("FORO");
@@ -297,6 +280,22 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         LblTestPariente1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblTestPariente1.setText("BIENVENIDO AL AREA DE:");
         jPanel1.add(LblTestPariente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 300, 20));
+
+        BtnRegresar5.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar5.setToolTipText("Regresa al iniciar sesión");
+        BtnRegresar5.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar5.setOpaque(false);
+        BtnRegresar5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresar5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
+
+        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGeneralReportes.png"))); // NOI18N
+        Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-880, 0, 1690, 500));
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -554,13 +553,6 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void btnParticiparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnParticiparActionPerformed
-        Base.close();
-        PagForoPsicologo foro = new PagForoPsicologo();
-        foro.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnParticiparActionPerformed
-
     private void btnMinimizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizar1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMinimizar1MouseClicked
@@ -568,6 +560,13 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
     private void btnMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizar1ActionPerformed
         this.setState(PagCrudForoPsicologo.ICONIFIED);
     }//GEN-LAST:event_btnMinimizar1ActionPerformed
+
+    private void BtnRegresar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar5ActionPerformed
+        Base.close();
+        PagPrincipalPsicologo prin = new PagPrincipalPsicologo();
+        prin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresar5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -614,6 +613,8 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Actualizar;
     private javax.swing.JButton BtnCerrarPagina;
+    private javax.swing.JButton BtnRegresar4;
+    private javax.swing.JButton BtnRegresar5;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
@@ -627,7 +628,6 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnMinimizar1;
-    private javax.swing.JButton btnParticipar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -640,7 +640,6 @@ public class PagCrudForoPsicologo extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTable jTableForos;

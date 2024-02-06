@@ -61,13 +61,13 @@ public class PagJuego2Niño extends javax.swing.JFrame {
         BtnADifeNiño4 = new javax.swing.JRadioButton();
         BtnADifeNiño5 = new javax.swing.JRadioButton();
         jComboJuego = new javax.swing.JComboBox<>();
-        BtnRegresar1 = new javax.swing.JButton();
         LblInformacionNiño = new javax.swing.JLabel();
         LblInformacionNiño1 = new javax.swing.JLabel();
         btnMinimizar1 = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        BtnRegresar = new javax.swing.JButton();
         txtPuntuacion = new javax.swing.JTextField();
         Fondo1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
@@ -186,18 +186,6 @@ public class PagJuego2Niño extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 650, 250));
 
-        BtnRegresar1.setBackground(new java.awt.Color(255, 255, 255));
-        BtnRegresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
-        BtnRegresar1.setToolTipText("Regresa a la pestaña de los minijuegos");
-        BtnRegresar1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        BtnRegresar1.setOpaque(false);
-        BtnRegresar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRegresar1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(BtnRegresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 40, 30));
-
         LblInformacionNiño.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
         LblInformacionNiño.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblInformacionNiño.setText("LAS DIFERENCIAS");
@@ -253,6 +241,18 @@ public class PagJuego2Niño extends javax.swing.JFrame {
         jLabel1.setText("Tu puntuación es:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 390, 100, 20));
 
+        BtnRegresar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar.setToolTipText("Regresa al iniciar sesión");
+        BtnRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar.setOpaque(false);
+        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 50, 40));
+
         txtPuntuacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPuntuacionActionPerformed(evt);
@@ -301,13 +301,6 @@ public class PagJuego2Niño extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void BtnRegresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar1ActionPerformed
-        Base.close();
-        PagMiniJuegoNiño Juego2 = new PagMiniJuegoNiño();
-        Juego2.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_BtnRegresar1ActionPerformed
 
     private void jComboJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboJuegoActionPerformed
         if (jComboJuego.getSelectedItem() != null) {
@@ -375,6 +368,13 @@ public class PagJuego2Niño extends javax.swing.JFrame {
         this.setState(PagJuego2Niño.ICONIFIED);
     }//GEN-LAST:event_btnMinimizar1ActionPerformed
 
+    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+        Base.close();
+        PagMiniJuegoNiño mini = new PagMiniJuegoNiño();
+        mini.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresarActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -415,7 +415,7 @@ public class PagJuego2Niño extends javax.swing.JFrame {
     private javax.swing.JRadioButton BtnADifeNiño5;
     private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.ButtonGroup BtnGrupDifeJuego2;
-    private javax.swing.JButton BtnRegresar1;
+    private javax.swing.JButton BtnRegresar;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMnItmCerrarNiño2;

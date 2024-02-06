@@ -39,6 +39,7 @@ public class PagIngresarTipoJuegoPsico extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         btnMinimizar1 = new javax.swing.JButton();
         BtnCerrarPagina = new javax.swing.JButton();
+        BtnRegresar5 = new javax.swing.JButton();
         Fondo3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -133,6 +134,18 @@ public class PagIngresarTipoJuegoPsico extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 30, 30));
+
+        BtnRegresar5.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegresar5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
+        BtnRegresar5.setToolTipText("Regresa al iniciar sesión");
+        BtnRegresar5.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnRegresar5.setOpaque(false);
+        BtnRegresar5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresar5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 440, 50, 40));
 
         Fondo3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoInfoNiñoJuego.png"))); // NOI18N
         Fondo3.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -235,6 +248,13 @@ public class PagIngresarTipoJuegoPsico extends javax.swing.JFrame {
         this.setState(PagIngresarTipoJuegoPsico.ICONIFIED);
     }//GEN-LAST:event_btnMinimizar1ActionPerformed
 
+    private void BtnRegresar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar5ActionPerformed
+
+        PagPrincipalPsicologo prin = new PagPrincipalPsicologo();
+        prin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresar5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -274,6 +294,7 @@ public class PagIngresarTipoJuegoPsico extends javax.swing.JFrame {
     private javax.swing.JButton BtnCerrarPagina;
     private javax.swing.JButton BtnDifeNiñoJuego2;
     private javax.swing.JButton BtnLabeNiñoJuego1;
+    private javax.swing.JButton BtnRegresar5;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JLabel Fondo3;
