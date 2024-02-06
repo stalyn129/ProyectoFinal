@@ -15,11 +15,14 @@ public class Solicitud_Cita {
     private String cod_solicitud;
     private String FKcod_representante;
     private String FKcod_niño;
-    private boolean Estado_solicitud1;
+    private String Estado_solicitud1;
     private Date Fecha_soli; 
     private String FKcod_psicologo; 
 
-    public Solicitud_Cita(String cod_solicitud, String FKcod_representante, String FKcod_niño, boolean Estado_solicitud1, Date Fecha_soli, String FKcod_psicologo) {
+    public Solicitud_Cita() {
+    }
+
+    public Solicitud_Cita(String cod_solicitud, String FKcod_representante, String FKcod_niño, String Estado_solicitud1, Date Fecha_soli, String FKcod_psicologo) {
         this.cod_solicitud = cod_solicitud;
         this.FKcod_representante = FKcod_representante;
         this.FKcod_niño = FKcod_niño;
@@ -27,9 +30,7 @@ public class Solicitud_Cita {
         this.Fecha_soli = Fecha_soli;
         this.FKcod_psicologo = FKcod_psicologo;
     }
-
-    public Solicitud_Cita() {
-    }
+    
 
     public String getCod_solicitud() {
         return cod_solicitud;
@@ -55,11 +56,11 @@ public class Solicitud_Cita {
         this.FKcod_niño = FKcod_niño;
     }
 
-    public boolean isEstado_solicitud1() {
+    public String getEstado_solicitud1() {
         return Estado_solicitud1;
     }
 
-    public void setEstado_solicitud1(boolean Estado_solicitud1) {
+    public void setEstado_solicitud1(String Estado_solicitud1) {
         this.Estado_solicitud1 = Estado_solicitud1;
     }
 
@@ -77,11 +78,6 @@ public class Solicitud_Cita {
 
     public void setFKcod_psicologo(String FKcod_psicologo) {
         this.FKcod_psicologo = FKcod_psicologo;
-    }
-
-    @Override
-    public String toString() {
-        return "Solicitud_Cita{" + "cod_solicitud=" + cod_solicitud + ", FKcod_representante=" + FKcod_representante + ", FKcod_ni\u00f1o=" + FKcod_niño + ", Estado_solicitud1=" + Estado_solicitud1 + ", Fecha_soli=" + Fecha_soli + ", FKcod_psicologo=" + FKcod_psicologo + '}';
     }
 
     

@@ -15,10 +15,16 @@ import Clases.solicitud;
 import com.db4o.*;
 import com.db4o.ObjectContainer;
 import com.toedter.calendar.JDateChooser;
+import java.awt.GridLayout;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerDateModel;
 
 public class Agendar_Cita extends javax.swing.JFrame {
 
@@ -256,54 +262,95 @@ public class Agendar_Cita extends javax.swing.JFrame {
 
     private void solicitarCita(Psicologo psicologo) {
         try {
-            // Crea un JDateChooser para permitir al usuario seleccionar la fecha y hora deseada para la cita
-            JDateChooser dateChooser = new JDateChooser();
+        // Crea un JDateChooser para permitir al usuario seleccionar la fecha deseada para la cita
+        JDateChooser dateChooser = new JDateChooser();
 
-            // Establece el límite máximo como la fecha actual
-            dateChooser.setMinSelectableDate(new Date());
+        // Establece el límite máximo como la fecha actual
+        dateChooser.setMinSelectableDate(new Date());
 
-            int option = JOptionPane.showConfirmDialog(this, dateChooser, "Seleccione la fecha y hora de la cita", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+        // Crea un Spinner para seleccionar la hora
+        SpinnerDateModel spinnerModel = new SpinnerDateModel();
+        spinnerModel.setCalendarField(Calendar.MINUTE);
+        JSpinner timeSpinner = new JSpinner(spinnerModel);
+        JSpinner.DateEditor timeEditor = new JSpinner.DateEditor(timeSpinner, "HH:mm");
+        timeSpinner.setEditor(timeEditor);
 
-            if (option == JOptionPane.OK_OPTION) {
-                // Obtiene la fecha y hora seleccionada
-                Date fechaHoraCita = dateChooser.getDate();
+        // Crea un panel para mostrar tanto el JDateChooser como el JSpinner
+        JPanel panel = new JPanel(new GridLayout(0, 1));
+        panel.add(dateChooser);
+        panel.add(new JLabel("Seleccione la hora de la cita:"));
+        panel.add(timeSpinner);
 
-                // Verifica que se haya seleccionado una fecha y hora válidas
-                if (fechaHoraCita != null && fechaHoraCita.after(new Date())) {
-                    // Crea una nueva instancia de Solicitud_Cita
-                    Solicitud_Cita nuevaSolicitud = new Solicitud_Cita();
-                    String Cod_Sol = Calcular_ID_Respuesta(Base);
-                    nuevaSolicitud.setCod_solicitud(Cod_Sol);
-                    String Cod_Repre = usarData.getCod_Representante();
-                    nuevaSolicitud.setFKcod_representante(Cod_Repre);
+        int option = JOptionPane.showConfirmDialog(this, panel, "Seleccione la fecha y hora de la cita", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
-                    String codNiñoVinculado = obtenerCodigoNiñoPorRepresentante(Cod_Repre);
+        if (option == JOptionPane.OK_OPTION) {
+            // Obtiene la fecha seleccionada
+            Date fechaCita = dateChooser.getDate();
 
-                    if (codNiñoVinculado != null) {
-                        // Hay una solicitud vinculada, puedes usar el código del niño
-                        nuevaSolicitud.setFKcod_niño(codNiñoVinculado);
+            // Obtiene la hora seleccionada
+            Date horaCita = (Date) timeSpinner.getValue();
+
+            // Combina la fecha y la hora seleccionadas en una sola fecha
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(fechaCita);
+            Calendar timeCalendar = Calendar.getInstance();
+            timeCalendar.setTime(horaCita);
+            calendar.set(Calendar.HOUR_OF_DAY, timeCalendar.get(Calendar.HOUR_OF_DAY));
+            calendar.set(Calendar.MINUTE, timeCalendar.get(Calendar.MINUTE));
+
+            Date fechaHoraCita = calendar.getTime();
+
+            // Verifica que se haya seleccionado una fecha y hora válidas dentro del horario de atención y que no haya una cita programada en el mismo horario
+            if (fechaHoraCita.after(new Date())) {
+                boolean citaExistente = verificarCitaExistente(fechaHoraCita);
+
+                if (!citaExistente) {
+                    // Obtiene la hora seleccionada
+                    int horaSeleccionada = timeCalendar.get(Calendar.HOUR_OF_DAY);
+
+                    // Verifica si la hora seleccionada está dentro del horario de atención
+                    if ((horaSeleccionada >= 7 && horaSeleccionada < 12) || (horaSeleccionada >= 13 && horaSeleccionada < 18)) {
+                        // Resto del código...
+                        // Crea una nueva instancia de Solicitud_Cita
+                        Solicitud_Cita nuevaSolicitud = new Solicitud_Cita();
+                        String Cod_Sol = Calcular_ID_Respuesta(Base);
+                        nuevaSolicitud.setCod_solicitud(Cod_Sol);
+                        String Cod_Repre = usarData.getCod_Representante();
+                        nuevaSolicitud.setFKcod_representante(Cod_Repre);
+
+                        String codNiñoVinculado = obtenerCodigoNiñoPorRepresentante(Cod_Repre);
+
+                        if (codNiñoVinculado != null) {
+                            // Hay una solicitud vinculada, puedes usar el código del niño
+                            nuevaSolicitud.setFKcod_niño(codNiñoVinculado);
+                        } else {
+                            JOptionPane.showMessageDialog(this, "No tiene un niño vinculado a su cuenta");
+                        }
+
+                        nuevaSolicitud.setEstado_solicitud1("PENDIENTE");
+                        nuevaSolicitud.setFecha_soli(fechaHoraCita);
+                        nuevaSolicitud.setFKcod_psicologo(psicologo.getCod_Psicologo());
+
+                        // Guarda la nueva solicitud en la base de datos
+                        Base.store(nuevaSolicitud);
+
+                        // Muestra un mensaje de confirmación
+                        JOptionPane.showMessageDialog(this, "Cita solicitada con éxito. Se ha enviado una solicitud a " + obtenerNombrePsicologo(psicologo), "Cita solicitada", JOptionPane.INFORMATION_MESSAGE);
+                        System.out.println(nuevaSolicitud);
                     } else {
-                        JOptionPane.showMessageDialog(this, "No tiene un niño vinculado a su cuenta");
+                        JOptionPane.showMessageDialog(this, "La hora seleccionada no está dentro del horario de atención (7:00 AM a 12:00 PM y de 1:00 PM a 6:00 PM).", "Error", JOptionPane.ERROR_MESSAGE);
                     }
-
-                    nuevaSolicitud.setEstado_solicitud1(false);
-                    nuevaSolicitud.setFecha_soli(new Date());
-                    nuevaSolicitud.setFKcod_psicologo(psicologo.getCod_Psicologo());
-
-                    // Guarda la nueva solicitud en la base de datos
-                    Base.store(nuevaSolicitud);
-
-                    // Muestra un mensaje de confirmación
-                    JOptionPane.showMessageDialog(this, "Cita solicitada con éxito. Se ha enviado una solicitud a " + obtenerNombrePsicologo(psicologo), "Cita solicitada", JOptionPane.INFORMATION_MESSAGE);
-                    System.out.println(nuevaSolicitud);
                 } else {
-                    // El usuario canceló la selección de fecha y hora o seleccionó una fecha pasada
-                    JOptionPane.showMessageDialog(this, "Solicitud de cita cancelada o fecha no válida. Seleccione una fecha futura.", "Cancelado", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Ya hay una cita programada en este horario. Por favor, seleccione otro horario.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
+            } else {
+                JOptionPane.showMessageDialog(this, "Solicitud de cita cancelada o fecha no válida. Seleccione una fecha futura.", "Cancelado", JOptionPane.INFORMATION_MESSAGE);
             }
-        } finally {
-
         }
+    } catch (Exception ex) {
+        ex.printStackTrace();
+    }
+    
     }
 
     private String obtenerCodigoNiñoPorRepresentante(String codRepresentante) {
@@ -348,6 +395,20 @@ public class Agendar_Cita extends javax.swing.JFrame {
         return null;
     }
 
+    private boolean verificarCitaExistente(Date fechaHoraCita) {
+    ObjectSet<Solicitud_Cita> citas = Base.queryByExample(new Solicitud_Cita(null, null, null, null, fechaHoraCita, null));
+
+    while (citas.hasNext()) {
+        Solicitud_Cita cita = citas.next();
+        // Si encuentra una cita en el mismo horario, retorna true
+        if (cita.getFecha_soli().equals(fechaHoraCita)) {
+            return true;
+        }
+    }
+    // Si no encuentra ninguna cita en el mismo horario, retorna false
+    return false;
+}
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

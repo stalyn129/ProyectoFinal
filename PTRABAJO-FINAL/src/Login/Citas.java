@@ -5,6 +5,7 @@
  */
 package Login;
 
+import Clases.Persona;
 import Clases.Render;
 import Clases.Solicitud_Cita;
 import Clases.UserDataSingleton;
@@ -25,12 +26,13 @@ public class Citas extends javax.swing.JFrame {
     UserDataSingleton usarData;
     ObjectContainer Base;
     String codSoli = "";
-    
+
     public Citas() {
         initComponents();
         usarData = UserDataSingleton.getInstance();
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
-        Mostrar_tabla(Base);
+        mostrarCitasAceptadas(Base);
+        mostrarCitasPendientes(Base);
     }
 
     @SuppressWarnings("unchecked")
@@ -46,6 +48,8 @@ public class Citas extends javax.swing.JFrame {
         tbl_Citas = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableAceptados = new javax.swing.JTable();
         Fondo1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -122,6 +126,29 @@ public class Citas extends javax.swing.JFrame {
         jLabel4.setText("Solicitudes de citas disponibles:");
         pnl_soli.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
+        jTableAceptados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Cod_Cita", "Representante", "Fecha_Solicitada", "Diagnostico"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTableAceptados);
+
+        pnl_soli.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 560, 90));
+
         jPanel1.add(pnl_soli, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 670, 320));
 
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGeneralReportes.png"))); // NOI18N
@@ -194,32 +221,36 @@ public class Citas extends javax.swing.JFrame {
     }//GEN-LAST:event_JMnPgPrinPsicoloMouseClicked
 
     private void tbl_CitasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_CitasMousePressed
-
-
         int column = tbl_Citas.getColumnModel().getColumnIndexAtX(evt.getX());
-        int row = evt.getY() / tbl_Citas.getRowHeight();
+    int row = evt.getY() / tbl_Citas.getRowHeight();
 
-        if (row < tbl_Citas.getRowCount() && row >= 0 && column < tbl_Citas.getColumnCount() && column >= 0) {
-            Object value = tbl_Citas.getValueAt(row, column);
-            if (value instanceof JButton) {
-                ((JButton) value).doClick();
-                JButton boton = (JButton) value;
+    if (row < tbl_Citas.getRowCount() && row >= 0 && column < tbl_Citas.getColumnCount() && column >= 0) {
+        Object value = tbl_Citas.getValueAt(row, column);
+        if (value instanceof JButton) {
+            JButton boton = (JButton) value;
+            String textoBoton = boton.getText(); // Obtener el texto del botón
 
-                if (boton.getName().equals("btn_Acept")) {
-                    System.out.println("Click en el boton ACEPTAR");
+            if (textoBoton.equals("ACEPTAR")) {
+                System.out.println("Click en el botón ACEPTAR");
+                // Obtener el estado de la solicitud
+                String estado = (String) tbl_Citas.getValueAt(row, tbl_Citas.getColumnCount() - 1);
+                if (estado != null && estado.equals("PENDIENTE")) { // Verificar estado no nulo y si es "PENDIENTE"
                     estado_aceptado(Base, codSoli);
-                    Mostrar_tabla(Base);
+                    mostrarCitasPendientes(Base); // Llama al método para actualizar la tabla con las citas pendientes
                 }
+            }
 
-                if (boton.getName().equals("btn_rechaz")) {
-                    System.out.println("Click en el boton RECHAZAR");
+            if (textoBoton.equals("RECHAZAR")) {
+                System.out.println("Click en el botón RECHAZAR");
+                // Obtener el estado de la solicitud
+                String estado = (String) tbl_Citas.getValueAt(row, tbl_Citas.getColumnCount() - 1);
+                if (estado != null && estado.equals("PENDIENTE")) { // Verificar estado no nulo y si es "PENDIENTE"
                     estado_Rechazado(Base, codSoli);
-                    Mostrar_tabla(Base);
-
+                    mostrarCitasPendientes(Base); // Llama al método para actualizar la tabla con las citas pendientes
                 }
-
             }
         }
+    }
     }//GEN-LAST:event_tbl_CitasMousePressed
 
     private void BtnRegresar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar5ActionPerformed
@@ -228,7 +259,7 @@ public class Citas extends javax.swing.JFrame {
         prin.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegresar5ActionPerformed
-    
+
     public void estado_aceptado(ObjectContainer Base, String codSoli) {
         if (!codSoli.isEmpty()) {
             Solicitud_Cita soli = new Solicitud_Cita();
@@ -239,7 +270,7 @@ public class Citas extends javax.swing.JFrame {
             while (result.hasNext()) {
                 Solicitud_Cita next = (Solicitud_Cita) result.next();
                 System.out.println("Cambia Acep: " + next.getCod_solicitud());
-                next.setEstado_solicitud1(true);
+                next.setEstado_solicitud1("ACEPTADO");
 
                 Base.store(next);
                 Base.commit();
@@ -265,7 +296,7 @@ public class Citas extends javax.swing.JFrame {
             while (result.hasNext()) {
                 Solicitud_Cita next = (Solicitud_Cita) result.next();
                 System.out.println("Cambia Rechaz: " + next.getCod_solicitud());
-                next.setEstado_solicitud1(false);
+                next.setEstado_solicitud1("RECHAZADO");
 
                 Base.store(next);
                 Base.commit();
@@ -280,6 +311,7 @@ public class Citas extends javax.swing.JFrame {
         }
 
     }
+
     /**
      * @param args the command line arguments
      */
@@ -330,61 +362,106 @@ public class Citas extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTableAceptados;
     private javax.swing.JPanel pnl_soli;
     private javax.swing.JTable tbl_Citas;
     // End of variables declaration//GEN-END:variables
-    public void Mostrar_tabla(ObjectContainer Base) {
+    public void mostrarCitasPendientes(ObjectContainer base) {
+    // Configurar el renderizador de la tabla
+    tbl_Citas.setDefaultRenderer(Object.class, new Render());
 
-        tbl_Citas.setDefaultRenderer(Object.class, new Render());
+    // Crear el modelo para la tabla de citas pendientes
+    DefaultTableModel modeloPendientes = (DefaultTableModel) tbl_Citas.getModel();
+    modeloPendientes.setRowCount(0);
+    tbl_Citas.setRowHeight(30);
 
-        Solicitud_Cita soli = new Solicitud_Cita();
-        soli.setFKcod_psicologo(usarData.getCod_Psicologo());
-        soli.setEstado_solicitud1(false);
-        ObjectSet result = Base.get(soli);
+    // Consultar todas las citas pendientes del psicólogo
+    Solicitud_Cita soli = new Solicitud_Cita();
+    soli.setFKcod_psicologo(usarData.getCod_Psicologo());
+    ObjectSet result = base.get(soli);
 
-        DefaultTableModel modelo = (DefaultTableModel) tbl_Citas.getModel();
-        modelo.setRowCount(0);
-        tbl_Citas.setRowHeight(30);
+    // Llenar la tabla de citas pendientes
+    while (result.hasNext()) {
+        Solicitud_Cita next = (Solicitud_Cita) result.next();
+        String estado = next.getEstado_solicitud1();
+        String nombrePsicologo = buscarNombrePsicologoPorCodigo(next.getFKcod_psicologo(), base);
 
-        if (result.size() != 0) {
+        if (estado != null && !estado.equals("ACEPTADO")) { // Asegurar que estado no sea null antes de comparar
+            JButton boton_1 = new JButton("ACEPTAR");
+            boton_1.setName("btn_Acept");
+            boton_1.setBackground(new Color(93, 255, 97));
+            boton_1.addActionListener(e -> {
+                // Implementa la lógica para aceptar la solicitud
+                estado_aceptado(base, next.getCod_solicitud());
+                mostrarCitasPendientes(base); // Actualizar la tabla después de aceptar
+            });
 
-            while (result.hasNext()) {
+            JButton boton_2 = new JButton("RECHAZAR");
+            boton_2.setName("btn_rechaz");
+            boton_2.setBackground(new Color(255, 12, 1));
+            boton_2.addActionListener(e -> {
+                // Implementa la lógica para rechazar la solicitud
+                estado_Rechazado(base, next.getCod_solicitud());
+                mostrarCitasPendientes(base); // Actualizar la tabla después de rechazar
+            });
 
-                JButton boton_1 = new JButton("ACEPTAR");
-                boton_1.setName("btn_Acept");
-                boton_1.setBackground(new Color(93, 255, 97));
-
-                boton_1.addActionListener(e -> {
-                    // Cambia el color al hacer clic
-                    boton_1.setBackground(new Color(204, 255, 242));
-                });
-
-                JButton boton_2 = new JButton("RECHAZAR");
-                boton_2.setName("btn_rechaz");
-                boton_2.setBackground(new Color(255, 12, 1)); 
-
-                boton_2.addActionListener(e -> {
-                    // Cambia el color al hacer clic
-                    boton_2.setBackground(new Color(204, 255, 242));
-                });
-
-                /////////////////////////////////
-                Solicitud_Cita next = (Solicitud_Cita) result.next();
-
-                modelo.addRow(new Object[]{
-                    next.getCod_solicitud(),
-                    next.getFKcod_representante(),
-                    next.getFecha_soli(),
-                    boton_1,
-                    boton_2
-
-                });
-
-            }
-
-        } else {
-            JOptionPane.showMessageDialog(this, "No Hay solicitudes recientes");
+            modeloPendientes.addRow(new Object[]{
+                next.getCod_solicitud(),
+                nombrePsicologo, // Mostrar el nombre del psicólogo en lugar de su código
+                next.getFecha_soli(),
+                boton_1,
+                boton_2
+            });
         }
+    }
+}
 
+// Método para mostrar las citas aceptadas en la tabla jTableAceptados
+public void mostrarCitasAceptadas(ObjectContainer base) {
+    // Configurar el renderizador de la tabla
+    jTableAceptados.setDefaultRenderer(Object.class, new Render());
+
+    // Crear el modelo para la tabla de citas aceptadas
+    DefaultTableModel modeloAceptados = (DefaultTableModel) jTableAceptados.getModel();
+    modeloAceptados.setRowCount(0);
+    jTableAceptados.setRowHeight(30);
+
+    // Consultar todas las citas aceptadas del psicólogo
+    Solicitud_Cita soli = new Solicitud_Cita();
+    soli.setFKcod_psicologo(usarData.getCod_Psicologo());
+    ObjectSet result = base.get(soli);
+
+    // Llenar la tabla de citas aceptadas
+    while (result.hasNext()) {
+        Solicitud_Cita next = (Solicitud_Cita) result.next();
+        String estado = next.getEstado_solicitud1();
+        String nombrePsicologo = buscarNombrePsicologoPorCodigo(next.getFKcod_psicologo(), base);
+
+        if (estado != null && estado.equals("ACEPTADO")) { // Asegurar que estado no sea null antes de comparar
+            modeloAceptados.addRow(new Object[]{
+                next.getCod_solicitud(),
+                nombrePsicologo, // Mostrar el nombre del psicólogo en lugar de su código
+                next.getFecha_soli(), // Agrega más columnas si es necesario
+            });
+        }
+    }
+}
+    private String buscarNombrePsicologoPorCodigo(String codigoPsicologo, ObjectContainer base) {
+        // Buscar la persona asociada al psicólogo por su código único
+        Persona persona = new Persona();
+        persona.setCedula(codigoPsicologo); // Suponiendo que el código único del psicólogo sea su cédula
+
+        ObjectSet<Persona> result = base.queryByExample(persona);
+
+        // Verificar si se encontró la persona asociada al psicólogo
+        if (result.hasNext()) {
+            Persona psicologo = result.next();
+            // Devolver el nombre del psicólogo
+            return psicologo.getNombre();
+        } else {
+            // Si no se encuentra la persona asociada al psicólogo, devuelve null o un mensaje de error según lo desees
+            return null;
+        }
     }
 }
