@@ -793,33 +793,44 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
 
     private void EliminarRegistro(ObjectContainer base, String Cod_Dif) {
 
-        Juego_Diferencias elimJue = new Juego_Diferencias(Cod_Dif, null, null, 0, null, null);
+        // Crear un objeto Juego_Diferencias con el código de diferencia proporcionado
+    Juego_Diferencias elimJue = new Juego_Diferencias(Cod_Dif, null, null, 0, null, null);
 
-        ObjectSet result = base.queryByExample(elimJue);
+    // Consultar la base de datos para obtener el objeto correspondiente al código de diferencia
+    ObjectSet<Juego_Diferencias> result = base.queryByExample(elimJue);
 
-        if (result.hasNext()) {
-            Juego_Diferencias elimJ = (Juego_Diferencias) result.next();
-            String codj = elimJ.getCod_Juego();
+    // Verificar si se encontró un resultado
+    if (result.hasNext()) {
+        // Obtener el primer objeto encontrado
+        Juego_Diferencias elimJ = result.next();
+        String codj = elimJ.getCod_Juego();
 
-            Puntuaciones punts = new Puntuaciones();
-            punts.setFK_Cod_Minijuego(codj);
-            ObjectSet rest = base.get(punts);
+        // Crear un objeto Puntuaciones relacionado con el código de juego
+        Puntuaciones punts = new Puntuaciones();
+        punts.setFK_Cod_Minijuego(codj);
 
-            if (rest.size() == 0) {
-                // Mensaje de depuración
-                System.out.println("Eliminando el registro de la base de datos...");
+        // Consultar la base de datos para verificar si hay datos relacionados
+        ObjectSet<Puntuaciones> rest = base.queryByExample(punts);
 
-                base.delete(result.next());
-                JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
-                MostrarDatos(base); // Actualizar la tabla después de la eliminación
-            } else {
-                JOptionPane.showMessageDialog(this, "No se puede eliminar porque \n Contiene datos relacionados", "Error", JOptionPane.ERROR_MESSAGE);
+        // Verificar si no hay datos relacionados
+        if (rest.isEmpty()) {
+            // Mensaje de depuración
+            System.out.println("Eliminando el registro de la base de datos...");
 
-            }
-
+            // Eliminar el objeto encontrado de la base de datos
+            base.delete(elimJ);
+            // Mostrar un mensaje de éxito
+            JOptionPane.showMessageDialog(this, "El registro ha sido eliminado con éxito");
+            // Actualizar la tabla después de la eliminación
+            MostrarDatos(base);
         } else {
-            JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+            // Mostrar un mensaje de error si hay datos relacionados
+            JOptionPane.showMessageDialog(this, "No se puede eliminar porque contiene datos relacionados", "Error", JOptionPane.ERROR_MESSAGE);
         }
+    } else {
+        // Mostrar un mensaje si no se encuentra el registro en la base de datos
+        JOptionPane.showMessageDialog(this, "No se encontró el registro en la base de datos");
+    }
     }
 
     private void actualizarImagenEnJLabel(String rutaImagen) {
@@ -911,7 +922,6 @@ public class Pag_Crud_JDiferencias extends javax.swing.JFrame {
                 modifiedImage.setRGB(x, y, modifiedColor.getRGB());
             }
         }
-
         return modifiedImage;
     }
 }
