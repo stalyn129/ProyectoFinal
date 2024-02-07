@@ -90,7 +90,7 @@ public class Citas extends javax.swing.JFrame {
                 BtnRegresar5ActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnRegresar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 400, 50, 40));
+        jPanel1.add(BtnRegresar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 440, 50, 40));
 
         LblTestPariente1.setFont(new java.awt.Font("Rockwell Nova", 1, 20)); // NOI18N
         LblTestPariente1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

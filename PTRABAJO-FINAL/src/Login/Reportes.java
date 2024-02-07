@@ -50,6 +50,9 @@ public class Reportes extends javax.swing.JFrame {
         LblInformacionNiño = new javax.swing.JLabel();
         LblInformacionNiño1 = new javax.swing.JLabel();
         BtnRegresar = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        BtnReporteTestRepre2 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         Fondo1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -73,7 +76,7 @@ public class Reportes extends javax.swing.JFrame {
                 BtnInfNiñoActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnInfNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 120, 70));
+        getContentPane().add(BtnInfNiño, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 120, 70));
 
         BtnInfNiño1.setBackground(new java.awt.Color(255, 255, 255));
         BtnInfNiño1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ConsejosReporte.png"))); // NOI18N
@@ -85,7 +88,7 @@ public class Reportes extends javax.swing.JFrame {
                 BtnInfNiño1ActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnInfNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 120, 70));
+        getContentPane().add(BtnInfNiño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, 120, 70));
 
         BtnInfNiño2.setBackground(new java.awt.Color(255, 255, 255));
         BtnInfNiño2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/InformacionNiño.png"))); // NOI18N
@@ -109,11 +112,11 @@ public class Reportes extends javax.swing.JFrame {
                 BtnInfNiño3ActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnInfNiño3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 120, 70));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 120, 10));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 110, 10));
+        getContentPane().add(BtnInfNiño3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 120, 70));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 120, 10));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 110, 10));
         getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 110, 10));
-        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 120, 10));
+        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 120, 10));
 
         BtnCerrarPagina.setBackground(new java.awt.Color(255, 255, 255));
         BtnCerrarPagina.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
@@ -132,7 +135,7 @@ public class Reportes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BtnCerrarPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 30, 30));
-        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, 120, 10));
+        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, 120, 10));
 
         jLabel8.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         jLabel8.setText("TEST REPRESENTANTE");
@@ -161,20 +164,20 @@ public class Reportes extends javax.swing.JFrame {
                 BtnReporteTestRepre1ActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnReporteTestRepre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 120, 70));
+        getContentPane().add(BtnReporteTestRepre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 250, 120, 70));
 
         jLabel7.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         jLabel7.setText("TEST NIÑO/A");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, -1, 30));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 330, -1, 30));
 
         jLabel5.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         jLabel5.setText("CUENTOS");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, -1, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, -1, 30));
 
         jLabel6.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("MINI JUEGOS");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 120, 30));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 120, 30));
 
         jLabel4.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         jLabel4.setText("INFORMACIÓN");
@@ -182,7 +185,7 @@ public class Reportes extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
         jLabel3.setText("CONSEJOS");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, -1, 30));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, -1, 30));
 
         btnMinimizar1.setBackground(new java.awt.Color(255, 255, 255));
         btnMinimizar1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 18)); // NOI18N
@@ -221,6 +224,24 @@ public class Reportes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 440, 50, 40));
+
+        jLabel10.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("FOROS");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 330, 120, 30));
+        getContentPane().add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 320, 120, 10));
+
+        BtnReporteTestRepre2.setBackground(new java.awt.Color(255, 255, 255));
+        BtnReporteTestRepre2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Foros.png"))); // NOI18N
+        BtnReporteTestRepre2.setToolTipText("Haz click aqui para entrar a Foros");
+        BtnReporteTestRepre2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        BtnReporteTestRepre2.setOpaque(false);
+        BtnReporteTestRepre2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnReporteTestRepre2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnReporteTestRepre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, 120, 70));
 
         jLabel9.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -339,6 +360,12 @@ public class Reportes extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
+    private void BtnReporteTestRepre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReporteTestRepre2ActionPerformed
+        Reporte_Foros foros = new Reporte_Foros();
+        foros.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnReporteTestRepre2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -384,11 +411,13 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JButton BtnRegresar;
     private javax.swing.JButton BtnReporteTestRepre;
     private javax.swing.JButton BtnReporteTestRepre1;
+    private javax.swing.JButton BtnReporteTestRepre2;
     private javax.swing.JLabel Fondo1;
     private javax.swing.JLabel LblInformacionNiño;
     private javax.swing.JLabel LblInformacionNiño1;
     private javax.swing.JButton btnMinimizar1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -406,6 +435,7 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
     // End of variables declaration//GEN-END:variables
 
 }

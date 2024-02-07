@@ -68,6 +68,10 @@ public class peticion_Psicologo extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         cod_vinculacion = new javax.swing.JTextField();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         btn_eliminar = new javax.swing.JButton();
         btn_aceptar = new javax.swing.JButton();
@@ -82,12 +86,11 @@ public class peticion_Psicologo extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         txt_fecha = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jPanel5 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        LblTestPariente1 = new javax.swing.JLabel();
+        LblTestPariente2 = new javax.swing.JLabel();
+        Fondo1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         MenuCuentosNiño = new javax.swing.JMenuBar();
         JMenu3puntitosNiño = new javax.swing.JMenu();
@@ -95,16 +98,39 @@ public class peticion_Psicologo extends javax.swing.JFrame {
         JMnPgPrinNiño = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setText("Codigo Vinculacion:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, -1, 20));
-        jPanel3.add(cod_vinculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 100, -1));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, -1, 30));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 700, 30));
+        cod_vinculacion.setBorder(null);
+        cod_vinculacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cod_vinculacionActionPerformed(evt);
+            }
+        });
+        jPanel3.add(cod_vinculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 0, 110, 30));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 700, 30));
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setText("Diagnosticos disponibles");
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jPanel5.setLayout(new java.awt.GridLayout(5, 1));
+        jScrollPane3.setViewportView(jPanel5);
+
+        jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 390, 230));
+
+        jTabbedPane1.addTab("diagnosticos", jPanel4);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -116,7 +142,7 @@ public class peticion_Psicologo extends javax.swing.JFrame {
                 btn_eliminarActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 310, 180, -1));
+        jPanel2.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 180, -1));
 
         btn_aceptar.setBackground(new java.awt.Color(0, 255, 0));
         btn_aceptar.setText("Aceptar");
@@ -125,7 +151,7 @@ public class peticion_Psicologo extends javax.swing.JFrame {
                 btn_aceptarActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, 180, -1));
+        jPanel2.add(btn_aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 180, -1));
 
         tabla_peticion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tabla_peticion.setModel(new javax.swing.table.DefaultTableModel(
@@ -154,48 +180,36 @@ public class peticion_Psicologo extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabla_peticion);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 500, 140));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 500, 140));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Peticiones:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         jLabel3.setText("Seleccione la tabla para saber la razon de la peticion");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
         txtA_Des_pet.setEditable(false);
         txtA_Des_pet.setColumns(20);
         txtA_Des_pet.setRows(5);
         jScrollPane2.setViewportView(txtA_Des_pet);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 350, 80));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 350, 60));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Mensaje del Representante:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 640, 20));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 640, 20));
 
         jLabel5.setText("Fecha Peticion:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, -1, 20));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 240, 20));
-        jPanel2.add(txt_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, 160, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, -1, 20));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 240, 20));
+        jPanel2.add(txt_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 160, -1));
 
         jTabbedPane1.addTab("peticion", jPanel2);
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Diagnosticos disponibles");
-        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 11, -1, -1));
-
-        jPanel5.setLayout(new java.awt.GridLayout(5, 1));
-        jScrollPane3.setViewportView(jPanel5);
-
-        jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 39, 420, 300));
-
-        jTabbedPane1.addTab("diagnosticos", jPanel4);
-
-        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 700, 400));
+        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 700, 320));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Diagnosticos");
@@ -204,7 +218,7 @@ public class peticion_Psicologo extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(209, 430, 120, -1));
 
         jButton5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton5.setText("Peticiones");
@@ -213,10 +227,27 @@ public class peticion_Psicologo extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, 100, 30));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 120, -1));
+
+        LblTestPariente1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
+        LblTestPariente1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblTestPariente1.setText("BIENVENIDO AL AREA DE:");
+        jPanel1.add(LblTestPariente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 300, 20));
+
+        LblTestPariente2.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
+        LblTestPariente2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblTestPariente2.setText("CAPACITACIONES");
+        jPanel1.add(LblTestPariente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 210, 30));
+
+        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGeneralReportes.png"))); // NOI18N
+        Fondo1.setText(",mnmlmkmñlm,{,");
+        Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, -30, 1690, 520));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 480));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         JMenu3puntitosNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
         JMenu3puntitosNiño.setToolTipText("Configuración");
@@ -245,17 +276,6 @@ public class peticion_Psicologo extends javax.swing.JFrame {
         MenuCuentosNiño.add(JMnPgPrinNiño);
 
         setJMenuBar(MenuCuentosNiño);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
 
         pack();
         setLocationRelativeTo(null);
@@ -330,6 +350,10 @@ public class peticion_Psicologo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void cod_vinculacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cod_vinculacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cod_vinculacionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -369,9 +393,12 @@ public class peticion_Psicologo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMenu3puntitosNiño;
     private javax.swing.JMenuItem JMnItmCerrarNiño;
     private javax.swing.JMenu JMnPgPrinNiño;
+    private javax.swing.JLabel LblTestPariente1;
+    private javax.swing.JLabel LblTestPariente2;
     private javax.swing.JMenuBar MenuCuentosNiño;
     private javax.swing.JButton btn_aceptar;
     private javax.swing.JButton btn_eliminar;

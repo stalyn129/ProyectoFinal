@@ -30,7 +30,6 @@ import javax.swing.SpinnerDateModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
-import org.apache.tools.ant.taskdefs.Nice;
 
 public class Agendar_Cita extends javax.swing.JFrame {
 
@@ -84,13 +83,14 @@ public class Agendar_Cita extends javax.swing.JFrame {
         jLabel2.setToolTipText("");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, 60));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Escojer al niño que desea agendar la cita:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 460, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel4.setText("Descripcion");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, 240, -1));
 
         txt_descrip.setColumns(20);
         txt_descrip.setRows(5);
@@ -118,7 +118,7 @@ public class Agendar_Cita extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(nin_tabla);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 470, 130));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 460, 130));
 
         jComboPsicologos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
         jComboPsicologos.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +126,7 @@ public class Agendar_Cita extends javax.swing.JFrame {
                 jComboPsicologosActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboPsicologos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 460, 30));
+        jPanel1.add(jComboPsicologos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 460, 20));
 
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -156,7 +156,7 @@ public class Agendar_Cita extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, 460, 120));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 460, 120));
 
         Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGeneralReportes.png"))); // NOI18N
         Fondo1.setText(",mnmlmkmñlm,{,");

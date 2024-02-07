@@ -73,6 +73,9 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         txt_nacimiento = new javax.swing.JTextField();
         txt_gen = new javax.swing.JTextField();
+        LblTestPariente1 = new javax.swing.JLabel();
+        LblTestPariente2 = new javax.swing.JLabel();
+        Fondo1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         MenuCuentosNiño = new javax.swing.JMenuBar();
         JMenu3puntitosNiño = new javax.swing.JMenu();
@@ -81,6 +84,7 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -109,15 +113,15 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 670, 30));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 640, 20));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Ingresar el apodo:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 40));
-        jPanel2.add(txt_busc, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 209, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, 40));
+        jPanel2.add(txt_busc, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 320, -1));
 
         btn_buscar.setText("Buscar");
         btn_buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -125,20 +129,20 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
                 btn_buscarActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, -1, -1));
+        jPanel2.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 3, 80, 30));
 
         jLabel3.setText("Apellido:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, 20));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, 20));
 
         jLabel4.setText("Nombre:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Apodo:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, 20));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, 20));
 
         txt_apodo.setEditable(false);
-        jPanel2.add(txt_apodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 170, -1));
+        jPanel2.add(txt_apodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 170, -1));
 
         txt_nombre.setEditable(false);
         txt_nombre.addActionListener(new java.awt.event.ActionListener() {
@@ -146,10 +150,10 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
                 txt_nombreActionPerformed(evt);
             }
         });
-        jPanel2.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 170, -1));
+        jPanel2.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 170, -1));
 
         txt_apellido.setEditable(false);
-        jPanel2.add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 170, -1));
+        jPanel2.add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 170, -1));
 
         btn_solicitar.setText("Solicitar Interaccion");
         btn_solicitar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -158,37 +162,54 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
                 btn_solicitarActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_solicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 270, 20));
+        jPanel2.add(btn_solicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 270, 20));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Ingrese un comentario al niño:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, 20));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, 20));
 
         txt_areaComentario.setColumns(20);
         txt_areaComentario.setRows(5);
         jScrollPane1.setViewportView(txt_areaComentario);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 510, 80));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 550, 30));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 510, 80));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 550, 30));
 
         jLabel7.setText("Genero:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, -1, 20));
 
         jLabel17.setText("Fecha Nacimineto:");
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, -1, -1));
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 134, -1, 20));
 
         txt_nacimiento.setEditable(false);
-        jPanel2.add(txt_nacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 120, 160, -1));
+        jPanel2.add(txt_nacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 160, -1));
 
         txt_gen.setEditable(false);
-        jPanel2.add(txt_gen, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 160, -1));
+        jPanel2.add(txt_gen, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 170, -1));
 
         tabbedpanel__.addTab("solicitud", jPanel2);
 
-        jPanel1.add(tabbedpanel__, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 670, 410));
+        jPanel1.add(tabbedpanel__, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 640, 350));
+
+        LblTestPariente1.setFont(new java.awt.Font("Rockwell Nova", 1, 18)); // NOI18N
+        LblTestPariente1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblTestPariente1.setText("BIENVENIDO AL AREA DE:");
+        jPanel1.add(LblTestPariente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 300, 20));
+
+        LblTestPariente2.setFont(new java.awt.Font("Rockwell Nova", 1, 14)); // NOI18N
+        LblTestPariente2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblTestPariente2.setText("VINCULACIÓN");
+        jPanel1.add(LblTestPariente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 210, 30));
+
+        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoGeneralReportes.png"))); // NOI18N
+        Fondo1.setText(",mnmlmkmñlm,{,");
+        Fondo1.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-870, -30, 1690, 520));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 480));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 480));
 
         JMenu3puntitosNiño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TresPuntitos.png"))); // NOI18N
         JMenu3puntitosNiño.setToolTipText("Configuración");
@@ -217,17 +238,6 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
         MenuCuentosNiño.add(JMnPgPrinNiño);
 
         setJMenuBar(MenuCuentosNiño);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
 
         pack();
         setLocationRelativeTo(null);
@@ -326,9 +336,12 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnRegresar;
+    private javax.swing.JLabel Fondo1;
     private javax.swing.JMenu JMenu3puntitosNiño;
     private javax.swing.JMenuItem JMnItmCerrarNiño;
     private javax.swing.JMenu JMnPgPrinNiño;
+    private javax.swing.JLabel LblTestPariente1;
+    private javax.swing.JLabel LblTestPariente2;
     private javax.swing.JMenuBar MenuCuentosNiño;
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_solicitar;
