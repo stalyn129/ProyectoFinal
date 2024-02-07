@@ -19,6 +19,7 @@ import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -37,13 +38,18 @@ import javax.swing.table.DefaultTableModel;
  * @author alexa
  */
 public class PagCrudInformaPsicologo extends javax.swing.JFrame {
-
+int longitudBytes;
     public static String cedula_pasada_interfaz;
     JFileChooser seleccionar = new JFileChooser();
     byte[] imagen;
     ObjectContainer Base;
     String cod;
     UserDataSingleton usarData;
+    byte[] imagenInicial;
+    byte[] foto;
+    byte[] imagenFinal= new byte[0];
+    String rutaImagenInicial;
+    String rutaImagenFinal;
 
     /**
      * Creates new form Informacion
@@ -84,8 +90,6 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         btn_eliminar = new javax.swing.JButton();
-        btn_consultar = new javax.swing.JButton();
-        btn_modifi = new javax.swing.JButton();
         btn_actualizar = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
@@ -187,7 +191,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         imagen_1.setText(" Ingresar Imagen");
         imagen_1.setToolTipText("Selecciona la imagen");
         imagen_1.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel4.add(imagen_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 250, 230));
+        jPanel4.add(imagen_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, 250, 230));
 
         btn_Ingresar_imagen.setText("Ingresar Imagen");
         btn_Ingresar_imagen.setToolTipText("Selecciona la imagen ");
@@ -233,26 +237,6 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
             }
         });
         jPanel4.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 560, 130, 30));
-
-        btn_consultar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        btn_consultar.setText("Consultar");
-        btn_consultar.setToolTipText("Consulta los datos existentes en la tabla");
-        btn_consultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_consultarActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btn_consultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 560, 130, 30));
-
-        btn_modifi.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        btn_modifi.setText("Modificar");
-        btn_modifi.setToolTipText("Modifica los datos existentes en la tabla");
-        btn_modifi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_modifiActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btn_modifi, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, 130, 30));
 
         btn_actualizar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         btn_actualizar.setText("Actualizar");
@@ -404,56 +388,178 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
     }
 
     private void btn_Ingresar_imagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ingresar_imagenActionPerformed
-       if (seleccionar.showDialog(null, null) == JFileChooser.APPROVE_OPTION) {
-        File archivo = seleccionar.getSelectedFile();
-        try {
-            if (archivo.getName().endsWith("jpg") || archivo.getName().endsWith("jpeg") || archivo.getName().endsWith("png") || archivo.getName().endsWith("gif")) {
-                // Cargar la imagen desde el archivo
-                BufferedImage imagenOriginal = ImageIO.read(archivo);
-                
-                // Redimensionar la imagen al tamaño deseado (220x230)
-                Image imagenRedimensionada = imagenOriginal.getScaledInstance(220, 230, Image.SCALE_SMOOTH);
+//      if (seleccionar.showDialog(null, null) == JFileChooser.APPROVE_OPTION) {
+//    File archivo = seleccionar.getSelectedFile();
+//    try {
+//        String nombreArchivo = archivo.getName().toLowerCase();
+//        if (nombreArchivo.endsWith(".jpg") || nombreArchivo.endsWith(".jpeg") || nombreArchivo.endsWith(".png") || nombreArchivo.endsWith(".gif")) {
+//            imagen = AbrirArchivo(archivo); // Almacena la imagen seleccionada en la variable imagen
+//            imagen_1.setIcon(new ImageIcon(imagen)); // Actualiza la imagen mostrada en la interfaz
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Archivo no compatible");
+//        }
+//    } catch (HeadlessException e) {
+//        e.printStackTrace(); // Manejo básico de errores, imprime la traza de la excepción
+//        JOptionPane.showMessageDialog(null, "Error al abrir el archivo");
+//    }
+//}
 
-                // Crear un ImageIcon con la imagen redimensionada
-                ImageIcon icono = new ImageIcon(imagenRedimensionada);
-                
-                // Asignar el ImageIcon al JLabel
-                imagen_1.setIcon(icono);
-            } else {
-                JOptionPane.showMessageDialog(null, "Archivo no compatible");
+//        if (seleccionar.showDialog(null, null) == JFileChooser.APPROVE_OPTION) {
+//            File archivo = seleccionar.getSelectedFile();
+//            if (archivo.getName().endsWith("jpg") || archivo.getName().endsWith("jpeg") || archivo.getName().endsWith("png") || archivo.getName().endsWith("gif")) {
+//                imagenFinal = AbrirArchivo(archivo);
+//
+//                // Convierte el array de bytes a un objeto Image
+//                Image imagenOriginal = convertirBytesAImagen(imagenFinal);
+//
+//                // Redimensiona la imagen a 96x15
+//                Image imagenRedimensionada = imagenOriginal.getScaledInstance(240, 130, Image.SCALE_SMOOTH);
+//
+//                // Crea un ImageIcon a partir de la imagen redimensionada
+//                ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+//
+//                imagen_1.setIcon(iconoRedimensionado);
+//
+//                // Almacena la ruta del archivo seleccionado en la variable rutaImagenFinal
+//                rutaImagenFinal = archivo.getAbsolutePath();
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Archivo no compatible");
+//            }
+//        }
+
+
+ try {
+
+            JFileChooser se = new JFileChooser();
+            se.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            int estado = se.showOpenDialog(null);
+            if (estado == JFileChooser.APPROVE_OPTION) {
+                try {
+                    File archivo = se.getSelectedFile();
+                    this.longitudBytes = (int) archivo.length();
+
+                    // Leer la imagen seleccionada como bytes
+                    byte[] buffer = new byte[this.longitudBytes];
+                    try ( FileInputStream fis = new FileInputStream(archivo)) {
+                        fis.read(buffer);
+                    }
+
+                    // Mostrar la imagen en el JLabel
+                    Image icono = ImageIO.read(archivo).getScaledInstance(imagen_1.getWidth(), imagen_1.getHeight(), Image.SCALE_DEFAULT);
+                    imagen_1.setIcon(new ImageIcon(icono));
+                    imagen_1.updateUI();
+
+                    // Asignar los bytes de la imagen a la variable "foto"
+                    foto = buffer;
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, " No se selecciono una imagen ");
+        }
+
+
+
+    }//GEN-LAST:event_btn_Ingresar_imagenActionPerformed
+    private Image convertirBytesAImagen(byte[] bytes) {
+        ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+        try {
+            return ImageIO.read(bis);
         } catch (IOException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error al abrir el archivo");
+            return null;
         }
     }
-    }//GEN-LAST:event_btn_Ingresar_imagenActionPerformed
-
-    private void btn_ingresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ingresarMouseClicked
+    public void crearImagen(ObjectContainer base) {
 
         try {
-            Informacion info = new Informacion();
-            cod = Crear_codigo_info(Base);
-            info.setCod_Info(cod);
 
-            info.setTitulo_Info(txt_Titulo1.getText());
-            info.setTexto_Info(txA_text_info1.getText());
-            info.setImagen(imagen);
-            Base.store(info);
-            if (usarData.getCod_Psicologo() == null) {
-                javax.swing.JOptionPane.showMessageDialog(this, "La cedula estraida del psicologo esta vacia");
-            }
+            ObjectSet resul = base.queryByExample(new Informacion());
+            int ultimoCodigo = resul.size() + 1;
 
-            Ingresa_Info_Publicacion(Base, Crear_codigo_public(Base), cod, usarData.getCod_Psicologo(), new Date());
-            javax.swing.JOptionPane.showMessageDialog(this, "Se guardo la Informacion");
+            // Formatear el código con ceros a la izquierda
+            String cod = String.format("%03d", ultimoCodigo);
+            // lblcod.setText(cod);
 
-            MostrarDatos(Base);
-            Vaciar_datos();
-        } catch (DatabaseClosedException | DatabaseReadOnlyException | HeadlessException e) {
+            // Verificar si ya existe una casa con el mismo código
+            resul = base.queryByExample(new Informacion(cod, null, null, null));
+            Informacion im = new Informacion(Crear_codigo_info(base), txt_Titulo1.getText(), txA_text_info1.getText(), foto);
+            base.store(im);
+            JOptionPane.showMessageDialog(null, " Se guardo exitosamente, no te olvides de comentar  el evento");
 
+            // Limpiar el JLabel (establecer su icono en un icono vacío)
+            imagen_1.setIcon(new ImageIcon(new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB)));
+
+        } finally {
+            base.close();
         }
+    }
 
 
+
+
+ private byte[] obtenerBytesImagen() {
+        JFileChooser se = new JFileChooser();
+        se.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        int estado = se.showOpenDialog(null);
+        if (estado == JFileChooser.APPROVE_OPTION) {
+            try {
+                File archivo = se.getSelectedFile();
+                this.longitudBytes = (int) archivo.length();
+
+                // Leer la imagen seleccionada como bytes
+                byte[] buffer = new byte[this.longitudBytes];
+                try ( FileInputStream fis = new FileInputStream(archivo)) {
+                    fis.read(buffer);
+                }
+
+                // Mostrar la imagen en un JLabel (opcional, solo para visualización)
+                Image icono = ImageIO.read(archivo).getScaledInstance(imagen_1.getWidth(), imagen_1.getHeight(), Image.SCALE_DEFAULT);
+                imagen_1.setIcon(new ImageIcon(icono));
+                imagen_1.updateUI();
+
+                return buffer;
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+
+
+// Método que invoca obtenerBytesImagen() y asigna el arreglo de bytes a la variable "foto"
+    public void seleccionarImagen() {
+        foto = obtenerBytesImagen();
+    }
+    private void btn_ingresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ingresarMouseClicked
+
+//        try {
+//            Informacion info = new Informacion();
+//            cod = Crear_codigo_info(Base);
+//            info.setCod_Info(cod);
+//
+//            info.setTitulo_Info(txt_Titulo1.getText());
+//            info.setTexto_Info(txA_text_info1.getText());
+//            info.setImagen(imagenFinal);
+//            Base.store(info);
+//            if (usarData.getCod_Psicologo() == null) {
+//                javax.swing.JOptionPane.showMessageDialog(this, "La cedula estraida del psicologo esta vacia");
+//            }
+//
+//            Ingresa_Info_Publicacion(Base, Crear_codigo_public(Base), cod, usarData.getCod_Psicologo(), new Date());
+//            javax.swing.JOptionPane.showMessageDialog(this, "Se guardo la Informacion");
+//
+//            MostrarDatos(Base);
+//            Vaciar_datos();
+//        } catch (DatabaseClosedException | DatabaseReadOnlyException | HeadlessException e) {
+//
+//        }
+
+        crearImagen(Base);
+        MostrarDatos(Base);
+          Vaciar_datos();
     }//GEN-LAST:event_btn_ingresarMouseClicked
 
     private void txt_Titulo1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_Titulo1MousePressed
@@ -472,13 +578,6 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
     private void tabla_mostrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_mostrarMouseClicked
 
     }//GEN-LAST:event_tabla_mostrarMouseClicked
-
-    private void btn_modifiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modifiActionPerformed
-
-        Modificar(Base);
-        MostrarDatos(Base);
-
-    }//GEN-LAST:event_btn_modifiActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         if (cod_info_mod.equals("")) {
@@ -504,11 +603,6 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btn_eliminarActionPerformed
-
-    private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultarActionPerformed
-        String userInput = JOptionPane.showInputDialog("Ingresa el codigo de la informacion");
-        consulta(Base, userInput);
-    }//GEN-LAST:event_btn_consultarActionPerformed
 
     private void BtnCerrarPaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarPaginaMouseClicked
         // TODO add your handling code here:
@@ -603,7 +697,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
             txA_text_info1.setText(next.getTexto_Info());
 
             if (imagen != null) {
-                ImageIcon icon = new ImageIcon(imagen);
+                ImageIcon icon = new ImageIcon(imagenFinal);
                 imagen_1.setIcon(icon);
             } else {
                 // Manejar el caso en el que no hay imagen.
@@ -611,6 +705,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
             }
         }
         cod_info_mod = "";
+        
 
     }
 
@@ -626,7 +721,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
             ModInfo.setTitulo_Info(txt_Titulo1.getText());
             ModInfo.setTexto_Info(txA_text_info1.getText());
 
-            ModInfo.setImagen(imagen);
+            ModInfo.setImagen(imagenFinal);
             Base.store(ModInfo);
             Base.commit();
             Vaciar_datos();
@@ -678,7 +773,7 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
             imagen = next.getImagen();
             if (imagen != null && imagen.length > 0) {
                 // Convierte el array de bytes a ImageIcon y establece el icono en tu JLabel
-                ImageIcon imageIcon = new ImageIcon(imagen);
+                ImageIcon imageIcon = new ImageIcon(imagenFinal);
                 imagen_1.setIcon(imageIcon);
             } else {
                 // Si la imagen es null, puedes establecer un icono predeterminado o limpiar el JLabel
@@ -806,6 +901,22 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -817,10 +928,6 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;
-    private javax.swing.JButton BtnRegresar;
-    private javax.swing.JButton BtnRegresar1;
-    private javax.swing.JButton BtnRegresar2;
-    private javax.swing.JButton BtnRegresar3;
     private javax.swing.JButton BtnRegresar4;
     private javax.swing.JMenu JMenu3puntitosPsicologo;
     private javax.swing.JMenuItem JMnItmCerrarPsicologo;
@@ -830,10 +937,8 @@ public class PagCrudInformaPsicologo extends javax.swing.JFrame {
     private javax.swing.JButton btnMinimizar1;
     private javax.swing.JButton btn_Ingresar_imagen;
     private javax.swing.JButton btn_actualizar;
-    private javax.swing.JButton btn_consultar;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_ingresar;
-    private javax.swing.JButton btn_modifi;
     private javax.swing.JLabel imagen_1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
