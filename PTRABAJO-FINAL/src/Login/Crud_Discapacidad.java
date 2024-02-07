@@ -449,16 +449,6 @@ public class Crud_Discapacidad extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Crud_Discapacidad().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarPagina;

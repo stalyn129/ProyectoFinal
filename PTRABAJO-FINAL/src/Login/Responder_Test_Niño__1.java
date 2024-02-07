@@ -621,6 +621,9 @@ public class Responder_Test_Niño__1 extends javax.swing.JFrame {
             if (tabla_datos.getRowCount() == 0) {
                 JOptionPane.showMessageDialog(this, "Las preguntas finalizaron");
                 Base.close();
+                PagTest_Niño pag= new PagTest_Niño();
+                pag.setVisible(true);
+                this.setVisible(false);
                 
             }
         } else {
