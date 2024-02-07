@@ -14,23 +14,45 @@ import java.util.Date;
 public class Solicitud_Cita {
     private String cod_solicitud;
     private String FKcod_representante;
-    private String FKcod_niño;
+    private String FKcod_psicologo;
+    private String FKcod_soli_nin;
     private String Estado_solicitud1;
     private Date Fecha_soli; 
-    private String FKcod_psicologo; 
+    private String descrip;
+     
 
     public Solicitud_Cita() {
     }
 
-    public Solicitud_Cita(String cod_solicitud, String FKcod_representante, String FKcod_niño, String Estado_solicitud1, Date Fecha_soli, String FKcod_psicologo) {
+    public Solicitud_Cita(String cod_solicitud, String FKcod_representante, String FKcod_psicologo, String FKcod_soli_nin, String Estado_solicitud1, Date Fecha_soli, String descrip) {
         this.cod_solicitud = cod_solicitud;
         this.FKcod_representante = FKcod_representante;
-        this.FKcod_niño = FKcod_niño;
+        this.FKcod_psicologo = FKcod_psicologo;
+        this.FKcod_soli_nin = FKcod_soli_nin;
         this.Estado_solicitud1 = Estado_solicitud1;
         this.Fecha_soli = Fecha_soli;
-        this.FKcod_psicologo = FKcod_psicologo;
+        this.descrip = descrip;
     }
-    
+
+    public String getDescrip() {
+        return descrip;
+    }
+
+    public void setDescrip(String descrip) {
+        this.descrip = descrip;
+    }
+
+   
+
+    public String getFKcod_soli_nin() {
+        return FKcod_soli_nin;
+    }
+
+    public void setFKcod_soli_nin(String FKcod_soli_nin) {
+        this.FKcod_soli_nin = FKcod_soli_nin;
+    }
+
+  
 
     public String getCod_solicitud() {
         return cod_solicitud;
@@ -48,13 +70,7 @@ public class Solicitud_Cita {
         this.FKcod_representante = FKcod_representante;
     }
 
-    public String getFKcod_niño() {
-        return FKcod_niño;
-    }
-
-    public void setFKcod_niño(String FKcod_niño) {
-        this.FKcod_niño = FKcod_niño;
-    }
+ 
 
     public String getEstado_solicitud1() {
         return Estado_solicitud1;

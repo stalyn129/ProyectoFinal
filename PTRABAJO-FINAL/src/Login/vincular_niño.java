@@ -49,7 +49,7 @@ public class vincular_niño extends javax.swing.JFrame {
      */
     public vincular_niño() {
         initComponents();
-        ocultarColumna();
+        ocColumna();
         usarData = UserDataSingleton.getInstance();
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
         Mostrar_tabla(Base);
@@ -69,7 +69,6 @@ public class vincular_niño extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jToggleButton1 = new javax.swing.JToggleButton();
         jTabbedPane1__ = new javax.swing.JTabbedPane();
         pnl_soli = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -81,11 +80,6 @@ public class vincular_niño extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         txt_comentario = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jPanel8 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
         BtnRegresar1 = new javax.swing.JButton();
         LblTestPariente1 = new javax.swing.JLabel();
         LblTestPariente2 = new javax.swing.JLabel();
@@ -106,25 +100,10 @@ public class vincular_niño extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jToggleButton1.setBackground(new java.awt.Color(148, 226, 240));
-        jToggleButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jToggleButton1.setText("Solicitudes");
-        jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jToggleButton1MousePressed(evt);
-            }
-        });
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
-
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 610, 30));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 610, 30));
 
         pnl_soli.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_soli.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         pnl_soli.setMinimumSize(new java.awt.Dimension(615, 342));
         pnl_soli.setPreferredSize(new java.awt.Dimension(615, 342));
         pnl_soli.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -188,41 +167,7 @@ public class vincular_niño extends javax.swing.JFrame {
 
         jTabbedPane1__.addTab("Resi_soli", pnl_soli);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, -1));
-
-        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel8.setLayout(new java.awt.GridLayout(5, 1));
-        jScrollPane4.setViewportView(jPanel8);
-
-        jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 460, 320));
-
-        jTabbedPane1__.addTab("peticones_vinc", jPanel2);
-
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 605, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 342, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1__.addTab("tab2", jPanel4);
-
-        jPanel1.add(jTabbedPane1__, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 610, 370));
+        jPanel1.add(jTabbedPane1__, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 610, 370));
 
         BtnRegresar1.setBackground(new java.awt.Color(255, 255, 255));
         BtnRegresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
@@ -306,33 +251,12 @@ public class vincular_niño extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_JMnPgPrinNiño2MouseClicked
 
-    private void jToggleButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MousePressed
-
-        String nombrePanelDeseado = "Resi_soli";
-
-        // Iterar a través de las pestañas y seleccionar por nombre
-        for (int i = 0; i < jTabbedPane1__.getTabCount(); i++) {
-            Component componente = jTabbedPane1__.getComponentAt(i);
-            if (jTabbedPane1__.getTitleAt(i).equals(nombrePanelDeseado)) {
-                jTabbedPane1__.setSelectedComponent(componente);
-                break;
-            }
-        }
-    }//GEN-LAST:event_jToggleButton1MousePressed
-
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JButton boton=new JButton("Boton "+indice+"<br/>vrtvh<br/>vrt     rrtver<br/>csergtgr     t</html>");
-        // boton.setPreferredSize(new Dimension(100, 50));
-        jPanel8.add(boton);
-        botones.add(boton);
-        indice++;
-        jPanel8.updateUI();
-
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void BtnRegresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar1ActionPerformed
+        Base.close();
+        PagPrincipalNiñ prin = new PagPrincipalNiñ();
+        prin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnRegresar1ActionPerformed
 
     private void tabla_soliMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_soliMousePressed
         int selecionTable = tabla_soli.getSelectedRow();
@@ -369,14 +293,7 @@ public class vincular_niño extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tabla_soliMousePressed
 
-    private void BtnRegresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresar1ActionPerformed
-        Base.close();
-        PagPrincipalNiñ prin = new PagPrincipalNiñ();
-        prin.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_BtnRegresar1ActionPerformed
-
-    private void ocultarColumna() {
+    private void ocColumna() {
 
         // Obtén el TableColumnModel de la tabla
         TableColumnModel columnModel = tabla_soli.getColumnModel();
@@ -420,6 +337,10 @@ public class vincular_niño extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -437,25 +358,19 @@ public class vincular_niño extends javax.swing.JFrame {
     private javax.swing.JLabel LblTestPariente1;
     private javax.swing.JLabel LblTestPariente2;
     private javax.swing.JMenuBar MenuGenerlNiño;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1__;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JPanel pnl_soli;
     private javax.swing.JTable tabla_soli;
     private javax.swing.JTextArea txt_comentario;

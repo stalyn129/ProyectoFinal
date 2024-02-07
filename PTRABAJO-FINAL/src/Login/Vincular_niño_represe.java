@@ -17,6 +17,7 @@ import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import java.awt.Component;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -34,10 +35,10 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
 
     public Vincular_niño_represe() {
         initComponents();
-        ocultarColumna();
+        
         Base = Db4o.openFile("src/BBDD/BaseDat.yap");
         usarData = UserDataSingleton.getInstance();
-        Mostrar_tabla_aceptados(Base);
+        
     }
 
     /**
@@ -52,8 +53,6 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         BtnRegresar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        Solicitar = new javax.swing.JButton();
         tabbedpanel__ = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -69,31 +68,11 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_areaComentario = new javax.swing.JTextArea();
-        jLabel7 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tabla_acep = new javax.swing.JTable();
-        jLabel9 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txt_envias = new javax.swing.JTextArea();
-        jLabel10 = new javax.swing.JLabel();
-        txt_cod_vincu = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
-        jButton4 = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        pt_nombre = new javax.swing.JTextField();
-        pt_apellido = new javax.swing.JTextField();
-        pt_apodo = new javax.swing.JTextField();
-        btn_buscar_psic = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        txt_nacimiento = new javax.swing.JTextField();
+        txt_gen = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         MenuCuentosNiño = new javax.swing.JMenuBar();
         JMenu3puntitosNiño = new javax.swing.JMenu();
@@ -130,30 +109,15 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 630, 30));
-
-        jButton1.setText("Buscar Niño");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 100, 130, 40));
-
-        Solicitar.setText("Solicitar Diagnostico");
-        Solicitar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SolicitarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Solicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 50, 130, 40));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 670, 30));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Ingresar el apodo:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 36, -1, -1));
-        jPanel2.add(txt_busc, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 33, 209, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 40));
+        jPanel2.add(txt_busc, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 209, -1));
 
         btn_buscar.setText("Buscar");
         btn_buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +125,7 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
                 btn_buscarActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, -1, -1));
+        jPanel2.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, -1, -1));
 
         jLabel3.setText("Apellido:");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, 20));
@@ -169,11 +133,12 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
         jLabel4.setText("Nombre:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Apodo:");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, 20));
 
         txt_apodo.setEditable(false);
-        jPanel2.add(txt_apodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 170, -1));
+        jPanel2.add(txt_apodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 170, -1));
 
         txt_nombre.setEditable(false);
         txt_nombre.addActionListener(new java.awt.event.ActionListener() {
@@ -181,10 +146,10 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
                 txt_nombreActionPerformed(evt);
             }
         });
-        jPanel2.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 170, -1));
+        jPanel2.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 170, -1));
 
         txt_apellido.setEditable(false);
-        jPanel2.add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 170, -1));
+        jPanel2.add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 170, -1));
 
         btn_solicitar.setText("Solicitar Interaccion");
         btn_solicitar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -195,126 +160,32 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
         });
         jPanel2.add(btn_solicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 270, 20));
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Ingrese un comentario al niño:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, 20));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, 20));
 
         txt_areaComentario.setColumns(20);
         txt_areaComentario.setRows(5);
         jScrollPane1.setViewportView(txt_areaComentario);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 510, 80));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 510, 80));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 550, 30));
 
-        jLabel7.setBackground(new java.awt.Color(204, 204, 204));
-        jLabel7.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Imagen");
-        jLabel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 180, 120));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 550, 30));
+        jLabel7.setText("Genero:");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, -1, -1));
+
+        jLabel17.setText("Fecha Nacimineto:");
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, -1, -1));
+
+        txt_nacimiento.setEditable(false);
+        jPanel2.add(txt_nacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 120, 160, -1));
+
+        txt_gen.setEditable(false);
+        jPanel2.add(txt_gen, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 160, -1));
 
         tabbedpanel__.addTab("solicitud", jPanel2);
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel8.setText("Interactuando:");
-        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
-        tabla_acep.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Cod", "Nombre del Niño", "Representante"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tabla_acep.setRowHeight(23);
-        tabla_acep.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                tabla_acepMousePressed(evt);
-            }
-        });
-        jScrollPane2.setViewportView(tabla_acep);
-
-        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 320, 130));
-
-        jLabel9.setText("Ingresar mensaje Para el Psicologo:");
-        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, -1, -1));
-
-        txt_envias.setColumns(20);
-        txt_envias.setRows(5);
-        jScrollPane3.setViewportView(txt_envias);
-
-        jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 270, 110));
-
-        jLabel10.setText("Ingresar el codigo de peticion");
-        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
-        jPanel4.add(txt_cod_vincu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 190, -1));
-
-        jLabel11.setText("Nombre del Psicologo:");
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
-
-        jLabel12.setText("Especialidad:");
-        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
-
-        jTextField2.setEditable(false);
-        jPanel4.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 150, -1));
-
-        jTextField3.setEditable(false);
-        jPanel4.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 150, -1));
-        jPanel4.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 600, 20));
-
-        jButton4.setText("Enviar Peticion");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 300, 30));
-
-        jLabel13.setText("Selecciona una relacion para la peticion");
-        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, -1, 40));
-
-        jLabel14.setText("Apodo:");
-        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, -1, -1));
-
-        jLabel15.setText("Nombre:");
-        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, -1, -1));
-
-        jLabel16.setText("Apellido:");
-        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, -1, -1));
-
-        pt_nombre.setEditable(false);
-        jPanel4.add(pt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 120, -1));
-
-        pt_apellido.setEditable(false);
-        jPanel4.add(pt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, 120, -1));
-
-        pt_apodo.setEditable(false);
-        jPanel4.add(pt_apodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 120, -1));
-
-        btn_buscar_psic.setText("Buscar");
-        btn_buscar_psic.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_buscar_psicActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btn_buscar_psic, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, -1, -1));
-
-        tabbedpanel__.addTab("Pedir_psico", jPanel4);
-
-        jPanel1.add(tabbedpanel__, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 630, 410));
+        jPanel1.add(tabbedpanel__, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 670, 410));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoClaro.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 480));
@@ -384,62 +255,6 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String nombrePanelDeseado = "solicitud";
-
-        // Iterar a través de las pestañas y seleccionar por nombre
-        for (int i = 0; i < tabbedpanel__.getTabCount(); i++) {
-            Component componente = tabbedpanel__.getComponentAt(i);
-            if (tabbedpanel__.getTitleAt(i).equals(nombrePanelDeseado)) {
-                tabbedpanel__.setSelectedComponent(componente);
-                break;
-            }
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void SolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SolicitarActionPerformed
-
-        String nombrePanelDeseado = "Pedir_psico";
-
-        // Iterar a través de las pestañas y seleccionar por nombre
-        for (int i = 0; i < tabbedpanel__.getTabCount(); i++) {
-            Component componente = tabbedpanel__.getComponentAt(i);
-            if (tabbedpanel__.getTitleAt(i).equals(nombrePanelDeseado)) {
-                tabbedpanel__.setSelectedComponent(componente);
-                break;
-            }
-        }
-
-    }//GEN-LAST:event_SolicitarActionPerformed
-
-    private void btn_buscar_psicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscar_psicActionPerformed
-        if (!txt_cod_vincu.getText().isEmpty()) {
-
-            cod_vincu_mostr(Base, txt_cod_vincu.getText());
-
-        } else {
-            JOptionPane.showMessageDialog(this, "Ingresar el codigo de vinculacion");
-        }
-
-    }//GEN-LAST:event_btn_buscar_psicActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if (!txt_envias.getText().isEmpty()) {
-            Creap_peticion(Base);
-
-        } else {
-            JOptionPane.showMessageDialog(this, "Ingresar un Mensaje para el Psicologo");
-        }
-
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void tabla_acepMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_acepMousePressed
-        int selecionTable = tabla_acep.getSelectedRow();
-
-        codSolicitud_aceptada = String.valueOf(tabla_acep.getValueAt(selecionTable, 0));
-        cargar_datos_niño(Base, codSolicitud_aceptada);
-    }//GEN-LAST:event_tabla_acepMousePressed
-
     private void btn_solicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_solicitarActionPerformed
         if (!txt_areaComentario.getText().isEmpty()) {
             if (comprobar_soli(Base) == 0) {
@@ -496,6 +311,10 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -511,50 +330,28 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
     private javax.swing.JMenuItem JMnItmCerrarNiño;
     private javax.swing.JMenu JMnPgPrinNiño;
     private javax.swing.JMenuBar MenuCuentosNiño;
-    private javax.swing.JButton Solicitar;
     private javax.swing.JButton btn_buscar;
-    private javax.swing.JButton btn_buscar_psic;
     private javax.swing.JButton btn_solicitar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField pt_apellido;
-    private javax.swing.JTextField pt_apodo;
-    private javax.swing.JTextField pt_nombre;
     private javax.swing.JTabbedPane tabbedpanel__;
-    private javax.swing.JTable tabla_acep;
     private javax.swing.JTextField txt_apellido;
     private javax.swing.JTextField txt_apodo;
     private javax.swing.JTextArea txt_areaComentario;
     private javax.swing.JTextField txt_busc;
-    private javax.swing.JTextField txt_cod_vincu;
-    private javax.swing.JTextArea txt_envias;
+    private javax.swing.JTextField txt_gen;
+    private javax.swing.JTextField txt_nacimiento;
     private javax.swing.JTextField txt_nombre;
     // End of variables declaration//GEN-END:variables
 ////////////////////////////////////////////////////// ENVIAR SOLIICITUD ////////////////////////////////////////////////
@@ -622,6 +419,8 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
                 txt_apodo.setText(next.getApodo());
                 txt_nombre.setText(next.getNombre());
                 txt_apellido.setText(next.getApellido());
+                txt_gen.setText(String.valueOf(next.getSexo_Niño()));
+                txt_nacimiento.setText( formatoFecha(next.getFecha_Nacimiento()) );
             }
 
         } else {
@@ -629,6 +428,14 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
 
         }
 
+    }
+    private String formatoFecha(Date fecha) {
+        if (fecha == null) {
+            return "Fecha no disponible";
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        return sdf.format(fecha);
     }
 
     public int comprobar_soli(ObjectContainer Base) {
@@ -647,144 +454,144 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
     String codSolicitud_aceptada = "";
     String cod_niño__ = "";
 
-    public void Mostrar_tabla_aceptados(ObjectContainer Base) {
+//    public void Mostrar_tabla_aceptados(ObjectContainer Base) {
+//
+//        solicitud soli = new solicitud();
+//        soli.setFKcod_representante(usarData.getCod_Representante());
+//        soli.setEstado_solicitud1("Aceptada");
+//
+//        DefaultTableModel modelo = (DefaultTableModel) tabla_acep.getModel();
+//        modelo.setRowCount(0);
+//
+//        ObjectSet result = Base.get(soli);
+//        if (result.size() != 0) {
+//
+//            while (result.hasNext()) {
+//                solicitud next = (solicitud) result.next();
+//
+//                modelo.addRow(new Object[]{
+//                    next.getCod_solicitud(),
+//                    Mostrar_nombre_nin(Base, next.getFKcod_niño()),
+//                    Mostrar_nombre_Represent(Base, next.getFKcod_representante())
+//
+//                });
+//
+//            }
+//
+//        } else {
+//        }
+//
+//    }
 
-        solicitud soli = new solicitud();
-        soli.setFKcod_representante(usarData.getCod_Representante());
-        soli.setEstado_solicitud1("Aceptada");
-
-        DefaultTableModel modelo = (DefaultTableModel) tabla_acep.getModel();
-        modelo.setRowCount(0);
-
-        ObjectSet result = Base.get(soli);
-        if (result.size() != 0) {
-
-            while (result.hasNext()) {
-                solicitud next = (solicitud) result.next();
-
-                modelo.addRow(new Object[]{
-                    next.getCod_solicitud(),
-                    Mostrar_nombre_nin(Base, next.getFKcod_niño()),
-                    Mostrar_nombre_Represent(Base, next.getFKcod_representante())
-
-                });
-
-            }
-
-        } else {
-        }
-
-    }
-
-    public void cargar_datos_niño(ObjectContainer Base, String cod) {
-     
-                solicitud soli = new solicitud();
-                soli.setCod_solicitud(cod);
-
-                ObjectSet rest = Base.get(soli);
-                while (rest.hasNext()) {
-                    solicitud next1 = (solicitud) rest.next();
-
-                    String cod_ni = next1.getFKcod_niño();
-                    Niño nin = new Niño();
-                    nin.setCod_Niño(cod_ni);
-
-                    ObjectSet res = Base.get(nin);
-
-                    if (res.size() != 0) {
-
-                        while (res.hasNext()) {
-                            Niño n = (Niño) res.next();
-
-                            pt_apodo.setText(n.getApodo());
-                            pt_nombre.setText(n.getNombre());
-                            pt_apellido.setText(n.getApellido());
-
-                        }
-
-                    } else {
-                        System.out.println("No se encuentra al niño");
-                    }
-
-                }
-
-            
-
-    }
+//    public void cargar_datos_niño(ObjectContainer Base, String cod) {
+//     
+//                solicitud soli = new solicitud();
+//                soli.setCod_solicitud(cod);
+//
+//                ObjectSet rest = Base.get(soli);
+//                while (rest.hasNext()) {
+//                    solicitud next1 = (solicitud) rest.next();
+//
+//                    String cod_ni = next1.getFKcod_niño();
+//                    Niño nin = new Niño();
+//                    nin.setCod_Niño(cod_ni);
+//
+//                    ObjectSet res = Base.get(nin);
+//
+//                    if (res.size() != 0) {
+//
+//                        while (res.hasNext()) {
+//                            Niño n = (Niño) res.next();
+//
+//                            pt_apodo.setText(n.getApodo());
+//                            pt_nombre.setText(n.getNombre());
+//                            pt_apellido.setText(n.getApellido());
+//
+//                        }
+//
+//                    } else {
+//                        System.out.println("No se encuentra al niño");
+//                    }
+//
+//                }
+//
+//            
+//
+//    }
 
     String cod_psic = "";
 
-    public void cod_vincu_mostr(ObjectContainer Base, String codVincu) {
-        Psicologo psic = new Psicologo();
-        psic.setCodigo_vinculacion(codVincu);
+//    public void cod_vincu_mostr(ObjectContainer Base, String codVincu) {
+//        Psicologo psic = new Psicologo();
+//        psic.setCodigo_vinculacion(codVincu);
+//
+//        ObjectSet result = Base.get(psic);
+//        if (result.size() != 0) {
+//            while (result.hasNext()) {
+//                Psicologo next = (Psicologo) result.next();
+//                cod_psic = next.getCod_Psicologo();
+//                String codPsic = next.getFK_Cedula();
+//                cod_nombre(Base, codPsic);
+//
+//            }
+//
+//        } else {
+//            JOptionPane.showMessageDialog(this, "No se encontro al Psicologo");
+//        }
+//
+//    }
 
-        ObjectSet result = Base.get(psic);
-        if (result.size() != 0) {
-            while (result.hasNext()) {
-                Psicologo next = (Psicologo) result.next();
-                cod_psic = next.getCod_Psicologo();
-                String codPsic = next.getFK_Cedula();
-                cod_nombre(Base, codPsic);
-
-            }
-
-        } else {
-            JOptionPane.showMessageDialog(this, "No se encontro al Psicologo");
-        }
-
-    }
-
-    public void cod_nombre(ObjectContainer Base, String cedula) {
-        Persona person = new Persona();
-        person.setCedula(cedula);
-
-        ObjectSet result = Base.get(person);
-
-        while (result.hasNext()) {
-            Persona next = (Persona) result.next();
-
-            jTextField2.setText(next.getNombre() + " " + next.getApellido());
-            jTextField3.setText(next.getCod_Especialidad());
-
-        }
-
-    }
-
-    public void Creap_peticion(ObjectContainer Base) {
-        if (!codSolicitud_aceptada.isEmpty()) {
-            peticion_psico pet = new peticion_psico();
-
-            String cod = calcular_peticion(Base);
-            System.out.println("codigo soli: " + cod);
-
-            pet.setCod_Peticion(cod);
-            pet.setFkCod_Psicologo(cod_psic);
-            pet.setFKcod_solicitud(codSolicitud_aceptada);
-            pet.setDescripcion(txt_envias.getText());
-            pet.setEstado_peticion("Pendiente");
-            pet.setFecha_pet(new Date());
-
-            Base.store(pet);
-
-            JOptionPane.showMessageDialog(this, "Se encio la Peticion");
-
-            pt_apodo.setText("");
-            pt_nombre.setText("");
-            pt_apellido.setText("");
-
-            cod_psic = "";
-            codSolicitud_aceptada = "";
-            txt_cod_vincu.setText("");
-            jTextField2.setText("");
-            jTextField3.setText("");
-            txt_envias.setText("");
-
-        } else {
-
-            JOptionPane.showMessageDialog(this, "Seleccionar Una fila de la tabla");
-        }
-
-    }
+//    public void cod_nombre(ObjectContainer Base, String cedula) {
+//        Persona person = new Persona();
+//        person.setCedula(cedula);
+//
+//        ObjectSet result = Base.get(person);
+//
+//        while (result.hasNext()) {
+//            Persona next = (Persona) result.next();
+//
+//            txt_gen.setText(next.getNombre() + " " + next.getApellido());
+//            jTextField3.setText(next.getCod_Especialidad());
+//
+//        }
+//
+//    }
+//
+//    public void Creap_peticion(ObjectContainer Base) {
+//        if (!codSolicitud_aceptada.isEmpty()) {
+//            peticion_psico pet = new peticion_psico();
+//
+//            String cod = calcular_peticion(Base);
+//            System.out.println("codigo soli: " + cod);
+//
+//            pet.setCod_Peticion(cod);
+//            pet.setFkCod_Psicologo(cod_psic);
+//            pet.setFKcod_solicitud(codSolicitud_aceptada);
+//            pet.setDescripcion(txt_envias.getText());
+//            pet.setEstado_peticion("Pendiente");
+//            pet.setFecha_pet(new Date());
+//
+//            Base.store(pet);
+//
+//            JOptionPane.showMessageDialog(this, "Se encio la Peticion");
+//
+//            pt_apodo.setText("");
+//            pt_nombre.setText("");
+//            pt_apellido.setText("");
+//
+//            cod_psic = "";
+//            codSolicitud_aceptada = "";
+//            txt_cod_vincu.setText("");
+//            txt_gen.setText("");
+//            jTextField3.setText("");
+//            txt_envias.setText("");
+//
+//        } else {
+//
+//            JOptionPane.showMessageDialog(this, "Seleccionar Una fila de la tabla");
+//        }
+//
+//    }
 
     public String calcular_peticion(ObjectContainer Base) {
         boolean rep = true;
@@ -810,20 +617,7 @@ public class Vincular_niño_represe extends javax.swing.JFrame {
         return result.size();
     }
 
-    private void ocultarColumna() {
-
-        // Obtén el TableColumnModel de la tabla
-        TableColumnModel columnModel = tabla_acep.getColumnModel();
-
-        // Obtiene la columna en función del índice proporcionado
-        TableColumn columna = columnModel.getColumn(0);
-
-        // Hace que la columna no sea visible
-        columna.setMinWidth(0);
-        columna.setMaxWidth(0);
-        columna.setWidth(0);
-        columna.setPreferredWidth(0);
-    }
+   
 
     public String Mostrar_nombre_Represent(ObjectContainer Base, String cod) {
         String nombres = "";

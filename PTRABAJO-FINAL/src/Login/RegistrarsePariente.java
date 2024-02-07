@@ -1003,7 +1003,9 @@ public class RegistrarsePariente extends javax.swing.JFrame {
             }
 
             miPersona.setSexo(sexo.charAt(0));
-            miPersona.setCod_Nacionalidad(Asignar_cod_dDiscapacidad(Base, cbx_discapacidad_pariente.getSelectedItem().toString()));
+            miPersona.setCod_Discapacidad(Asignar_cod_dDiscapacidad(Base, cbx_discapacidad_pariente.getSelectedItem().toString()));
+                        miPersona.setCod_Nacionalidad(Asignar_cod_Nacionalidad(Base, CmbBxNacionalidad.getSelectedItem().toString()));
+
             miPersona.setContraseña(String.valueOf(NvContraParien.getPassword()));
             miPersona.setEstado(true);
 
@@ -1021,7 +1023,7 @@ public class RegistrarsePariente extends javax.swing.JFrame {
                 Representante elrepre = new Representante();
                 elrepre.setCod_Repre(Calcular_cod_Representante(Base));
                 elrepre.setFKCod_Cedula(TxtCedParien.getText());
-                elrepre.setFKCod_parentesco(CmbBxParentesco.getSelectedItem().toString());
+                elrepre.setFKCod_parentesco(Asignar_cod_Parentesco(Base, CmbBxParentesco.getSelectedItem().toString()));
                 elrepre.setFKProfesion(Txt_profecion.getText());
                 elrepre.setOcupacion(TxtOcupaParien.getText());
 
