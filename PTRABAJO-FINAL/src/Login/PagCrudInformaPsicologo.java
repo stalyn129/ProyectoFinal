@@ -15,6 +15,7 @@ import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.ext.DatabaseClosedException;
 import com.db4o.ext.DatabaseReadOnlyException;
+import com.db4o.ext.Db4oIOException;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.Image;
@@ -486,13 +487,15 @@ int longitudBytes;
             resul = base.queryByExample(new Informacion(cod, null, null, null));
             Informacion im = new Informacion(Crear_codigo_info(base), txt_Titulo1.getText(), txA_text_info1.getText(), foto);
             base.store(im);
-            JOptionPane.showMessageDialog(null, " Se guardo exitosamente, no te olvides de comentar  el evento");
+            JOptionPane.showMessageDialog(null, " Se guardo exitosamente");
 
             // Limpiar el JLabel (establecer su icono en un icono vacío)
             imagen_1.setIcon(new ImageIcon(new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB)));
 
-        } finally {
-            base.close();
+        } catch(DatabaseClosedException | DatabaseReadOnlyException | Db4oIOException | HeadlessException e){
+        
+        
+        
         }
     }
 

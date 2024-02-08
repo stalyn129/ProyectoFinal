@@ -325,6 +325,7 @@ public class PagForoPariente extends javax.swing.JFrame {
 
                     // Obtener todos los comentarios de la base de datos y cargar solo los del foro actual
                     cargarComentariosEnTxtParticipaciones(codigoForo);
+                    txtArea_Comentario.setText("");
                 } else {
                     System.out.println("Error al obtener el código del participante.");
 
