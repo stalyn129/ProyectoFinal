@@ -6,68 +6,68 @@ package Controladores;
 
 import Modelo.Mascota;
 import Modelo.MascotaDAO;
+
 import java.sql.SQLException;
 import java.util.List;
 
 public class MascotaController {
-
     private MascotaDAO mascotaDAO;
 
     public MascotaController() {
         this.mascotaDAO = new MascotaDAO();
     }
 
-    public void guardarMascota(String nombre, String tipo, int edad, String raza, int idCliente) {
-        Mascota mascota = new Mascota(nombre, tipo, edad, raza, idCliente);
+    public void guardarMascota(String nombre, String tipo, int edad, String raza) {
         try {
+            Mascota mascota = new Mascota(0, nombre, tipo, edad, raza); // El ID se asignará automáticamente
             mascotaDAO.save(mascota);
             System.out.println("Mascota guardada correctamente: " + mascota);
         } catch (SQLException e) {
-            System.out.println("Error al guardar la mascota: " + e.getMessage());
+            System.out.println("Error al intentar guardar la mascota: " + e.getMessage());
         }
     }
 
-    public Mascota buscarMascota(String nombreMascota, int idCliente) {
+    public void buscarMascotaPorId(int id) {
         try {
-            return mascotaDAO.find(nombreMascota, idCliente);
-        } catch (SQLException e) {
-            System.out.println("Error al buscar la mascota: " + e.getMessage());
-            return null;
-        }
-    }
-
-    public List<Mascota> obtenerTodasLasMascotasPorCliente(int idCliente) {
-        try {
-            return mascotaDAO.findAllByCliente(idCliente);
-        } catch (SQLException e) {
-            System.out.println("Error al obtener las mascotas del cliente: " + e.getMessage());
-            return null;
-        }
-    }
-
-    public void actualizarMascota(String nombre, String tipo, int edad, String raza, int idCliente) {
-        try {
-            Mascota mascota = mascotaDAO.find(nombre, idCliente);
+            Mascota mascota = mascotaDAO.find(id);
             if (mascota != null) {
-                mascota.setTipo(tipo);
-                mascota.setEdad(edad);
-                mascota.setRaza(raza);
-                mascotaDAO.update(mascota);
-                System.out.println("Mascota actualizada correctamente.");
+                System.out.println("Mascota encontrada: " + mascota);
             } else {
-                System.out.println("Mascota no encontrada.");
+                System.out.println("Mascota no encontrada con ID: " + id);
             }
         } catch (SQLException e) {
-            System.out.println("Error al actualizar la mascota: " + e.getMessage());
+            System.out.println("Error al intentar buscar la mascota: " + e.getMessage());
         }
     }
 
-    public void eliminarMascota(String nombreMascota, int idCliente) {
+    public void listarMascotas() {
         try {
-            mascotaDAO.delete(nombreMascota, idCliente);
-            System.out.println("Mascota eliminada correctamente.");
+            List<Mascota> mascotas = mascotaDAO.findAll();
+            System.out.println("Lista de mascotas:");
+            for (Mascota mascota : mascotas) {
+                System.out.println(mascota);
+            }
         } catch (SQLException e) {
-            System.out.println("Error al eliminar la mascota: " + e.getMessage());
+            System.out.println("Error al intentar listar las mascotas: " + e.getMessage());
+        }
+    }
+
+    public void actualizarMascota(int id, String nombre, String tipo, int edad, String raza) {
+        try {
+            Mascota mascota = new Mascota(id, nombre, tipo, edad, raza);
+            mascotaDAO.update(mascota);
+            System.out.println("Mascota actualizada correctamente: " + mascota);
+        } catch (SQLException e) {
+            System.out.println("Error al intentar actualizar la mascota: " + e.getMessage());
+        }
+    }
+
+    public void eliminarMascota(int id) {
+        try {
+            mascotaDAO.delete(id);
+            System.out.println("Mascota eliminada correctamente con ID: " + id);
+        } catch (SQLException e) {
+            System.out.println("Error al intentar eliminar la mascota: " + e.getMessage());
         }
     }
 }
