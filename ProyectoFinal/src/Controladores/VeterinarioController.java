@@ -8,6 +8,6 @@ package Controladores;
  *
  * @author Jhony
  */
-public class Controladores {
+public class VeterinarioController {
     
 }
