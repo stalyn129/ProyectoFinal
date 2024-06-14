@@ -6,69 +6,47 @@ package Controladores;
 
 import Modelo.Cliente;
 import Modelo.ClienteDAO;
+
+import javax.swing.*;
 import java.sql.SQLException;
-import java.util.List;
 
 public class ClienteController {
-
     private ClienteDAO clienteDAO;
 
     public ClienteController() {
-        this.clienteDAO = new ClienteDAO();
+        this.clienteDAO = new ClienteDAO(); 
     }
 
-    public void guardarCliente(int id, String nombre, String direccion, String telefono, String email) {
-        Cliente cliente = new Cliente(id, nombre, direccion, telefono, email);
+    public void guardarCliente(JTextField txtNombre, JTextField txtDireccion, JTextField txtTelefono, JTextField txtEmail) {
         try {
-            clienteDAO.save(cliente);
-            System.out.println("Cliente guardado correctamente con ID: " + cliente.getId());
-        } catch (SQLException e) {
-            System.out.println("Error al guardar el cliente: " + e.getMessage());
-        }
-    }
+            
+            String nombre = txtNombre.getText().trim();
+            String direccion = txtDireccion.getText().trim();
+            String telefono = txtTelefono.getText().trim();
+            String email = txtEmail.getText().trim();
 
-    public Cliente buscarCliente(int id) {
-        try {
-            return clienteDAO.find(id);
-        } catch (SQLException e) {
-            System.out.println("Error al buscar el cliente: " + e.getMessage());
-            return null;
-        }
-    }
-
-    public List<Cliente> obtenerTodosLosClientes() {
-        try {
-            return clienteDAO.findAll();
-        } catch (SQLException e) {
-            System.out.println("Error al obtener todos los clientes: " + e.getMessage());
-            return null;
-        }
-    }
-
-    public void actualizarCliente(int id, String nombre, String direccion, String telefono, String email) {
-        try {
-            Cliente cliente = clienteDAO.find(id);
-            if (cliente != null) {
-                cliente.setNombre(nombre);
-                cliente.setDireccion(direccion);
-                cliente.setTelefono(telefono);
-                cliente.setEmail(email);
-                clienteDAO.update(cliente);
-                System.out.println("Cliente actualizado correctamente.");
-            } else {
-                System.out.println("Cliente no encontrado.");
+            if (nombre.isEmpty() || direccion.isEmpty() || telefono.isEmpty() || email.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
             }
+
+            Cliente cliente = new Cliente(0, nombre, direccion, telefono, email); 
+
+            clienteDAO.save(cliente);
+
+            JOptionPane.showMessageDialog(null, "Cliente guardado correctamente: " + cliente, "Cliente Guardado", JOptionPane.INFORMATION_MESSAGE);
+
+            limpiarCampos(txtNombre, txtDireccion, txtTelefono, txtEmail);
+
         } catch (SQLException e) {
-            System.out.println("Error al actualizar el cliente: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al intentar guardar el cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    public void eliminarCliente(int id) {
-        try {
-            clienteDAO.delete(id);
-            System.out.println("Cliente eliminado correctamente.");
-        } catch (SQLException e) {
-            System.out.println("Error al eliminar el cliente: " + e.getMessage());
-        }
+    private void limpiarCampos(JTextField txtNombre, JTextField txtDireccion, JTextField txtTelefono, JTextField txtEmail) {
+        txtNombre.setText("");
+        txtDireccion.setText("");
+        txtTelefono.setText("");
+        txtEmail.setText("");
     }
 }

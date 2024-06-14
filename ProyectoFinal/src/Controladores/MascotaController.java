@@ -7,67 +7,49 @@ package Controladores;
 import Modelo.Mascota;
 import Modelo.MascotaDAO;
 
+import javax.swing.*;
 import java.sql.SQLException;
-import java.util.List;
 
 public class MascotaController {
     private MascotaDAO mascotaDAO;
 
     public MascotaController() {
-        this.mascotaDAO = new MascotaDAO();
+        this.mascotaDAO = new MascotaDAO(); 
     }
 
-    public void guardarMascota(String nombre, String tipo, int edad, String raza) {
+    public void guardarMascota(JTextField txtNombreM, JTextField txtTipoM, JTextField txtEdadM,
+                               JTextField txtRaza) {
         try {
-            Mascota mascota = new Mascota(0, nombre, tipo, edad, raza); // El ID se asignará automáticamente
+            String nombre = txtNombreM.getText().trim();
+            String tipo = txtTipoM.getText().trim();
+            int edad = Integer.parseInt(txtEdadM.getText().trim()); 
+            String raza = txtRaza.getText().trim();
+
+            if (nombre.isEmpty() || tipo.isEmpty() || raza.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            Mascota mascota = new Mascota(nombre, tipo, edad, raza);
+
             mascotaDAO.save(mascota);
-            System.out.println("Mascota guardada correctamente: " + mascota);
+
+            JOptionPane.showMessageDialog(null, "Mascota guardada correctamente: " + mascota, "Mascota Guardada", JOptionPane.INFORMATION_MESSAGE);
+
+            limpiarCampos(txtNombreM, txtTipoM, txtEdadM, txtRaza);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Error en el formato de la edad", "Error", JOptionPane.ERROR_MESSAGE);
         } catch (SQLException e) {
-            System.out.println("Error al intentar guardar la mascota: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al intentar guardar la mascota: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    public void buscarMascotaPorId(int id) {
-        try {
-            Mascota mascota = mascotaDAO.find(id);
-            if (mascota != null) {
-                System.out.println("Mascota encontrada: " + mascota);
-            } else {
-                System.out.println("Mascota no encontrada con ID: " + id);
-            }
-        } catch (SQLException e) {
-            System.out.println("Error al intentar buscar la mascota: " + e.getMessage());
-        }
-    }
-
-    public void listarMascotas() {
-        try {
-            List<Mascota> mascotas = mascotaDAO.findAll();
-            System.out.println("Lista de mascotas:");
-            for (Mascota mascota : mascotas) {
-                System.out.println(mascota);
-            }
-        } catch (SQLException e) {
-            System.out.println("Error al intentar listar las mascotas: " + e.getMessage());
-        }
-    }
-
-    public void actualizarMascota(int id, String nombre, String tipo, int edad, String raza) {
-        try {
-            Mascota mascota = new Mascota(id, nombre, tipo, edad, raza);
-            mascotaDAO.update(mascota);
-            System.out.println("Mascota actualizada correctamente: " + mascota);
-        } catch (SQLException e) {
-            System.out.println("Error al intentar actualizar la mascota: " + e.getMessage());
-        }
-    }
-
-    public void eliminarMascota(int id) {
-        try {
-            mascotaDAO.delete(id);
-            System.out.println("Mascota eliminada correctamente con ID: " + id);
-        } catch (SQLException e) {
-            System.out.println("Error al intentar eliminar la mascota: " + e.getMessage());
-        }
+    private void limpiarCampos(JTextField txtNombreM, JTextField txtTipoM, JTextField txtEdadM,
+                               JTextField txtRaza) {
+        txtNombreM.setText("");
+        txtTipoM.setText("");
+        txtEdadM.setText("");
+        txtRaza.setText("");
     }
 }

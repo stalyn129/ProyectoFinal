@@ -19,6 +19,13 @@ public class Mascota {
         this.raza = raza;
     }
 
+    public Mascota(String nombre, String tipo, int edad, String raza) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.edad = edad;
+        this.raza = raza;
+    }
+
     // Getters y setters
     public int getId() {
         return id;
