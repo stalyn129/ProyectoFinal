@@ -4,6 +4,8 @@
  */
 package MVC;
 
+import Vista.PaginaPrincipal;
+
 /**
  *
  * @author alexa
@@ -14,6 +16,7 @@ public class MVC {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        PaginaPrincipal pagina=new PaginaPrincipal();
+        pagina.setVisible(true);
     } 
 }

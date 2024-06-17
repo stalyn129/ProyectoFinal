@@ -38,39 +38,61 @@ public class PaginaCliente extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(txtnombrec, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 230, -1));
-        jPanel1.add(txtdireccionc, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 230, -1));
-        jPanel1.add(txttelefonoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 230, -1));
-        jPanel1.add(txtemailc, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 230, -1));
 
+        txtnombrec.setBorder(null);
+        jPanel1.add(txtnombrec, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 230, -1));
+
+        txtdireccionc.setBorder(null);
+        jPanel1.add(txtdireccionc, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 230, -1));
+
+        txttelefonoc.setBorder(null);
+        jPanel1.add(txttelefonoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 230, -1));
+
+        txtemailc.setBorder(null);
+        jPanel1.add(txtemailc, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 230, -1));
+
+        btnguardarc.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
         btnguardarc.setText("Guardar");
-        jPanel1.add(btnguardarc, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, -1, -1));
+        jPanel1.add(btnguardarc, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 180, -1));
 
+        jLabel1.setFont(new java.awt.Font("Nirmala UI", 1, 11)); // NOI18N
         jLabel1.setText("NOMBRE:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Nirmala UI", 1, 11)); // NOI18N
         jLabel2.setText("DIRECCIÓN:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Nirmala UI", 1, 11)); // NOI18N
         jLabel3.setText("TELEFONO:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Nirmala UI", 1, 11)); // NOI18N
         jLabel4.setText("EMAIL:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(153, 153, 255));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel5.setText("CLIENTE");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 40));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 230, 20));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 230, 20));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 230, 20));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 230, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -133,6 +155,10 @@ public class PaginaCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextField txtdireccionc;
     private javax.swing.JTextField txtemailc;
     private javax.swing.JTextField txtnombrec;

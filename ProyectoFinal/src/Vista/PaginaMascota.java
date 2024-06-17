@@ -43,32 +43,38 @@ public class PaginaMascota extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(txtnombrem, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 230, -1));
-        jPanel1.add(txttipom, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 230, -1));
-        jPanel1.add(txtedadm, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 230, -1));
-        jPanel1.add(txtrazam, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 230, -1));
+        jPanel1.add(txtnombrem, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 230, -1));
+        jPanel1.add(txttipom, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 230, -1));
+        jPanel1.add(txtedadm, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 230, -1));
+        jPanel1.add(txtrazam, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 230, -1));
 
+        btnguardarm.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
         btnguardarm.setText("Guardar");
-        jPanel1.add(btnguardarm, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, -1, -1));
+        jPanel1.add(btnguardarm, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 140, -1));
 
+        jLabel1.setFont(new java.awt.Font("Nirmala UI", 1, 11)); // NOI18N
         jLabel1.setText("NOMBRE:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Nirmala UI", 1, 11)); // NOI18N
         jLabel2.setText("TIPO:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Nirmala UI", 1, 11)); // NOI18N
         jLabel3.setText("EDAD:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Nirmala UI", 1, 11)); // NOI18N
         jLabel4.setText("RAZA:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(153, 153, 255));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
         jLabel5.setText("MASCOTA");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 

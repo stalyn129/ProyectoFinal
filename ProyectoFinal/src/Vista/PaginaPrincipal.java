@@ -4,17 +4,18 @@
  */
 package Vista;
 
+import Controladores.PaginaPrincipalController;
+
 /**
  *
  * @author Jhony
  */
 public class PaginaPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PaginaPrincipal
-     */
+    PaginaPrincipalController  control;
     public PaginaPrincipal() {
         initComponents();
+        control=new PaginaPrincipalController(this);
     }
 
     /**
@@ -27,36 +28,43 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btn_cliente = new javax.swing.JButton();
+        btn_Veterinario = new javax.swing.JButton();
+        btn_mascota = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("AÑADIR CLIENTE ");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_cliente.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        btn_cliente.setText("AÑADIR CLIENTE ");
+        btn_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_clienteActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+        jPanel1.add(btn_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 160, -1));
 
-        jButton2.setText("AÑADIR VETERINARIO");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_Veterinario.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        btn_Veterinario.setText("AÑADIR VETERINARIO");
+        btn_Veterinario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_VeterinarioActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+        jPanel1.add(btn_Veterinario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
-        jButton3.setText("AÑADIR MASCOTA");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
+        btn_mascota.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        btn_mascota.setText("AÑADIR MASCOTA");
+        jPanel1.add(btn_mascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 160, -1));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(153, 153, 255));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
@@ -81,6 +89,18 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 40));
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/publico-objetivo.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 30, 20));
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/publico-objetivo.png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 30, 20));
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/publico-objetivo.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 30, 20));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,13 +115,13 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_clienteActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn_VeterinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VeterinarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btn_VeterinarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,10 +159,13 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    public javax.swing.JButton btn_Veterinario;
+    public javax.swing.JButton btn_cliente;
+    public javax.swing.JButton btn_mascota;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
